@@ -1,0 +1,31 @@
+{
+  "name": "lesspass",
+  "version": "1.0.0",
+  "description": "lesspass is like keepass without the need to persist password",
+  "main": "lesspass.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha --ui bdd --reporter min --recursive ./tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/guillaumevincent/lesspass.git"
+  },
+  "keywords": [
+    "keepass",
+    "nodejs",
+    "node"
+  ],
+  "author": "Guillaume Vincent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guillaumevincent/lesspass/issues"
+  },
+  "homepage": "https://github.com/guillaumevincent/lesspass#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "mocha": "^2.3.4"
+  },
+  "jshintConfig": {
+    "esnext": true
+  }
+}
