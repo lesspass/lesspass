@@ -8,3 +8,11 @@ lesspass is like keepass without the need to persist passwords
 ## run tests
 
     npm tests
+
+## build app
+
+    npm build
+
+## run application
+
+    npm start
