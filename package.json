@@ -5,13 +5,15 @@
   "main": "lesspass.js",
   "scripts": {
     "test": "mocha  --compilers js:babel-core/register --ui bdd --reporter min --recursive ./tests",
-    "build": "npm-run-all clean copy 'build:*'",
-    "build:app": "browserify -e ./app/app.js -o ./dist/app.js",
-    "clean": "rimraf ./dist/**/*",
-    "copy": "mkdir -p ./dist && cp  public/* dist/",
-    "serve": "static -p ${PORT:-5000} --gzip --host-address 0.0.0.0 dist/",
+    "build": "npm-run-all clean copy build_app",
+    "build_app": "browserify -e ./app/app.js -o ./dist/app.js",
+    "clean": "rimraf ./dist/**/* && rimraf dist",
+    "copy": "mkdir dist && cp -r public/* dist/",
+    "serve": "static -p 5000 --gzip --host-address 0.0.0.0 dist/",
     "start": "npm run serve",
-    "prestart": "npm run build"
+    "prestart": "npm run build",
+    "watch": "npm-run-all --parallel serve watch_app",
+    "watch_app": "watchify -dv -e ./app/app.js -o ./dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,11 @@
   },
   "homepage": "https://github.com/guillaumevincent/lesspass#readme",
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^4.0.0-alpha.2",
+    "chardinjs": "git://github.com/heelhook/chardin.js.git",
+    "clipboard": "^1.5.5",
+    "font-awesome": "^4.5.0",
+    "jquery": "^2.1.4"
   },
   "jshintConfig": {
     "esnext": true
