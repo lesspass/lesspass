@@ -20,11 +20,15 @@
     </div>
     <div class="row p-a-1">
         <div class="col-md-6 col-md-offset-3">
-            <div class="input-group" data-intro="Entrez votre mot de passe et votre site séparés par deux points (ex: password:facebook) puis tapez Entrée"
-                       data-position="bottom">
+            <div class="input-group"
+                 data-intro="1/ Entrez votre mot de passe et votre site séparés par deux points (ex: password:facebook)"
+                 data-position="bottom">
                 <input type="password" id="foo" class="form-control" placeholder="mot de passe:site">
                 <span class="input-group-btn">
-                    <button id="copy-btn" class="btn btn-secondary" type="button"><i class="fa fa-clipboard"></i></button>
+                    <button id="copy-btn" class="btn btn-secondary" type="button"
+                            data-intro="2/ Copiez votre mot de passe généré dans le presse papier"
+                            data-position="right">
+                        <i class="fa fa-clipboard"></i></button>
                 </span>
             </div>
         </div>
@@ -32,7 +36,8 @@
     <div class="row p-a-1">
         <div class="col-md-6 col-md-offset-3 text-xs-center">
             <button id="help-btn" class="btn btn-sm btn-secondary-outline" onclick="enableChardin()"
-                data-clipboard-target="#foo">aide</button>
+                    data-clipboard-target="#foo">aide
+            </button>
         </div>
     </div>
 </div>
