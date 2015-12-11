@@ -8,7 +8,7 @@
     "build": "npm-run-all clean copy 'build:*'",
     "build:app": "browserify -e ./app/app.js -o ./dist/app.js",
     "clean": "rimraf ./dist/**/*",
-    "copy": "mkdir -p ./dist && cp -ra public/. dist",
+    "copy": "mkdir -p ./dist && cp  public/* dist/",
     "serve": "static -p ${PORT:-5000} --gzip --host-address 0.0.0.0 dist/",
     "start": "npm run serve",
     "prestart": "npm run build"
