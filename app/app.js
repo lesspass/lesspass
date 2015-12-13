@@ -1,14 +1,5 @@
 import PasswordGenerator from './password-generator';
 
-document.getElementById("help-btn").onclick = function () {
-    $('body').chardinJs('start');
-};
+console.log(PasswordGenerator.make_password('t','t'));
 
-document.getElementById('foo').focus();
-var clipboard = new Clipboard('#copy-btn',{
-    text: function(trigger) {
-        $('body').chardinJs('stop');
-        var elements = document.getElementById('foo').value.split(':');
-        return PasswordGenerator.make_password(elements[0], elements[1]);
-    }
-});
+import * as stylesheet from './styles/styles.scss';
