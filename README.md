@@ -4,7 +4,6 @@ lesspass is like keepass without the need to persist passwords
 ## requirements
 
   * node v4.2.x LTS
-  * npm  v2.14
 
 ## try lesspass
 
@@ -31,14 +30,6 @@ open the application in a browser: [http://localhost:5000](http://localhost:5000
 ### run tests
 
     npm run test
-
-### run tests in watch mode
-
-    npm run test:watch
-
-### start lesspass in watch mode
-
-    npm run start:watch
 
 ### build for production
 

@@ -5,8 +5,7 @@
   "main": "app/app.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "mocha --compilers js:babel-core/register tests",
-    "test:watch": "npm test -- -w",
+    "test": "mocha -w --compilers js:babel-core/register tests",
     "lint": "jshint app/**",
     "build:production": "npm prune && npm install && npm run lint && npm test && npm run build",
     "build": "npm-run-all clean build:html build:app",
@@ -14,10 +13,8 @@
     "build:html": "cpy '**/*.html' '../dist/' --cwd=static --parents",
     "build:app": "browserify -e ./app/app.js -o ./dist/app.js",
     "prestart": "npm run build",
-    "start": "npm run serve",
+    "start": "npm-run-all --parallel serve watch:html watch:app",
     "serve": "http-server -p 5000 dist/",
-    "watch": "npm run start:watch",
-    "start:watch": "npm-run-all --parallel serve watch:html watch:app",
     "watch:html": "watch 'npm run build:html' static",
     "watch:app": "watchify -dv -e ./app/app.js -o ./dist/app.js"
   },
