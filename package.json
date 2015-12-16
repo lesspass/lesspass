@@ -5,7 +5,8 @@
   "main": "app/app.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "mocha -w --compilers js:babel-core/register tests",
+    "test": "mocha --compilers js:babel-core/register tests",
+    "test:watch": "npm run test -- -w",
     "lint": "jshint app/**",
     "build:production": "npm prune && npm install && npm run lint && npm test && npm run build",
     "build": "npm-run-all clean build:html build:app",
