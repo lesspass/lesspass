@@ -11,22 +11,22 @@ describe('lesspass', ()=> {
                 'password_type': 'luns',
                 'counter': 1
             };
-            assert.equal('veXU8[syCE4&', lesspass.create_password(master_password, site_information));
+            assert.equal('iwIQ8[acYT4&', lesspass.create_password(master_password, site_information));
         });
     });
     describe('hash', ()=> {
-        it('should have default length of 10', ()=> {
+        it('should have default length of 12', ()=> {
             var master_password = "password";
             var site_information = {'site_name': 'facebook'};
-            assert.equal(10, lesspass._create_hash(master_password, site_information).length);
+            assert.equal(12, lesspass._create_hash(master_password, site_information).length);
         });
         it('should be able to create hash with defined length', ()=> {
             var master_password = "password";
             var site_information = {
                 'site_name': 'facebook',
-                'password_length': 12
+                'password_length': 10
             };
-            assert.equal(12, lesspass._create_hash(master_password, site_information).length);
+            assert.equal(10, lesspass._create_hash(master_password, site_information).length);
         });
         it('should return two different password if site different', ()=> {
             var master_password = "password";
@@ -49,15 +49,11 @@ describe('lesspass', ()=> {
     });
     describe('password templates', ()=> {
         it('should get template from password type', ()=> {
-            assert.equal('cv', lesspass._getTemplate('l'));
-            assert.equal('CV', lesspass._getTemplate('u'));
-            assert.equal('cvn', lesspass._getTemplate('ln'));
+            assert.equal('vc', lesspass._getTemplate('l'));
+            assert.equal('VC', lesspass._getTemplate('u'));
+            assert.equal('vcn', lesspass._getTemplate('ln'));
             assert.equal('ns', lesspass._getTemplate('ns'));
-        });
-        xit('should get template from alias', ()=> {
-            assert.equal(lesspass._getTemplate('luns'), lesspass._getTemplate('strong'));
-            assert.equal(lesspass._getTemplate('an'), lesspass._getTemplate('alphanumeric'));
-            assert.equal(lesspass._getTemplate('n'), lesspass._getTemplate('numeric'));
+            assert.equal('Cvccvns', lesspass._getTemplate());
         });
         it('should return char inside template based on modulo of the index', function () {
             var template = 'cv';
