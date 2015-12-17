@@ -28,6 +28,15 @@ describe('lesspass', ()=> {
             };
             assert.equal(12, lesspass._create_hash(master_password, site_information).length);
         });
+        it('should return two different password if site different', ()=> {
+            var master_password = "password";
+            var site_information = {'site_name': 'facebook'};
+            var site_information2 = {'site_name': 'google'};
+            assert.notEqual(
+                lesspass._create_hash(master_password, site_information),
+                lesspass._create_hash(master_password, site_information2)
+            );
+        });
         it('should return two different password if counter different', ()=> {
             var master_password = "password";
             var old_site_information = {'site_name': 'facebook'};
