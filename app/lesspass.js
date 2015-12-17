@@ -1,78 +1,79 @@
 import crypto from 'crypto';
 
-export function create_hash(key, text, length = 10, counter = 1) {
-    var password = crypto.createHmac('sha256', key).update(text + counter.toString()).digest('hex');
-    return password.substring(0, length);
-}
 
-export function create_password(master_password, site, password_info) {
-    var hash = create_hash(master_password,site,password_info.size);
-    return encode(hash, password_info.type);
-}
-
-export function string2Uint8Array(text) {
-    var buffer = new ArrayBuffer(text.length);
-    var uint8Array = new Uint8Array(buffer);
-    for (let i = 0; i < text.length; i++) {
-        uint8Array[i] = text.charCodeAt(i);
+export class lesspass {
+    static create_password(master_password, site_information) {
+        var hash = this._create_hash(master_password, site_information);
+        return this._encode(hash, site_information.password_type);
     }
-    return uint8Array;
-}
 
-export function getTemplate(passwordType) {
-    var templates = {
-        l: "cv",
-        u: "CV",
-        n: "n",
-        s: "s",
-        lu: "cvCV",
-        ln: "cvn",
-        ls: "cvs",
-        un: "CVn",
-        us: "CVs",
-        ns: "ns",
-        lun: "cvCVn",
-        uns: "CVns",
-        lns: "cvns",
-        lus: "cvCVs",
-        luns: "cvCVns"
-    };
-    return templates[passwordType];
-}
 
-export function encode(hash, passwordType) {
-    var template = getTemplate(passwordType);
-    var password = '';
-    string2Uint8Array(hash).map(
-        (charCode, index) => {
-            var charType = getCharType(template, index);
-            password += getPasswordChar(charType, charCode);
+    static _create_hash(master_password, {site_name, password_length=10, counter= 1}) {
+        var salt = site_name + counter.toString();
+        var password = crypto.createHmac('sha256', master_password).update(salt).digest('hex');
+        return password.substring(0, password_length);
+    }
+
+    static _string2charCodes(text) {
+        var buffer = new ArrayBuffer(text.length);
+        var charCodes = new Uint8Array(buffer);
+        for (let i = 0; i < text.length; i++) {
+            charCodes[i] = text.charCodeAt(i);
         }
-    );
-    return password;
-}
+        return charCodes;
+    }
 
-function elements_with_index(elements) {
-    return elements.map((element, index) => index + ':' + element);
-}
+    static _getTemplate(passwordType) {
+        var templates = {
+            l: "cv",
+            u: "CV",
+            n: "n",
+            s: "s",
+            lu: "a",
+            ln: "cvn",
+            ls: "cvs",
+            un: "CVn",
+            us: "CVs",
+            ns: "ns",
+            lun: "an",
+            uns: "CVns",
+            lns: "cvns",//alphanumeric lowercase
+            lus: "as",
+            luns: "cvCVns"//all, strong
+        };
+        return templates[passwordType];
+    }
 
-export var passwordChars = {
-    V: "AEIOUY",
-    C: "BCDFGHJKLMNPQRSTVWXZ",
-    v: "aeiouy",
-    c: "bcdfghjklmnpqrstvwxz",
-    A: "AEIOUYBCDFGHJKLMNPQRSTVWXZ",
-    a: "AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz",
-    n: "0123456789",
-    s: "@&%?,=[]_:-+*$#!'^~;()/.",
-    x: "AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz0123456789@&%?,=[]_:-+*$#!'^~;()/."
-};
+    static _getCharType(template, index) {
+        return template[index % template.length];
+    }
 
-export function getPasswordChar(charType, index) {
-    var passwordChar = passwordChars[charType];
-    return passwordChar[index % passwordChar.length];
-}
+    static _getPasswordChar(charType, index) {
+        var passwordsChars = {
+            V: "AEIOUY",
+            C: "BCDFGHJKLMNPQRSTVWXZ",
+            v: "aeiouy",
+            c: "bcdfghjklmnpqrstvwxz",
+            A: "AEIOUYBCDFGHJKLMNPQRSTVWXZ",
+            a: "AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz",
+            n: "0123456789",
+            s: "@&%?,=[]_:-+*$#!'^~;()/.",
+            x: "AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz0123456789@&%?,=[]_:-+*$#!'^~;()/."
+        };
+        var passwordChar = passwordsChars[charType];
+        return passwordChar[index % passwordChar.length];
+    }
 
-export function getCharType(template, index) {
-    return template[index % template.length];
+
+    static _encode(hash, passwordType) {
+        var template = this._getTemplate(passwordType);
+        var password = '';
+        this._string2charCodes(hash).map(
+            (charCode, index) => {
+                let charType = this._getCharType(template, index);
+                password += this._getPasswordChar(charType, charCode);
+            }
+        );
+        return password;
+    }
 }
