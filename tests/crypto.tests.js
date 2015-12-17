@@ -9,20 +9,32 @@ describe('crypto', function () {
         assert.equal('a', String.fromCharCode(uint8Array[0]));
     });
 
-    describe('getTemplate', function () {
-        it('should get a template based on modulo of the index', function () {
-            var templates = ['template1', 'template2', 'template3'];
-            assert.equal('template2', crypto.getTemplate(templates, 4));
-            assert.equal('template2', crypto.getTemplate(templates, 10));
+    describe('templates', function () {
+        it('should get a template from user password type entries', function () {
+            assert.equal('cv', crypto.getTemplate('l'));
+            assert.equal('CV', crypto.getTemplate('u'));
+            assert.equal('cvn', crypto.getTemplate('ln'));
+            assert.equal('ns', crypto.getTemplate('ns'));
+        });
+        it('should return char inside template based on modulo of the index', function () {
+            var template = 'cv';
+            assert.equal('c', crypto.getCharType(template, 0));
+            assert.equal('v', crypto.getCharType(template, 1));
+            assert.equal('c', crypto.getCharType(template, 10));
         });
     });
 
     describe('encode', function () {
-        it('should return char inside template based on modulo of the indexes', function () {
-            var template = '0123456789';
-            assert.equal('01', crypto.encode(template, [20, 11]));
-            assert.equal('01', crypto.encode(template, [20, 21]));
-            assert.equal('29', crypto.encode(template, [12, 19]));
+        it('should return password size same size of hash given', function () {
+            var hash = 'Y2Vi2a112A';
+            var passwordType = 'lun';
+            assert.equal(10, crypto.encode(hash, passwordType).length);
+        });
+        it('for the same hash should return value depending on the passwordType', function () {
+            var hash = 'a';
+            var passwordType1 = 'n';
+            var passwordType2 = 'l';
+            assert.notEqual(crypto.encode(hash, passwordType1), crypto.encode(hash, passwordType2));
         });
     });
 

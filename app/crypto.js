@@ -1,6 +1,5 @@
 export function string2Uint8Array(text) {
-    var bytesPerChar = 2;
-    var buffer = new ArrayBuffer(text.length * bytesPerChar);
+    var buffer = new ArrayBuffer(text.length);
     var uint8Array = new Uint8Array(buffer);
     for (let i = 0; i < text.length; i++) {
         uint8Array[i] = text.charCodeAt(i);
@@ -8,13 +7,39 @@ export function string2Uint8Array(text) {
     return uint8Array;
 }
 
-export function getTemplate(templates, index) {
-    return templates[index % templates.length];
+export function getTemplate(passwordType) {
+    var templates = {
+        l: "cv",
+        u: "CV",
+        n: "n",
+        s: "s",
+        lu: "cvCV",
+        ln: "cvn",
+        ls: "cvs",
+        un: "CVn",
+        us: "CVs",
+        ns: "ns",
+        lun: "cvCVn",
+        uns: "CVns",
+        lns: "cvns",
+        lus: "cvCVs",
+        luns: "cvCVns"
+    };
+    return templates[passwordType];
 }
 
-export function encode(template, indexes) {
-    var encodedArray = indexes.map(index => template[index % template.length]);
-    return encodedArray.join('');
+export function encode(hash, passwordType) {
+    var template = getTemplate(passwordType);
+    return string2Uint8Array(hash).map(
+        (charCode, index) => {
+            var charType = getCharType(template, index);
+            return getPasswordChar(charType, charCode);
+        }
+    );
+}
+
+function elements_with_index(elements) {
+    return elements.map((element, index) => index + ':' + element);
 }
 
 export var passwordChars = {
@@ -34,3 +59,6 @@ export function getPasswordChar(charType, index) {
     return passwordChar[index % passwordChar.length];
 }
 
+export function getCharType(template, index) {
+    return template[index % template.length];
+}
