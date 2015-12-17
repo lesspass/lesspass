@@ -4,7 +4,8 @@ import crypto from 'crypto';
 export class lesspass {
     static create_password(master_password, site_information) {
         var hash = this._create_hash(master_password, site_information);
-        return this._encode(hash, site_information.password_type);
+        var template = this._getTemplate(site_information.password_type);
+        return this._encode(hash, template);
     }
 
 
@@ -65,8 +66,7 @@ export class lesspass {
     }
 
 
-    static _encode(hash, passwordType) {
-        var template = this._getTemplate(passwordType);
+    static _encode(hash, template) {
         var password = '';
         this._string2charCodes(hash).map(
             (charCode, index) => {

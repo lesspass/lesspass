@@ -75,14 +75,11 @@ describe('lesspass', ()=> {
         });
         it('should return password size same size of hash given', function () {
             var hash = 'Y2Vi2a112A';
-            var passwordType = 'lun';
-            assert.equal(10, lesspass._encode(hash, passwordType).length);
+            assert.equal(10, lesspass._encode(hash, 'cv').length);
         });
-        it('for the same hash should return value depending on the passwordType', function () {
+        it('should return different value if templates are different', function () {
             var hash = 'a';
-            var passwordType1 = 'n';
-            var passwordType2 = 'l';
-            assert.notEqual(lesspass._encode(hash, passwordType1), lesspass._encode(hash, passwordType2));
+            assert.notEqual(lesspass._encode(hash, 'cv'), lesspass._encode(hash, 'vc'));
         });
         it('should return char based on its type and on his index', function () {
             var typeVowel = 'V';
