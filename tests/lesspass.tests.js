@@ -28,7 +28,7 @@ describe('lesspass', ()=> {
             };
             assert.equal(10, lesspass._create_hash(master_password, site_information).length);
         });
-        it('should return two different password if site different', ()=> {
+        it('should return two different passwords if site different', ()=> {
             var master_password = "password";
             var site_information = {'site_name': 'facebook'};
             var site_information2 = {'site_name': 'google'};
@@ -37,7 +37,7 @@ describe('lesspass', ()=> {
                 lesspass._create_hash(master_password, site_information2)
             );
         });
-        it('should return two different password if counter different', ()=> {
+        it('should return two different passwords if counter different', ()=> {
             var master_password = "password";
             var old_site_information = {'site_name': 'facebook'};
             var site_information = {'site_name': 'facebook', 'counter': 2};
@@ -73,15 +73,15 @@ describe('lesspass', ()=> {
             var hash = 'Y2Vi2a112A';
             assert.equal(10, lesspass._encode(hash, 'cv').length);
         });
-        it('should return different value if templates are different', function () {
+        it('should return different values if templates are different', function () {
             var hash = 'a';
             assert.notEqual(lesspass._encode(hash, 'cv'), lesspass._encode(hash, 'vc'));
         });
-        it('should return char based on its type and on his index', function () {
+        it('should get password char based on its type and index', function () {
             var typeVowel = 'V';
             assert.equal('A', lesspass._getPasswordChar(typeVowel, 0));
         });
-        it('should return char and modulo if overflow', function () {
+        it('should modulo if overflow', function () {
             var typeVowel = 'V';
             assert.equal('E', lesspass._getPasswordChar(typeVowel, 1));
             assert.equal('E', lesspass._getPasswordChar(typeVowel, 7));
