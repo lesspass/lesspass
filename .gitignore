@@ -85,4 +85,5 @@ docs/_build/
 
 # PyBuilder
 target/
+/server/config
 /server/db.sqlite3
