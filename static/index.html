@@ -1,12 +1,158 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>lesspass</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/chardinjs.css">
+    <style>
+        body {
+            padding-bottom: 50px;
+        }
+
+        #header {
+            height: 49px;
+            background-color: #4A4A4A;
+            border-bottom: 4px solid #39A85B;
+        }
+
+        .green {
+            color: #39A85B;
+        }
+
+        #lesspass-logo {
+        }
+
+        #headlines {
+            padding: 50px 0;
+        }
+    </style>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/chardinjs.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
 </head>
 <body>
-hello world 20015
-<button class="btn btn-success">test</button>
+
+
+<div id="header">
+    <div class="container text-center">
+        <div id="logo">
+            <a href="https://lesspass.com" id="lesspass-logo-link">
+                <img alt="lesspass" id="lesspass-logo" src="images/favicon.svg">
+            </a>
+        </div>
+    </div>
+</div>
+<div id="headlines" class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+
+            <h1 class="green">LESSPASS: Gérez vos mots de passe en toute confiance</h1>
+            <h2>lesspass ne mémorise pas vos mots de passe, et vous non plus ! </h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="green">lesspass</span> ne sauvegarde pas vos mots de passe, il les regénère à
+                            chaque fois que vous en avez besoin. Chaque mot de passe est unique et propre à chaque site.
+                            Tous ce dont vous avez besoin c'est de vous souvenir d'un seul mot de passe, et lesspass
+                            fait le reste.
+                        </p>
+                        <p>
+                            Comme <span class="green">lesspass</span> ne sauvegarde pas vos mots de passe,
+                            il n'y a rien à voler.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-controller="lesspassController as lesspass">
+    <form>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="site">Site</label>
+                    <input ng-model="lesspass.site" type="text" class="form-control" id="site"
+                           placeholder="ex: facebook"
+                           data-intro="1/ Entrez le site sur lequel vous souhaitez vous connecter"
+                           data-position="top">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input ng-model="lesspass.password" type="password" class="form-control" id="password"
+                           placeholder="ex: mot de passe fort"
+                           data-intro="2/ Entrez votre mot de passe"
+                           data-position="top">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="password_generated">Mot de passe unique généré</label>
+                <div class="input-group"
+                     data-intro="3/ Copiez le mot de passe unique généré"
+                     data-position="top">
+                    <input id="password_generated" class="form-control" disabled type="text"
+                           ng-value="lesspass.generatedPassword">
+                    <div class="input-group-btn">
+                        <button ng-click="lesspass.displayHelp()" type="button" class="btn btn-default"
+                                aria-label="Help">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+                        <button ng-click="lesspass.createPassword()" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-copy"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="lesspass.lowercase" ng-checked="lesspass.lowercase">
+                        minuscules (a-z)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="lesspass.uppercase" ng-checked="lesspass.uppercase">
+                        MAJUSCULES (A-Z)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="lesspass.number" ng-checked="lesspass.number">
+                        nombres (0-9)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="lesspass.symbols" ng-checked="lesspass.symbols">
+                        caractères spéciaux (@&%?)
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 <script src="app.js"></script>
 </body>
 </html>

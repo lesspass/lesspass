@@ -8,8 +8,9 @@
     "test:watch": "npm run test -- -w",
     "lint": "jshint app/**",
     "build:production": "npm prune && npm install && npm run lint && npm test && npm run build",
-    "build": "npm-run-all clean build:html build:app",
+    "build": "npm-run-all clean copy:static build:app",
     "clean": "rimraf dist",
+    "copy:static": "cp -r static/ dist/",
     "build:html": "cpy '**/*.html' '../dist/' --cwd=static --parents",
     "build:app": "browserify -e ./app/app.js -o ./dist/app.js",
     "prestart": "npm run build",
@@ -73,5 +74,9 @@
   },
   "jshintConfig": {
     "esnext": true
+  },
+  "dependencies": {
+    "angular": "^1.4.8",
+    "bootstrap": "^3.3.6"
   }
 }
