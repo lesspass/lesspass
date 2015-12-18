@@ -4,7 +4,7 @@ from rest_framework import routers
 from api import views
 
 router = routers.DefaultRouter()
-router.register(r'sites', views.SiteViewSet)
+router.register(r'sites', views.SiteViewSet, base_name='sites')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
