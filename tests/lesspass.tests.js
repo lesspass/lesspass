@@ -8,7 +8,7 @@ describe('lesspass', ()=> {
             var site_information = {
                 'site_name': 'facebook',
                 'password_length': 12,
-                'password_type': ['strong'],
+                'password_types': ['strong'],
                 'counter': 1
             };
             assert.equal('Vexu8[Syce4&', lesspass.create_password(master_password, site_information));
@@ -54,12 +54,12 @@ describe('lesspass', ()=> {
         it('should get template from password type', ()=> {
             assert.equal('vc', lesspass._getTemplate(['lowercase']));
             assert.equal('VC', lesspass._getTemplate(['uppercase']));
-            assert.equal('n', lesspass._getTemplate(['number']));
+            assert.equal('n', lesspass._getTemplate(['numbers']));
             assert.equal('s', lesspass._getTemplate(['symbols']));
         });
         it('should concatenate template if two password types', ()=> {
             assert.equal('vcVC', lesspass._getTemplate(['lowercase', 'uppercase']));
-            assert.equal('vcns', lesspass._getTemplate(['lowercase', 'number', 'symbols']));
+            assert.equal('vcns', lesspass._getTemplate(['lowercase', 'numbers', 'symbols']));
         });
         it('should not care about order of type in password types', ()=> {
             assert.equal(
