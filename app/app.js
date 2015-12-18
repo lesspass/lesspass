@@ -5,7 +5,7 @@ class lesspassController {
     constructor() {
         this.lowercase = true;
         this.uppercase = true;
-        this.number = true;
+        this.numbers = true;
         this.symbols = true;
     }
     displayHelp(){
@@ -14,21 +14,21 @@ class lesspassController {
     createPassword() {
         var passwordTypes = [];
         if (this.lowercase) {
-            passwordTypes.push('lowercase')
+            passwordTypes.push('lowercase');
         }
         if (this.uppercase) {
-            passwordTypes.push('uppercase')
+            passwordTypes.push('uppercase');
         }
-        if (this.number) {
-            passwordTypes.push('number')
+        if (this.numbers) {
+            passwordTypes.push('numbers');
         }
         if (this.symbols) {
-            passwordTypes.push('symbols')
+            passwordTypes.push('symbols');
         }
         var site_information = {
             'site_name': this.site,
             'password_length': 12,
-            'password_type': passwordTypes,
+            'password_types': passwordTypes,
             'counter': 1
         };
 

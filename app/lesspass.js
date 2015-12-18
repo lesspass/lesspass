@@ -1,15 +1,15 @@
 import crypto from 'crypto';
 
 export class lesspass {
-    static create_password(master_password, site_information) {
-        var hash = this._create_hash(master_password, site_information);
-        var template = this._getTemplate(site_information.password_type);
+    static create_password(masterPassword, siteInformation) {
+        var hash = this._create_hash(masterPassword, siteInformation);
+        var template = this._getTemplate(siteInformation.password_types);
         return this._encode(hash, template);
     }
 
-    static _create_hash(master_password, {site_name, password_length=12, counter=1}) {
+    static _create_hash(masterPassword, {site_name, password_length=12, counter=1}) {
         var salt = site_name + counter.toString();
-        var password = crypto.createHmac('sha256', master_password).update(salt).digest('hex');
+        var password = crypto.createHmac('sha256', masterPassword).update(salt).digest('hex');
         return password.substring(0, password_length);
     }
 
@@ -26,7 +26,7 @@ export class lesspass {
         var passwordTypesInfo = {
             lowercase: {value: 'vc', order: 1},
             uppercase: {value: 'VC', order: 2},
-            number: {value: 'n', order: 3},
+            numbers: {value: 'n', order: 3},
             symbols: {value: 's', order: 4},
             strong: {value: 'Cvcvns', order: 5}
         };
