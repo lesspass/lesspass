@@ -1,5 +1,6 @@
-from api.models import Site
 from rest_framework import serializers
+
+from api.models import Site
 
 
 class SiteSerializer(serializers.ModelSerializer):

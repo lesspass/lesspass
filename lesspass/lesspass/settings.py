@@ -1,8 +1,9 @@
 import os
 
-from smartconfigparser import Config
-
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+from smartconfigparser import Config
 
 CONFIG_PATH = os.path.join(BASE_DIR, 'config')
 if not os.path.exists(CONFIG_PATH):
@@ -29,18 +30,19 @@ DEBUG = config.getboolean('DJANGO', 'DEBUG', False)
 
 ALLOWED_HOSTS = config.getlist('DJANGO', 'ALLOWED_HOSTS', ['localhost', '127.0.0.1', '*.oslab.fr'])
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
-    'rest_framework',
-)
+    'rest_framework'
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -48,8 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-)
+]
 
 ROOT_URLCONF = 'lesspass.urls'
 
@@ -71,13 +72,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lesspass.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 LANGUAGE_CODE = 'en-us'
 

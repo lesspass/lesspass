@@ -85,5 +85,5 @@ docs/_build/
 
 # PyBuilder
 target/
-/server/config
-/server/db.sqlite3
+/lesspass/config
+/lesspass/db.sqlite3
