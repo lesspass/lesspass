@@ -4,7 +4,6 @@
   "description": "lesspass is like keepass without the need to persist passwords",
   "main": "app/app.js",
   "scripts": {
-    "pretest": "npm install",
     "test": "mocha --compilers js:babel-core/register tests",
     "test:watch": "npm run test -- -w",
     "lint": "jshint app/**",

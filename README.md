@@ -27,12 +27,20 @@ start application
 
 open the application in a browser: [http://localhost:5000](http://localhost:5000)
 
-## contribute
+## run tests
 
-### run tests
+install dependencies
+
+    npm install
+
+run tests
 
     npm run test
 
-### build for production
+run test in watch mode
+
+    npm run test:watch
+
+## build for production
 
     npm run build:production
