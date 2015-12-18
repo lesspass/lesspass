@@ -22,8 +22,19 @@ export class lesspass {
         return charCodes;
     }
 
-    static _getTemplate(passwordType = 'Cvccvns') {
-        return passwordType.replace('l', 'vc').replace('u', 'VC');
+    static _getTemplate(passwordTypes = ['strong']) {
+        var passwordTypesInfo = {
+            lowercase: {value: 'vc', order: 1},
+            uppercase: {value: 'VC', order: 2},
+            number: {value: 'n', order: 3},
+            symbols: {value: 's', order: 4},
+            strong: {value: 'Cvcvns', order: 5}
+        };
+        return passwordTypes
+            .map(passwordType => passwordTypesInfo[passwordType])
+            .sort((pt1, pt2) => pt1.order > pt2.order)
+            .map(passwordType => passwordType.value)
+            .join('');
     }
 
     static _getCharType(template, index) {

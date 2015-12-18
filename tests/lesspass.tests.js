@@ -8,10 +8,10 @@ describe('lesspass', ()=> {
             var site_information = {
                 'site_name': 'facebook',
                 'password_length': 12,
-                'password_type': 'luns',
+                'password_type': ['strong'],
                 'counter': 1
             };
-            assert.equal('iwIQ8[acYT4&', lesspass.create_password(master_password, site_information));
+            assert.equal('Vexu8[Syce4&', lesspass.create_password(master_password, site_information));
         });
     });
     describe('hash', ()=> {
@@ -48,12 +48,24 @@ describe('lesspass', ()=> {
         });
     });
     describe('password templates', ()=> {
+        it('should get default template from password type', ()=> {
+            assert.equal('Cvcvns', lesspass._getTemplate());
+        });
         it('should get template from password type', ()=> {
-            assert.equal('vc', lesspass._getTemplate('l'));
-            assert.equal('VC', lesspass._getTemplate('u'));
-            assert.equal('vcn', lesspass._getTemplate('ln'));
-            assert.equal('ns', lesspass._getTemplate('ns'));
-            assert.equal('Cvccvns', lesspass._getTemplate());
+            assert.equal('vc', lesspass._getTemplate(['lowercase']));
+            assert.equal('VC', lesspass._getTemplate(['uppercase']));
+            assert.equal('n', lesspass._getTemplate(['number']));
+            assert.equal('s', lesspass._getTemplate(['symbols']));
+        });
+        it('should concatenate template if two password types', ()=> {
+            assert.equal('vcVC', lesspass._getTemplate(['lowercase', 'uppercase']));
+            assert.equal('vcns', lesspass._getTemplate(['lowercase', 'number', 'symbols']));
+        });
+        it('should not care about order of type in password types', ()=> {
+            assert.equal(
+                lesspass._getTemplate(['uppercase', 'lowercase']),
+                lesspass._getTemplate(['lowercase', 'uppercase'])
+            );
         });
         it('should return char inside template based on modulo of the index', function () {
             var template = 'cv';
