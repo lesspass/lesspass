@@ -5,6 +5,7 @@
     <title>lesspass</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/chardinjs.css">
+    <link rel="icon" type="image/png" href="https://lesspass.com/images/favicon.png">
     <style>
         body {
             padding-bottom: 50px;
@@ -21,6 +22,8 @@
         }
 
         #lesspass-logo {
+            width: 180px;
+            height: 49px;
         }
 
         #headlines {
@@ -39,7 +42,7 @@
     <div class="container text-center">
         <div id="logo">
             <a href="http://lesspass.com" id="lesspass-logo-link">
-                <img alt="lesspass" id="lesspass-logo" src="images/favicon.svg">
+                <img alt="lesspass" id="lesspass-logo" src="images/logo.png">
             </a>
         </div>
     </div>
@@ -47,13 +50,11 @@
 <div id="headlines" class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-
             <h1 class="green">LESSPASS: Gérez vos mots de passe en toute confiance</h1>
-            <h2>lesspass ne mémorise pas vos mots de passe, et vous non plus ! </h2>
+            <h2>lesspass ne mémorise pas vos mots de passe, et vous non plus !</h2>
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -64,7 +65,7 @@
                         <p>
                             <span class="green">lesspass</span> ne sauvegarde pas vos mots de passe, il les regénère à
                             chaque fois que vous en avez besoin. Chaque mot de passe est unique et propre à chaque site.
-                            Tous ce dont vous avez besoin c'est de vous souvenir d'un seul mot de passe, et lesspass
+                            Tout ce dont vous avez besoin c'est de vous souvenir d'un seul mot de passe, et lesspass
                             fait le reste.
                         </p>
                         <p>
@@ -77,7 +78,6 @@
         </div>
     </div>
 </div>
-
 <div class="container" ng-controller="lesspassController as lesspass">
     <form>
         <div class="row">
@@ -107,7 +107,7 @@
                     <input id="password_generated" class="form-control" disabled type="text"
                            ng-value="lesspass.generatedPassword">
                     <div class="input-group-btn">
-                        <button ng-click="lesspass.displayHelp()" type="button" class="btn btn-default"
+                        <button ng-click="lesspass.displayHelp()" type="button" class="btn btn-default hidden-xs"
                                 aria-label="Help">
                             <span class="glyphicon glyphicon-question-sign"></span>
                         </button>
