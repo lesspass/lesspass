@@ -35,7 +35,8 @@
   "dependencies": {
     "angular": "^1.4.8",
     "bootstrap": "^3.3.6",
-    "clipboard": "^1.5.5"
+    "clipboard": "^1.5.5",
+    "jquery": "^2.1.4"
   },
   "devDependencies": {
     "babel-core": "latest",
@@ -60,6 +61,14 @@
   },
   "browserify": {
     "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ],
       [
         "babelify",
         {
