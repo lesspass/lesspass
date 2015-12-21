@@ -14,10 +14,9 @@ export class lesspass {
     }
 
     static _string2charCodes(text) {
-        var buffer = new ArrayBuffer(text.length);
-        var charCodes = new Uint8Array(buffer);
+        var charCodes = [];
         for (let i = 0; i < text.length; i++) {
-            charCodes[i] = text.charCodeAt(i);
+            charCodes.push(text.charCodeAt(i));
         }
         return charCodes;
     }

@@ -8,15 +8,14 @@
     "test:watch": "npm run test -- -w",
     "lint": "jshint app/**",
     "build:production": "npm prune && npm install && npm run lint && npm test && npm run build",
-    "build": "npm-run-all clean copy:static build:app",
-    "clean": "rimraf dist",
-    "copy:static": "cp -r static/ dist/",
-    "build:html": "cpy '**/*.html' '../dist/' --cwd=static --parents",
+    "build": "npm-run-all clean build:static build:app",
+    "clean": "rimraf dist && mkdir dist",
+    "build:static": "cp -rf static/* dist",
     "build:app": "browserify -e ./app/app.js -o ./dist/app.js",
     "prestart": "npm run build",
-    "start": "npm-run-all --parallel serve watch:html watch:app",
-    "serve": "http-server -p 5000 dist/",
-    "watch:html": "watch 'npm run build:html' static",
+    "start": "npm-run-all --parallel serve watch:static watch:app",
+    "serve": "static dist",
+    "watch:static": "watch \"npm run build:static\" static/",
     "watch:app": "watchify -dv -e ./app/app.js -o ./dist/app.js"
   },
   "repository": {
@@ -33,15 +32,18 @@
     "url": "https://github.com/guillaumevincent/lesspass/issues"
   },
   "homepage": "https://github.com/guillaumevincent/lesspass#readme",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "bootstrap": "^3.3.6"
+  },
   "devDependencies": {
     "babel-core": "latest",
+    "babel-polyfill": "latest",
     "babel-preset-es2015": "latest",
-    "babelify": "latest",
     "browserify": "latest",
-    "cpy": "latest",
-    "http-server": "latest",
     "jshint": "latest",
     "mocha": "latest",
+    "node-static": "latest",
     "nodemon": "latest",
     "npm-run-all": "latest",
     "rimraf": "latest",
@@ -74,9 +76,5 @@
   },
   "jshintConfig": {
     "esnext": true
-  },
-  "dependencies": {
-    "angular": "^1.4.8",
-    "bootstrap": "^3.3.6"
   }
 }
