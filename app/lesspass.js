@@ -31,7 +31,7 @@ export class lesspass {
         };
         return passwordTypes
             .map(passwordType => passwordTypesInfo[passwordType])
-            .sort((pt1, pt2) => pt1.order > pt2.order)
+            .sort((passwordType1, passwordType2) => passwordType1.order > passwordType2.order)
             .map(passwordType => passwordType.value)
             .join('');
     }
@@ -55,7 +55,6 @@ export class lesspass {
         var passwordChar = passwordsChars[charType];
         return passwordChar[index % passwordChar.length];
     }
-
 
     static _encode(hash, template) {
         var password = '';

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>lesspass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/chardinjs.css">
     <link rel="icon" type="image/png" href="https://lesspass.com/images/favicon.png">
@@ -33,11 +34,8 @@
     </style>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/chardinjs.min.js"></script>
-    <script src="js/clipboard.min.js"></script>
 </head>
 <body>
-
-
 <div id="header">
     <div class="container text-center">
         <div id="logo">
@@ -63,7 +61,7 @@
                     <div class="col-md-6"></div>
                     <div class="col-md-6">
                         <p>
-                            <span class="green">lesspass</span> ne sauvegarde pas vos mots de passe, il les regénère à
+                            <span class="green">LessPass</span> ne sauvegarde pas vos mots de passe, il les regénère à
                             chaque fois que vous en avez besoin. Chaque mot de passe est unique et propre à chaque site.
                             Tout ce dont vous avez besoin c'est de vous souvenir d'un seul mot de passe, et lesspass
                             fait le reste.
@@ -83,20 +81,27 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="site">Site</label>
-                    <input ng-model="lesspass.site" type="text" class="form-control" id="site"
-                           placeholder="ex: facebook"
-                           data-intro="1/ Entrez le site sur lequel vous souhaitez vous connecter"
-                           data-position="top">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
                     <label for="password">Mot de passe</label>
                     <input ng-model="lesspass.password" type="password" class="form-control" id="password"
                            placeholder="ex: mot de passe fort"
-                           data-intro="2/ Entrez votre mot de passe"
+                           data-intro="1/ Entrez votre mot de passe"
                            data-position="top">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="site">Site</label>
+                    <input ng-model="lesspass.site.site_name" type="text" class="form-control" id="site"
+                           placeholder="ex: facebook"
+                           data-intro="2/ Entrez le site sur lequel vous souhaitez vous connecter"
+                           data-position="top">
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="password_length">Longueur</label>
+                    <input ng-model="lesspass.site.password_length" type="number" class="form-control" id="password"
+                           min="6" max="64">
                 </div>
             </div>
             <div class="col-md-4">
@@ -104,14 +109,15 @@
                 <div class="input-group"
                      data-intro="3/ Copiez le mot de passe unique généré"
                      data-position="top">
-                    <input id="password_generated" class="form-control" disabled type="text"
+                    <input id="password_generated" class="form-control" type="text"
                            ng-value="lesspass.generatedPassword">
                     <div class="input-group-btn">
                         <button ng-click="lesspass.displayHelp()" type="button" class="btn btn-default hidden-xs"
                                 aria-label="Help">
                             <span class="glyphicon glyphicon-question-sign"></span>
                         </button>
-                        <button ng-click="lesspass.createPassword()" type="button" class="btn btn-default">
+                        <button type="button" class="btn btn-default copy-btn"
+                                data-clipboard-target="#password_generated">
                             <span class="glyphicon glyphicon-copy"></span>
                         </button>
                     </div>
@@ -122,7 +128,7 @@
             <div class="col-md-2">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="lesspass.lowercase" ng-checked="lesspass.lowercase">
+                        <input type="checkbox" checked ng-click="lesspass.updatePasswordTypes('lowercase')">
                         minuscules (a-z)
                     </label>
                 </div>
@@ -130,7 +136,7 @@
             <div class="col-md-2">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="lesspass.uppercase" ng-checked="lesspass.uppercase">
+                        <input type="checkbox" checked ng-click="lesspass.updatePasswordTypes('uppercase')">
                         MAJUSCULES (A-Z)
                     </label>
                 </div>
@@ -138,7 +144,7 @@
             <div class="col-md-2">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="lesspass.numbers" ng-checked="lesspass.numbers">
+                        <input type="checkbox" checked ng-click="lesspass.updatePasswordTypes('numbers')">
                         nombres (0-9)
                     </label>
                 </div>
@@ -146,11 +152,12 @@
             <div class="col-md-3">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="lesspass.symbols" ng-checked="lesspass.symbols">
+                        <input type="checkbox" checked ng-click="lesspass.updatePasswordTypes('symbols')">
                         caractères spéciaux (@&%?)
                     </label>
                 </div>
             </div>
+
         </div>
     </form>
 </div>

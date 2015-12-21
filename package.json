@@ -34,12 +34,14 @@
   "homepage": "https://github.com/guillaumevincent/lesspass#readme",
   "dependencies": {
     "angular": "^1.4.8",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "clipboard": "^1.5.5"
   },
   "devDependencies": {
     "babel-core": "latest",
     "babel-polyfill": "latest",
     "babel-preset-es2015": "latest",
+    "babelify": "latest",
     "browserify": "latest",
     "jshint": "latest",
     "mocha": "latest",
