@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/guillaumevincent/lesspass.svg?branch=master)](https://travis-ci.org/guillaumevincent/lesspass)
+[![Build Status](https://travis-ci.org/oslab-fr/lesspass.svg?branch=master)](https://travis-ci.org/oslab-fr/lesspass)
 
 # lesspass
 lesspass is like keepass without the need to persist passwords
