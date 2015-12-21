@@ -57,11 +57,11 @@ describe('lesspass', ()=> {
             assert.equal('n', lesspass._getTemplate(['numbers']));
             assert.equal('s', lesspass._getTemplate(['symbols']));
         });
-        it('should concatenate template if two password types', ()=> {
+        it('should concatenate template if two password password_types', ()=> {
             assert.equal('vcVC', lesspass._getTemplate(['lowercase', 'uppercase']));
             assert.equal('vcns', lesspass._getTemplate(['lowercase', 'numbers', 'symbols']));
         });
-        it('should not care about order of type in password types', ()=> {
+        it('should not care about order of type in password password_types', ()=> {
             assert.equal(
                 lesspass._getTemplate(['uppercase', 'lowercase']),
                 lesspass._getTemplate(['lowercase', 'uppercase'])
