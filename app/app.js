@@ -32,10 +32,11 @@ class lesspassController {
 
         var clipboard = new Clipboard('#copy-btn');
         clipboard.on('success', function (e) {
-            var copyBtn = document.getElementById("copy-btn");
-            var t = $(copyBtn).tooltip({title: 'Copié'});
-            t.tooltip('show');
-            e.clearSelection();
+            if (vm.password && vm.site.site_name) {
+                var t = $('#copy-btn').tooltip({title: 'Copié'});
+                t.tooltip('show');
+                e.clearSelection();
+            }
         });
 
         clipboard.on('error', function (e) {
@@ -43,6 +44,8 @@ class lesspassController {
             var t = $(passwordGenerated).tooltip({title: 'Cmd + C pour copier le mot de passe'});
             t.tooltip('show');
         });
+
+        this.displayHelp = false;
     }
 
     updatePasswordTypes(type) {
@@ -59,16 +62,6 @@ class lesspassController {
     updatePassword() {
         if (this.password && this.site.site_name) {
             this.generatedPassword = lesspass.create_password(this.password, this.site);
-        }
-    }
-
-    displayHelp() {
-        if (this.helpDisplayed) {
-            $('body').chardinJs('stop');
-            this.helpDisplayed = false;
-        } else {
-            $('body').chardinJs('start');
-            this.helpDisplayed = true;
         }
     }
 }

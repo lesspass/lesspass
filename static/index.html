@@ -5,7 +5,6 @@
     <title>lesspass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/chardinjs.css">
     <link rel="icon" type="image/png" href="https://lesspass.com/images/favicon.png">
     <style>
         body {
@@ -32,8 +31,6 @@
             padding-bottom: 50px;
         }
     </style>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/chardinjs.min.js"></script>
 </head>
 <body>
 <div id="header">
@@ -79,22 +76,22 @@
 <div class="container" ng-controller="lesspassController as lesspass">
     <form>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
                     <input ng-model="lesspass.password" type="password" class="form-control" id="password"
-                           placeholder="ex: mot de passe fort"
-                           data-intro="1/ Entrez votre mot de passe"
-                           data-position="top">
+                           placeholder="ex: mot de passe fort">
+                    <p ng-show="lesspass.displayHelp" class="help-block">Entrez votre mot de passe</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="site">Site</label>
                     <input ng-model="lesspass.site.site_name" type="text" class="form-control" id="site"
-                           placeholder="ex: facebook"
-                           data-intro="2/ Entrez le site sur lequel vous souhaitez vous connecter"
-                           data-position="top">
+                           placeholder="ex: facebook">
+                    <p ng-show="lesspass.displayHelp" class="help-block">
+                        Entrez le site sur lequel vous souhaitez vous connecter
+                    </p>
                 </div>
             </div>
             <div class="col-md-1">
@@ -104,15 +101,14 @@
                            min="6" max="64">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <label for="password_generated">Mot de passe unique généré</label>
-                <div class="input-group"
-                     data-intro="3/ Copiez le mot de passe unique généré"
-                     data-position="top">
+                <div class="input-group">
                     <input id="password_generated" class="form-control" type="text"
                            ng-value="lesspass.generatedPassword">
                     <div class="input-group-btn">
-                        <button ng-click="lesspass.displayHelp()" type="button" class="btn btn-default hidden-xs"
+                        <button ng-click="lesspass.displayHelp = !lesspass.displayHelp" type="button"
+                                class="btn btn-default hidden-xs"
                                 aria-label="Help">
                             <span class="glyphicon glyphicon-question-sign"></span>
                         </button>
@@ -122,6 +118,7 @@
                         </button>
                     </div>
                 </div>
+                <p ng-show="lesspass.displayHelp" class="help-block">Copiez le mot de passe unique généré</p>
             </div>
         </div>
         <div class="row">
@@ -161,6 +158,7 @@
         </div>
     </form>
 </div>
+<script src="js/jquery-1.9.1.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
