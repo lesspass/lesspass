@@ -10,12 +10,14 @@
     "build:production": "npm prune && npm install && npm run lint && npm test && npm run build",
     "build": "npm-run-all clean build:static build:app",
     "clean": "rimraf dist && mkdir dist",
-    "build:static": "cp -rf static/* dist",
+    "build:static": "npm-run-all copy:html build:css",
+    "copy:html": "cpy 'static/*.html' dist",
+    "build:css": "node-sass static/css/styles.scss dist/css/styles.css",
     "build:app": "browserify -e ./app/app.js -o ./dist/app.js",
     "prestart": "npm run build",
     "start": "npm-run-all --parallel serve watch:static watch:app",
     "serve": "static dist",
-    "watch:static": "watch \"npm run build:static\" static/",
+    "watch:static": "watch 'npm run build:static' static",
     "watch:app": "watchify -dv -e ./app/app.js -o ./dist/app.js"
   },
   "repository": {
@@ -34,23 +36,23 @@
   "homepage": "https://github.com/guillaumevincent/lesspass#readme",
   "dependencies": {
     "angular": "^1.4.8",
-    "bootstrap": "^3.3.6",
+    "bootstrap": "^4.0.0-alpha.2",
     "clipboard": "^1.5.5",
     "jquery": "^2.1.4"
   },
   "devDependencies": {
     "babel-core": "latest",
-    "babel-polyfill": "latest",
     "babel-preset-es2015": "latest",
     "babelify": "latest",
     "browserify": "latest",
+    "cpy": "latest",
     "jshint": "latest",
     "mocha": "latest",
+    "node-sass": "latest",
     "node-static": "latest",
     "nodemon": "latest",
     "npm-run-all": "latest",
     "rimraf": "latest",
-    "sassify": "latest",
     "watch": "latest",
     "watchify": "latest"
   },
@@ -67,20 +69,6 @@
           "presets": [
             "es2015"
           ]
-        }
-      ],
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015"
-          ]
-        }
-      ],
-      [
-        "sassify",
-        {
-          "auto-inject": true
         }
       ]
     ]
