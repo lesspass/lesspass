@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-export class lesspass {
+export default class lesspass {
     static create_password(masterPassword, siteInformation) {
         var hash = this._create_hash(masterPassword, siteInformation);
         var template = this._getTemplate(siteInformation.password_types);
