@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {lesspass} from '../app/lesspass';
+import lesspass from '../app/lesspass';
 
 describe('lesspass', ()=> {
     describe('public api', ()=> {

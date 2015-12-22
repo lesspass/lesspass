@@ -1,4 +1,4 @@
-import {lesspass} from '../app/lesspass';
+import lesspass from '../app/lesspass';
 import angular from 'angular';
 
 import Clipboard from 'clipboard';
