@@ -10,8 +10,9 @@
     "build:production": "npm prune && npm install && npm run lint && npm test && npm run build",
     "build": "npm-run-all clean build:static build:app",
     "clean": "rimraf dist && mkdir dist",
-    "build:static": "npm-run-all copy:html build:css",
+    "build:static": "npm-run-all copy:html copy:images build:css",
     "copy:html": "cpy 'static/*.html' dist",
+    "copy:images": "cpy 'static/images/*.png' dist/images/",
     "build:css": "node-sass static/css/styles.scss dist/css/styles.css",
     "build:app": "browserify -e ./app/app.js -o ./dist/app.js",
     "prestart": "npm run build",
@@ -35,14 +36,14 @@
   },
   "homepage": "https://github.com/guillaumevincent/lesspass#readme",
   "dependencies": {
-    "angular": "^1.4.8",
     "bootstrap": "^4.0.0-alpha.2",
-    "clipboard": "^1.5.5",
-    "jquery": "^2.1.4"
+    "clipboard": "^1.5.5"
   },
   "devDependencies": {
-    "babel-core": "latest",
-    "babel-preset-es2015": "latest",
+    "babel-core": "^6.3.26",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-runtime": "^5.8.34",
     "babelify": "latest",
     "browserify": "latest",
     "cpy": "latest",
@@ -53,6 +54,10 @@
     "nodemon": "latest",
     "npm-run-all": "latest",
     "rimraf": "latest",
+    "vue": "^1.0.12",
+    "vue-hot-reload-api": "^1.2.2",
+    "vueify": "^8.0.0",
+    "vueify-insert-css": "^1.0.0",
     "watch": "latest",
     "watchify": "latest"
   },
@@ -68,6 +73,20 @@
         {
           "presets": [
             "es2015"
+          ],
+          "plugins": [
+            "transform-runtime"
+          ]
+        }
+      ],
+      [
+        "vueify",
+        {
+          "presets": [
+            "es2015"
+          ],
+          "plugins": [
+            "transform-runtime"
           ]
         }
       ]

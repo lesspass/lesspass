@@ -1,3 +1,36 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
+body {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #CFD2DA;
+  background-color: #252830;
+  padding-bottom: 2em;
+}
 
+#header {
+  #logo-link {
+    margin: 0 auto;
+    width: 200px;
+    height: 45px;
+
+    #logo {
+      width: inherit;
+      height: inherit;
+    }
+  }
+}
+
+#headlines {
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+.blue {
+  color: #0275D8;
+}
+
+.jumbotron {
+  color: black;
+}
