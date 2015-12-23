@@ -9,16 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="180"
-   height="37"
-   viewBox="0 0 180 37"
+   width="200"
+   height="45"
+   viewBox="0 0 200 45"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="logo.svg"
-   inkscape:export-filename="C:\Users\19011246\workspace\lesspass\static\images\logo.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-filename="/home/guillaume/workspace/lesspass/static/images/logo.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -29,15 +29,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6568543"
-     inkscape:cx="80.784639"
+     inkscape:cx="56.566232"
      inkscape:cy="2.3568043"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="988"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1366"
+     inkscape:window-height="744"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      units="px" />
   <metadata
@@ -56,23 +56,28 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1015.3622)">
+     transform="translate(0,-1007.3622)">
     <path
-       style="fill:#f9f9f9"
-       d="m 3.5355339,1040.233 c 0,-4.2478 0,-8.4938 0,-12.7415 1.2566829,0 2.5133651,0 3.7700482,0 0,2.6815 0,5.3616 0,8.042 9.6713189,0 19.3426549,0 29.0139809,0 0,-2.6804 0,-5.3605 0,-8.042 1.282485,0 2.564912,0 3.847367,0 0,4.2476 0,8.4937 0,12.7415 -12.210478,0 -24.420921,0 -36.6313961,0 z"
+       style="fill:#cfd2da;fill-opacity:1"
+       d="m 2,1036.233 c 0,-4.2478 0,-8.4938 0,-12.7416 1.2566829,0 2.5133651,0 3.7700482,0 0,2.6816 0,5.3617 0,8.0421 9.6713188,0 19.3426548,0 29.0139808,0 0,-2.6804 0,-5.3605 0,-8.0421 1.282485,0 2.564912,0 3.847367,0 0,4.2477 0,8.4938 0,12.7416 -12.210478,0 -24.420921,0 -36.631396,0 z"
        id="path3347"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="179.79413"
+       inkscape:export-ydpi="179.79413" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       x="54.947002"
-       y="1041.6552"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#cfd2da;fill-opacity:1;stroke:none;font-family:sans-serif"
+       x="47.091797"
+       y="1040.5848"
        id="text3356"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/guillaume/workspace/lesspass/static/images/path3347.png"
+       inkscape:export-xdpi="179.79413"
+       inkscape:export-ydpi="179.79413"><tspan
          sodipodi:role="line"
          id="tspan3358"
-         x="54.947002"
-         y="1041.6552"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:30px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';fill:#f9f9f9;">lesspass</tspan></text>
+         x="47.091797"
+         y="1040.5848"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#cfd2da;fill-opacity:1;font-family:Open Sans;-inkscape-font-specification:Open Sans Bold">LessPass</tspan></text>
   </g>
 </svg>
