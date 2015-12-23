@@ -25,7 +25,7 @@ start application
 
     npm start
 
-open the application in a browser: [http://localhost:5000](http://localhost:5000)
+open the application in a browser: [http://localhost:8080](http://localhost:8080)
 
 ## run tests
 
