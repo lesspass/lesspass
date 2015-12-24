@@ -9,42 +9,48 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="13mm"
-   height="13mm"
-   viewBox="0 0 46.062991 46.062992"
-   id="svg3369"
+   width="45"
+   height="45"
+   viewBox="0 0 45 45"
+   id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="favicon.svg">
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="/home/guillaume/workspace/lesspass/static/images/logo.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
   <defs
-     id="defs3371" />
+     id="defs4" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#0275d8"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="78.175711"
-     inkscape:cy="42.452645"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="0.1744667"
+     inkscape:cy="2.3568043"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="988"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1366"
+     inkscape:window-height="744"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     units="px"
+     inkscape:showpageshadow="false"
+     showborder="true" />
   <metadata
-     id="metadata3374">
+     id="metadata7">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -52,17 +58,13 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1006.2992)">
-    <g
-       id="g3389"
-       transform="matrix(2,0,0,2,-113.25423,-1027.7513)"
-       style="fill:#000000">
-      <path
-         style="fill:#000000"
-         d="m 58.892861,1025.291 0,4.5 0,2 c 6.166667,0 12.333334,0 18.5,0 l 0,-2 0,-4.5 -1.999999,0 0,4.5 -14.500001,0 0,-4.5 z"
-         id="rect3383"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccccccccccc" />
-    </g>
+     transform="translate(0,-1007.3622)">
+    <path
+       style="fill:#cfd2da;fill-opacity:1"
+       d="m 4.184302,1036.233 c 0,-4.2478 0,-8.4938 0,-12.7416 1.2566829,0 2.5133651,0 3.7700482,0 0,2.6816 0,5.3617 0,8.0421 9.6713188,0 19.3426548,0 29.0139808,0 0,-2.6804 0,-5.3605 0,-8.0421 1.282485,0 2.564912,0 3.847367,0 0,4.2477 0,8.4938 0,12.7416 -12.210478,0 -24.420921,0 -36.631396,0 z"
+       id="path3347"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="179.79413"
+       inkscape:export-ydpi="179.79413" />
   </g>
 </svg>
