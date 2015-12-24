@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="site">Site</label>
-                    <input type="text" class="form-control" id="site" placeholder="Site (ex: Facebook)"
+                    <input type="text" class="form-control" id="site" placeholder="Site (ex: facebook)"
                            v-model="site">
                 </div>
                 <div class="form-group">
