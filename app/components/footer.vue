@@ -6,10 +6,12 @@
 </style>
 <template>
     <footer class="text-xs-center p-y-3 m-t-2">
-        <class class="container">
-            lesspass
-            — réalisé par <a href="http://guillaumevincent.com">Guillaume Vincent</a>
-            — <a href="https://github.com/oslab-fr/lesspass">code source</a>
-        </class>
+        <div class="container">
+            <p>
+                LessPass
+                - réalisé par <a href="http://guillaumevincent.com">Guillaume Vincent</a>
+                - <a href="https://github.com/oslab-fr/lesspass">code source</a>
+            </p>
+        </div>
     </footer>
 </template>

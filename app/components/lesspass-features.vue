@@ -30,11 +30,11 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Vous devriez utiliser LessPass si :</h2>
                 <ul>
+                    <li>vous voulez un mot de passe unique pour chaque site</li>
                     <li>vous aimez l'open source</li>
-                    <li>vous ne voulez pas mettre votre base de données de mots de passe sur le cloud</li>
-                    <li>vous ne voulez pas installer des logiciels sur tous vos appareils</li>
-                    <li>vous voulez un mot de passe différent pour chaque site</li>
-                    <li>vous voulez que le mot de passe soit généré sur votre navigateur</li>
+                    <li>vous voulez une application qui fonctionne sur ordinateur, smartphone ou tablette.</li>
+                    <li>vous ne voulez pas stocker vos mots de passe sur le cloud</li>
+                    <li>vous voulez vous souvenir que d'un seul mot de passe</li>
                 </ul>
             </div>
         </div>
