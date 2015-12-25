@@ -55,6 +55,7 @@
     "nodemon": "latest",
     "npm-run-all": "latest",
     "rimraf": "latest",
+    "sinon": "^1.17.2",
     "vue": "^1.0.12",
     "vue-hot-reload-api": "^1.2.2",
     "vueify": "^8.0.0",

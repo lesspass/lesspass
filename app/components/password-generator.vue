@@ -78,8 +78,7 @@
 </template>
 
 <script lang="babel">
-    import crypto from 'crypto';
-    import lesspass from '../lesspass';
+    import Lesspass from '../lesspass';
 
     import Clipboard from 'clipboard';
 
@@ -87,6 +86,7 @@
     export default {
         data: function () {
             return {
+                lesspass: new Lesspass(),
                 email: '',
                 password: '',
                 site: '',
@@ -98,18 +98,17 @@
         },
         computed: {
             generatedPassword: function () {
-                var generatedPassword;
                 if (this.email && this.password && this.site) {
-                    var masterPassword = crypto.pbkdf2Sync(this.email, this.password, 10, 64, 'sha256').toString('hex');
-
-                    generatedPassword = lesspass.create_password(masterPassword, {
-                        site_name: this.site,
-                        password_length: this.length,
-                        password_types: this.passwordTypes,
-                        counter: this.counter
-                    });
+                    var entry = {
+                        site: this.site,
+                        password: {
+                            length: this.length,
+                            settings: this.passwordTypes,
+                            counter: this.counter
+                        }
+                    };
+                    return this.lesspass.createPassword(this.email, this.password, entry);
                 }
-                return generatedPassword;
             }
         }
     }
