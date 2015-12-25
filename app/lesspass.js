@@ -1,6 +1,28 @@
 import crypto from 'crypto';
 
 export default class lesspass {
+
+    createPassword(email, password, entry) {
+        if (!this.masterPassword || this.email != email || this.password != password) {
+            this.email = email;
+            this.password = password;
+            this.masterPassword = lesspass._createMasterPassword(email, password);
+        }
+        var siteInformation = {
+            site_name: entry.site,
+            password_length: entry.password.length,
+            password_types: entry.password.settings,
+            counter: entry.password.counter
+        };
+        return lesspass.create_password(this.masterPassword, siteInformation);
+    }
+
+    static _createMasterPassword(email, password) {
+        var iterations = 8192;
+        var keylen = 32;
+        return crypto.pbkdf2Sync(password, email, iterations, keylen, 'sha256').toString('hex');
+    }
+
     static create_password(masterPassword, siteInformation) {
         var hash = this._create_hash(masterPassword, siteInformation);
         var template = this._getTemplate(siteInformation.password_types);
