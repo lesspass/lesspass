@@ -2,45 +2,30 @@ import crypto from 'crypto';
 
 export default class lesspass {
 
-    createPassword(email, password, entry) {
-        if (!this.masterPassword || this.email != email || this.password != password) {
-            this.email = email;
-            this.password = password;
-            this.masterPassword = lesspass._createMasterPassword(email, password);
-        }
-        var siteInformation = {
-            site_name: entry.site,
-            password_length: entry.password.length,
-            password_types: entry.password.settings,
-            counter: entry.password.counter
-        };
-        return lesspass.create_password(this.masterPassword, siteInformation);
+    static createPassword(masterPassword, entry) {
+        var hash = lesspass._createHash(masterPassword, entry);
+        var template = lesspass._getTemplate(entry.password.settings);
+        return lesspass._encode(hash, template);
     }
 
-    static _createMasterPassword(email, password) {
-        var iterations = 8192;
-        var keylen = 32;
-        return crypto.pbkdf2Sync(password, email, iterations, keylen, 'sha256').toString('hex');
+    static createMasterPassword(email, password) {
+        return new Promise((resolve, reject) => {
+            var iterations = 8192;
+            var keylen = 32;
+            crypto.pbkdf2(password, email, iterations, keylen, 'sha256', function (error, key) {
+                if (error) {
+                    reject('error in pbkdf2');
+                } else {
+                    resolve(key.toString('hex'));
+                }
+            });
+        });
     }
 
-    static create_password(masterPassword, siteInformation) {
-        var hash = this._create_hash(masterPassword, siteInformation);
-        var template = this._getTemplate(siteInformation.password_types);
-        return this._encode(hash, template);
-    }
-
-    static _create_hash(masterPassword, {site_name, password_length=12, counter=1}) {
-        var salt = site_name + counter.toString();
-        var password = crypto.createHmac('sha256', masterPassword).update(salt).digest('hex');
-        return password.substring(0, password_length);
-    }
-
-    static _string2charCodes(text) {
-        var charCodes = [];
-        for (let i = 0; i < text.length; i++) {
-            charCodes.push(text.charCodeAt(i));
-        }
-        return charCodes;
+    static _createHash(masterPassword, {site, password={length: 12}, counter=1}) {
+        var salt = site + counter.toString();
+        var hash = crypto.createHmac('sha256', masterPassword).update(salt).digest('hex');
+        return hash.substring(0, password.length);
     }
 
     static _getTemplate(passwordTypes = ['strong']) {
@@ -56,6 +41,14 @@ export default class lesspass {
             .sort((passwordType1, passwordType2) => passwordType1.order > passwordType2.order)
             .map(passwordType => passwordType.value)
             .join('');
+    }
+
+    static _string2charCodes(text) {
+        var charCodes = [];
+        for (let i = 0; i < text.length; i++) {
+            charCodes.push(text.charCodeAt(i));
+        }
+        return charCodes;
     }
 
     static _getCharType(template, index) {

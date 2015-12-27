@@ -1,4 +1,4 @@
-<style>
+<style xmlns:v-on="http://www.w3.org/1999/xhtml">
     #passwordGenerator input {
         background-color: #434857;
         color: white;
@@ -8,17 +8,17 @@
 
 <template>
     <div class="container">
-
         <form class="form-inline" id="passwordGenerator">
             <div class="m-t-1">
                 <div class="form-group">
                     <label class="sr-only" for="email">Adresse email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" v-model="email">
+                    <input type="email" class="form-control" id="email" placeholder="Email" v-model="email"
+                           v-on:blur="updateMasterPassword">
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="password">Mot de passe</label>
                     <input type="password" class="form-control" id="password" placeholder="Mot de passe"
-                           v-model="password">
+                           v-model="password" v-on:blur="updateMasterPassword">
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="site">Site</label>
@@ -48,19 +48,19 @@
             <div class="m-t-1" v-if="showAdvancedOptions">
                 <div class="form-group">
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="lowercaseCheckbox" value="lowercase" v-model="passwordTypes" checked>
+                        <input type="checkbox" id="lowercase" value="lowercase" v-model="passwordInfo.settings" checked>
                         minuscules (a-z)
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="uppercaseCheckbox" value="uppercase" v-model="passwordTypes" checked>
+                        <input type="checkbox" id="uppercase" value="uppercase" v-model="passwordInfo.settings" checked>
                         MAJUSCULES (A-Z)
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="numbersCheckbox" value="numbers" v-model="passwordTypes" checked>
+                        <input type="checkbox" id="numbers" value="numbers" v-model="passwordInfo.settings" checked>
                         nombres (0-9)
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="symbolsCheckbox" value="symbols" v-model="passwordTypes" checked>
+                        <input type="checkbox" id="symbols" value="symbols" v-model="passwordInfo.settings" checked>
                         caractères spéciaux (@&%?)
                     </label>
                 </div>
@@ -68,12 +68,11 @@
             <div class="m-t-1" v-if="showAdvancedOptions">
                 <div class="form-group">
                     <label for="passwordLength">Longueur</label>
-                    <input id="passwordLength" type="range" value="12" min="6" max="64" v-model="length"
-                           class="form-control"> {{ length }}
+                    <input id="passwordLength" type="range" value="12" min="6" max="64" v-model="passwordInfo.length"
+                           class="form-control"> {{ passwordInfo.length }}
                 </div>
             </div>
         </form>
-
     </div>
 </template>
 
@@ -82,32 +81,42 @@
 
     import Clipboard from 'clipboard';
 
-
     export default {
         data: function () {
             return {
-                lesspass: new Lesspass(),
                 email: '',
                 password: '',
                 site: '',
-                length: 12,
-                counter: 1,
-                passwordTypes: ["lowercase", "uppercase", "numbers", "symbols"],
+                passwordInfo: {
+                    counter: 1,
+                    length: 12,
+                    settings: ["lowercase", "uppercase", "numbers", "symbols"]
+                },
                 showAdvancedOptions: false
+            }
+        },
+        methods: {
+            updateMasterPassword: function (event) {
+                var self = this;
+                var email = this.email;
+                var password = this.password;
+                if (email && password) {
+                    Lesspass.createMasterPassword(email, password).then(function (masterPassword) {
+                        self.$set('masterPassword', masterPassword)
+                    });
+                }
             }
         },
         computed: {
             generatedPassword: function () {
-                if (this.email && this.password && this.site) {
+                var masterPassword = this.masterPassword;
+                var site = this.site;
+                if (masterPassword && site) {
                     var entry = {
-                        site: this.site,
-                        password: {
-                            length: this.length,
-                            settings: this.passwordTypes,
-                            counter: this.counter
-                        }
+                        site: site,
+                        password: this.passwordInfo
                     };
-                    return this.lesspass.createPassword(this.email, this.password, entry);
+                    return Lesspass.createPassword(masterPassword, entry);
                 }
             }
         }
