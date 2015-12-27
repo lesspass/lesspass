@@ -1,23 +1,10 @@
 import assert from 'assert';
 import Lesspass from '../app/lesspass';
 
-import sinon from 'sinon';
-
 describe('LessPass', ()=> {
     describe('public api', ()=> {
         it('should create password', function () {
-            var master_password = "password";
-            var site_information = {
-                'site_name': 'facebook',
-                'password_length': 12,
-                'password_types': ['strong'],
-                'counter': 1
-            };
-            assert.equal('Vexu8[Syce4&', Lesspass.create_password(master_password, site_information));
-        });
-        it('should create password new API', function () {
-            var email = "test@lesspass.com";
-            var password = "password";
+            var masterPassword = "password";
             var entry = {
                 site: 'facebook',
                 password: {
@@ -26,97 +13,73 @@ describe('LessPass', ()=> {
                     counter: 1
                 }
             };
-            var lesspass = new Lesspass();
-            assert.equal('evYZ1_inUQ2[eb', lesspass.createPassword(email, password, entry));
+            assert.equal('iwIQ8[acYT4&oc', Lesspass.createPassword(masterPassword, entry));
         });
-    });
-    describe('master password', () => {
-        it('should pbkdf2 email with password with 8192 iterations and use SHA 256 pseudo random function', ()=> {
-            var email = 'test@lesspass.com';
-            var password = "password";
-            assert.equal(
-                "90cff82b8847525370a8f29a59ecf45db62c719a535788ad0df58d32304e925d",
-                Lesspass._createMasterPassword(email, password)
-            );
-        });
-        it('should be length of 64', ()=> {
-            var email = 'test@lesspass.com';
-            var password = "password";
-            assert.equal(64, Lesspass._createMasterPassword(email, password).length);
-        });
-    });
-    describe('master password spy', () => {
-        var lesspass, createMasterPasswordStub, defaultEntry;
-        before(()=> {
-            lesspass = new Lesspass();
-            defaultEntry = {
+        it('should create password 2', function () {
+            var masterPassword = "password";
+            var entry = {
                 site: 'facebook',
                 password: {
-                    length: 14,
-                    settings: ['lowercase', 'uppercase', 'numbers', 'symbols'],
+                    length: 12,
+                    settings: ['strong'],
                     counter: 1
                 }
             };
+            assert.equal('Vexu8[Syce4&', Lesspass.createPassword(masterPassword, entry));
         });
-        beforeEach(() => {
-            createMasterPasswordStub = sinon.stub(Lesspass, '_createMasterPassword', () => 'masterpassword');
-        });
-        it('should call createMasterPassword only once', ()=> {
-            var email = "test@lesspass.com";
+        it('should create master password with pbkdf2 (8192 iterations and sha 256)', (done)=> {
+            var email = 'test@lesspass.com';
             var password = "password";
-            lesspass.createPassword(email, password, defaultEntry);
-            lesspass.createPassword(email, password, defaultEntry);
-            assert.ok(createMasterPasswordStub.calledOnce);
-        });
 
-        it('should call createMasterPassword twice if email change', ()=> {
+            Lesspass.createMasterPassword(email, password).then((masterPassword) => {
+                assert.equal("90cff82b8847525370a8f29a59ecf45db62c719a535788ad0df58d32304e925d", masterPassword);
+                assert.equal(64, masterPassword.length);
+                done();
+            });
+        });
+        it('should create 64 char length master password', (done)=> {
+            var email = 'test@lesspass.com';
             var password = "password";
-            lesspass.createPassword("admin@lesspass.com", password, defaultEntry);
-            lesspass.createPassword("test@lesspass.com", password, defaultEntry);
-            assert.ok(createMasterPasswordStub.calledTwice);
-        });
 
-        it('should call createMasterPassword twice if password change', ()=> {
-            var email = "test@lesspass.com";
-            lesspass.createPassword(email, "password1", defaultEntry);
-            lesspass.createPassword(email, "password2", defaultEntry);
-            assert.ok(createMasterPasswordStub.calledTwice);
+            Lesspass.createMasterPassword(email, password).then((masterPassword) => {
+                assert.equal("90cff82b8847525370a8f29a59ecf45db62c719a535788ad0df58d32304e925d", masterPassword);
+                assert.equal(64, masterPassword.length);
+                done();
+            });
         });
-
-        afterEach(() => {
-            Lesspass._createMasterPassword.restore();
-        })
     });
     describe('hash', ()=> {
         it('should have default length of 12', ()=> {
-            var master_password = "password";
-            var site_information = {'site_name': 'facebook'};
-            assert.equal(12, Lesspass._create_hash(master_password, site_information).length);
+            var masterPassword = 'password';
+            var entry = {'site': 'facebook'};
+            assert.equal(12, Lesspass._createHash(masterPassword, entry).length);
         });
         it('should be able to create hash with defined length', ()=> {
-            var master_password = "password";
-            var site_information = {
-                'site_name': 'facebook',
-                'password_length': 10
+            var masterPassword = 'password';
+            var entry = {
+                site: 'facebook',
+                password: {
+                    length: 10
+                }
             };
-            assert.equal(10, Lesspass._create_hash(master_password, site_information).length);
+            assert.equal(10, Lesspass._createHash(masterPassword, entry).length);
         });
         it('should return two different passwords if site different', ()=> {
-            var master_password = "password";
-            var site_information = {'site_name': 'facebook'};
-            var site_information2 = {'site_name': 'google'};
+            var masterPassword = 'password';
+            var entry = {site: 'facebook'};
+            var entry2 = {site: 'google'};
             assert.notEqual(
-                Lesspass._create_hash(master_password, site_information),
-                Lesspass._create_hash(master_password, site_information2)
+                Lesspass._createHash(masterPassword, entry),
+                Lesspass._createHash(masterPassword, entry2)
             );
         });
         it('should return two different passwords if counter different', ()=> {
-            var master_password = "password";
-            var old_site_information = {'site_name': 'facebook'};
-            var site_information = {'site_name': 'facebook', 'counter': 2};
+            var masterPassword = 'password';
+            var old_entry = {site: 'facebook'};
+            var entry = {site: 'facebook', 'counter': 2};
             assert.notEqual(
-                Lesspass._create_hash(master_password, site_information),
-                Lesspass._create_hash(master_password, old_site_information)
+                Lesspass._createHash(masterPassword, entry),
+                Lesspass._createHash(masterPassword, old_entry)
             );
         });
     });

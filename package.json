@@ -38,7 +38,8 @@
   "homepage": "https://github.com/guillaumevincent/lesspass#readme",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",
-    "clipboard": "^1.5.5"
+    "clipboard": "^1.5.5",
+    "vue": "^1.0.12"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",
@@ -55,8 +56,6 @@
     "nodemon": "latest",
     "npm-run-all": "latest",
     "rimraf": "latest",
-    "sinon": "^1.17.2",
-    "vue": "^1.0.12",
     "vue-hot-reload-api": "^1.2.2",
     "vueify": "^8.0.0",
     "vueify-insert-css": "^1.0.0",
