@@ -9,8 +9,8 @@
         <div class="container">
             <p>
                 LessPass
-                - réalisé par <a href="http://guillaumevincent.com">Guillaume Vincent</a>
-                - <a href="https://github.com/oslab-fr/lesspass">code source</a>
+                - {{ $t('built_by') }} <a href="http://guillaumevincent.com">Guillaume Vincent</a>
+                - <a href="https://github.com/oslab-fr/lesspass">{{ $t('source_code') }}</a>
             </p>
         </div>
     </footer>
