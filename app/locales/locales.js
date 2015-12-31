@@ -1,0 +1,57 @@
+const locales = {
+    "en": {
+        "headlines_title": "Manage your passwords with confidence",
+        "headlines_subtitle": "LessPass does not store passwords, and neither should you !",
+        "what_is_lesspass": "doesn't save your passwords, it regenerates whenever you need it. Each password is unique to each site. All you need is to remember a single password, and LessPass does the rest.",
+        "what_is_lesspass2": "does not save passwords, there is nothing to steal.",
+        "built_by": "by",
+        "source_code": "Source code",
+        "you_should_use_lesspass": "You should use lesspass if",
+        "unique_password": "you want a unique password for each site",
+        "love_open_source": "vous love open source",
+        "works_everywhere": "you want an application that works on a computer, smartphone or tablet.",
+        "no_cloud": "you don't want to store your passwords in the cloud",
+        "only_one_password": "you want to remember only one password",
+        "Email": "Email",
+        "Password": "Password",
+        "Unique_password": "Unique password",
+        "Site": "Web site",
+        "Site_placeholder": "Web site (ex: Facebook)",
+        "Copy": "Copy",
+        "Advanced_options": "Advanced options",
+        "lowercase_options": "lowercase (a-z)",
+        "uppercase_options": "UPPERCASE (A-Z)",
+        "numbers_options": "numbers (0-9)",
+        "symbols_options": "symbols (@&%?)",
+        "Length": "Length"
+    },
+    "fr": {
+        "headlines_title": "Gérez vos mots de passe en toute confiance",
+        "headlines_subtitle": "LessPass ne mémorise pas vos mots de passe, et vous non plus !",
+        "what_is_lesspass": "ne sauvegarde pas vos mots de passe, il les regénère à chaque fois que vous en avez besoin. Chaque mot de passe est unique et propre à chaque site. Tout ce dont vous avez besoin c'est de vous souvenir d'un seul mot de passe, et LessPass fait le reste.",
+        "what_is_lesspass2": "ne sauvegarde pas vos mots de passe, il n'y a donc rien à voler.",
+        "built_by": "Réalisé par",
+        "source_code": "Code source",
+        "you_should_use_lesspass": "Vous devriez utiliser LessPass si",
+        "unique_password": "vous voulez un mot de passe unique pour chaque site",
+        "love_open_source": "vous aimez l'open source",
+        "works_everywhere": "vous voulez une application qui fonctionne sur ordinateur, smartphone ou tablette.",
+        "no_cloud": "vous ne voulez pas stocker vos mots de passe sur le cloud",
+        "only_one_password": "vous voulez vous souvenir que d'un seul mot de passe",
+        "Email": "Email",
+        "Password": "Mot de passe",
+        "Unique_password": "Mot de passe unique",
+        "Site": "Site",
+        "Site_placeholder": "Site (ex: Facebook)",
+        "Copy": "Copier",
+        "Advanced_options": "Options avancées",
+        "lowercase_options": "minuscules (a-z)",
+        "uppercase_options": "MAJUSCULES (A-Z)",
+        "numbers_options": "nombres (0-9)",
+        "symbols_options": "caractères spéciaux (@&%?)",
+        "Length": "Longueur"
+    }
+};
+
+
+export default locales;

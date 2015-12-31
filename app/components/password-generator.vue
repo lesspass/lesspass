@@ -5,34 +5,38 @@
         border: 1px solid #434857;
     }
 </style>
+ "Email":"Email",
+        "Password":"Password",
+        "Site": "Web site",
+        "Copy": "Copy"
 
 <template>
     <div class="container">
         <form class="form-inline" id="passwordGenerator">
             <div class="m-t-1">
                 <div class="form-group">
-                    <label class="sr-only" for="email">Adresse email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" v-model="email"
+                    <label class="sr-only" for="email">{{ $t('Email') }}</label>
+                    <input type="email" class="form-control" id="email" placeholder="{{ $t('Email') }}" v-model="email"
                            v-on:blur="updateMasterPassword">
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="password">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" placeholder="Mot de passe"
+                    <label class="sr-only" for="password">{{ $t('Password') }}</label>
+                    <input type="password" class="form-control" id="password" placeholder="{{ $t('Password') }}"
                            v-model="password" v-on:blur="updateMasterPassword">
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="site">Site</label>
-                    <input type="text" class="form-control" id="site" placeholder="Site (ex: facebook)"
+                    <label class="sr-only" for="site">{{ $t('Site') }}</label>
+                    <input type="text" class="form-control" id="site" placeholder="{{ $t('Site_placeholder') }}"
                            v-model="site">
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="generatedPassword">Mot de passe unique</label>
+                    <label class="sr-only" for="generatedPassword">{{ $t('Unique_password') }}</label>
                     <div class="input-group">
                         <input type="text" id="generatedPassword" class="form-control" v-model="generatedPassword">
                     <span class="input-group-btn">
                         <button id="copyBtn" data-clipboard-target="#generatedPassword"
                                 class="btn btn-primary" type="button">
-                            Copier
+                            {{ $t('Copy') }}
                         </button>
                     </span>
                     </div>
@@ -41,7 +45,7 @@
             <div class="m-t-1">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" v-model="showAdvancedOptions"> Options avancées
+                        <input type="checkbox" v-model="showAdvancedOptions"> {{ $t('Advanced_options') }}
                     </label>
                 </div>
             </div>
@@ -49,25 +53,25 @@
                 <div class="form-group">
                     <label class="checkbox-inline">
                         <input type="checkbox" id="lowercase" value="lowercase" v-model="passwordInfo.settings" checked>
-                        minuscules (a-z)
+                        {{ $t('lowercase_options') }}
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="uppercase" value="uppercase" v-model="passwordInfo.settings" checked>
-                        MAJUSCULES (A-Z)
+                        {{ $t('uppercase_options') }}
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="numbers" value="numbers" v-model="passwordInfo.settings" checked>
-                        nombres (0-9)
+                        {{ $t('numbers_options') }}
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="symbols" value="symbols" v-model="passwordInfo.settings" checked>
-                        caractères spéciaux (@&%?)
+                        {{ $t('symbols_options') }}
                     </label>
                 </div>
             </div>
             <div class="m-t-1" v-if="showAdvancedOptions">
                 <div class="form-group">
-                    <label for="passwordLength">Longueur</label>
+                    <label for="passwordLength">{{ $t('Length') }}</label>
                     <input id="passwordLength" type="range" value="12" min="6" max="64" v-model="passwordInfo.length"
                            class="form-control"> {{ passwordInfo.length }}
                 </div>
