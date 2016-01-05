@@ -5,11 +5,6 @@
         border: 1px solid #434857;
     }
 </style>
- "Email":"Email",
-        "Password":"Password",
-        "Site": "Web site",
-        "Copy": "Copy"
-
 <template>
     <div class="container">
         <form class="form-inline" id="passwordGenerator">
