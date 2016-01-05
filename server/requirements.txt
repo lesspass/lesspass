@@ -1,3 +1,0 @@
-Django==1.9
-djangorestframework==3.3.2
-smartconfigparser==0.1.1
