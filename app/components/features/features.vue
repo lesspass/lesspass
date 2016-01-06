@@ -16,12 +16,11 @@
         display: inline-block;
         width: 24px;
         height: 24px;
-        background: transparent url("../images/check.png") no-repeat scroll center center / 24px 24px;
+        background: transparent url("./check.png") no-repeat scroll center center / 24px 24px;
         margin-right: 10px;
         position: relative;
         top: 4px;
     }
-
 </style>
 <template>
     <div class="lesspass-features p-y-3 m-t-2">

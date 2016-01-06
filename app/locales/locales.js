@@ -16,7 +16,7 @@ const locales = {
         "Password": "Password",
         "Unique_password": "Unique password",
         "Site": "Web site",
-        "Site_placeholder": "Web site (ex: Facebook)",
+        "Site_placeholder": "Site (ex: Facebook)",
         "Copy": "Copy",
         "Advanced_options": "Advanced options",
         "lowercase_options": "lowercase (a-z)",

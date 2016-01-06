@@ -1,8 +1,9 @@
-<style xmlns:v-on="http://www.w3.org/1999/xhtml">
+<style>
     #passwordGenerator input {
         background-color: #434857;
         color: white;
         border: 1px solid #434857;
+        margin-right: 5px;
     }
 </style>
 <template>
@@ -75,8 +76,8 @@
     </div>
 </template>
 
-<script lang="babel">
-    import Lesspass from '../lesspass';
+<script>
+    import Lesspass from '../lesspass'
 
     import Clipboard from 'clipboard';
 

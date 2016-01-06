@@ -17,10 +17,6 @@ move inside lesspass folder
 
     cd lesspass
 
-install dependencies
-
-    npm install
-
 start application
 
     npm start
@@ -43,4 +39,4 @@ run test in watch mode
 
 ## build for production
 
-    npm run build:production
+    npm run build

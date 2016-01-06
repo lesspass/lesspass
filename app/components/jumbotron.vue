@@ -1,5 +1,7 @@
 <style>
-
+    .jumbotron {
+        color: black;
+    }
 </style>
 <template>
     <div class="container">
