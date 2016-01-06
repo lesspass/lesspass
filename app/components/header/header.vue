@@ -15,7 +15,7 @@
         <div class="container text-xs-center">
             <div id="logo-link">
                 <a href="http://lesspass.com">
-                    <img id="logo" alt="lesspass" class="img-fluid" src="images/logo.png">
+                    <img id="logo" alt="lesspass" class="img-fluid" src="./logo.png">
                 </a>
             </div>
         </div>
