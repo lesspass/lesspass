@@ -8,7 +8,7 @@ const locales = {
         "source_code": "Source code",
         "you_should_use_lesspass": "You should use lesspass if",
         "unique_password": "you want a unique password for each site",
-        "love_open_source": "vous love open source",
+        "love_open_source": "you love open source",
         "works_everywhere": "you want an application that works on a computer, smartphone or tablet.",
         "no_cloud": "you don't want to store your passwords in the cloud",
         "only_one_password": "you want to remember only one password",
