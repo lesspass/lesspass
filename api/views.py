@@ -1,4 +1,5 @@
-import json
+from api import models, serializers
+from api.permissions import IsOwner
 
 from django.contrib.auth import login, authenticate
 from rest_framework import status, permissions, viewsets
@@ -36,3 +37,11 @@ class AuthViewSet(viewsets.ViewSet):
             login(request, user)
             return Response(status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
+class EntryViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.EntrySerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+
+    def get_queryset(self):
+        return models.Entry.objects.filter(user=self.request.user)
