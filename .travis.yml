@@ -1,8 +1,7 @@
 language: python
 python:
-  - "3.4"
-  - "3.5"
-install:
-  - pip install -r requirements.dev.txt
-script:
-  - python manage.py test
+    - 3.4
+    - 3.5
+
+install: pip install -r requirements.dev.txt
+script: python manage.py test
