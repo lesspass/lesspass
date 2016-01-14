@@ -2,11 +2,11 @@ language: python
 python:
     - 3.4
     - 3.5
-install: pip install -r requirements.dev.txt
-script: python manage.py test
-services:
-  - postgresql
 addons:
   postgresql: "9.5"
+services:
+  - postgresql
 before_script:
-  - psql -c 'create database db;' -U postgres
+  - mv config/config.test.ini config/config.ini
+install: pip install -r requirements.dev.txt
+script: python manage.py test

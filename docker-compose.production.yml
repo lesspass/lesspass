@@ -1,0 +1,13 @@
+db:
+  image: postgres:9.5
+  restart: always
+  volumes:
+    - dbdata:/var/lib/postgresql/data
+web:
+  restart: always
+  image: oslab/lesspass-drf
+  command: ./start.sh
+  ports:
+    - "8000:8000"
+  links:
+    - db

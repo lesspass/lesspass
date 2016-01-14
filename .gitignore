@@ -69,7 +69,7 @@ target/
 [Ss]cripts
 pyvenv.cfg
 pip-selfcheck.json
-/config
+/config/config.ini
 *.sqlite3
 /frontend/node_modules
 .idea/
