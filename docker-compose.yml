@@ -1,0 +1,15 @@
+db:
+  image: postgres:9.5
+  restart: always
+  volumes:
+    - dbdata:/var/lib/postgresql/data
+web:
+  restart: always
+  build: .
+  command: ./start.sh
+  volumes:
+    - .:/code
+  ports:
+    - "8000:8000"
+  links:
+    - db
