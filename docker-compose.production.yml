@@ -8,6 +8,6 @@ web:
   image: oslab/lesspass-drf
   command: ./start.sh
   ports:
-    - "8000:8000"
+    - "80:8000"
   links:
     - db
