@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cd /app
 python manage.py migrate
-python manage.py runserver 0.0.0.0:8000
+python manage.py collectstatic --clear --no-input
+gunicorn lesspass.wsgi:application -w 2 -b :8000

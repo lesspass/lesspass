@@ -6,7 +6,12 @@ addons:
   postgresql: "9.4"
 services:
   - postgresql
-before_script:
-  - mv config/config.test.ini config/config.ini
-install: pip install -r requirements.dev.txt
+env:
+  - DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+  - DATABASE_NAME=postgres
+  - DATABASE_USER=postgres
+  - DATABASE_PASSWORD=
+  - DATABASE_HOST=localhost
+  - DATABASE_PORT=5432
+install: pip install -r requirements.txt
 script: python manage.py test

@@ -1,2 +1,0 @@
--r requirements.txt
-factory-boy==2.6.0

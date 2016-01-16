@@ -1,13 +1,24 @@
 db:
-  image: postgres:9.5
+  restart: always
+  image: postgres:9.4
   volumes:
-    - dbdata:/var/lib/postgresql/data
-web:
+    - postgres_db:/var/lib/postgresql/data
+django:
+  restart: always
   build: .
-  command: ./start.sh
+  expose:
+    - "8000"
   volumes:
-    - .:/code
-  ports:
-    - "8000:8000"
+    - django_www:/usr/src/app/www
   links:
     - db
+  command: ./start.sh
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes_from:
+    - django
+  links:
+    - django

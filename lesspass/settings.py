@@ -78,12 +78,12 @@ WSGI_APPLICATION = 'lesspass.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config.get('DATABASE', 'engine', 'django.db.backends.postgresql_psycopg2'),
-        'NAME': config.get('DATABASE', 'name', 'postgres'),
-        'USER': config.get('DATABASE', 'user', 'postgres'),
-        'PASSWORD': config.get('DATABASE', 'password', ''),
-        'HOST': config.get('DATABASE', 'host', 'db'),
-        'PORT': config.get('DATABASE', 'port', '5432'),
+        'ENGINE': os.getenv('DATABASE_ENGINE', 'django.db.backends.postgresql_psycopg2'),
+        'NAME': os.getenv('DATABASE_NAME', 'postgres'),
+        'USER': os.getenv('DATABASE_USER', 'postgres'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
+        'HOST': os.getenv('DATABASE_HOST', 'db'),
+        'PORT': os.getenv('DATABASE_PORT', '5432'),
     }
 }
 
@@ -147,3 +147,5 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
