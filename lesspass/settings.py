@@ -27,7 +27,7 @@ except:
 
 DEBUG = config.getboolean('DJANGO', 'DEBUG', False)
 
-ALLOWED_HOSTS = config.getlist('DJANGO', 'ALLOWED_HOSTS', ['localhost', '127.0.0.1', '*.oslab.fr', '*.lesspass.com'])
+ALLOWED_HOSTS = config.getlist('DJANGO', 'ALLOWED_HOSTS', ['localhost', '127.0.0.1', '.oslab.fr', '.lesspass.com'])
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
