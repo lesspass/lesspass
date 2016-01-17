@@ -28,7 +28,7 @@
 <script>
     import LesspassHeader from './components/header/header.vue';
     import LesspassHeadlines from './components/headlines.vue';
-    import LesspassJumbotron from './components/jumbotron.vue';
+    import LesspassJumbotron from './components/jumbotron/jumbotron.vue';
     import PasswordGenerator from './components/password-generator.vue';
     import LesspassFeatures from './components/features/features.vue';
     import BootstrapHr from './components/bootstrap-hr.vue';
