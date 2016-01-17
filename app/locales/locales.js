@@ -23,6 +23,7 @@ const locales = {
         "uppercase_options": "UPPERCASE (A-Z)",
         "numbers_options": "numbers (0-9)",
         "symbols_options": "symbols (@&%?)",
+        "lang": "en",
         "Length": "Length"
     },
     "fr": {
@@ -49,6 +50,7 @@ const locales = {
         "uppercase_options": "MAJUSCULES (A-Z)",
         "numbers_options": "nombres (0-9)",
         "symbols_options": "caractères spéciaux (@&%?)",
+        "lang": "fr",
         "Length": "Longueur"
     }
 };
