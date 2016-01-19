@@ -25,7 +25,7 @@
                     </p>
 
                     <p class="text-xs-center">
-                        <a href="#passwordGeneratorHr" class="btn btn-primary-outline btn-sm">{{ $t('use_btn') }}</a>
+                        <a href="#passwordGeneratorHr" class="hidden-xs-down btn btn-primary-outline btn-sm">{{ $t('use_btn') }}</a>
                     </p>
                 </div>
             </div>
