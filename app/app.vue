@@ -17,20 +17,22 @@
 <template>
     <lesspass-header></lesspass-header>
     <lesspass-headlines></lesspass-headlines>
-    <bootstrap-hr></bootstrap-hr>
+    <bootstrap-hr class="hidden-xs-down"></bootstrap-hr>
     <lesspass-jumbotron></lesspass-jumbotron>
-    <bootstrap-hr></bootstrap-hr>
+    <bootstrap-hr id="passwordGeneratorHr"></bootstrap-hr>
     <password-generator></password-generator>
     <lesspass-features></lesspass-features>
+    <lesspass-faq></lesspass-faq>
     <lesspass-footer></lesspass-footer>
 </template>
 
 <script>
-    import LesspassHeader from './components/header/header.vue';
+    import LesspassHeader from './components/header.vue';
     import LesspassHeadlines from './components/headlines.vue';
-    import LesspassJumbotron from './components/jumbotron/jumbotron.vue';
+    import LesspassJumbotron from './components/jumbotron.vue';
     import PasswordGenerator from './components/password-generator.vue';
-    import LesspassFeatures from './components/features/features.vue';
+    import LesspassFeatures from './components/features.vue';
+    import LesspassFaq from './components/faq.vue';
     import BootstrapHr from './components/bootstrap-hr.vue';
     import LesspassFooter from './components/footer.vue';
 
@@ -46,6 +48,7 @@
             LesspassJumbotron,
             PasswordGenerator,
             LesspassFeatures,
+            LesspassFaq,
             LesspassFooter,
             BootstrapHr
         }

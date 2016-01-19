@@ -5,13 +5,24 @@
     }
 </style>
 <template>
-    <footer class="text-xs-center p-y-3 m-t-2">
+    <footer class="text-xs-center">
         <div class="container">
-            <p>
-                LessPass
-                - {{ $t('built_by') }} <a href="http://guillaumevincent.com">Guillaume Vincent</a>
-                - <a href="https://github.com/oslab-fr/lesspass">{{ $t('source_code') }}</a>
-            </p>
+            <div class="row p-y-3">
+                <div class="col-lg-12">
+                    <p>
+                        <img src="../assets/images/logo.png" alt="logo">
+                    </p>
+                </div>
+            </div>
+            <div class="row p-y-3">
+                <div class="col-lg-12">
+                    <p>
+                        &copy; LessPass
+                        - {{ $t('built_by') }} <a href="mailto:guillaume@oslab.fr">Guillaume Vincent</a>
+                        - <a href="https://github.com/oslab-fr/lesspass">{{ $t('source_code') }}</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 </template>

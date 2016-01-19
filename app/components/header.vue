@@ -7,16 +7,16 @@
 <template>
     <div id="header" class="container m-t-1">
         <nav class="navbar navbar-dark ">
-            <a class="navbar-brand" href="#">
-                <img id="logo" alt="lesspass" class="img-fluid" src="./logo.png">
+            <a class="navbar-brand" href="/">
+                <img id="logo" alt="lesspass" class="img-fluid" src="../assets/images/logo.png">
             </a>
-            <a class="navbar-brand" href="#"> LessPass
+            <a class="navbar-brand" href="/"> LessPass
             </a>
-            <ul class="nav navbar-nav pull-xs-right">
+            <!--<ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item">
                     <a class="btn btn-primary-outline" href="#/login">Login</a>
                 </li>
-            </ul>
+            </ul>-->
         </nav>
     </div>
-</template>œ
+</template>

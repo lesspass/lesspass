@@ -7,6 +7,6 @@
 <template>
     <div id="headlines" class="container text-xs-center">
         <h1 class="blue">{{ $t('headlines_title') }}</h1>
-        <h2>{{ $t('headlines_subtitle') }}</h2>
+        <h2 class="hidden-xs-down">{{ $t('headlines_subtitle') }}</h2>
     </div>
 </template>
