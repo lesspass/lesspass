@@ -27,9 +27,9 @@ const locales = {
         "lang": "en",
         "Length": "Length",
         "q1": "Is LessPass works again tomorrow?",
-        "a1": "You often ask us the question of the sustainability of LessPass. Rest assured LessPass not cost much: € 10 per month (hosting, domain name and HTTPS certificate). For now LessPass is provisioned for more than a year.",
+        "a1": "You often ask us the question of the sustainability of LessPass. Rest assured LessPass not cost much: $ 10 per month (hosting, domain name and HTTPS certificate). For now LessPass is provisioned for more than a year.",
         "q2": "If I do not trust LastPass or 1Password, why I would trust LessPass?",
-        "a2": "LessPass unlike other services is open source so the source code can be reused, accessed and saved. You can save LessPass on your computer or corporate server. And LessPass is not connected to any third party (Google Analytics, Facebook, Twitter, etc...). Nobody knows except us, that you use LessPass.",
+        "a2": "LessPass unlike other services is open source so the source code can be reused, accessed and audited. You can save LessPass on your computer or corporate server. And LessPass is not connected to any third party (Google Analytics, Facebook, Twitter, etc...). Nobody knows except us, that you use LessPass.",
         "q3": "How can I make LessPass even safer?",
         "a3": "Use a recent browser and updated as Firefox or Chrome. Use LessPass in incognito and close your browser after using it.",
         "q4": "What features are planned for future versions?",
@@ -69,9 +69,9 @@ const locales = {
         "lang": "fr",
         "Length": "Longueur",
         "q1": "Est ce que LessPass fonctionnera encore demain ?",
-        "a1": "Vous nous posez souvent la question de la pérennité de LessPass. Rassurez vous LessPass ne coûte pas grand chose : 10€ par mois (hébergement, nom de domaine et certificat HTTPS). Pour l'instant LessPass est provisionné pour plus d’un an.",
+        "a1": "Vous nous posez souvent la question de la pérennité de LessPass. Rassurez-vous, LessPass ne coûte pas grand chose : 10€ par mois (hébergement, nom de domaine et certificat HTTPS). Pour l'instant LessPass est provisionné pour plus d’un an.",
         "q2": "Si je ne fais pas confiance à LastPass ou 1password, pourquoi je ferais confiance à LessPass ?",
-        "a2": "LessPass contrairement aux autres services est open source donc le code source peut être réutilisé, consulté et sauvegardé. Vous pouvez sauvegarder LessPass sur votre ordinateur ou votre serveur d’entreprise gratuitement. Ah et LessPass n'est connecté à aucun service externe (Google Analytics, Facebook, Twitter, etc..). Personne ne sait à part nous que vous utilisez LessPass.",
+        "a2": "Contrairement aux autres services, LessPass est open source donc le code source peut être réutilisé, consulté et audité. Vous pouvez sauvegarder LessPass sur votre ordinateur ou votre serveur d’entreprise gratuitement. Ah et LessPass n'est connecté à aucun service externe (Google Analytics, Facebook, Twitter, etc..). Personne ne sait à part nous que vous utilisez LessPass.",
         "q3": "Comment puis-je rendre LessPass encore plus sûr ?",
         "a3": "Utilisez un navigateur récent et à jour comme Firefox ou Chrome. Utilisez LessPass en navigation privée et fermer votre navigateur après son utilisation.",
         "q4": "Quelles fonctionnalités sont prévues pour les versions à venir ?",
@@ -81,7 +81,7 @@ const locales = {
         "q5": "Où sont générés les mots de passe ?",
         "a5": "La génération du mot de passe est effectué sur votre navigateur et pas sur les serveurs de LessPass.",
         "q6": "Est ce que LessPass est gratuit ?",
-        "a6": "LessPass est gratuit et le sera toujours. L'application LessPass Entreprise avec prise en charge du LDAP, double autentification sera payante pour les entreprises."
+        "a6": "LessPass est gratuit et le sera toujours. L'application LessPass Entreprise avec prise en charge du LDAP et la double autentification sera payante pour les entreprises."
     }
 };
 
