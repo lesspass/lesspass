@@ -27,13 +27,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2>{{ $t('you_should_use_lesspass') }} :</h2>
+                    <h2>{{ $t('features.you_should_use_lesspass') }} :</h2>
                     <ul>
-                        <li>{{ $t('unique_password') }}</li>
-                        <li>{{ $t('love_open_source') }}</li>
-                        <li>{{ $t('works_everywhere') }}</li>
-                        <li>{{ $t('no_cloud') }}</li>
-                        <li>{{ $t('only_one_password') }}</li>
+                        <li>{{ $t('features.unique_password') }}</li>
+                        <li>{{ $t('features.love_open_source') }}</li>
+                        <li>{{ $t('features.works_everywhere') }}</li>
+                        <li>{{ $t('features.no_cloud') }}</li>
+                        <li>{{ $t('features.only_one_password') }}</li>
                     </ul>
                 </div>
             </div>

@@ -9,19 +9,19 @@
     <div class="container">
         <form id="passwordGenerator">
             <div class="form-group row">
-                <label for="email" class="sr-only form-control-label">{{ $t('Email') }}</label>
+                <label for="email" class="sr-only form-control-label">{{ $t('passwordgenerator.email') }}</label>
                 <div class="col-sm-3">
-                    <input type="email" class="form-control" id="email" placeholder="{{ $t('Email') }}" v-model="email"
+                    <input type="email" class="form-control" id="email" placeholder="{{ $t('passwordgenerator.email') }}" v-model="email"
                            v-on:blur="updateMasterPassword">
                 </div>
-                <label for="password" class="sr-only form-control-label">{{ $t('Password') }}</label>
+                <label for="password" class="sr-only form-control-label">{{ $t('passwordgenerator.password') }}</label>
                 <div class="col-sm-3">
-                    <input type="password" class="form-control" id="password" placeholder="{{ $t('Password') }}"
+                    <input type="password" class="form-control" id="password" placeholder="{{ $t('passwordgenerator.password') }}"
                            v-model="password" v-on:blur="updateMasterPassword">
                 </div>
-                <label for="site" class="sr-only form-control-label">{{ $t('Site') }}</label>
+                <label for="site" class="sr-only form-control-label">{{ $t('passwordgenerator.site') }}</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="site" placeholder="{{ $t('Site_placeholder') }}"
+                    <input type="text" class="form-control" id="site" placeholder="{{ $t('passwordgenerator.site_placeholder') }}"
                            v-model="site">
                 </div>
                 <label for="generatedPassword" class="sr-only form-control-label">Generated Password</label>
@@ -31,7 +31,7 @@
                         <span class="input-group-btn">
                             <button id="copyBtn" data-clipboard-target="#generatedPassword"
                                     class="btn btn-primary" type="button">
-                                {{ $t('Copy') }}
+                                {{ $t('passwordgenerator.copy') }}
                             </button>
                         </span>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="col-lg-12">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" v-model="showAdvancedOptions"> {{ $t('Advanced_options') }}
+                            <input type="checkbox" v-model="showAdvancedOptions"> {{ $t('passwordgenerator.advanced_options') }}
                         </label>
                     </div>
                 </div>
@@ -50,24 +50,24 @@
                 <div class="col-lg-12">
                     <label class="checkbox-inline">
                         <input type="checkbox" id="lowercase" value="lowercase" v-model="passwordInfo.settings" checked>
-                        {{ $t('lowercase_options') }}
+                        {{ $t('passwordgenerator.lowercase_options') }}
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="uppercase" value="uppercase" v-model="passwordInfo.settings" checked>
-                        {{ $t('uppercase_options') }}
+                        {{ $t('passwordgenerator.uppercase_options') }}
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="numbers" value="numbers" v-model="passwordInfo.settings" checked>
-                        {{ $t('numbers_options') }}
+                        {{ $t('passwordgenerator.numbers_options') }}
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="symbols" value="symbols" v-model="passwordInfo.settings" checked>
-                        {{ $t('symbols_options') }}
+                        {{ $t('passwordgenerator.symbols_options') }}
                     </label>
                 </div>
             </div>
             <div class="form-group row" v-if="showAdvancedOptions">
-                <label for="passwordLength" class="col-xs-2 col-sm-1 form-control-label">{{ $t('Length') }}</label>
+                <label for="passwordLength" class="col-xs-2 col-sm-1 form-control-label">{{ $t('passwordgenerator.length') }}</label>
                 <div class="col-xs-8 col-sm-4">
                     <input id="passwordLength" type="range" value="12" min="6" max="64" v-model="passwordInfo.length"
                            class="form-control">

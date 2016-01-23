@@ -16,7 +16,7 @@
    width="1720"
    height="1481"
    sodipodi:docname="story-fr.svg"
-   inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/story-fr.png"
+   inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass-frontend/app/assets/images/story-fr.png"
    inkscape:export-xdpi="18.006334"
    inkscape:export-ydpi="18.006334">
   <metadata
@@ -313,7 +313,7 @@
        sodipodi:role="line"
        x="2437.9028"
        y="1130.2751"
-       style="font-size:144px;text-align:center;text-anchor:middle">mEmorizez un seul </tspan><tspan
+       style="font-size:144px;text-align:center;text-anchor:middle">mEmorisez un seul </tspan><tspan
        sodipodi:role="line"
        x="2410.3403"
        y="1310.2751"

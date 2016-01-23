@@ -18,8 +18,8 @@
                 <div class="col-lg-12">
                     <p>
                         &copy; LessPass
-                        - {{ $t('built_by') }} <a href="mailto:guillaume@oslab.fr">Guillaume Vincent</a>
-                        - <a href="https://github.com/oslab-fr/lesspass">{{ $t('source_code') }}</a>
+                        - {{ $t('footer.built_by') }} <a href="mailto:guillaume@oslab.fr">Guillaume Vincent</a>
+                        - <a href="https://github.com/oslab-fr/lesspass">{{ $t('footer.source_code') }}</a>
                     </p>
                 </div>
             </div>
