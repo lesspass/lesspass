@@ -9,40 +9,40 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h3>FAQ :</h3>
 
-                <h5 class="blue">{{ $t('q1') }}</h5>
+                <h5 class="blue">{{ $t('faq.q1') }}</h5>
                 <p>
-                    {{ $t('a1') }}
+                    {{ $t('faq.a1') }}
                 </p>
 
-                <h5 class="blue">{{ $t('q2') }}</h5>
+                <h5 class="blue">{{ $t('faq.q2') }}</h5>
                 <p>
-                    {{ $t('a2') }}
+                    {{ $t('faq.a2') }}
                 </p>
                 <p>
                     <a class='btn btn-primary btn-sm' href="https://github.com/oslab-fr/lesspass/">
-                        {{ $t('source_code') }}
+                        {{ $t('faq.source_code') }}
                     </a>
                 </p>
-                <h5 class="blue">{{ $t('q3') }}</h5>
+                <h5 class="blue">{{ $t('faq.q3') }}</h5>
 
                 <p>
-                    {{ $t('a3') }}
+                    {{ $t('faq.a3') }}
                 </p>
-                <h5 class="blue">{{ $t('q4') }}</h5>
+                <h5 class="blue">{{ $t('faq.q4') }}</h5>
 
                 <ul>
-                    <li>{{ $t('a4a') }}</li>
-                    <li>{{ $t('a4b') }}</li>
-                    <li>{{ $t('a4c') }}</li>
+                    <li>{{ $t('faq.a4a') }}</li>
+                    <li>{{ $t('faq.a4b') }}</li>
+                    <li>{{ $t('faq.a4c') }}</li>
                 </ul>
-                <h5 class="blue">{{ $t('q5') }}</h5>
+                <h5 class="blue">{{ $t('faq.q5') }}</h5>
 
                 <p>
-                    {{ $t('a5') }}
+                    {{ $t('faq.a5') }}
                 </p>
-                <h5 class="blue">{{ $t('q6') }}</h5>
+                <h5 class="blue">{{ $t('faq.q6') }}</h5>
                 <p>
-                    {{ $t('a6') }}
+                    {{ $t('faq.a6') }}
                 </p>
             </div>
         </div>

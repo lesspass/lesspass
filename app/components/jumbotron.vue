@@ -18,14 +18,14 @@
                 </div>
                 <div class="col-lg-4 m-t-1">
                     <p class="lead">
-                        <a href='https://lesspass.com/'>LessPass</a> {{ $t('what_is_lesspass') }}
+                        <a href='https://lesspass.com/'>LessPass</a> {{ $t('jumbotron.what_is_lesspass') }}
                     </p>
                     <p class="lead">
-                        <a href='https://lesspass.com/'>LessPass</a> {{ $t('what_is_lesspass2') }}
+                        <a href='https://lesspass.com/'>LessPass</a> {{ $t('jumbotron.what_is_lesspass2') }}
                     </p>
 
                     <p class="text-xs-center">
-                        <a href="#passwordGeneratorHr" class="hidden-xs-down btn btn-primary-outline btn-sm">{{ $t('use_btn') }}</a>
+                        <a href="#passwordGeneratorHr" class="hidden-xs-down btn btn-primary">{{ $t('jumbotron.use_btn') }}</a>
                     </p>
                 </div>
             </div>
