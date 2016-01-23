@@ -12,7 +12,7 @@ lesspass-server is the CRUD API for lesspass
 
 install dependencies
 
-    pip install -r requirements.dev.txt
+    pip install -r requirements.txt
 
 start application
 
