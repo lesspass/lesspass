@@ -15,12 +15,12 @@ const locales = {
             "source_code": "Source code"
         },
         "features": {
-            "you_should_use_lesspass": "You should use lesspass if",
-            "unique_password": "you want a unique password for each site",
-            "love_open_source": "you love open source",
-            "works_everywhere": "you want an application that works on a computer, smartphone or tablet.",
-            "no_cloud": "you don't want to store your passwords in the cloud",
-            "only_one_password": "you want to remember only one password"
+            "you_should_use_lesspass": "Why should you use LessPass?",
+            "unique_password": "you want a <strong>unique password</strong> for each site",
+            "love_open_source": "you love <strong>open-source</strong>",
+            "works_everywhere": "you want a manager that <strong>works everywhere</strong> (computer, smartphone, tablet and your smartTV)",
+            "no_cloud": "you <strong>don't want to store</strong> your passwords",
+            "only_one_password": "you want to <strong>remember only one</strong> password"
         },
         "passwordgenerator": {
             "email": "Email",
@@ -70,12 +70,12 @@ const locales = {
             "source_code": "Code source"
         },
         "features": {
-            "you_should_use_lesspass": "Vous devriez utiliser LessPass si",
-            "unique_password": "vous voulez un mot de passe unique pour chaque site",
-            "love_open_source": "vous aimez l'open source",
-            "works_everywhere": "vous voulez une application qui fonctionne sur ordinateur, smartphone ou tablette.",
-            "no_cloud": "vous ne voulez pas stocker vos mots de passe sur le cloud",
-            "only_one_password": "vous voulez vous souvenir que d'un seul mot de passe"
+            "you_should_use_lesspass": "Pourquoi utiliser LessPass ?",
+            "unique_password": "vous voulez un <strong>mot de passe unique</strong> pour chaque site",
+            "love_open_source": "vous aimez l'<strong>open-source</strong>",
+            "works_everywhere": "vous voulez une application qui <strong>fonctionne partout</strong> (ordinateur, smartphone, tablette et smartTV)",
+            "no_cloud": "vous ne <strong>voulez pas stocker vos mots de passe</strong>",
+            "only_one_password": "vous voulez <strong>retenir un seul</strong> mot de passe"
         },
         "passwordgenerator": {
             "email": "Email",
