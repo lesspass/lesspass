@@ -31,10 +31,11 @@
     "font-awesome": "^4.5.0",
     "jquery": "^2.2.0",
     "vue": "^1.0.15",
-    "vue-i18n": "^2.3.3"
+    "vue-i18n": "^2.3.3",
+    "vue-router": "^0.7.10"
   },
   "devDependencies": {
-    "babel-core": "^6.4.0",
+    "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-plugin-transform-runtime": "^6.4.3",
     "babel-preset-es2015": "^6.3.13",
@@ -50,7 +51,7 @@
     "node-static": "latest",
     "nodemon": "latest",
     "npm-run-all": "latest",
-    "rimraf": "^2.5.0",
+    "rimraf": "^2.5.1",
     "template-html-loader": "0.0.3",
     "uglify-js": "^2.6.1",
     "url-loader": "^0.5.7",
@@ -60,7 +61,7 @@
     "vue-style-loader": "^1.0.0",
     "vueify": "^8.3.2",
     "vueify-insert-css": "^1.0.0",
-    "webpack": "^1.12.11",
+    "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
   "babel": {

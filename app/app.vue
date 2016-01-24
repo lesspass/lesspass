@@ -12,46 +12,32 @@
     .blue {
         color: #0275D8;
     }
+
+    #header #logo {
+        width: 30px;
+        height: 30px;
+    }
 </style>
 
 <template>
-    <lesspass-header></lesspass-header>
-    <lesspass-headlines></lesspass-headlines>
-    <bootstrap-hr class="hidden-xs-down"></bootstrap-hr>
-    <lesspass-jumbotron></lesspass-jumbotron>
-    <bootstrap-hr id="passwordGeneratorHr"></bootstrap-hr>
-    <password-generator></password-generator>
-    <lesspass-features></lesspass-features>
-    <lesspass-faq></lesspass-faq>
-    <lesspass-footer></lesspass-footer>
+    <div id="header" class="container m-t-1">
+        <nav class="navbar navbar-dark ">
+            <a class="navbar-brand" href="/">
+                <img id="logo" alt="lesspass" class="img-fluid" src="./assets/images/logo.png">
+            </a>
+            <a class="navbar-brand" href="#/"> LessPass
+            </a>
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="#/login/">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <router-view
+            class="view"
+            keep-alive
+            transition
+            transition-mode="out-in">
+    </router-view>
 </template>
-
-<script>
-    import LesspassHeader from './components/header.vue';
-    import LesspassHeadlines from './components/headlines.vue';
-    import LesspassJumbotron from './components/jumbotron.vue';
-    import PasswordGenerator from './components/password-generator.vue';
-    import LesspassFeatures from './components/features.vue';
-    import LesspassFaq from './components/faq.vue';
-    import BootstrapHr from './components/bootstrap-hr.vue';
-    import LesspassFooter from './components/footer.vue';
-
-    export default {
-        data () {
-            return {
-                data: "hello"
-            }
-        },
-        components: {
-            LesspassHeader,
-            LesspassHeadlines,
-            LesspassJumbotron,
-            PasswordGenerator,
-            LesspassFeatures,
-            LesspassFaq,
-            LesspassFooter,
-            BootstrapHr
-        }
-    }
-</script>
-
