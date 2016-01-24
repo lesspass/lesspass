@@ -7,6 +7,7 @@
         line-height: 1.5;
         color: #CFD2DA;
         background-color: #252830;
+        overflow-y: scroll;
     }
 
     .blue {
@@ -20,24 +21,5 @@
 </style>
 
 <template>
-    <div id="header" class="container m-t-1">
-        <nav class="navbar navbar-dark ">
-            <a class="navbar-brand" href="/">
-                <img id="logo" alt="lesspass" class="img-fluid" src="./assets/images/logo.png">
-            </a>
-            <a class="navbar-brand" href="#/"> LessPass
-            </a>
-            <ul class="nav navbar-nav pull-xs-right">
-                <li class="nav-item">
-                    <a class="btn btn-primary" href="#/login/">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <router-view
-            class="view"
-            keep-alive
-            transition
-            transition-mode="out-in">
-    </router-view>
+    <router-view></router-view>
 </template>

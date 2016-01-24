@@ -1,6 +1,9 @@
 const locales = {
     "en": {
         "lang": "en",
+        "header": {
+            "login": "login"
+        },
         "headlines": {
             "title": "Next generation password manager",
             "subtitle": "LessPass does not store passwords, and neither should you !"
@@ -63,6 +66,9 @@ const locales = {
     },
     "fr": {
         "lang": "fr",
+        "header": {
+            "login": "connexion"
+        },
         "headlines": {
             "title": "Gestionnaire de mot de passe nouvelle génération",
             "subtitle": "LessPass ne mémorise pas vos mots de passe, et vous non plus !"
