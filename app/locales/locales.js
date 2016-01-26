@@ -121,7 +121,7 @@ const locales = {
             "a_password_generation": "La génération du mot de passe est effectué sur votre navigateur et pas sur les serveurs de LessPass.",
             "q_pricing": "Est ce que LessPass est gratuit ?",
             "a_pricing_free": "LessPass est gratuit et le sera toujours.",
-            "a_pricing_enterprise": "LessPass Enterprise ajoutera le support <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> et la double authentication sera payante pour les enterprises."
+            "a_pricing_enterprise": "LessPass Enterprise, avec le support <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> et la double authentication, sera payante pour les enterprises."
         }
     }
 };
