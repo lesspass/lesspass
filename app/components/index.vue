@@ -1,5 +1,4 @@
 <template>
-    <lesspass-header></lesspass-header>
     <lesspass-headlines></lesspass-headlines>
     <bootstrap-hr class="hidden-xs-down"></bootstrap-hr>
     <lesspass-jumbotron></lesspass-jumbotron>
@@ -12,7 +11,6 @@
 
 
 <script>
-    import LesspassHeader from './header.vue';
     import LesspassHeadlines from './headlines.vue';
     import LesspassJumbotron from './jumbotron.vue';
     import PasswordGenerator from './password-generator.vue';
@@ -24,7 +22,6 @@
     export default {
         data :{},
         components: {
-            LesspassHeader,
             LesspassHeadlines,
             LesspassJumbotron,
             PasswordGenerator,
