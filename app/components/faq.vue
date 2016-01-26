@@ -8,8 +8,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h3>
-                    <a href="#faq">#</a>
-                    <abbr title="Frequently Asked Questions">FAQ</abbr>
+                    <a href="#faq">
+                        <abbr title="Frequently Asked Questions">FAQ</abbr>
+                    </a>
                 </h3>
 
                 <section id="faq_works_in_future">
@@ -21,14 +22,13 @@
 
                 <section id="faq_trust">
                     <h5 class="blue">{{ $t('faq.q_trust') }}</h5>
-                    <ol>
+                    <ul>
                         <li>{{{ $t('faq.a_trust_we') }}}&nbsp;;</li>
                         <li>{{{ $t('faq.a_trust_oss') }}}&nbsp;;</li>
                         <li>{{{ $t('faq.a_trust_code') }}}&nbsp;;</li>
                         <li>{{{ $t('faq.a_trust_tracking') }}}&nbsp;;</li>
-                        <li>{{{ $t('faq.a_trust_client_side') }}}&nbsp;;</li>
-                        <!--<li>{{{ $t('faq.a_trust_online') }}}.</li>-->
-                    </ol>
+                        <li>{{{ $t('faq.a_trust_client_side') }}}.</li>
+                    </ul>
                     <p>
                         <a class='btn btn-primary btn-sm' href="https://github.com/oslab-fr/lesspass/">
                             {{ $t('faq.source_code') }}
@@ -38,12 +38,10 @@
 
                 <section id="faq_make_it_safer">
                     <h5 class="blue">{{ $t('faq.q_make_it_safer') }}</h5>
-                    <p>
-                        {{{ $t('faq.a_make_it_safer_private') }}}
-                    </p>
-                    <p>
-                        {{{ $t('faq.a_make_it_safer_update') }}}
-                    </p>
+                    <ul>
+                        <li>{{{ $t('faq.a_make_it_safer_private') }}}</li>
+                        <li>{{{ $t('faq.a_make_it_safer_update') }}}</li>
+                    </ul>
                 </section>
 
                 <section id="faq_roadmap">
@@ -61,10 +59,10 @@
                         {{{ $t('faq.a_password_generation') }}}
                     </p>
                     <h5 class="blue">{{ $t('faq.q_pricing') }}</h5>
-                    <p>
-                        {{{ $t('faq.a_pricing_free') }}}
-                    </p>
-                    <p>{{{ $t('faq.a_pricing_enterprise') }}}</p>
+                    <ul>
+                        <li>{{{ $t('faq.a_pricing_free') }}}</li>
+                        <li>{{{ $t('faq.a_pricing_enterprise') }}}</li>
+                    </ul>
                 </section>
             </div>
         </div>

@@ -38,7 +38,7 @@ const locales = {
         },
         "faq": {
             "q_works_in_future": "Will LessPass works in the future?",
-            "a_works_in_future": "Hosting, domain's name and SSL certificate have been <strong>pre-paid for a year</strong> already (january 24 2016).",
+            "a_works_in_future": "Hosting, domain's name and SSL certificate have been <strong>pre-paid until February 2017</strong>.",
             "q_trust": "I don't trust password manager such as LastPass or 1Password, why should LessPass be any different?",
             "a_trust_we": "<strong>Neither do we</strong>. Hence our approach",
             "a_trust_oss": "unlike other services LessPass is <strong>open-source</strong>. So its security can be audited",
@@ -48,11 +48,7 @@ const locales = {
             "a_trust_online": "<em>online mode</em> is here to suggest <var>email</var> and <var>site</var>, <i>i.e.</i> store only that",
             "source_code": "Audit source code",
             "q_make_it_safer": "How can I make LessPass even safer?",
-            "a_make_it_safer_private": "Use your <strong>browser in incognito/private</strong> and close when you're done " +
-            "(<a href='https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history'>Firefox</a>, " +
-            "<a href='https://support.google.com/chrome/answer/95464'>Chrome</a> " +
-            "and <a href='https://en.wikipedia.org/wiki/Privacy_mode#Support_in_popular_browsers'>others popular browsers</a> " +
-            "have this feature).",
+            "a_make_it_safer_private": "Use the <strong><a href='https://en.wikipedia.org/wiki/Privacy_mode'>privacy mode</a></strong> of your browser and close when you're done.",
             "a_make_it_safer_update": "Also, keep your browser up-to-date (this one is obvious).",
             "q_roadmap": "What is the roadmap for future versions?",
             "a_roadmap_preset_saving": "<strong>Reduce cognitive load</strong> by saving generation settings in your account, so <var>email</var>, <var>site</var> and <var>ruleset</var> will be stored but not the <var>password</var>.",
@@ -62,7 +58,7 @@ const locales = {
             "a_password_generation": "Generation is performed <strong>on your computer by your browser</strong> and never stored as they never reach LessPass servers (or any others).",
             "q_pricing": "Is LessPass free?",
             "a_pricing_free": "LessPass is free and always will be.",
-            "a_pricing_enterprise": "<i>LessPass Enterprise</i> will add support for <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> and double-authentication for companies."
+            "a_pricing_enterprise": "LessPass Enterprise will add support for <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> and double-authentication for companies."
         }
     },
     "fr": {
@@ -104,24 +100,19 @@ const locales = {
         },
         "faq": {
             "q_works_in_future": "Est ce que LessPass fonctionnera encore demain ?",
-            "a_works_in_future": "Vous nous posez souvent la question de la pérennité de LessPass. Rassurez-vous, LessPass ne coûte pas grand chose : 10€ par mois (hébergement, nom de domaine et certificat HTTPS). Pour l'instant LessPass est provisionné pour plus d’un an.",
+            "a_works_in_future": "Vous nous posez souvent la question de la pérennité de LessPass. Rassurez-vous, LessPass ne coûte pas grand chose. L'hébergement, le nom de domaine et le certificat HTTPS sont déjà provisionnés jusqu'en février 2017.",
             "q_trust": "Je ne fais pas confiance à LastPass ou 1password, pourquoi je ferais confiance à LessPass ?",
             "a_trust_lesspass": "Contrairement aux autres services, LessPass est open source donc le code source peut être réutilisé, consulté et audité. Vous pouvez sauvegarder LessPass sur votre ordinateur ou votre serveur d’enterprise gratuitement. Ah et LessPass n'est connecté à aucun service externe (Google Analytics, Facebook, Twitter, etc..). Personne ne sait à part nous que vous utilisez LessPass.",
-            "a_trust_we": "<strong>Nous n'avons pas confiance non plus</strong>. D'où notre approche",
+            "a_trust_we": "<strong>Nous ne vous demandons pas de nous faire confiance</strong>. D'où notre approche",
             "a_trust_oss": "À la différence d'autres services, LessPass est <strong>open-source</strong>. De ce fait il peut être –réellement– audité",
-            "a_trust_code": "le code source est <a href='https://github.com/oslab-fr/lesspass'>disponible sur Github</a>, vous pouvez donce l'<strong>installer sur votre poste</strong> ou un serveur d'entreprise",
-            "a_trust_tracking": "Nous nous opposons au fichage systématique, et par conséquent <strong>aucun outils d'analyse</strong> n'est utilisé dans l'appli ou le site (p. ex. pas de <i>Google Analytics</i>, <i>Facebook</i>, etc.)",
-            "a_trust_client_side": "la génération des mots de passe doit rester sous votre controle, de ce fait <strong>entièrement coté client</strong>",
+            "a_trust_code": "Le code source est <a href='https://github.com/oslab-fr/lesspass'>disponible sur Github</a>, vous pouvez donc l'<strong>installer sur votre poste</strong> ou un serveur d'entreprise",
+            "a_trust_tracking": "Nous nous opposons au fichage systématique, et par conséquent <strong>aucun outils d'analyse</strong> n'est utilisé dans l'appli ou le site (ex: pas de <i>Google Analytics</i>, <i>Facebook</i>, etc.)",
+            "a_trust_client_side": "La génération des mots de passe doit rester sous votre controle, elle se fait sur votre <strong>navigateur</strong>",
             "a_trust_online": "<em>le mode connecté</em> a pour but de suggérer vos <var>email</var>s et <var>site</var>s, <i>c.-à-d.</i> qu'il ne stocke rien d'autre",
             "source_code": "Auditez le code source",
             "q_make_it_safer": "Comment puis-je rendre LessPass encore plus sûr ?",
-            "a_make_it_safer_private": "Utiliser le mode <strong>incognito/privé de votre navigateur</strong> et fermé le quand vous avez terminé" +
-            "(<a href='https://support.mozilla.org/fr/kb/navigation-privee-naviguer-avec-firefox-sans-enregistrer-historique'>Firefox</a>, " +
-            "<a href='https://support.google.com/chrome/answer/95464?hl=fr'>Chrome</a> " +
-            "et les <a href='https://fr.wikipedia.org/wiki/Navigation_priv%C3%A9e#Pr.C3.A9sence_au_sein_des_navigateurs'>autres navigateurs populaires</a> " +
-            "ont cette fonctionnalité).",
+            "a_make_it_safer_private": "Utilisez la <strong><a href='https://fr.wikipedia.org/wiki/Navigation_priv%C3%A9e'>navigation privé</a></strong> de votre navigateur</strong> et fermez le quand vous avez terminé.",
             "a_make_it_safer_update": "Garder votre navigateur à jour (ce qui corrige les bugs de sécurité).",
-
             "q_roadmap": "Quelles fonctionnalités sont prévues pour les versions à venir ?",
             "a_roadmap_preset_saving": "application connecté pour sauvegarder les informations sur les sites",
             "a_roadmap_15min_memory": "suppression du mot de passe après 15 minutes d’inactivités",
@@ -130,7 +121,7 @@ const locales = {
             "a_password_generation": "La génération du mot de passe est effectué sur votre navigateur et pas sur les serveurs de LessPass.",
             "q_pricing": "Est ce que LessPass est gratuit ?",
             "a_pricing_free": "LessPass est gratuit et le sera toujours.",
-            "a_pricing_enterprise": "<i>LessPass Enterprise</i> ajoutera le support <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> et la double authentication sera payante pour les enterprises."
+            "a_pricing_enterprise": "LessPass Enterprise ajoutera le support <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> et la double authentication sera payante pour les enterprises."
         }
     }
 };
