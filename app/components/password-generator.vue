@@ -6,7 +6,7 @@
     }
 </style>
 <template>
-    <div class="container">
+    <div class="container m-y-3">
         <form id="passwordGenerator">
             <div class="form-group row">
                 <label for="email" class="sr-only form-control-label">{{ $t('passwordgenerator.email') }}</label>
