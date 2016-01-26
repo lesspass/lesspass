@@ -7,43 +7,63 @@
     <div id="faq" class="container p-y-3 m-t-2">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h3>FAQ :</h3>
-
-                <h5 class="blue">{{ $t('faq.q1') }}</h5>
-                <p>
-                    {{ $t('faq.a1') }}
-                </p>
-
-                <h5 class="blue">{{ $t('faq.q2') }}</h5>
-                <p>
-                    {{ $t('faq.a2') }}
-                </p>
-                <p>
-                    <a class='btn btn-primary btn-sm' href="https://github.com/oslab-fr/lesspass/">
-                        {{ $t('faq.source_code') }}
+                <h3>
+                    <a href="#faq">
+                        <abbr title="Frequently Asked Questions">FAQ</abbr>
                     </a>
-                </p>
-                <h5 class="blue">{{ $t('faq.q3') }}</h5>
+                </h3>
 
-                <p>
-                    {{ $t('faq.a3') }}
-                </p>
-                <h5 class="blue">{{ $t('faq.q4') }}</h5>
+                <section id="faq_works_in_future">
+                    <h5 class="blue">{{ $t('faq.q_works_in_future') }}</h5>
+                    <p>
+                        {{{ $t('faq.a_works_in_future') }}}
+                    </p>
+                </section>
 
-                <ul>
-                    <li>{{ $t('faq.a4a') }}</li>
-                    <li>{{ $t('faq.a4b') }}</li>
-                    <li>{{ $t('faq.a4c') }}</li>
-                </ul>
-                <h5 class="blue">{{ $t('faq.q5') }}</h5>
+                <section id="faq_trust">
+                    <h5 class="blue">{{ $t('faq.q_trust') }}</h5>
+                    <ul>
+                        <li>{{{ $t('faq.a_trust_we') }}}&nbsp;;</li>
+                        <li>{{{ $t('faq.a_trust_oss') }}}&nbsp;;</li>
+                        <li>{{{ $t('faq.a_trust_code') }}}&nbsp;;</li>
+                        <li>{{{ $t('faq.a_trust_tracking') }}}&nbsp;;</li>
+                        <li>{{{ $t('faq.a_trust_client_side') }}}.</li>
+                    </ul>
+                    <p>
+                        <a class='btn btn-primary btn-sm' href="https://github.com/oslab-fr/lesspass/">
+                            {{ $t('faq.source_code') }}
+                        </a>
+                    </p>
+                </section>
 
-                <p>
-                    {{ $t('faq.a5') }}
-                </p>
-                <h5 class="blue">{{ $t('faq.q6') }}</h5>
-                <p>
-                    {{ $t('faq.a6') }}
-                </p>
+                <section id="faq_make_it_safer">
+                    <h5 class="blue">{{ $t('faq.q_make_it_safer') }}</h5>
+                    <ul>
+                        <li>{{{ $t('faq.a_make_it_safer_private') }}}</li>
+                        <li>{{{ $t('faq.a_make_it_safer_update') }}}</li>
+                    </ul>
+                </section>
+
+                <section id="faq_roadmap">
+                    <h5 class="blue">{{ $t('faq.q_roadmap') }}</h5>
+                    <ul>
+                        <li>{{{ $t('faq.a_roadmap_preset_saving') }}}&nbsp;;</li>
+                        <li>{{{ $t('faq.a_roadmap_15min_memory') }}}&nbsp;;</li>
+                        <li>{{{ $t('faq.a_roadmap_offline_mode') }}}.</li>
+                    </ul>
+                </section>
+
+                <section id="faq_password_generation">
+                    <h5 class="blue">{{ $t('faq.q_password_generation') }}</h5>
+                    <p>
+                        {{{ $t('faq.a_password_generation') }}}
+                    </p>
+                    <h5 class="blue">{{ $t('faq.q_pricing') }}</h5>
+                    <ul>
+                        <li>{{{ $t('faq.a_pricing_free') }}}</li>
+                        <li>{{{ $t('faq.a_pricing_enterprise') }}}</li>
+                    </ul>
+                </section>
             </div>
         </div>
     </div>
