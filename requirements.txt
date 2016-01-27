@@ -1,5 +1,6 @@
 Django==1.9.1
 djangorestframework==3.3.2
+djangorestframework-jwt==1.7.2
 smartconfigparser==0.1.1
 psycopg2==2.6.1
 gunicorn==19.4.5
