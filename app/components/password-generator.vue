@@ -1,27 +1,30 @@
-<style>
+<!--<style>
     #passwordGenerator .form-control {
-        background-color: #434857;
-        color: white;
-        border: 1px solid #434857;
+        background-color: #31353A;
+        color: #8F9394;
+        border: 1px solid #31353A;
     }
-</style>
+</style>-->
 <template>
     <div class="container m-y-3">
         <form id="passwordGenerator">
             <div class="form-group row">
                 <label for="email" class="sr-only form-control-label">{{ $t('passwordgenerator.email') }}</label>
                 <div class="col-sm-3">
-                    <input type="email" class="form-control" id="email" placeholder="{{ $t('passwordgenerator.email') }}" v-model="email"
+                    <input type="email" class="form-control" id="email"
+                           placeholder="{{ $t('passwordgenerator.email') }}" v-model="email"
                            v-on:blur="updateMasterPassword">
                 </div>
                 <label for="password" class="sr-only form-control-label">{{ $t('passwordgenerator.password') }}</label>
                 <div class="col-sm-3">
-                    <input type="password" class="form-control" id="password" placeholder="{{ $t('passwordgenerator.password') }}"
+                    <input type="password" class="form-control" id="password"
+                           placeholder="{{ $t('passwordgenerator.password') }}"
                            v-model="password" v-on:blur="updateMasterPassword">
                 </div>
                 <label for="site" class="sr-only form-control-label">{{ $t('passwordgenerator.site') }}</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="site" placeholder="{{ $t('passwordgenerator.site_placeholder') }}"
+                    <input type="text" class="form-control" id="site"
+                           placeholder="{{ $t('passwordgenerator.site_placeholder') }}"
                            v-model="site">
                 </div>
                 <label for="generatedPassword" class="sr-only form-control-label">Generated Password</label>
@@ -41,7 +44,8 @@
                 <div class="col-lg-12">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" v-model="showAdvancedOptions"> {{ $t('passwordgenerator.advanced_options') }}
+                            <input type="checkbox" v-model="showAdvancedOptions"> {{
+                            $t('passwordgenerator.advanced_options') }}
                         </label>
                     </div>
                 </div>
@@ -67,7 +71,8 @@
                 </div>
             </div>
             <div class="form-group row" v-if="showAdvancedOptions">
-                <label for="passwordLength" class="col-xs-2 col-sm-1 form-control-label">{{ $t('passwordgenerator.length') }}</label>
+                <label for="passwordLength" class="col-xs-2 col-sm-1 form-control-label">{{
+                    $t('passwordgenerator.length') }}</label>
                 <div class="col-xs-8 col-sm-4">
                     <input id="passwordLength" type="range" value="12" min="6" max="64" v-model="passwordInfo.length"
                            class="form-control">

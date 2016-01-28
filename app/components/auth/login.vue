@@ -1,68 +1,47 @@
+<!--<style>
+    #login .form-control {
+        background-color: #31353A;
+        color: #8F9394;
+        border: 1px solid #31353A;
+    }
+</style>-->
 <template>
-    <div class="panel-heading">
-        Sign in to your account
+    <div id="login" class="p-y-2">
+        <h2>{{$t('login.login')}}</h2>
+        <p>{{$t('login.why')}}</p>
+        <div class="alert alert-danger" v-if="error">
+            <p>{{{$t('login.credentials_invalids')}}}</p>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="{{$t('login.enter_email')}}"
+                   v-model="credentials.username">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="{{$t('login.enter_password')}}"
+                   v-model="credentials.password">
+        </div>
+        <button class="btn btn-primary" @click="submit()">{{$t('login.lets_go')}}</button>
     </div>
-    <div class="panel-body">
-        <form class="form-horizontal" role="form">
-
-            <div id="alerts" v-if="messages.length > 0">
-                <div v-for="message in messages" class="alert alert-{{ message.type }} alert-dismissible" role="alert">
-                    {{ message.message }}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label">E-Mail Address</label>
-                <div class="col-md-6">
-                    <input type="email" class="form-control" v-model="email">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label">Password</label>
-                <div class="col-md-6">
-                    <input type="password" class="form-control" v-model="password">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary" v-on:click="login">
-                        <i class="fa fa-btn fa-sign-in"></i>Login
-                    </button>
-
-                    <!--<a class="btn btn-link" v-link="{ path: '/auth/forgot' }">Forgot Your Password?</a>-->
-                </div>
-            </div>
-        </form>
-    </div>
-    <!--<input type="text" name="email" v-model="email">
-    <input type="password" name="password" v-model="password">
-    <button class="btn btn-primary" v-on:click="login">se connecter</button>-->
 </template>
 <script>
+    import auth from '../../services/auth'
     export default {
         data: function () {
             return {
-                email: '',
-                password: ''
+                credentials: {
+                    username: '',
+                    password: ''
+                },
+                error: ''
             }
         },
         methods: {
-            login: function () {
-                var email = this.email;
-                var password = this.password;
-
-
-                this.$http.get('http://localhost:8000/api/').then(function (response) {
-                    console.log('success');
-                    console.log(response);
-                }, function (response) {
-                    console.log('error');
-                    console.log(response)
-                });
-
-
+            submit() {
+                var credentials = {
+                    username: this.credentials.username,
+                    password: this.credentials.password
+                };
+                auth.login(this, credentials, '/entries')
             }
         }
     }

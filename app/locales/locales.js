@@ -62,6 +62,20 @@ const locales = {
             "q_pricing": "Is LessPass free?",
             "a_pricing_free": "LessPass is free and always will be.",
             "a_pricing_enterprise": "LessPass Enterprise will add support for <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> and double-authentication for companies."
+        },
+        "login": {
+            "login": "login",
+            "Login": "Log In",
+            "register": "register",
+            "Register": "Register",
+            "why": "Manage your sites with online mode",
+            "enter_email": "Enter your email",
+            "enter_password": "Enter your password",
+            "lets_go": "Let's go !",
+            "dont_have_an_account": "Don't have an account ?",
+            "already_have_an_account": "Already have an account ?",
+            "create_account": "Create an account",
+            "credentials_invalids": "The email address or password you entered is not valid. If you don't have an account yet, you can <a href='#/auth/register'>register</a>."
         }
     },
     "fr": {
@@ -128,6 +142,18 @@ const locales = {
             "q_pricing": "Est ce que LessPass est gratuit ?",
             "a_pricing_free": "LessPass est gratuit et le sera toujours.",
             "a_pricing_enterprise": "LessPass Enterprise, avec le support <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> et la double authentication, sera payante pour les enterprises."
+        },
+        "login": {
+            "login": "Connectez-vous",
+            "register": "S'enregistrer",
+            "why": "Gérez vos mots de passe avec le mode connecté",
+            "enter_email": "Entrez votre email",
+            "enter_password": "Entrez votre mot de passe",
+            "lets_go": "C'est parti !",
+            "dont_have_an_account": "Vous n'avez pas encore de compte ?",
+            "already_have_an_account": "Vous avez déjà un compte ?",
+            "create_account": "Créez un compte",
+            "credentials_invalids": "L' adresse e-mail et mot de passe ne sont pas valides. Si vous ne possédez pas encore de compte, vous pouvez vous <a href='#/auth/register'>inscrire</a>."
         }
     }
 };

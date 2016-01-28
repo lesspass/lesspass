@@ -20,7 +20,9 @@
     import LesspassFooter from './footer.vue';
 
     export default {
-        data :{},
+        data: function () {
+            return {}
+        },
         components: {
             LesspassHeadlines,
             LesspassJumbotron,
