@@ -1,0 +1,43 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cfd2da;
+    background-color: #252830;
+}
+
+.bg-img {
+    /*background: url(https://s3.amazonaws.com/StartupStockPhotos/20140808_StartupStockPhotos/100.jpg);*/
+    /*filter: brightness(.9) blur(1px);*/
+    /*background-size: cover;*/
+    background-color: #1a1c22;
+    min-height: 70vh;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.headlines {
+    margin-top: 10vh;
+}
+
+.headlines .title {
+    font-size: 1.6rem;
+}
+
+.navbar {
+    padding: 1.5rem 0;
+}
+
+@media (min-width: 550px) {
+    .headlines {
+        margin-top: 10vh;
+    }
+
+    .headlines .title {
+        font-size: 2.5rem;
+    }
+}
+
