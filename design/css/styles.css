@@ -6,25 +6,35 @@ body {
     background-color: #252830;
 }
 
-.bg-img {
-    /*background: url(https://s3.amazonaws.com/StartupStockPhotos/20140808_StartupStockPhotos/100.jpg);*/
-    /*filter: brightness(.9) blur(1px);*/
-    /*background-size: cover;*/
-    background-color: #1a1c22;
-    min-height: 70vh;
-    width: 100%;
+.header {
+    background: url(../images/56.png);
+    /*filter: brightness(.8) blur(1px);*/
+    background-size: cover;
+    /*background-color: #1a1c22;*/
+    background-color: #D8E4EA;
+    min-height: 65vh;
+    /*width: 100%;*/
 
-    position: absolute;
-    top: 0;
-    left: 0;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+}
+
+.header{
+    color: #252830;
 }
 
 .headlines {
     margin-top: 10vh;
+    color: #252830;
 }
 
 .headlines .title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+}
+
+.headlines .subtitle {
+    font-size: 1.3rem;
 }
 
 .navbar {
@@ -32,6 +42,11 @@ body {
 }
 
 @media (min-width: 550px) {
+
+    .header {
+        min-height: 80vh;
+    }
+
     .headlines {
         margin-top: 10vh;
     }

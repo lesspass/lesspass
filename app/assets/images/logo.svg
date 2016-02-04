@@ -11,7 +11,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg3039"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.48.4 r9939"
    width="222"
    height="60"
    sodipodi:docname="logo.svg">
@@ -124,7 +124,7 @@
     </filter>
   </defs>
   <sodipodi:namedview
-     pagecolor="#252830"
+     pagecolor="#d8e4ea"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"
@@ -132,52 +132,59 @@
      guidetolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:window-width="1680"
-     inkscape:window-height="988"
+     inkscape:window-width="1333"
+     inkscape:window-height="744"
      id="namedview3041"
      showgrid="false"
      inkscape:zoom="2.814285"
-     inkscape:cx="161.68065"
-     inkscape:cy="97.782307"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:cx="117.43149"
+     inkscape:cy="55.142702"
+     inkscape:window-x="33"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg3039"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:showpageshadow="false" />
-  <rect
-     style="opacity:0.9;fill:#0275d8;fill-opacity:1;stroke:none"
-     id="rect3843"
-     width="40.035488"
-     height="40.035488"
-     x="-17.127987"
-     y="25.29842"
-     rx="8.0070972"
-     transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
-     inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png"
-     inkscape:export-xdpi="115.20001"
-     inkscape:export-ydpi="115.20001" />
-  <path
-     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10;marker:none;filter:url(#filter3013);enable-background:accumulate"
-     d="m 79.920829,55.040201 c -12.36404,0 -22.47187,10.13599 -22.47187,22.5 0,10.27949 6.99118,18.97952 16.45312,21.62813 l 0,45.871869 4.21875,0 7.81876,0 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.2375 c 0,-0.12594 -0.10402,-0.26004 -0.225,-0.225 l -6.21562,0 0,-3.85312 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.2375 c 0,-0.12595 -0.099,-0.225 -0.225,-0.225 l -6.21562,0 0,-20.643749 c 9.46192,-2.64861 16.453121,-11.34863 16.453121,-21.62813 0,-12.36402 -10.107881,-22.5 -22.471881,-22.5 z m 0,8.83125 c 7.59627,0 13.64063,6.07247 13.64063,13.66875 0,7.59632 -6.04436,13.64063 -13.64063,13.64063 -7.59624,0 -13.64062,-6.04431 -13.64062,-13.64063 0,-7.59628 6.04438,-13.66875 13.64062,-13.66875 z"
-     id="path3056"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ssccccssssccssssccsssssss"
-     inkscape:export-xdpi="115.20001"
-     inkscape:export-ydpi="115.20001"
-     inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png"
-     transform="matrix(0.33333334,0,0,0.33333334,7.4464645,-3.3467343)" />
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#cfd2da;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="67.547058"
-     y="42.039795"
-     id="text3355"
-     sodipodi:linespacing="125%"><tspan
-       sodipodi:role="line"
-       id="tspan3357"
-       x="67.547058"
+  <g
+     id="g3771"
+     transform="translate(-3.6657726,5.800689e-8)"
+     inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/design/images/logotext.png"
+     inkscape:export-xdpi="68.400002"
+     inkscape:export-ydpi="68.400002">
+    <rect
+       inkscape:export-ydpi="115.20001"
+       inkscape:export-xdpi="115.20001"
+       inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png"
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
+       rx="8.0070972"
+       y="25.29842"
+       x="-17.127987"
+       height="40.035488"
+       width="40.035488"
+       id="rect3843"
+       style="opacity:0.9;fill:#0275d8;fill-opacity:1;stroke:none" />
+    <path
+       transform="matrix(0.33333334,0,0,0.33333334,7.4464645,-3.3467343)"
+       inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png"
+       inkscape:export-ydpi="115.20001"
+       inkscape:export-xdpi="115.20001"
+       sodipodi:nodetypes="ssccccssssccssssccsssssss"
+       inkscape:connector-curvature="0"
+       id="path3056"
+       d="m 79.920829,55.040201 c -12.36404,0 -22.47187,10.13599 -22.47187,22.5 0,10.27949 6.99118,18.97952 16.45312,21.62813 l 0,45.871869 4.21875,0 7.81876,0 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.2375 c 0,-0.12594 -0.10402,-0.26004 -0.225,-0.225 l -6.21562,0 0,-3.85312 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.2375 c 0,-0.12595 -0.099,-0.225 -0.225,-0.225 l -6.21562,0 0,-20.643749 c 9.46192,-2.64861 16.453121,-11.34863 16.453121,-21.62813 0,-12.36402 -10.107881,-22.5 -22.471881,-22.5 z m 0,8.83125 c 7.59627,0 13.64063,6.07247 13.64063,13.66875 0,7.59632 -6.04436,13.64063 -13.64063,13.64063 -7.59624,0 -13.64062,-6.04431 -13.64062,-13.64063 0,-7.59628 6.04438,-13.66875 13.64062,-13.66875 z"
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10;marker:none;visibility:visible;display:inline;overflow:visible;filter:url(#filter3013);enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text3355"
        y="42.039795"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Overpass;-inkscape-font-specification:Overpass;fill:#cfd2da;fill-opacity:1">LessPass</tspan></text>
+       x="67.547058"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#cfd2da;fill-opacity:1;stroke:none;font-family:sans-serif"
+       xml:space="preserve"><tspan
+         style="font-size:35px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#252830;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass"
+         y="42.039795"
+         x="67.547058"
+         id="tspan3357"
+         sodipodi:role="line">LessPass</tspan></text>
+  </g>
 </svg>
