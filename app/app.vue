@@ -36,13 +36,11 @@
                 </a>
                 <ul class="nav navbar-nav pull-xs-right">
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="#/entries" v-if="!user.authenticated">
+                        <a class="btn btn-primary" v-link="'entries'" v-if="!user.authenticated">
                             {{ $t('header.login') }}
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a v-if="user.authenticated" @click="logout()">
-                            Logout
+                        <a class="btn btn-primary-outline" v-link="'login'" v-if="user.authenticated" @click="logout()">
+                            logout
                         </a>
                     </li>
                 </ul>

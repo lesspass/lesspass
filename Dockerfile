@@ -1,4 +1,3 @@
-FROM nginx:latest
+FROM node:4-onbuild
 
-COPY dist /usr/share/nginx/html/dist/
-COPY index.html /usr/share/nginx/html/
+EXPOSE 8080

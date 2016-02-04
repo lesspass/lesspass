@@ -7,7 +7,7 @@
     "test": "mocha --compilers js:babel-core/register tests",
     "test:watch": "npm run test -- -w",
     "prestart": "npm install",
-    "start": "webpack-dev-server --inline --hot",
+    "start": "webpack-dev-server --inline --hot --host 0.0.0.0",
     "prebuild": "rimraf dist && npm prune",
     "build": "NODE_ENV=production webpack --progress --hide-modules"
   },

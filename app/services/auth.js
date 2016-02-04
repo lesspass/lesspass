@@ -6,10 +6,11 @@ export default {
     },
 
     login(context, credentials, redirect) {
+        var self = this;
         context.$http.post('/api/sessions/', credentials).then(
-            function (data) {
-                localStorage.setItem('token', data.token);
-                this.user.authenticated = true;
+            function (response) {
+                localStorage.setItem('token', response.data.token);
+                self.user.authenticated = true;
                 if (redirect) {
                     router.go(redirect)
                 }
@@ -21,10 +22,12 @@ export default {
     },
 
     register(context, user, redirect) {
+        var self = this;
         context.$http.post('/api/users/', user).then(
-            function (data) {
-                localStorage.setItem('token', data.token);
-                this.user.authenticated = true;
+            function (response) {
+                localStorage.setItem('token', response.data.token);
+
+                self.user.authenticated = true;
                 if (redirect) {
                     router.go(redirect)
                 }
