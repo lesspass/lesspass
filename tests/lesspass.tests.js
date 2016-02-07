@@ -27,6 +27,29 @@ describe('LessPass', ()=> {
             };
             assert.equal('Vexu8[Syce4&', Lesspass.createPassword(masterPassword, entry));
         });
+        it('should create 2 passwords different if counter different', function () {
+            var masterPassword = "password";
+            var entry = {
+                site: 'facebook',
+                password: {
+                    length: 14,
+                    settings: ['lowercase', 'uppercase', 'numbers', 'symbols'],
+                    counter: 1
+                }
+            };
+            var entry2 = {
+                site: 'facebook',
+                password: {
+                    length: 14,
+                    settings: ['lowercase', 'uppercase', 'numbers', 'symbols'],
+                    counter: 2
+                }
+            };
+            assert.notEqual(
+                Lesspass.createPassword(masterPassword, entry),
+                Lesspass.createPassword(masterPassword, entry2)
+            );
+        });
         it('should create master password with pbkdf2 (8192 iterations and sha 256)', (done)=> {
             var email = 'test@lesspass.com';
             var password = "password";
@@ -59,7 +82,8 @@ describe('LessPass', ()=> {
             var entry = {
                 site: 'facebook',
                 password: {
-                    length: 10
+                    length: 10,
+                    counter: 1
                 }
             };
             assert.equal(10, Lesspass._createHash(masterPassword, entry).length);
@@ -75,11 +99,25 @@ describe('LessPass', ()=> {
         });
         it('should return two different passwords if counter different', ()=> {
             var masterPassword = 'password';
-            var old_entry = {site: 'facebook'};
-            var entry = {site: 'facebook', 'counter': 2};
+            var entry = {
+                site: 'facebook',
+                password: {
+                    length: 14,
+                    settings: ['lowercase', 'uppercase', 'numbers', 'symbols'],
+                    counter: 1
+                }
+            };
+            var entry2 = {
+                site: 'facebook',
+                password: {
+                    length: 14,
+                    settings: ['lowercase', 'uppercase', 'numbers', 'symbols'],
+                    counter: 2
+                }
+            };
             assert.notEqual(
                 Lesspass._createHash(masterPassword, entry),
-                Lesspass._createHash(masterPassword, old_entry)
+                Lesspass._createHash(masterPassword, entry2)
             );
         });
     });

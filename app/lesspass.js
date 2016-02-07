@@ -22,8 +22,8 @@ export default class lesspass {
         });
     }
 
-    static _createHash(masterPassword, {site, password={length: 12}, counter=1}) {
-        var salt = site + counter.toString();
+    static _createHash(masterPassword, {site, password={length: 12, counter: 1}}) {
+        var salt = site + password.counter.toString();
         var hash = crypto.createHmac('sha256', masterPassword).update(salt).digest('hex');
         return hash.substring(0, password.length);
     }
