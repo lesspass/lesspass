@@ -1,8 +1,8 @@
 <template>
-    <div id="password-generator" class="container m-t-3">
+    <div id="password-generator" class="container m-y-3">
         <form>
             <div class="form-group row">
-                <div class="col-lg-3 m-b-1">
+                <div class="col-lg-3 m-t-1">
                     <label for="pg-email" class="sr-only">
                         {{ $t('passwordgenerator.email') }}
                     </label>
@@ -14,7 +14,7 @@
                            v-model="email"
                            v-on:blur="updateMasterPassword">
                 </div>
-                <div class="col-lg-3 m-b-1">
+                <div class="col-lg-3 m-t-1">
                     <label for="pg-masterpassword" class="sr-only">
                         {{ $t('passwordgenerator.password') }}
                     </label>
@@ -25,7 +25,7 @@
                            v-model="password"
                            v-on:blur="updateMasterPassword">
                 </div>
-                <div class="col-lg-3 m-b-1">
+                <div class="col-lg-3 m-t-1">
                     <label for="pg-site" class="sr-only">
                         {{ $t('passwordgenerator.site') }}
                     </label>
@@ -35,7 +35,7 @@
                            placeholder="{{ $t('passwordgenerator.site_placeholder') }}"
                            v-model="site">
                 </div>
-                <div class="col-lg-3 m-b-1">
+                <div class="col-lg-3 m-t-1">
                     <label for="generatedPassword" class="sr-only">
                         {{ $t('passwordgenerator.generated_password') }}
                     </label>
@@ -57,7 +57,7 @@
                         {{ $t('passwordgenerator.advanced_options') }}
                     </a>
 
-                    <div id="advancedOptions" class="panel-collapse collapse" role="tabpanel"
+                    <div id="advancedOptions" class="panel-collapse collapse m-t-1" role="tabpanel"
                          aria-labelledby="advancedOptions">
                         <div class="row">
                             <div class="col-lg-3">
@@ -107,7 +107,7 @@
                                            value="12" min="6" max="64">
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-3 m-b-1">
+                            <div class="col-lg-2 col-md-3">
                                 <label for="passwordCounter" class="sr-only">
                                     {{ $t('passwordgenerator.counter') }}
                                 </label>

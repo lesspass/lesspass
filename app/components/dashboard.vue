@@ -1,6 +1,23 @@
 <template>
     <div class="container">
-        entries
+        <div class="row m-y-3">
+            <div class="col-lg-12">
+                <form>
+                    <input class="form-control" id="search-input" placeholder="Search..." autocomplete="off"
+                           type="text">
+                    <div class="dropdown-menu bd-search-results" id="search-results"></div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ol>
+                    <li v-for="entry in entries">
+                        {{ entry.title }}
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -9,18 +26,6 @@
         data: function () {
             return {
                 entries: []
-            }
-        },
-        methods: {
-            getEntries() {
-                console.log('make get resquest here');
-                /*this.$http.get('http://localhost:3001/api/protected/random-quote', (data) => {
-                 this.quote = data;
-                 }, {
-                 // Attach the JWT header
-                 headers: auth.getAuthHeader()
-                 })
-                 .error((err) => console.log(err))*/
             }
         }
     }
