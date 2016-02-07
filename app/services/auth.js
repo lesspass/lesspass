@@ -1,36 +1,34 @@
 import {router} from '../main'
+import logging from './logging'
 
 export default {
     user: {
         authenticated: false
     },
 
-    login(context, credentials, redirect) {
+    login(context, credentials, callback) {
         var self = this;
         context.$http.post('/api/sessions/', credentials).then(
             function (response) {
                 localStorage.setItem('token', response.data.token);
                 self.user.authenticated = true;
-                if (redirect) {
-                    router.go(redirect)
+                if (callback) {
+                    logging.success(this.$t('login.welcome'));
+                    callback();
                 }
             },
-            function (error) {
-                context.error = true;
+            function () {
+                logging.error(this.$t('login.credentials_invalids'));
             }
         );
     },
 
-    register(context, user, redirect) {
+    register(context, user) {
         var self = this;
         context.$http.post('/api/users/', user).then(
             function (response) {
                 localStorage.setItem('token', response.data.token);
-
-                self.user.authenticated = true;
-                if (redirect) {
-                    router.go(redirect)
-                }
+                router.go('/');
             },
             function (error) {
                 context.error = true;
@@ -38,10 +36,12 @@ export default {
         );
     },
 
-    logout() {
+    logout(callback) {
         localStorage.removeItem('token');
         this.user.authenticated = false;
-        router.go('/')
+        if (callback) {
+            callback();
+        }
     },
 
     checkAuth() {

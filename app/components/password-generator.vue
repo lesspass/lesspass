@@ -1,34 +1,44 @@
-<!--<style>
-    #passwordGenerator .form-control {
-        background-color: #31353A;
-        color: #8F9394;
-        border: 1px solid #31353A;
-    }
-</style>-->
 <template>
-    <div class="container m-y-3">
-        <form id="passwordGenerator">
+    <div class="container m-t-3">
+        <form>
             <div class="form-group row">
-                <label for="email" class="sr-only form-control-label">{{ $t('passwordgenerator.email') }}</label>
-                <div class="col-sm-3">
-                    <input type="email" class="form-control" id="email"
-                           placeholder="{{ $t('passwordgenerator.email') }}" v-model="email"
+                <div class="col-lg-3 m-b-1">
+                    <label for="pg-email" class="sr-only">
+                        {{ $t('passwordgenerator.email') }}
+                    </label>
+                    <input id="pg-email"
+                           class="form-control"
+                           type="text"
+                           placeholder="{{ $t('passwordgenerator.email') }}"
+                           value="{{email}}"
+                           v-model="email"
                            v-on:blur="updateMasterPassword">
                 </div>
-                <label for="password" class="sr-only form-control-label">{{ $t('passwordgenerator.password') }}</label>
-                <div class="col-sm-3">
-                    <input type="password" class="form-control" id="password"
+                <div class="col-lg-3 m-b-1">
+                    <label for="pg-masterpassword" class="sr-only">
+                        {{ $t('passwordgenerator.password') }}
+                    </label>
+                    <input id="pg-masterpassword"
+                           class="form-control"
+                           type="password"
                            placeholder="{{ $t('passwordgenerator.password') }}"
-                           v-model="password" v-on:blur="updateMasterPassword">
+                           v-model="password"
+                           v-on:blur="updateMasterPassword">
                 </div>
-                <label for="site" class="sr-only form-control-label">{{ $t('passwordgenerator.site') }}</label>
-                <div class="col-sm-3">
-                    <input type="text" class="form-control" id="site"
+                <div class="col-lg-3 m-b-1">
+                    <label for="pg-site" class="sr-only">
+                        {{ $t('passwordgenerator.site') }}
+                    </label>
+                    <input id="pg-site"
+                           class="form-control"
+                           type="text"
                            placeholder="{{ $t('passwordgenerator.site_placeholder') }}"
                            v-model="site">
                 </div>
-                <label for="generatedPassword" class="sr-only form-control-label">Generated Password</label>
-                <div class="col-sm-3">
+                <div class="col-lg-3 m-b-1">
+                    <label for="generatedPassword" class="sr-only">
+                        {{ $t('passwordgenerator.generated_password') }}
+                    </label>
                     <div class="input-group">
                         <input type="text" id="generatedPassword" class="form-control" v-model="generatedPassword">
                         <span class="input-group-btn">
@@ -42,43 +52,76 @@
             </div>
             <div class="form-group row">
                 <div class="col-lg-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" v-model="showAdvancedOptions"> {{
-                            $t('passwordgenerator.advanced_options') }}
-                        </label>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#advancedOptions"
+                       aria-expanded="true" aria-controls="advancedOptions">
+                        {{ $t('passwordgenerator.advanced_options') }}
+                    </a>
+
+                    <div id="advancedOptions" class="panel-collapse collapse" role="tabpanel"
+                         aria-labelledby="advancedOptions">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label class="c-input c-checkbox">
+                                    <input type="checkbox" id="lowercase" value="lowercase"
+                                           v-model="passwordInfo.settings" checked>
+                                    <span class="c-indicator"></span>
+                                    {{ $t('passwordgenerator.lowercase_options') }}
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="c-input c-checkbox">
+                                    <input type="checkbox" id="uppercase" value="uppercase"
+                                           v-model="passwordInfo.settings" checked>
+                                    <span class="c-indicator"></span>
+                                    {{ $t('passwordgenerator.uppercase_options') }}
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="c-input c-checkbox">
+                                    <input type="checkbox" id="numbers" value="numbers" v-model="passwordInfo.settings"
+                                           checked>
+                                    <span class="c-indicator"></span>
+                                    {{ $t('passwordgenerator.numbers_options') }}
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="c-input c-checkbox">
+                                    <input type="checkbox" id="symbols" value="symbols" v-model="passwordInfo.settings"
+                                           checked>
+                                    <span class="c-indicator"></span>
+                                    {{ $t('passwordgenerator.symbols_options') }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row m-t-1">
+                            <div class="col-lg-2 col-md-3 m-b-1">
+                                <label for="passwordLength" class="sr-only">
+                                    {{ $t('passwordgenerator.length') }}
+                                </label>
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon" id="passwordLengthAddon">
+                                        {{ $t('passwordgenerator.length') }}
+                                    </span>
+                                    <input type="number" class="form-control" id="passwordLength"
+                                           aria-describedby="passwordLengthAddon" v-model="passwordInfo.length"
+                                           value="12" min="6" max="64">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-3 m-b-1">
+                                <label for="passwordCounter" class="sr-only">
+                                    {{ $t('passwordgenerator.counter') }}
+                                </label>
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon" id="passwordCounterAddon">
+                                        {{ $t('passwordgenerator.counter') }}
+                                    </span>
+                                    <input type="number" class="form-control" id="passwordCounter"
+                                           aria-describedby="passwordCounterAddon" v-model="passwordInfo.counter"
+                                           value="1" min="1" max="100">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group row" v-if="showAdvancedOptions">
-                <div class="col-lg-12">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="lowercase" value="lowercase" v-model="passwordInfo.settings" checked>
-                        {{ $t('passwordgenerator.lowercase_options') }}
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="uppercase" value="uppercase" v-model="passwordInfo.settings" checked>
-                        {{ $t('passwordgenerator.uppercase_options') }}
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="numbers" value="numbers" v-model="passwordInfo.settings" checked>
-                        {{ $t('passwordgenerator.numbers_options') }}
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="symbols" value="symbols" v-model="passwordInfo.settings" checked>
-                        {{ $t('passwordgenerator.symbols_options') }}
-                    </label>
-                </div>
-            </div>
-            <div class="form-group row" v-if="showAdvancedOptions">
-                <label for="passwordLength" class="col-xs-2 col-sm-1 form-control-label">{{
-                    $t('passwordgenerator.length') }}</label>
-                <div class="col-xs-8 col-sm-4">
-                    <input id="passwordLength" type="range" value="12" min="6" max="64" v-model="passwordInfo.length"
-                           class="form-control">
-                </div>
-                <div class="col-xs-2 col-sm-1">
-                    {{ passwordInfo.length }}
                 </div>
             </div>
         </form>
@@ -101,7 +144,7 @@
                     length: 12,
                     settings: ["lowercase", "uppercase", "numbers", "symbols"]
                 },
-                showAdvancedOptions: false
+                masterPassword: ''
             }
         },
         methods: {

@@ -1,5 +1,7 @@
 <template>
-    entries
+    <div class="container">
+        entries
+    </div>
 </template>
 
 <script>

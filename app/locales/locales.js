@@ -2,7 +2,12 @@ const locales = {
     "en": {
         "lang": "en",
         "header": {
-            "login": "login"
+            "Email":"Email",
+            "Password":"Password",
+            "Sign_in": "Sign_in",
+            "Register": "Register",
+            "title": "Next generation<br>password manager",
+            "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ..."
         },
         "headlines": {
             "title": "Next generation password manager",
@@ -37,6 +42,8 @@ const locales = {
             "uppercase_options": "UPPERCASE (A-Z)",
             "numbers_options": "numbers (0-9)",
             "symbols_options": "symbols (@&%?)",
+            "counter": "Counter",
+            "generated_password": "Generated password",
             "length": "Length"
         },
         "faq": {
@@ -75,13 +82,19 @@ const locales = {
             "dont_have_an_account": "Don't have an account ?",
             "already_have_an_account": "Already have an account ?",
             "create_account": "Create an account",
-            "credentials_invalids": "The email address or password you entered is not valid. If you don't have an account yet, you can <a href='#/auth/register'>register</a>."
+            "welcome": "Login successful, welcome on LessPass",
+            "credentials_invalids": "The email address or password you entered is not valid."
         }
     },
     "fr": {
         "lang": "fr",
         "header": {
-            "login": "connexion"
+            "Email":"Email",
+            "Password":"Mot de passe",
+            "Sign_in": "Connexion",
+            "Register": "S'enregistrer",
+            "title": "Gestionnaire de mot de passe nouvelle génération",
+            "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc..."
         },
         "headlines": {
             "title": "Gestionnaire de mot de passe nouvelle génération",
@@ -116,6 +129,8 @@ const locales = {
             "uppercase_options": "MAJUSCULES (A-Z)",
             "numbers_options": "nombres (0-9)",
             "symbols_options": "caractères spéciaux (@&%?)",
+            "counter": "Compteur",
+            "generated_password": "Mot de passe généré",
             "length": "Longueur"
         },
         "faq": {
@@ -153,7 +168,8 @@ const locales = {
             "dont_have_an_account": "Vous n'avez pas encore de compte ?",
             "already_have_an_account": "Vous avez déjà un compte ?",
             "create_account": "Créez un compte",
-            "credentials_invalids": "L' adresse e-mail et mot de passe ne sont pas valides. Si vous ne possédez pas encore de compte, vous pouvez vous <a href='#/auth/register'>inscrire</a>."
+            "welcome": "Connexion réussie, bienvenue sur LessPass",
+            "credentials_invalids": "L' adresse e-mail et/ou mot de passe sont invalides"
         }
     }
 };
