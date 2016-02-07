@@ -17,9 +17,6 @@
         <div class="bg-inverse p-a-1">
             <div class="container">
                 <div class="col-lg-12">
-                    <div class="alert alert-danger" v-if="error">
-                        <p>{{{$t('header.credentials_invalids')}}}</p>
-                    </div>
                     <form class="form-inline pull-md-right">
                         <div class="form-group form">
                             <label class="sr-only" for="email">{{$t('header.Email')}}</label>

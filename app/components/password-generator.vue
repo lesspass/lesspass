@@ -1,5 +1,5 @@
 <template>
-    <div class="container m-t-3">
+    <div id="password-generator" class="container m-t-3">
         <form>
             <div class="form-group row">
                 <div class="col-lg-3 m-b-1">

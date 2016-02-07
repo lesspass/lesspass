@@ -27,11 +27,10 @@ export default {
         var self = this;
         context.$http.post('/api/users/', user).then(
             function (response) {
-                localStorage.setItem('token', response.data.token);
-                router.go('/');
+                logging.warning(this.$t('register.beta'));
             },
             function (error) {
-                context.error = true;
+                logging.warning(this.$t('register.beta'));
             }
         );
     },

@@ -2,8 +2,8 @@ const locales = {
     "en": {
         "lang": "en",
         "header": {
-            "Email":"Email",
-            "Password":"Password",
+            "Email": "Email",
+            "Password": "Password",
             "Sign_in": "Sign_in",
             "Register": "Register",
             "title": "Next generation<br>password manager",
@@ -89,8 +89,8 @@ const locales = {
     "fr": {
         "lang": "fr",
         "header": {
-            "Email":"Email",
-            "Password":"Mot de passe",
+            "Email": "Email",
+            "Password": "Mot de passe",
             "Sign_in": "Connexion",
             "Register": "S'enregistrer",
             "title": "Gestionnaire de mot de passe nouvelle génération",
@@ -170,6 +170,9 @@ const locales = {
             "create_account": "Créez un compte",
             "welcome": "Connexion réussie, bienvenue sur LessPass",
             "credentials_invalids": "L' adresse e-mail et/ou mot de passe sont invalides"
+        },
+        "register": {
+            "beta" : "LessPass Application est pour l'instant en version beta. Vous pouvez utilisez LessPass <a href='#password-generator'><b>en mode deconnecté</b></a>"
         }
     }
 };
