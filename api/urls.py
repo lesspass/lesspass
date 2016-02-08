@@ -9,5 +9,5 @@ router.register(r'entries', views.EntryViewSet, base_name='entries')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^auth/', rest_framework_jwt.views.obtain_jwt_token),
+    url(r'^sessions/', rest_framework_jwt.views.obtain_jwt_token),
 ]
