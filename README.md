@@ -19,7 +19,7 @@ move inside lesspass folder
 
 start application
 
-    npm start
+    npm run dev
 
 open the application in a browser: [http://localhost:8080](http://localhost:8080)
 
@@ -39,4 +39,4 @@ run test in watch mode
 
 ## build for production
 
-    npm run build
+    npm start
