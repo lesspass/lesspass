@@ -6,11 +6,11 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register tests",
     "test:watch": "npm run test -- -w",
-    "prestart": "npm install",
+    "predev": "npm install",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
-    "prebuild": "rimraf dist && npm prune",
+    "prebuild": "rimraf dist && npm prune && npm install",
     "build": "NODE_ENV=production webpack --progress --hide-modules",
-    "start": "npm run build && NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",

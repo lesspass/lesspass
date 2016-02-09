@@ -7,7 +7,7 @@ lesspass is like keepass without the need to persist passwords
 
   * node v4.2.x LTS
 
-## try lesspass
+## try lesspass on local
 
 clone application:
 
@@ -37,6 +37,6 @@ run test in watch mode
 
     npm run test:watch
 
-## build for production
+## run production mode
 
-    npm start
+    npm run build && npm start

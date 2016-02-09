@@ -1,10 +1,13 @@
 FROM node:argon
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /src
+WORKDIR /src
 
-ONBUILD COPY package.json /usr/src/app/
-ONBUILD RUN npm install
-ONBUILD COPY . /usr/src/app
+COPY package.json /src/
+RUN npm install
 
+COPY . /src
+RUN npm run build
+
+EXPOSE 8080
 CMD [ "npm", "start" ]
