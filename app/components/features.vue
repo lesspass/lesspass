@@ -1,13 +1,14 @@
 <style>
     .lesspass-features {
         background-color: #0275D8;
+        color: #D3D8E8;
     }
 
     .lesspass-features ul {
         line-height: 1.8em;
         font-size: 1.15em;
-        margin: 0px auto;
-        padding: 0px;
+        margin: 0 auto;
+        padding: 0;
         list-style-type: none;
     }
 
@@ -23,11 +24,11 @@
     }
 </style>
 <template>
-    <div class="lesspass-features p-y-3 m-t-2">
+    <div class="lesspass-features p-y-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2>{{ $t('features.you_should_use_lesspass') }}</h2>
+                    <h3>{{ $t('features.you_should_use_lesspass') }}</h3>
                     <ul>
                         <li>{{{ $t('features.unique_password') }}}&nbsp;;</li>
                         <li>{{{ $t('features.love_open_source') }}}&nbsp;;</li>

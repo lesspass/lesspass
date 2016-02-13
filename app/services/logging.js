@@ -1,4 +1,5 @@
-import toastr from 'toastr'
+var toastr = require('toastr');
+require('toastr/build/toastr.min.css');
 
 toastr.options = {
     "closeButton": true,
@@ -10,7 +11,7 @@ toastr.options = {
     "onclick": null,
     "showDuration": "300",
     "hideDuration": "1000",
-    "timeOut": "5000",
+    "timeOut": "10000",
     "extendedTimeOut": "1000",
     "showEasing": "swing",
     "hideEasing": "linear",
@@ -18,7 +19,7 @@ toastr.options = {
     "hideMethod": "fadeOut"
 };
 
-export default {
+module.exports = {
     error(message){
         toastr.error(message);
     },
@@ -31,4 +32,4 @@ export default {
     clear(){
         toastr.clear();
     }
-}
+};

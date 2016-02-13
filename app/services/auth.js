@@ -1,7 +1,6 @@
-import {router} from '../main'
-import logging from './logging'
+var logging = require('./logging.js');
 
-export default {
+module.exports = {
     user: {
         authenticated: false
     },
@@ -53,4 +52,4 @@ export default {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
     }
-}
+};

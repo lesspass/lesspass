@@ -1,3 +1,6 @@
+var I18n = require('vue-i18n');
+var Vue = require('vue');
+
 const locales = {
     "en": {
         "lang": "en",
@@ -84,6 +87,9 @@ const locales = {
             "create_account": "Create an account",
             "welcome": "Login successful, welcome on LessPass",
             "credentials_invalids": "The email address or password you entered is not valid."
+        },
+        "register": {
+            "beta": "Registration for LessPass Entreprise is not yet possible.<br><a href='mailto:contact@oslab.fr?subject=Invitation%20to%20LessPass&body=Hello%0d%0acan%20you%20send%20me%20an%20invitation%20for%20LessPass%20Entreprise%20?%0d%0aThank%20you'><b>Ask your invite here</b></a>"
         }
     },
     "fr": {
@@ -172,10 +178,17 @@ const locales = {
             "credentials_invalids": "L' adresse e-mail et/ou mot de passe sont invalides"
         },
         "register": {
-            "beta" : "LessPass Application est pour l'instant en version beta. Vous pouvez utilisez LessPass <a href='#password-generator'><b>en mode deconnecté</b></a>"
+            "beta": "L'inscription à LessPass Entreprise n'est pas encore possible.<br><a href='mailto:contact@oslab.fr?subject=Invitation%20à%20LessPass&body=Bonjour%0d%0apouvez-vous%20me%20faire%20parvenir%20une%20invitation%20pour%20LessPass%20Entreprise%20?%0d%0aMerci'><b>Demandez une invitation</b></a>"
         }
     }
 };
 
 
-export default locales;
+var browserLanguage = (navigator.language || navigator.browserLanguage).split('-')[0];
+var lang = browserLanguage in locales ? browserLanguage : 'en';
+Vue.use(I18n, {
+    lang: lang,
+    locales: locales
+});
+
+module.exports = locales;

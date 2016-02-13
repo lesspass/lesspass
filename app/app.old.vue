@@ -1,4 +1,10 @@
 <style>
+    #toast-container > div {
+        opacity: 1;
+        -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: alpha(opacity=100);
+    }
+
     body {
         font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 14px;
@@ -13,13 +19,13 @@
 </style>
 
 <template>
-    <div id="App">
+    <div>
         <lesspass-header></lesspass-header>
         <router-view></router-view>
     </div>
 </template>
 <script>
-    var LesspassHeader = require('./components/header.vue');
+    import LesspassHeader from './components/header.vue';
 
     export default {
         data: function () {

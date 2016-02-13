@@ -1,6 +1,8 @@
 <template>
-    <div id="password-generator" class="container m-y-3">
-        <form>
+    <div id="password-generator" class="container p-y-3">
+        <div class="row">
+            <div class="col-lg-12">
+                            <form>
             <div class="form-group row">
                 <div class="col-lg-3 m-t-1">
                     <label for="pg-email" class="sr-only">
@@ -18,12 +20,17 @@
                     <label for="pg-masterpassword" class="sr-only">
                         {{ $t('passwordgenerator.password') }}
                     </label>
-                    <input id="pg-masterpassword"
-                           class="form-control"
-                           type="password"
-                           placeholder="{{ $t('passwordgenerator.password') }}"
-                           v-model="password"
-                           v-on:blur="updateMasterPassword">
+                    <div class="input-group">
+                        <input id="pg-masterpassword"
+                               class="form-control"
+                               type="password"
+                               placeholder="{{ $t('passwordgenerator.password') }}"
+                               v-model="password"
+                               v-on:blur="updateMasterPassword">
+                        <span class="input-group-btn" @click="changeType('pg-masterpassword')">
+                            <button class="btn btn-secondary" type="button"><i class="fa fa-eye"></i></button>
+                        </span>
+                    </div>
                 </div>
                 <div class="col-lg-3 m-t-1">
                     <label for="pg-site" class="sr-only">
@@ -78,7 +85,8 @@
                             </div>
                             <div class="col-lg-3">
                                 <label class="c-input c-checkbox">
-                                    <input type="checkbox" id="numbers" value="numbers" v-model="passwordInfo.settings"
+                                    <input type="checkbox" id="numbers" value="numbers"
+                                           v-model="passwordInfo.settings"
                                            checked>
                                     <span class="c-indicator"></span>
                                     {{ $t('passwordgenerator.numbers_options') }}
@@ -86,7 +94,8 @@
                             </div>
                             <div class="col-lg-3">
                                 <label class="c-input c-checkbox">
-                                    <input type="checkbox" id="symbols" value="symbols" v-model="passwordInfo.settings"
+                                    <input type="checkbox" id="symbols" value="symbols"
+                                           v-model="passwordInfo.settings"
                                            checked>
                                     <span class="c-indicator"></span>
                                     {{ $t('passwordgenerator.symbols_options') }}
@@ -125,12 +134,13 @@
                 </div>
             </div>
         </form>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     import Lesspass from '../lesspass'
-
     import Clipboard from 'clipboard';
 
     export default {
@@ -154,8 +164,15 @@
                 var password = this.password;
                 if (email && password) {
                     Lesspass.createMasterPassword(email, password).then(function (masterPassword) {
-                        self.$set('masterPassword', masterPassword)
+                        self.$set('masterPassword', masterPassword);
                     });
+                }
+            },
+            changeType: function (id) {
+                if (document.getElementById(id).type == 'password') {
+                    document.getElementById(id).type = 'text'
+                } else {
+                    document.getElementById(id).type = 'password'
                 }
             }
         },
