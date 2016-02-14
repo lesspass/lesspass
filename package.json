@@ -1,11 +1,9 @@
 {
-  "name": "lesspass",
+  "name": "lesspass.com",
   "version": "1.0.0",
-  "description": "lesspass is like keepass without the need to persist passwords",
+  "description": "lesspass single page app for https://lesspass.com",
   "main": "app/app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register tests",
-    "test:watch": "npm run test -- -w",
     "predev": "npm install",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
     "prebuild": "rimraf dist && npm prune && npm install",
@@ -32,6 +30,7 @@
     "express": "^4.13.4",
     "font-awesome": "^4.5.0",
     "jquery": "^2.2.0",
+    "lesspass": "^1.1.1",
     "tether": "^1.1.1",
     "toastr": "^2.1.2",
     "vue": "^1.0.16",

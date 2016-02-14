@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/oslab-fr/lesspass.svg?branch=master)](https://travis-ci.org/oslab-fr/lesspass)
-
 # lesspass
-lesspass is like keepass without the need to persist passwords
+
+lesspass single page app for https://lesspass.com
 
 ## requirements
 
@@ -23,19 +22,6 @@ start application
 
 open the application in a browser: [http://localhost:8080](http://localhost:8080)
 
-## run tests
-
-install dependencies
-
-    npm install
-
-run tests
-
-    npm run test
-
-run test in watch mode
-
-    npm run test:watch
 
 ## run production mode
 

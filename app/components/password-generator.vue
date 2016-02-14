@@ -140,7 +140,7 @@
 </template>
 
 <script>
-    import Lesspass from '../lesspass'
+    import lesspass from 'lesspass'
     import Clipboard from 'clipboard';
 
     export default {
@@ -163,7 +163,7 @@
                 var email = this.email;
                 var password = this.password;
                 if (email && password) {
-                    Lesspass.createMasterPassword(email, password).then(function (masterPassword) {
+                    lesspass.createMasterPassword(email, password).then(function (masterPassword) {
                         self.$set('masterPassword', masterPassword);
                     });
                 }
@@ -185,7 +185,7 @@
                         site: site,
                         password: this.passwordInfo
                     };
-                    return Lesspass.createPassword(masterPassword, entry);
+                    return lesspass.createPassword(masterPassword, entry);
                 }
             }
         }
