@@ -1,8 +1,8 @@
 {
   "name": "lesspass",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "node.js stateless password management solution",
-  "main": "distribution/lesspass.js",
+  "main": "dist/lesspass.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register tests",
     "test:watch": "npm run test -- -w",
