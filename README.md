@@ -18,4 +18,6 @@ LessPass npm module use to generate unique password
         }
     };
     var masterPassword = '90cff82b8847525370a8f29a59ecf45db62c719a535788ad0df58d32304e925d';
-    passwordGenerator.generatePassword(masterPassword, entry);
+    var password = lesspass.createPassword(masterPassword, entry);
+    console.log(password); // ubUB4[yqAD3?od
+

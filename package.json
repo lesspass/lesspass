@@ -1,11 +1,13 @@
 {
   "name": "lesspass",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "node.js stateless password management solution",
-  "main": "index.js",
+  "main": "distribution/lesspass.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register tests",
-    "test:watch": "npm run test -- -w"
+    "test:watch": "npm run test -- -w",
+    "build": "babel lesspass.js text.js password-generator.js --presets babel-preset-es2015 --out-dir distribution",
+    "prepublish": "npm test && npm run build"
   },
   "keywords": [
     "password",
@@ -22,7 +24,7 @@
   },
   "homepage": "https://github.com/oslab-fr/lesspass-npm#readme",
   "devDependencies": {
-    "babel-core": "^6.5.2",
+    "babel-cli": "^6.5.1",
     "babel-preset-es2015": "^6.5.0",
     "mocha": "^2.4.5",
     "webpack": "^1.12.13"
