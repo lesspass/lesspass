@@ -1,12 +1,12 @@
 {
   "name": "lesspass",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "node.js stateless password management solution",
   "main": "distribution/lesspass.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register tests",
     "test:watch": "npm run test -- -w",
-    "build": "babel lesspass.js text.js password-generator.js --presets babel-preset-es2015 --out-dir distribution",
+    "build": "babel lesspass.js text.js password-generator.js --presets babel-preset-es2015 --out-dir dist",
     "prepublish": "npm test && npm run build"
   },
   "keywords": [

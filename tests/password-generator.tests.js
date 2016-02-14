@@ -1,5 +1,6 @@
 var assert = require('assert');
 var passwordGenerator = require('../password-generator');
+var lesspass = require('../lesspass');
 
 describe('passwordGenerator', function () {
     describe('master password', function () {
@@ -7,7 +8,7 @@ describe('passwordGenerator', function () {
             var email = 'test@lesspass.com';
             var password = "password";
 
-            passwordGenerator.createMasterPassword(email, password).then(function (masterPassword) {
+            lesspass.createMasterPassword(email, password).then(function (masterPassword) {
                 assert.equal("90cff82b8847525370a8f29a59ecf45db62c719a535788ad0df58d32304e925d", masterPassword);
                 done();
             });
@@ -16,7 +17,7 @@ describe('passwordGenerator', function () {
             var email = 'test@lesspass.com';
             var password = "password";
 
-            passwordGenerator.createMasterPassword(email, password).then(function (masterPassword) {
+            lesspass.createMasterPassword(email, password).then(function (masterPassword) {
                 assert.equal(64, masterPassword.length);
                 done();
             });

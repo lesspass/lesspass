@@ -2,7 +2,8 @@ var text = require('./text');
 var passwordGenerator = require('./password-generator');
 
 module.exports = {
-    createPassword: createPassword
+    createPassword: createPassword,
+    createMasterPassword: passwordGenerator.createMasterPassword
 };
 
 function createPassword(masterPassword, entry) {
