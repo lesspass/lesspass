@@ -32,9 +32,9 @@
                 <small>&copy; Nanou</small>
             </div>
             <div class="col-lg-6 m-t-3">
-                <h2 class="title text-primary">{{{ $t('header.title') }}}</h2>
+                <h2 class="title text-primary">{{{ $t('headlines.title') }}}</h2>
                 <h4 class="subtitle">
-                    <span class="text-primary"> LessPass</span> {{ $t('header.subtitle') }}
+                    <span class="text-primary"> LessPass</span> {{ $t('headlines.subtitle') }}
                 </h4>
             </div>
         </div>

@@ -8,13 +8,11 @@ const locales = {
             "Email": "Email",
             "Password": "Password",
             "Sign_in": "Sign_in",
-            "Register": "Register",
-            "title": "Next generation<br>password manager",
-            "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ..."
+            "Register": "Register"
         },
         "headlines": {
-            "title": "Next generation password manager",
-            "subtitle": "LessPass does not store passwords, and neither should you !"
+            "title": "Open Source<br>Password Manager",
+            "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ..."
         },
         "jumbotron": {
             "what_is_lesspass": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ...",
@@ -98,13 +96,11 @@ const locales = {
             "Email": "Email",
             "Password": "Mot de passe",
             "Sign_in": "Connexion",
-            "Register": "S'enregistrer",
-            "title": "Gestionnaire de mot de passe nouvelle génération",
-            "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc..."
+            "Register": "S'enregistrer"
         },
         "headlines": {
-            "title": "Gestionnaire de mot de passe nouvelle génération",
-            "subtitle": "LessPass ne mémorise pas vos mots de passe, et vous non plus !"
+            "title": "Gestionnaire de mot de passe open source",
+            "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc..."
         },
         "jumbotron": {
             "what_is_lesspass": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc...",

@@ -3,7 +3,7 @@ var app = express();
 
 app.use('/dist', express.static(__dirname + '/dist'));
 
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
