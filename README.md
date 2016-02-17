@@ -23,3 +23,6 @@ LessPass npm module use to generate unique password
     var password = lesspass.createPassword(masterPassword, entry);
     console.log(password); // ubUB4[yqAD3?od
 
+## Test
+
+    npm run test
