@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/oslab-fr/lesspass-server.svg)](https://travis-ci.org/oslab-fr/lesspass-server)
+[![Build Status](https://travis-ci.org/lesspass/api.svg?branch=master)](https://travis-ci.org/lesspass/api)
 
 # lesspass-server
 
