@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/oslab-fr/lesspass-npm.svg?branch=master)](https://travis-ci.org/oslab-fr/lesspass-npm)
+[![Build Status](https://travis-ci.org/lesspass/core.svg?branch=master)](https://travis-ci.org/lesspass/core)
 
 # LessPass Core
 
