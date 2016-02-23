@@ -42,9 +42,8 @@ if (process.env.NODE_ENV === 'production') {
             caches: 'all',
             scope: '/dist/',
             updateStrategy: 'all',
-            version: 'v1',
             ServiceWorker: { output: 'sw.js'},
-            AppCache: {directory: 'appcache/'}
+            AppCache: false
         })
     ])
 }

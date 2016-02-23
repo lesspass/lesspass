@@ -11,3 +11,5 @@ require('./router.js');
 
 var Resource = require('vue-resource');
 Vue.use(Resource);
+
+require('offline-plugin/runtime').install();
