@@ -125,7 +125,7 @@ const locales = {
             "free_title": "Gratuit",
             "no_cloud": "LessPass régénère vos mots de passe à chaque fois que vous en avez besoin. Aucun stockage sur le cloud n'est nécessaire.",
             "responsive": "LessPass est une application web et fonctionne sur tous les appareils (ordinateur, smartphone, tablette et smartTV).",
-            "open_source": "LessPass est open source. Le code source est <a href='https://github.com/lesspass/core'>disponible sur Github</a>, vous pouvez l'auditer",
+            "open_source": "LessPass est open source. Le code source est disponible sur <a href='https://github.com/lesspass/core'>Github</a>, vous pouvez l'auditer",
             "free": "LessPass est gratuit et le sera toujours."
         },
         "feedback": {
