@@ -30,7 +30,7 @@
                         <li>{{{ $t('faq.a_trust_client_side') }}}.</li>
                     </ul>
                     <p>
-                        <a class='btn btn-primary btn-sm' href="https://github.com/oslab-fr/lesspass/">
+                        <a class='btn btn-primary btn-sm' href="https://github.com/lesspass/core/">
                             {{ $t('faq.source_code') }}
                         </a>
                     </p>
@@ -49,7 +49,7 @@
                     <ul>
                         <li>{{{ $t('faq.a_roadmap_preset_saving') }}}&nbsp;;</li>
                         <li>{{{ $t('faq.a_roadmap_15min_memory') }}}&nbsp;;</li>
-                        <li>{{{ $t('faq.a_roadmap_offline_mode') }}}.</li>
+                        <li>{{{ $t('faq.a_roadmap_web_extension') }}}.</li>
                     </ul>
                 </section>
 

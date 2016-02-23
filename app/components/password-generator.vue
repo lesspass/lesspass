@@ -6,25 +6,25 @@
             <div class="form-group row">
                 <div class="col-lg-3 m-t-1">
                     <label for="pg-email" class="sr-only">
-                        {{ $t('passwordgenerator.email') }}
+                        {{ $t('passwordgenerator.who_are_you') }}
                     </label>
                     <input id="pg-email"
                            class="form-control"
                            type="text"
-                           placeholder="{{ $t('passwordgenerator.email') }}"
+                           placeholder="{{ $t('passwordgenerator.who_are_you') }}"
                            value="{{email}}"
                            v-model="email"
                            v-on:blur="updateMasterPassword">
                 </div>
                 <div class="col-lg-3 m-t-1">
                     <label for="pg-masterpassword" class="sr-only">
-                        {{ $t('passwordgenerator.password') }}
+                        {{ $t('passwordgenerator.what_is_your_secret') }}
                     </label>
                     <div class="input-group">
                         <input id="pg-masterpassword"
                                class="form-control"
                                type="password"
-                               placeholder="{{ $t('passwordgenerator.password') }}"
+                               placeholder="{{ $t('passwordgenerator.what_is_your_secret') }}"
                                v-model="password"
                                v-on:blur="updateMasterPassword">
                         <span class="input-group-btn" @click="changeType('pg-masterpassword')">
@@ -34,12 +34,12 @@
                 </div>
                 <div class="col-lg-3 m-t-1">
                     <label for="pg-site" class="sr-only">
-                        {{ $t('passwordgenerator.site') }}
+                        {{ $t('passwordgenerator.where_are_you_going') }}
                     </label>
                     <input id="pg-site"
                            class="form-control"
                            type="text"
-                           placeholder="{{ $t('passwordgenerator.site_placeholder') }}"
+                           placeholder="{{ $t('passwordgenerator.where_are_you_going') }}"
                            v-model="site">
                 </div>
                 <div class="col-lg-3 m-t-1">
@@ -165,6 +165,7 @@
                 if (email && password) {
                     lesspass.createMasterPassword(email, password).then(function (masterPassword) {
                         self.$set('masterPassword', masterPassword);
+                        console.log(masterPassword);
                     });
                 }
             },

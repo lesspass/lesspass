@@ -14,7 +14,7 @@ module.exports = {
             {test: /\.vue$/, loader: 'vue'},
             {test: /\.js$/, loader: 'babel', exclude: /node_modules/},
             {test: /\.json$/, loader: 'json'},
-            {test: /\.(png|jpg|gif|svg)$/, loader: 'url', query: {limit: 10000, name: '[name].[ext]?[hash]'}},
+            {test: /\.(png|jpg|gif)$/, loader: 'url', query: {limit: 11000, name: '[name].[ext]?[hash]'}},
             {test: /\.css$/, loader: 'style-loader!css-loader'},
             {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
             {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},

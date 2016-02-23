@@ -4,39 +4,18 @@ var Vue = require('vue');
 const locales = {
     "en": {
         "lang": "en",
-        "header": {
-            "Email": "Email",
-            "Password": "Password",
-            "Sign_in": "Sign_in",
-            "Register": "Register"
-        },
         "headlines": {
             "title": "Open Source<br>Password Manager",
             "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ..."
-        },
-        "jumbotron": {
-            "what_is_lesspass": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ...",
-            "what_is_lesspass2": "regenerates your passwords when you need them. Each password is unique to each site. All you need is to remember a single password.",
-            "use_btn": "use LessPass"
         },
         "footer": {
             "built_by": "by",
             "source_code": "Source code"
         },
-        "features": {
-            "you_should_use_lesspass": "Why should you use LessPass?",
-            "unique_password": "you want a <strong>unique password</strong> for each site",
-            "love_open_source": "you love <strong>open-source</strong>",
-            "works_everywhere": "you want a manager that <strong>works everywhere</strong> (computer, smartphone, tablet and your smartTV)",
-            "no_cloud": "you <strong>don't want to store</strong> your passwords",
-            "only_one_password": "you want to <strong>remember only one</strong> password"
-        },
         "passwordgenerator": {
-            "email": "Email",
-            "password": "Password",
-            "unique_password": "Unique password",
-            "site": "Web site",
-            "site_placeholder": "Site (ex: Facebook)",
+            "who_are_you": "Who are you ?",
+            "what_is_your_secret": "What is your secret ?",
+            "where_are_you_going": "where are you going ?",
             "copy": "Copy",
             "advanced_options": "Advanced options",
             "lowercase_options": "lowercase (a-z)",
@@ -48,12 +27,12 @@ const locales = {
             "length": "Length"
         },
         "faq": {
-            "q_works_in_future": "Will LessPass works in the future?",
+            "q_works_in_future": "Will LessPass work in the future?",
             "a_works_in_future": "Hosting, domain's name and SSL certificate have been <strong>pre-paid until February 2017</strong>.",
             "q_trust": "I don't trust password manager such as LastPass or 1Password, why should LessPass be any different?",
             "a_trust_we": "<strong>Neither do we</strong>. Hence our approach",
             "a_trust_oss": "unlike other services LessPass is <strong>open-source</strong>. So its security can be audited",
-            "a_trust_code": "code is a <a href='https://github.com/oslab-fr/lesspass'>available on Github</a> so you can <strong>install it on your own</strong> computer or corporate server",
+            "a_trust_code": "code is a <a href='https://github.com/lesspass/core'>available on Github</a> so you can <strong>install it on your own</strong> computer or corporate server",
             "a_trust_tracking": "we don't like being tracked, so <strong>NO third-parties</strong> are used site/app (e.g. no <i>Google Analytics</i>, <i>Facebook</i>, etc.)",
             "a_trust_client_side": "password generation is your business thus done <strong>entirely client-side</strong>",
             "a_trust_online": "<em>online mode</em> is here to suggest <var>email</var> and <var>site</var>, <i>i.e.</i> store only that",
@@ -64,74 +43,53 @@ const locales = {
             "q_roadmap": "What is the roadmap for future versions?",
             "a_roadmap_preset_saving": "<strong>Reduce cognitive load</strong> by saving generation settings in your account, so <var>email</var>, <var>site</var> and <var>ruleset</var> will be stored but not the <var>password</var>.",
             "a_roadmap_15min_memory": "<strong>improve security</strong> by removing password after 15 minutes of inactivity",
-            "a_roadmap_offline_mode": "full offline mode",
+            "a_roadmap_web_extension": "Addon for Firefox and Chrome to improve user experience",
             "q_password_generation": "Where are the passwords generated?",
             "a_password_generation": "Generation is performed <strong>on your computer by your browser</strong> and never stored as they never reach LessPass servers (or any others).",
             "q_pricing": "Is LessPass free?",
             "a_pricing_free": "LessPass is free and always will be.",
             "a_pricing_enterprise": "LessPass Enterprise will add support for <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> and double-authentication for companies."
         },
-        "login": {
-            "login": "login",
-            "Login": "Log In",
-            "register": "register",
-            "Register": "Register",
-            "why": "Manage your sites with online mode",
-            "enter_email": "Enter your email",
-            "enter_password": "Enter your password",
-            "lets_go": "Let's go !",
-            "dont_have_an_account": "Don't have an account ?",
-            "already_have_an_account": "Already have an account ?",
-            "create_account": "Create an account",
-            "welcome": "Login successful, welcome on LessPass",
-            "credentials_invalids": "The email address or password you entered is not valid."
+        "how_it_works": {
+            "no_cloud_title": "No storage",
+            "responsive_title": "Available everywhere",
+            "open_source_title": "Open Source",
+            "free_title": "Free",
+            "no_cloud": "LessPass regenerates your passwords when you need them. No cloud storage is required.",
+            "responsive": "LessPass is a web application and works on all devices (computer, smartphone, tablet and your smartTV).",
+            "open_source": "LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a href='https://github.com/lesspass/core'>Github</a>.",
+            "free": "LessPass is free and always will be."
         },
-        "register": {
-            "beta": "Registration for LessPass Entreprise is not yet possible.<br><a href='mailto:contact@oslab.fr?subject=Invitation%20to%20LessPass&body=Hello%0d%0acan%20you%20send%20me%20an%20invitation%20for%20LessPass%20Entreprise%20?%0d%0aThank%20you'><b>Ask your invite here</b></a>"
+        "feedback": {
+            "feedback_1": "Finally a security tool that I did not need to trust.",
+            "feedback_1_author": "Édouard Lopez, LessPass Team Member",
+            "feedback_2": "I no longer need a personal cloud to manage my passwords.<br>One secret and I have access to my passwords everywhere.",
+            "feedback_2_author": "Guillaume Vincent, LessPass Founder",
+            "what_do_you_think": "Tell us what you think of LessPass.",
+            "send_us_email": "Send us an email"
         }
     },
     "fr": {
         "lang": "fr",
-        "header": {
-            "Email": "Email",
-            "Password": "Mot de passe",
-            "Sign_in": "Connexion",
-            "Register": "S'enregistrer"
-        },
         "headlines": {
             "title": "Gestionnaire de mot de passe open source",
             "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc..."
-        },
-        "jumbotron": {
-            "what_is_lesspass": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc...",
-            "what_is_lesspass2": "régénère vos mots de passe à chaque fois que vous en avez besoin. Chaque mot de passe est unique et propre à chaque site. Tout ce dont vous avez besoin c'est de vous souvenir d'un seul mot de passe.",
-            "use_btn": "utilisez LessPass"
         },
         "footer": {
             "built_by": "Réalisé par",
             "source_code": "Code source"
         },
-        "features": {
-            "you_should_use_lesspass": "Pourquoi utiliser LessPass ?",
-            "unique_password": "vous voulez un <strong>mot de passe unique</strong> pour chaque site",
-            "love_open_source": "vous aimez l'<strong>open-source</strong>",
-            "works_everywhere": "vous voulez une application qui <strong>fonctionne partout</strong> (ordinateur, smartphone, tablette et smartTV)",
-            "no_cloud": "vous ne <strong>voulez pas stocker vos mots de passe</strong>",
-            "only_one_password": "vous voulez <strong>retenir un seul</strong> mot de passe"
-        },
         "passwordgenerator": {
-            "email": "Email",
-            "password": "Mot de passe",
-            "unique_password": "Mot de passe unique",
-            "site": "Site",
-            "site_placeholder": "Site (ex: Facebook)",
+            "who_are_you": "Qui êtes vous ?",
+            "what_is_your_secret": "Quel est votre secret ?",
+            "where_are_you_going": "Où allez-vous ?",
             "copy": "Copier",
             "advanced_options": "Options avancées",
             "lowercase_options": "minuscules (a-z)",
             "uppercase_options": "MAJUSCULES (A-Z)",
             "numbers_options": "nombres (0-9)",
             "symbols_options": "caractères spéciaux (@&%?)",
-            "counter": "Compteur",
+            "counter": "Version",
             "generated_password": "Mot de passe généré",
             "length": "Longueur"
         },
@@ -142,7 +100,7 @@ const locales = {
             "a_trust_lesspass": "Contrairement aux autres services, LessPass est open source donc le code source peut être réutilisé, consulté et audité. Vous pouvez sauvegarder LessPass sur votre ordinateur ou votre serveur d’enterprise gratuitement. Ah et LessPass n'est connecté à aucun service externe (Google Analytics, Facebook, Twitter, etc..). Personne ne sait à part nous que vous utilisez LessPass.",
             "a_trust_we": "<strong>Nous ne vous demandons pas de nous faire confiance</strong>. D'où notre approche",
             "a_trust_oss": "À la différence d'autres services, LessPass est <strong>open-source</strong>. De ce fait il peut être –réellement– audité",
-            "a_trust_code": "Le code source est <a href='https://github.com/oslab-fr/lesspass'>disponible sur Github</a>, vous pouvez donc l'<strong>installer sur votre poste</strong> ou un serveur d'entreprise",
+            "a_trust_code": "Le code source est <a href='https://github.com/lesspass/core'>disponible sur Github</a>, vous pouvez donc l'<strong>installer sur votre poste</strong> ou un serveur d'entreprise",
             "a_trust_tracking": "Nous nous opposons au fichage systématique, et par conséquent <strong>aucun outils d'analyse</strong> n'est utilisé dans l'appli ou le site (ex: pas de <i>Google Analytics</i>, <i>Facebook</i>, etc.)",
             "a_trust_client_side": "La génération des mots de passe doit rester sous votre controle, elle se fait sur votre <strong>navigateur</strong>",
             "a_trust_online": "<em>le mode connecté</em> a pour but de suggérer vos <var>email</var>s et <var>site</var>s, <i>c.-à-d.</i> qu'il ne stocke rien d'autre",
@@ -151,30 +109,32 @@ const locales = {
             "a_make_it_safer_private": "Utilisez la <strong><a href='https://fr.wikipedia.org/wiki/Navigation_priv%C3%A9e'>navigation privé</a></strong> de votre navigateur</strong> et fermez le quand vous avez terminé.",
             "a_make_it_safer_update": "Garder votre navigateur à jour (ce qui corrige les bugs de sécurité).",
             "q_roadmap": "Quelles fonctionnalités sont prévues pour les versions à venir ?",
-            "a_roadmap_preset_saving": "application connecté pour sauvegarder les informations sur les sites",
+            "a_roadmap_preset_saving": "application connectée pour sauvegarder les informations sur les sites",
             "a_roadmap_15min_memory": "suppression du mot de passe après 15 minutes d’inactivités",
-            "a_roadmap_offline_mode": "enregistrement des sites en mode déconnecté",
+            "a_roadmap_web_extension": "Addon Firefox et Chrome pour améliorer l'expérience utilisateur",
             "q_password_generation": "Où sont générés les mots de passe ?",
             "a_password_generation": "La génération du mot de passe est effectué sur votre navigateur et pas sur les serveurs de LessPass.",
             "q_pricing": "Est ce que LessPass est gratuit ?",
             "a_pricing_free": "LessPass est gratuit et le sera toujours.",
             "a_pricing_enterprise": "LessPass Enterprise, avec le support <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> et la double authentication, sera payante pour les enterprises."
         },
-        "login": {
-            "login": "Connectez-vous",
-            "register": "S'enregistrer",
-            "why": "Gérez vos mots de passe avec le mode connecté",
-            "enter_email": "Entrez votre email",
-            "enter_password": "Entrez votre mot de passe",
-            "lets_go": "C'est parti !",
-            "dont_have_an_account": "Vous n'avez pas encore de compte ?",
-            "already_have_an_account": "Vous avez déjà un compte ?",
-            "create_account": "Créez un compte",
-            "welcome": "Connexion réussie, bienvenue sur LessPass",
-            "credentials_invalids": "L' adresse e-mail et/ou mot de passe sont invalides"
+        "how_it_works": {
+            "no_cloud_title": "Pas de stockage",
+            "responsive_title": "Disponible partout",
+            "open_source_title": "Open Source",
+            "free_title": "Gratuit",
+            "no_cloud": "LessPass régénère vos mots de passe à chaque fois que vous en avez besoin. Aucun stockage sur le cloud n'est nécessaire.",
+            "responsive": "LessPass est une application web et fonctionne sur tous les appareils (ordinateur, smartphone, tablette et smartTV).",
+            "open_source": "LessPass est open source. Le code source est <a href='https://github.com/lesspass/core'>disponible sur Github</a>, vous pouvez l'auditer",
+            "free": "LessPass est gratuit et le sera toujours."
         },
-        "register": {
-            "beta": "L'inscription à LessPass Entreprise n'est pas encore possible.<br><a href='mailto:contact@oslab.fr?subject=Invitation%20à%20LessPass&body=Bonjour%0d%0apouvez-vous%20me%20faire%20parvenir%20une%20invitation%20pour%20LessPass%20Entreprise%20?%0d%0aMerci'><b>Demandez une invitation</b></a>"
+        "feedback": {
+            "feedback_1": "Enfin un outil de sécurité a qui je n'ai pas besoin de faire confiance.",
+            "feedback_1_author": "Édouard Lopez, membre de l'équipe de LessPass",
+            "feedback_2": "Je n'ai plus besoin d'un cloud personnel pour gérer mes mots de passe. Une seule phrase secrete et j'ai accès à mes mots de passe partout.",
+            "feedback_2_author": "Guillaume Vincent, créateur de LessPass",
+            "what_do_you_think": "dites-nous ce que vous pensez de LessPass.",
+            "send_us_email": "Envoyez-nous un email"
         }
     }
 };
