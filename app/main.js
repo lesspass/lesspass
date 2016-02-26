@@ -1,15 +1,15 @@
 require('../node_modules/bootstrap/dist/css/bootstrap.css');
 require('../node_modules/font-awesome/css/font-awesome.min.css');
-require('../node_modules/bootstrap/dist/js/umd/collapse.js');
 
 var Vue = require('vue');
-
-Vue.config.debug = true;
+var App = require('./App.vue');
 
 require('./locales.js');
-require('./router.js');
 
-var Resource = require('vue-resource');
-Vue.use(Resource);
+new Vue({
+    el: 'body',
+    components: {
+        App
+    }
+});
 
-require('offline-plugin/runtime').install();
