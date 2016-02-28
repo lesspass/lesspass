@@ -1,30 +1,20 @@
 <style>
-    body {
-        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        line-height: 1.4;
-        background: #D3D8E8;
-        color: #252830;
-    }
 
-    .blue {
-        color: #0275D8;
-    }
 </style>
-
 <template>
     <div>
-        <lesspass-header></lesspass-header>
-        <lesspass-headlines></lesspass-headlines>
-        <password-generator></password-generator>
-        <lesspass-how-it-works></lesspass-how-it-works>
-        <lesspass-feedback></lesspass-feedback>
-        <lesspass-faq></lesspass-faq>
-        <lesspass-footer></lesspass-footer>
+        <lesspass-navbar></lesspass-navbar>
+        <!--<lesspass-header></lesspass-header>-->
+        <!--<lesspass-headlines></lesspass-headlines>-->
+        <!--<password-generator></password-generator>-->
+        <!--<lesspass-how-it-works></lesspass-how-it-works>-->
+        <!--<lesspass-feedback></lesspass-feedback>-->
+        <!--<lesspass-faq></lesspass-faq>-->
+        <!--<lesspass-footer></lesspass-footer>-->
     </div>
 </template>
 <script>
-    import LesspassHeader from './components/header.vue';
+    import LesspassNavbar from './header/header.vue';
     import LesspassHeadlines from './components/headlines.vue';
     import PasswordGenerator from './components/password-generator.vue';
     import LesspassFeedback from './components/feedback.vue';
@@ -37,7 +27,7 @@
             return {}
         },
         components: {
-            LesspassHeader,
+            LesspassNavbar,
             LesspassHeadlines,
             PasswordGenerator,
             LesspassFeedback,
