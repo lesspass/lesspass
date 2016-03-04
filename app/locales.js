@@ -5,17 +5,17 @@ const locales = {
     "en": {
         "lang": "en",
         "headlines": {
-            "title": "Open Source<br>Password Manager",
-            "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it"
+            "title": "Open Source<br>Password Generator",
+            "subtitle": "generate an unique password based on the information you provide"
         },
         "footer": {
             "built_by": "by",
             "source_code": "Source code"
         },
         "passwordgenerator": {
-            "who_are_you": "Who are you ?",
-            "what_is_your_secret": "What is your secret ?",
-            "where_are_you_going": "Where are you going ?",
+            "who_are_you": "Email / Username",
+            "what_is_your_secret": "Password",
+            "where_are_you_going": "Site (e.g. twitter.com)",
             "copy": "Copy",
             "advanced_options": "Advanced options",
             "lowercase_options": "lowercase (a-z)",
@@ -72,17 +72,17 @@ const locales = {
     "fr": {
         "lang": "fr",
         "headlines": {
-            "title": "Gestionnaire de mot de passe open source",
-            "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it"
+            "title": "Générateur de mot de passe open source",
+            "subtitle": "construit un mot de passe unique lorsque vous en avez besoin sur la base d'informations uniques que vous lui fournissez."
         },
         "footer": {
             "built_by": "Réalisé par",
             "source_code": "Code source"
         },
         "passwordgenerator": {
-            "who_are_you": "Qui êtes vous ?",
-            "what_is_your_secret": "Quel est votre secret ?",
-            "where_are_you_going": "Où allez-vous ?",
+            "who_are_you": "Email / Nom d'utilisateur",
+            "what_is_your_secret": "Mot de passe",
+            "where_are_you_going": "Site (ex: twitter.com)",
             "copy": "Copier",
             "advanced_options": "Options avancées",
             "lowercase_options": "minuscules (a-z)",

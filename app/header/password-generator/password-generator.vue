@@ -2,7 +2,8 @@
     #password-generator .c-input {
         color: inherit;
     }
-    #password-generator .btn-reverse{
+
+    #password-generator .btn-reverse {
         background-color: #373a3c;
     }
 </style>

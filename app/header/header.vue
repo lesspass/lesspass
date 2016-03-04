@@ -16,8 +16,8 @@
 
     @media (min-width: 480px) {
         #header .header__headlines {
-            padding-top: 15vh;
-            padding-bottom: 15vh;
+            padding-top: 12vh;
+            padding-bottom: 17vh;
         }
 
         #header #header__title {
