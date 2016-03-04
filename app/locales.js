@@ -6,7 +6,7 @@ const locales = {
         "lang": "en",
         "headlines": {
             "title": "Open Source<br>Password Manager",
-            "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ..."
+            "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it"
         },
         "footer": {
             "built_by": "by",
@@ -73,7 +73,7 @@ const locales = {
         "lang": "fr",
         "headlines": {
             "title": "Gestionnaire de mot de passe open source",
-            "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc..."
+            "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it"
         },
         "footer": {
             "built_by": "Réalisé par",

@@ -1,6 +1,6 @@
 <style>
     #header {
-        background-color: rgba(52, 126, 185, 1);
+        background-color: #347eb9;
         color: white;
     }
 

@@ -1,8 +1,11 @@
-<!--<style>-->
-    <!--#password-generator .c-input {-->
-        <!--color: inherit;-->
-    <!--}-->
-<!--</style>-->
+<style>
+    #password-generator .c-input {
+        color: inherit;
+    }
+    #password-generator .btn-reverse{
+        background-color: #373a3c;
+    }
+</style>
 <template>
     <div id="password-generator">
         <form>
@@ -59,7 +62,7 @@
                                v-bind:disabled="!generatedPassword">
                         <span class="input-group-btn">
                             <button id="copyBtn" data-clipboard-target="#generatedPassword"
-                                    class="btn btn-secondary" type="button">
+                                    class="btn btn-reverse" type="button">
                                 {{ $t('passwordgenerator.copy') }}
                             </button>
                         </span>
@@ -148,7 +151,6 @@
         </form>
     </div>
 </template>
-
 <script>
     import lesspass from 'lesspass'
     import Clipboard from 'clipboard';
