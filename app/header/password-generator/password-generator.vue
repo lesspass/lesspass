@@ -2,10 +2,6 @@
     #password-generator .c-input {
         color: inherit;
     }
-
-    #password-generator .btn-reverse {
-        background-color: #373a3c;
-    }
 </style>
 <template>
     <div id="password-generator">
@@ -80,7 +76,7 @@
                     <div id="advancedOptions" class="panel-collapse collapse m-t-1" role="tabpanel"
                          aria-labelledby="advancedOptions">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-5">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="lowercase" value="lowercase"
                                            v-model="passwordInfo.settings" checked>
@@ -88,7 +84,7 @@
                                     {{ $t('passwordgenerator.lowercase_options') }}
                                 </label>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-7">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="uppercase" value="uppercase"
                                            v-model="passwordInfo.settings" checked>
@@ -98,7 +94,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-5">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="numbers" value="numbers"
                                            v-model="passwordInfo.settings"
@@ -107,7 +103,7 @@
                                     {{ $t('passwordgenerator.numbers_options') }}
                                 </label>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-7">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="symbols" value="symbols"
                                            v-model="passwordInfo.settings"

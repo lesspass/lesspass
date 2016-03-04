@@ -15,34 +15,25 @@
                     </p>
                 </div>
             </div>
-
-            <div class="row p-y-3">
+            <div class="row p-t-1 p-b-3">
                 <div class="col-lg-4 m-b-2">
                     <img src="./lesspass.gif" alt="open source" class="img-fluid">
                 </div>
-                <div class="col-lg-7 col-lg-offset-1">
+                <div class="col-lg-7">
                     <div class="media m-b-3">
                         <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p class="lead">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                            commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-                            condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                            <h4 class="media-heading">{{ $t('how_it_works.no_sync') }}</h4>
+                            <p class="lead">
+                                {{ $t('how_it_works.no_sync_detail') }}
+                            </p>
                         </div>
                     </div>
                     <div class="media m-b-3">
                         <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p class="lead">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                            commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-                            condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        </div>
-                    </div>
-                    <div class="media m-b-3">
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p class="lead">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                            commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-                            condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                            <h4 class="media-heading">{{ $t('how_it_works.derivation') }}</h4>
+                            <p class="lead">
+                                {{ $t('how_it_works.derivation_detail') }}
+                            </p>
                         </div>
                     </div>
                 </div>
