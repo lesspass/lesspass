@@ -1,6 +1,6 @@
 <style>
     #how-it-works {
-        background-color: #F8F8F8;;
+        background-color: #F8F8F8;
         color: #7f7f7f;
     }
 </style>

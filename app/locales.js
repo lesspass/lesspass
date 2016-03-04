@@ -61,8 +61,8 @@ const locales = {
             "free": "LessPass is free and always will be."
         },
         "how_it_works": {
-            "title": "",
-            "subtitle": ""
+            "title": "How LessPass works ?",
+            "subtitle": "LessPass is a password generator that guarantees you to generate the same password on the basis of unique information you provide. You can use LessPass to create passwords for various internet services (social networks , email, server passwords , ...)."
         },
         "feedback": {
             "feedback_1": "Finally a security tool that I did not need to trust.",
@@ -75,7 +75,7 @@ const locales = {
         "lang": "fr",
         "headlines": {
             "title": "Générateur de mot de passe open source",
-            "subtitle": "construit un mot de passe unique lorsque vous en avez besoin sur la base d'informations uniques que vous lui fournissez."
+            "subtitle": "construit un mot de passe unique lorsque vous en avez besoin sur la base d'informations uniques que vous lui fournissez. Plus besoin de synchronisation entre appareils."
         },
         "footer": {
             "built_by": "créé par",
@@ -131,7 +131,7 @@ const locales = {
             "free": "LessPass est gratuit et le sera toujours."
         },
         "how_it_works": {
-            "title": "Comment LessPass fonctionne ?",
+            "title": "Comment fonctionne LessPass ?",
             "subtitle": "LessPass est un générateur de mot de passe qui vous garanti générer le même mot de passe sur la base d'informations uniques que vous lui fournissez. Vous pouvez donc utiliser LessPass pour créer des mots de passe pour vos différents services internet (Réseaux sociaux, mails, mots de passe serveurs, ...)."
         },
         "feedback": {

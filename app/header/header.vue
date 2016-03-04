@@ -35,8 +35,7 @@
                         <b>LessPass</b> {{ $t('headlines.subtitle') }}
                     </p>
                 </div>
-
-                <div class="col-md-6">
+                <div class="col-md-6 col-lg-5 col-lg-offset-1">
                     <password-generator></password-generator>
                 </div>
             </div>

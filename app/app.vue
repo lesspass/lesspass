@@ -6,7 +6,7 @@
         <!--<lesspass-headlines></lesspass-headlines>-->
         <lesspass-howitworks></lesspass-howitworks>
         <lesspass-feedback></lesspass-feedback>
-        <!--<lesspass-faq></lesspass-faq>-->
+        <lesspass-image></lesspass-image>
         <lesspass-footer></lesspass-footer>
     </div>
 </template>
@@ -16,6 +16,7 @@
     import LesspassFeatures from './features/features.vue';
     import LesspassHowitworks from './howitworks/howitworks.vue';
     import LesspassFeedback from './feedback/feedback.vue';
+    import LesspassImage from './image-separator/image-separator.vue';
     import LesspassFooter from './footer/footer.vue';
 
     export default {
@@ -28,6 +29,7 @@
             LesspassFeatures,
             LesspassHowitworks,
             LesspassFeedback,
+            LesspassImage,
             LesspassFooter
         }
     }
