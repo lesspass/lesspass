@@ -9,8 +9,8 @@ const locales = {
             "subtitle": "generate an unique password based on the information you provide"
         },
         "footer": {
-            "built_by": "by",
-            "source_code": "Source code"
+            "built_by": "built by",
+            "contribute": "contribute"
         },
         "passwordgenerator": {
             "who_are_you": "Email / Username",
@@ -50,7 +50,7 @@ const locales = {
             "a_pricing_free": "LessPass is free and always will be.",
             "a_pricing_enterprise": "LessPass Enterprise will add support for <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> and double-authentication for companies."
         },
-        "how_it_works": {
+        "features": {
             "no_cloud_title": "No storage",
             "responsive_title": "Available everywhere",
             "open_source_title": "Open Source",
@@ -60,13 +60,15 @@ const locales = {
             "open_source": "LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a href='https://github.com/lesspass/core'>Github</a>.",
             "free": "LessPass is free and always will be."
         },
+        "how_it_works": {
+            "title": "",
+            "subtitle": ""
+        },
         "feedback": {
             "feedback_1": "Finally a security tool that I did not need to trust.",
             "feedback_1_author": "Édouard Lopez, LessPass Team Member",
             "feedback_2": "I no longer need a personal cloud to manage my passwords.<br>One secret and I have access to my passwords everywhere.",
-            "feedback_2_author": "Guillaume Vincent, LessPass Founder",
-            "what_do_you_think": "Tell us what you think of LessPass.",
-            "send_us_email": "Send us an email"
+            "feedback_2_author": "Guillaume Vincent, LessPass Founder"
         }
     },
     "fr": {
@@ -76,8 +78,8 @@ const locales = {
             "subtitle": "construit un mot de passe unique lorsque vous en avez besoin sur la base d'informations uniques que vous lui fournissez."
         },
         "footer": {
-            "built_by": "Réalisé par",
-            "source_code": "Code source"
+            "built_by": "créé par",
+            "contribute": "contribuer"
         },
         "passwordgenerator": {
             "who_are_you": "Email / Nom d'utilisateur",
@@ -118,7 +120,7 @@ const locales = {
             "a_pricing_free": "LessPass est gratuit et le sera toujours.",
             "a_pricing_enterprise": "LessPass Enterprise, avec le support <abbr title='Lightweight Directory Access Protocol'>LDAP</abbr> et la double authentication, sera payante pour les enterprises."
         },
-        "how_it_works": {
+        "features": {
             "no_cloud_title": "Pas de stockage",
             "responsive_title": "Disponible partout",
             "open_source_title": "Open Source",
@@ -128,13 +130,15 @@ const locales = {
             "open_source": "LessPass est open source. Le code source est disponible sur <a href='https://github.com/lesspass/core'>Github</a>, vous pouvez l'auditer",
             "free": "LessPass est gratuit et le sera toujours."
         },
+        "how_it_works": {
+            "title": "Comment LessPass fonctionne ?",
+            "subtitle": "LessPass est un générateur de mot de passe qui vous garanti générer le même mot de passe sur la base d'informations uniques que vous lui fournissez. Vous pouvez donc utiliser LessPass pour créer des mots de passe pour vos différents services internet (Réseaux sociaux, mails, mots de passe serveurs, ...)."
+        },
         "feedback": {
             "feedback_1": "Enfin un outil de sécurité a qui je n'ai pas besoin de faire confiance.",
-            "feedback_1_author": "Édouard Lopez, membre de l'équipe de LessPass",
-            "feedback_2": "Je n'ai plus besoin d'un cloud personnel pour gérer mes mots de passe. Une seule phrase secrete et j'ai accès à mes mots de passe partout.",
-            "feedback_2_author": "Guillaume Vincent, créateur de LessPass",
-            "what_do_you_think": "dites-nous ce que vous pensez de LessPass.",
-            "send_us_email": "Envoyez-nous un email"
+            "feedback_1_author": "Édouard Lopez,<br> membre de l'équipe de LessPass",
+            "feedback_2": "Je n'ai plus besoin d'un cloud personnel pour gérer mes mots de passe.<br> Une seule phrase secrete et j'ai accès à mes mots de passe partout.",
+            "feedback_2_author": "Guillaume Vincent,<br> créateur de LessPass"
         }
     }
 };

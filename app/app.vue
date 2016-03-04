@@ -1,24 +1,22 @@
 <template>
-    <div>
+    <div id="app">
         <lesspass-navbar></lesspass-navbar>
         <lesspass-header></lesspass-header>
         <lesspass-features></lesspass-features>
         <!--<lesspass-headlines></lesspass-headlines>-->
-        <!--<lesspass-how-it-works></lesspass-how-it-works>-->
-        <!--<lesspass-feedback></lesspass-feedback>-->
+        <lesspass-howitworks></lesspass-howitworks>
+        <lesspass-feedback></lesspass-feedback>
         <!--<lesspass-faq></lesspass-faq>-->
-        <!--<lesspass-footer></lesspass-footer>-->
+        <lesspass-footer></lesspass-footer>
     </div>
 </template>
 <script>
     import LesspassNavbar from './navbar/navbar.vue';
     import LesspassHeader from './header/header.vue';
     import LesspassFeatures from './features/features.vue';
-//    import LesspassHeadlines from './components/headlines.vue';
-//    import LesspassFeedback from './components/feedback.vue';
-//    import LesspassHowItWorks from './components/howitworks.vue';
-//    import LesspassFaq from './components/faq.vue';
-//    import LesspassFooter from './components/footer.vue';
+    import LesspassHowitworks from './howitworks/howitworks.vue';
+    import LesspassFeedback from './feedback/feedback.vue';
+    import LesspassFooter from './footer/footer.vue';
 
     export default {
         data: function () {
@@ -27,7 +25,10 @@
         components: {
             LesspassNavbar,
             LesspassHeader,
-            LesspassFeatures
+            LesspassFeatures,
+            LesspassHowitworks,
+            LesspassFeedback,
+            LesspassFooter
         }
     }
 </script>

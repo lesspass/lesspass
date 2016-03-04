@@ -20,8 +20,8 @@
                             <img src="./responsive.png" alt="" class="img-fluid">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('how_it_works.responsive_title') }}}</h4>
-                            {{{ $t('how_it_works.responsive') }}}
+                            <h4 class="media-heading">{{{ $t('features.responsive_title') }}}</h4>
+                            <p class="lead">{{{ $t('features.responsive') }}}</p>
                         </div>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
                             <img src="./no-cloud.png" alt="" class="img-fluid">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('how_it_works.no_cloud_title') }}}</h4>
-                            {{{ $t('how_it_works.no_cloud') }}}
+                            <h4 class="media-heading">{{{ $t('features.no_cloud_title') }}}</h4>
+                            <p class="lead">{{{ $t('features.no_cloud') }}}</p>
                         </div>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
                             <img src="./open-source.png" alt="" class="img-fluid">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('how_it_works.open_source_title') }}}</h4>
-                            {{{ $t('how_it_works.open_source') }}}
+                            <h4 class="media-heading">{{{ $t('features.open_source_title') }}}</h4>
+                            <p class="lead">{{{ $t('features.open_source') }}}</p>
                         </div>
                     </div>
                 </div>
@@ -57,8 +57,8 @@
                             <img src="./free.png" alt="" class="img-fluid">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('how_it_works.free_title') }}}</h4>
-                            {{{ $t('how_it_works.free') }}}
+                            <h4 class="media-heading">{{{ $t('features.free_title') }}}</h4>
+                            <p class="lead">{{{ $t('features.free') }}}</p>
                         </div>
                     </div>
                 </div>
