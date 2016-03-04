@@ -1,8 +1,8 @@
-<style>
-    #password-generator .c-input {
-        color: inherit;
-    }
-</style>
+<!--<style>-->
+    <!--#password-generator .c-input {-->
+        <!--color: inherit;-->
+    <!--}-->
+<!--</style>-->
 <template>
     <div id="password-generator">
         <form>

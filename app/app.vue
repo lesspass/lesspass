@@ -1,7 +1,7 @@
 <template>
     <div>
         <lesspass-navbar></lesspass-navbar>
-        <!--<lesspass-header></lesspass-header>-->
+        <lesspass-header></lesspass-header>
         <!--<lesspass-headlines></lesspass-headlines>-->
         <!--<lesspass-how-it-works></lesspass-how-it-works>-->
         <!--<lesspass-feedback></lesspass-feedback>-->
@@ -10,7 +10,8 @@
     </div>
 </template>
 <script>
-    import LesspassNavbar from './header/header.vue';
+    import LesspassNavbar from './navbar/navbar.vue';
+    import LesspassHeader from './header/header.vue';
     import LesspassHeadlines from './components/headlines.vue';
     import LesspassFeedback from './components/feedback.vue';
     import LesspassHowItWorks from './components/howitworks.vue';
@@ -23,6 +24,7 @@
         },
         components: {
             LesspassNavbar,
+            LesspassHeader,
             LesspassHeadlines,
             LesspassFeedback,
             LesspassHowItWorks,

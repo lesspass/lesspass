@@ -8,63 +8,36 @@
         color: inherit;
     }
 
-    .header__logo {
-        height: 32px;
-    }
-
-    .header__title {
+    #header #header__title {
         text-transform: uppercase;
-        font-weight: 700;
-        font-size: 2rem;
-        margin-top: .65rem;
-    }
-    .header__subtitle{
-        font-size: 1.1rem;
-    }
-
-    .header__navbar .navbar {
-        padding: 1em 0;
+        font-size: 2.1rem;
+        padding-top: .70rem;
     }
 
     @media (min-width: 480px) {
-        .header__headlines {
-            margin-top: 10vh;
-            margin-bottom: 20vh;
+        #header .header__headlines {
+            padding-top: 15vh;
+            padding-bottom: 15vh;
         }
 
-        .header__title {
+        #header #header__title {
             font-size: 2.5rem;
         }
     }
 </style>
 <template>
     <div id="header">
-        <div class="header__navbar">
-            <div class="container">
-                <nav class="navbar">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <a class="" href="#">
-                                <img class="header__logo" src="./logo-white.png" alt="logo">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="header__hero">
-            <div class="container">
-                <div class="row header__headlines">
-                    <div class="col-md-6">
-                        <h1 class="header__title">{{{ $t('headlines.title') }}}</h1>
-                        <p class="header__subtitle hidden-xs-down">
-                            <b>LessPass</b> {{ $t('headlines.subtitle') }}
-                        </p>
-                    </div>
+        <div class="container">
+            <div class="row header__headlines">
+                <div class="col-md-6">
+                    <h1 id="header__title">{{{ $t('headlines.title') }}}</h1>
+                    <p class="lead hidden-xs-down">
+                        <b>LessPass</b> {{ $t('headlines.subtitle') }}
+                    </p>
+                </div>
 
-                    <div class="col-md-6">
-                        <password-generator></password-generator>
-                    </div>
+                <div class="col-md-6">
+                    <password-generator></password-generator>
                 </div>
             </div>
         </div>
