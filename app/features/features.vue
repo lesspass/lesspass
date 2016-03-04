@@ -1,12 +1,17 @@
 <style>
     #features {
         background-color: #384d55;
-        color: white;
+        color: #ffffff;
         padding-top: 3em;
         padding-bottom: 3em;
     }
 
-    #features .features__img_block{
+    #features a {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    #features .features__img_block {
         max-width: 140px;
     }
 </style>

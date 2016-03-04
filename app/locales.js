@@ -31,10 +31,10 @@ const locales = {
             "responsive_title": "Available everywhere",
             "open_source_title": "Open Source",
             "free_title": "Free",
-            "no_cloud": "LessPass regenerates your passwords when you need them. No cloud storage is required.",
-            "responsive": "LessPass is a web application and works on all devices (computer, smartphone, tablet and your smartTV).",
-            "open_source": "LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a href='https://github.com/lesspass/core'>Github</a>.",
-            "free": "LessPass is free and always will be."
+            "no_cloud": "LessPass regenerates your passwords when you need them. No cloud storage is required",
+            "responsive": "LessPass is a web application and works on all devices (computer, smartphone, tablet and your smartTV)",
+            "open_source": "LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a href='https://github.com/lesspass/core'>Github</a>",
+            "free": "LessPass is free and always will be"
         },
         "how_it_works": {
             "title": "How LessPass works ?",
@@ -80,10 +80,10 @@ const locales = {
             "responsive_title": "Disponible partout",
             "open_source_title": "Open Source",
             "free_title": "Gratuit",
-            "no_cloud": "LessPass régénère vos mots de passe à chaque fois que vous en avez besoin. Aucun stockage sur le cloud n'est nécessaire.",
-            "responsive": "LessPass est une application web et fonctionne sur tous les appareils (ordinateur, smartphone, tablette et smartTV).",
+            "no_cloud": "LessPass régénère vos mots de passe à chaque fois que vous en avez besoin.<br>Aucun stockage sur le cloud n'est nécessaire",
+            "responsive": "LessPass est une application web qui fonctionne sur tous les appareils : <br>ordinateur, smartphone, tablette et smartTV",
             "open_source": "LessPass est open source. Le code source est disponible sur <a href='https://github.com/lesspass/core'>Github</a>, vous pouvez l'auditer",
-            "free": "LessPass est gratuit et le sera toujours."
+            "free": "LessPass est gratuit et le sera toujours"
         },
         "how_it_works": {
             "title": "Comment fonctionne LessPass ?",

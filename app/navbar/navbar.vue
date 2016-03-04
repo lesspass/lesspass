@@ -1,7 +1,7 @@
 <style>
     #navbar {
-        background-color: rgba(52, 126, 185, 1);
-        color: white;
+        background-color: #006699;
+        color: #ffffff;
         margin: 0;
     }
 

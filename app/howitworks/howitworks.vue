@@ -1,14 +1,14 @@
 <style>
     #how-it-works {
         background-color: #F8F8F8;
-        color: #7f7f7f;
+        color: #7f7f7f;;
     }
 </style>
 <template>
     <div id="how-it-works">
         <div class="container">
             <div class="row p-t-3">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <h3>{{ $t('how_it_works.title') }}</h3>
                     <p class="lead">
                         {{ $t('how_it_works.subtitle') }}
