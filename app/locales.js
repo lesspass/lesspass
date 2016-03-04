@@ -15,7 +15,7 @@ const locales = {
         "passwordgenerator": {
             "who_are_you": "Who are you ?",
             "what_is_your_secret": "What is your secret ?",
-            "where_are_you_going": "where are you going ?",
+            "where_are_you_going": "Where are you going ?",
             "copy": "Copy",
             "advanced_options": "Advanced options",
             "lowercase_options": "lowercase (a-z)",

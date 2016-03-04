@@ -1,10 +1,13 @@
+<style>
+    #password-generator .c-input {
+        color: inherit;
+    }
+</style>
 <template>
-    <div id="password-generator" class="container p-y-3">
-        <div class="row">
-            <div class="col-lg-12">
-                            <form>
+    <div id="password-generator">
+        <form>
             <div class="form-group row">
-                <div class="col-lg-3 m-t-1">
+                <div class="col-lg-6 m-t-1">
                     <label for="pg-email" class="sr-only">
                         {{ $t('passwordgenerator.who_are_you') }}
                     </label>
@@ -16,7 +19,7 @@
                            v-model="email"
                            v-on:blur="updateMasterPassword">
                 </div>
-                <div class="col-lg-3 m-t-1">
+                <div class="col-lg-6 m-t-1">
                     <label for="pg-masterpassword" class="sr-only">
                         {{ $t('passwordgenerator.what_is_your_secret') }}
                     </label>
@@ -32,7 +35,9 @@
                         </span>
                     </div>
                 </div>
-                <div class="col-lg-3 m-t-1">
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
                     <label for="pg-site" class="sr-only">
                         {{ $t('passwordgenerator.where_are_you_going') }}
                     </label>
@@ -42,15 +47,19 @@
                            placeholder="{{ $t('passwordgenerator.where_are_you_going') }}"
                            v-model="site">
                 </div>
-                <div class="col-lg-3 m-t-1">
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
                     <label for="generatedPassword" class="sr-only">
                         {{ $t('passwordgenerator.generated_password') }}
                     </label>
                     <div class="input-group">
-                        <input type="text" id="generatedPassword" class="form-control" v-model="generatedPassword">
+                        <input type="text" id="generatedPassword" class="form-control hint--bottom"
+                               v-model="generatedPassword"
+                               v-bind:disabled="!generatedPassword">
                         <span class="input-group-btn">
                             <button id="copyBtn" data-clipboard-target="#generatedPassword"
-                                    class="btn btn-primary" type="button">
+                                    class="btn btn-secondary" type="button">
                                 {{ $t('passwordgenerator.copy') }}
                             </button>
                         </span>
@@ -61,13 +70,13 @@
                 <div class="col-lg-12">
                     <a data-toggle="collapse" data-parent="#accordion" href="#advancedOptions"
                        aria-expanded="true" aria-controls="advancedOptions">
-                        {{ $t('passwordgenerator.advanced_options') }}
+                        <i class="fa fa-cog"></i> {{ $t('passwordgenerator.advanced_options') }}
                     </a>
 
                     <div id="advancedOptions" class="panel-collapse collapse m-t-1" role="tabpanel"
                          aria-labelledby="advancedOptions">
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="lowercase" value="lowercase"
                                            v-model="passwordInfo.settings" checked>
@@ -75,7 +84,7 @@
                                     {{ $t('passwordgenerator.lowercase_options') }}
                                 </label>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="uppercase" value="uppercase"
                                            v-model="passwordInfo.settings" checked>
@@ -83,7 +92,9 @@
                                     {{ $t('passwordgenerator.uppercase_options') }}
                                 </label>
                             </div>
-                            <div class="col-lg-3">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="numbers" value="numbers"
                                            v-model="passwordInfo.settings"
@@ -92,7 +103,7 @@
                                     {{ $t('passwordgenerator.numbers_options') }}
                                 </label>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <label class="c-input c-checkbox">
                                     <input type="checkbox" id="symbols" value="symbols"
                                            v-model="passwordInfo.settings"
@@ -103,7 +114,7 @@
                             </div>
                         </div>
                         <div class="row m-t-1">
-                            <div class="col-lg-2 col-md-3 m-b-1">
+                            <div class="col-lg-4 m-b-1">
                                 <label for="passwordLength" class="sr-only">
                                     {{ $t('passwordgenerator.length') }}
                                 </label>
@@ -116,7 +127,7 @@
                                            value="12" min="6" max="64">
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-3">
+                            <div class="col-lg-4 m-b-1">
                                 <label for="passwordCounter" class="sr-only">
                                     {{ $t('passwordgenerator.counter') }}
                                 </label>
@@ -125,7 +136,8 @@
                                         {{ $t('passwordgenerator.counter') }}
                                     </span>
                                     <input type="number" class="form-control" id="passwordCounter"
-                                           aria-describedby="passwordCounterAddon" v-model="passwordInfo.counter"
+                                           aria-describedby="passwordCounterAddon"
+                                           v-model="passwordInfo.counter"
                                            value="1" min="1" max="100">
                                 </div>
                             </div>
@@ -134,8 +146,6 @@
                 </div>
             </div>
         </form>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -195,6 +205,7 @@
     var cb = new Clipboard('#copyBtn');
     cb.on('success', function (e) {
         e.clearSelection();
+
     });
 
     cb.on('error', function (e) {
