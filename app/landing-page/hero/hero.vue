@@ -1,36 +1,36 @@
 <style>
-    #header {
+    #hero {
         background-color: #f7f7f7;
         color: #323232;
     }
 
-    #header a {
+    #hero a {
         color: inherit;
     }
 
-    #header #header__title {
+    #hero #hero__title {
         text-transform: uppercase;
         font-size: 2.1rem;
         padding-top: .70rem;
     }
 
     @media (min-width: 480px) {
-        #header .header__headlines {
+        #hero .hero__headlines {
             padding-top: 12vh;
             padding-bottom: 17vh;
         }
 
-        #header #header__title {
+        #hero #hero__title {
             font-size: 2.5rem;
         }
     }
 </style>
 <template>
-    <div id="header">
+    <div id="hero">
         <div class="container">
-            <div class="row header__headlines">
+            <div class="row hero__headlines">
                 <div class="col-md-6">
-                    <h1 id="header__title">{{{ $t('headlines.title') }}}</h1>
+                    <h1 id="hero__title">{{{ $t('headlines.title') }}}</h1>
                     <p class="lead hidden-xs-down">
                         <b>LessPass</b> {{ $t('headlines.subtitle') }}
                     </p>

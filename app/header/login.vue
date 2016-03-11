@@ -8,6 +8,7 @@
     #login-bar .nav-link {
         padding-left: 1em;
         padding-right: 1em;
+        color: inherit;
     }
 
     #login-bar .nav-link {

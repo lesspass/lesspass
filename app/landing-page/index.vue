@@ -9,7 +9,7 @@
     </div>
 </template>
 <script>
-    import LesspassHeader from './header/header.vue';
+    import LesspassHeader from './hero/hero.vue';
     import LesspassFeatures from './features/features.vue';
     import LesspassHowitworks from './howitworks/howitworks.vue';
     import LesspassFeedback from './feedback/feedback.vue';
