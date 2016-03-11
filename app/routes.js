@@ -3,7 +3,9 @@ import Router from 'vue-router';
 
 import App from './app.vue';
 import LandingPage from './landing-page/index.vue';
-import LessPass from './lesspass/index.vue';
+import LessPassConnected from './lesspass/index.vue';
+import LoginPage from './lesspass/login.vue';
+import RegisterPage from './lesspass/register.vue';
 
 Vue.use(Router);
 
@@ -12,10 +14,16 @@ var router = new Router();
 router.map({
     '/': {
         auth: true,
-        component: LessPass
+        component: LessPassConnected
     },
     '/presentation/': {
         component: LandingPage
+    },
+    '/login/': {
+        component: LoginPage
+    },
+    '/register/': {
+        component: RegisterPage
     }
 });
 

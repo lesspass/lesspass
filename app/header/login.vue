@@ -19,10 +19,10 @@
     <div id="login-bar">
         <div class="container">
             <nav class="nav nav-inline pull-right">
-                <a class="nav-link" href="#">
+                <a class="nav-link" v-link="{ path: '/login/' }">
                     <i class="fa fa-lock"></i> {{ $t('login.login') }}
                 </a>
-                <a class="nav-link bg-primary" href="#">
+                <a class="nav-link bg-primary" v-link="{ path: '/register/' }">
                     <i class="fa fa-user-plus"></i> {{ $t('login.register') }}
                 </a>
             </nav>
