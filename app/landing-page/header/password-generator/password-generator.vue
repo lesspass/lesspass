@@ -59,7 +59,7 @@
                                v-bind:disabled="!generatedPassword">
                         <span class="input-group-btn">
                             <button id="copyBtn" data-clipboard-target="#generatedPassword"
-                                    class="btn btn-warning" type="button">
+                                    class="btn btn-primary" type="button">
                                 {{ $t('passwordgenerator.copy') }}
                             </button>
                         </span>

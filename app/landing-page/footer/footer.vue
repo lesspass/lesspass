@@ -14,10 +14,9 @@
             </div>
             <div class="row p-y-3">
                 <div class="col-lg-12">
-                    <p class="lead">
+                    <p>
                         &copy; LessPass
-                        - {{ $t('footer.built_by') }} <a href="mailto:guillaume@oslab.fr">Guillaume Vincent</a>
-                        - <a href="https://github.com/lesspass">{{ $t('footer.contribute') }}</a>
+                        - {{ $t('footer.created_by') }} <a href="mailto:guillaume@oslab.fr">Guillaume Vincent</a>
                     </p>
                 </div>
             </div>

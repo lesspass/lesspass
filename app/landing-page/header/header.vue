@@ -1,7 +1,7 @@
 <style>
     #header {
-        background-color: #006699;
-        color: #ffffff;
+        background-color: #f7f7f7;
+        color: #323232;
     }
 
     #header a {

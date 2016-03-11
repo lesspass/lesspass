@@ -9,15 +9,6 @@ Vue.use(Router);
 
 var router = new Router();
 
-
-var Foo = Vue.extend({
-    template: '<p>This is foo!</p>'
-});
-
-var Bar = Vue.extend({
-    template: '<p>This is bar!</p>'
-});
-
 router.map({
     '/': {
         auth: true,

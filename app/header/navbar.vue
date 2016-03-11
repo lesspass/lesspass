@@ -1,8 +1,8 @@
 <style>
     #navbar {
-        background-color: #006699;
-        color: #ffffff;
-        margin: 0;
+        background-color: #f7f7f7;
+        color: #666666;
+        padding-top: 1em;
     }
 
     #navbar #navbar__logo {
@@ -20,7 +20,7 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
                         <a href="https://lesspass.com/">
-                            <img id="navbar__logo" src="./logo-white.png" alt="logo">
+                            <img id="navbar__logo" src="./logo.png" alt="logo">
                         </a>
                     </li>
                 </ul>

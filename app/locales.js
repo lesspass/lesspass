@@ -9,8 +9,7 @@ const locales = {
             "subtitle": "generate an unique password based on the information you provide"
         },
         "footer": {
-            "built_by": "built by",
-            "contribute": "contribute"
+            "created_by": "created by"
         },
         "passwordgenerator": {
             "who_are_you": "Email / Username",
@@ -39,8 +38,8 @@ const locales = {
         "how_it_works": {
             "title": "How LessPass works ?",
             "subtitle": "LessPass is a password generator that guarantees you to generate the same password on the basis of unique information you provide. You can use LessPass to create passwords for various internet services (social networks , email, server passwords , ...).",
-            "no_sync": "No need to sync",
-            "no_sync_detail": "LessPass is open source solution, that don’t need any cloud storage. It’s a webapp, with some Javascript, that derive your password in a secure way.",
+            "no_sync": "No storage",
+            "no_sync_detail": "LessPass don’t need any cloud storage. It’s a webapp, with some Javascript, that derive your password in a secure way.",
             "derivation": "Math and Crypto",
             "derivation_detail": "LessPass use different key derivation functions to transform your personal information into an unique password. These transformations are robust against brute force attacks."
         },
@@ -49,6 +48,10 @@ const locales = {
             "feedback_1_author": "Édouard Lopez, LessPass Team Member",
             "feedback_2": "I no longer need a personal cloud to manage my passwords.<br>One secret and I have access to my passwords everywhere.",
             "feedback_2_author": "Guillaume Vincent, LessPass Founder"
+        },
+        "login": {
+            "login": "Login",
+            "register": "Register"
         }
     },
     "fr": {
@@ -58,8 +61,7 @@ const locales = {
             "subtitle": "construit un mot de passe unique lorsque vous en avez besoin sur la base d'informations uniques que vous lui fournissez. Plus besoin de synchronisation entre appareils."
         },
         "footer": {
-            "built_by": "créé par",
-            "contribute": "contribuer"
+            "created_by": "créé par"
         },
         "passwordgenerator": {
             "who_are_you": "Email / Nom d'utilisateur",
@@ -98,6 +100,10 @@ const locales = {
             "feedback_1_author": "Édouard Lopez,<br> membre de l'équipe de LessPass",
             "feedback_2": "Je n'ai plus besoin d'un cloud personnel pour gérer mes mots de passe.<br> Une seule phrase secrete et j'ai accès à mes mots de passe partout.",
             "feedback_2_author": "Guillaume Vincent,<br> créateur de LessPass"
+        },
+        "login": {
+            "login": "Connexion",
+            "register": "Inscription"
         }
     }
 };
