@@ -1,3 +1,8 @@
+<style>
+    #login{
+        padding-top: 2rem;
+    }
+</style>
 <template>
     <div id="login">
         <div class="container">
@@ -5,19 +10,19 @@
                 <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
                     <form>
                         <fieldset class="form-group">
-                            <label class="sr-only" for="email">{{$t('header.Email')}}</label>
+                            <label class="sr-only" for="email">{{$t('login.Email')}}</label>
                             <input type="email" class="form-control form-control-sm" id="email"
-                                   placeholder="{{$t('header.Email')}}"
+                                   placeholder="{{$t('login.Email')}}"
                                    v-model="credentials.email">
                         </fieldset>
                         <fieldset class="form-group">
-                            <label class="sr-only" for="password">{{$t('header.Password')}}</label>
+                            <label class="sr-only" for="password">{{$t('login.Password')}}</label>
                             <input type="password" class="form-control form-control-sm" id="password"
-                                   placeholder="{{$t('header.Password')}}"
+                                   placeholder="{{$t('login.Password')}}"
                                    v-model="credentials.password">
                         </fieldset>
                         <button type="submit" class="btn btn-primary btn-sm btn-block" @click="signin()">
-                            {{$t('header.Sign_in')}}
+                            {{$t('login.Sign_in')}}
                         </button>
                     </form>
                 </div>

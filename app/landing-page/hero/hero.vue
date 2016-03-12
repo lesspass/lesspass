@@ -43,7 +43,7 @@
     </div>
 </template>
 <script>
-    import PasswordGenerator from './password-generator/password-generator.vue';
+    import PasswordGenerator from '../password-generator/password-generator.vue';
 
     export default {
         data: function () {

@@ -1,6 +1,7 @@
 <template>
     <div id="app">
-        <lesspass-header></lesspass-header>
+        <lesspass-navbar></lesspass-navbar>
+        <lesspass-hero></lesspass-hero>
         <lesspass-features></lesspass-features>
         <lesspass-howitworks></lesspass-howitworks>
         <lesspass-feedback></lesspass-feedback>
@@ -9,7 +10,8 @@
     </div>
 </template>
 <script>
-    import LesspassHeader from './hero/hero.vue';
+    import LesspassNavbar from './navbar/navbar.vue';
+    import LesspassHero from './hero/hero.vue';
     import LesspassFeatures from './features/features.vue';
     import LesspassHowitworks from './howitworks/howitworks.vue';
     import LesspassFeedback from './feedback/feedback.vue';
@@ -21,7 +23,8 @@
             return {}
         },
         components: {
-            LesspassHeader,
+            LesspassNavbar,
+            LesspassHero,
             LesspassFeatures,
             LesspassHowitworks,
             LesspassFeedback,

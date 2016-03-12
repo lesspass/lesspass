@@ -1,7 +1,11 @@
 <style>
-    body{
+    body {
         background-color: #f7f7f7;
         color: #1a1a1a;
+    }
+
+    .form-control, .btn, .input-group-addon {
+        border-radius: 0 !important;
     }
 </style>
 <template>
