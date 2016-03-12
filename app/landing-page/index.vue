@@ -3,9 +3,8 @@
         <lesspass-navbar></lesspass-navbar>
         <lesspass-hero></lesspass-hero>
         <lesspass-features></lesspass-features>
+        <lesspass-testimonials></lesspass-testimonials>
         <lesspass-howitworks></lesspass-howitworks>
-        <lesspass-feedback></lesspass-feedback>
-        <lesspass-image></lesspass-image>
         <lesspass-footer></lesspass-footer>
     </div>
 </template>
@@ -14,8 +13,7 @@
     import LesspassHero from './hero/hero.vue';
     import LesspassFeatures from './features/features.vue';
     import LesspassHowitworks from './howitworks/howitworks.vue';
-    import LesspassFeedback from './feedback/feedback.vue';
-    import LesspassImage from './image-separator/image-separator.vue';
+    import LesspassTestimonials from './testimonials/testimonials.vue';
     import LesspassFooter from './footer/footer.vue';
 
     export default {
@@ -27,8 +25,7 @@
             LesspassHero,
             LesspassFeatures,
             LesspassHowitworks,
-            LesspassFeedback,
-            LesspassImage,
+            LesspassTestimonials,
             LesspassFooter
         }
     }

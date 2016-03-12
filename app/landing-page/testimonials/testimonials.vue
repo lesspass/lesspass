@@ -1,16 +1,16 @@
 <style>
-    .lesspass-feedback {
-        background-color: #134a6a;
-        color: #D3D8E8;
+    #testimonials {
+        background-color: #202020;
+        color: #f2f2f2;
     }
 
-    .lesspass-feedback .thumbnail {
+    #testimonials .thumbnail {
         width: 42px;
     }
 </style>
 <template>
-    <div class="lesspass-feedback p-y-3">
-        <div class="container">
+    <div id="testimonials">
+        <div class="container p-y-3">
             <div class="row m-y-3">
                 <div class="col-lg-10 col-lg-offset-1">
                     <div class="media">
@@ -18,7 +18,7 @@
                             <img src="./el.jpg" alt="Edouard Lopez" class="img-circle thumbnail">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('feedback.feedback_1') }}}</h4>
+                            <h5 class="media-heading">{{{ $t('feedback.feedback_1') }}}</h5>
                             <p>{{{ $t('feedback.feedback_1_author') }}}</p>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                 <div class="col-lg-10 col-lg-offset-1">
                     <div class="media">
                         <div class="media-body text-xs-right">
-                            <h4 class="media-heading">{{{ $t('feedback.feedback_2') }}}</h4>
+                            <h5 class="media-heading">{{{ $t('feedback.feedback_2') }}}</h5>
                             <p>{{{ $t('feedback.feedback_2_author') }}}</p>
                         </div>
                         <a class="media-right" href="#">

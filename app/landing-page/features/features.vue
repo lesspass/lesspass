@@ -1,69 +1,73 @@
 <style>
     #features {
-        background-color: #384d55;
-        color: #ffffff;
-        padding-top: 3em;
-        padding-bottom: 3em;
+        background-color: #025aa5;
+        color: #f2f2f2;
     }
 
     #features a {
-        color: #ffffff;
+        color: inherit;
         text-decoration: underline;
     }
 
-    #features .features__img_block {
-        max-width: 140px;
+    #features .container {
+        position: relative;
+
+        padding-top: 20vh;
+        padding-bottom: 20vh;
+    }
+
+    #features .features__card {
+
+        background-color: transparent;
+        border: none;
+        /*color: #1B2529;*/
+        border-radius: 0 !important;
+    }
+
+    #features .features__card img {
+        height: 120px;
+    }
+
+    @media (min-width: 768px) {
+
+        #features .features__card {
+            width: 25%
+        }
     }
 </style>
 <template>
     <div id="features">
         <div class="container">
-            <div class="row features__row">
-                <div class="col-md-6">
-                    <div class="media m-y-3">
-                        <a class="media-left media-middle text-xs-center features__img_block" href="#">
-                            <img src="./responsive.png" alt="" class="img-fluid">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('features.responsive_title') }}}</h4>
-                            <p class="lead">{{{ $t('features.responsive') }}}</p>
+            <div class="row text-xs-center">
+                <div class="card-deck-wrapper">
+                    <div class="card-deck">
+                        <div class="card features__card p-t-2">
+                            <img class="card-img-top" src="./responsive.png" alt="Card image cap">
+                            <div class="card-block">
+                                <h4 class="card-title">{{{ $t('features.responsive_title') }}}</h4>
+                                <p class="card-text">{{{ $t('features.responsive') }}}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="media m-y-3">
-                        <a class="media-left media-middle text-xs-center features__img_block" href="#">
-                            <img src="./no-cloud.png" alt="" class="img-fluid">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('features.no_cloud_title') }}}</h4>
-                            <p class="lead">{{{ $t('features.no_cloud') }}}</p>
+                        <div class="card features__card p-t-2">
+                            <img class="card-img-top" src="./no-cloud.png" alt="Card image cap">
+                            <div class="card-block">
+                                <h4 class="card-title">{{{ $t('features.no_cloud_title') }}}</h4>
+                                <p class="card-text">{{{ $t('features.no_cloud') }}}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row features__row">
-                <div class="col-md-6">
-                    <div class="media m-y-3">
-                        <a class="media-left media-middle text-xs-center features__img_block" href="#">
-                            <img src="./open-source.png" alt="" class="img-fluid">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('features.open_source_title') }}}</h4>
-                            <p class="lead">{{{ $t('features.open_source') }}}</p>
+                        <div class="card features__card p-t-2">
+                            <img class="card-img-top" src="./open-source.png" alt="Card image cap">
+                            <div class="card-block">
+                                <h4 class="card-title">{{{ $t('features.open_source_title') }}}</h4>
+                                <p class="card-text">{{{ $t('features.open_source') }}}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="media m-y-3">
-                        <a class="media-left media-middle text-xs-center features__img_block" href="#">
-                            <img src="./free.png" alt="" class="img-fluid">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{{ $t('features.free_title') }}}</h4>
-                            <p class="lead">{{{ $t('features.free') }}}</p>
+                        <div class="card features__card p-t-2">
+                            <img class="card-img-top" src="./free.png" alt="Card image cap">
+                            <div class="card-block">
+                                <h4 class="card-title">{{{ $t('features.free_title') }}}</h4>
+                                <p class="card-text">{{{ $t('features.free') }}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -5,8 +5,8 @@ const locales = {
     "en": {
         "lang": "en",
         "headlines": {
-            "title": "Open Source<br>Password Generator",
-            "subtitle": "generate an unique password based on the information you provide"
+            "title": "Open Source<br>Password Manager",
+            "subtitle": "replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ..."
         },
         "footer": {
             "created_by": "created by"
@@ -33,15 +33,17 @@ const locales = {
             "no_cloud": "LessPass regenerates your passwords when you need them. No cloud storage is required",
             "responsive": "LessPass is a web application and works on all devices (computer, smartphone, tablet and your smartTV)",
             "open_source": "LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a href='https://github.com/lesspass/core'>Github</a>",
-            "free": "LessPass is free and always will be"
+            "free": "LessPass is free<br>and always will be"
         },
         "how_it_works": {
             "title": "How LessPass works ?",
-            "subtitle": "LessPass is a password generator that guarantees you to generate the same password on the basis of unique information you provide. You can use LessPass to create passwords for various internet services (social networks , email, server passwords , ...).",
-            "no_sync": "No storage",
-            "no_sync_detail": "LessPass don’t need any cloud storage. It’s a webapp, with some Javascript, that derive your password in a secure way.",
+            "detail": "LessPass is a password manager that guarantees you to generate the same password on the basis of unique information you provide. You can use LessPass to create passwords for various internet services (social networks , email, server passwords , ...).",
+            "always_sync": "No synchronisation",
+            "always_sync_detail": "LessPass don’t need any cloud storage. It’s a webapp, with some Javascript, that derive your password in a secure way.",
             "derivation": "Math and Crypto",
-            "derivation_detail": "LessPass use different key derivation functions to transform your personal information into an unique password. These transformations are robust against brute force attacks."
+            "derivation_detail": "LessPass use different key derivation functions to transform your personal information into an unique password. These transformations are robust against brute force attacks.",
+            "self_hosting": "Self hosted ",
+            "self_hosting_detail": "LessPass can be hosted on your server :"
         },
         "feedback": {
             "feedback_1": "Finally a security tool that I did not need to trust.",
@@ -57,8 +59,8 @@ const locales = {
     "fr": {
         "lang": "fr",
         "headlines": {
-            "title": "Générateur de mot de passe open source",
-            "subtitle": "construit un mot de passe unique lorsque vous en avez besoin sur la base d'informations uniques que vous lui fournissez. Plus besoin de synchronisation entre appareils."
+            "title": "Gestionnaire de mot de passe open source",
+            "subtitle": "remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc..."
         },
         "footer": {
             "created_by": "créé par"
@@ -83,17 +85,19 @@ const locales = {
             "open_source_title": "Open Source",
             "free_title": "Gratuit",
             "no_cloud": "LessPass régénère vos mots de passe à chaque fois que vous en avez besoin.<br>Aucun stockage sur le cloud n'est nécessaire",
-            "responsive": "LessPass est une application web qui fonctionne sur tous les appareils : <br>ordinateur, smartphone, tablette et smartTV",
+            "responsive": "LessPass est une application web qui fonctionne<br>sur tous les appareils :<br>ordinateur, smartphone, tablette et smartTV",
             "open_source": "LessPass est open source. Le code source est disponible sur <a href='https://github.com/lesspass/core'>Github</a>, vous pouvez l'auditer",
             "free": "LessPass est gratuit et le sera toujours"
         },
         "how_it_works": {
             "title": "Comment fonctionne LessPass ?",
-            "subtitle": "LessPass est un générateur de mot de passe qui vous garanti générer le même mot de passe sur la base d'informations uniques que vous lui fournissez. Vous pouvez donc utiliser LessPass pour créer des mots de passe pour vos différents services internet (Réseaux sociaux, mails, mots de passe serveurs, ...).",
-            "no_sync": "Pas besoin de synchronisation",
-            "no_sync_detail": "LessPass est une solution open source, qui ne nécessite pas de stockage pour synchroniser les informations. Il s'agit d'une application web qui dérive vos mots de passe de manière sécurisée.",
+            "detail": "LessPass est un gestionnaire de mot de passe qui n'enregistre pas vos mots de passe. Il les regénère sur la base d'informations uniques que vous lui fournissez. Vous pouvez donc utiliser LessPass pour créer des mots de passe pour vos différents services internet (Réseaux sociaux, mails, mots de passe serveurs, ...).",
+            "always_sync": "Pas besoin de synchronisation",
+            "always_sync_detail": "Vous n'avez plus besoin de synchroniser sur le cloud vos coffres fort pour mots de passe. LessPass est une application web qui dérive vos mots de passe de manière sécurisée.",
             "derivation": "Mathématique et chiffrement",
-            "derivation_detail": "LastPass utilise différentes fonctions de dérivation pour transformer vos informations personnelles en un mot de passe unique. Ces transformations sont robustes aux attaques par force brute."
+            "derivation_detail": "LastPass utilise différentes fonctions de dérivation pour transformer vos informations personnelles en un mot de passe unique. Ces transformations sont robustes aux attaques par force brute.",
+            "self_hosting": "Auto Hébergement",
+            "self_hosting_detail": "Vous pouvez héberger LessPass sur vos serveurs :"
         },
         "feedback": {
             "feedback_1": "Enfin un outil de sécurité a qui je n'ai pas besoin de faire confiance.",

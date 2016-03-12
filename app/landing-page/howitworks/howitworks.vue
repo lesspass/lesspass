@@ -1,41 +1,57 @@
 <style>
     #how-it-works {
-        background-color: #F8F8F8;
-        color: #7f7f7f;;
+        background-color: #134a6a;
+        color: #f2f2f2;
+    }
+
+    #how-it-works #how-it-works__self_hosted {
+        background-color: #f7f7f7;
+        padding: 1em;
     }
 </style>
 <template>
     <div id="how-it-works">
         <div class="container">
-            <div class="row p-t-3">
+            <div class="row p-y-3">
                 <div class="col-lg-8">
                     <h3>{{ $t('how_it_works.title') }}</h3>
-                    <p class="lead">
-                        {{ $t('how_it_works.subtitle') }}
+                    <p>
+                        {{ $t('how_it_works.detail') }}
                     </p>
                 </div>
             </div>
-            <div class="row p-t-1 p-b-3">
-                <div class="col-lg-4 m-b-2">
-                    <img src="./lesspass.gif" alt="open source" class="img-fluid">
+            <div class="row p-y-3">
+                <div class="col-lg-6 p-y-2">
+                    <h5>{{ $t('how_it_works.always_sync') }}</h5>
+                    <p>
+                        {{ $t('how_it_works.always_sync_detail') }}
+                    </p>
                 </div>
-                <div class="col-lg-7">
-                    <div class="media m-b-3">
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ $t('how_it_works.no_sync') }}</h4>
-                            <p class="lead">
-                                {{ $t('how_it_works.no_sync_detail') }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="media m-b-3">
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ $t('how_it_works.derivation') }}</h4>
-                            <p class="lead">
-                                {{ $t('how_it_works.derivation_detail') }}
-                            </p>
-                        </div>
-                    </div>
+                <div class="col-lg-6">
+                    <img src="./responsive.png" alt="logo" class="img-fluid">
+                </div>
+            </div>
+            <div class="row p-y-3">
+                <div class="col-lg-3 col-lg-offset-2 text-xs-center col-md-4 col-md-offset-1">
+                    <img src="./logo.png" alt="logo" class="img-fluid">
+                </div>
+                <div class="col-lg-6 p-y-2 col-md-6 col-md-offset-1">
+                    <h5>{{ $t('how_it_works.derivation') }}</h5>
+                    <p>
+                        {{ $t('how_it_works.derivation_detail') }}
+                    </p>
+                </div>
+            </div>
+            <div class="row p-y-3">
+                <div class="col-lg-6 col-md-10">
+                    <h5>{{ $t('how_it_works.self_hosting') }}</h5>
+                    <p>
+                        {{ $t('how_it_works.self_hosting_detail') }}
+                    </p>
+                    <pre id="how-it-works__self_hosted"><code>git clone https://github.com/lesspass/lesspass
+cd lesspass
+docker-compose up -d</code></pre>
+
                 </div>
             </div>
         </div>
