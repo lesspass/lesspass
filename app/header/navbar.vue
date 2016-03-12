@@ -1,7 +1,7 @@
 <style>
     #navbar {
         background-color: #f7f7f7;
-        color: #666666;
+        color: #1a1a1a;
         padding-top: 1em;
     }
 

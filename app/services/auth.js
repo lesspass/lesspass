@@ -11,8 +11,8 @@ module.exports = {
             function (response) {
                 localStorage.setItem('token', response.data.token);
                 self.user.authenticated = true;
+                logging.success(this.$t('login.welcome'));
                 if (callback) {
-                    logging.success(this.$t('login.welcome'));
                     callback();
                 }
             },
@@ -22,11 +22,12 @@ module.exports = {
         );
     },
 
-    register(context, user) {
-        var self = this;
+    register(context, user, callback) {
         context.$http.post('/api/users/', user).then(
             function (response) {
-                logging.warning(this.$t('register.beta'));
+                if (callback) {
+                    callback();
+                }
             },
             function (error) {
                 logging.warning(this.$t('register.beta'));
