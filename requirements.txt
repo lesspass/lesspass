@@ -1,5 +1,5 @@
-Django==1.9.2
-djangorestframework==3.3.2
+Django==1.9.4
+djangorestframework==3.3.3
 djangorestframework-jwt==1.7.2
 smartconfigparser==0.1.1
 psycopg2==2.6.1
