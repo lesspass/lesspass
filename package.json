@@ -1,0 +1,77 @@
+{
+  "name": "lesspass.com",
+  "version": "1.0.0",
+  "description": "lesspass single page app for https://lesspass.com",
+  "main": "app/app.js",
+  "scripts": {
+    "predev": "npm install",
+    "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
+    "prebuild": "rimraf dist && npm prune && npm install",
+    "build": "NODE_ENV=production webpack -p",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/guillaumevincent/lesspass.git"
+  },
+  "keywords": [
+    "keepass",
+    "lesspass"
+  ],
+  "author": "Guillaume Vincent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guillaumevincent/lesspass/issues"
+  },
+  "homepage": "https://github.com/guillaumevincent/lesspass#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
+    "clipboard": "^1.5.8",
+    "express": "^4.13.4",
+    "font-awesome": "^4.5.0",
+    "hint.css": "^2.1.0",
+    "jquery": "^2.2.1",
+    "lesspass": "^1.1.1",
+    "tether": "^1.2.0",
+    "toastr": "^2.1.2",
+    "vue": "^1.0.16",
+    "vue-i18n": "^2.4.0",
+    "vue-resource": "^0.7.0",
+    "vue-router": "^0.7.11"
+  },
+  "devDependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.3",
+    "babel-plugin-transform-runtime": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-runtime": "^5.8.34",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "imports-loader": "^0.6.5",
+    "jshint": "latest",
+    "mocha": "latest",
+    "node-sass": "^3.4.2",
+    "node-static": "latest",
+    "nodemon": "latest",
+    "npm-run-all": "latest",
+    "offline-plugin": "^2.0.4",
+    "rimraf": "^2.5.1",
+    "style-loader": "^0.13.0",
+    "template-html-loader": "0.0.3",
+    "uglify-js": "^2.6.2",
+    "url-loader": "^0.5.7",
+    "vue-hot-reload-api": "^1.3.2",
+    "vue-html-loader": "^1.1.0",
+    "vue-loader": "^8.1.4",
+    "vue-style-loader": "^1.0.0",
+    "vueify": "^8.3.5",
+    "vueify-insert-css": "^1.0.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
