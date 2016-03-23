@@ -1,25 +1,21 @@
 <style>
     body {
-        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        line-height: 1.4;
-        background: #D3D8E8;
-        color: #252830;
+        background-color: #f7f7f7;
+        color: #1a1a1a;
     }
 
-    .blue {
-        color: #0275D8;
+    .form-control, .btn, .input-group-addon {
+        border-radius: 0 !important;
     }
 </style>
-
 <template>
-    <div id="App">
+    <div id="app">
         <lesspass-header></lesspass-header>
         <router-view></router-view>
     </div>
 </template>
 <script>
-    var LesspassHeader = require('./components/header.vue');
+    import LesspassHeader from './header/header.vue';
 
     export default {
         data: function () {
