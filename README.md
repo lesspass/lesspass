@@ -1,2 +1,2 @@
 # nginx
-nginx proxy for lesspass
+nginx container for lesspass
