@@ -1,0 +1,6 @@
+[submodule "nginx"]
+	path = nginx
+	url = git@github.com:lesspass/nginx.git
+[submodule "backend"]
+	path = backend
+	url = git@github.com:lesspass/api.git

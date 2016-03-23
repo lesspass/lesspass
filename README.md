@@ -1,10 +1,10 @@
 # lesspass
 
-lesspass password manager (https://lesspass.com)
+lesspass open source password manager (https://lesspass.com)
 
 ## requirements
 
-  * node v4.2.x LTS
+  * git
   * docker 1.10
   * docker-compose 1.6
 
@@ -14,7 +14,7 @@ clone application:
 
     git clone https://github.com/guillaumevincent/lesspass.git
     cd lesspass
-    git update submodules
-    docker-compose  up -d
+    git submodule update --init
+    docker-compose up -d
 
-open the application in a browser: [http://localhost:8080](http://localhost:8080)
+open the application in a browser: [http://localhost](http://localhost)

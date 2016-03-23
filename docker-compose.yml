@@ -1,0 +1,38 @@
+version: '2'
+services:
+  db:
+    restart: always
+    image: postgres:9.5
+    volumes:
+      - postgres_data:/var/lib/postgres/data
+  backend:
+    restart: always
+    build: ./backend
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: python manage.py runserver 0.0.0.0:8000
+  frontend:
+    restart: always
+    build: ./frontend
+    command: npm run dev
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+     - "8080:8080"
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes_from:
+      - backend
+    links:
+      - backend
+      - frontend
+volumes:
+  postgres_data: {}
