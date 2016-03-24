@@ -1,10 +1,18 @@
 <style>
+  @media (max-width: 480px) {
+    #password-generator {
+      padding: 1em;
+      margin-top: 1em;
+      margin-bottom: 2em;
+    }
+  }
+
   #password-generator .c-input, #password-generator a {
     color: inherit;
   }
 </style>
 <template>
-  <div id="password-generator" class="bg-card-white">
+  <div id="password-generator" class="bg-card-white" v-bind:style="{ borderLeft: '5px solid ' + passwordColor }">
     <form>
       <div class="form-group row">
         <div class="col-lg-6 m-t-1">
@@ -17,23 +25,20 @@
                  placeholder="{{ $t('passwordgenerator.who_are_you') }}"
                  value="{{email}}"
                  v-model="email"
-                 v-on:blur="updateMasterPassword">
+                 v-on:blur="updateMasterPassword"
+                 autofocus>
         </div>
         <div class="col-lg-6 m-t-1">
           <label for="pg-masterpassword" class="sr-only">
             {{ $t('passwordgenerator.what_is_your_secret') }}
           </label>
-          <div class="input-group">
-            <input id="pg-masterpassword"
-                   class="form-control"
-                   type="password"
-                   placeholder="{{ $t('passwordgenerator.what_is_your_secret') }}"
-                   v-model="password"
-                   v-on:blur="updateMasterPassword">
-            <span class="input-group-btn" @click="changeType('pg-masterpassword')">
-                <button class="btn btn-secondary" type="button"><i class="fa fa-eye"></i></button>
-            </span>
-          </div>
+          <input id="pg-masterpassword"
+                 class="form-control"
+                 type="password"
+                 placeholder="{{ $t('passwordgenerator.what_is_your_secret') }}"
+                 v-model="password"
+                 v-on:blur="updateMasterPassword">
+
         </div>
       </div>
       <div class="form-group row">
@@ -157,6 +162,7 @@
   export default {
     data() {
       return {
+        passwordColor: 'white',
         email: '',
         password: '',
         site: '',
@@ -176,14 +182,15 @@
         if (email && password) {
           lesspass.createMasterPassword(email, password).then(function (masterPassword) {
             self.$set('masterPassword', masterPassword);
+            self.$set('passwordColor', '#' + masterPassword.substring(0, 6))
           });
         }
       },
       changeType(id) {
         if (document.getElementById(id).type == 'password') {
-          document.getElementById(id).type = 'text'
+          document.getElementById(id).type = 'text';
         } else {
-          document.getElementById(id).type = 'password'
+          document.getElementById(id).type = 'password';
         }
       }
     },
