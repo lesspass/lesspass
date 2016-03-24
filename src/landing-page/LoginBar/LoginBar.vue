@@ -20,7 +20,7 @@
     <div class="container">
       <nav class="nav nav-inline pull-right">
         <a class="nav-link" v-bind:class="{ 'bg-primary': $route.path=='/login/'}"
-           v-link="{ path: '/login/' }">
+           v-link="{ path: '/app/' }">
           <i class="fa fa-lock"></i> {{ $t('login.login') }}
         </a>
         <a class="nav-link" v-bind:class="{ 'bg-primary': $route.path=='/register/' || $route.path=='/'}"

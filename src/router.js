@@ -4,8 +4,10 @@ import App from './App';
 
 Vue.use(Router);
 
-const router = new Router();
-
+const router = new Router({
+  history: true,
+  hashbang: false,
+});
 
 import LandingPage from './landing-page/LandingPage';
 import LoginPage from './app/Login';
@@ -14,8 +16,7 @@ import LessPassConnected from './app/Index';
 
 router.map({
   '/': {
-    auth: true,
-    component: LessPassConnected,
+    component: LandingPage,
   },
   '/login/': {
     component: LoginPage,
@@ -23,8 +24,9 @@ router.map({
   '/register/': {
     component: RegisterPage,
   },
-  '/welcome/': {
-    component: LandingPage,
+  '/app/': {
+    auth_required: true,
+    component: LessPassConnected,
   },
 });
 
@@ -39,13 +41,11 @@ import Auth from './services/auth';
 Auth.checkAuth();
 
 router.beforeEach(transition => {
-  alert(transition.to.auth);
-  if (transition.to.auth && !Auth.user.authenticated) {
-    alert(Auth.user.authenticated);
-    transition.redirect('/welcome/');
+  if (transition.to.auth_required && !Auth.user.authenticated) {
+    transition.redirect('/login/');
   } else {
     transition.next();
   }
 });
 
-module.exports = router;
+export default router;

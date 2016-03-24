@@ -52,12 +52,12 @@
           password: this.credentials.password,
         };
         auth.login(credentials)
-          .then(() => {
+          .then((data) => {
+            console.log('Request succeeded with JSON response', data);
             router.go('/app/');
-          })
-          .catch(() => {
-            logging.error(this.$t('login.credentials_invalids'));
-          });
+          }).catch((error) => {
+          console.log('Request failed', error);
+        });
       },
     },
   };
