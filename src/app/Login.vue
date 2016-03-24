@@ -1,13 +1,8 @@
-<style>
-  #login {
-    padding-top: 2rem;
-  }
-</style>
 <template>
   <div id="login">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+      <div class="row p-t-3">
+        <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 bg-card-white">
           <form v-on:submit.prevent>
             <fieldset class="form-group">
               <label class="sr-only" for="email">{{$t('login.Email')}}</label>

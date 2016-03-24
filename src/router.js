@@ -37,11 +37,15 @@ router.redirect({
 Auth.checkAuth();
 
 router.beforeEach(transition => {
+  if (transition.to.path === '/' && Auth.user.authenticated) {
+    transition.redirect('/app/');
+  }
+
   if (transition.to.auth_required && !Auth.user.authenticated) {
     transition.redirect('/login/');
-  } else {
-    transition.next();
   }
+
+  transition.next();
 });
 
 

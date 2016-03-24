@@ -29,7 +29,7 @@
         </a>
       </nav>
       <nav class="nav nav-inline pull-right" v-if="user.authenticated">
-        <a class="nav-link" v-on:click="logout()">
+        <a href="/" class="nav-link" v-on:click.stop.prevent="logout()">
           <i class="fa fa-sign-out"></i> {{ $t('login.logout') }}
         </a>
       </nav>

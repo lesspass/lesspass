@@ -1,20 +1,10 @@
 <style>
-  @media (min-width: 480px) {
-    #password-generator{
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
-      background-color: #ffffff;
-      border: none;
-      color: #323232;
-      padding: 2em;
-    }
-  }
-
   #password-generator .c-input, #password-generator a {
     color: inherit;
   }
 </style>
 <template>
-  <div id="password-generator">
+  <div id="password-generator" class="bg-card-white">
     <form>
       <div class="form-group row">
         <div class="col-lg-6 m-t-1">
