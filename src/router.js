@@ -1,18 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import App from './App';
-
 Vue.use(Router);
+
+import App from './App';
+import LandingPage from './landing-page/LandingPage';
+import LoginPage from './app/Login';
+import RegisterPage from './app/Register';
+import LessPassConnected from './app/Index';
+import Auth from './services/auth';
 
 const router = new Router({
   history: true,
   hashbang: false,
 });
-
-import LandingPage from './landing-page/LandingPage';
-import LoginPage from './app/Login';
-import RegisterPage from './app/Register';
-import LessPassConnected from './app/Index';
 
 router.map({
   '/': {
@@ -34,10 +34,6 @@ router.redirect({
   '*': '/',
 });
 
-router.start(App, '#app');
-
-import Auth from './services/auth';
-
 Auth.checkAuth();
 
 router.beforeEach(transition => {
@@ -48,4 +44,5 @@ router.beforeEach(transition => {
   }
 });
 
-export default router;
+
+router.start(App, '#app');

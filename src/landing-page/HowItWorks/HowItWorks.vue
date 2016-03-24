@@ -54,9 +54,9 @@ docker-compose up -d</code>
         </div>
         <div class="col-lg-6 hidden-xs-down">
           <div class="row p-t-3">
-            <div class="col-sm-4"><img src="./git-logo2.png" alt="logo" class="img-fluid"></div>
-            <div class="col-sm-4"><img src="./docker-logo2.png" alt="logo" class="img-fluid"></div>
-            <div class="col-sm-4"><img src="./logo2.png" alt="logo" class="img-fluid"></div>
+            <div class="col-sm-4"><img src="./git-logo.png" alt="logo" class="img-fluid"></div>
+            <div class="col-sm-4"><img src="./docker-logo.png" alt="logo" class="img-fluid"></div>
+            <div class="col-sm-4"><img src="./logo.png" alt="logo" class="img-fluid"></div>
           </div>
         </div>
       </div>

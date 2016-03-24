@@ -42,9 +42,7 @@ module.exports = {
   },
 
   checkAuth() {
-    console.log('check auth');
     const jwt = localStorage.getItem('token');
-    console.log(jwt);
     this.user.authenticated = !!jwt;
   },
 

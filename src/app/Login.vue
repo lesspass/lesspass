@@ -32,7 +32,6 @@
 </template>
 <script type="text/ecmascript-6">
   import auth from '../services/auth';
-  import router from '../router';
   import logging from '../services/logging';
 
   export default {
@@ -53,10 +52,9 @@
         };
         auth.login(credentials)
           .then((data) => {
-            console.log('Request succeeded with JSON response', data);
-            router.go('/app/');
+            this.$router.go('/app/');
           }).catch((error) => {
-          console.log('Request failed', error);
+            logging.error(this.$t('login.credentials_invalids'));
         });
       },
     },

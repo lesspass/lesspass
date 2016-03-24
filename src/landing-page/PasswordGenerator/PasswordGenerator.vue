@@ -186,7 +186,6 @@
         if (email && password) {
           lesspass.createMasterPassword(email, password).then(function (masterPassword) {
             self.$set('masterPassword', masterPassword);
-            console.log(masterPassword);
           });
         }
       },

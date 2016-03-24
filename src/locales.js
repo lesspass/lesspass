@@ -1,5 +1,5 @@
-const I18n = require('vue-i18n');
-const Vue = require('vue');
+import Vue from 'vue';
+import I18n from 'vue-i18n';
 
 const locales = {
   en: {
@@ -57,6 +57,8 @@ const locales = {
       Password: 'Password',
       Sign_in: 'Sign In',
       register: 'Register',
+      logout: 'Logout',
+      logout_ok: 'Logout successful, thank you for spending some time with lesspass',
       welcome: 'Login successful, welcome on LessPass',
       credentials_invalids: '<strong>Invalid Email or Password.</strong><br> Please try again.',
     },
@@ -119,6 +121,8 @@ const locales = {
       Password: 'Mot de passe',
       Sign_in: 'Se connecter',
       register: 'Inscription',
+      logout: 'Déconnexion',
+      logout_ok: 'Déconnexion réussie, merci d\'avoir passé du temps sur LessPass',
       welcome: 'Connexion réussie, bienvenue sur LessPass',
       credentials_invalids: 'L\'adresse e-mail et/ou mot de passe sont invalides',
     },
@@ -136,4 +140,3 @@ Vue.use(I18n, {
   locales,
 });
 
-module.exports = locales;
