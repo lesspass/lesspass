@@ -28,15 +28,18 @@
 <template>
   <div id="app">
     <login-bar></login-bar>
+    <lesspass-navbar></lesspass-navbar>
     <router-view></router-view>
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import LoginBar from './landing-page/LoginBar/LoginBar';
+  import LoginBar from './app/LoginBar';
+  import LesspassNavbar from './app/Navbar/Navbar';
 
   export default {
     components: {
       LoginBar,
+      LesspassNavbar,
     },
   };
 </script>

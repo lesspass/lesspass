@@ -7,8 +7,6 @@
 </style>
 <template>
   <div id="landing-page">
-    <lesspass-navbar></lesspass-navbar>
-
     <div id="header" class="container">
       <div class="row">
         <div class="col-md-5">
@@ -27,7 +25,6 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import LesspassNavbar from './Navbar/Navbar';
   import LesspassHeadlines from './Headlines/Headlines';
   import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
   import LesspassFeatures from './Features/Features';
@@ -40,7 +37,6 @@
       return {};
     },
     components: {
-      LesspassNavbar,
       LesspassHeadlines,
       PasswordGenerator,
       LesspassFeatures,

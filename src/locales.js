@@ -58,7 +58,7 @@ const locales = {
       Sign_in: 'Sign In',
       register: 'Register',
       logout: 'Logout',
-      logout_ok: 'Logout successful, thank you for spending some time with lesspass',
+      logout_ok: 'Logout successful, thank you for spending some time on LessPass',
       welcome: 'Login successful, welcome on LessPass',
       credentials_invalids: '<strong>Invalid Email or Password.</strong><br> Please try again.',
     },

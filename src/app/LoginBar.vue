@@ -16,9 +16,9 @@
   }
 </style>
 <template>
-  <div id="login-bar">
+  <div id="login-bar" v-if="!user.authenticated">
     <div class="container">
-      <nav class="nav nav-inline pull-right" v-if="!user.authenticated">
+      <nav class="nav nav-inline pull-right">
         <a class="nav-link" v-bind:class="{ 'bg-primary': $route.path=='/login/'}"
            v-link="{ path: '/app/' }">
           <i class="fa fa-lock"></i> {{ $t('login.login') }}
@@ -28,32 +28,17 @@
           <i class="fa fa-user-plus"></i> {{ $t('login.register') }}
         </a>
       </nav>
-      <nav class="nav nav-inline pull-right" v-if="user.authenticated">
-        <a href="/" class="nav-link" v-on:click.stop.prevent="logout()">
-          <i class="fa fa-sign-out"></i> {{ $t('login.logout') }}
-        </a>
-      </nav>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import auth from '../../services/auth';
-  import logging from '../../services/logging';
-
+  import auth from '../services/auth';
 
   export default {
     data() {
       return {
         user: auth.user,
       };
-    },
-    methods: {
-      logout() {
-        auth.logout(() => {
-          logging.success(this.$t('login.logout_ok'));
-          this.$router.go('/');
-        });
-      },
     },
   };
 </script>
