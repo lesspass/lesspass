@@ -1,5 +1,5 @@
-import promise from 'es6-promise';
-promise.polyfill();
+import { polyfill } from 'es6-promise';
+polyfill();
 import 'isomorphic-fetch';
 
 function checkStatus(response) {
@@ -15,7 +15,7 @@ function parseJSON(response) {
   return response.json();
 }
 
-module.exports = {
+export default {
   user: {
     authenticated: false,
   },
@@ -37,23 +37,20 @@ module.exports = {
       });
   },
 
-  logout(callback) {
-    localStorage.removeItem('token');
-    this.user.authenticated = false;
-    if (callback) {
-      callback();
-    }
+  logout() {
+    return new Promise((resolve, reject) => {
+      try {
+        localStorage.removeItem('token');
+        this.user.authenticated = false;
+        resolve();
+      } catch (e) {
+        reject('cannot logout');
+      }
+    });
   },
 
   checkAuth() {
     const jwt = localStorage.getItem('token');
     this.user.authenticated = !!jwt;
-  },
-
-  getAuthHeader() {
-    const token = localStorage.getItem('token');
-    return {
-      Authorization: `Bearer ${token}!`,
-    };
   },
 };

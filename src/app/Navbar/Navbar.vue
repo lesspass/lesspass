@@ -48,7 +48,7 @@
     },
     methods: {
       logout() {
-        auth.logout(() => {
+        auth.logout().then(() => {
           logging.success(this.$t('login.logout_ok'));
           this.$router.go('/');
         });
