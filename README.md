@@ -1,27 +1,21 @@
 # lesspass
 
-> open source password manager
+open source password manager
 
 ## Build Setup
 
-``` bash
-# install dependencies
-npm install
+install dependencies
 
-# serve with hot reload at localhost:8080
-npm run dev
+    npm install
 
-# build for production with minification
-npm run build
+serve with hot reload at localhost:8080
 
-# run unit tests
-npm run unit
+    npm run dev
 
-# run e2e tests
-npm run e2e
+build for production with minification
 
-# run all tests
-npm test
-```
+    npm run build
 
-For detailed explanation on how things work, checkout the [guide](https://github.com/vuejs-templates/webpack#vue-webpack-boilerplate) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+run tests
+
+    npm test

@@ -6,7 +6,7 @@
   }
 
   #navbar #navbar__logo {
-    height: 32px;
+    height: 36px;
   }
 
   #navbar .navbar {

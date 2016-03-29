@@ -72,7 +72,7 @@
           </div>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row m-b-0">
         <div class="col-lg-12">
           <i class="fa fa-cog"></i>
           <a data-toggle="collapse" data-parent="#accordion" href="#advancedOptions"
