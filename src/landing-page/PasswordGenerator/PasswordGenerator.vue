@@ -12,10 +12,8 @@
     }
 </style>
 <template>
-    <div id="password-generator" class="bg-card-white" v-bind:style="{ borderLeft: '5px solid ' + passwordColor }">
+    <div id="password-generator" class="bg-card-white">
         <form id="password-generator-form">
-            <input type="email" id="email" style="display: none">
-            <input type="password" id="password" style="display: none">
             <div class="form-group row">
                 <div class="col-lg-6 m-t-1">
                     <label for="pg-email" class="sr-only">
@@ -29,20 +27,31 @@
                            v-model="email"
                            v-on:blur="updateMasterPassword"
                            autofocus
-                           autocomplete="false">
+                           autocomplete="off"
+                           autocorrect="off"
+                           autocapitalize="none">
+                    <!-- remove autofill for pg-masterpassword -->
+                    <input type="password" id="password" style="display: none">
                 </div>
                 <div class="col-lg-6 m-t-1">
                     <label for="pg-masterpassword" class="sr-only">
                         {{ $t('passwordgenerator.what_is_your_secret') }}
                     </label>
-                    <input id="pg-masterpassword"
-                           class="form-control"
-                           type="password"
-                           placeholder="{{ $t('passwordgenerator.what_is_your_secret') }}"
-                           v-model="password"
-                           v-on:blur="updateMasterPassword"
-                           autocomplete="false">
-
+                    <div class="input-group">
+                        <input id="pg-masterpassword"
+                               class="form-control"
+                               type="password"
+                               placeholder="{{ $t('passwordgenerator.what_is_your_secret') }}"
+                               v-model="password"
+                               v-on:blur="updateMasterPassword"
+                               autocomplete="off">
+                        <span class="input-group-btn" tabindex="-1" @click="changeType('pg-masterpassword')">
+                            <button class="btn btn-secondary" tabindex="-1" type="button"
+                                    v-bind:style="{ color: passwordTextColor, backgroundColor: passwordColor }">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
@@ -52,9 +61,15 @@
                     </label>
                     <input id="pg-site"
                            class="form-control"
+                           list="domains"
                            type="text"
                            placeholder="{{ $t('passwordgenerator.where_are_you_going') }}"
-                           v-model="site">
+                           v-model="site"
+                           autocorrect="off"
+                           autocapitalize="none">
+                    <datalist id="domains">
+                        <option v-for="domain in domains" v-bind:value="domain">
+                    </datalist>
                 </div>
             </div>
             <div class="form-group row">
@@ -162,11 +177,12 @@
     import lesspass from 'lesspass'
     import Clipboard from 'clipboard';
     import 'bootstrap/dist/js/umd/collapse';
-
+    import topDomains from './top-domains.json';
     export default {
         data() {
             return {
-                passwordColor: 'white',
+                passwordColor: 'inherit',
+                passwordTextColor: 'black',
                 email: '',
                 password: '',
                 site: '',
@@ -175,7 +191,8 @@
                     length: 12,
                     settings: ["lowercase", "uppercase", "numbers", "symbols"]
                 },
-                masterPassword: ''
+                masterPassword: '',
+                domains: topDomains.domains
             };
         },
         methods: {
@@ -186,8 +203,30 @@
                 if (email && password) {
                     lesspass.createMasterPassword(email, password).then(function (masterPassword) {
                         self.$set('masterPassword', masterPassword);
-                        self.$set('passwordColor', '#' + masterPassword.substring(0, 6))
+                        self.setColors(masterPassword.substring(0, 6));
                     });
+                }
+            },
+            setColors(color){
+                var colors = [
+                    {bgColor: '636363', fgColor: 'f0f0f0'},
+                    {bgColor: 'd95f0e', fgColor: 'fff7bc'},
+                    {bgColor: 'f03b20', fgColor: 'ffeda0'},
+                    {bgColor: '756bb1', fgColor: 'efedf5'},
+                    {bgColor: '31a354', fgColor: 'e5f5e0'},
+                    {bgColor: '3182bd', fgColor: 'deebf7'},
+                    {bgColor: 'c51b8a', fgColor: 'fde0dd'},
+                    {bgColor: '8856a7', fgColor: 'e0ecf4'}
+                ];
+                var index = parseInt(color, 16) % 8;
+                this.passwordColor = '#' + colors[index].bgColor;
+                this.passwordTextColor = '#' + colors[index].fgColor;
+            },
+            changeType(id) {
+                if (document.getElementById(id).type == 'password') {
+                    document.getElementById(id).type = 'text';
+                } else {
+                    document.getElementById(id).type = 'password';
                 }
             }
         },
