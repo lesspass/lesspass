@@ -1,4 +1,3 @@
-var Promise = require('es6-promise').Promise;
 import request from 'axios';
 
 export default {

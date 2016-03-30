@@ -24,9 +24,7 @@ suite('Auth', () => {
     auth.login(credentials)
       .then(() => {
         done();
-      }).catch((err) => {
-      console.log(err)
-    })
+      });
   });
 
   test('should throw error if bad request', (done) => {
