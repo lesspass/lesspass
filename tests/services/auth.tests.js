@@ -2,13 +2,12 @@ import assert from 'assert';
 import auth from '../../src/services/auth';
 import nock from 'nock';
 
-
 suite('Auth', () => {
   var credentials = {
     email: 'test@lesspass.com',
     password: 'password'
   };
-  var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ';
+  var token = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9';
 
   before(() => {
     var LocalStorage = require('node-localstorage').LocalStorage;
@@ -16,14 +15,18 @@ suite('Auth', () => {
   });
 
   beforeEach(() => {
-    nock('//lesspass.com/').post('/api/sessions/', credentials).reply(201, {token: token});
+    nock('http://localhost/')
+      .post('/api/sessions/', credentials)
+      .reply(201, {token: token}, {'Content-Type': 'application/json'});
   });
 
   test('should make a post request to create a session', (done) => {
     auth.login(credentials)
       .then(() => {
         done();
-      });
+      }).catch((err) => {
+      console.log(err)
+    })
   });
 
   test('should throw error if bad request', (done) => {

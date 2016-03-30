@@ -3,25 +3,25 @@
   "description": "open source password manager",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
+    "start": "NODE_ENV=production node server.js",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "test": "mocha --ui tdd --require babel-core/register --globals localStorage tests/**/*.js"
   },
   "dependencies": {
+    "axios": "^0.9.1",
     "bootstrap": "^4.0.0-alpha.2",
     "clipboard": "^1.5.9",
     "es6-promise": "^3.1.2",
     "express": "^4.13.4",
     "font-awesome": "^4.5.0",
-    "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.2",
     "lesspass": "^1.1.1",
     "tether": "^1.2.0",
     "toastr": "^2.1.2",
     "vue": "^1.0.20",
     "vue-i18n": "^2.4.1",
-    "vue-router": "^0.7.11",
-    "whatwg-fetch": "^0.11.0"
+    "vue-router": "^0.7.11"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",
