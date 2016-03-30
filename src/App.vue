@@ -8,7 +8,7 @@
     color: #323232;
   }
 
-  .form-control, .btn, .input-group-addon {
+  .form-control, .btn, .input-group-addon, .modal-content {
     border-radius: 0 !important;
   }
 
