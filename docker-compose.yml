@@ -21,7 +21,7 @@ services:
     command: npm run dev
     volumes:
       - ./frontend:/frontend
-      - /frontend/node_modules
+      - node_modules:/frontend/node_modules
     ports:
      - "8080:8080"
   nginx:
@@ -37,3 +37,4 @@ services:
       - frontend
 volumes:
   data:
+  node_modules:
