@@ -1,4 +1,4 @@
-Django==1.9.4
+Django==1.9.5
 djangorestframework==3.3.3
 djangorestframework-jwt==1.7.2
 smartconfigparser==0.1.1

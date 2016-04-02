@@ -7,9 +7,9 @@ from api.tests import factories
 
 
 class LogoutApiTestCase(APITestCase):
-    def test_get_entries_403(self):
+    def test_get_entries_401(self):
         response = self.client.get('/api/entries/')
-        self.assertEqual(403, response.status_code)
+        self.assertEqual(401, response.status_code)
 
 
 class LoginApiTestCase(APITestCase):
