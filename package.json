@@ -6,7 +6,7 @@
     "start": "NODE_ENV=production node server.js",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "test": "mocha --ui tdd --require babel-core/register --globals localStorage tests/**/*.js"
+    "test": "mocha --ui tdd --require babel-core/register --globals localStorage --recursive tests"
   },
   "dependencies": {
     "axios": "^0.9.1",

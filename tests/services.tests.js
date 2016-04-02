@@ -1,18 +1,67 @@
-import assert from 'assert';
-import auth from '../../src/services/auth';
-import nock from 'nock';
+import auth from '../src/services/auth';
+import entries from '../src/services/entries';
 
-suite('Auth', () => {
+suite('request', () => {
+  test('should send requests with localStorage token', (done) => {
+    var token = 'ZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFt';
+    localStorage.setItem('token', token);
+    var stub = nock('http://localhost/', {
+      reqheaders: {'Authorization': 'JWT '+  token}
+    });
+    stub.get('/api/entries/').reply(200, {entries: []}, {'Content-Type': 'application/json'});
+    entries.all().then((response) => {
+      done();
+    });
+  });
+});
+
+suite('entries', () => {
+  var entry = {
+    "site": "twitter.com",
+    "password": {
+      "counter": 1,
+      "settings": [
+        "lowercase",
+        "uppercase",
+        "numbers",
+        "symbols"
+      ],
+      "length": 12
+    },
+    "email": "guillaume@oslab.fr",
+  };
+
+  test('should make a post request to create an entry', (done) => {
+    nock('http://localhost/')
+      .post('/api/entries/', entry)
+      .reply(201, {}, {'Content-Type': 'application/json'});
+    entries.create(entry)
+      .then((response) => {
+        assert.equal(201, response.status);
+        done();
+      });
+  });
+
+  test('should get all entries', (done) => {
+    nock('http://localhost/')
+      .get('/api/entries/')
+      .reply(200, {entries: []}, {'Content-Type': 'application/json'});
+    entries.all()
+      .then((response) => {
+        assert.equal(200, response.status);
+        assert.equal(0, response.data.entries.length);
+        done();
+      });
+  });
+});
+
+suite('auth', () => {
   var credentials = {
     email: 'test@lesspass.com',
     password: 'password'
   };
   var token = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9';
 
-  before(() => {
-    var LocalStorage = require('node-localstorage').LocalStorage;
-    global.localStorage = new LocalStorage('./tests/localStorage');
-  });
 
   beforeEach(() => {
     nock('http://localhost/')
@@ -84,3 +133,4 @@ suite('Auth', () => {
     global.localStorage._deleteLocation()
   })
 });
+

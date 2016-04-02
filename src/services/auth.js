@@ -8,6 +8,7 @@ export default {
   login(credentials) {
     return request.post('/api/sessions/', credentials)
       .then((response) => {
+        console.log(response)
         localStorage.setItem('token', response.data.token);
         this.user.authenticated = true;
         return response;
