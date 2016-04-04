@@ -1,4 +1,5 @@
 import os
+import datetime
 
 from smartconfigparser import Config
 
@@ -139,6 +140,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=12),
     'JWT_ALLOW_REFRESH': True,
 }
 
