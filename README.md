@@ -3,6 +3,14 @@
 
 lesspass open source password manager (https://lesspass.com)
 
+
+## lesspass submodules
+
+ - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
+ - [backend](https://github.com/lesspass/api) : backend api used for to store information about passwords
+ - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
+
+
 ## requirements
 
   * git
@@ -19,3 +27,21 @@ clone application:
     docker-compose up -d
 
 open the application in a browser: [http://localhost](http://localhost)
+
+
+## tests
+
+run frontend tests
+
+    cd frontend
+    npm install
+    npm tests
+
+
+## status
+
+| module | tests |
+| --- | --- |
+| [frontend](https://github.com/lesspass/lesspass) | [![Build Status](https://travis-ci.org/lesspass/lesspass.svg?branch=master)](https://travis-ci.org/lesspass/lesspass) |
+| [core](https://github.com/lesspass/core) | [![Build Status](https://travis-ci.org/lesspass/core.svg?branch=master)](https://travis-ci.org/lesspass/core) |
+| [backend](https://github.com/lesspass/api) | [![Build Status](https://travis-ci.org/lesspass/api.svg?branch=master)](https://travis-ci.org/lesspass/api) |
