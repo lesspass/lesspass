@@ -42,6 +42,8 @@ class AuthViewSet(viewsets.ViewSet):
 class EntryViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.EntrySerializer
     permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    search_fields = ('site', 'email',)
+    ordering_fields = ('site', 'email', 'created')
 
     def get_queryset(self):
         return models.Entry.objects.filter(user=self.request.user)
