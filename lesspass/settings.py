@@ -138,6 +138,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
+}
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
