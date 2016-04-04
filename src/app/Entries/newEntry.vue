@@ -31,13 +31,10 @@
                                        placeholder="{{ $t('passwordgenerator.who_are_you') }}"
                                        value="{{email}}"
                                        v-model="email"
-                                       v-on:blur="updateMasterPassword"
                                        autofocus
                                        autocomplete="off"
                                        autocorrect="off"
                                        autocapitalize="none">
-                                <!-- remove autofill for pg-masterpassword -->
-                                <input type="password" id="password" style="display: none">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -143,7 +140,7 @@
 <script type="text/ecmascript-6">
     import 'bootstrap/dist/js/umd/modal';
     import topDomains from '../../landing-page/PasswordGenerator/top-domains.json';
-    import entries from '../../services/entries';
+    import http from '../../services/http';
     import logging from '../../services/logging';
 
     export default {
@@ -174,7 +171,7 @@
                     logging.error(this.$t('entries.site_mandatory'));
                     return;
                 }
-                entries.create(entry)
+                http.entries.create(entry)
                         .then(() => {
                             $('#newEntryModal').modal('hide');
                             logging.success(this.$t('entries.entry_created'));

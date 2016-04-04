@@ -7,7 +7,7 @@ import LandingPage from './landing-page/LandingPage';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
 import LessPassConnected from './app/Index';
-import Auth from './services/auth';
+import Http from './services/http';
 
 const router = new Router({
   history: true,
@@ -25,7 +25,7 @@ router.map({
     component: RegisterPage,
   },
   '/app/': {
-    auth_required: true,
+    auth_required: false,
     component: LessPassConnected,
   },
 });
@@ -34,14 +34,14 @@ router.redirect({
   '*': '/',
 });
 
-Auth.checkAuth();
+Vue.config.debug = true;
 
 router.beforeEach(transition => {
-  if (transition.to.path === '/' && Auth.user.authenticated) {
+  if (transition.to.path === '/' && Http.auth.user.authenticated) {
     transition.redirect('/app/');
   }
 
-  if (transition.to.auth_required && !Auth.user.authenticated) {
+  if (transition.to.auth_required && !Http.auth.user.authenticated) {
     transition.redirect('/login/');
   }
 

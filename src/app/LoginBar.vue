@@ -32,12 +32,12 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import auth from '../services/auth';
+  import http from '../services/http';
 
   export default {
     data() {
       return {
-        user: auth.user,
+        user: http.auth.user,
       };
     },
   };

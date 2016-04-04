@@ -1,12 +1,14 @@
-import axios from 'axios';
+import AuthService from './auth';
+import EntryServices from './entries';
 
-let request = null;
+let Auth = new AuthService();
+let Entries = new EntryServices();
 
-export function getHTTP(localStorage) {
-  if (!request) {
-    request = axios.create({
-      headers: {'Authorization': 'JWT ' + localStorage.getItem('token')}
-    });
-  }
-  return request;
+export {Auth};
+export {Entries};
+
+export default {
+  auth: Auth,
+  entries: Entries
 }
+
