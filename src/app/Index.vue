@@ -39,6 +39,27 @@
                     </div>
                 </div>
             </div>
+            <div class="row m-t-1">
+                <div class="paginate">
+                    <div class="col-sm-4 text-xs-left">
+                        <button class="btn btn-primary btn-sm" v-if="count > limit"
+                                :disabled="(currentPage*limit >= count)"
+                                @click="getPreviousEntries()">
+                            précédent
+                        </button>
+                    </div>
+                    <div class="col-sm-4 text-xs-center">
+                        {{ currentPage }} / {{ numberPages }}
+                    </div>
+                    <div class="col-sm-4 text-xs-right">
+                        <button class="btn btn-primary btn-sm" v-if="count > limit"
+                                :disabled="(currentPage===1)"
+                                @click="getNextEntries()">
+                            suivant
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -49,18 +70,38 @@
     export default {
         data() {
             return {
+                limit: 18,
+                offset: 0,
+                currentPage: 1,
                 entries: [],
+                numberPages: 1,
+                count: 0
             };
         },
         components: {
             NewEntry,
         },
         ready(){
-            http.entries.all(18, 0).then((entries) => {
-                this.entries = entries.data.results;
-                                console.table(entries.data.results)
-
-            });
+            this.getEntries(this.limit, this.offset);
         },
+        methods: {
+            getEntries(limit, offset){
+                http.entries.all(limit, offset).then((response) => {
+                    this.entries = response.data.results;
+                    this.count = response.data.count;
+                    this.numberPages = Math.ceil(this.count / this.limit);
+                })
+            },
+            getPreviousEntries() {
+                this.currentPage += 1;
+                var newOffset = (this.currentPage - 1) * this.limit;
+                this.getEntries(this.limit, newOffset);
+            },
+            getNextEntries() {
+                this.currentPage -= 1;
+                var newOffset = (this.currentPage - 1) * this.limit;
+                this.getEntries(this.limit, newOffset);
+            }
+        }
     };
 </script>
