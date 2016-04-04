@@ -14,8 +14,8 @@
                         <span class="input-group-addon" id="search-addon">
                             <i class="fa fa-search"></i>
                         </span>
-                            <input type="text" class="form-control" placeholder="search"
-                                   aria-describedby="search-addon">
+                            <input type="text" class="form-control" placeholder="search" v-model="search"
+                                   aria-describedby="search-addon" @keyup="filterEntry(search) | debounce 500">
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
             <div class="row m-t-3">
                 <div class="col-lg-12">
                     <div class="card-columns">
-                        <div class="card card-block" v-for="entry in entries">
+                        <div class="card card-block" v-for="entry in entries" @click="openEntry(entry)">
                             <blockquote class="card-blockquote">
                                 <p>{{ entry.site }}</p>
                                 <footer>
@@ -66,7 +66,6 @@
 <script type="text/ecmascript-6">
     import NewEntry from './Entries/newEntry.vue';
     import http from '../services/http';
-
     export default {
         data() {
             return {
@@ -85,8 +84,8 @@
             this.getEntries(this.limit, this.offset);
         },
         methods: {
-            getEntries(limit, offset){
-                http.entries.all(limit, offset).then((response) => {
+            getEntries(limit, offset, search=''){
+                http.entries.all(limit, offset, search).then((response) => {
                     this.entries = response.data.results;
                     this.count = response.data.count;
                     this.numberPages = Math.ceil(this.count / this.limit);
@@ -94,13 +93,19 @@
             },
             getPreviousEntries() {
                 this.currentPage += 1;
-                var newOffset = (this.currentPage - 1) * this.limit;
-                this.getEntries(this.limit, newOffset);
+                this.offset = (this.currentPage - 1) * this.limit;
+                this.getEntries(this.limit, this.offset);
             },
             getNextEntries() {
                 this.currentPage -= 1;
-                var newOffset = (this.currentPage - 1) * this.limit;
-                this.getEntries(this.limit, newOffset);
+                this.offset = (this.currentPage - 1) * this.limit;
+                this.getEntries(this.limit, this.offset);
+            },
+            openEntry(entry){
+                this.$router.go(`/app/entries/${entry.id}/`);
+            },
+            filterEntry(query){
+                this.getEntries(this.limit, this.offset, query);
             }
         }
     };

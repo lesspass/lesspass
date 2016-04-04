@@ -62,10 +62,14 @@ suite('entries', () => {
     });
   });
 
-  test('should get all entries with count and offset', (done) => {
-    nock('http://localhost/').get('/api/entries/?limit=100&offset=0').reply(200, {entries: []});
-    entries.all(100, 0).then(() => {
-      done();
+  test('should get all entries with parameters', (done) => {
+    nock('http://localhost/').get('/api/entries/?limit=100&offset=0&search=query&sorting=asc&ordering=-created')
+      .reply(200, {entries: []});
+    entries.all(100, 0, 'query', 'asc', '-created')
+      .then(() => {
+        done();
+      }).catch((e) => {
+      console.log(e)
     });
   });
 });
