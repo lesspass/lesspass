@@ -14,9 +14,13 @@ export default {
         return response;
       });
   },
-  all() {
+  all(limit=20, offset=0) {
     let config = this.getRequestConfig();
-    return request.get('/api/entries/', config)
+    config['params'] = {
+      'limit' : limit,
+      'offset' : offset
+    };
+    return request.get(`/api/entries/`, config)
       .then((response) => {
         return response;
       });

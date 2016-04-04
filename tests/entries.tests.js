@@ -1,4 +1,5 @@
 import entries from '../src/services/entries';
+import {entriesGetAll} from './helpers';
 
 import {localStorage} from './helpers';
 entries.localStorage = localStorage;
@@ -27,17 +28,7 @@ suite('entries', () => {
 
   test('should send requests with Authorization header', (done) => {
     var headers = {reqheaders: {'Authorization': 'JWT ' + token}};
-    nock('http://localhost/', headers).get('/api/entries/').reply(200, {entries: []});
-    entries.all().then(() => {
-      done();
-    });
-  });
-
-  test('should send requests with Authorization header updated', (done) => {
-    var new_token = 'WV9eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRyd';
-    localStorage.setItem('token', new_token);
-    var headers = {reqheaders: {'Authorization': 'JWT ' + new_token}};
-    nock('http://localhost/', headers).get('/api/entries/').reply(200, {entries: []});
+    nock('http://localhost/', headers).get('/api/entries/').query(true).reply(200, {entries: []});
     entries.all().then(() => {
       done();
     });
@@ -52,11 +43,28 @@ suite('entries', () => {
       });
   });
 
-  test('should get all entries', (done) => {
-    nock('http://localhost/').get('/api/entries/').reply(200, {entries: []});
+  test('should send requests with Authorization header updated', (done) => {
+    var new_token = 'WV9eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRyd';
+    localStorage.setItem('token', new_token);
+    var headers = {reqheaders: {'Authorization': 'JWT ' + new_token}};
+    nock('http://localhost/', headers).get('/api/entries/').query(true).reply(200, {entries: []});
+    entries.all().then(() => {
+      done();
+    });
+  });
+
+  test('should get all entries with offset', (done) => {
+    nock('http://localhost/').get('/api/entries/').query(true).reply(200, {entries: entriesGetAll});
     entries.all().then((response) => {
       assert.equal(200, response.status);
-      assert.equal(0, response.data.entries.length);
+      assert.equal(5, response.data.entries.results.length);
+      done();
+    });
+  });
+
+  test('should get all entries with count and offset', (done) => {
+    nock('http://localhost/').get('/api/entries/?limit=100&offset=0').reply(200, {entries: []});
+    entries.all(100, 0).then(() => {
       done();
     });
   });
