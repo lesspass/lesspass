@@ -1,14 +1,11 @@
-import AuthService from './auth';
-import EntryServices from './entries';
+import auth from './auth';
+import entries from './entries';
 
-let Auth = new AuthService();
-let Entries = new EntryServices();
-
-export {Auth};
-export {Entries};
+auth.localStorage = localStorage;
+entries.localStorage = localStorage;
 
 export default {
-  auth: Auth,
-  entries: Entries
+  auth: auth,
+  entries: entries
 }
 

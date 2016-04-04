@@ -1,23 +1,17 @@
 import request from 'axios';
 
-export default class Auth {
-  constructor(localStorage = global.localStorage) {
-    this.localStorage = localStorage;
-    this.user = {
-      authenticated: false,
-    }
-  }
-
+export default {
+  localStorage: null,
+  user: {
+    authenticated: false,
+  },
   login(credentials) {
-    var self = this;
     return request.post('/api/token-auth/', credentials)
       .then((response) => {
-        self.localStorage.setItem('token', response.data.token);
-        self.user.authenticated = true;
+        this.authUser(response.data.token);
         return response;
       });
-  }
-
+  },
   refreshToken(token) {
     return request
       .post('/api/token-refresh/', {token: token})
@@ -27,36 +21,50 @@ export default class Auth {
       .catch((err) => {
         throw err;
       });
-  }
-
+  },
+  getToken(token_name){
+    return new Promise((resolve, reject) => {
+      const token = this.localStorage.getItem(token_name);
+      if (token) {
+        resolve(token);
+      } else {
+        reject();
+      }
+    });
+  },
+  verifyToken(token){
+    return request.post('/api/token-verify/', {token: token})
+      .then(() => {
+        return token
+      });
+  },
+  gu() {
+    return this.user.authenticated
+    },
+  authUser(token){
+    this.localStorage.setItem('token', token);
+    this.user.authenticated = true;
+  },
+  resetAuth(e){
+    this.localStorage.removeItem('token');
+    this.user.authenticated = false;
+    throw err;
+  },
   checkAuth() {
-    var self = this;
-    const token = self.localStorage.getItem('token');
-    if (token) {
-      return request
-        .post('/api/token-verify/', {token: token})
-        .then((response) => {
-          self.user.authenticated = true;
-          return response;
-        })
-        .catch(() => {
-          self.user.authenticated = false;
-          self.localStorage.removeItem('token');
-          throw err;
-        });
-    }
-  }
-
+    return this.getToken('token')
+      .then(this.verifyToken)
+      .then(this.authUser.bind(this))
+      .catch(this.resetAuth.bind(this));
+  },
   logout() {
-    var self = this;
     return new Promise((resolve, reject) => {
       try {
-        self.localStorage.removeItem('token');
-        self.user.authenticated = false;
+        this.localStorage.removeItem('token');
+        this.user.authenticated = false;
         resolve();
       } catch (e) {
         reject(e);
       }
     });
   }
-}
+};

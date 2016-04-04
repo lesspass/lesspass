@@ -1,22 +1,22 @@
-import axios from 'axios';
+import request from 'axios';
 
-export default class Entry {
-  constructor(localStorage = global.localStorage) {
-    this.localStorage = localStorage;
-    this.request = axios.create({
+export default {
+  localStorage: null,
+  getRequestConfig() {
+    return {
       headers: {'Authorization': 'JWT ' + this.localStorage.getItem('token')}
-    });
-  }
-
+    }
+  },
   create(entry) {
-    return this.request.post('/api/entries/', entry)
+    let config = this.getRequestConfig();
+    return request.post('/api/entries/', entry, config)
       .then((response) => {
         return response;
       });
-  }
-
+  },
   all() {
-    return this.request.get('/api/entries/')
+    let config = this.getRequestConfig();
+    return request.get('/api/entries/', config)
       .then((response) => {
         return response;
       });
