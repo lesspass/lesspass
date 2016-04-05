@@ -35,22 +35,21 @@ router.redirect({
 });
 
 router.beforeEach(transition => {
-  if (transition.to.auth_required) {
-    http.auth.checkAuth()
-      .then(() => {
-        if (transition.to.path === '/') {
-          transition.redirect('/app/');
-        } else {
-          transition.next();
-        }
-      })
-      .catch(() => {
+  http.auth.checkAuth()
+    .then(() => {
+      if (transition.to.path === '/') {
+        transition.redirect('/app/');
+      } else {
+        transition.next();
+      }
+    })
+    .catch(() => {
+      if (transition.to.auth_required) {
         transition.redirect('/login/');
-      });
-  } else {
-    transition.next();
-  }
+      } else {
+        transition.next();
+      }
+    });
 });
-
 
 router.start(App, '#app');
