@@ -7,7 +7,7 @@ lesspass open source password manager (https://lesspass.com)
 ## lesspass submodules
 
  - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
- - [backend](https://github.com/lesspass/api) : backend api used for to store information about passwords
+ - [backend](https://github.com/lesspass/api) : backend api used to store information about passwords
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
 
 
@@ -35,7 +35,7 @@ run frontend tests
 
     cd frontend
     npm install
-    npm tests
+    npm test
 
 
 ## status
