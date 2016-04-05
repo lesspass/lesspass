@@ -1,0 +1,122 @@
+<template>
+    <form id="password-generator-form">
+        <div class="form-group row">
+            <div class="col-lg-6 m-t-1">
+                <label for="pg-email" class="sr-only">
+                    {{ $t('passwordgenerator.who_are_you') }}
+                </label>
+                <input id="pg-email"
+                       class="form-control"
+                       type="text"
+                       placeholder="{{ $t('passwordgenerator.who_are_you') }}"
+                       value="{{entry.email}}"
+                       v-model="entry.email"
+                       autofocus
+                       autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="none">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="pg-site" class="sr-only">
+                    {{ $t('passwordgenerator.where_are_you_going') }}
+                </label>
+                <input id="pg-site"
+                       class="form-control"
+                       list="domains"
+                       type="text"
+                       placeholder="{{ $t('passwordgenerator.where_are_you_going') }}"
+                       value="{{entry.site}}"
+                       v-model="entry.site"
+                       autocorrect="off"
+                       autocapitalize="none">
+                <datalist id="domains">
+                    <option v-for="domain in domains" v-bind:value="domain">
+                </datalist>
+            </div>
+        </div>
+        <div class="form-group row m-b-0">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" id="lowercase" value="lowercase"
+                                   v-model="entry.password.settings">
+                            <span class="c-indicator"></span>
+                            {{ $t('passwordgenerator.lowercase_options') }}
+                        </label>
+                    </div>
+                    <div class="col-lg-7">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" id="uppercase" value="uppercase"
+                                   v-model="entry.password.settings">
+                            <span class="c-indicator"></span>
+                            {{ $t('passwordgenerator.uppercase_options') }}
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" id="numbers" value="numbers"
+                                   v-model="entry.password.settings">
+                            <span class="c-indicator"></span>
+                            {{ $t('passwordgenerator.numbers_options') }}
+                        </label>
+                    </div>
+                    <div class="col-lg-7">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" id="symbols" value="symbols"
+                                   v-model="entry.password.settings">
+                            <span class="c-indicator"></span>
+                            {{ $t('passwordgenerator.symbols_options') }}
+                        </label>
+                    </div>
+                </div>
+                <div class="row m-t-1">
+                    <div class="col-lg-5 m-b-1">
+                        <label for="passwordLength" class="sr-only">
+                            {{ $t('passwordgenerator.length') }}
+                        </label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon" id="passwordLengthAddon">
+                                {{ $t('passwordgenerator.length') }}
+                            </span>
+                            <input type="number" class="form-control" id="passwordLength"
+                                   aria-describedby="passwordLengthAddon"
+                                   v-model="entry.password.length"
+                                   value="{{entry.password.length}}" min="6" max="64">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 m-b-1">
+                        <label for="passwordCounter" class="sr-only">
+                            {{ $t('passwordgenerator.counter') }}
+                        </label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon" id="passwordCounterAddon">
+                                {{ $t('passwordgenerator.counter') }}
+                            </span>
+                            <input type="number" class="form-control" id="passwordCounter"
+                                   aria-describedby="passwordCounterAddon"
+                                   v-model="entry.password.counter"
+                                   value="{{entry.password.counter}}" min="1" max="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>
+<script type="text/ecmascript-6">
+    import topDomains from '../../landing-page/PasswordGenerator/top-domains.json';
+
+    export default {
+        data() {
+            return {
+                domains: topDomains.domains
+            };
+        },
+        props: ['entry']
+    };
+</script>
