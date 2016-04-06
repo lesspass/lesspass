@@ -30,11 +30,13 @@ class PasswordInfoSerializer(serializers.ModelSerializer):
 
 
 class EntrySerializer(serializers.ModelSerializer):
+    site = serializers.CharField(allow_blank=True)
+    login = serializers.CharField(allow_blank=True)
     password = PasswordInfoSerializer()
 
     class Meta:
         model = models.Entry
-        fields = ('id', 'site', 'password', 'title', 'username', 'email', 'description', 'url', 'created', 'modified')
+        fields = ('id', 'site', 'login', 'password', 'created', 'modified')
         read_only_fields = ('created', 'modified')
 
     def create(self, validated_data):
@@ -45,10 +47,10 @@ class EntrySerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         password_data = validated_data.pop('password')
-        passwordInfo = instance.password
+        password_info = instance.password
         for attr, value in password_data.items():
-            setattr(passwordInfo, attr, value)
-        passwordInfo.save()
+            setattr(password_info, attr, value)
+        password_info.save()
 
         for attr, value in validated_data.items():
             setattr(instance, attr, value)

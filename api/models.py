@@ -81,7 +81,8 @@ class PasswordInfo(models.Model):
 class Entry(DateMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(LessPassUser, on_delete=models.CASCADE, related_name='entries')
-    site = models.CharField(max_length=255)
+    login = models.CharField(max_length=255, default='')
+    site = models.CharField(max_length=255, default='')
     password = models.ForeignKey(PasswordInfo)
 
     title = models.CharField(max_length=255, null=True, blank=True)
@@ -94,4 +95,4 @@ class Entry(DateMixin):
         verbose_name_plural = "Entries"
 
     def __str__(self):
-        return self.title
+        return str(self.id)

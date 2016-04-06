@@ -50,6 +50,7 @@ class LoginApiTestCase(APITestCase):
     def test_create_entry(self):
         entry = {
             "site": "twitter",
+            "login": "guillaume@oslab.fr",
             "password": {
                 "counter": 1,
                 "settings": [
@@ -60,11 +61,6 @@ class LoginApiTestCase(APITestCase):
                 ],
                 "length": 12
             },
-            "title": "twitter",
-            "username": "guillaume20100",
-            "email": "guillaume@oslab.fr",
-            "description": "",
-            "url": "https://twitter.com/"
         }
         self.assertEqual(0, models.Entry.objects.count())
         self.assertEqual(0, models.PasswordInfo.objects.count())
@@ -77,6 +73,7 @@ class LoginApiTestCase(APITestCase):
         self.assertNotEqual('facebook', entry.site)
         new_entry = {
             "site": "facebook",
+            "login": "",
             "password": {
                 "counter": 1,
                 "settings": [
@@ -86,13 +83,9 @@ class LoginApiTestCase(APITestCase):
                 ],
                 "length": 12
             },
-            "title": "facebook",
-            "username": "",
-            "email": "",
-            "description": "",
-            "url": "https://facebook.com/"
         }
-        self.client.put('/api/entries/%s/' % entry.id, new_entry)
+        request = self.client.put('/api/entries/%s/' % entry.id, new_entry)
+        self.assertEqual(200, request.status_code, request.content.decode('utf-8'))
         entry_updated = models.Entry.objects.get(id=entry.id)
         self.assertEqual('facebook', entry_updated.site)
         self.assertEqual(3, len(json.loads(entry_updated.password.settings)))
