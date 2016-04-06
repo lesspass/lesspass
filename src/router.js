@@ -6,7 +6,8 @@ import App from './App';
 import LandingPage from './landing-page/LandingPage';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
-import LessPassConnected from './app/Index';
+import LessPassIndex from './app/Index';
+import UpdateEntry from './app/Entries/UpdateEntry';
 import http from './services/http';
 
 const router = new Router({
@@ -26,7 +27,11 @@ router.map({
   },
   '/app/': {
     auth_required: true,
-    component: LessPassConnected,
+    component: LessPassIndex,
+  },
+  '/app/entries/:uuid/': {
+    auth_required: true,
+    component: UpdateEntry,
   },
 });
 

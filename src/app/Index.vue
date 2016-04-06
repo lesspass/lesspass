@@ -52,9 +52,8 @@
                 <div class="col-lg-12">
                     <div class="card-columns">
                         <div class="card card-block" v-for="entry in entries"
-                             v-on:dblclick="copyPassword(entry)">
-                            <i class="fa fa-pencil-square-o fa-lg edit-icon text-muted"
-                               v-on:click="openEntry(entry)"></i>
+                             @click="openEntry(entry)">
+                            <i class="fa fa-pencil-square-o fa-lg edit-icon text-muted"></i>
                             <blockquote class="card-blockquote">
                                 <p>{{ entry.site }}</p>
                                 <footer>
@@ -134,8 +133,7 @@
                 alert('password copied !');
             },
             openEntry(entry){
-                alert(`redirect to /app/entries/${entry.id}/`);
-//                this.$router.go(`/app/entries/${entry.id}/`);
+                this.$router.go(`/app/entries/${entry.id}/`);
             },
             filterEntry(query){
                 this.getEntries(this.limit, this.offset, query);
