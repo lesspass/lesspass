@@ -56,7 +56,7 @@ const entriesGetAll = {
     "password": {"counter": 1, "settings": ["lowercase", "uppercase", "numbers", "symbols"], "length": 12},
     "title": null,
     "username": null,
-    "email": "    test@lesspass.com",
+    "email": "test@lesspass.com",
     "description": null,
     "url": null,
     "created": "2016-04-04T08:11:55.130015",
@@ -67,7 +67,7 @@ const entriesGetAll = {
     "password": {"counter": 1, "settings": ["lowercase", "uppercase", "numbers", "symbols"], "length": 12},
     "title": null,
     "username": null,
-    "email": "    test@lesspass.com",
+    "email": "test@lesspass.com",
     "description": null,
     "url": null,
     "created": "2016-04-01T19:57:15.738606",
@@ -75,3 +75,17 @@ const entriesGetAll = {
   }]
 };
 export {entriesGetAll};
+
+var entriesGetOne = {
+  "id": "d1ff1ae9-bb29-469d-8e5e-8a387f529de0",
+  "site": "lesspass.com",
+  "password": {"counter": 1, "settings": ["lowercase", "uppercase", "numbers", "symbols"], "length": 12},
+  "title": null,
+  "username": null,
+  "email": "test@lesspass.com",
+  "description": null,
+  "url": null,
+  "created": "2016-04-05T16:44:46.210303",
+  "modified": "2016-04-05T16:44:46.210325"
+};
+export {entriesGetOne};

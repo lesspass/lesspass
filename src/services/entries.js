@@ -11,10 +11,9 @@ export default {
     let config = this.getRequestConfig();
     return request.post('/api/entries/', entry, config)
       .then((response) => {
-        return response;
+        return response.data;
       });
   },
-
   all(limit = 20, offset = 0, search = '', sorting = 'asc', ordering = '-created') {
     let config = this.getRequestConfig();
     config['params'] = {
@@ -24,9 +23,23 @@ export default {
       sorting: sorting,
       ordering: ordering
     };
-    return request.get(`/api/entries/`, config)
+    return request.get('/api/entries/', config)
       .then((response) => {
         return response;
       });
-  }
+  },
+  get(uuid) {
+    let config = this.getRequestConfig();
+    return request.get(`/api/entries/${uuid}/`, config)
+      .then((response) => {
+        return response.data;
+      });
+  },
+  update(entry) {
+    let config = this.getRequestConfig();
+    return request.put(`/api/entries/${entry.id}/`, entry, config)
+      .then((response) => {
+        return response.data;
+      });
+  },
 };

@@ -1,5 +1,6 @@
 import entries from '../src/services/entries';
 import {entriesGetAll} from './helpers';
+import {entriesGetOne} from './helpers';
 
 import {localStorage} from './helpers';
 entries.localStorage = localStorage;
@@ -34,11 +35,11 @@ suite('entries', () => {
     });
   });
 
-  test('should make a post request to create an entry', (done) => {
-    nock('http://localhost/').post('/api/entries/', entry).reply(201, {});
+  test('should create an entry', (done) => {
+    nock('http://localhost/').post('/api/entries/', entry).reply(201, entry);
     entries.create(entry)
-      .then((response) => {
-        assert.equal(201, response.status);
+      .then((newEntry) => {
+        assert.equal(entry.email, newEntry.email);
         done();
       });
   });
@@ -68,8 +69,28 @@ suite('entries', () => {
     entries.all(100, 0, 'query', 'asc', '-created')
       .then(() => {
         done();
-      }).catch((e) => {
-      console.log(e)
-    });
+      });
+  });
+
+  test('should get an entry', (done) => {
+    var headers = {reqheaders: {'Authorization': 'JWT ' + token}};
+    nock('http://localhost/', headers).get('/api/entries/d1ff1ae9-bb29-469d-8e5e-8a387f529de0/').reply(200, entriesGetOne);
+    entries.get('d1ff1ae9-bb29-469d-8e5e-8a387f529de0')
+      .then((entry) => {
+        assert.equal(entriesGetOne.email, entry.email);
+        done();
+      });
+  });
+
+  test('should update an entry', (done) => {
+    var updatedEntry = JSON.parse(JSON.stringify(entriesGetOne));
+    updatedEntry.email = 'test2@lesspass.com';
+    var headers = {reqheaders: {'Authorization': 'JWT ' + token}};
+    nock('http://localhost/', headers).put('/api/entries/d1ff1ae9-bb29-469d-8e5e-8a387f529de0/').reply(200, updatedEntry);
+    entries.update(updatedEntry)
+      .then((entry) => {
+        assert.equal(updatedEntry.email, entry.email);
+        done();
+      });
   });
 });
