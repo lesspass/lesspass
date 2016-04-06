@@ -41,7 +41,7 @@
         data() {
             return {
                 entry: {
-                    email: '',
+                    login: '',
                     site: '',
                     password: {
                         counter: 1,
@@ -56,10 +56,6 @@
         },
         methods: {
             create() {
-                if (this.entry.site === '') {
-                    logging.error(this.$t('entries.site_mandatory'));
-                    return;
-                }
                 http.entries.create(this.entry)
                         .then(() => {
                             $('#newEntryModal').modal('hide');

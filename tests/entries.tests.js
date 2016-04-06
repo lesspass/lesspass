@@ -23,7 +23,7 @@ suite('entries', () => {
         ],
         "length": 12
       },
-      "email": "guillaume@oslab.fr",
+      "login": "guillaume@lesspass.com",
     };
   });
 
@@ -39,7 +39,7 @@ suite('entries', () => {
     nock('http://localhost/').post('/api/entries/', entry).reply(201, entry);
     entries.create(entry)
       .then((newEntry) => {
-        assert.equal(entry.email, newEntry.email);
+        assert.equal(entry.login, newEntry.login);
         done();
       });
   });
@@ -58,7 +58,7 @@ suite('entries', () => {
     nock('http://localhost/').get('/api/entries/').query(true).reply(200, {entries: entriesGetAll});
     entries.all().then((response) => {
       assert.equal(200, response.status);
-      assert.equal(5, response.data.entries.results.length);
+      assert.equal(entriesGetAll.count, response.data.entries.results.length);
       done();
     });
   });
@@ -86,7 +86,7 @@ suite('entries', () => {
     var updatedEntry = JSON.parse(JSON.stringify(entriesGetOne));
     updatedEntry.email = 'test2@lesspass.com';
     var headers = {reqheaders: {'Authorization': 'JWT ' + token}};
-    nock('http://localhost/', headers).put('/api/entries/d1ff1ae9-bb29-469d-8e5e-8a387f529de0/').reply(200, updatedEntry);
+    nock('http://localhost/', headers).put(`/api/entries/${updatedEntry.id}/`).reply(200, updatedEntry);
     entries.update(updatedEntry)
       .then((entry) => {
         assert.equal(updatedEntry.email, entry.email);

@@ -58,7 +58,7 @@
                                 <p>{{ entry.site }}</p>
                                 <footer>
                                     <small class="text-muted">
-                                        {{ entry.email }}
+                                        {{ entry.login }}
                                     </small>
                                 </footer>
                             </blockquote>
@@ -75,7 +75,7 @@
                             {{ $t('index.previous') }}
                         </button>
                     </div>
-                    <div class="col-xs-4 text-xs-center">
+                    <div class="col-xs-4 text-xs-center" v-if="numberPages > 1">
                         {{ currentPage }} / {{ numberPages }}
                     </div>
                     <div class="col-xs-4 text-xs-right">

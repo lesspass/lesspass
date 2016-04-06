@@ -39,7 +39,6 @@
             update() {
                 http.entries.update(this.entry)
                         .then(() => {
-
                             logging.success(this.$t('entries.entry_update'));
                         })
                         .catch((err) => {

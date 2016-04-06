@@ -2,15 +2,15 @@
     <form id="password-generator-form">
         <div class="form-group row">
             <div class="col-lg-6 m-t-1">
-                <label for="pg-email" class="sr-only">
+                <label for="pg-login" class="sr-only">
                     {{ $t('passwordgenerator.who_are_you') }}
                 </label>
-                <input id="pg-email"
+                <input id="pg-login"
                        class="form-control"
                        type="text"
                        placeholder="{{ $t('passwordgenerator.who_are_you') }}"
-                       value="{{entry.email}}"
-                       v-model="entry.email"
+                       value="{{entry.login}}"
+                       v-model="entry.login"
                        autofocus
                        autocomplete="off"
                        autocorrect="off"
@@ -79,7 +79,7 @@
                         <label for="passwordLength" class="sr-only">
                             {{ $t('passwordgenerator.length') }}
                         </label>
-                        <div class="input-group input-group-sm">
+                        <div class="input-group">
                             <span class="input-group-addon" id="passwordLengthAddon">
                                 {{ $t('passwordgenerator.length') }}
                             </span>
@@ -93,7 +93,7 @@
                         <label for="passwordCounter" class="sr-only">
                             {{ $t('passwordgenerator.counter') }}
                         </label>
-                        <div class="input-group input-group-sm">
+                        <div class="input-group">
                             <span class="input-group-addon" id="passwordCounterAddon">
                                 {{ $t('passwordgenerator.counter') }}
                             </span>
