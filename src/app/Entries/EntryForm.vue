@@ -3,12 +3,12 @@
         <div class="form-group row">
             <div class="col-lg-6 m-t-1">
                 <label for="pg-login" class="sr-only">
-                    {{ $t('passwordgenerator.who_are_you') }}
+                    {{ $t('entry_form.login') }}
                 </label>
                 <input id="pg-login"
                        class="form-control"
                        type="text"
-                       placeholder="{{ $t('passwordgenerator.who_are_you') }}"
+                       placeholder="{{ $t('entry_form.login') }}"
                        value="{{entry.login}}"
                        v-model="entry.login"
                        autofocus
@@ -20,13 +20,13 @@
         <div class="form-group row">
             <div class="col-lg-12">
                 <label for="pg-site" class="sr-only">
-                    {{ $t('passwordgenerator.where_are_you_going') }}
+                    {{ $t('entry_form.site') }}
                 </label>
                 <input id="pg-site"
                        class="form-control"
                        list="domains"
                        type="text"
-                       placeholder="{{ $t('passwordgenerator.where_are_you_going') }}"
+                       placeholder="{{ $t('entry_form.site') }}"
                        value="{{entry.site}}"
                        v-model="entry.site"
                        autocorrect="off"
@@ -44,7 +44,7 @@
                             <input type="checkbox" id="lowercase" value="lowercase"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('passwordgenerator.lowercase_options') }}
+                            {{ $t('entry_form.lowercase_options') }}
                         </label>
                     </div>
                     <div class="col-lg-7">
@@ -52,7 +52,7 @@
                             <input type="checkbox" id="uppercase" value="uppercase"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('passwordgenerator.uppercase_options') }}
+                            {{ $t('entry_form.uppercase_options') }}
                         </label>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                             <input type="checkbox" id="numbers" value="numbers"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('passwordgenerator.numbers_options') }}
+                            {{ $t('entry_form.numbers_options') }}
                         </label>
                     </div>
                     <div class="col-lg-7">
@@ -70,18 +70,18 @@
                             <input type="checkbox" id="symbols" value="symbols"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('passwordgenerator.symbols_options') }}
+                            {{ $t('entry_form.symbols_options') }}
                         </label>
                     </div>
                 </div>
                 <div class="row m-t-1">
                     <div class="col-lg-5 m-b-1">
                         <label for="passwordLength" class="sr-only">
-                            {{ $t('passwordgenerator.length') }}
+                            {{ $t('entry_form.length') }}
                         </label>
                         <div class="input-group">
                             <span class="input-group-addon" id="passwordLengthAddon">
-                                {{ $t('passwordgenerator.length') }}
+                                {{ $t('entry_form.length') }}
                             </span>
                             <input type="number" class="form-control" id="passwordLength"
                                    aria-describedby="passwordLengthAddon"
@@ -91,11 +91,11 @@
                     </div>
                     <div class="col-lg-4 m-b-1">
                         <label for="passwordCounter" class="sr-only">
-                            {{ $t('passwordgenerator.counter') }}
+                            {{ $t('entry_form.counter') }}
                         </label>
                         <div class="input-group">
                             <span class="input-group-addon" id="passwordCounterAddon">
-                                {{ $t('passwordgenerator.counter') }}
+                                {{ $t('entry_form.counter') }}
                             </span>
                             <input type="number" class="form-control" id="passwordCounter"
                                    aria-describedby="passwordCounterAddon"

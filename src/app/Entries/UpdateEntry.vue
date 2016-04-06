@@ -39,10 +39,10 @@
             update() {
                 http.entries.update(this.entry)
                         .then(() => {
-                            logging.success(this.$t('entries.entry_update'));
+                            logging.success(this.$t('entry.entry_update'));
                         })
                         .catch((err) => {
-                            logging.error(this.$t('entries.error_update'));
+                            logging.error(this.$t('entry.error_update'));
                         });
             },
         },

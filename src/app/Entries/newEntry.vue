@@ -59,10 +59,10 @@
                 http.entries.create(this.entry)
                         .then(() => {
                             $('#newEntryModal').modal('hide');
-                            logging.success(this.$t('entries.entry_created'));
+                            logging.success(this.$t('entry.entry_created'));
                         })
                         .catch((err) => {
-                            logging.error(this.$t('entries.error_creation'));
+                            logging.error(this.$t('entry.error_creation'));
                         });
             },
         },
