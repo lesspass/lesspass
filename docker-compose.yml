@@ -4,7 +4,7 @@ services:
     restart: always
     image: postgres:9.5
     volumes:
-      - data:/var/lib/postgresql/data
+      - postgresql:/var/lib/postgresql/data
   backend:
     restart: always
     build: ./backend
@@ -36,5 +36,5 @@ services:
       - backend
       - frontend
 volumes:
-  data:
+  postgresql:
   node_modules:
