@@ -24,14 +24,22 @@
 </template>
 <script type="text/ecmascript-6">
     import EntryForm from './EntryForm';
-    import DeleteButton from './DeleteEntryButton.vue';
+    import DeleteButton from './DeleteEntryButton';
     import logging from '../../services/logging';
     import http from '../../services/http';
 
     export default {
         data() {
             return {
-                entry: {}
+                entry: {
+                    login: '',
+                    site: '',
+                    password: {
+                        counter: 1,
+                        length: 12,
+                        settings: ["lowercase", "uppercase", "numbers", "symbols"]
+                    },
+                }
             };
         },
         components: {

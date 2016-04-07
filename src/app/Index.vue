@@ -89,11 +89,13 @@
                 </div>
             </div>
         </div>
+        <copy-password-modal :entry="selectedEntry"></copy-password-modal>
     </div>
 </template>
 <script type="text/ecmascript-6">
     import 'bootstrap/dist/js/umd/modal';
     import NewEntry from './Entries/newEntry';
+    import CopyPasswordModal from './Entries/CopyPassword';
     import http from '../services/http';
     export default {
         data() {
@@ -102,6 +104,7 @@
                 offset: 0,
                 currentPage: 1,
                 entries: [],
+                selectedEntry: null,
                 numberPages: 1,
                 count: 0,
                 clicks: 0
@@ -109,6 +112,7 @@
         },
         components: {
             NewEntry,
+            CopyPasswordModal
         },
         ready(){
             this.getEntries(this.limit, this.offset);
@@ -132,7 +136,8 @@
                 this.getEntries(this.limit, this.offset);
             },
             copyPassword(entry){
-                alert('password copied !');
+                this.selectedEntry = entry;
+                $('#copyPasswordModal').modal('show');
             },
             openEntry(entry){
                 this.$router.go(`/app/entries/${entry.id}/`);

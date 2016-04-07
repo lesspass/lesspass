@@ -2,7 +2,7 @@
     <button class="btn btn-danger btn-sm m-b-0" data-toggle="modal" data-target="#deleteEntryModal">
         <i class="fa fa-trash-o fa-lg"></i>
     </button>
-    <div class="modal fade" id="deleteEntryModal" tabindex="-1" role="dialog" aria-labelledby="newEntry"
+    <div class="modal fade" id="deleteEntryModal" tabindex="-1" role="dialog" aria-labelledby="deleteEntry"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-xs-left">
@@ -10,7 +10,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="newEntry">{{{ $t('entry.Delete_entry') }}}</h4>
+                    <h4 class="modal-title" id="deleteEntry">{{{ $t('entry.Delete_entry') }}}</h4>
                 </div>
                 <div class="modal-body text-xs-left">
                     {{{ $t('entry.delete_are_you_sure') }}}
