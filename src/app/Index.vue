@@ -52,8 +52,9 @@
                 <div class="col-lg-12">
                     <div class="card-columns">
                         <div class="card card-block" v-for="entry in entries"
-                             @click="openEntry(entry)">
-                            <i class="fa fa-pencil-square-o fa-lg edit-icon text-muted"></i>
+                             @click="openOrCopy(entry)">
+                            <i class="fa fa-pencil-square-o fa-lg edit-icon text-muted"
+                                @click.stop="openEntry(entry)"></i>
                             <blockquote class="card-blockquote">
                                 <p>{{ entry.site }}</p>
                                 <footer>
@@ -102,7 +103,8 @@
                 currentPage: 1,
                 entries: [],
                 numberPages: 1,
-                count: 0
+                count: 0,
+                clicks: 0
             };
         },
         components: {
@@ -134,6 +136,19 @@
             },
             openEntry(entry){
                 this.$router.go(`/app/entries/${entry.id}/`);
+            },
+            openOrCopy(entry){
+                this.clicks++;
+                if (this.clicks === 1) {
+                    setTimeout(() => {
+                        if (this.clicks === 1) {
+                            this.copyPassword(entry);
+                        } else {
+                            this.openEntry(entry);
+                        }
+                        this.clicks = 0;
+                    }, 500);
+                }
             },
             filterEntry(query){
                 this.getEntries(this.limit, this.offset, query);
