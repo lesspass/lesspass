@@ -47,7 +47,7 @@
                                autocomplete="off">
                         <span class="input-group-btn" tabindex="-1" @click="changeType('pg-masterpassword')">
                             <button class="btn btn-secondary" tabindex="-1" type="button"
-                                    v-bind:style="{ color: passwordTextColor, backgroundColor: passwordColor }">
+                                    v-bind:style="{ backgroundColor: passwordColor }">
                                 <i class="fa fa-eye"></i>
                             </button>
                         </span>
@@ -78,22 +78,22 @@
                         {{ $t('passwordgenerator.generated_password') }}
                     </label>
                     <div class="input-group">
-                        <input type="text" id="generatedPassword" class="form-control hint--bottom"
+                        <input type="text" id="generatedPassword" class="form-control"
                                placeholder="{{ $t('passwordgenerator.generated_password') }}"
                                v-model="generatedPassword"
                                v-bind:disabled="!generatedPassword">
-            <span class="input-group-btn">
-                <button id="copyBtn" data-clipboard-target="#generatedPassword"
-                        class="btn btn-primary" type="button">
-                    {{ $t('passwordgenerator.copy') }}
-                </button>
-            </span>
+                        <span class="input-group-btn">
+                            <button id="copyBtn" data-clipboard-target="#generatedPassword"
+                                    class="btn btn-primary" type="button">
+                                {{ $t('passwordgenerator.copy') }}
+                            </button>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="form-group row m-b-0">
                 <div class="col-lg-12">
-                    <i class="fa fa-cog"></i>
+                    <i class="fa fa-gears"></i>
                     <a data-toggle="collapse" data-parent="#accordion" href="#advancedOptions"
                        aria-expanded="true" aria-controls="advancedOptions">
                         {{ $t('passwordgenerator.advanced_options') }}
@@ -182,7 +182,6 @@
         data() {
             return {
                 passwordColor: 'inherit',
-                passwordTextColor: 'black',
                 email: '',
                 password: '',
                 site: '',
@@ -208,19 +207,9 @@
                 }
             },
             setColors(color){
-                var colors = [
-                    {bgColor: '636363', fgColor: 'f0f0f0'},
-                    {bgColor: 'd95f0e', fgColor: 'fff7bc'},
-                    {bgColor: 'f03b20', fgColor: 'ffeda0'},
-                    {bgColor: '756bb1', fgColor: 'efedf5'},
-                    {bgColor: '31a354', fgColor: 'e5f5e0'},
-                    {bgColor: '3182bd', fgColor: 'deebf7'},
-                    {bgColor: 'c51b8a', fgColor: 'fde0dd'},
-                    {bgColor: '8856a7', fgColor: 'e0ecf4'}
-                ];
-                var index = parseInt(color, 16) % 8;
-                this.passwordColor = '#' + colors[index].bgColor;
-                this.passwordTextColor = '#' + colors[index].fgColor;
+                var colors = ['EBBB56', '59E0EB', 'E8F464', 'D2B4ED', 'BBE96D', 'EF9FC8', '8EE083', 'DCBFD6', 'DDD15A', 'A1C8E8', 'C4D977', 'F1A49E', '79E8A0', 'E9A970', '60E3B4', 'D4C47D', '73DDCA', 'C4EAA7', 'A7D6D4', '9CC795'];
+                var index = parseInt(color, 16) % colors.length;
+                this.passwordColor = '#' + colors[index];
             },
             changeType(id) {
                 if (document.getElementById(id).type == 'password') {
