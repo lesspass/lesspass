@@ -93,4 +93,13 @@ suite('entries', () => {
         done();
       });
   });
+
+  test('should delete an entry', (done) => {
+    var headers = {reqheaders: {'Authorization': 'JWT ' + token}};
+    nock('http://localhost/', headers).delete(`/api/entries/${entriesGetOne.id}/`).reply(200, entriesGetOne);
+    entries.delete(entriesGetOne)
+      .then(() => {
+        done();
+      });
+  });
 });

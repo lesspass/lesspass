@@ -42,4 +42,11 @@ export default {
         return response.data;
       });
   },
+  delete(entry) {
+    let config = this.getRequestConfig();
+    return request.delete(`/api/entries/${entry.id}/`, config)
+      .then((response) => {
+        return response.data;
+      });
+  },
 };

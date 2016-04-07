@@ -1,11 +1,17 @@
 <template>
     <div class="container p-t-2">
         <div class="row">
-            <div class="col-lg-12 bg-card-white">
+            <div class="col-sm-12 col-md-10 col-lg-8 bg-card-white">
                 <div class="row">
-                    <div class="col-sm-12 col-md-10 col-lg-8">
-                        <h4 class="modal-title" id="newEntry">{{{ $t('entry.Update_new_entry') }}}</h4>
-                        <hr>
+                    <div class="col-lg-9">
+                        <h4>{{{ $t('entry.Update_new_entry') }}}</h4>
+                    </div>
+                    <div class="col-lg-3 text-xs-right">
+                        <delete-button :entry="entry"></delete-button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
                         <entry-form :entry="entry" v-bind:prop.sync></entry-form>
                         <button type="button" class="btn btn-primary" @click="update()">
                             {{{ $t('entry.Update') }}}
@@ -18,6 +24,7 @@
 </template>
 <script type="text/ecmascript-6">
     import EntryForm from './EntryForm';
+    import DeleteButton from './DeleteEntryButton.vue';
     import logging from '../../services/logging';
     import http from '../../services/http';
 
@@ -29,6 +36,7 @@
         },
         components: {
             EntryForm,
+            DeleteButton,
         },
         ready(){
             http.entries.get(this.$route.params.uuid).then((entry) => {
@@ -45,6 +53,9 @@
                             logging.error(this.$t('entry.error_update'));
                         });
             },
+            delete(){
+
+            }
         },
     };
 </script>
