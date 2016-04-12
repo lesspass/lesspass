@@ -10,10 +10,7 @@ import LessPassIndex from './app/Index';
 import UpdateEntry from './app/Entries/UpdateEntry';
 import http from './services/http';
 
-const router = new Router({
-  history: true,
-  hashbang: false,
-});
+const router = new Router();
 
 router.map({
   '/': {
