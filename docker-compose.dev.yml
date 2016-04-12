@@ -1,28 +1,27 @@
 version: '2'
 services:
   db:
-    restart: always
     image: postgres:9.5
     volumes:
       - postgresql:/var/lib/postgresql/data
   backend:
-    restart: always
     build: ./backend
     volumes:
-      - backend:/backend
+      - ./backend:/backend
     ports:
       - "8000:8000"
     depends_on:
       - db
+    command: python manage.py runserver 0.0.0.0:8000
   frontend:
-    restart: always
     build: ./frontend
     volumes:
-      - frontend:/frontend
+      - ./frontend:/frontend
+      - node_modules:/frontend/node_modules
     ports:
      - "8080:8080"
+    command: npm run dev
   nginx:
-    restart: always
     build: ./nginx
     ports:
       - "80:80"
@@ -34,5 +33,4 @@ services:
       - frontend
 volumes:
   postgresql:
-  backend:
-  frontend:
+  node_modules:
