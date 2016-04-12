@@ -59,7 +59,7 @@
                 http.entries.create(this.entry)
                         .then(() => {
                             $('#newEntryModal').modal('hide');
-                            logging.success(this.$t('entry.entry_created'));
+                            location.reload();
                         })
                         .catch((err) => {
                             logging.error(this.$t('entry.error_creation'));

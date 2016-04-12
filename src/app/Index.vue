@@ -1,8 +1,5 @@
 <style>
-    .card:hover {
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.30);
-        cursor: pointer;
-    }
+
 
     .card .edit-icon {
         display: block;
@@ -12,6 +9,11 @@
     }
 
     @media (min-width: 480px) {
+        .entry__card:hover {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.30);
+            cursor: pointer;
+        }
+
         .card .edit-icon {
             display: none;
         }
@@ -51,10 +53,10 @@
             <div class="row m-t-2">
                 <div class="col-lg-12">
                     <div class="card-columns">
-                        <div class="card card-block" v-for="entry in entries"
+                        <div class="card entry__card card-block" v-for="entry in entries"
                              @click="openOrCopy(entry)">
                             <i class="fa fa-pencil-square-o fa-lg edit-icon text-muted"
-                                @click.stop="openEntry(entry)"></i>
+                               @click.stop="openEntry(entry)"></i>
                             <blockquote class="card-blockquote">
                                 <p>{{ entry.site }}</p>
                                 <footer>
