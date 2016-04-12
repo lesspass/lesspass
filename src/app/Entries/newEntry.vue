@@ -54,6 +54,11 @@
         components: {
             EntryForm,
         },
+        ready(){
+            $('#newEntryModal').on('shown.bs.modal', function () {
+                document.getElementById("pg-login").focus();
+            })
+        },
         methods: {
             create() {
                 http.entries.create(this.entry)

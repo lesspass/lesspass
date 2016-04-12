@@ -62,6 +62,11 @@
             };
         },
         props: ['entry'],
+        ready(){
+            $('#copyPasswordModal').on('shown.bs.modal', function () {
+                document.getElementById("pg-masterpassword").focus();
+            })
+        },
         methods: {
             copyPassword() {
                 lesspass.createMasterPassword(this.entry.login, this.password).then((masterPassword) => {
