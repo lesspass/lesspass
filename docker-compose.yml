@@ -27,6 +27,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    env_file: ./nginx/docker.env
+    volumes:
+      - ./nginx/ssl:/certificates
     volumes_from:
       - backend
     links:
