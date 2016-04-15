@@ -1,6 +1,6 @@
 server {
     listen       80;
-    server_name  localhost *.oslab.fr *.lesspass.com;
+    server_name  {{ server_name }};
 
     return 301 https://$server_name$request_uri;
 }
@@ -10,12 +10,12 @@ server {
     listen [::]:443 ssl;
     listen 443 ssl;
 
-    server_name  localhost *.oslab.fr *.lesspass.com;
+    server_name  {{ server_name }};
 
     charset utf-8;
 
-    ssl_certificate      /etc/ssl/certs/lesspass.com.crt;
-    ssl_certificate_key  /etc/ssl/private/lesspass.com.key;
+    ssl_certificate      /etc/ssl/certs/certificate.crt;
+    ssl_certificate_key  /etc/ssl/private/private.key;
 
     ssl_session_cache    shared:SSL:20m;
     ssl_session_timeout  30m;
@@ -26,8 +26,12 @@ server {
     ssl_stapling                            on;
     ssl_stapling_verify                     on;
 
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-    ssl_trusted_certificate /etc/ssl/certs/AddTrustExternalCARoot.crt;
+{% if dhparam %}
+    ssl_dhparam {{ dhparam_path }};
+{% endif %}
+{% if ssl_trusted_certificate %}
+    ssl_trusted_certificate {{ ssl_trusted_certificate_path }};
+{% endif %}
 
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
