@@ -26,7 +26,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    env_file: ./nginx/docker.env
+    environment:
+      - domain=lesspass.com
     volumes:
       - ./nginx/ssl:/certificates
     volumes_from:
