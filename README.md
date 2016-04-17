@@ -26,7 +26,7 @@ clone application:
     git submodule update --init
     docker-compose up -d
 
-open the application in a browser: [http://localhost](http://localhost)
+open the application in a browser: [https://localhost](https://localhost)
 
 
 ## tests
