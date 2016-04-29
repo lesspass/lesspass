@@ -177,7 +177,7 @@ const locales = {
       always_sync: 'Pas besoin de synchronisation',
       always_sync_detail: 'Vous n\'avez plus besoin de synchroniser sur le cloud vos coffres fort pour mots de passe. LessPass est une application web qui dérive vos mots de passe de manière sécurisée.',
       derivation: 'Mathématique et chiffrement',
-      derivation_detail: 'LastPass utilise différentes fonctions de dérivation pour transformer vos informations personnelles en un mot de passe unique. Ces transformations sont robustes aux attaques par force brute.',
+      derivation_detail: 'LessPass utilise différentes fonctions de dérivation pour transformer vos informations personnelles en un mot de passe unique. Ces transformations sont robustes aux attaques par force brute.',
       self_hosting: 'Auto Hébergement',
       self_hosting_detail: 'Vous pouvez héberger LessPass sur votre serveur :',
     },
