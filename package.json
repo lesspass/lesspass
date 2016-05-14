@@ -6,6 +6,7 @@
     "ava": "*",
     "babel-core": "*",
     "babel-preset-es2015": "*",
+    "jsdom": "^9.0.0",
     "xo": "*"
   },
   "xo": {
@@ -34,6 +35,6 @@
     ]
   },
   "dependencies": {
-    "jsdom": "^9.0.0"
+    "tldjs": "^1.6.2"
   }
 }
