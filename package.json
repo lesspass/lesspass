@@ -1,0 +1,39 @@
+{
+  "scripts": {
+    "test": "xo && ava tests --require babel-core/register"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "babel-core": "*",
+    "babel-preset-es2015": "*",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "envs": [
+      "browser",
+      "jquery",
+      "webextensions"
+    ],
+    "ignores": [
+      "extension/vendor/**"
+    ]
+  },
+  "ava": {
+    "files": [
+      "tests/*.js"
+    ],
+    "source": [
+      "extension/*.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "dependencies": {
+    "jsdom": "^9.0.0"
+  }
+}
