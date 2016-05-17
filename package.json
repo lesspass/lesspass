@@ -1,11 +1,14 @@
 {
   "scripts": {
+    "build": "rm -rf extension/dist && mkdir extension/dist && browserify ./extension/content.js -o ./extension/dist/content.min.js && browserify ./extension/popup.js -o ./extension/dist/popup.min.js",
     "test": "xo && ava tests --require babel-core/register"
   },
   "devDependencies": {
     "ava": "*",
     "babel-core": "*",
     "babel-preset-es2015": "*",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
     "jsdom": "^9.0.0",
     "xo": "*"
   },
@@ -18,7 +21,8 @@
       "webextensions"
     ],
     "ignores": [
-      "extension/vendor/**"
+      "extension/vendor/**",
+      "extension/dist/**"
     ]
   },
   "ava": {
@@ -34,7 +38,13 @@
       "es2015"
     ]
   },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
   "dependencies": {
+    "lesspass": "^1.1.1",
     "tldjs": "^1.6.2"
   }
 }
