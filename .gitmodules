@@ -4,3 +4,9 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/lesspass/api.git
+[submodule "core"]
+	path = core
+	url = https://github.com/lesspass/core.git
+[submodule "webextension"]
+	path = webextension
+	url = https://github.com/lesspass/webextension.git
