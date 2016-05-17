@@ -26,3 +26,5 @@ LessPass npm module use to generate unique password
 ## Test
 
     npm run test
+
+[lesspass submodule](https://github.com/lesspass/lesspass)
