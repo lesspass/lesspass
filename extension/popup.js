@@ -1,25 +1,30 @@
 import lesspass from 'lesspass';
 import {getDomainName} from './url-parser';
 
-const emailField = document.querySelector('#login-container-email');
-const passwordField = document.querySelector('#login-container-password');
-const siteField = document.querySelector('#login-container-site');
-
-function getLocalStore(storeName) {
-  return new Promise((resolve, reject) => {
-    chrome.storage.local.get(storeName, result => {
-      if (result === null) {
-        return reject(`${storeName} not found`);
-      }
-      resolve(result);
-    });
+function getStore(key, callback) {
+  chrome.storage.local.get(key, result => {
+    callback(result[key]);
   });
 }
 
-function updateStore(store) {
-  return new Promise(resolve => {
-    chrome.storage.local.set(store, () => {
-      resolve(store);
+function saveStore(key, value, callback) {
+  const newStore = {};
+  newStore[key] = value;
+  chrome.storage.local.set(newStore, () => {
+    callback(value);
+  });
+}
+
+function initStore(callback) {
+  getStore('lesspassStore', store => {
+    const defaultStore = Object.assign({
+      login: '',
+      counter: 1,
+      password: {length: 12, settings: ['lowercase', 'uppercase', 'numbers', 'symbols']}
+    }, store);
+
+    saveStore('lesspassStore', defaultStore, store => {
+      callback(store);
     });
   });
 }
@@ -32,76 +37,144 @@ function getCurrentTab() {
   });
 }
 
-document.getElementById('login-container-btn').addEventListener('click', () => {
-  const email = emailField.value;
-  const site = siteField.value;
-  const masterPassword = passwordField.value;
+function fillForm(data) {
+  document.getElementById('loginField').value = data.login;
+  document.getElementById('masterPasswordField').value = '';
+  document.getElementById('siteField').value = data.site;
+  document.getElementById('passwordCounter').value = data.counter;
 
-  if (!email || !masterPassword || !site) {
-    return;
+  const passwordInfo = data.password;
+  document.getElementById('passwordLength').value = passwordInfo.length;
+
+  document.getElementById('lowercase').checked = false;
+  document.getElementById('uppercase').checked = false;
+  document.getElementById('numbers').checked = false;
+  document.getElementById('symbols').checked = false;
+
+  for (let i = 0; i < passwordInfo.settings.length; i++) {
+    document.querySelector(`#${passwordInfo.settings[i]}`).checked = true;
   }
+}
 
-  const storagePromise = getLocalStore('lesspassStore').then(store => {
-    store.lesspassStore.email = email;
-    return updateStore(store);
-  });
+function selectGoodField() {
+  const loginField = document.getElementById('loginField');
+  const passwordField = document.getElementById('masterPasswordField');
+  if (loginField.value === '') {
+    loginField.focus();
+  } else {
+    passwordField.focus();
+  }
+}
 
-  const hashPromise = lesspass.createMasterPassword(email, masterPassword);
+function displayMessage(message) {
+  const messageField = document.getElementById('errorMessage');
+  messageField.replaceChild(document.createTextNode(message));
+}
 
-  const lesspassPromise = Promise.all([hashPromise, storagePromise])
-    .then(values => {
-      const entry = {
-        site,
-        password: values[1].lesspassStore.password
-      };
-      return lesspass.createPassword(values[0], entry);
+function getData() {
+  const defaultOptions = {
+    login: document.getElementById('loginField').value,
+    counter: document.getElementById('passwordCounter').value,
+    password: {
+      length: document.getElementById('passwordLength').value,
+      settings: []
+    }
+  };
+  const options = ['lowercase', 'uppercase', 'numbers', 'symbols'];
+
+  for (let i = 0; i < options.length; i++) {
+    if (document.getElementById(options[i]).checked) {
+      defaultOptions.password.settings.push(options[i]);
+    }
+  }
+  return defaultOptions;
+}
+
+function getFormData() {
+  const initData = getData();
+  initData.masterPassword = document.getElementById('masterPasswordField').value;
+  initData.site = document.getElementById('siteField').value;
+  return initData;
+}
+
+document.getElementById('saveDefaultOptionButton').addEventListener('click', () => {
+  const options = getData();
+
+  getStore('lesspassStore', store => {
+    const newStore = Object.assign(store, options);
+
+    saveStore('lesspassStore', newStore, () => {
+      displayMessage('(saved)');
     });
-
-  const tabPromise = getCurrentTab();
-
-  Promise.all([lesspassPromise, tabPromise]).then(values => {
-    chrome.tabs.sendMessage(values[1].id, {login: email, password: values[0]});
-    window.close();
   });
 });
 
-function setDomainName(domain) {
-  siteField.value = domain;
-}
+document.getElementById('saveDefaultOptionButton').addEventListener('click', () => {
+  const options = getData();
 
-function setEmail(email) {
-  emailField.value = email;
-}
+  getStore('lesspassStore', store => {
+    const newStore = Object.assign(store, options);
 
-function initStore(callback) {
-  chrome.storage.local.get('lesspassStore', result => {
-    const store = {
-      password: {length: 12, settings: ['lowercase', 'uppercase', 'numbers', 'symbols'], counter: 1},
-      email: ''
-    };
-    const lesspassStore = result.lesspassStore;
-    if (typeof lesspassStore !== 'undefined') {
-      if ('email' in lesspassStore) {
-        store.email = lesspassStore.email;
-      }
-      if ('password' in lesspassStore) {
-        store.password = lesspassStore.password;
-      }
-    }
-    chrome.storage.local.set({lesspassStore: store}, () => {
-      callback(store);
+    saveStore('lesspassStore', newStore, () => {
+      displayMessage('(saved)');
     });
   });
+});
+
+document.getElementById('loginField').addEventListener('blur', generatePassword);
+document.getElementById('masterPasswordField').addEventListener('blur', generatePassword);
+document.getElementById('siteField').addEventListener('blur', generatePassword);
+
+function generatePassword() {
+  const data = getFormData();
+  if (!data.login || !data.masterPassword || !data.site) {
+    return;
+  }
+  return lesspass.generatePassword(data.login, data.masterPassword, data.site, data).then(password => {
+    document.getElementById('generatedPasswordField').value = password;
+    return password;
+  });
 }
+
+function displayError(message) {
+  const messageField = document.getElementById('errorMessage');
+  messageField.replaceChild(document.createTextNode(message));
+}
+
+function copyPassword() {
+  const generatedPasswordField = document.getElementById('generatedPasswordField');
+  generatedPasswordField.disabled = false;
+  generatedPasswordField.select();
+  document.execCommand('copy');
+  generatedPasswordField.disabled = true;
+}
+
+document.getElementById('loginButton').addEventListener('click', event => {
+  event.preventDefault();
+  const data = getFormData();
+  if (!data.login || !data.masterPassword || !data.site) {
+    displayError('login, master password and site are required to generate a password');
+    return;
+  }
+
+  const tabPromise = getCurrentTab();
+  const passwordPromise = lesspass.generatePassword(data.login, data.masterPassword, data.site, data);
+  Promise.all([passwordPromise, tabPromise]).then(values => {
+    if (chrome.tabs && chrome.tabs.sendMessage) {
+      chrome.tabs.sendMessage(values[1].id, {login: data.login, password: values[0]});
+      window.close();
+    } else {
+      copyPassword();
+    }
+  });
+});
 
 chrome.tabs.query({active: true, currentWindow: true}, tabs => {
   if (tabs[0]) {
     initStore(store => {
-      setEmail(store.email);
+      store.site = getDomainName(tabs[0].url);
+      fillForm(store);
+      selectGoodField();
     });
-
-    const currentTab = tabs[0];
-    setDomainName(getDomainName(currentTab.url));
-    passwordField.focus();
   }
 });

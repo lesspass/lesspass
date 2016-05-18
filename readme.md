@@ -4,4 +4,4 @@
 
 chrome and firefox web extension for lesspass password manager
 
-[lesspass submodule](https://github.com/lesspass/lesspass)
+see [lesspass](https://github.com/lesspass/lesspass) project
