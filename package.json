@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "node.js stateless password management solution",
   "main": "lib/lesspass.js",
   "scripts": {
