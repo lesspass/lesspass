@@ -2,7 +2,11 @@
 
 # LessPass Core
 
-LessPass npm module use to generate unique password 
+LessPass node module use to generate unique password
+
+# requirements
+
+  * node 4.2.x
 
 ## Install
 
@@ -10,21 +14,31 @@ LessPass npm module use to generate unique password
 
 ## Usage
 
-    var lesspass = require('lesspass');
-    var entry = {
-        site: 'lesspass',
+    import lesspass from 'lesspass';
+
+    const login = 'contact@lesspass.com';
+    const masterPassword = 'password';
+    const site = 'lesspass.com';
+    const options = {
+        counter: 1,
         password: {
-            length: 14,
-            settings: ['lowercase', 'uppercase', 'numbers', 'symbols'],
-            counter: 1
+          length: 12,
+          settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
         }
     };
-    var masterPassword = '90cff82b8847525370a8f29a59ecf45db62c719a535788ad0df58d32304e925d';
-    var password = lesspass.createPassword(masterPassword, entry);
-    console.log(password); // ubUB4[yqAD3?od
+    lesspass.generatePassword(login, masterPassword, site, options).then(password => {
+        console.log(password) //azYS7,olOL2]
+    });
 
-## Test
+## API
 
-    npm run test
+### `generatePassword(login, masterPassword, site, options)`
 
-[lesspass submodule](https://github.com/lesspass/lesspass)
+generate unique password based on login, masterPassword, site and options.
+
+
+## Tests
+
+    npm test
+
+see [lesspass](https://github.com/lesspass/lesspass) project
