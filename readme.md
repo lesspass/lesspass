@@ -4,4 +4,19 @@
 
 chrome and firefox web extension for lesspass password manager
 
+# Tests
+
+    npm install
+    npm test
+
+# Build
+
+    npm run build
+
+extensions are in `./build` folder
+
+    ./build/lesspass.chrome.zip
+    ./build/lesspass.firefox.xpi
+
+
 see [lesspass](https://github.com/lesspass/lesspass) project
