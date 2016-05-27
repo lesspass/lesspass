@@ -66,9 +66,9 @@ function selectGoodField() {
   }
 }
 
-function displayMessage(message) {
-  const messageField = document.getElementById('errorMessage');
-  messageField.replaceChild(document.createTextNode(message));
+function displayMessage(message, field) {
+  const messageField = document.getElementById(field);
+  messageField.textContent = message;
 }
 
 function getData() {
@@ -104,19 +104,7 @@ document.getElementById('saveDefaultOptionButton').addEventListener('click', () 
     const newStore = Object.assign(store, options);
 
     saveStore('lesspassStore', newStore, () => {
-      displayMessage('(saved)');
-    });
-  });
-});
-
-document.getElementById('saveDefaultOptionButton').addEventListener('click', () => {
-  const options = getData();
-
-  getStore('lesspassStore', store => {
-    const newStore = Object.assign(store, options);
-
-    saveStore('lesspassStore', newStore, () => {
-      displayMessage('(saved)');
+      displayMessage('(saved)', 'messageField');
     });
   });
 });
@@ -136,11 +124,6 @@ function generatePassword() {
   });
 }
 
-function displayError(message) {
-  const messageField = document.getElementById('errorMessage');
-  messageField.replaceChild(document.createTextNode(message));
-}
-
 function copyPassword() {
   const generatedPasswordField = document.getElementById('generatedPasswordField');
   generatedPasswordField.disabled = false;
@@ -153,7 +136,7 @@ document.getElementById('loginButton').addEventListener('click', event => {
   event.preventDefault();
   const data = getFormData();
   if (!data.login || !data.masterPassword || !data.site) {
-    displayError('login, master password and site are required to generate a password');
+    displayMessage('login, master password and site are required to generate a password', 'errorMessageField');
     return;
   }
 
