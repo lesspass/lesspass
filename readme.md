@@ -4,6 +4,8 @@
 
 chrome and firefox web extension for lesspass password manager
 
+![demo lesspass extension](demo.gif?raw=true "LessPass demo")
+
 # Tests
 
     npm install
