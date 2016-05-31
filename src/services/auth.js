@@ -38,14 +38,11 @@ export default {
         return token
       });
   },
-  gu() {
-    return this.user.authenticated
-    },
   authUser(token){
     this.localStorage.setItem('token', token);
     this.user.authenticated = true;
   },
-  resetAuth(e){
+  resetAuth(err){
     this.localStorage.removeItem('token');
     this.user.authenticated = false;
     throw err;
