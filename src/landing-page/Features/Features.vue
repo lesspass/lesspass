@@ -20,6 +20,11 @@
     height: 120px;
   }
 
+  .p-y-6 {
+    padding-top: 6rem !important;
+    padding-bottom: 6rem !important;
+  }
+
   @media (min-width: 768px) {
 
     #features .features__card {

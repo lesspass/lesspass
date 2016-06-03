@@ -10,16 +10,15 @@
         <lesspass-login-bar></lesspass-login-bar>
         <lesspass-navbar></lesspass-navbar>
         <div id="header" class="container">
-          <div class="row">
-            <div class="col-md-5">
-              <lesspass-headlines></lesspass-headlines>
+            <div class="row">
+                <div class="col-md-5">
+                    <lesspass-headlines></lesspass-headlines>
+                </div>
+                <div class="col-md-7">
+                    <password-generator></password-generator>
+                </div>
             </div>
-            <div class="col-md-7">
-              <password-generator></password-generator>
-            </div>
-          </div>
         </div>
-
         <lesspass-features></lesspass-features>
         <lesspass-testimonials></lesspass-testimonials>
         <lesspass-howitworks></lesspass-howitworks>
@@ -27,14 +26,14 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import LesspassLoginBar from './LoginBar/LoginBar';
-    import LesspassNavbar from './Navbar/Navbar';
-    import LesspassHeadlines from './Headlines/Headlines';
-    import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
-    import LesspassFeatures from './Features/Features';
-    import LesspassHowitworks from './HowItWorks/HowItWorks';
-    import LesspassTestimonials from './Testimonials/Testimonials';
-    import LesspassFooter from './Footer/Footer';
+    import LesspassLoginBar from '../landing-page/LoginBar/LoginBar';
+    import LesspassNavbar from '../landing-page/Navbar/Navbar';
+    import LesspassHeadlines from '../landing-page/Headlines/Headlines';
+    import PasswordGenerator from '../landing-page/PasswordGenerator/PasswordGenerator';
+    import LesspassFeatures from '../landing-page/Features/Features';
+    import LesspassHowitworks from '../landing-page/HowItWorks/HowItWorks';
+    import LesspassTestimonials from '../landing-page/Testimonials/Testimonials';
+    import LesspassFooter from '../landing-page/Footer/Footer';
 
     export default {
         data() {

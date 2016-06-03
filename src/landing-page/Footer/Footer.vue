@@ -16,7 +16,7 @@
         <div class="col-lg-12 text-xs-center">
           <p>
             &copy; LessPass
-            - {{ $t('footer.created_by') }} <a href="mailto:guillaume@oslab.fr">Guillaume Vincent</a>
+            - {{ $t('footer.created_by') }} <a href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import VueI18n from 'vue-i18n';
 
 import App from './app';
-import LandingPage from './landing-page/LandingPage';
+import LandingPage from './pages/index';
 import LoginPage from './pages/login';
 import SettingsPage from './pages/settings';
 import EntriesPage from './pages/entries';

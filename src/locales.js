@@ -2,8 +2,8 @@ const locales = {
   en: {
     lang: 'en',
     headlines: {
-      title: 'Open Source<br>Password Manager',
-      subtitle: 'replaces all your tools that record your passwords as LastPass, 1Password, Keepass, Excel spreadsheet, post it, etc ...',
+      title: 'Take your passwords with you',
+      subtitle: 'Stop wasting time synchronize your encrypted vault. Remember one strong password to access your services, anywhere, anytime.',
     },
     index: {
       search: 'search',
@@ -73,8 +73,8 @@ const locales = {
       detail: 'LessPass is a password manager that guarantees you to generate the same password on the basis of unique information you provide. You can use LessPass to create passwords for various internet services (social networks , email, server passwords , ...).',
       always_sync: 'No synchronisation',
       always_sync_detail: 'LessPass don’t need any cloud storage. It’s a webapp, with some Javascript, that derive your password in a secure way.',
-      derivation: 'Math and Crypto',
-      derivation_detail: 'LessPass use different key derivation functions to transform your personal information into an unique password. These transformations are robust against brute force attacks.',
+      extension: 'Firefox and Chrome extension',
+      extension_detail: 'Download the <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/" class="btn btn-secondary">firefox</a> or the <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih" class="btn btn-secondary">chrome</a> extension to connect automatically to all sites with a LessPass password.',
       self_hosting: 'Self hosted ',
       self_hosting_detail: 'LessPass can be hosted on your server :',
     },
@@ -104,8 +104,8 @@ const locales = {
   fr: {
     lang: 'fr',
     headlines: {
-      title: 'Gestionnaire de mot de passe open source',
-      subtitle: 'remplace tous vos outils qui sauvegardent vos mots de passe comme Lastpass, 1password, Keepass, tableur Excel, post it, etc...',
+      title: 'Emporter tous vos mots de passe avec vous',
+      subtitle: 'Arrêtez de perdre du temps à synchroniser vos coffres-forts cryptés. Mémorisez un mot de passe fort pour accéder à tous vos services, partout, à tout moment.',
     },
     index: {
       search: 'rechercher',
@@ -175,8 +175,8 @@ const locales = {
       detail: 'LessPass est un gestionnaire de mot de passe qui n\'enregistre pas vos mots de passe. Il les regénère sur la base d\'informations uniques que vous lui fournissez. Vous pouvez donc utiliser LessPass pour créer des mots de passe pour vos différents services internet (Réseaux sociaux, mails, mots de passe serveurs, ...).',
       always_sync: 'Pas besoin de synchronisation',
       always_sync_detail: 'Vous n\'avez plus besoin de synchroniser sur le cloud vos coffres fort pour mots de passe. LessPass est une application web qui dérive vos mots de passe de manière sécurisée.',
-      derivation: 'Mathématique et chiffrement',
-      derivation_detail: 'LessPass utilise différentes fonctions de dérivation pour transformer vos informations personnelles en un mot de passe unique. Ces transformations sont robustes aux attaques par force brute.',
+      extension: 'Mathématique et chiffrement',
+      extension_detail: 'Téléchargez l\'extension <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">firefox</a> ou <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">chrome</a> pour vous connecter de manière automatique à vos sites avec un mot de passe LessPass.',
       self_hosting: 'Auto Hébergement',
       self_hosting_detail: 'Vous pouvez héberger LessPass sur votre serveur :',
     },
