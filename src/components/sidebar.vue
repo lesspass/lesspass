@@ -60,12 +60,6 @@
     <div class="sidebar">
         <ul class="sidebar-menu main">
             <li class="sidebar-item" v-link-active>
-                <a v-link="{ path: '/', activeClass: 'active', exact: true}" class="sidebar-link">
-                    <i class="icon ion-ios-home-outline"></i>
-                    <span>home</span>
-                </a>
-            </li>
-            <li class="sidebar-item" v-link-active>
                 <a v-link="{ path: '/entries/', activeClass: 'active' }" class="sidebar-link">
                     <i class="icon ion-ios-key-outline"></i>
                     <span>passwords</span>
@@ -80,7 +74,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link" @click="logout()">
+                <a class="sidebar-link" @click.stop.prevent="logout()">
                     <i class="icon ion-ios-log-out-outline"></i>
                     <span>logout</span>
                 </a>
@@ -97,7 +91,7 @@
             logout(){
                 auth.logout();
                 logging.success('Thank you for spending quality time with LessPass');
-                this.$router.go('/login/');
+                this.$router.go('/');
             }
         }
     }

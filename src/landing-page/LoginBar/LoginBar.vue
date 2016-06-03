@@ -19,7 +19,7 @@
     <div id="login-bar">
         <div class="container">
             <nav class="nav nav-inline pull-xs-right">
-                <a class="nav-link bg-primary" v-link="{ path: '/app/' }">
+                <a class="nav-link bg-primary" v-link="{ path: '/entries/' }">
                     {{ $t('login.LOGIN') }}
                 </a>
                 <a class="nav-link" v-link="{ path: '/register/' }">

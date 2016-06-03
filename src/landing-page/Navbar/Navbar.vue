@@ -20,7 +20,7 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
                         <a href="/">
-                            <img id="navbar__logo" src="logo.png" alt="logo">
+                            <img id="navbar__logo" src="../../images/logo.png" alt="logo">
                         </a>
                     </li>
                 </ul>

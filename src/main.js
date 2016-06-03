@@ -48,7 +48,11 @@ auth.localStorage = localStorage;
 router.beforeEach(transition => {
   auth.checkAuth()
     .then(() => {
-      transition.next();
+      if (transition.to.path === '/') {
+        transition.redirect('/entries/');
+      } else {
+        transition.next();
+      }
     })
     .catch(() => {
       if (transition.to.authRequired) {
