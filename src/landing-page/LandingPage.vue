@@ -1,48 +1,54 @@
 <style>
-  @media (min-width: 480px) {
-    #header {
-      padding: 15vh 0;
+    @media (min-width: 480px) {
+        #header {
+            padding: 15vh 0;
+        }
     }
-  }
 </style>
 <template>
-  <div id="landing-page">
-    <div id="header" class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <lesspass-headlines></lesspass-headlines>
+    <div id="landing-page">
+        <lesspass-login-bar></lesspass-login-bar>
+        <lesspass-navbar></lesspass-navbar>
+        <div id="header" class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <lesspass-headlines></lesspass-headlines>
+            </div>
+            <div class="col-md-7">
+              <password-generator></password-generator>
+            </div>
+          </div>
         </div>
-        <div class="col-md-7">
-          <password-generator></password-generator>
-        </div>
-      </div>
-    </div>
 
-    <lesspass-features></lesspass-features>
-    <lesspass-testimonials></lesspass-testimonials>
-    <lesspass-howitworks></lesspass-howitworks>
-    <lesspass-footer></lesspass-footer>
-  </div>
+        <lesspass-features></lesspass-features>
+        <lesspass-testimonials></lesspass-testimonials>
+        <lesspass-howitworks></lesspass-howitworks>
+        <lesspass-footer></lesspass-footer>
+    </div>
 </template>
 <script type="text/ecmascript-6">
-  import LesspassHeadlines from './Headlines/Headlines';
-  import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
-  import LesspassFeatures from './Features/Features';
-  import LesspassHowitworks from './HowItWorks/HowItWorks';
-  import LesspassTestimonials from './Testimonials/Testimonials';
-  import LesspassFooter from './Footer/Footer';
+    import LesspassLoginBar from './LoginBar/LoginBar';
+    import LesspassNavbar from './Navbar/Navbar';
+    import LesspassHeadlines from './Headlines/Headlines';
+    import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
+    import LesspassFeatures from './Features/Features';
+    import LesspassHowitworks from './HowItWorks/HowItWorks';
+    import LesspassTestimonials from './Testimonials/Testimonials';
+    import LesspassFooter from './Footer/Footer';
 
-  export default {
-    data() {
-      return {};
-    },
-    components: {
-      LesspassHeadlines,
-      PasswordGenerator,
-      LesspassFeatures,
-      LesspassHowitworks,
-      LesspassTestimonials,
-      LesspassFooter
-    },
-  };
+    export default {
+        data() {
+            return {};
+        },
+        components: {
+            LesspassLoginBar,
+            LesspassNavbar,
+            LesspassHeadlines,
+            PasswordGenerator,
+            LesspassFeatures,
+            LesspassHowitworks,
+            LesspassTestimonials,
+            LesspassFooter
+        },
+    };
 </script>

@@ -9,19 +9,19 @@
     "test": "ava test --require babel-core/register && xo"
   },
   "dependencies": {
-    "axios": "^0.9.1",
+    "axios": "^0.12.0",
     "bootstrap": "^4.0.0-alpha.2",
     "clipboard": "^1.5.9",
     "es6-promise": "^3.1.2",
     "express": "^4.13.4",
     "ionicons": "^3.0.0",
     "jquery": "^2.2.2",
-    "lesspass": "^1.1.1",
+    "lesspass": "^2.0.1",
     "moment": "^2.12.0",
     "tether": "^1.2.0",
     "toastr": "^2.1.2",
     "vue": "^1.0.20",
-    "vue-i18n": "^2.4.1",
+    "vue-i18n": "^4.0.0",
     "vue-router": "^0.7.13"
   },
   "devDependencies": {

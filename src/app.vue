@@ -29,6 +29,10 @@
         padding-top: 5em;
     }
 
+    .content.no-sidebar,.content.no-sidebar .container-fluid{
+        padding: 0;
+    }
+
     @media (min-width: 48em) {
         .content {
             padding-top: 1em;
@@ -41,7 +45,7 @@
         <div class="sidebar-wrapper" v-show="user.authenticated">
             <sidebar></sidebar>
         </div>
-        <div class="content">
+        <div class="content" v-bind:class="{ 'no-sidebar': !user.authenticated }">
             <div class="container-fluid">
                 <router-view></router-view>
             </div>
