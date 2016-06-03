@@ -1,0 +1,17 @@
+version: '2'
+services:
+  backend:
+    restart: always
+    volumes:
+      - backend:/backend
+    command: /usr/bin/supervisord
+  frontend:
+    restart: always
+    volumes:
+      - frontend:/frontend
+    command: npm start
+  nginx:
+    restart: always
+volumes:
+  backend:
+  frontend:
