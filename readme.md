@@ -4,4 +4,4 @@
 
 api server with django rest framework for LessPass password manager
 
-[lesspass submodule](https://github.com/lesspass/lesspass)
+see [lesspass](https://github.com/lesspass/lesspass) project
