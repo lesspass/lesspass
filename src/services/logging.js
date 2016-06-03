@@ -15,7 +15,7 @@ toastr.options = {
   showEasing: 'swing',
   hideEasing: 'linear',
   showMethod: 'fadeIn',
-  hideMethod: 'fadeOut',
+  hideMethod: 'fadeOut'
 };
 
 module.exports = {
@@ -30,5 +30,5 @@ module.exports = {
   },
   clear() {
     toastr.clear();
-  },
+  }
 };

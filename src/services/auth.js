@@ -1,67 +1,74 @@
-import request from 'axios';
+import axios from 'axios';
+
+const TOKEN_NAME = 'token';
 
 export default {
   localStorage: null,
   user: {
-    authenticated: false,
+    authenticated: false
   },
-  login(credentials) {
-    return request.post('/api/token-auth/', credentials)
-      .then((response) => {
-        this.authUser(response.data.token);
-        return response;
-      });
+  getRequestConfig() {
+    const token = this.localStorage.getItem('token');
+    return {
+      headers: {Authorization: `JWT ${token}`}
+    };
   },
-  refreshToken(token) {
-    return request
-      .post('/api/token-refresh/', {token: token})
-      .then((response) => {
-        return response.data.token;
-      })
-      .catch((err) => {
-        throw err;
-      });
+  login(user) {
+    return axios.post('/api/tokens/auth/', user).then(response => {
+      this.authUser(response.data.token);
+      return response.data;
+    });
   },
-  getToken(token_name){
+  changePassword(credentials) {
+    const config = this.getRequestConfig();
+    return axios.post('/api/auth/password/', credentials, config).then(response => {
+      return response;
+    });
+  },
+  getToken(tokenName) {
+    const self = this;
     return new Promise((resolve, reject) => {
-      const token = this.localStorage.getItem(token_name);
+      const token = self.localStorage.getItem(tokenName);
       if (token) {
         resolve(token);
       } else {
-        reject();
+        reject(`${tokenName} not in local storage`);
       }
     });
   },
-  verifyToken(token){
-    return request.post('/api/token-verify/', {token: token})
-      .then(() => {
-        return token
+  logout() {
+    this.localStorage.removeItem(TOKEN_NAME);
+    this.user.authenticated = false;
+  },
+  refreshToken(token) {
+    return axios
+      .post('/api/tokens/refresh/', {token})
+      .then(response => {
+        return response.data.token;
+      })
+      .catch(err => {
+        throw err;
       });
   },
-  authUser(token){
-    this.localStorage.setItem('token', token);
+  verifyToken(token) {
+    return axios.post('/api/tokens/verify/', {token})
+      .then(() => {
+        return token;
+      });
+  },
+  authUser(token) {
+    this.localStorage.setItem(TOKEN_NAME, token);
     this.user.authenticated = true;
   },
-  resetAuth(err){
-    this.localStorage.removeItem('token');
+  resetAuth(err) {
+    this.localStorage.removeItem(TOKEN_NAME);
     this.user.authenticated = false;
     throw err;
   },
   checkAuth() {
-    return this.getToken('token')
+    return this.getToken(TOKEN_NAME)
       .then(this.verifyToken)
       .then(this.authUser.bind(this))
       .catch(this.resetAuth.bind(this));
-  },
-  logout() {
-    return new Promise((resolve, reject) => {
-      try {
-        this.localStorage.removeItem('token');
-        this.user.authenticated = false;
-        resolve();
-      } catch (e) {
-        reject(e);
-      }
-    });
   }
 };

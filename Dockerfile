@@ -1,4 +1,4 @@
-FROM node:argon
+FROM node:argon-slim
 
 RUN mkdir -p /frontend
 WORKDIR /frontend

@@ -3,12 +3,12 @@
         <div class="form-group row">
             <div class="col-lg-6 m-t-1">
                 <label for="pg-login" class="sr-only">
-                    {{ $t('entry_form.login') }}
+                    login
                 </label>
                 <input id="pg-login"
                        class="form-control"
                        type="text"
-                       placeholder="{{ $t('entry_form.login') }}"
+                       placeholder="login"
                        value="{{entry.login}}"
                        v-model="entry.login"
                        autofocus
@@ -20,13 +20,13 @@
         <div class="form-group row">
             <div class="col-lg-12">
                 <label for="pg-site" class="sr-only">
-                    {{ $t('entry_form.site') }}
+                    site
                 </label>
                 <input id="pg-site"
                        class="form-control"
                        list="domains"
                        type="text"
-                       placeholder="{{ $t('entry_form.site') }}"
+                       placeholder="site"
                        value="{{entry.site}}"
                        v-model="entry.site"
                        autocorrect="off"
@@ -44,7 +44,7 @@
                             <input type="checkbox" id="lowercase" value="lowercase"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('entry_form.lowercase_options') }}
+                            lowercase_options
                         </label>
                     </div>
                     <div class="col-lg-7">
@@ -52,7 +52,7 @@
                             <input type="checkbox" id="uppercase" value="uppercase"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('entry_form.uppercase_options') }}
+                            uppercase_options
                         </label>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                             <input type="checkbox" id="numbers" value="numbers"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('entry_form.numbers_options') }}
+                            numbers_options
                         </label>
                     </div>
                     <div class="col-lg-7">
@@ -70,18 +70,18 @@
                             <input type="checkbox" id="symbols" value="symbols"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            {{ $t('entry_form.symbols_options') }}
+                            symbols_options
                         </label>
                     </div>
                 </div>
                 <div class="row m-t-1">
                     <div class="col-lg-5 m-b-1">
                         <label for="passwordLength" class="sr-only">
-                            {{ $t('entry_form.length') }}
+                            length
                         </label>
                         <div class="input-group">
                             <span class="input-group-addon" id="passwordLengthAddon">
-                                {{ $t('entry_form.length') }}
+                                length
                             </span>
                             <input type="number" class="form-control" id="passwordLength"
                                    aria-describedby="passwordLengthAddon"
@@ -91,11 +91,11 @@
                     </div>
                     <div class="col-lg-4 m-b-1">
                         <label for="passwordCounter" class="sr-only">
-                            {{ $t('entry_form.counter') }}
+                            counter
                         </label>
                         <div class="input-group">
                             <span class="input-group-addon" id="passwordCounterAddon">
-                                {{ $t('entry_form.counter') }}
+                                counter
                             </span>
                             <input type="number" class="form-control" id="passwordCounter"
                                    aria-describedby="passwordCounterAddon"
@@ -109,12 +109,10 @@
     </form>
 </template>
 <script type="text/ecmascript-6">
-    import topDomains from '../../landing-page/PasswordGenerator/top-domains.json';
-
     export default {
         data() {
             return {
-                domains: topDomains.domains
+                domains: []
             };
         },
         props: ['entry']

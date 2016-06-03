@@ -5,8 +5,8 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
-    "build": "rm -rf dist/ && NODE_ENV=production webpack --progress --hide-modules",
-    "test": "mocha --ui tdd --require babel-core/register --recursive tests"
+    "build": "rm -rf dist/ && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "test": "ava test --require babel-core/register && xo"
   },
   "dependencies": {
     "axios": "^0.9.1",
@@ -14,7 +14,7 @@
     "clipboard": "^1.5.9",
     "es6-promise": "^3.1.2",
     "express": "^4.13.4",
-    "font-awesome": "^4.5.0",
+    "ionicons": "^3.0.0",
     "jquery": "^2.2.2",
     "lesspass": "^1.1.1",
     "moment": "^2.12.0",
@@ -22,32 +22,51 @@
     "toastr": "^2.1.2",
     "vue": "^1.0.20",
     "vue-i18n": "^2.4.1",
-    "vue-router": "^0.7.11"
+    "vue-router": "^0.7.13"
   },
   "devDependencies": {
-    "babel-core": "^6.7.4",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-transform-runtime": "^6.6.0",
-    "babel-preset-es2015": "^6.6.0",
+    "ava": "^0.15.1",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-runtime": "^6.0.0",
+    "cross-env": "^1.0.6",
     "css-loader": "^0.23.1",
-    "exports-loader": "^0.6.3",
-    "file-loader": "^0.8.5",
-    "imports-loader": "^0.6.5",
+    "file-loader": "^0.8.4",
     "json-loader": "^0.5.4",
-    "mocha": "^2.4.5",
-    "nock": "^7.7.2",
-    "node-localstorage": "^1.1.2",
+    "nock": "^8.0.0",
+    "node-localstorage": "^1.3.0",
+    "node-sass": "^3.7.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "vue-hot-reload-api": "^1.3.2",
-    "vue-html-loader": "^1.2.0",
-    "vue-loader": "^8.2.2",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^8.2.1",
     "vue-style-loader": "^1.0.0",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0",
+    "xo": "^0.15.1"
+  },
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "envs": [
+      "browser"
+    ],
+    "ignores": [
+      "webpack.config.js",
+      "server.js",
+      "test/_helpers.js",
+      "src_old/**"
+    ]
   },
   "babel": {
     "presets": [
-      "es2015"
+      "es2015",
+      "stage-2"
     ],
     "plugins": [
       "transform-runtime"

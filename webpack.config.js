@@ -12,47 +12,69 @@ module.exports = {
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(__dirname, 'node_modules')],
     alias: {
-      'src': path.resolve(__dirname, './src')
+      src: path.resolve(__dirname, './src')
     }
   },
-  resolveLoader: {root: path.join(__dirname, 'node_modules'),},
+  resolveLoader: {
+    root: path.join(__dirname, 'node_modules')
+  },
   module: {
     loaders: [
       {
-        test: /\.vue$/, loader: 'vue'
+        test: /\.vue$/,
+        loader: 'vue'
       },
       {
-        test: /\.js$/, loader: 'babel', exclude: /node_modules/
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
-        test: /\.json$/, loader: 'json'
+        test: /\.json$/,
+        loader: 'json-loader'
       },
       {
-        test: /\.html$/, loader: 'vue-html'
+        test: /\.html$/,
+        loader: 'vue-html'
       },
       {
         test: /\.(png|jpg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
-        loader: 'url',
-        query: {limit: 10000, name: '[name].[ext]?[hash:7]'}
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: '[name].[ext]?[hash]'
+        }
       }
     ]
   },
-  devServer: {historyApiFallback: true, noInfo: true},
-  devtool: 'eval-source-map',
   plugins: [
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      'window.jQuery': "jquery",
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
-  ]
+  ],
+  devServer: {
+    historyApiFallback: true,
+    noInfo: true
+  },
+  devtool: '#eval-source-map'
 };
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = 'source-map';
+  module.exports.devtool = '#source-map';
+  // http://vuejs.github.io/vue-loader/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({'process.env': {NODE_ENV: '"production"'}}),
-    new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
     new webpack.optimize.OccurenceOrderPlugin()
-  ])
+  ]);
 }

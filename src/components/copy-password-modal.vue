@@ -7,7 +7,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="copyPassword">{{{ $t('entry.copy_password') }}}</h4>
+                    <h4 class="modal-title" id="copyPassword">copy_password</h4>
                 </div>
                 <div class="modal-body text-xs-left">
                     <form id="password-generator-form">
@@ -17,20 +17,20 @@
                         <div class="form-group row">
                             <div class="col-lg-12 m-t-1">
                                 <label for="pg-masterpassword" class="sr-only">
-                                    {{ $t('passwordgenerator.what_is_your_secret') }}
+                                    what_is_your_secret
                                 </label>
                                 <div class="input-group">
                                     <input id="pg-masterpassword"
                                            class="form-control"
                                            type="password"
-                                           placeholder="{{ $t('passwordgenerator.what_is_your_secret') }}"
+                                           placeholder="what_is_your_secret"
                                            v-model="password"
                                            autocomplete="off">
                                     <span class="input-group-btn" tabindex="-1"
                                           @click="changeType('pg-masterpassword')">
                                         <button class="btn btn-secondary" tabindex="-1" type="button"
                                                 v-bind:style="{ backgroundColor: passwordColor }">
-                                            <i class="fa fa-eye"></i>
+                                            <i class="icon ion-ios-eye"></i>
                                         </button>
                                     </span>
                                 </div>
@@ -40,10 +40,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        {{{ $t('entry.Cancel') }}}
+                        Cancel
                     </button>
                     <button type="button" class="btn btn-danger" @click="copyPassword()">
-                        {{{ $t('entry.Copy') }}}
+                        Copy
                     </button>
                 </div>
             </div>
@@ -51,8 +51,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import http from '../../services/http';
-    import logging from '../../services/logging';
+    import logging from '../services/logging';
     import lesspass from 'lesspass'
 
     export default {
@@ -75,7 +74,7 @@
                         password: this.entry.password
                     };
                     $('#copyPasswordModal').modal('hide');
-                    window.prompt(this.$t('entry.copy_to_clipboard'), lesspass.createPassword(masterPassword, entry));
+                    window.prompt('copy_to_clipboard', lesspass.createPassword(masterPassword, entry));
                 });
             },
             changeType(id) {
