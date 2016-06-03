@@ -9,7 +9,8 @@ router.register(r'entries', views.EntryViewSet, base_name='entries')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^token-auth/', rest_framework_jwt.views.obtain_jwt_token),
-    url(r'^token-verify/', rest_framework_jwt.views.verify_jwt_token),
-    url(r'^token-refresh/', rest_framework_jwt.views.refresh_jwt_token),
+    url(r'^tokens/auth/', rest_framework_jwt.views.obtain_jwt_token),
+    url(r'^tokens/verify/', rest_framework_jwt.views.verify_jwt_token),
+    url(r'^tokens/refresh/', rest_framework_jwt.views.refresh_jwt_token),
+    url(r'^auth/', include('djoser.urls')),
 ]
