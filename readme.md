@@ -9,7 +9,7 @@ lesspass open source password manager (https://lesspass.com)
  - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
  - [backend](https://github.com/lesspass/api) : backend api used to store information about passwords
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
- - [web extension](webextension) : chrome and firefox web extension for lesspass password manager
+ - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for lesspass password manager
 
 
 ## requirements
