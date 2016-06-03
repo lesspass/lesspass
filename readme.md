@@ -39,4 +39,4 @@ Example if your domain is `lesspass.com`
     ls ssl/
     lesspass.com.ca.crt  lesspass.com.crt  lesspass.com.dhparam.pem  lesspass.com.key
 
-[lesspass submodule](https://github.com/lesspass/lesspass)
+see [lesspass](https://github.com/lesspass/lesspass) project
