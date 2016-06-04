@@ -1,13 +1,15 @@
 <template>
     <div id="login-page">
-        <div class="col-sm-3 col-sm-offset-4">
+        <div class="col-sm-4 col-sm-offset-4">
             <div class="card card-block m-y-2">
-                <div class="text-xs-center">
-                    <img class="m-t-1 m-b-2" src="../images/logo.png" alt="logo">
-                </div>
-                <p>{{{ $t('login.RegisterInfo') }}}</p>
                 <form @submit="register()">
                     <fieldset class="form-group">
+                        <img src="../images/logo.png" alt="logo">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <p class="text-muted">
+                            {{{ $t('login.RegisterInfo') }}}
+                        </p>
                         <label for="email" class="sr-only">{{ $t('login.email') }}</label>
 
                         <input type="text" class="form-control" id="email"
@@ -19,9 +21,12 @@
 
                         <input type="password" class="form-control" id="password" v-model="user.password"
                                placeholder="{{ $t('login.PasswordPlaceholder') }}">
-                         <small class="text-muted">{{ $t('login.registerPasswordHelp') }}</small>
+                        <small class="text-muted">{{ $t('login.registerPasswordHelp') }}</small>
                     </fieldset>
                     <button type="submit" class="btn btn-primary btn-block">{{ $t('login.Register') }}</button>
+                    <fieldset class="form-group p-t-1">
+                        <a v-link="{ path: '/login/'}"><u>{{ $t('login.orLogIn') }}</u></a>
+                    </fieldset>
                 </form>
             </div>
         </div>
@@ -42,6 +47,10 @@
         },
         methods: {
             register(){
+                if (!this.user.email || !this.user.password) {
+                    logging.error(this.$t('login.emailAndPasswordMandatory'));
+                    return;
+                }
                 auth.register(this.user)
                         .then(()=> {
                             logging.success(this.$t('login.registerSuccess'));
@@ -55,7 +64,7 @@
                                 if (err.data.email[0] === 'LessPassUser with this email address already exists.') {
                                     logging.error(this.$t('login.registrationInvalidUserAlreadyExists'));
                                 }
-                            }else{
+                            } else {
                                 logging.error(this.$t('login.registrationInvalid'));
                             }
                         });

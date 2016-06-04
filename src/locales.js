@@ -125,12 +125,16 @@ locales.en.login = {
   credentialsInvalids: '<strong>Invalid Email or Password.</strong><br> Please try again.',
   forgotPassword: 'help, I  forgot my password',
   Register: 'Register (beta)',
-  RegisterInfo: 'New to LessPass App ? You can create an account :',
+  RegisterInfo: 'Create an account :',
   registerSuccess: 'Thank you for being registered, you can now login. Do not forget that LessPass connected application is in beta, and we love the feedback to improve our product.',
   registrationInvalidNotAnEmail: 'Your email is not a valid email address.',
   registrationInvalidUserAlreadyExists: 'You already have an account. Do you want to <a href="/#!/login/"><b>log in</b></a>?',
   registrationInvalid: 'The information you provided are invalid.',
-  logoutMessage: 'Thanks for spending some quality time with LessPass App today.'
+  logoutMessage: 'Thanks for spending some quality time with LessPass App today.',
+  orLogIn: 'Already register ? log in',
+  orRegister: 'Do not have an account ? Sign in',
+  LogInInfo: 'Happy to see you here again',
+  emailAndPasswordMandatory: 'Email and password are mandatory'
 };
 
 locales.fr.login = {
@@ -144,12 +148,16 @@ locales.fr.login = {
   credentialsInvalids: 'L\'adresse e-mail et/ou mot de passe sont invalides',
   forgotPassword: 'mot de passe oublié',
   Register: 'S\'enregistrer',
-  RegisterInfo: 'Nouveau sur LessPass ? enregistrez-vous ?',
+  RegisterInfo: 'Créez un compte :',
   registerSuccess: 'Merci de vous être enregistré, vous pouvez maintenant vous connecter. N\'oublier pas que LessPass App est en beta et que nous aimons beaucoup les retours pour améliorer notre produit.',
   registrationInvalidNotAnEmail: 'Votre email n\'est pas un email valide',
   registrationInvalidUserAlreadyExists: 'Vous avez déjà un compte ici. Vous voulez peut être vous <a href="/#!/login/"><b>connecter</b></a>?',
   registrationInvalid: 'Vos informations de connection sont invalides',
-  logoutMessage: 'Merci d\'avoir passé du temps de qualité avec LessPass App aujourd\'hui'
+  logoutMessage: 'Merci d\'avoir passé du temps de qualité avec LessPass App aujourd\'hui',
+  orLogIn: 'Déjà un compte ? connectez-vous',
+  orRegister: 'Vous n\'avez pas de compte ? Enregistrez-vous',
+  LogInInfo: 'Content de vous revoir ici',
+  emailAndPasswordMandatory: 'L\'email et le mot de passe sont obligatoires'
 };
 
 locales.en.entries = {

@@ -1,12 +1,15 @@
 <template>
     <div id="login-page">
-        <div class="col-sm-3 col-sm-offset-4">
+        <div class="col-sm-4 col-sm-offset-4">
             <div class="card card-block m-y-2">
-                <div class="text-xs-center">
-                    <img class="m-t-1 m-b-2" src="../images/logo.png" alt="logo">
-                </div>
                 <form @submit="login()">
                     <fieldset class="form-group">
+                        <img src="../images/logo.png" alt="logo">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <p class="text-muted">
+                            {{{ $t('login.LogInInfo') }}}
+                        </p>
                         <label for="email" class="sr-only">{{ $t('login.email') }}</label>
 
                         <input type="text" class="form-control" id="email"
@@ -21,11 +24,9 @@
                                placeholder="{{ $t('login.PasswordPlaceholder') }}">
                     </fieldset>
                     <button type="submit" class="btn btn-primary btn-block">{{ $t('login.SignIn') }}</button>
-<!--                    <fieldset class="form-group row m-t-2">
-                        <div class="col-xs-12">
-                            <a v-link="{ path: '/reset/'}"><u>{{ $t('login.forgotPassword') }}</u></a>
-                        </div>
-                    </fieldset>-->
+                    <fieldset class="form-group p-t-1">
+                        <a v-link="{ path: '/register/'}"><u>{{ $t('login.orRegister') }}</u></a>
+                    </fieldset>
                 </form>
             </div>
         </div>
@@ -46,6 +47,10 @@
         },
         methods: {
             login(){
+                if (!this.user.email || !this.user.password) {
+                    logging.error(this.$t('login.emailAndPasswordMandatory'));
+                    return;
+                }
                 auth.login(this.user)
                         .then(()=> {
                             logging.success(this.$t('login.welcome'));
