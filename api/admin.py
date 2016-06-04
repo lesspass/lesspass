@@ -1,3 +1,4 @@
+from api import models
 from api.models import PasswordInfo, Entry, LessPassUser
 
 from django import forms
@@ -5,6 +6,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.db.models import Count
 
 
 class UserCreationForm(forms.ModelForm):
@@ -45,8 +47,8 @@ class LessPassUserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    list_display = ('email', 'is_admin',)
-    list_filter = ('is_admin',)
+    list_display = ('email', 'is_admin', 'column_entries_count')
+    list_filter = ('is_admin', 'is_active')
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_admin',)}),
@@ -61,8 +63,23 @@ class LessPassUserAdmin(BaseUserAdmin):
     ordering = ('email',)
     filter_horizontal = ()
 
+    def get_queryset(self, request):
+        return models.LessPassUser.objects.annotate(entries_count=Count('entries'))
 
-admin.site.register(Entry)
+    def column_entries_count(self, instance):
+        return instance.entries_count
+
+    column_entries_count.short_description = 'Entries count'
+    column_entries_count.admin_order_field = 'entries_count'
+
+
+class EntryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user',)
+    search_fields = ('user__email',)
+    ordering = ('user',)
+
+
+admin.site.register(Entry, EntryAdmin)
 admin.site.register(PasswordInfo)
 admin.site.register(LessPassUser, LessPassUserAdmin)
 admin.site.unregister(Group)
