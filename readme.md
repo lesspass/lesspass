@@ -1,4 +1,5 @@
-# nginx
+# LessPass nginx
+
 nginx container for lesspass
 
 ## custom SSL certificate
