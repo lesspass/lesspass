@@ -1,7 +1,7 @@
 <template>
     <button type="button" class="btn btn-primary" data-toggle="modal"
             data-target="#newEntryModal">
-        create new entry
+        {{{ $t('entries.CreateNewEntry') }}}
     </button>
     <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog" aria-labelledby="newEntry"
          aria-hidden="true">
@@ -11,17 +11,17 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="newEntry">Create_new_entry</h4>
+                    <h4 class="modal-title" id="newEntry">{{{ $t('entries.CreateNewEntry') }}}</h4>
                 </div>
                 <div class="modal-body text-xs-left">
                     <entry-form :entry="entry" v-bind:prop.sync></entry-form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Cancel
+                        {{{ $t('entries.Cancel') }}}
                     </button>
                     <button type="button" class="btn btn-primary" @click="create()">
-                        Create
+                        {{{ $t('entries.Create') }}}
                     </button>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                             location.reload();
                         })
                         .catch((err) => {
-                            logging.error(this.$t('entry.error_creation'));
+                            logging.error(this.$t('entries.errorCreation'));
                         });
             },
         },

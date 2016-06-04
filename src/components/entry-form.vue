@@ -3,12 +3,12 @@
         <div class="form-group row">
             <div class="col-lg-6 m-t-1">
                 <label for="pg-login" class="sr-only">
-                    login
+                    {{ $t('entries.login') }}
                 </label>
                 <input id="pg-login"
                        class="form-control"
                        type="text"
-                       placeholder="login"
+                       placeholder="{{ $t('entries.login') }}"
                        value="{{entry.login}}"
                        v-model="entry.login"
                        autofocus
@@ -20,13 +20,13 @@
         <div class="form-group row">
             <div class="col-lg-12">
                 <label for="pg-site" class="sr-only">
-                    site
+                    {{ $t('entries.site') }}
                 </label>
                 <input id="pg-site"
                        class="form-control"
                        list="domains"
                        type="text"
-                       placeholder="site"
+                       placeholder="{{ $t('entries.site') }}"
                        value="{{entry.site}}"
                        v-model="entry.site"
                        autocorrect="off"
@@ -44,7 +44,7 @@
                             <input type="checkbox" id="lowercase" value="lowercase"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            lowercase_options
+                            {{ $t('entries.lowercaseOptions') }}
                         </label>
                     </div>
                     <div class="col-lg-7">
@@ -52,7 +52,7 @@
                             <input type="checkbox" id="uppercase" value="uppercase"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            uppercase_options
+                            {{ $t('entries.uppercaseOptions') }}
                         </label>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                             <input type="checkbox" id="numbers" value="numbers"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            numbers_options
+                            {{ $t('entries.numbersOptions') }}
                         </label>
                     </div>
                     <div class="col-lg-7">
@@ -70,18 +70,18 @@
                             <input type="checkbox" id="symbols" value="symbols"
                                    v-model="entry.password.settings">
                             <span class="c-indicator"></span>
-                            symbols_options
+                            {{ $t('entries.symbolsOptions') }}
                         </label>
                     </div>
                 </div>
                 <div class="row m-t-1">
                     <div class="col-lg-5 m-b-1">
                         <label for="passwordLength" class="sr-only">
-                            length
+                            {{ $t('entries.length') }}
                         </label>
                         <div class="input-group">
                             <span class="input-group-addon" id="passwordLengthAddon">
-                                length
+                                {{ $t('entries.length') }}
                             </span>
                             <input type="number" class="form-control" id="passwordLength"
                                    aria-describedby="passwordLengthAddon"
@@ -91,11 +91,11 @@
                     </div>
                     <div class="col-lg-4 m-b-1">
                         <label for="passwordCounter" class="sr-only">
-                            counter
+                            {{ $t('entries.counter') }}
                         </label>
                         <div class="input-group">
                             <span class="input-group-addon" id="passwordCounterAddon">
-                                counter
+                                {{ $t('entries.counter') }}
                             </span>
                             <input type="number" class="form-control" id="passwordCounter"
                                    aria-describedby="passwordCounterAddon"

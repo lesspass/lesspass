@@ -15,17 +15,17 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="deleteEntry">Delete_entry</h4>
+                    <h4 class="modal-title" id="deleteEntry">{{{ $t('entries.DeleteEntry') }}}</h4>
                 </div>
                 <div class="modal-body text-xs-left">
-                    delete_are_you_sure
+                    {{{ $t('entries.deleteAreYouSure') }}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Cancel
+                        {{{ $t('entries.Cancel') }}}
                     </button>
                     <button type="button" class="btn btn-danger" @click="deleteEntry()">
-                        Confirm
+                        {{{ $t('entries.Confirm') }}}
                     </button>
                 </div>
             </div>
@@ -46,11 +46,11 @@
                 Entries.delete(this.entry)
                         .then(() => {
                             $('#deleteEntryModal').modal('hide');
-                            logging.success('entry.entry_deleted');
+                            logging.success(this.$t('entries.entryDeleted'));
                             this.$router.go('/entries/');
                         })
-                        .catch((err) => {
-                            logging.error('entry.error_deletion');
+                        .catch(() => {
+                            logging.error(this.$t('entries.errorDeletion'));
                         });
             },
         },

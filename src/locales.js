@@ -151,11 +151,66 @@ locales.fr.login = {
 };
 
 locales.en.entries = {
-  search: 'search password information'
+  search: 'search',
+  CreateNewEntry: 'Create a new entry',
+  createNewEntry: 'create entry',
+  Cancel: 'Cancel',
+  Create: 'Create',
+  UpdateNewEntry: 'Update a new entry',
+  Update: 'Update',
+  entryCreated: 'Your entry has been successfully created',
+  errorCreation: 'Your entry could not be created, try again in a moment',
+  entryUpdated: 'Your entry has been successfully updated',
+  errorUpdate: 'Your entry could not be updated, try again in a moment',
+  DeleteEntry: 'Delete entry',
+  deleteAreYouSure: 'Are you sure you want to delete this entry ?',
+  Confirm: 'Confirm',
+  entryDeleted: 'This entry has been deleted',
+  errorDeletion: 'Your entry could not be deleted, try again in a moment',
+  copyPassword: 'copy password',
+  CopyPassword: 'Copy password',
+  Copy: 'Copy',
+  copyToClipboard: 'Copy to clipboard ctrl + c',
+  login: 'Email / Username',
+  site: 'Site',
+  advancedOptions: 'Advanced options',
+  lowercaseOptions: 'lowercase (a‑z)',
+  uppercaseOptions: 'UPPERCASE (A‑Z)',
+  numbersOptions: 'numbers (0‑9)',
+  symbolsOptions: 'symbols (@&%?)',
+  counter: 'Counter',
+  length: 'Length'
 };
 
 locales.fr.entries = {
-  search: 'recherchez'
+  search: 'recherche',
+  CreateNewEntry: 'Créer un mot de passe',
+  createNewEntry: 'créer un mot de passe',
+  Cancel: 'Annuler',
+  Create: 'Créer',
+  UpdateNewEntry: 'Mettre à jour un mot de passe',
+  Update: 'Mettre à jour',
+  entryCreated: 'Votre mot de passe a bien été créé',
+  errorCreation: 'Une erreur est survenue pendant la création, retentez dans un instant',
+  entryUpdated: 'Votre mot de passe a bien été mis à jour',
+  errorUpdate: 'Une erreur est survenue pendant la mise à jour, retentez dans un instant',
+  DeleteEntry: 'Supprimer un mot de passe',
+  deleteAreYouSure: 'Est vous sur de vouloir supprimer ce mot de passe ?',
+  Confirm: 'Confirmer',
+  entryDeleted: 'Votre mot de passe a bien été supprimé',
+  errorDeletion: 'Une erreur est survenue pendant la suppression, retentez dans un instant',
+  copyPassword: 'copier le mot de passe',
+  Copy: 'Copier',
+  copyToClipboard: 'Copier (CTRL + C)',
+  login: 'Email / Nom d\'utilisateur',
+  site: 'Site (ex: twitter.com)',
+  advancedOptions: 'Options avancées',
+  lowercaseOptions: 'minuscules (a‑z)',
+  uppercaseOptions: 'MAJUSCULES (A‑Z)',
+  numbersOptions: 'nombres (0‑9)',
+  symbolsOptions: 'caractères spéciaux (@&%?)',
+  counter: 'Version',
+  length: 'Longueur'
 };
 
 export default locales;

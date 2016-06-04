@@ -10,7 +10,7 @@
                 <br>
                 <b>site : </b> {{ entry.site }}
             </p>
-            <a href="#" class="btn btn-sm btn-primary" @click.stop.prevent="generatePassword">Copy password</a>
+            <a href="#" class="btn btn-sm btn-primary" @click.stop.prevent="generatePassword">{{{ $t('entries.copyPassword') }}}</a>
         </div>
     </div>
 </template>

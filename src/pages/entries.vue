@@ -9,10 +9,10 @@
             <div class="col-md-6">
                 <div id="searchEntries">
                     <div class="input-group">
-                                    <span class="input-group-addon" id="search-addon">
-                                        <i class="icon ion-ios-search"></i>
-                                    </span>
-                        <input type="text" class="form-control" placeholder="{{{ $t.('entries.search') }}}"
+                        <span class="input-group-addon" id="search-addon">
+                            <i class="icon ion-ios-search"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="{{{ $t('entries.search') }}}"
                                v-model="search" aria-describedby="search-addon"
                                @keyup="filterEntry(search) | debounce 500">
                     </div>
