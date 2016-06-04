@@ -19,6 +19,11 @@ export default {
       return response.data;
     });
   },
+  register(user) {
+    return axios.post('/api/auth/register/', user).then(response => {
+      return response.data;
+    });
+  },
   changePassword(credentials) {
     const config = this.getRequestConfig();
     return axios.post('/api/auth/password/', credentials, config).then(response => {

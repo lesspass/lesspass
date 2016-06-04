@@ -5,6 +5,7 @@ import VueI18n from 'vue-i18n';
 import App from './app';
 import LandingPage from './pages/index';
 import LoginPage from './pages/login';
+import RegisterPage from './pages/register';
 import SettingsPage from './pages/settings';
 import EntriesPage from './pages/entries';
 import EditEntryPage from './pages/edit-entry';
@@ -15,7 +16,7 @@ Vue.use(VueI18n);
 const browserLanguage = (navigator.language || navigator.browserLanguage).split('-')[0];
 const lang = locales.hasOwnProperty(browserLanguage) ? browserLanguage : 'en';
 Vue.config.lang = lang;
-Object.keys(locales).forEach(function (lang) {
+Object.keys(locales).forEach(lang => {
   Vue.locale(lang, locales[lang]);
 });
 
@@ -24,10 +25,13 @@ const router = new VueRouter();
 
 router.map({
   '/': {
-    component: LandingPage,
+    component: LandingPage
   },
   '/login/': {
     component: LoginPage
+  },
+  '/register/': {
+    component: RegisterPage
   },
   '/settings/': {
     component: SettingsPage,

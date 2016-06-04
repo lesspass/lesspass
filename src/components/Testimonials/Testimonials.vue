@@ -1,7 +1,7 @@
 <style>
   #testimonials {
-    background-color: #323232;
-    color: #F5F5F5;
+    background-color: #424242;
+    color: #f5f5f5;
   }
 
   #testimonials .thumbnail {
@@ -15,11 +15,11 @@
         <div class="col-lg-10 col-lg-offset-1">
           <div class="media">
             <a class="media-left" href="#">
-              <img src="./el.jpg" alt="Edouard Lopez" class="img-circle thumbnail">
+              <img src="el.jpg" alt="Edouard Lopez" class="img-circle thumbnail">
             </a>
             <div class="media-body">
-              <h5 class="media-heading">{{{ $t('feedback.feedback_1') }}}</h5>
-              <p>{{{ $t('feedback.feedback_1_author') }}}</p>
+              <h5 class="media-heading">{{{ $t('testimonial.feedback1') }}}</h5>
+              <p>{{{ $t('testimonial.feedback1Author') }}}</p>
             </div>
           </div>
         </div>
@@ -28,11 +28,11 @@
         <div class="col-lg-10 col-lg-offset-1">
           <div class="media">
             <div class="media-body text-xs-right">
-              <h5 class="media-heading">{{{ $t('feedback.feedback_2') }}}</h5>
-              <p>{{{ $t('feedback.feedback_2_author') }}}</p>
+              <h5 class="media-heading">{{{ $t('testimonial.feedback2') }}}</h5>
+              <p>{{{ $t('testimonial.feedback2Author') }}}</p>
             </div>
             <a class="media-right" href="#">
-              <img src="./gv.jpg" alt="guillaume vincent" class="img-circle thumbnail">
+              <img src="gv.jpg" alt="guillaume vincent" class="img-circle thumbnail">
             </a>
           </div>
         </div>

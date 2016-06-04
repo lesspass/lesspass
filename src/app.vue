@@ -18,6 +18,16 @@
         border-radius: 0 !important;
     }
 
+    .white-link {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    .white-link:hover {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
     .app {
         height: 100%;
         display: flex;
@@ -29,7 +39,7 @@
         padding-top: 5em;
     }
 
-    .content.no-sidebar,.content.no-sidebar .container-fluid{
+    .content.no-sidebar, .content.no-sidebar .container-fluid {
         padding: 0;
     }
 

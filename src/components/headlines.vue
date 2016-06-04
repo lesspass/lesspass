@@ -6,9 +6,9 @@
 <template>
   <div id="hero">
     <div class="container">
-      <h1 id="hero__title">{{{ $t('headlines.title') }}}</h1>
+      <h1 id="hero__title">{{{ $t('index.title') }}}</h1>
       <p class="lead hidden-xs-down">
-        {{{ $t('headlines.subtitle') }}}
+        {{{ $t('index.subtitle') }}}
       </p>
     </div>
   </div>

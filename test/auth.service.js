@@ -28,6 +28,13 @@ test('should throw error if bad request', t => {
   });
 });
 
+test('should register a user', t => {
+  nock('http://localhost/').post('/api/auth/register/', user).reply(201, {email: user.email, pk: 1});
+  return auth.register(user).then(r => {
+    t.is(r.email, user.email);
+  });
+});
+
 test('should store token in localStorage', t => {
   nock('http://localhost/').post('/api/tokens/auth/', user).reply(201, {token});
   t.plan(1);

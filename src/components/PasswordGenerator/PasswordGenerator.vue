@@ -15,7 +15,7 @@
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
         background-color: #ffffff;
         border: none;
-        color: #323232;
+        color: #424242;
         padding: 2em;
     }
 </style>
@@ -25,12 +25,12 @@
             <div class="form-group row">
                 <div class="col-lg-6 m-t-1">
                     <label for="pg-email" class="sr-only">
-                        {{ $t('passwordgenerator.who_are_you') }}
+                        {{ $t('passwordgenerator.emailUsername') }}
                     </label>
                     <input id="pg-email"
                            class="form-control"
                            type="text"
-                           placeholder="{{ $t('passwordgenerator.who_are_you') }}"
+                           placeholder="{{ $t('passwordgenerator.emailUsername') }}"
                            value="{{email}}"
                            v-model="email"
                            v-on:blur="updateMasterPassword"
@@ -43,13 +43,13 @@
                 </div>
                 <div class="col-lg-6 m-t-1">
                     <label for="pg-masterpassword" class="sr-only">
-                        {{ $t('passwordgenerator.what_is_your_secret') }}
+                        {{ $t('passwordgenerator.masterpassword') }}
                     </label>
                     <div class="input-group">
                         <input id="pg-masterpassword"
                                class="form-control"
                                type="password"
-                               placeholder="{{ $t('passwordgenerator.what_is_your_secret') }}"
+                               placeholder="{{ $t('passwordgenerator.masterpassword') }}"
                                v-model="password"
                                v-on:blur="updateMasterPassword"
                                autocomplete="off">
@@ -65,13 +65,13 @@
             <div class="form-group row">
                 <div class="col-lg-12">
                     <label for="pg-site" class="sr-only">
-                        {{ $t('passwordgenerator.where_are_you_going') }}
+                        {{ $t('passwordgenerator.site') }}
                     </label>
                     <input id="pg-site"
                            class="form-control"
                            list="domains"
                            type="text"
-                           placeholder="{{ $t('passwordgenerator.where_are_you_going') }}"
+                           placeholder="{{ $t('passwordgenerator.site') }}"
                            v-model="site"
                            autocorrect="off"
                            autocapitalize="none">
@@ -83,11 +83,11 @@
             <div class="form-group row">
                 <div class="col-lg-12">
                     <label for="generatedPassword" class="sr-only">
-                        {{ $t('passwordgenerator.generated_password') }}
+                        {{ $t('passwordgenerator.generatedPassword') }}
                     </label>
                     <div class="input-group">
                         <input type="text" id="generatedPassword" class="form-control"
-                               placeholder="{{ $t('passwordgenerator.generated_password') }}"
+                               placeholder="{{ $t('passwordgenerator.generatedPassword') }}"
                                v-model="generatedPassword"
                                v-bind:disabled="!generatedPassword">
                         <span class="input-group-btn">
@@ -104,7 +104,7 @@
                     <i class="fa fa-gears"></i>
                     <a data-toggle="collapse" data-parent="#accordion" href="#advancedOptions"
                        aria-expanded="true" aria-controls="advancedOptions">
-                        {{ $t('passwordgenerator.advanced_options') }}
+                        {{ $t('passwordgenerator.advancedOptions') }}
                     </a>
                     <div id="advancedOptions" class="panel-collapse collapse m-t-1" role="tabpanel"
                          aria-labelledby="advancedOptions">
@@ -114,7 +114,7 @@
                                     <input type="checkbox" id="lowercase" value="lowercase"
                                            v-model="passwordInfo.settings" checked>
                                     <span class="c-indicator"></span>
-                                    {{ $t('passwordgenerator.lowercase_options') }}
+                                    {{ $t('passwordgenerator.lowercaseOptions') }}
                                 </label>
                             </div>
                             <div class="col-lg-7">
@@ -122,7 +122,7 @@
                                     <input type="checkbox" id="uppercase" value="uppercase"
                                            v-model="passwordInfo.settings" checked>
                                     <span class="c-indicator"></span>
-                                    {{ $t('passwordgenerator.uppercase_options') }}
+                                    {{ $t('passwordgenerator.uppercaseOptions') }}
                                 </label>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                                            v-model="passwordInfo.settings"
                                            checked>
                                     <span class="c-indicator"></span>
-                                    {{ $t('passwordgenerator.numbers_options') }}
+                                    {{ $t('passwordgenerator.numbersOptions') }}
                                 </label>
                             </div>
                             <div class="col-lg-7">
@@ -142,7 +142,7 @@
                                            v-model="passwordInfo.settings"
                                            checked>
                                     <span class="c-indicator"></span>
-                                    {{ $t('passwordgenerator.symbols_options') }}
+                                    {{ $t('passwordgenerator.symbolsOptions') }}
                                 </label>
                             </div>
                         </div>

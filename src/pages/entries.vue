@@ -7,7 +7,7 @@
                         <span class="input-group-addon" id="search-addon">
                             <i class="icon ion-ios-search"></i>
                         </span>
-                        <input type="text" class="form-control" placeholder="search"
+                        <input type="text" class="form-control" placeholder="{{{ $t.('entries.search') }}}"
                                v-model="search" aria-describedby="search-addon"
                                @keyup="filterEntry(search) | debounce 500">
                     </div>

@@ -39,30 +39,30 @@
         <div class="card-deck-wrapper">
           <div class="card-deck">
             <div class="card features__card p-t-2">
-              <img class="card-img-top" src="./responsive.png" alt="Card image cap">
+              <img class="card-img-top" src="responsive.png" alt="Card image cap">
               <div class="card-block">
-                <h4 class="card-title">{{{ $t('features.responsive_title') }}}</h4>
+                <h4 class="card-title">{{{ $t('features.responsiveTitle') }}}</h4>
                 <p class="card-text">{{{ $t('features.responsive') }}}</p>
               </div>
             </div>
             <div class="card features__card p-t-2">
-              <img class="card-img-top" src="./no-cloud.png" alt="Card image cap">
+              <img class="card-img-top" src="no-cloud.png" alt="Card image cap">
               <div class="card-block">
-                <h4 class="card-title">{{{ $t('features.no_cloud_title') }}}</h4>
-                <p class="card-text">{{{ $t('features.no_cloud') }}}</p>
+                <h4 class="card-title">{{{ $t('features.noCloudTitle') }}}</h4>
+                <p class="card-text">{{{ $t('features.noCloud') }}}</p>
               </div>
             </div>
             <div class="card features__card p-t-2">
-              <img class="card-img-top" src="./open-source.png" alt="Card image cap">
+              <img class="card-img-top" src="open-source.png" alt="Card image cap">
               <div class="card-block">
-                <h4 class="card-title">{{{ $t('features.open_source_title') }}}</h4>
-                <p class="card-text">{{{ $t('features.open_source') }}}</p>
+                <h4 class="card-title">{{{ $t('features.openSourceTitle') }}}</h4>
+                <p class="card-text">{{{ $t('features.openSource') }}}</p>
               </div>
             </div>
             <div class="card features__card p-t-2">
-              <img class="card-img-top" src="./free.png" alt="Card image cap">
+              <img class="card-img-top" src="free.png" alt="Card image cap">
               <div class="card-block">
-                <h4 class="card-title">{{{ $t('features.free_title') }}}</h4>
+                <h4 class="card-title">{{{ $t('features.freeTitle') }}}</h4>
                 <p class="card-text">{{{ $t('features.free') }}}</p>
               </div>
             </div>

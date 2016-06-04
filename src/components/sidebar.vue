@@ -3,7 +3,7 @@
         z-index: 10;
         position: fixed;
         width: 100%;
-        background-color: #2f323a;
+        background-color: #424242;
         display: flex;
         justify-content: space-between;
         overflow: auto;
@@ -33,7 +33,7 @@
 
     .sidebar-item.active,
     .sidebar-item:hover {
-        background-color: #5093e1;
+        background-color: #025aa5;
     }
 
     @media (min-width: 48em) {

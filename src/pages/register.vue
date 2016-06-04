@@ -5,7 +5,8 @@
                 <div class="text-xs-center">
                     <img class="m-t-1 m-b-2" src="../images/logo.png" alt="logo">
                 </div>
-                <form @submit="login()">
+                <p>{{{ $t('login.RegisterInfo') }}}</p>
+                <form @submit="register()">
                     <fieldset class="form-group">
                         <label for="email" class="sr-only">{{ $t('login.email') }}</label>
 
@@ -20,12 +21,7 @@
                                v-model="user.password"
                                placeholder="{{ $t('login.PasswordPlaceholder') }}">
                     </fieldset>
-                    <button type="submit" class="btn btn-primary btn-block">{{ $t('login.SignIn') }}</button>
-<!--                    <fieldset class="form-group row m-t-2">
-                        <div class="col-xs-12">
-                            <a v-link="{ path: '/reset/'}"><u>{{ $t('login.forgotPassword') }}</u></a>
-                        </div>
-                    </fieldset>-->
+                    <button type="submit" class="btn btn-primary btn-block">{{ $t('login.Register') }}</button>
                 </form>
             </div>
         </div>
@@ -45,14 +41,23 @@
             };
         },
         methods: {
-            login(){
-                auth.login(this.user)
+            register(){
+                auth.register(this.user)
                         .then(()=> {
-                            logging.success(this.$t('login.welcome'));
-                            this.$router.go('/entries/');
+                            logging.success(this.$t('login.registerSuccess'));
+                            this.$router.go('/login/');
                         })
-                        .catch(() => {
-                            logging.error(this.$t('login.credentialsInvalids'));
+                        .catch(err => {
+                            if (err.data.hasOwnProperty('email')) {
+                                if (err.data.email[0] === 'Enter a valid email address.') {
+                                    logging.error(this.$t('login.registrationInvalidNotAnEmail'));
+                                }
+                                if (err.data.email[0] === 'LessPassUser with this email address already exists.') {
+                                    logging.error(this.$t('login.registrationInvalidUserAlreadyExists'));
+                                }
+                            }else{
+                                logging.error(this.$t('login.registrationInvalid'));
+                            }
                         });
             }
         }
