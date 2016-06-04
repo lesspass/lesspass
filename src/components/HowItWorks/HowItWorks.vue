@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="row p-y-3">
-                <div class="col-lg-6 p-t-3">
+                <div class="col-lg-6 p-t-2">
                     <h4>{{{ $t('howItWorks.alwaysSync') }}}</h4>
                     <p>
                         {{{ $t('howItWorks.alwaysSyncDetail') }}}
@@ -48,7 +48,7 @@
             </div>
             <div class="row p-y-3">
                 <div class="col-lg-8">
-                    <h4>{{{ $t('howItWorks.connectedApp') }}} <span class="label label-warning">beta</span></h4>
+                    <h4>LessPass App <span class="label label-warning">beta</span></h4>
                     <p>
                         {{{ $t('howItWorks.connectedAppDetail') }}}
                     </p>
@@ -67,6 +67,7 @@
                     </p>
 <pre id="how-it-works__self_hosted"><code>git clone https://github.com/lesspass/lesspass
 cd lesspass
+git submodule update --init
 docker-compose up -d</code>
           </pre>
                 </div>

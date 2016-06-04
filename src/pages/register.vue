@@ -17,9 +17,9 @@
                     <fieldset class="form-group">
                         <label for="password" class="sr-only">{{ $t('login.Password') }}</label>
 
-                        <input type="password" class="form-control" id="password"
-                               v-model="user.password"
+                        <input type="password" class="form-control" id="password" v-model="user.password"
                                placeholder="{{ $t('login.PasswordPlaceholder') }}">
+                         <small class="text-muted">{{ $t('login.registerPasswordHelp') }}</small>
                     </fieldset>
                     <button type="submit" class="btn btn-primary btn-block">{{ $t('login.Register') }}</button>
                 </form>

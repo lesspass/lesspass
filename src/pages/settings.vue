@@ -26,7 +26,7 @@
                                        placeholder="Enter your new password">
                             </div>
                         </fieldset>
-                        <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+                        <button type="submit" class="btn btn-primary btn-block">Change your password</button>
                     </form>
                 </div>
             </div>
