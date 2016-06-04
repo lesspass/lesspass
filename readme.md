@@ -2,11 +2,11 @@
 
 # LessPass Core
 
-LessPass node module use to generate unique password
+core library for LessPass password manager in node.js used to generate unique password
 
-# requirements
+## Requirements
 
-  * node 4.2.x
+  - node 4.x.x
 
 ## Install
 
