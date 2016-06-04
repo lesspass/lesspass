@@ -196,20 +196,20 @@ locales.en.entries = {
 
 locales.fr.entries = {
   search: 'recherche',
-  CreateNewEntry: 'Créer un mot de passe',
-  createNewEntry: 'créer un mot de passe',
+  CreateNewEntry: 'Créer une entrée',
+  createNewEntry: 'créer une entrée',
   Cancel: 'Annuler',
   Create: 'Créer',
-  UpdateNewEntry: 'Mettre à jour un mot de passe',
+  UpdateNewEntry: 'Mettre à jour une entrée',
   Update: 'Mettre à jour',
-  entryCreated: 'Votre mot de passe a bien été créé',
+  entryCreated: 'Votre entrée a été créé',
   errorCreation: 'Une erreur est survenue pendant la création, retentez dans un instant',
-  entryUpdated: 'Votre mot de passe a bien été mis à jour',
+  entryUpdated: 'Votre entrée a bien été mise à jour',
   errorUpdate: 'Une erreur est survenue pendant la mise à jour, retentez dans un instant',
-  DeleteEntry: 'Supprimer un mot de passe',
-  deleteAreYouSure: 'Est vous sur de vouloir supprimer ce mot de passe ?',
+  DeleteEntry: 'Supprimer une entrée',
+  deleteAreYouSure: 'Est vous sur de vouloir supprimer cette entrée ?',
   Confirm: 'Confirmer',
-  entryDeleted: 'Votre mot de passe a bien été supprimé',
+  entryDeleted: 'Votre entrée a bien été supprimée',
   errorDeletion: 'Une erreur est survenue pendant la suppression, retentez dans un instant',
   copyPassword: 'copier le mot de passe',
   Copy: 'Copier',
@@ -250,7 +250,7 @@ locales.fr.help = {
   tip3: 'Utilisez le nom de domaine pour le champ site. Ce champ est pré-remplit par l\'extension web avec ce mécanisme.<br><pre>ex: https://mail.google.com > google.com</pre></pre>',
   tip4: 'Changer un mot de passe, sans changer votre mot de passe fort en incrémentant la version du mot de passe.',
   letsGo: 'En avant',
-  letsGo1: 'Créer votre premier mot de passe cliquant sur le bouton'
+  letsGo1: 'Créer votre première entrée en cliquant sur le bouton'
 };
 
 locales.en.settings = {

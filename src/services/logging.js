@@ -8,13 +8,13 @@ notie.setOptions({
 });
 
 module.exports = {
-  error(message, duration = 3) {
+  error(message, duration=3) {
     notie.alert(3, message, duration);
   },
-  success(message, duration) {
+  success(message, duration=3) {
     notie.alert(1, message, duration);
   },
-  warning(message, duration) {
+  warning(message, duration=3) {
     notie.alert(2, message, duration);
   }
 };

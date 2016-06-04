@@ -1,8 +1,3 @@
-<style>
-  #hero{
-    padding-top: 2em;
-  }
-</style>
 <template>
   <div id="hero">
     <div class="container">

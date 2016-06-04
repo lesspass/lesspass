@@ -1,10 +1,10 @@
 <template>
     <div id="login-page">
-        <div class="col-sm-4 col-sm-offset-4">
+        <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
             <div class="card card-block m-y-2">
-                <form @submit="register()">
+                <form v-on:submit.prevent="register">
                     <fieldset class="form-group">
-                        <img src="../images/logo.png" alt="logo">
+                        <img src="../images/logo.png" alt="logo" class="img-fluid">
                     </fieldset>
                     <fieldset class="form-group">
                         <p class="text-muted">
@@ -53,7 +53,7 @@
                 }
                 auth.register(this.user)
                         .then(()=> {
-                            logging.success(this.$t('login.registerSuccess'));
+                            logging.success(this.$t('login.registerSuccess'), 6);
                             this.$router.go('/login/');
                         })
                         .catch(err => {
