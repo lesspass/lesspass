@@ -1,12 +1,17 @@
+<style scoped>
+    pre {
+        font-size: .7em;
+    }
+</style>
 <template>
-    <div id="passwords-page">
-        <div class="row m-y-1">
+    <div id="entries-page">
+        <div class="row">
             <div class="col-md-6">
                 <div id="searchEntries">
                     <div class="input-group">
-                        <span class="input-group-addon" id="search-addon">
-                            <i class="icon ion-ios-search"></i>
-                        </span>
+                                    <span class="input-group-addon" id="search-addon">
+                                        <i class="icon ion-ios-search"></i>
+                                    </span>
                         <input type="text" class="form-control" placeholder="{{{ $t.('entries.search') }}}"
                                v-model="search" aria-describedby="search-addon"
                                @keyup="filterEntry(search) | debounce 500">
@@ -17,33 +22,29 @@
                 <new-entry-button></new-entry-button>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row m-y-2" v-show="!entries.length">
+            <help-component></help-component>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="icon ion-ios-key"></i> Let's go
+                    </div>
+                    <div class="card-block">
+                        <p class="card-text">
+                            Create your first entry by clicking the button
+                            <new-entry-button></new-entry-button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-y-2">
             <div class="col-lg-12">
                 <div class="card-columns">
                     <div v-for="entry in entries">
                         <lesspass-entry :entry="entry"></lesspass-entry>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row m-t-1">
-            <div class="paginate">
-                <div class="col-xs-4 text-xs-left">
-                    <button class="btn btn-primary btn-sm" v-if="count > limit"
-                            :disabled="(currentPage*limit >= count)"
-                            @click="getPreviousEntries()">
-                        previous
-                    </button>
-                </div>
-                <div class="col-xs-4 text-xs-center" v-if="numberPages > 1">
-                    {{ currentPage }} / {{ numberPages }}
-                </div>
-                <div class="col-xs-4 text-xs-right">
-                    <button class="btn btn-primary btn-sm" v-if="count > limit"
-                            :disabled="(currentPage===1)"
-                            @click="getNextEntries()">
-                        next
-                    </button>
                 </div>
             </div>
         </div>
@@ -55,6 +56,7 @@
     import Entries from '../services/entries';
     import LesspassEntry from '../components/entry.vue';
     import NewEntryButton from '../components/new-entry-button';
+    import HelpComponent from '../components/help';
     import CopyPasswordModal from '../components/copy-password-modal';
     Entries.localStorage = localStorage;
     export default {
@@ -72,6 +74,7 @@
         },
         components: {
             LesspassEntry,
+            HelpComponent,
             NewEntryButton,
             CopyPasswordModal
         },

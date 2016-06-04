@@ -65,6 +65,12 @@
                     <span>passwords</span>
                 </a>
             </li>
+                <li class="sidebar-item" v-link-active>
+                <a v-link="{ path: '/help/', activeClass: 'active' }" class="sidebar-link">
+                    <i class="icon ion-ios-help-circle-outline"></i>
+                    <span>help</span>
+                </a>
+            </li>
         </ul>
         <ul class="sidebar-menu settings">
             <li class="sidebar-item" v-link-active>

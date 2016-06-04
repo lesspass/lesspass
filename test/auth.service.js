@@ -8,7 +8,7 @@ const localStorage = new LocalStorage('./localStorage');
 auth.localStorage = localStorage;
 
 const user = {
-  email: 'test@hwm.com',
+  email: 'test@lesspass.com',
   password: 'password'
 };
 const token = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9';
@@ -25,6 +25,13 @@ test('should throw error if bad request', t => {
   t.plan(1);
   return auth.login(user).catch(r => {
     t.is(400, r.status);
+  });
+});
+
+test('should get user info', t => {
+  nock('http://localhost/').get('/api/auth/me/').reply(200, {email: user.email});
+  return auth.getUser().then(u => {
+    t.is(u.email, user.email);
   });
 });
 

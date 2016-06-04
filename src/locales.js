@@ -161,4 +161,12 @@ locales.fr.login = {
   registrationInvalid: 'Vos informations de connection sont invalides'
 };
 
+locales.en.entries = {
+  search: 'search password information'
+};
+
+locales.fr.entries = {
+  search: 'recherchez'
+};
+
 export default locales;

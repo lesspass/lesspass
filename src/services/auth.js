@@ -19,6 +19,13 @@ export default {
       return response.data;
     });
   },
+  getUser() {
+    const config = this.getRequestConfig();
+    return axios.get('/api/auth/me/', config).then(response => {
+      Object.assign(this.user, response.data);
+      return this.user;
+    });
+  },
   register(user) {
     return axios.post('/api/auth/register/', user).then(response => {
       return response.data;
