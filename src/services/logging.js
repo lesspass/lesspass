@@ -1,34 +1,20 @@
-import toastr from 'toastr';
+import notie from 'notie';
 
-toastr.options = {
-  closeButton: true,
-  debug: false,
-  newestOnTop: true,
-  progressBar: false,
-  positionClass: 'toast-top-center',
-  preventDuplicates: false,
-  onclick: null,
-  showDuration: '300',
-  hideDuration: '1000',
-  timeOut: '10000',
-  extendedTimeOut: '1000',
-  showEasing: 'swing',
-  hideEasing: 'linear',
-  showMethod: 'fadeIn',
-  hideMethod: 'fadeOut'
-};
+notie.setOptions({
+  colorSuccess: '#449d44',
+  colorWarning: '#f0ad4e',
+  colorError: '#d9534f',
+  colorText: '#FFFFFF'
+});
 
 module.exports = {
-  error(message) {
-    toastr.error(message);
+  error(message, duration = 3) {
+    notie.alert(3, message, duration);
   },
-  success(message) {
-    toastr.success(message);
+  success(message, duration) {
+    notie.alert(1, message, duration);
   },
-  warning(message) {
-    toastr.warning(message);
-  },
-  clear() {
-    toastr.clear();
+  warning(message, duration) {
+    notie.alert(2, message, duration);
   }
 };

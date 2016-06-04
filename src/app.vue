@@ -1,7 +1,7 @@
 <style lang="sass">
     @import '../node_modules/bootstrap/scss/bootstrap.scss';
     @import '../node_modules/ionicons/dist/css/ionicons.css';
-    @import '../node_modules/toastr/build/toastr.css';
+    @import '../node_modules/notie/dist/notie.css';
 
     html, body {
         width: 100%;
