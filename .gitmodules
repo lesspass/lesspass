@@ -10,3 +10,6 @@
 [submodule "webextension"]
 	path = webextension
 	url = https://github.com/lesspass/webextension.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/lesspass/frontend.git
