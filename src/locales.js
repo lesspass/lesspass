@@ -98,10 +98,10 @@ locales.fr.howItWorks = {
   title: 'Comment fonctionne LessPass&nbsp;?',
   detail: 'LessPass est un gestionnaire de mot de passe qui n\'enregistre pas vos mots de passe. Il les regénère sur la base d\'informations uniques que vous lui fournissez. Vous pouvez donc utiliser LessPass pour créer des mots de passe pour vos différents services internet (Réseaux sociaux, mails, mots de passe serveurs, ...).',
   alwaysSync: 'Pas besoin de synchronisation',
-  alwaysSyncDetail: 'Vous n\'avez plus besoin de synchroniser sur le cloud vos coffres fort pour mots de passe. LessPass est une application web qui dérive vos mots de passe de manière sécurisée. PBKDF2 et SHA-256 directement sur votre navigateur. <a href="https://github.com/lesspass/core/" class="white-link">Check the algorithm</a>.',
-  extension: 'Mathématique et chiffrement',
-  extensionDetail: 'Installez l\'extension <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/" class="white-link">firefox</a> ou <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih" class="white-link">chrome</a> pour vous connecter de manière automatique à vos sites avec un mot de passe LessPass. Utilisez l\'extension pour créer automatiquement des mots de passe unique pour vos sites. Utilisez l\'extension pour vous connecter automatiquement à vos sites.',
-  connectedAppDetail: 'Certains services ont des règles de mot de passe étrange. Des fois vous voulez changer de mot de passe, sans changer votre mot de passe fort. LessPass permet de changer les options de vos mots de passe. Pour mémoriser ces informations particulières pour certains mots de passe, nous avons créé une application connectée : LessPass App.<br> LessPass App enregistre toutes les informations nécéssaires à la regénération d\'un mot de passe. Nous ne sauvegardons pas les informations comme le mot de passe fort ou les mots de passe générés. Il n\'y a aucun mot de passe chiffré à voler dans nos bases de données.<br> Nous prévoyons de connecter l\'extension web avec LessPass App.',
+  alwaysSyncDetail: 'Vous n\'avez plus besoin de synchroniser sur le cloud vos coffres fort pour mots de passe. LessPass est une application web qui dérive vos mots de passe de manière sécurisée. PBKDF2 et SHA-256 directement sur votre navigateur. <a href="https://github.com/lesspass/core/" class="white-link">Vérifier l\'algorithme</a>.',
+  extension: 'Extension web Firefox et Chrome',
+  extensionDetail: 'Installez l\'extension <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/" class="white-link">firefox</a> ou <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih" class="white-link">chrome</a> pour vous connecter de manière automatique à vos sites avec un mot de passe LessPass. Utilisez l\'extension pour créer automatiquement des mots de passe unique pour vos sites.',
+  connectedAppDetail: 'Certains services ont des règles de mot de passe étranges. Des fois vous voulez changer de mot de passe, sans changer votre mot de passe fort. LessPass permet de changer les options de vos mots de passe. Pour mémoriser ces informations particulières pour certains mots de passe, nous avons créé une application connectée : LessPass App.<br> LessPass App enregistre toutes les informations nécéssaires à la regénération d\'un mot de passe. Nous ne sauvegardons pas les informations comme le mot de passe fort ou les mots de passe générés. Il n\'y a aucun mot de passe chiffré à voler dans nos bases de données.<br> Nous prévoyons de connecter l\'extension web avec LessPass App.',
   selfHosted: 'Auto hébergement',
   selfHostingDetail: 'Si vous voulez tester LessPass App sur votre serveur, vous pouvez en lançant ces commandes:'
 };
@@ -129,7 +129,8 @@ locales.en.login = {
   registerSuccess: 'Thank you for being registered, you can now login. Do not forget that LessPass connected application is in beta, and we love the feedback to improve our product.',
   registrationInvalidNotAnEmail: 'Your email is not a valid email address.',
   registrationInvalidUserAlreadyExists: 'You already have an account. Do you want to <a href="/#!/login/"><b>log in</b></a>?',
-  registrationInvalid: 'The information you provided are invalid.'
+  registrationInvalid: 'The information you provided are invalid.',
+  logoutMessage: 'Thank you for spending quality time with LessPass'
 };
 
 locales.fr.login = {
@@ -144,10 +145,11 @@ locales.fr.login = {
   forgotPassword: 'mot de passe oublié',
   Register: 'S\'enregistrer',
   RegisterInfo: 'Nouveau sur LessPass ? enregistrez-vous ?',
-  registerSuccess: 'Merci de vous être enregistré, vous pouvez maintenant vous connecter. N\'oublier pas que l\'application connecté LessPass est en beta et que nous aimons beaucoup les retours pour améliorer notre produit.',
+  registerSuccess: 'Merci de vous être enregistré, vous pouvez maintenant vous connecter. N\'oublier pas que LessPass App est en beta et que nous aimons beaucoup les retours pour améliorer notre produit.',
   registrationInvalidNotAnEmail: 'Votre email n\'est pas un email valide',
-  registrationInvalidUserAlreadyExists: 'Vous avez déjà un compte vous voulez peut être vous <a href="/#!/login/"><b>connecter</b></a>?',
-  registrationInvalid: 'Vos informations de connection sont invalides'
+  registrationInvalidUserAlreadyExists: 'Vous avez déjà un compte ici. Vous voulez peut être vous <a href="/#!/login/"><b>connecter</b></a>?',
+  registrationInvalid: 'Vos informations de connection sont invalides',
+  logoutMessage: 'Merci d\'avoir passé du temps de qualité avec LessPass'
 };
 
 locales.en.entries = {
@@ -179,7 +181,9 @@ locales.en.entries = {
   numbersOptions: 'numbers (0‑9)',
   symbolsOptions: 'symbols (@&%?)',
   counter: 'Counter',
-  length: 'Length'
+  length: 'Length',
+  previous: 'previous',
+  next: 'next'
 };
 
 locales.fr.entries = {
@@ -210,7 +214,59 @@ locales.fr.entries = {
   numbersOptions: 'nombres (0‑9)',
   symbolsOptions: 'caractères spéciaux (@&%?)',
   counter: 'Version',
-  length: 'Longueur'
+  length: 'Longueur',
+  previous: 'précédent',
+  next: 'suivant'
+};
+
+locales.en.help = {
+  Welcome: 'Welcome on',
+  help1: 'LessPass App save the necessary information it needs to re-generate passwords. The master password and the generated passwords are never stored. Here an example of the information we store on our database :',
+  help2: 'To regenerate a password, LessPass ask your master password and your browser rebuild the password.',
+  Tips: 'Tips',
+  tip1: 'Keep your master password in your head.',
+  tip2: 'Do not register on a site with your master password.',
+  tip3: 'Use full qualified domain name for site field. The LessPass web extension pre-fill site field for you with this mecanism.<br><pre>ex: https://mail.google.com > google.com</pre></pre>',
+  tip4: 'Change a password, without changing your master password by incrementing the counter.Changer un mot de passe, sans changer votre mot de passe fort en incrémentant le compteur.',
+  letsGo: 'Let\'s go',
+  letsGo1: 'Create your first entry by clicking the button'
+};
+
+locales.fr.help = {
+  Welcome: 'Bienvenu sur',
+  help1: 'LessPass App enregistre les informations nécessaires dont il a besoin pour re-générer vos mots de passe. Le mot de passe maître et les mots de passe générés ne sont jamais stockés. Voici un exemple des informations que nous stockons dans notre base de données:',
+  help2: 'Pour générer un mot de passe, LessPass demande votre mot de passe maître et votre navigateur reconstruit le mot de passe.',
+  Tips: 'Astuces',
+  tip1: 'Gardez votre mot de passe maître dans votre tête.',
+  tip2: 'Ne vous inscrivez pas sur un site avec votre mot de passe maître.',
+  tip3: 'Utilisez le nom de domaine pour le champ site. Ce champ est pré-remplit par l\'extension web avec ce mécanisme.<br><pre>ex: https://mail.google.com > google.com</pre></pre>',
+  tip4: 'Changer un mot de passe, sans changer votre mot de passe fort en incrémentant la version du mot de passe.',
+  letsGo: 'En avant',
+  letsGo1: 'Créer votre premier mot de passe cliquant sur le bouton'
+};
+
+locales.en.settings = {
+  ChangePassword: 'Change LessPass App password',
+  currentPassword: 'Current password',
+  currentPasswordPlaceholder: 'Enter your current password',
+  newPassword: 'New password',
+  newPasswordPlaceholder: 'Enter your new password',
+  changePasswordButton: 'Update password',
+  passwordChangedSuccess: 'password changed',
+  passwordChangedError: 'Your current password is invalid',
+  credentialsMandatory: 'Current password and new password are mandatory'
+};
+
+locales.fr.settings = {
+  ChangePassword: 'Changement du mot de passe LessPass App',
+  currentPassword: 'Mot de passe actuel',
+  currentPasswordPlaceholder: 'Entez votre mot de passe actuel',
+  newPassword: 'Nouveau mot de passe',
+  newPasswordPlaceholder: 'Entrez votre nouveau mot de passe',
+  changePasswordButton: 'Mettre à jour',
+  passwordChangedSuccess: 'Mot de passe changé avec succès',
+  passwordChangedError: 'Votre mot de passe actuel n\'est pas bon',
+  credentialsMandatory: 'Le mot de passe actuel et le nouveau mot de passe sont obligatoires'
 };
 
 export default locales;

@@ -1,33 +1,38 @@
 <template>
     <div id="settings-page">
         <div class="row">
-            <div class="col-md-8 col-lg-4">
-                <div class="card card-block">
-                    <h4 class="card-title">Password Management</h4>
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="icon ion-ios-lock"></i> {{ $t('settings.ChangePassword') }}
+                    </div>
+                    <div class="card-block">
+                        <form @submit="changePassword()">
+                            <fieldset class="form-group">
+                                <label for="current_password">{{ $t('settings.currentPassword') }}</label>
 
-                    <form @submit="changePassword()">
-                        <fieldset class="form-group">
-                            <label for="current_password">Current password</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon ion-ios-key"></i></span>
+                                    <input type="password" class="form-control" id="current_password"
+                                           v-model="credentials.current_password"
+                                           placeholder="{{ $t('settings.currentPasswordPlaceholder') }}">
+                                </div>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <label for="new_password">{{ $t('settings.newPassword') }}</label>
 
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="icon ion-ios-key"></i></span>
-                                <input type="password" class="form-control" id="current_password"
-                                       v-model="credentials.current_password"
-                                       placeholder="Enter your current password">
-                            </div>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="new_password">New Password</label>
-
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="icon ion-ios-key"></i></span>
-                                <input type="password" class="form-control" id="new_password"
-                                       v-model="credentials.new_password"
-                                       placeholder="Enter your new password">
-                            </div>
-                        </fieldset>
-                        <button type="submit" class="btn btn-primary btn-block">Change your password</button>
-                    </form>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon ion-ios-key"></i></span>
+                                    <input type="password" class="form-control" id="new_password"
+                                           v-model="credentials.new_password"
+                                           placeholder="{{ $t('settings.newPasswordPlaceholder') }}">
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                {{ $t('settings.changePasswordButton') }}
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,12 +45,16 @@
     export default {
         methods: {
             changePassword(){
+                if (!this.credentials.current_password || ! this.credentials.new_password){
+                     logging.error(this.$t('settings.credentialsMandatory'));
+                    return;
+                }
                 auth.changePassword(this.credentials)
                         .then(()=> {
-                            logging.success('password successfully changed');
+                            logging.success(this.$t('settings.passwordChangedSuccess'));
                         })
                         .catch(() => {
-                            logging.error('current password is invalid or your new password is too weak');
+                            logging.error(this.$t('settings.passwordChangedError'));
                         });
             }
         }

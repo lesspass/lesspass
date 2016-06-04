@@ -6,14 +6,14 @@
     <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog" aria-labelledby="newEntry"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content text-xs-left">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title" id="newEntry">{{{ $t('entries.CreateNewEntry') }}}</h4>
                 </div>
-                <div class="modal-body text-xs-left">
+                <div class="modal-body">
                     <entry-form :entry="entry" v-bind:prop.sync></entry-form>
                 </div>
                 <div class="modal-footer">

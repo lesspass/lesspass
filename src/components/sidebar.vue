@@ -65,7 +65,7 @@
                     <span>passwords</span>
                 </a>
             </li>
-                <li class="sidebar-item" v-link-active>
+            <li class="sidebar-item" v-link-active>
                 <a v-link="{ path: '/help/', activeClass: 'active' }" class="sidebar-link">
                     <i class="icon ion-ios-help-circle-outline"></i>
                     <span>help</span>
@@ -96,7 +96,7 @@
         methods: {
             logout(){
                 auth.logout();
-                logging.success('Thank you for spending quality time with LessPass');
+                logging.success(this.$t('login.logoutMessage'));
                 this.$router.go('/');
             }
         }

@@ -8,18 +8,14 @@
         <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="icon ion-ios-heart"></i> Welcome on LessPass App
+                    <i class="icon ion-ios-heart"></i> {{ $t('help.Welcome') }} LessPass App
                 </div>
                 <div class="card-block">
                     <p class="card-text">
-                        LessPass App helps you to store information about site with specials information like
-                        you bank account. LessPass store information it needs to regenerate a password.
-                        Here an example of the information we store on our database :
+                        {{ $t('help.help1') }}
                     <pre>{{ demoEntry | json 4 }}</pre>
                     <p class="card-text">
-                        No master password or generated password here.
-                        To regenerate a password, LessPass ask your master password, an your browser rebuild the
-                        password.
+                        {{ $t('help.help2') }}
                     </p>
                 </div>
             </div>
@@ -27,20 +23,18 @@
         <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="icon ion-ios-star"></i> Tips
+                    <i class="icon ion-ios-star"></i> {{ $t('help.Tips') }}
                 </div>
                 <div class="card-block">
                     <ul>
                         <li>
-                            Keep your master password in your head.
+                            {{{ $t('help.tip1') }}}
                         </li>
                         <li>
-                            Do not register on a site with your master password.
+                            {{{ $t('help.tip2') }}}
                         </li>
                         <li>
-                            Use full qualified domain name for your site<br>https://mail.google.com ->
-                            google.com<br>
-                            The LessPass web extension pre-fill site field for you with this mecanism.
+                            {{{ $t('help.tip3') }}}
                         </li>
                     </ul>
                 </div>

@@ -59,6 +59,7 @@
                 Entries.update(this.entry)
                         .then(() => {
                             logging.success(this.$t('entries.entryUpdated'));
+                            this.$router.go('/entries/');
                         })
                         .catch((err) => {
                             logging.error(this.$t('entries.errorUpdate'));

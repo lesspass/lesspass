@@ -28,11 +28,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <i class="icon ion-ios-key"></i> Let's go
+                        <i class="icon ion-ios-key"></i> {{{ $t('help.letsGo') }}}
                     </div>
                     <div class="card-block">
                         <p class="card-text">
-                            Create your first entry by clicking the button
+                            {{{ $t('help.letsGo1') }}}
                             <new-entry-button></new-entry-button>
                         </p>
                     </div>
@@ -45,6 +45,27 @@
                     <div v-for="entry in entries">
                         <lesspass-entry :entry="entry"></lesspass-entry>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-t-1">
+            <div class="paginate">
+                <div class="col-xs-4 text-xs-left">
+                    <button class="btn btn-primary btn-sm" v-if="count > limit"
+                            :disabled="(currentPage===1)"
+                            @click="getNextEntries()">
+                        {{{ $t('entries.previous') }}}
+                    </button>
+                </div>
+                <div class="col-xs-4 text-xs-center" v-if="numberPages > 1">
+                    {{ currentPage }} / {{ numberPages }}
+                </div>
+                <div class="col-xs-4 text-xs-right">
+                    <button class="btn btn-primary btn-sm" v-if="count > limit"
+                            :disabled="(currentPage*limit >= count)"
+                            @click="getPreviousEntries()">
+                        {{{ $t('entries.next') }}}
+                    </button>
                 </div>
             </div>
         </div>
@@ -62,7 +83,7 @@
     export default {
         data() {
             return {
-                limit: 18,
+                limit: 12,
                 offset: 0,
                 currentPage: 1,
                 entries: [],
