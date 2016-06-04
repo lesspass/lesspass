@@ -130,7 +130,7 @@ locales.en.login = {
   registrationInvalidNotAnEmail: 'Your email is not a valid email address.',
   registrationInvalidUserAlreadyExists: 'You already have an account. Do you want to <a href="/#!/login/"><b>log in</b></a>?',
   registrationInvalid: 'The information you provided are invalid.',
-  logoutMessage: 'Thank you for spending quality time with LessPass'
+  logoutMessage: 'Thanks for spending some quality time with LessPass App today.'
 };
 
 locales.fr.login = {
@@ -149,7 +149,7 @@ locales.fr.login = {
   registrationInvalidNotAnEmail: 'Votre email n\'est pas un email valide',
   registrationInvalidUserAlreadyExists: 'Vous avez déjà un compte ici. Vous voulez peut être vous <a href="/#!/login/"><b>connecter</b></a>?',
   registrationInvalid: 'Vos informations de connection sont invalides',
-  logoutMessage: 'Merci d\'avoir passé du temps de qualité avec LessPass'
+  logoutMessage: 'Merci d\'avoir passé du temps de qualité avec LessPass App aujourd\'hui'
 };
 
 locales.en.entries = {
