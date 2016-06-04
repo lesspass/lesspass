@@ -1,11 +1,10 @@
 import test from 'ava';
 import nock from 'nock';
-import {LocalStorage} from 'node-localstorage';
 
 import auth from '../src/services/auth';
+import {storageMock} from './_helpers';
 
-const localStorage = new LocalStorage('./localStorage');
-auth.localStorage = localStorage;
+auth.localStorage = storageMock();
 
 const user = {
   email: 'test@lesspass.com',
@@ -141,8 +140,4 @@ test('check auth without any token', t => {
   return auth.checkAuth().catch(() => {
     t.true(!auth.user.authenticated);
   });
-});
-
-test.after.always(() => {
-  localStorage._deleteLocation();
 });

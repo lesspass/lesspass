@@ -1,15 +1,13 @@
 import test from 'ava';
 import nock from 'nock';
-import {LocalStorage} from 'node-localstorage';
 
 import entries from '../src/services/entries';
-import {entriesGetAll, entriesGetOne} from './_helpers';
+import {entriesGetAll, entriesGetOne, storageMock} from './_helpers';
 
-const localStorage = new LocalStorage('./localStorage');
-entries.localStorage = localStorage;
+entries.localStorage = storageMock();
 
 const token = 'ZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFt';
-localStorage.setItem('token', token);
+entries.localStorage.setItem('token', token);
 const entry = {
   site: 'twitter.com',
   password: {
@@ -43,7 +41,7 @@ test('should create an entry', t => {
 
 test('should send requests with Authorization header updated', t => {
   const newToken = 'WV9eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRyd';
-  localStorage.setItem('token', newToken);
+  entries.localStorage.setItem('token', newToken);
   const headers = {reqheaders: {Authorization: `JWT ${newToken}`}};
   nock('http://localhost/', headers).get('/api/entries/').query(true).reply(200, {entries: []});
   return entries.all().then(response => {
