@@ -41,4 +41,4 @@ generate unique password based on login, masterPassword, site and options.
 
     npm test
 
-see [lesspass](https://github.com/lesspass/lesspass) project
+see [LessPass](https://github.com/lesspass/lesspass) project
