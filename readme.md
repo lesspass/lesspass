@@ -1,6 +1,6 @@
 # LessPass
 
-lesspass open source password manager (https://lesspass.com)
+LessPass open source password manager (https://lesspass.com)
 
 
 ## LessPass submodules
@@ -12,17 +12,20 @@ lesspass open source password manager (https://lesspass.com)
  - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for lesspass password manager
 
 
-## requirements
+## Requirements
 
   * git
   * docker 1.10
   * docker-compose 1.6
 
-## try LessPass on local
+## Try LessPass on local
 
 clone application:
 
-    git clone https://github.com/guillaumevincent/lesspass.git
+    git clone https://github.com/lesspass/lesspass.git
+
+start docker containers
+
     cd lesspass
     git submodule update --init
     docker-compose up -d
@@ -30,7 +33,7 @@ clone application:
 open the application in a browser: [https://localhost](https://localhost)
 
 
-## status
+## Status
 
 | module | tests |
 | --- | --- |
