@@ -115,11 +115,13 @@ document.getElementById('passwordCounter').addEventListener('input', generatePas
 
 function generatePassword() {
   const data = getFormData();
-  if (!data.login || !data.masterPassword || !data.site) {
+  const generatedPasswordField = document.getElementById('generatedPasswordField');
+  if (!data.login || !data.masterPassword || !data.site || !data.password.settings.length) {
+    generatedPasswordField.value = '';
     return;
   }
   return lesspass.generatePassword(data.login, data.masterPassword, data.site, data).then(password => {
-    document.getElementById('generatedPasswordField').value = password;
+    generatedPasswordField.value = password;
     return password;
   });
 }
