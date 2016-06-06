@@ -2,9 +2,9 @@
 
 # LessPass Web Extension
 
-chrome and firefox web extension for lesspass password manager
+chrome and firefox web extension for LessPass password manager
 
-![demo lesspass extension](demo.gif?raw=true "LessPass demo")
+![demo LessPass extension](demo.gif?raw=true "LessPass demo")
 
 # Tests
 
@@ -21,4 +21,4 @@ extensions are in `./build` folder
     ./build/lesspass.firefox.xpi
 
 
-see [lesspass](https://github.com/lesspass/lesspass) project
+see [LessPass](https://github.com/lesspass/lesspass) project
