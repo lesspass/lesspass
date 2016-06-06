@@ -26,4 +26,4 @@ run frontend tests
 
     npm run build
 
-see [lesspass](https://github.com/lesspass/lesspass) project
+see [LessPass](https://github.com/lesspass/lesspass) project
