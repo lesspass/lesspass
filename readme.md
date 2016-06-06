@@ -1,6 +1,6 @@
 # LessPass nginx
 
-nginx container for lesspass
+nginx container for LessPass
 
 ## custom SSL certificate
 
@@ -40,4 +40,4 @@ Example if your domain is `lesspass.com`
     ls ssl/
     lesspass.com.ca.crt  lesspass.com.crt  lesspass.com.dhparam.pem  lesspass.com.key
 
-see [lesspass](https://github.com/lesspass/lesspass) project
+see [LessPass](https://github.com/lesspass/lesspass) project
