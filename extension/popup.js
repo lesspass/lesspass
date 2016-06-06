@@ -109,9 +109,9 @@ document.getElementById('saveDefaultOptionButton').addEventListener('click', () 
   });
 });
 
-document.getElementById('loginField').addEventListener('blur', generatePassword);
-document.getElementById('masterPasswordField').addEventListener('blur', generatePassword);
-document.getElementById('siteField').addEventListener('blur', generatePassword);
+document.getElementById('generatedPasswordForm').addEventListener('change', generatePassword);
+document.getElementById('passwordLength').addEventListener('input', generatePassword);
+document.getElementById('passwordCounter').addEventListener('input', generatePassword);
 
 function generatePassword() {
   const data = getFormData();
