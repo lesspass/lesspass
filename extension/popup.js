@@ -1,6 +1,21 @@
 import lesspass from 'lesspass';
 import {getDomainName} from './url-parser';
 
+let autoLogin = false;
+const lesspassButton = document.getElementById('lesspassButton');
+
+getCurrentTab().then(currentTab => {
+  chrome.tabs.sendMessage(currentTab.id, {type: 'isThereALoginForm'}, response => {
+    if (response.isThereALoginForm) {
+      lesspassButton.innerText = 'Auto Login';
+      autoLogin = true;
+    } else {
+      lesspassButton.innerText = 'Copy';
+      autoLogin = false;
+    }
+  });
+});
+
 function getStore(key, callback) {
   chrome.storage.local.get(key, result => {
     callback(result[key]);
@@ -128,13 +143,11 @@ function generatePassword() {
 
 function copyPassword() {
   const generatedPasswordField = document.getElementById('generatedPasswordField');
-  generatedPasswordField.disabled = false;
   generatedPasswordField.select();
   document.execCommand('copy');
-  generatedPasswordField.disabled = true;
 }
 
-document.getElementById('loginButton').addEventListener('click', event => {
+lesspassButton.addEventListener('click', event => {
   event.preventDefault();
   const data = getFormData();
   if (!data.login || !data.masterPassword || !data.site) {
@@ -145,8 +158,12 @@ document.getElementById('loginButton').addEventListener('click', event => {
   const tabPromise = getCurrentTab();
   const passwordPromise = lesspass.generatePassword(data.login, data.masterPassword, data.site, data);
   Promise.all([passwordPromise, tabPromise]).then(values => {
-    if (chrome.tabs && chrome.tabs.sendMessage) {
-      chrome.tabs.sendMessage(values[1].id, {login: data.login, password: values[0], submitForm: true});
+    if (chrome.tabs && chrome.tabs.sendMessage && autoLogin) {
+      chrome.tabs.sendMessage(values[1].id, {
+        type: 'submitForm',
+        login: data.login,
+        password: values[0]
+      });
       window.close();
     } else {
       copyPassword();
