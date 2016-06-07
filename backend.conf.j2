@@ -1,16 +1,18 @@
 server {
-    listen       80;
-    server_name  localhost *.{{ domain }};
-
-    return 301 https://$server_name$request_uri;
+    server_name www.{{ domain }};
+    return 301 $scheme://{{ domain }}$request_uri;
 }
 
+server {
+    server_name {{ domain }} localhost;
+    return 301 https://$server_name$request_uri;
+}
 
 server {
     listen [::]:443 ssl;
     listen 443 ssl;
 
-    server_name  localhost *.{{ domain }};
+    server_name {{ domain }} localhost;
 
     charset utf-8;
 
