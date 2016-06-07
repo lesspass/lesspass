@@ -12,18 +12,20 @@
                         </p>
                         <label for="email" class="sr-only">{{ $t('login.email') }}</label>
 
-                        <input type="text" class="form-control" id="email"
+                        <input type="text" class="form-control" id="email" name="email"
                                placeholder="{{ $t('login.EmailPlaceholder') }}"
                                v-model="user.email" autofocus>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="password" class="sr-only">{{ $t('login.Password') }}</label>
 
-                        <input type="password" class="form-control" id="password" v-model="user.password"
-                               placeholder="{{ $t('login.PasswordPlaceholder') }}">
+                        <input type="password" class="form-control" id="password" name="password"
+                               v-model="user.password" placeholder="{{ $t('login.PasswordPlaceholder') }}">
                         <small class="text-muted">{{ $t('login.registerPasswordHelp') }}</small>
                     </fieldset>
-                    <button type="submit" class="btn btn-primary btn-block">{{ $t('login.Register') }}</button>
+                    <button id="buttonSubmit" name="buttonSubmit" type="submit" class="btn btn-primary btn-block">
+                        {{ $t('login.Register') }}
+                    </button>
                     <fieldset class="form-group p-t-1">
                         <a v-link="{ path: '/login/'}"><u>{{ $t('login.orLogIn') }}</u></a>
                     </fieldset>

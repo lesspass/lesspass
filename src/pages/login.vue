@@ -2,7 +2,7 @@
     <div id="login-page">
         <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
             <div class="card card-block m-y-2">
-                <form v-on:submit.prevent="login">
+                <form v-on:submit="login" name="loginForm">
                     <fieldset class="form-group">
                         <img src="../images/logo.png" alt="logo" class="img-fluid">
                     </fieldset>
@@ -10,9 +10,9 @@
                         <p class="text-muted">
                             {{{ $t('login.LogInInfo') }}}
                         </p>
-                        <label for="email" class="sr-only">{{ $t('login.email') }}</label>
+                        <label for="email" class="sr-only">{{ $t('login.Email') }}</label>
 
-                        <input type="text" class="form-control" id="email"
+                        <input type="text" class="form-control" id="email" name="email"
                                placeholder="{{ $t('login.EmailPlaceholder') }}"
                                v-model="user.email" autofocus>
                     </fieldset>
@@ -20,7 +20,7 @@
                         <label for="password" class="sr-only">{{ $t('login.Password') }}</label>
 
                         <input type="password" class="form-control" id="password"
-                               v-model="user.password"
+                               v-model="user.password" name="passwordField"
                                placeholder="{{ $t('login.PasswordPlaceholder') }}">
                     </fieldset>
                     <button type="submit" class="btn btn-primary btn-block">{{ $t('login.SignIn') }}</button>
