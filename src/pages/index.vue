@@ -39,9 +39,24 @@
         color: inherit;
     }
 
+    #header {
+        padding: 1em;
+    }
+
+    #header .row {
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
     @media (min-width: 480px) {
         #header {
             padding: 15vh 0;
+        }
+
+        #header .row {
+            flex-direction: row;
+            align-items: center;
         }
     }
 </style>
@@ -75,7 +90,10 @@
         <div id="header" class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <lesspass-headlines></lesspass-headlines>
+                    <h2>{{{ $t('index.title') }}}</h2>
+                    <p class="lead">
+                        {{{ $t('index.subtitle') }}}
+                    </p>
                 </div>
                 <div class="col-md-7">
                     <password-generator></password-generator>
@@ -101,7 +119,6 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import LesspassHeadlines from '../components/headlines';
     import PasswordGenerator from '../components/PasswordGenerator/PasswordGenerator';
     import LesspassFeatures from '../components/Features/Features';
     import LesspassHowitworks from '../components/HowItWorks/HowItWorks';
@@ -112,7 +129,6 @@
             return {};
         },
         components: {
-            LesspassHeadlines,
             PasswordGenerator,
             LesspassFeatures,
             LesspassHowitworks,
