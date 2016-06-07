@@ -146,7 +146,7 @@ document.getElementById('loginButton').addEventListener('click', event => {
   const passwordPromise = lesspass.generatePassword(data.login, data.masterPassword, data.site, data);
   Promise.all([passwordPromise, tabPromise]).then(values => {
     if (chrome.tabs && chrome.tabs.sendMessage) {
-      chrome.tabs.sendMessage(values[1].id, {login: data.login, password: values[0]});
+      chrome.tabs.sendMessage(values[1].id, {login: data.login, password: values[0], submitForm: true});
       window.close();
     } else {
       copyPassword();

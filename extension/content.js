@@ -1,13 +1,28 @@
-import {getLoginForm} from './form-parser';
+import {getLoginForm, getFormInfo} from './form-parser';
+
+const loginForm = getLoginForm(window.document);
+
 chrome.runtime.onMessage.addListener(message => {
-  const loginForm = getLoginForm();
-  loginForm.loginField.value = message.login;
-  loginForm.passwordField.value = message.password;
+  if (loginForm !== null) {
+    const formInfo = getFormInfo(loginForm);
+    console.log(formInfo);
+    formInfo.passwordField.value = message.password;
 
-  var event = new Event('input');
-  loginForm.loginField.dispatchEvent(event);
-  loginForm.passwordField.dispatchEvent(event);
+    const event = new Event('input');
+    formInfo.passwordField.dispatchEvent(event);
 
-  loginForm.form.submit();
+    if (formInfo.loginField !== null) {
+      formInfo.loginField.value = message.login;
+      formInfo.loginField.dispatchEvent(event);
+    }
+
+    if (message.submitForm) {
+      if (formInfo.button === null) {
+        loginForm.submit();
+      } else {
+        formInfo.button.click();
+      }
+    }
+  }
 });
 
