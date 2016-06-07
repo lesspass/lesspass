@@ -149,7 +149,7 @@ locales.fr.login = {
   forgotPassword: 'mot de passe oublié',
   Register: 'S\'enregistrer',
   RegisterInfo: 'Créez un compte :',
-  registerSuccess: 'Merci de vous être enregistré, vous pouvez maintenant vous connecter. N\'oublier pas que LessPass App est en beta et que nous aimons beaucoup les retours pour améliorer notre produit.',
+  registerSuccess: 'Merci de vous être enregistré, vous pouvez maintenant vous connecter. N\'oubliez pas que LessPass App est en beta et que nous aimons beaucoup les retours pour améliorer notre produit.',
   registrationInvalidNotAnEmail: 'Votre email n\'est pas un email valide',
   registrationInvalidUserAlreadyExists: 'Vous avez déjà un compte ici. Vous voulez peut être vous <a href="/#!/login/"><b>connecter</b></a>?',
   registrationInvalid: 'Vos informations de connection sont invalides',
@@ -247,7 +247,7 @@ locales.fr.help = {
   Tips: 'Astuces',
   tip1: 'Gardez votre mot de passe maître dans votre tête.',
   tip2: 'Ne vous inscrivez pas sur un site avec votre mot de passe maître.',
-  tip3: 'Utilisez le nom de domaine pour le champ site. Ce champ est pré-remplit par l\'extension web avec ce mécanisme.<br><pre>ex: https://mail.google.com > google.com</pre></pre>',
+  tip3: 'Utilisez le nom de domaine pour le champ site. Ce champ est pré-rempli par l\'extension web avec ce mécanisme.<br><pre>ex: https://mail.google.com > google.com</pre></pre>',
   tip4: 'Changer un mot de passe, sans changer votre mot de passe fort en incrémentant la version du mot de passe.',
   letsGo: 'En avant',
   letsGo1: 'Créer votre première entrée en cliquant sur le bouton'
