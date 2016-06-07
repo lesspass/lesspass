@@ -2,7 +2,7 @@
     <div id="login-page">
         <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
             <div class="card card-block m-y-2">
-                <form v-on:submit="login" name="loginForm">
+                <form v-on:submit.prevent="login" name="loginForm">
                     <fieldset class="form-group">
                         <img src="../images/logo.png" alt="logo" class="img-fluid">
                     </fieldset>
@@ -23,7 +23,7 @@
                                v-model="user.password" name="passwordField"
                                placeholder="{{ $t('login.PasswordPlaceholder') }}">
                     </fieldset>
-                    <button type="submit" class="btn btn-primary btn-block">{{ $t('login.SignIn') }}</button>
+                    <button id="buttonSubmit" name="buttonSubmit" type="submit" class="btn btn-primary btn-block">{{ $t('login.SignIn') }}</button>
                     <fieldset class="form-group p-t-1">
                         <a v-link="{ path: '/register/'}"><u>{{ $t('login.orRegister') }}</u></a>
                     </fieldset>

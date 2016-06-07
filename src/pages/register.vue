@@ -55,7 +55,7 @@
                 }
                 auth.register(this.user)
                         .then(()=> {
-                            logging.success(this.$t('login.registerSuccess'), 6);
+                            logging.success(this.$t('login.registerSuccess'), 7);
                             this.$router.go('/login/');
                         })
                         .catch(err => {
