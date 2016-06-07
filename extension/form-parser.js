@@ -78,9 +78,8 @@ function _getPasswordField(form) {
   return form.querySelector('input[type=password]');
 }
 
-function _getLoginField(form) {
+function _getLoginField(form, passwordField) {
   let previousElement = null;
-  const passwordField = _getPasswordField(form);
   let loginField = null;
   Array.from(form.querySelectorAll('input')).forEach(element => {
     if (element === passwordField && previousElement !== null) {
@@ -109,9 +108,10 @@ function _getButton(form) {
 }
 
 function getFormInfo(form) {
+  const passwordField = _getPasswordField(form);
   return {
-    loginField: _getLoginField(form),
-    passwordField: _getPasswordField(form),
+    loginField: _getLoginField(form, passwordField),
+    passwordField,
     button: _getButton(form)
   };
 }
