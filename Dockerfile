@@ -1,4 +1,4 @@
-FROM nginx:1.8-alpine
+FROM nginx:1.10-alpine
 
 RUN apk update && apk add \
     python3 \
