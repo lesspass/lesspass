@@ -1,5 +1,9 @@
 server {
-    server_name {{ domain }} localhost;
+{% if domain %}
+    server_name {{ domain }};
+{% else %}
+    server_name localhost;
+{% endif %}
     return 301 https://$server_name$request_uri;
 }
 
