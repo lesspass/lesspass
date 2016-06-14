@@ -35,7 +35,7 @@ locales.fr.passwordgenerator = {
   emailUsername: 'Email / Nom d\'utilisateur',
   masterpassword: 'Mot de passe fort',
   site: 'Site (ex: twitter.com)',
-  generatedPassword: 'Mot de passe généré',
+  generatedPassword: 'Mot de passe calculé',
   copy: 'Copier',
   advancedOptions: 'Options avancées',
   lowercaseOptions: 'minuscules (a‑z)',
@@ -101,7 +101,7 @@ locales.fr.howItWorks = {
   alwaysSyncDetail: 'Vous n\'avez plus besoin de synchroniser sur le cloud vos coffres fort pour mots de passe. LessPass est une application web qui dérive vos mots de passe de manière sécurisée. PBKDF2 et SHA-256 directement sur votre navigateur. <a href="https://github.com/lesspass/core/" class="white-link">Vérifier l\'algorithme</a>.',
   extension: 'Extension web Firefox et Chrome',
   extensionDetail: 'Installez l\'extension <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/" class="white-link">firefox</a> ou <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih" class="white-link">chrome</a> pour vous connecter de manière automatique à vos sites avec un mot de passe LessPass. Utilisez l\'extension pour créer automatiquement des mots de passe unique pour vos sites.',
-  connectedAppDetail: 'Certains services ont des règles de mot de passe étranges. Des fois vous voulez changer de mot de passe, sans changer votre mot de passe fort. LessPass permet de changer les options de vos mots de passe. Pour mémoriser ces informations particulières pour certains mots de passe, nous avons créé une application connectée : LessPass App.<br> LessPass App enregistre toutes les informations nécéssaires à la regénération d\'un mot de passe. Nous ne sauvegardons pas les informations comme le mot de passe fort ou les mots de passe générés. Il n\'y a aucun mot de passe chiffré à voler dans nos bases de données.<br> Nous prévoyons de connecter l\'extension web avec LessPass App.',
+  connectedAppDetail: 'Certains services ont des règles de mot de passe étranges. Des fois vous voulez changer de mot de passe, sans changer votre mot de passe fort. LessPass permet de changer les options de vos mots de passe. Pour mémoriser ces informations particulières pour certains mots de passe, nous avons créé une application connectée : LessPass App.<br> LessPass App enregistre toutes les informations nécéssaires au calcul d\'un mot de passe. Le mot de passe fort ou les mots de passe calculés ne sont pas sauvegardés. Il n\'y a aucun mot de passe chiffré à voler dans nos bases de données.<br> Nous prévoyons de connecter l\'extension web avec LessPass App.',
   selfHosted: 'Auto hébergement',
   selfHostingDetail: 'Si vous voulez tester LessPass App sur votre serveur, vous pouvez en lançant ces commandes:'
 };
@@ -242,11 +242,11 @@ locales.en.help = {
 
 locales.fr.help = {
   Welcome: 'Bienvenu sur',
-  help1: 'LessPass App enregistre les informations nécessaires dont il a besoin pour re-générer vos mots de passe. Le mot de passe maître et les mots de passe générés ne sont jamais stockés. Voici un exemple des informations que nous stockons dans notre base de données:',
-  help2: 'Pour générer un mot de passe, LessPass demande votre mot de passe maître et votre navigateur reconstruit le mot de passe.',
+  help1: 'LessPass App enregistre les informations dont il a besoin pour calculer vos mots de passe. Le mot de passe fort et les mots de passe calculés ne sont jamais stockés. Voici un exemple des informations que nous stockons dans notre base de données:',
+  help2: 'Pour calculer un mot de passe, LessPass demande votre mot de passe fort et recalcule directement sur votre navigateur.',
   Tips: 'Astuces',
-  tip1: 'Gardez votre mot de passe maître dans votre tête.',
-  tip2: 'Ne vous inscrivez pas sur un site avec votre mot de passe maître.',
+  tip1: 'Gardez votre mot de passe fort dans votre tête.',
+  tip2: 'Ne vous inscrivez pas sur un site avec votre mot de passe fort.',
   tip3: 'Utilisez le nom de domaine pour le champ site. Ce champ est pré-rempli par l\'extension web avec ce mécanisme.<br><pre>ex: https://mail.google.com > google.com</pre></pre>',
   tip4: 'Changer un mot de passe, sans changer votre mot de passe fort en incrémentant la version du mot de passe.',
   letsGo: 'En avant',
