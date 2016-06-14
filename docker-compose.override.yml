@@ -1,0 +1,13 @@
+version: '2'
+services:
+  backend:
+    volumes:
+      - ./backend:/backend
+    command: python manage.py runserver 0.0.0.0:8000
+  frontend:
+    volumes:
+      - ./frontend:/frontend
+      - node_modules:/frontend/node_modules
+    command: npm run dev
+volumes:
+  node_modules:

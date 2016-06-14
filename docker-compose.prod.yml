@@ -1,5 +1,7 @@
 version: '2'
 services:
+  db:
+    restart: always
   backend:
     restart: always
     volumes:
@@ -12,6 +14,8 @@ services:
     command: npm start
   nginx:
     restart: always
+    environment:
+      - domain=lesspass.com
 volumes:
   backend:
   frontend:
