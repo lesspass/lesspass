@@ -20,7 +20,6 @@
     "moment": "^2.12.0",
     "notie": "^3.2.0",
     "tether": "^1.2.0",
-    "toastr": "^2.1.2",
     "vue": "^1.0.20",
     "vue-i18n": "^4.0.0",
     "vue-router": "^0.7.13"
@@ -59,8 +58,7 @@
     "ignores": [
       "webpack.config.js",
       "server.js",
-      "test/_helpers.js",
-      "src_old/**"
+      "test/_helpers.js"
     ]
   },
   "babel": {
