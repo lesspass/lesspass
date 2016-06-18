@@ -13,7 +13,7 @@ locales.fr.index = {
   LOGIN: 'CONNEXION',
   REGISTER: 'INSCRIPTION',
   title: 'Emmenez tous vos mots de passe avec vous',
-  subtitle: 'Arrêtez de perdre du temps à synchroniser vos coffres-forts cryptés. Mémorisez un mot de passe fort pour retrouver tous vos mots de passe, partout, à tout moment. Pas besoin de synchronisation.'
+  subtitle: 'Arrêtez de perdre du temps à synchroniser vos coffres-forts chiffrés. Mémorisez un mot de passe fort pour retrouver tous vos mots de passe, partout, à tout moment. Pas besoin de synchronisation.'
 };
 
 locales.en.passwordgenerator = {
