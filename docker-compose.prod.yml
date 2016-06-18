@@ -9,9 +9,6 @@ services:
     command: /usr/bin/supervisord
   frontend:
     restart: always
-    volumes:
-      - frontend:/frontend
-    command: npm start
   nginx:
     restart: always
     environment:
