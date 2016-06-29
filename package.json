@@ -31,6 +31,10 @@
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
+    "karma": "^1.1.0",
+    "karma-ava": "0.0.1",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-firefox-launcher": "^1.0.0",
     "webpack": "^1.13.1",
     "xo": "^0.16.0"
   },
@@ -54,7 +58,8 @@
   },
   "ava": {
     "files": [
-      "tests/*.js"
+      "tests/*.js",
+      "!tests/karma.conf.js"
     ],
     "source": [
       "src/*.js"
