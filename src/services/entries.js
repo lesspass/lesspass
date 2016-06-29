@@ -15,13 +15,12 @@ export default {
         return response.data;
       });
   },
-  all(limit = 20, offset = 0, search = '', sorting = 'asc', ordering = '-created') {
+  all(limit = 20, offset = 0, search = '', ordering = '-created') {
     const config = this.getRequestConfig();
     config.params = {
       limit,
       offset,
       search,
-      sorting,
       ordering
     };
     return axios.get('/api/entries/', config)

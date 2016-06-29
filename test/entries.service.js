@@ -58,9 +58,9 @@ test('should get all entries with offset', t => {
 });
 
 test('should get all entries with parameters', t => {
-  nock('http://localhost/').get('/api/entries/?limit=100&offset=0&search=query&sorting=asc&ordering=-created')
+  nock('http://localhost/').get('/api/entries/?limit=100&offset=0&search=query&ordering=-created')
     .reply(200, {entries: []});
-  return entries.all(100, 0, 'query', 'asc', '-created')
+  return entries.all(100, 0, 'query', '-created')
     .then(response => {
       t.is(response.status, 200);
     });

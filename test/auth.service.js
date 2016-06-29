@@ -22,8 +22,8 @@ test('should make a post request to create a session', t => {
 test('should throw error if bad request', t => {
   nock('http://localhost/').post('/api/tokens/auth/', user).reply(400, {});
   t.plan(1);
-  return auth.login(user).catch(r => {
-    t.is(400, r.status);
+  return auth.login(user).catch(err => {
+    t.is(400, err.status);
   });
 });
 
@@ -104,8 +104,8 @@ test('check refresh token non-expired', t => {
 test('check refresh token expired', t => {
   auth.localStorage.setItem('token', token);
   nock('http://localhost/').post('/api/tokens/refresh/', {token}).reply(400);
-  return auth.refreshToken(token).catch(r => {
-    t.is(r.status, 400);
+  return auth.refreshToken(token).catch(err => {
+    t.is(err.status, 400);
   });
 });
 

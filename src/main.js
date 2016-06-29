@@ -15,7 +15,7 @@ import locales from './locales';
 
 Vue.use(VueI18n);
 const browserLanguage = (navigator.language || navigator.browserLanguage).split('-')[0];
-const lang = locales.hasOwnProperty(browserLanguage) ? browserLanguage : 'en';
+const lang = browserLanguage in locales ? browserLanguage : 'en';
 Vue.config.lang = lang;
 Object.keys(locales).forEach(lang => {
   Vue.locale(lang, locales[lang]);
