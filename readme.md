@@ -14,21 +14,50 @@ core library for LessPass password manager in node.js used to generate unique pa
 
 ## Usage
 
-    import lesspass from 'lesspass';
+### Node
 
-    const login = 'contact@lesspass.com';
-    const masterPassword = 'password';
-    const site = 'lesspass.com';
-    const options = {
+    var lesspass = require('lesspass');
+
+    var login = 'contact@lesspass.com';
+    var masterPassword = 'password';
+    var site = 'lesspass.com';
+    var options = {
         counter: 1,
         password: {
           length: 12,
           settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
         }
     };
-    lesspass.generatePassword(login, masterPassword, site, options).then(password => {
-        console.log(password) //azYS7,olOL2]
+    lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
+        console.log(generatedPassword)  //azYS7,olOL2]
     });
+
+### Browser
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <script src="dist/lesspass.min.js"></script>
+    <script>
+        var login = 'contact@lesspass.com';
+        var masterPassword = 'password';
+        var site = 'lesspass.com';
+        var options = {
+            counter: 1,
+            password: {
+                length: 12,
+                settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
+            }
+        };
+        lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
+            console.log(generatedPassword)
+        });
+    </script>
+    </body>
+    </html>
 
 ## API
 
@@ -36,6 +65,12 @@ core library for LessPass password manager in node.js used to generate unique pa
 
 generate unique password based on login, masterPassword, site and options.
 
+return: promise with generatedPassword
+
+    lesspass.generatePassword(login, masterPassword, site, options)
+        .then(function (generatedPassword) {
+
+        });
 
 ## Tests
 

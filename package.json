@@ -1,25 +1,22 @@
 {
   "name": "lesspass",
-  "version": "2.0.1",
-  "description": "node.js stateless password management solution",
-  "main": "lib/lesspass.js",
+  "version": "3.0.1",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "description": "lesspass javascript module to generate idempotent passwords",
+  "main": "src/lesspass.js",
   "scripts": {
     "test": "ava --require babel-core/register && xo",
-    "build": "babel src --out-dir lib",
+    "build": "rm -rf dist && webpack",
     "prepublish": "npm test && npm run build"
   },
   "keywords": [
     "password",
+    "crypto",
     "lesspass"
   ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:lesspass/core.git"
-  },
-  "author": {
-    "name": "Guillaume Vincent",
-    "email": "guillaume@oslab.fr",
-    "url": "guillaumevincent.com"
   },
   "engines": {
     "node": ">=4.2.6"
@@ -30,20 +27,16 @@
   },
   "homepage": "https://github.com/lesspass/core#readme",
   "devDependencies": {
-    "ava": "^0.14.0",
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.9.0",
+    "ava": "^0.15.2",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
-    "xo": "^0.15.1"
+    "webpack": "^1.13.1",
+    "xo": "^0.16.0"
   },
   "babel": {
     "presets": [
       "es2015"
-    ]
-  },
-  "browserify": {
-    "transform": [
-      "babelify"
     ]
   },
   "xo": {

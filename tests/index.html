@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<script src="../dist/lesspass.min.js"></script>
+<script>
+    var login = 'contact@lesspass.com';
+    var masterPassword = 'password';
+    var site = 'lesspass.com';
+    var options = {
+        counter: 1,
+        password: {
+            length: 12,
+            settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
+        }
+    };
+    lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
+        console.log(generatedPassword)
+    });
+</script>
+</body>
+</html>
