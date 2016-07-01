@@ -5,20 +5,20 @@ test('should create encrypted hash with pbkdf2 (8192 iterations and sha 256)', t
   const login = 'test@lesspass.com';
   const masterPassword = 'password';
 
-  return lesspass._encryptLogin(login, masterPassword).then(hash => {
+  return lesspass.encryptLogin(login, masterPassword).then(hash => {
     t.is('90cff82b8847525370a8f29a59ecf45db62c719a535788ad0df58d32304e925d', hash);
   });
 });
 
 test('should create encrypted hash with 64 chars length', t => {
-  return lesspass._encryptLogin('♥', '♥ ♥').then(hash => {
+  return lesspass.encryptLogin('♥', '♥ ♥').then(hash => {
     t.is(64, hash.length);
   });
 });
 
 test('should reject promise if no parameter', t => {
   t.plan(1);
-  return lesspass._encryptLogin('', '').catch(() => {
+  return lesspass.encryptLogin('', '').catch(() => {
     t.pass('promise rejected with empty parameter');
   });
 });

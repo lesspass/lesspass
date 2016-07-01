@@ -3,7 +3,7 @@ import crypto from 'crypto';
 (function () {
   const lesspass = {
     generatePassword: _generatePassword,
-    _encryptLogin,
+    encryptLogin: _encryptLogin,
     _deriveHash,
     _prettyPrint,
     _getTemplate,
