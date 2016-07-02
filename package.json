@@ -1,20 +1,10 @@
 {
-  "name": "landing_page",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "favicon": "real-favicon generate favicon/description.json faviconData.json dist && real-favicon inject faviconData.json dist index.html && rm faviconData.json",
-    "critical": "npm run build && cat pg.html | critical --inline --minify > index.html",
     "build": "gulp build"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",
-    "cli-real-favicon": "0.0.6",
     "clipboard": "^1.5.12",
-    "critical": "^0.7.3",
     "font-awesome": "^4.6.3",
     "hint.css": "^2.3.1",
     "lesspass": "^3.1.1"
@@ -24,8 +14,6 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-htmlmin": "^2.0.0",
-    "gulp-uglify": "^1.5.4"
+    "gulp-cssnano": "^2.1.2"
   }
 }
