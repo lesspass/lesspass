@@ -13,3 +13,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/lesspass/frontend.git
+[submodule "pure"]
+	path = pure
+	url = ./pure
