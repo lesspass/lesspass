@@ -6,7 +6,7 @@ i {
     cursor: pointer;
 }
 
-.option-block {
+.option-block, #autoLoginButton {
     display: none;
 }
 
