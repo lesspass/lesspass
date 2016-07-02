@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="dist/styles/vendors.min.css">
+    <link rel="stylesheet" href="dist/styles/styles.min.css">
+</head>
+<body>
+<div class="m-t-1" id="navbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <img src="dist/images/logo.png" alt="logo" id="navbar__logo">
+            </div>
+            <div class="col-xs-6 text-xs-right">
+                <nav class="nav nav-inline pull-sm-right" style="line-height: 2em">
+                    <a class="nav-link active hidden-sm-down" href="#">Download</a>
+                    <a class="nav-link" href="#">Sign In</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div id="hero" class="col-md-6 m-t-3 hidden-xs-down">
+            <h1 class="hero__title">Password manager<br>without synchronisation</h1>
+            <h4 class="hero__subtitle">
+                Stop wasting time synchronize your encrypted vault.
+                Remember one master password to access<br>your
+                passwords, anywhere, anytime.
+            </h4>
+        </div>
+        <div id="passwordGenerator" class="col-md-6 m-t-3">
+            <div class="card">
+                <div id="password-block" class="card-block">
+                    <form id="generatedPasswordForm">
+                        <fieldset class="form-group">
+                            <label for="login" class="sr-only">Login</label>
+                            <input id="login"
+                                   name="login"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Login"
+                                   autofocus
+                                   autocomplete="off"
+                                   autocorrect="off"
+                                   autocapitalize="none">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="masterPassword" class="sr-only">Password</label>
+                            <div class="input-group">
+                                <input id="masterPassword"
+                                       name="masterPassword"
+                                       type="password"
+                                       class="form-control"
+                                       placeholder="Master password"
+                                       autocomplete="off"
+                                       autocorrect="off"
+                                       autocapitalize="none">
+                        <span class="input-group-btn">
+                            <a id="displayMasterPasswordButton" class="btn btn-secondary" type="button"
+                               tabindex="-1">
+                                <i class="fa fa-user-secret" aria-hidden="true"></i>
+                                <small class="hint--top" id="fingerprint" aria-label="fingerprint"></small>
+                            </a>
+                        </span>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="site" class="sr-only">Site</label>
+                            <input id="site"
+                                   name="site"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Site"
+                                   autofocus
+                                   autocomplete="off"
+                                   autocorrect="off"
+                                   autocapitalize="none">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="input-group">
+                                <!--
+                                <span class="input-group-btn">
+                                    <button id="autoLoginButton" class="btn btn-secondary">
+                                        <i class="fa fa-magic" aria-hidden="true"></i>
+                                    </button>
+                                </span>
+                                -->
+                                <label for="generatedPassword" class="sr-only">Password Generated</label>
+                                <input id="generatedPassword"
+                                       name="generatedPassword"
+                                       type="text"
+                                       class="form-control"
+                                       tabindex="-1"
+                                       readonly>
+                        <span class="input-group-btn">
+                            <button id="copyPasswordButton" class="btn-copy btn btn-primary" type="button"
+                                    data-clipboard-target="#generatedPassword">
+                                <i class="fa fa-clipboard" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group m-b-0">
+                     <span id="displayOptionsButton">
+                        <i class="fa fa-gears"></i> Advanced options
+                    </span>
+                        </fieldset>
+                        <fieldset class="form-group option-block m-t-1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>Password groups :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="c-input c-checkbox">
+                                        <input type="checkbox" id="lowercase" value="lowercase" name="lowercase"
+                                               checked>
+                                        <span class="c-indicator"></span> Lower letters (a‑z)
+                                    </label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="c-input c-checkbox">
+                                        <input type="checkbox" id="uppercase" value="uppercase" name="uppercase"
+                                               checked>
+                                        <span class="c-indicator"></span> Upper letters (A-Z)
+                                    </label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="c-input c-checkbox">
+                                        <input type="checkbox" id="numbers" value="numbers" name="numbers" checked>
+                                        <span class="c-indicator"></span> Numbers (0-9)
+                                    </label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="c-input c-checkbox">
+                                        <input type="checkbox" id="symbols" value="symbols" name="symbols" checked>
+                                        <span class="c-indicator"></span> Special chars (@&%)
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group option-block">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label for="passwordLength">Length :</label>
+                                    <input id="passwordLength"
+                                           type="number"
+                                           class="form-control"
+                                           value="12"
+                                           min="6"
+                                           max="64"/>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label for="passwordCounter">Counter :</label>
+                                    <input id="passwordCounter"
+                                           type="number" class="form-control"
+                                           value="1"
+                                           min="1"
+                                           max="1000"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!--
+                        <fieldset class="form-group option-block">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="c-input c-checkbox">
+                                        <input type="checkbox" id="saveLocally" value="saveLocally" name="saveLocally">
+                                        <span class="c-indicator"></span> Save passwords info locally
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group option-block">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <button class="btn btn-success-outline btn-sm btn-block">
+                                        <i class="fa fa-download" aria-hidden="true"></i> download passwords info
+                                    </button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button class="btn btn-primary-outline btn-sm btn-block">
+                                        <i class="fa fa-upload" aria-hidden="true"></i> load passwords info
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                        -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container m-t-3 p-t-3">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object" src="dist/images/responsive.png" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Available everywhere</h4>
+                    <p>
+                        LessPass is a web application and works on all devices
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object" src="dist/images/no-cloud.png" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">No storage</h4>
+                    <p>
+                        LessPass regenerates your passwords when you need them. No cloud storage is required
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <a class="media-left" href="https://github.com/lesspass/lesspass/">
+                    <img class="media-object" src="dist/images/open-source.png" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Open Source</h4>
+                    <p>
+                        LessPass is open-source. Source code can be audited.
+                        It's available on <strong><a href="https://github.com/lesspass/lesspass/">Github</a></strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object" src="dist/images/free.png" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Free</h4>
+                    <p>
+                        LessPass is free and always will be
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container m-y-3 text-xs-center text-sm-left">
+    <div class="row">
+        <div class="col-xs-12">
+            <small>
+                Copyright LessPass <br> Crafted with ♥ by Guillaume Vincent
+            </small>
+        </div>
+    </div>
+</div>
+<script src="dist/js/vendors.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+</body>
+</html>
