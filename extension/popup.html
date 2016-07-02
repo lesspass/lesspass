@@ -2,176 +2,183 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="vendor/css/bootstrap.min.css"/>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/hint.css">
+    <link rel="stylesheet" href="styles/style.min.css">
     <style>
         body {
             min-width: 655px;
-            padding: 2em;
-        }
-
-        .form-control, .btn, .input-group-addon {
-            border-radius: 0 !important;
-        }
-
-        #generatedPasswordForm a {
-            color: inherit;
+            padding: 1em;
         }
     </style>
 </head>
 <body>
-<div class="row">
-    <div class="col-xs-12 m-b-1">
-        <a href="https://lesspass.com/"><img src="icons/logo.png" alt="lesspass favicon" height="32"></a>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <form id="generatedPasswordForm">
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <span id="errorMessageField" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-6">
-                    <label for="loginField" class="sr-only">
-                        Login
-                    </label>
-                    <input id="loginField"
-                           class="form-control"
+<div id="passwordGenerator">
+    <div class="card">
+        <div id="password-block" class="card-block">
+            <form id="generatedPasswordForm">
+                <fieldset class="form-group">
+                    <label for="login" class="sr-only">Login</label>
+                    <input id="login"
+                           name="login"
                            type="text"
-                           placeholder="login"
+                           class="form-control"
+                           placeholder="Login"
                            autofocus
-                           autocomplete="off">
-
-                </div>
-                <div class="col-xs-6">
-                    <label for="masterPasswordField" class="sr-only">
-                        Master Password
-                    </label>
-                    <input id="masterPasswordField"
-                           class="form-control"
-                           type="password"
-                           placeholder="master password"
-                           autocomplete="off">
-
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <label for="siteField" class="sr-only">
-                        Site
-                    </label>
-                    <input id="siteField"
-                           class="form-control"
-                           type="text"
-                           placeholder="site">
-
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <label for="generatedPasswordField" class="sr-only">
-                        Generated password
-                    </label>
+                           autocomplete="off"
+                           autocorrect="off"
+                           autocapitalize="none">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="masterPassword" class="sr-only">Password</label>
                     <div class="input-group">
-                        <input type="text"
-                               id="generatedPasswordField"
-                               class="form-control disabled"
-                               placeholder="generated password">
+                        <input id="masterPassword"
+                               name="masterPassword"
+                               type="password"
+                               class="form-control"
+                               placeholder="Master password"
+                               autocomplete="off"
+                               autocorrect="off"
+                               autocapitalize="none">
                         <span class="input-group-btn">
-                            <button id="lesspassButton" class="btn btn-primary" type="submit">
-                                 Copy
+                            <a id="displayMasterPasswordButton" class="btn btn-secondary" type="button"
+                               tabindex="-1">
+                                <i class="fa fa-user-secret" aria-hidden="true"></i>
+                                <small class="hint--top" id="fingerprint" aria-label="fingerprint"></small>
+                            </a>
+                        </span>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="site" class="sr-only">Site</label>
+                    <input id="site"
+                           name="site"
+                           type="text"
+                           class="form-control"
+                           placeholder="Site"
+                           autofocus
+                           autocomplete="off"
+                           autocorrect="off"
+                           autocapitalize="none">
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="input-group">
+                        <span id="autoLoginButton" class="input-group-btn">
+                            <button class="btn btn-secondary">
+                                <i class="fa fa-magic" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                        <label for="generatedPassword" class="sr-only">Password Generated</label>
+                        <input id="generatedPassword"
+                               name="generatedPassword"
+                               type="text"
+                               class="form-control"
+                               tabindex="-1"
+                               readonly>
+                        <span class="input-group-btn">
+                            <button id="copyPasswordButton" class="btn-copy btn btn-primary" type="button"
+                                    data-clipboard-target="#generatedPassword">
+                                <i class="fa fa-clipboard" aria-hidden="true"></i>
                             </button>
                         </span>
                     </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <img src="vendor/img/settings.png"/> options <span id="messageField" class="text-success"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-5">
-                    <label class="c-input c-checkbox">
-                        <input type="checkbox" id="lowercase" value="lowercase">
-
-                        <span class="c-indicator"></span>
-                        lowercase
-                    </label>
-                </div>
-                <div class="col-xs-7">
-                    <label class="c-input c-checkbox">
-                        <input type="checkbox" id="uppercase" value="uppercase">
-
-                        <span class="c-indicator"></span>
-                        uppercase
-                    </label>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-5">
-                    <label class="c-input c-checkbox">
-                        <input type="checkbox" id="numbers" value="numbers">
-
-                        <span class="c-indicator"></span>
-                        numbers
-                    </label>
-                </div>
-                <div class="col-xs-7">
-                    <label class="c-input c-checkbox">
-                        <input type="checkbox" id="symbols" value="symbols">
-
-                        <span class="c-indicator"></span>
-                        symbols
-                    </label>
-                </div>
-            </div>
-            <div class="row m-t-1">
-                <div class="col-xs-5 m-b-1">
-                    <label for="passwordLength" class="sr-only">
-                        length
-                    </label>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="passwordLengthAddon">
-                             length
-                        </span>
-                        <input type="number" class="form-control" id="passwordLength"
-                               aria-describedby="passwordLengthAddon" value="12" min="6" max="64">
+                </fieldset>
+                <fieldset class="form-group m-b-0">
+                     <span id="displayOptionsButton">
+                        <i class="fa fa-gears"></i> Advanced options
+                    </span>
+                </fieldset>
+                <fieldset class="form-group option-block m-t-1">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Password groups :</label>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-4 m-b-1">
-                    <label for="passwordCounter" class="sr-only">
-                        counter
-                    </label>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="passwordCounterAddon">
-                             counter
-                        </span>
-                        <input type="number" class="form-control" id="passwordCounter"
-                               aria-describedby="passwordCounterAddon"
-                               value="1" min="1" max="100">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="c-input c-checkbox">
+                                <input type="checkbox" id="lowercase" value="lowercase" name="lowercase"
+                                       checked>
+                                <span class="c-indicator"></span> Lower letters (a‑z)
+                            </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="c-input c-checkbox">
+                                <input type="checkbox" id="uppercase" value="uppercase" name="uppercase"
+                                       checked>
+                                <span class="c-indicator"></span> Upper letters (A-Z)
+                            </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="c-input c-checkbox">
+                                <input type="checkbox" id="numbers" value="numbers" name="numbers" checked>
+                                <span class="c-indicator"></span> Numbers (0-9)
+                            </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="c-input c-checkbox">
+                                <input type="checkbox" id="symbols" value="symbols" name="symbols" checked>
+                                <span class="c-indicator"></span> Special chars (@&%)
+                            </label>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <button id="saveDefaultOptionButton" class="btn btn-primary" type="button">
-                        save as default
-                    </button>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <small class="text-help">options are stored locally within your browser. options are not
-                        synchronised for now.
-                    </small>
-                </div>
-            </div>
-        </form>
+                </fieldset>
+                <fieldset class="form-group option-block">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="passwordLength">Length :</label>
+                            <input id="passwordLength"
+                                   type="number"
+                                   class="form-control"
+                                   value="12"
+                                   min="6"
+                                   max="64"/>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="passwordCounter">Counter :</label>
+                            <input id="passwordCounter"
+                                   type="number" class="form-control"
+                                   value="1"
+                                   min="1"
+                                   max="1000"/>
+                        </div>
+                    </div>
+                </fieldset>
+                <!--
+                <fieldset class="form-group option-block">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="c-input c-checkbox">
+                                <input type="checkbox" id="saveLocally" value="saveLocally" name="saveLocally">
+                                <span class="c-indicator"></span> Save passwords info locally
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group option-block">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="btn btn-success-outline btn-sm btn-block">
+                                <i class="fa fa-download" aria-hidden="true"></i> download passwords info
+                            </button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="btn btn-primary-outline btn-sm btn-block">
+                                <i class="fa fa-upload" aria-hidden="true"></i> load passwords info
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+                -->
+            </form>
+        </div>
     </div>
 </div>
-<script src="dist/popup.min.js"></script>
+<script src="js/lesspass.min.js"></script>
+<script src="js/clipboard.min.js"></script>
+<script src="js/password-generator.js"></script>
+<script src="js/popup.js"></script>
 </body>
 </html>

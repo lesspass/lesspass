@@ -2,7 +2,7 @@
   "scripts": {
     "prebuild": "npm prune && npm install",
     "zip": "rm -rf build && mkdir build && cd extension && zip -r extension.zip ./* -x ./*.js && cp extension.zip ../build/lesspass.firefox.xpi && mv extension.zip ../build/lesspass.chrome.zip && cd ..",
-    "browserify": "rm -rf extension/dist && mkdir extension/dist && browserify ./extension/content.js -o ./extension/dist/content.min.js && browserify ./extension/popup.js -o ./extension/dist/popup.min.js",
+    "browserify": "rm -rf extension/dist && mkdir extension/dist && browserify ./extension/content.js -o ./extension/dist/content.min.js",
     "build": "npm run browserify && npm run zip",
     "test": "ava tests --require babel-core/register && xo"
   },
