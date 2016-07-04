@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var gulp = require('gulp');
 var del = require('del');
@@ -7,21 +7,21 @@ var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-cssnano');
 
 var paths = {
-  build: "dist/",
+  build: 'dist/',
   html: [
     'index.html'
   ],
   js: [
     'password-generator.js'
   ],
-  js_vendors: [
+  jsVendors: [
     'node_modules/lesspass/dist/lesspass.min.js',
     'node_modules/clipboard/dist/clipboard.min.js'
   ],
   styles: [
     'style.css'
   ],
-  styles_vendors: [
+  stylesVendors: [
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/font-awesome/css/font-awesome.min.css',
     'node_modules/hint.css/hint.min.css'
@@ -61,8 +61,8 @@ gulp.task('styles', function () {
     .pipe(gulp.dest(paths.build + '/styles'));
 });
 
-gulp.task('styles_vendors', function () {
-  return gulp.src(paths.styles_vendors)
+gulp.task('stylesVendors', function () {
+  return gulp.src(paths.stylesVendors)
     .pipe(gulp.dest(paths.build + 'styles/'));
 });
 
@@ -71,20 +71,20 @@ gulp.task('js', function () {
     .pipe(gulp.dest(paths.build + 'js/'));
 });
 
-gulp.task('js_vendors', function () {
-  return gulp.src(paths.js_vendors)
+gulp.task('jsVendors', function () {
+  return gulp.src(paths.jsVendors)
     .pipe(gulp.dest(paths.build + 'js/'));
 });
 
 gulp.task('build', ['clean'], function () {
-  gulp.start('js', 'js_vendors', 'html', 'styles', 'styles_vendors', 'fonts', 'images');
+  gulp.start('js', 'jsVendors', 'html', 'styles', 'stylesVendors', 'fonts', 'images');
 });
 
 gulp.task('watch', ['build'], function () {
   gulp.watch(paths.js, ['js']);
-  gulp.watch(paths.js_vendors, ['js_vendors']);
+  gulp.watch(paths.jsVendors, ['jsVendors']);
   gulp.watch(paths.styles, ['styles']);
-  gulp.watch(paths.styles_vendors, ['styles_vendors']);
+  gulp.watch(paths.stylesVendors, ['stylesVendors']);
   gulp.watch(paths.html, ['html']);
   gulp.watch(paths.images, ['images']);
   gulp.watch(paths.fonts, ['fonts']);

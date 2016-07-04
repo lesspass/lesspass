@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "gulp build",
-    "build:watch": "gulp"
+    "build:watch": "gulp",
+    "test": "xo"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",
@@ -15,6 +16,17 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.1.2"
+    "gulp-cssnano": "^2.1.2",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "space": true,
+    "envs": [
+      "browser",
+      "webextensions"
+    ],
+    "ignores": [
+      "dist/**"
+    ]
   }
 }
