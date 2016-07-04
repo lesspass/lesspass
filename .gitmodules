@@ -15,4 +15,4 @@
 	url = https://github.com/lesspass/frontend.git
 [submodule "pure"]
 	path = pure
-	url = ./pure
+	url = https://github.com/lesspass/pure.git
