@@ -103,15 +103,14 @@ clipboard.on('success', function (e) {
 });
 
 document.getElementById('displayOptionsButton').addEventListener('click', toggleBlocks);
-
 function toggleVisibility(className) {
   var elements = document.getElementsByClassName(className);
   for (var i = 0; i < elements.length; i++) {
     var e = elements[i];
-    if (e.style.display === 'block') {
-      e.style.display = 'none';
-    } else {
+    if (e.style.display === 'none') {
       e.style.display = 'block';
+    } else {
+      e.style.display = 'none';
     }
   }
 }
