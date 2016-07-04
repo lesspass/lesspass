@@ -18,4 +18,8 @@ open [http://localhost:8080/](http://localhost:8080/)
 
     npm run build
 
+# Run
+
+    npm start
+
 see [LessPass](https://github.com/lesspass/lesspass) project
