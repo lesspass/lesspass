@@ -3,10 +3,12 @@
   "version": "3.1.2",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "description": "lesspass javascript module to generate idempotent passwords",
-  "main": "src/lesspass.js",
+  "main": "lib/lesspass.js",
   "scripts": {
     "test": "ava --require babel-core/register && xo",
-    "build": "rm -rf dist && mkdir dist && browserify -s lesspass ./src/lesspass.js | uglifyjs > dist/lesspass.min.js",
+    "browserify": "browserify src/lesspass.js --standalone lesspass | uglifyjs > dist/lesspass.min.js",
+    "babelify": "babel src/lesspass.js -o lib/lesspass.js",
+    "build": "rm -rf dist lib && mkdir dist lib && npm run browserify && npm run babelify",
     "prepublish": "npm test && npm run build"
   },
   "keywords": [
@@ -28,6 +30,7 @@
   "homepage": "https://github.com/lesspass/core#readme",
   "devDependencies": {
     "ava": "^0.15.2",
+    "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
     "babel-preset-es2015": "^6.9.0",
     "babelify": "^7.3.0",
@@ -59,13 +62,15 @@
       "es6"
     ],
     "ignores": [
-      "lib/**"
+      "lib/**",
+      "tests/node.js"
     ]
   },
   "ava": {
     "files": [
       "tests/*.js",
-      "!tests/karma.conf.js"
+      "!tests/karma.conf.js",
+      "!tests/node.js"
     ],
     "source": [
       "src/*.js"

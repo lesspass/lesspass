@@ -22,15 +22,17 @@ core library for LessPass password manager in node.js used to generate unique pa
     var masterPassword = 'password';
     var site = 'lesspass.com';
     var options = {
-        counter: 1,
-        password: {
-          length: 12,
-          settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
-        }
+      counter: 1,
+      password: {
+        length: 12,
+        settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
+      }
     };
     lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
-        console.log(generatedPassword)  //azYS7,olOL2]
+      console.log(generatedPassword);  //azYS7,olOL2]
     });
+
+
 
 ### Browser
 
@@ -42,19 +44,19 @@ core library for LessPass password manager in node.js used to generate unique pa
     <body>
     <script src="lesspass.min.js"></script>
     <script>
-        var login = 'contact@lesspass.com';
-        var masterPassword = 'password';
-        var site = 'lesspass.com';
-        var options = {
-            counter: 1,
-            password: {
-                length: 12,
-                settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
-            }
-        };
-        lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
-            console.log(generatedPassword) //azYS7,olOL2]
-        });
+      var login = 'contact@lesspass.com';
+      var masterPassword = 'password';
+      var site = 'lesspass.com';
+      var options = {
+        counter: 1,
+        password: {
+          length: 12,
+          settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
+        }
+      };
+      lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
+        console.log(generatedPassword);  //azYS7,olOL2]
+      });
     </script>
     </body>
     </html>
