@@ -51,5 +51,6 @@
       "es2015"
     ],
     "comments": false
-  }
+  },
+  "version": "1.0.0"
 }
