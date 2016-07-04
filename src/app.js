@@ -96,9 +96,11 @@ function toggleMasterPassword() {
   }
 }
 
-function cleanData(){
-  document.getElementById('generatedPassword').value = '';
-  document.getElementById('masterPassword').value = '';
+function cleanData() {
+  setTimeout(function () {
+    document.getElementById('generatedPassword').value = '';
+    document.getElementById('masterPassword').value = '';
+  }, 10000);
 }
 
 var clipboard = new Clipboard('.btn-copy');
@@ -106,11 +108,14 @@ var clipboard = new Clipboard('.btn-copy');
 clipboard.on('success', function (e) {
   if (e.text) {
     showTooltip(e.trigger, 'copied !');
-    setTimeout(function () {
-      cleanData()
-    }, 10000);
+    cleanData();
   }
 });
+
+clipboard.on('error', function () {
+  cleanData();
+});
+
 
 document.getElementById('displayOptionsButton').addEventListener('click', toggleBlocks);
 
