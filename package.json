@@ -23,7 +23,7 @@
   "homepage": "https://github.com/lesspass/pure#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "lesspass": "^3.1.3"
+    "lesspass": "^3.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
