@@ -1,4 +1,4 @@
-var autoLogin = false;
+/* global Url */
 
 var autoLoginButton = document.getElementById('autoLoginButton');
 
@@ -14,18 +14,16 @@ getCurrentTab().then(function (currentTab) {
   chrome.tabs.sendMessage(currentTab.id, {type: 'isThereALoginForm'}, function (response) {
     if (response.isThereALoginForm) {
       autoLoginButton.style.display = 'table-cell';
-      autoLogin = true;
     } else {
       autoLoginButton.style.display = 'none';
-      autoLogin = false;
     }
   });
 });
 
 autoLoginButton.addEventListener('click', function (event) {
   event.preventDefault();
-  const login = document.getElementById('login');
-  const generatedPassword = document.getElementById('generatedPassword');
+  var login = document.getElementById('login');
+  var generatedPassword = document.getElementById('generatedPassword');
   if (!generatedPassword) {
     console.log('login, master password and site are required to generate a password', 'errorMessageField');
     return;
@@ -33,10 +31,18 @@ autoLoginButton.addEventListener('click', function (event) {
 
   getCurrentTab().then(function (currentTab) {
     chrome.tabs.sendMessage(currentTab.id, {
-        type: 'submitForm',
-        login: login.value,
-        password: generatedPassword.value
-      });
-      window.close();
+      type: 'submitForm',
+      login: login.value,
+      password: generatedPassword.value
+    });
+    window.close();
   });
+});
+
+getCurrentTab().then(function (currentTab) {
+  var site = Url.getDomainName(currentTab.url);
+  if (site !== null) {
+    var siteField = document.getElementById('site');
+    siteField.value = site;
+  }
 });

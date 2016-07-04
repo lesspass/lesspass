@@ -30,6 +30,8 @@
                            autocomplete="off"
                            autocorrect="off"
                            autocapitalize="none">
+                    <!-- remove autofill for masterPassword -->
+                    <input type="password" id="password" style="display: none">
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="masterPassword" class="sr-only">Password</label>
@@ -111,6 +113,8 @@
                                 <span class="c-indicator"></span> Upper letters (A-Z)
                             </label>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
                             <label class="c-input c-checkbox">
                                 <input type="checkbox" id="numbers" value="numbers" name="numbers" checked>
@@ -179,6 +183,7 @@
 <script src="js/lesspass.min.js"></script>
 <script src="js/clipboard.min.js"></script>
 <script src="js/password-generator.js"></script>
+<script src="js/url-parser.min.js"></script>
 <script src="js/popup.js"></script>
 </body>
 </html>

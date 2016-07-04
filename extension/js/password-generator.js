@@ -1,3 +1,5 @@
+/* global lesspass Clipboard */
+
 function showTooltip(elem, msg) {
   var classNames = elem.className;
   elem.setAttribute('class', classNames + ' hint--top');
@@ -38,7 +40,6 @@ function displayPasswordIndication() {
     displayMasterPasswordButton.style.backgroundColor = colorHex;
   });
 }
-
 
 document.getElementById('copyPasswordButton').addEventListener('click', generatePassword);
 document.getElementById('generatedPasswordForm').addEventListener('change', generatePassword);
@@ -83,16 +84,14 @@ function generatePassword() {
   });
 }
 
-
 document.getElementById('displayMasterPasswordButton').addEventListener('click', toggleMasterPassword);
 function toggleMasterPassword() {
-  if (document.getElementById('masterPassword').type == 'password') {
+  if (document.getElementById('masterPassword').type === 'password') {
     document.getElementById('masterPassword').type = 'text';
   } else {
     document.getElementById('masterPassword').type = 'password';
   }
 }
-
 
 var clipboard = new Clipboard('.btn-copy');
 
@@ -102,17 +101,14 @@ clipboard.on('success', function (e) {
     e.clearSelection();
   }
 });
-clipboard.on('error', function (e) {
-});
-
 
 document.getElementById('displayOptionsButton').addEventListener('click', toggleBlocks);
 
-function toggle_visibility(className) {
+function toggleVisibility(className) {
   var elements = document.getElementsByClassName(className);
   for (var i = 0; i < elements.length; i++) {
     var e = elements[i];
-    if (e.style.display == 'block') {
+    if (e.style.display === 'block') {
       e.style.display = 'none';
     } else {
       e.style.display = 'block';
@@ -121,5 +117,5 @@ function toggle_visibility(className) {
 }
 
 function toggleBlocks() {
-  toggle_visibility('option-block');
+  toggleVisibility('option-block');
 }
