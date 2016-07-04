@@ -4,37 +4,24 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
-        pure: "./src/app",
-        vendors: "./src/vendors"
-    },
+    pure: "./src/app",
+    vendors: "./src/vendors"
+  },
   output: {
     path: 'dist',
-    publicPath: '/dist/',
+    publicPath: '/pure/dist/',
     filename: 'lesspass-[name].js?[hash]'
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
+      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
       {
         test: /\.(png|jpg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
         loader: 'url-loader',
-        query: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
+        query: {limit: 10000, name: '[name].[ext]?[hash]'}
       },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
-      }
+      {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")}
     ]
   },
   plugins: [

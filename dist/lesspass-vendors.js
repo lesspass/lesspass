@@ -1,2 +1,2 @@
-!function(t){function r(n){if(e[n])return e[n].exports;var o=e[n]={exports:{},id:n,loaded:!1};return t[n].call(o.exports,o,o.exports,r),o.loaded=!0,o.exports}var e={};return r.m=t,r.c=e,r.p="/dist/",r(0)}({0:function(t,r,e){"use strict";e(17)},17:function(t,r){}});
-//# sourceMappingURL=lesspass-vendors.js.map?d85e4fdbb5fb35c32626
+!function(t){function n(o){if(r[o])return r[o].exports;var e=r[o]={exports:{},id:o,loaded:!1};return t[o].call(e.exports,e,e.exports,n),e.loaded=!0,e.exports}var r={};return n.m=t,n.c=r,n.p="/pure/dist/",n(0)}({0:function(t,n,r){"use strict";r(16),r(17),r(18)},16:function(t,n){},17:function(t,n){},18:function(t,n){}});
+//# sourceMappingURL=lesspass-vendors.js.map?6369a672674763854654
