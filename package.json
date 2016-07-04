@@ -38,7 +38,6 @@
     "font-awesome-webpack": "0.0.4",
     "hint.css": "^2.3.1",
     "html-webpack-plugin": "^2.22.0",
-    "less-loader": "^2.2.3",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",

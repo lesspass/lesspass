@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: 'dist',
-    publicPath: '/pure/dist/',
+    publicPath: '/dist/',
     filename: 'lesspass-[name].js?[hash]'
   },
   module: {

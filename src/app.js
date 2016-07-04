@@ -2,6 +2,8 @@ import './app.scss'
 import lesspass from 'lesspass';
 import Clipboard from 'clipboard';
 
+var encryptedLogin;
+
 function showTooltip(elem, msg) {
   var classNames = elem.className;
   elem.setAttribute('class', classNames + ' hint--top');
@@ -35,6 +37,7 @@ function displayPasswordIndication() {
     return;
   }
   lesspass.encryptLogin(login, masterPassword).then(function (secretHash) {
+    encryptedLogin = secretHash;
     var color = secretHash.substring(0, 6);
     var colorHex = getColor(color);
     fingerprint.innerText = color;
@@ -47,7 +50,7 @@ document.getElementById('copyPasswordButton').addEventListener('click', generate
 document.getElementById('generatedPasswordForm').addEventListener('change', generatePassword);
 document.getElementById('passwordLength').addEventListener('input', generatePassword);
 document.getElementById('passwordCounter').addEventListener('input', generatePassword);
-
+document.getElementById('generatedPasswordForm').oninput = generatePassword;
 function getData() {
   const defaultOptions = {
     login: document.getElementById('login').value,
@@ -77,13 +80,11 @@ function getFormData() {
 function generatePassword() {
   const data = getFormData();
   var generatedPasswordField = document.getElementById('generatedPassword');
-  if (!data.login || !data.masterPassword || !data.site || !data.password.settings.length) {
+  if (!encryptedLogin || !data.site || !data.password.settings.length) {
     generatedPasswordField.value = '';
     return;
   }
-  lesspass.generatePassword(data.login, data.masterPassword, data.site, data).then(function (generatedPassword) {
-    generatedPasswordField.value = generatedPassword;
-  });
+  generatedPasswordField.value = lesspass.renderPassword(encryptedLogin, data.site, data);
 }
 
 document.getElementById('displayMasterPasswordButton').addEventListener('click', toggleMasterPassword);
@@ -95,12 +96,19 @@ function toggleMasterPassword() {
   }
 }
 
+function cleanData(){
+  document.getElementById('generatedPassword').value = '';
+  document.getElementById('masterPassword').value = '';
+}
+
 var clipboard = new Clipboard('.btn-copy');
 
 clipboard.on('success', function (e) {
   if (e.text) {
     showTooltip(e.trigger, 'copied !');
-    e.clearSelection();
+    setTimeout(function () {
+      cleanData()
+    }, 10000);
   }
 });
 
