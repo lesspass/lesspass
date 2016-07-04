@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/hint.css">
+    <link rel="stylesheet" href="styles/hint.min.css">
     <link rel="stylesheet" href="styles/style.min.css">
 </head>
 <body>
@@ -24,6 +24,8 @@
                            autocomplete="off"
                            autocorrect="off"
                            autocapitalize="none">
+                    <!-- remove autofill for masterPassword -->
+                    <input type="password" id="password" style="display: none">
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="masterPassword" class="sr-only">Password</label>
@@ -105,6 +107,8 @@
                                 <span class="c-indicator"></span> Upper letters (A-Z)
                             </label>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
                             <label class="c-input c-checkbox">
                                 <input type="checkbox" id="numbers" value="numbers" name="numbers" checked>

@@ -24,7 +24,7 @@ var paths = {
   styles_vendors: [
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/font-awesome/css/font-awesome.min.css',
-    'node_modules/hint.css/hint.css'
+    'node_modules/hint.css/hint.min.css'
   ],
   images: [
     'images/**/*'
