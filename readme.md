@@ -12,7 +12,7 @@ LessPass pure html, js and css component used in the web extension and the front
 
     npm run dev
 
-open [http://localhost:8080/](http://localhost:8080/)
+open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/)
 
 # Build
 

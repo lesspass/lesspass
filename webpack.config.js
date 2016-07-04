@@ -26,7 +26,8 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("lesspass-[name].css")
-  ]
+  ],
+  devtool: '#eval-source-map'
 };
 
 if (process.env.NODE_ENV === 'production') {
