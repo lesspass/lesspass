@@ -3,6 +3,7 @@ import crypto from 'crypto';
 module.exports = {
   generatePassword: _generatePassword,
   encryptLogin: _encryptLogin,
+  renderPassword: _renderPassword,
   _deriveHash,
   _prettyPrint,
   _getTemplate,
@@ -18,11 +19,15 @@ function _generatePassword(login, masterPassword, site, options) {
     }
 
     _encryptLogin(login, masterPassword).then(hash => {
-      const derivedHash = _deriveHash(hash, site, options);
-      const template = _getTemplate(options.password.settings);
-      resolve(_prettyPrint(derivedHash, template));
+      resolve(_renderPassword(hash, site, options));
     });
   });
+}
+
+function _renderPassword(hash, site, options) {
+  const derivedHash = _deriveHash(hash, site, options);
+  const template = _getTemplate(options.password.settings);
+  return _prettyPrint(derivedHash, template);
 }
 
 function _encryptLogin(login, masterPassword) {
