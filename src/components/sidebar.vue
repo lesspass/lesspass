@@ -20,7 +20,7 @@
         display: block;
         height: 64px;
         line-height: 64px;
-        text-align: left;
+        text-align: center;
         font-size: 32px;
         color: white;
         padding: 0 16px;
@@ -61,13 +61,13 @@
         <ul class="sidebar-menu main">
             <li class="sidebar-item" v-link-active>
                 <a v-link="{ path: '/entries/', activeClass: 'active' }" class="sidebar-link">
-                    <i class="icon ion-ios-key-outline"></i>
+                    <i class="fa fa-key" aria-hidden="true"></i>
                     <span>passwords</span>
                 </a>
             </li>
             <li class="sidebar-item" v-link-active>
                 <a v-link="{ path: '/help/', activeClass: 'active' }" class="sidebar-link">
-                    <i class="icon ion-ios-help-circle-outline"></i>
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
                     <span>help</span>
                 </a>
             </li>
@@ -75,13 +75,13 @@
         <ul class="sidebar-menu settings">
             <li class="sidebar-item" v-link-active>
                 <a v-link="{ path: '/settings/', activeClass: 'active' }" class="sidebar-link">
-                    <i class="icon ion-ios-settings-outline"></i>
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
                     <span>settings</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" @click.stop.prevent="logout()">
-                    <i class="icon ion-ios-log-out-outline"></i>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
                     <span>logout</span>
                 </a>
             </li>

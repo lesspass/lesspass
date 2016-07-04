@@ -8,7 +8,7 @@
         <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="icon ion-ios-heart"></i> {{ $t('help.Welcome') }} LessPass App
+                    <i class="fa fa-heart" aria-hidden="true"></i> {{ $t('help.Welcome') }} LessPass App
                 </div>
                 <div class="card-block">
                     <p class="card-text">
@@ -23,7 +23,7 @@
         <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="icon ion-ios-star"></i> {{ $t('help.Tips') }}
+                    <i class="fa fa-star" aria-hidden="true"></i> {{ $t('help.Tips') }}
                 </div>
                 <div class="card-block">
                     <ul>

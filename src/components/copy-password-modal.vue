@@ -29,7 +29,7 @@
                                           @click="changeType('pg-masterpassword')">
                                         <button class="btn btn-secondary" tabindex="-1" type="button"
                                                 v-bind:style="{ backgroundColor: passwordColor }">
-                                            <i class="icon ion-ios-eye"></i>
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
                                     </span>
                                 </div>

@@ -4,7 +4,7 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header">
-                        <i class="icon ion-ios-lock"></i> {{ $t('settings.ChangePassword') }}
+                        <i class="fa fa-lock" aria-hidden="true"></i> {{ $t('settings.ChangePassword') }}
                     </div>
                     <div class="card-block">
                         <form @submit="changePassword()">
@@ -12,7 +12,7 @@
                                 <label for="current_password">{{ $t('settings.currentPassword') }}</label>
 
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="icon ion-ios-key"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
                                     <input type="password" class="form-control" id="current_password"
                                            v-model="credentials.current_password"
                                            placeholder="{{ $t('settings.currentPasswordPlaceholder') }}">
@@ -22,7 +22,7 @@
                                 <label for="new_password">{{ $t('settings.newPassword') }}</label>
 
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="icon ion-ios-key"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
                                     <input type="password" class="form-control" id="new_password"
                                            v-model="credentials.new_password"
                                            placeholder="{{ $t('settings.newPasswordPlaceholder') }}">

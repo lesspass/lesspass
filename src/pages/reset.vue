@@ -9,7 +9,7 @@
                         <label for="email">Email</label>
 
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="icon ion-ios-person"></i></span>
+                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                             <input type="text" class="form-control" id="email" placeholder="Enter your email"
                                    v-model="email" autofocus>
                         </div>

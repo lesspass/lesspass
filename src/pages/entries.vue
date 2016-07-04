@@ -10,7 +10,7 @@
                 <div id="searchEntries">
                     <div class="input-group">
                         <span class="input-group-addon" id="search-addon">
-                            <i class="icon ion-ios-search"></i>
+                            <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
                         <input type="text" class="form-control" placeholder="{{{ $t('entries.search') }}}"
                                v-model="search" aria-describedby="search-addon"
@@ -28,7 +28,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <i class="icon ion-ios-key"></i> {{{ $t('help.letsGo') }}}
+                        <i class="fa fa-key" aria-hidden="true"></i> {{{ $t('help.letsGo') }}}
                     </div>
                     <div class="card-block">
                         <p class="card-text">

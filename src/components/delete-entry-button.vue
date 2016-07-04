@@ -5,7 +5,7 @@
 </style>
 <template>
     <button class="btn btn-danger btn-sm m-b-0" data-toggle="modal" data-target="#deleteEntryModal">
-        <i class="icon icon-2x ion-md-trash"></i>
+        <i class="fa fa-trash icon-2x" aria-hidden="true"></i>
     </button>
     <div class="modal fade" id="deleteEntryModal" tabindex="-1" role="dialog" aria-labelledby="deleteEntry"
          aria-hidden="true">
