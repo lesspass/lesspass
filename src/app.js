@@ -1,4 +1,6 @@
-/* global lesspass Clipboard */
+import './app.scss'
+import lesspass from 'lesspass';
+import Clipboard from 'clipboard';
 
 function showTooltip(elem, msg) {
   var classNames = elem.className;
