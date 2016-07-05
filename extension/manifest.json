@@ -2,7 +2,7 @@
   "description": "chrome and firefox web extension for lesspass password manager",
   "manifest_version": 2,
   "name": "lesspass",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage_url": "https://github.com/lesspass/webextension",
   "icons": {
     "64": "icons/logo-64.png"
@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["js/content.min.js"],
+      "js": ["dist/content.min.js"],
       "run_at": "document_end"
     }
   ],
