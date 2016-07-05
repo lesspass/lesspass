@@ -27,6 +27,7 @@
 
     .white-link:hover {
         color: #ffffff;
+        text-decoration: underline;
     }
 
     .app {

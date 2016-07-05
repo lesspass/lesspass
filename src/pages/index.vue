@@ -1,10 +1,16 @@
 <style scoped>
-    *{
-         color: #FFFFFF;
+    * {
+        color: #FFFFFF;
     }
 
     .media-object {
         width: 64px;
+    }
+
+    @media (min-width: 48em) {
+        #hero {
+            padding-top: 3em;
+        }
     }
 </style>
 <template>
@@ -16,9 +22,9 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div id="hero" class="container">
             <div class="row">
-                <div id="hero" class="col-md-6 hidden-xs-down">
+                <div class="col-md-6 hidden-xs-down">
                     <h1 class="hero__title p-t-2">
                         {{{ $t('index.title') }}}
                     </h1>
@@ -92,7 +98,8 @@
                 <div class="col-xs-12">
                     <small>
                         Copyright LessPass <br>
-                        {{ $t('footer.createdBy') }} <a class="white-link" href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
+                        {{ $t('footer.createdBy') }} <a class="white-link" href="https://twitter.com/guillaume20100">Guillaume
+                        Vincent</a>
                     </small>
                 </div>
             </div>

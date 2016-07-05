@@ -41,13 +41,15 @@ firefox http://localhost:8080</code>
                                 </h3>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
-                                            <i class="fa fa-firefox" aria-hidden="true"></i> Firefox
+                                        <i class="fa fa-firefox" aria-hidden="true"></i>
+                                        <a class="white-link" href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
+                                            Firefox
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
-                                            <i class="fa fa-chrome" aria-hidden="true"></i> Chrome
+                                        <i class="fa fa-chrome" aria-hidden="true"></i>
+                                        <a class="white-link" href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+                                            Chrome
                                         </a>
                                     </li>
                                 </ul>
