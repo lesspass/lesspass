@@ -16,3 +16,6 @@
 [submodule "pure"]
 	path = pure
 	url = https://github.com/lesspass/pure.git
+[submodule "desktop"]
+	path = desktop
+	url = https://github.com/lesspass/desktop.git
