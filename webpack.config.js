@@ -9,17 +9,12 @@ module.exports = {
   },
   output: {
     path: 'dist',
-    publicPath: '/pure/dist/',
+    publicPath: '/dist/',
     filename: 'lesspass-[name].js?[hash]'
   },
   module: {
     loaders: [
       {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
-      {
-        test: /\.(png|jpg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
-        loader: 'url-loader',
-        query: {limit: 10000, name: '[name].[ext]?[hash]'}
-      },
       {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
       {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")}
     ]
