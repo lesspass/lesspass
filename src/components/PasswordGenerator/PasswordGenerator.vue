@@ -1,26 +1,26 @@
 <style>
     * {
-        border-radius: 0 !important
+        border-radius: 0 !important;
     }
 
     i {
-        cursor: pointer
+        cursor: pointer;
     }
 
-    #autoLoginButton, .option-block {
-        display: none
+    .option-block, #autoLoginButton, #fingerprint {
+        display: none;
     }
 
     #displayOptionsButton {
-        cursor: pointer
+        cursor: pointer;
     }
 
     .card {
-        border: none
+        border: none;
     }
 
-    #fingerprint {
-        display: none
+    #passwordGenerator input {
+        background-clip: padding-box
     }
 </style>
 <template>
@@ -200,6 +200,8 @@
             return {};
         },
         ready(){
+            var encryptedLogin;
+
             function showTooltip(elem, msg) {
                 var classNames = elem.className;
                 elem.setAttribute('class', classNames + ' hint--top');
@@ -233,6 +235,7 @@
                     return;
                 }
                 lesspass.encryptLogin(login, masterPassword).then(function (secretHash) {
+                    encryptedLogin = secretHash;
                     var color = secretHash.substring(0, 6);
                     var colorHex = getColor(color);
                     fingerprint.innerText = color;
@@ -241,12 +244,11 @@
                 });
             }
 
-
             document.getElementById('copyPasswordButton').addEventListener('click', generatePassword);
             document.getElementById('generatedPasswordForm').addEventListener('change', generatePassword);
             document.getElementById('passwordLength').addEventListener('input', generatePassword);
             document.getElementById('passwordCounter').addEventListener('input', generatePassword);
-
+            document.getElementById('generatedPasswordForm').oninput = generatePassword;
             function getData() {
                 const defaultOptions = {
                     login: document.getElementById('login').value,
@@ -276,45 +278,50 @@
             function generatePassword() {
                 const data = getFormData();
                 var generatedPasswordField = document.getElementById('generatedPassword');
-                if (!data.login || !data.masterPassword || !data.site || !data.password.settings.length) {
+                if (!encryptedLogin || !data.site || !data.password.settings.length) {
                     generatedPasswordField.value = '';
                     return;
                 }
-                lesspass.generatePassword(data.login, data.masterPassword, data.site, data).then(function (generatedPassword) {
-                    generatedPasswordField.value = generatedPassword;
-                });
+                generatedPasswordField.value = lesspass.renderPassword(encryptedLogin, data.site, data);
             }
-
 
             document.getElementById('displayMasterPasswordButton').addEventListener('click', toggleMasterPassword);
             function toggleMasterPassword() {
-                if (document.getElementById('masterPassword').type == 'password') {
+                if (document.getElementById('masterPassword').type === 'password') {
                     document.getElementById('masterPassword').type = 'text';
                 } else {
                     document.getElementById('masterPassword').type = 'password';
                 }
             }
 
+            function cleanData() {
+                setTimeout(function () {
+                    document.getElementById('generatedPassword').value = '';
+                    document.getElementById('masterPassword').value = '';
+                }, 10000);
+            }
 
             var clipboard = new Clipboard('.btn-copy');
 
             clipboard.on('success', function (e) {
                 if (e.text) {
                     showTooltip(e.trigger, 'copied !');
-                    e.clearSelection();
+                    cleanData();
                 }
             });
-            clipboard.on('error', function (e) {
+
+            clipboard.on('error', function () {
+                cleanData();
             });
 
 
             document.getElementById('displayOptionsButton').addEventListener('click', toggleBlocks);
 
-            function toggle_visibility(className) {
+            function toggleVisibility(className) {
                 var elements = document.getElementsByClassName(className);
                 for (var i = 0; i < elements.length; i++) {
                     var e = elements[i];
-                    if (e.style.display == 'block') {
+                    if (e.style.display === 'block') {
                         e.style.display = 'none';
                     } else {
                         e.style.display = 'block';
@@ -323,7 +330,7 @@
             }
 
             function toggleBlocks() {
-                toggle_visibility('option-block');
+                toggleVisibility('option-block');
             }
         }
     }
