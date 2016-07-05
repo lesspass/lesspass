@@ -1,0 +1,7 @@
+node_modules
+/LessPass-win32-x64/
+/LessPass-linux-x64/
+/LessPass-mas-x64/
+/LessPass-win32-ia32/
+/LessPass-linux-ia32/
+/LessPass-darwin-x64/

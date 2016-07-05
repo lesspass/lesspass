@@ -1,0 +1,24 @@
+{
+  "name": "lesspass-desktop",
+  "version": "1.0.0",
+  "description": "lesspass app",
+  "main": "main.js",
+  "productName": "LessPass",
+  "scripts": {
+    "build": "gulp",
+    "start": "electron ."
+  },
+
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "bugs": {
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0",
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "lesspass-pure": "^1.1.2"
+  }
+}
