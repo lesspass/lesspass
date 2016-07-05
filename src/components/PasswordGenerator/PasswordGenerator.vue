@@ -1,4 +1,8 @@
-<style>
+<style scoped>
+    #passwordGenerator {
+        color: #555555;
+    }
+
     * {
         border-radius: 0 !important;
     }
@@ -21,6 +25,12 @@
 
     #passwordGenerator input {
         background-clip: padding-box
+    }
+
+    @media (max-width: 48em) {
+        .option-block {
+            display: block;
+        }
     }
 </style>
 <template>

@@ -33,7 +33,7 @@
 
     .sidebar-item.active,
     .sidebar-item:hover {
-        background-color: #025aa5;
+        background-color: #008ed6;
     }
 
     @media (min-width: 48em) {

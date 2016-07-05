@@ -1,138 +1,116 @@
-<style>
-    #login-bar {
-        background-color: #424242;
-        height: 38px;
-        color: #F5F5F5;
+<style scoped>
+    *{
+         color: #FFFFFF;
     }
 
-    #login-bar .nav-link {
-        padding-left: 1em;
-        padding-right: 1em;
-        color: inherit;
-    }
-
-    #login-bar .nav-link {
-        line-height: 38px;
-    }
-
-    #navbar {
-        background-color: white;
-        border-bottom: 1px solid #e8e8e8;
-        margin: 0;
-    }
-
-    #navbar #navbar__logo {
-        height: 36px;
-    }
-
-    #navbar .navbar {
-        padding: 1em 0;
-    }
-
-    #footer {
-        background-color: #424242;
-        color: #F5F5F5;
-        font-size: 0.8em;
-    }
-
-    #footer a {
-        color: inherit;
-    }
-
-    #header {
-        padding: 1em;
-    }
-
-    #header .row {
-        display: flex;
-        align-items: stretch;
-        flex-direction: column;
-    }
-
-    @media (min-width: 480px) {
-        #header {
-            padding: 15vh 0;
-        }
-
-        #header .row {
-            flex-direction: row;
-            align-items: center;
-        }
+    .media-object {
+        width: 64px;
     }
 </style>
 <template>
     <div id="landing-page">
-        <div id="login-bar">
+        <div class="m-y-1" id="navbar">
             <div class="container">
-                <nav class="nav nav-inline pull-xs-right">
-                    <a class="nav-link bg-primary" v-link="{ path: '/entries/' }">
-                        {{ $t('index.LOGIN') }}
-                    </a>
-                    <a class="nav-link" v-link="{ path: '/register/' }">
-                        {{ $t('index.REGISTER') }}
-                    </a>
-                </nav>
-            </div>
-        </div>
-        <div id="navbar">
-            <div class="container">
-                <nav class="navbar">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <a href="/">
-                                <img id="navbar__logo" src="../images/logo.png" alt="logo">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div id="header" class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <h2>{{{ $t('index.title') }}}</h2>
-                    <p class="lead">
-                        {{{ $t('index.subtitle') }}}
-                    </p>
+                <div class="row">
+                    <lesspass-header></lesspass-header>
                 </div>
-                <div class="col-md-7">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div id="hero" class="col-md-6 hidden-xs-down">
+                    <h1 class="hero__title p-t-2">
+                        {{{ $t('index.title') }}}
+                    </h1>
+                    <h4 class="hero__subtitle">
+                        {{{ $t('index.subtitle') }}}
+                    </h4>
+                </div>
+                <div class="col-md-6 p-a-0">
                     <password-generator></password-generator>
                 </div>
             </div>
         </div>
-        <lesspass-features></lesspass-features>
-        <lesspass-testimonials></lesspass-testimonials>
-        <lesspass-howitworks></lesspass-howitworks>
-        <div id="footer">
-            <div class="container p-t-1">
-                <div class="row">
-                    <div class="col-lg-12 text-xs-center">
-                        <p>
-                            &copy; LessPass
-                            - {{ $t('footer.createdBy') }} <a href="https://twitter.com/guillaume20100">Guillaume
-                            Vincent</a>
-                        </p>
+        <div class="container m-t-3 p-t-3">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 m-b-3">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object" src="../images/responsive.png" alt="Generic placeholder image">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{{ $t('features.responsiveTitle') }}}</h4>
+                            <p>
+                                {{{ $t('features.responsive') }}}
+                            </p>
+                        </div>
                     </div>
+                </div>
+                <div class="col-md-6 col-lg-3 m-b-3">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object" src="../images/no-cloud.png" alt="Generic placeholder image">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{{ $t('features.noCloudTitle') }}}</h4>
+                            <p>
+                                {{{ $t('features.noCloud') }}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 m-b-3">
+                    <div class="media">
+                        <a class="media-left" href="https://github.com/lesspass/lesspass/">
+                            <img class="media-object" src="../images/open-source.png" alt="Generic placeholder image">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{{ $t('features.openSourceTitle') }}}</h4>
+                            <p>
+                                {{{ $t('features.openSource') }}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 m-b-3">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object" src="../images/free.png" alt="Generic placeholder image">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{{ $t('features.freeTitle') }}}</h4>
+                            <p>
+                                {{{ $t('features.free') }}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container m-y-3 text-xs-center text-sm-left">
+            <div class="row">
+                <div class="col-xs-12">
+                    <small>
+                        Copyright LessPass <br>
+                        {{ $t('footer.createdBy') }} <a class="white-link" href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
+                    </small>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script type="text/ecmascript-6">
+    import LesspassHeader from '../components/LesspassHeader';
     import PasswordGenerator from '../components/PasswordGenerator/PasswordGenerator';
-    import LesspassFeatures from '../components/Features/Features';
-    import LesspassHowitworks from '../components/HowItWorks/HowItWorks';
-    import LesspassTestimonials from '../components/Testimonials/Testimonials';
 
     export default {
         data() {
             return {};
         },
         components: {
-            PasswordGenerator,
-            LesspassFeatures,
-            LesspassHowitworks,
-            LesspassTestimonials
-        },
+            LesspassHeader,
+            PasswordGenerator
+        }
     };
 </script>
+

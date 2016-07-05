@@ -9,6 +9,7 @@ import HelpPage from './pages/help';
 import RegisterPage from './pages/register';
 import SettingsPage from './pages/settings';
 import EntriesPage from './pages/entries';
+import DownloadPage from './pages/download';
 import EditEntryPage from './pages/edit-entry';
 import auth from './services/auth';
 import locales from './locales';
@@ -33,6 +34,9 @@ router.map({
   },
   '/help/': {
     component: HelpPage
+  },
+  '/download/': {
+    component: DownloadPage
   },
   '/register/': {
     component: RegisterPage

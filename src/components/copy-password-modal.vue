@@ -67,13 +67,17 @@
         },
         methods: {
             copyPassword() {
-                lesspass.createMasterPassword(this.entry.login, this.password).then((masterPassword) => {
-                    var entry = {
-                        site: this.entry.site,
-                        password: this.entry.password
+                lesspass.encryptLogin(this.entry.login, this.password).then(hash => {
+                    var options = {
+                        counter: this.entry.password.counter,
+                        password: {
+                            length: this.entry.password.length,
+                            settings: this.entry.password.settings
+                        }
                     };
+                    var password = lesspass.renderPassword(hash, this.entry.site, options);
                     $('#copyPasswordModal').modal('hide');
-                    window.prompt(this.$t('entries.copyToClipboard'), lesspass.createPassword(masterPassword, entry));
+                    window.prompt(this.$t('entries.copyToClipboard'), password);
                 });
             },
             changeType(id) {
@@ -83,6 +87,6 @@
                     document.getElementById(id).type = 'password';
                 }
             }
-        },
+        }
     };
 </script>

@@ -4,15 +4,16 @@ const locales = {
 };
 
 locales.en.index = {
-  LOGIN: 'LOGIN',
+  Login: 'Login',
+  Download: 'Download',
   REGISTER: 'REGISTER',
-  title: 'Take your passwords with you',
-  subtitle: 'Stop wasting time synchronize your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed.'
+  title: 'Password Manager<br>without synchronisation',
+  subtitle: 'Stop wasting time synchronize your encrypted vault. Remember one master password to access your passwords, anywhere, anytime.<br>No sync needed.'
 };
 locales.fr.index = {
-  LOGIN: 'CONNEXION',
-  REGISTER: 'INSCRIPTION',
-  title: 'Emmenez tous vos mots de passe avec vous',
+  Login: 'Connexion',
+  Download: 'Téléchargement',
+  title: 'Gestionnaire de mots de passe sans synchronisation',
   subtitle: 'Arrêtez de perdre du temps à synchroniser vos coffres-forts chiffrés. Mémorisez un mot de passe fort pour retrouver tous vos mots de passe, partout, à tout moment. Pas besoin de synchronisation.'
 };
 
@@ -53,7 +54,7 @@ locales.en.features = {
   freeTitle: 'Free',
   noCloud: 'LessPass regenerates your passwords when you need them. No cloud storage is required',
   responsive: 'LessPass is a web application and works on all devices (computer, smartphone, tablet and your smartTV)',
-  openSource: 'LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a href="https://github.com/lesspass/lesspass/">Github</a>',
+  openSource: 'LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a>',
   free: 'LessPass is free<br>and always will be'
 };
 
@@ -64,7 +65,7 @@ locales.fr.features = {
   freeTitle: 'Gratuit',
   noCloud: 'LessPass régénère vos mots de passe à chaque fois que vous en avez besoin.<br>Aucun stockage sur le cloud n\'est nécessaire',
   responsive: 'LessPass est une application web qui fonctionne<br>sur tous les appareils :<br>ordinateur, smartphone, tablette et smartTV',
-  openSource: 'LessPass est open source. Le code source est disponible sur <a href="https://github.com/lesspass/lesspass/">Github</a>, vous pouvez l\'auditer',
+  openSource: 'LessPass est open source. Le code source est disponible sur <a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a>, vous pouvez l\'auditer',
   free: 'LessPass est gratuit et le sera toujours'
 };
 
@@ -107,11 +108,11 @@ locales.fr.howItWorks = {
 };
 
 locales.en.footer = {
-  createdBy: 'created by'
+  createdBy: 'Crafted with ♥ by'
 };
 
 locales.fr.footer = {
-  createdBy: 'créé par'
+  createdBy: 'Construit avec ♥ par'
 };
 
 locales.en.login = {
