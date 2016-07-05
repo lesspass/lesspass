@@ -43,6 +43,7 @@ function displayPasswordIndication() {
     fingerprint.innerText = color;
     fingerprint.style.display = 'inline';
     displayMasterPasswordButton.style.backgroundColor = colorHex;
+    generatePassword();
   });
 }
 
