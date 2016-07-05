@@ -8,6 +8,7 @@ LessPass open source password manager (https://lesspass.com)
  - [frontend](https://github.com/lesspass/frontend) : frontend for LessPass with vuejs
  - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
  - [pure](https://github.com/lesspass/pure) : password generator component used in the web extension and the frontend app.
+ - [desktop](https://github.com/lesspass/desktop) : desktop app built with electron
  - [backend](https://github.com/lesspass/api) : backend api used to store information about passwords
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
  - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for lesspass password manager
