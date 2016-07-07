@@ -1,6 +1,6 @@
 {
   "name": "lesspass-pure",
-  "version": "1.1.2",
+  "version": "1.2.1",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "description": "lesspass web component built with webpack",
   "main": "src/app.js",
