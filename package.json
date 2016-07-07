@@ -1,0 +1,53 @@
+{
+  "name": "lesspass-cozy",
+  "version": "1.0.0",
+  "cozy-type": "static",
+  "cozy-displayName": "LessPass",
+  "icon-path": "icon.png",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "description": "lesspass web component built with webpack",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "webpack-dev-server",
+    "build": "rm -rf dist && NODE_ENV=production webpack",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:lesspass/pure.git"
+  },
+  "engines": {
+    "node": ">=4.2.6"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lesspass/pure/issues"
+  },
+  "homepage": "https://github.com/lesspass/pure#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "bootstrap": "^4.0.0-alpha.2",
+    "clipboard": "^1.5.12",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "hint.css": "^2.3.1",
+    "lesspass": "^3.2.0",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "comments": false
+  }
+}
