@@ -10,7 +10,7 @@ i {
   display: none;
 }
 
-#displayOptionsButton {
+#displayOptionsButton, #displayHelpButton {
   cursor: pointer;
 }
 
@@ -18,6 +18,22 @@ i {
   border: none;
 }
 
+@media (min-width: 48em) {
+  #passwordGenerator {
+    max-width: 530px;
+  }
+}
+
 #passwordGenerator input {
   background-clip: padding-box
 }
+
+#passwordGenerator label {
+  margin-bottom: .1rem;
+}
+
+#passwordGenerator .btn {
+  padding: 0.55rem 1rem;
+  line-height: 1;
+}
+
