@@ -6,7 +6,7 @@ i {
   cursor: pointer;
 }
 
-.option-block, #autoLoginButton, #fingerprint {
+.option-block, #autoLoginButton, #fingerprint, .help-block, .help-slide {
   display: none;
 }
 
@@ -18,12 +18,6 @@ i {
   border: none;
 }
 
-@media (min-width: 48em) {
-  #passwordGenerator {
-    max-width: 530px;
-  }
-}
-
 #passwordGenerator input {
   background-clip: padding-box
 }
@@ -32,8 +26,22 @@ i {
   margin-bottom: .1rem;
 }
 
-#passwordGenerator .btn {
-  padding: 0.55rem 1rem;
-  line-height: 1;
+#passwordGenerator svg {
+  width: 1rem;
+  vertical-align: sub;
 }
 
+.btn-close {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  z-index: 10;
+  display: block;
+  padding: .25rem .5rem;
+  font-size: 75%;
+  color: #818a91;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: .25rem;
+
+}
