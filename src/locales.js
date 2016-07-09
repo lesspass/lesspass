@@ -132,8 +132,8 @@ locales.en.login = {
   registrationInvalidUserAlreadyExists: 'You already have an account. Do you want to <a href="/#!/login/"><b>log in</b></a>?',
   registrationInvalid: 'The information you provided are invalid.',
   logoutMessage: 'Thanks for spending some quality time with LessPass App today.',
-  orLogIn: 'Already register ? log in',
-  orRegister: 'Do not have an account ? Sign in',
+  orLogIn: 'Already register ? Sign In',
+  orRegister: 'Do not have an account ? Register',
   LogInInfo: 'Happy to see you here again',
   emailAndPasswordMandatory: 'Email and password are mandatory'
 };
