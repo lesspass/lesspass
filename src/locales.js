@@ -4,7 +4,7 @@ const locales = {
 };
 
 locales.en.index = {
-  Login: 'Login',
+  Login: 'Sign In',
   Download: 'Download',
   REGISTER: 'REGISTER',
   title: 'Password Manager<br>without synchronisation',
