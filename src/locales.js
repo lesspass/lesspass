@@ -122,7 +122,7 @@ locales.en.login = {
   PasswordPlaceholder: 'Enter your Password',
   registerPasswordHelp: 'Do not use your master password here',
   SignIn: 'Sign In',
-  welcome: 'Login successful, welcome on LessPass',
+  welcome: 'Signed in successfully. Welcome on LessPass',
   credentialsInvalids: '<strong>Invalid Email or Password.</strong><br> Please try again.',
   forgotPassword: 'help, I  forgot my password',
   Register: 'Register (beta)',
