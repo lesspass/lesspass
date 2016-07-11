@@ -69,7 +69,7 @@ firefox http://localhost:8080</code>
                                     <li>
                                         <i class="fa fa-linux" aria-hidden="true"></i>
                                         <a class="white-link"
-                                           href="https://download.lesspass.com/LessPass-v1.0.0.linux-x64.tar.gz">
+                                           href="https://s3-eu-west-1.amazonaws.com/download.lesspass.com/LessPass-v1.0.0.linux-x64.tar.gz">
                                             LessPass-linux-x64
                                         </a>
                                     </li>
