@@ -1,6 +1,8 @@
 import os
 import shutil
 
+import boto3
+
 
 def get_version():
     with open('package.json') as f:
@@ -9,19 +11,42 @@ def get_version():
                 return line.split('"')[-2]
 
 
-windows_folder = 'LessPass-win32-x64'
-output_filename = 'LessPass-v%s.win32-x64' % get_version()
-if os.path.exists(windows_folder):
-    print('zip %s into %s.zip file' % (windows_folder, output_filename))
-    shutil.make_archive(output_filename, 'zip', windows_folder)
-    print('remove %s folder' % windows_folder)
-    shutil.rmtree(windows_folder)
+def zip_folder(folder, name, format='zip'):
+    print('zip %s into %s compressed file' % (folder, name))
+    shutil.make_archive(name, format, '.', folder)
+    print('remove %s folder' % folder)
+    shutil.rmtree(folder)
+
+
+def move(zip_name):
+    print('move %s into build folder' % zip_name)
+    shutil.move(zip_name, os.path.join(build_folder, zip_name))
+
+
+def send_s3(filepath):
+    s3 = boto3.resource('s3')
+    with open(filepath, 'rb') as data:
+        s3.Bucket('lesspass-download').put_object(Key=os.path.basename(filepath), Body=data)
+
 
 build_folder = 'build'
 if os.path.exists(build_folder):
     shutil.rmtree(build_folder)
 os.makedirs(build_folder)
 
-zip_name = '%s.zip' % output_filename
-print('move %s into build folder' % zip_name)
-shutil.move(zip_name, os.path.join(build_folder, zip_name))
+# windows
+windows_folder = 'LessPass-win32-x64'
+if os.path.exists(windows_folder):
+    basename = 'LessPass-v%s.win32-x64' % get_version()
+    filename = '%s.zip' % basename
+    zip_folder(windows_folder, basename, 'zip')
+    move(filename)
+
+# linux
+linux_folder = 'LessPass-linux-x64'
+if os.path.exists(linux_folder):
+    basename = 'LessPass-v%s.linux-x64' % get_version()
+    filename = '%s.tar.gz' % basename
+    zip_folder(linux_folder, basename, 'gztar')
+    send_s3(filename)
+    move(filename)

@@ -6,8 +6,10 @@
   "productName": "LessPass",
   "scripts": {
     "build": "gulp",
+    "build:linux": "electron-packager ./ --platform=linux --arch=x64 --icon=images/icon.ico --ignore=node_modules --ignore=build --overwrite && python zip.py",
     "build:windows": "electron-packager ./ --platform=win32 --arch=x64 --icon=images/icon.ico --ignore=node_modules --ignore=build --overwrite && python zip.py",
-    "start": "electron ."
+    "start": "electron .",
+    "aws": "node aws.js"
   },
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "bugs": {
@@ -15,6 +17,7 @@
   },
   "homepage": "https://github.com/electron/electron-quick-start#readme",
   "devDependencies": {
+    "aws-sdk": "^2.4.6",
     "electron-packager": "^7.2.0",
     "electron-prebuilt": "^1.2.0",
     "gulp": "^3.9.1"
