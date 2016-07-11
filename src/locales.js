@@ -54,7 +54,7 @@ locales.en.features = {
   freeTitle: 'Free',
   noCloud: 'LessPass regenerates your passwords when you need them. No cloud storage is required',
   responsive: 'LessPass is a web application and works on all devices (computer, smartphone, tablet and your smartTV)',
-  openSource: 'LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a>',
+  openSource: 'LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available on <strong><a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a></strong>',
   free: 'LessPass is free<br>and always will be'
 };
 
@@ -65,7 +65,7 @@ locales.fr.features = {
   freeTitle: 'Gratuit',
   noCloud: 'LessPass régénère vos mots de passe à chaque fois que vous en avez besoin.<br>Aucun stockage sur le cloud n\'est nécessaire',
   responsive: 'LessPass est une application web qui fonctionne<br>sur tous les appareils :<br>ordinateur, smartphone, tablette et smartTV',
-  openSource: 'LessPass est open source. Le code source est disponible sur <a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a>, vous pouvez l\'auditer',
+  openSource: 'LessPass est open source. Le code source est disponible sur <strong><a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a></strong>, vous pouvez l\'auditer',
   free: 'LessPass est gratuit et le sera toujours'
 };
 
