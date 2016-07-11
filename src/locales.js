@@ -69,44 +69,6 @@ locales.fr.features = {
   free: 'LessPass est gratuit et le sera toujours'
 };
 
-locales.en.testimonial = {
-  feedback1: 'Finally a security tool that I did not need to trust.',
-  feedback1Author: 'Édouard Lopez, LessPass Team Member',
-  feedback2: 'I no longer need a personal cloud to manage my passwords.<br>One secret and I have access to my passwords everywhere.',
-  feedback2Author: 'Guillaume Vincent, LessPass Founder'
-};
-
-locales.fr.testimonial = {
-  feedback1: 'Enfin un outil de sécurité a qui je n\'ai pas besoin de faire confiance.',
-  feedback1Author: 'Édouard Lopez,<br> membre de l\'équipe de LessPass',
-  feedback2: 'Je n\'ai plus besoin d\'un cloud personnel pour gérer mes mots de passe.<br> Une seule phrase secrete et j\'ai accès à mes mots de passe partout.',
-  feedback2Author: 'Guillaume Vincent,<br> créateur de LessPass'
-};
-
-locales.en.howItWorks = {
-  title: 'How LessPass works&nbsp;?',
-  detail: 'LessPass is a password manager that guarantees you to generate the same password on the basis of unique information you provide. You can use LessPass to create passwords for various internet services (social networks , email, server passwords , ...).',
-  alwaysSync: 'No synchronisation',
-  alwaysSyncDetail: 'LessPass don’t need any cloud storage. It’s a webapp, with some Javascript, that derive your password in a secure way. PBKDF2 and SHA-256 directly on your browser. <a href="https://github.com/lesspass/core/" class="white-link">Check the algorithm</a>.',
-  extension: 'Firefox and Chrome extension',
-  extensionDetail: 'Install the <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/" class="white-link">firefox</a> or the <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih" class="white-link">chrome</a> extension to connect automatically to all sites with a LessPass password. Use the extension to generate a unique password for your services. Use the extension to automatically connect to your sites.',
-  connectedAppDetail: 'Some services have strange password rules. Sometimes you need to change a password without changing your master password. LessPass helps you to change your passwords with advanced options. To store those information, we have created a connected application : LessPass App.<br><br> LessPass App save the necessary information it needs to re-generate passwords. The master password and the generated passwords are never stored. There are no encrypted password to steal in our database. We plan to connect web extension with a LessPass App of your choice.',
-  selfHosted: 'Self hosted',
-  selfHostingDetail: 'If you want to test LessPass App on your server, you can by running these commands:'
-};
-
-locales.fr.howItWorks = {
-  title: 'Comment fonctionne LessPass&nbsp;?',
-  detail: 'LessPass est un gestionnaire de mot de passe qui n\'enregistre pas vos mots de passe. Il les regénère sur la base d\'informations uniques que vous lui fournissez. Vous pouvez donc utiliser LessPass pour créer des mots de passe pour vos différents services internet (Réseaux sociaux, mails, mots de passe serveurs, ...).',
-  alwaysSync: 'Pas besoin de synchronisation',
-  alwaysSyncDetail: 'Vous n\'avez plus besoin de synchroniser sur le cloud vos coffres fort pour mots de passe. LessPass est une application web qui dérive vos mots de passe de manière sécurisée. PBKDF2 et SHA-256 directement sur votre navigateur. <a href="https://github.com/lesspass/core/" class="white-link">Vérifier l\'algorithme</a>.',
-  extension: 'Extension web Firefox et Chrome',
-  extensionDetail: 'Installez l\'extension <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/" class="white-link">firefox</a> ou <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih" class="white-link">chrome</a> pour vous connecter de manière automatique à vos sites avec un mot de passe LessPass. Utilisez l\'extension pour créer automatiquement des mots de passe unique pour vos sites.',
-  connectedAppDetail: 'Certains services ont des règles de mot de passe étranges. Des fois vous voulez changer de mot de passe, sans changer votre mot de passe fort. LessPass permet de changer les options de vos mots de passe. Pour mémoriser ces informations particulières pour certains mots de passe, nous avons créé une application connectée : LessPass App.<br> LessPass App enregistre toutes les informations nécéssaires au calcul d\'un mot de passe. Le mot de passe fort ou les mots de passe calculés ne sont pas sauvegardés. Il n\'y a aucun mot de passe chiffré à voler dans nos bases de données.<br> Nous prévoyons de connecter l\'extension web avec LessPass App.',
-  selfHosted: 'Auto hébergement',
-  selfHostingDetail: 'Si vous voulez tester LessPass App sur votre serveur, vous pouvez en lançant ces commandes:'
-};
-
 locales.en.footer = {
   createdBy: 'Crafted with ♥ by'
 };
