@@ -101,6 +101,8 @@ function cleanData() {
   setTimeout(function () {
     document.getElementById('generatedPassword').value = '';
     document.getElementById('masterPassword').value = '';
+    document.getElementById('displayMasterPasswordButton').style.backgroundColor = '#FFFFFF';
+    document.getElementById('fingerprint').innerText = '';
   }, 10000);
 }
 
@@ -195,4 +197,5 @@ function closeHelp() {
   hide('help-slide');
   resetHelp();
   document.getElementById('passwordGenerator').style.display = 'block';
+  document.getElementById('login').focus();
 }

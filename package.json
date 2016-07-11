@@ -34,6 +34,7 @@
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "hint.css": "^2.3.1",
+    "json-loader": "^0.5.4",
     "lesspass": "^3.2.0",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
