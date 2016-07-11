@@ -1,18 +1,10 @@
-# LessPass Pure
+# LessPass Cozy
 
-LessPass pure html, js and css component used in the web extension and the frontend app.
-
-![LessPass Component](screenshot.png?raw=true "Demo")
+LessPass Cozy App
 
 # Install
 
-    npm install lesspass-pure
-
-# Test
-
-    npm run dev
-
-open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/)
+    Install app with https://github.com/lesspass/cozy@master repository
 
 # Build
 
