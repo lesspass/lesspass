@@ -4,7 +4,7 @@ const locales = {
 };
 
 locales.en.index = {
-  Login: 'Login',
+  Login: 'Sign In',
   Download: 'Download',
   REGISTER: 'REGISTER',
   title: 'Password Manager<br>without synchronisation',
@@ -122,7 +122,7 @@ locales.en.login = {
   PasswordPlaceholder: 'Enter your Password',
   registerPasswordHelp: 'Do not use your master password here',
   SignIn: 'Sign In',
-  welcome: 'Login successful, welcome on LessPass',
+  welcome: 'Signed in successfully. Welcome on LessPass',
   credentialsInvalids: '<strong>Invalid Email or Password.</strong><br> Please try again.',
   forgotPassword: 'help, I  forgot my password',
   Register: 'Register (beta)',
@@ -132,8 +132,8 @@ locales.en.login = {
   registrationInvalidUserAlreadyExists: 'You already have an account. Do you want to <a href="/#!/login/"><b>log in</b></a>?',
   registrationInvalid: 'The information you provided are invalid.',
   logoutMessage: 'Thanks for spending some quality time with LessPass App today.',
-  orLogIn: 'Already register ? log in',
-  orRegister: 'Do not have an account ? Sign in',
+  orLogIn: 'Already registered ? Sign In',
+  orRegister: 'Do not have an account ? Register',
   LogInInfo: 'Happy to see you here again',
   emailAndPasswordMandatory: 'Email and password are mandatory'
 };
