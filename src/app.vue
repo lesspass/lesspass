@@ -25,7 +25,7 @@
         color: #ffffff;
     }
 
-    .white-link:hover {
+    .white-link:hover, .white-link:active {
         color: #ffffff;
         text-decoration: underline;
     }

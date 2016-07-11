@@ -42,13 +42,15 @@ firefox http://localhost:8080</code>
                                 <ul class="list-unstyled">
                                     <li>
                                         <i class="fa fa-firefox" aria-hidden="true"></i>
-                                        <a class="white-link" href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
+                                        <a class="white-link"
+                                           href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
                                             Firefox
                                         </a>
                                     </li>
                                     <li>
                                         <i class="fa fa-chrome" aria-hidden="true"></i>
-                                        <a class="white-link" href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+                                        <a class="white-link"
+                                           href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
                                             Chrome
                                         </a>
                                     </li>
@@ -56,7 +58,7 @@ firefox http://localhost:8080</code>
                             </div>
                         </div>
                     </div>
-                    <!--<div class="col-sm-6 col-md-4 m-b-3 text-md-center">
+                    <div class="col-sm-6 col-md-4 m-b-3 text-md-center">
                         <div class="media">
                             <div class="media-body">
                                 <h3 class="media-heading">
@@ -65,24 +67,28 @@ firefox http://localhost:8080</code>
                                 </h3>
                                 <ul class="list-unstyled">
                                     <li>
+                                        <i class="fa fa-linux" aria-hidden="true"></i>
+                                        <a class="white-link"
+                                           href="https://download.lesspass.com/LessPass-v1.0.0.linux-x64.tar.gz">
+                                            LessPass-linux-x64
+                                        </a>
+                                    </li>
+                                    <!--
+                                    <li>
                                         <a href="#">
-                                            <i class="fa fa-linux" aria-hidden="true"></i> LessPass-linux-x64
+                                            <i class="white-link fa fa-apple" aria-hidden="true"></i> LessPass-mac-x64
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-apple" aria-hidden="true"></i> LessPass-mac-x64
+                                            <i class="white-link fa fa-windows" aria-hidden="true"></i> LessPass-win32-x64
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-windows" aria-hidden="true"></i> LessPass-win32-x64
-                                        </a>
-                                    </li>
+                                    -->
                                 </ul>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>
