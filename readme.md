@@ -3,6 +3,10 @@
 LessPass open source password manager (https://lesspass.com)
 
 
+## How it works ?
+
+ * [FR] [LessPass comment ça marche ?](https://medium.com/@guillaume20100/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.h4k8fpgi4)
+
 ## LessPass submodules
 
  - [frontend](https://github.com/lesspass/frontend) : frontend for LessPass with vuejs
