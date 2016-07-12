@@ -2,7 +2,9 @@
 
 # LessPass Core
 
-core library for LessPass password manager in node.js used to generate unique password
+core library for LessPass password manager in javascript used to generate unique password.
+
+It works with the browser and NodeJs
 
 ## Requirements
 
@@ -88,9 +90,7 @@ exemple :
     };
 
 
-return:
-
-  * promise with generated password
+return a promise with generated password :
 
 
     lesspass.generatePassword(login, masterPassword, site, options)
@@ -102,7 +102,7 @@ return:
         });
 
 
-see **tests/api.tests.js** for more examples
+see [tests/api.tests.js](tests/api.tests.js) for more examples
 
 
 ## Tests
