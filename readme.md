@@ -4,7 +4,7 @@ LessPass Cozy App
 
 # Install
 
-    Install app with https://github.com/lesspass/cozy@master repository
+Install app with `https://github.com/lesspass/cozy@master` repository
 
 # Build
 
