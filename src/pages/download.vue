@@ -73,15 +73,17 @@ firefox http://localhost:8080</code>
                                             LessPass-linux-x64
                                         </a>
                                     </li>
+                                    <li>
+                                        <i class="fa fa-windows" aria-hidden="true"></i>
+                                        <a class="white-link"
+                                           href="https://s3-eu-west-1.amazonaws.com/download.lesspass.com/LessPass-v1.0.0.win32-x64.zip">
+                                            LessPass-win32-x64
+                                        </a>
+                                    </li>
                                     <!--
                                     <li>
                                         <a href="#">
                                             <i class="white-link fa fa-apple" aria-hidden="true"></i> LessPass-mac-x64
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="white-link fa fa-windows" aria-hidden="true"></i> LessPass-win32-x64
                                         </a>
                                     </li>
                                     -->
