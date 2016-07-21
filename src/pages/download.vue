@@ -24,7 +24,7 @@
                         <div class="media">
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <i class="fa fa-server"></i> Self Hosted
+                                    <i class="fa fa-server"></i> {{{ $t('download.selfHosted') }}}
                                 </h3>
 <pre id="self_hosted"><code>npm install lesspass-pure
 npm start
@@ -37,7 +37,7 @@ firefox http://localhost:8080</code>
                         <div class="media">
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    Browser addons
+                                    {{{ $t('download.browserAddons') }}}
                                 </h3>
                                 <ul class="list-unstyled">
                                     <li>
@@ -62,7 +62,7 @@ firefox http://localhost:8080</code>
                         <div class="media">
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <i class="fa fa-desktop" aria-hidden="true"></i> Desktop App
+                                    <i class="fa fa-desktop" aria-hidden="true"></i> {{{ $t('download.desktopApp') }}}
                                     <small>(beta)</small>
                                 </h3>
                                 <ul class="list-unstyled">
@@ -73,6 +73,7 @@ firefox http://localhost:8080</code>
                                             LessPass-linux-x64
                                         </a>
                                     </li>
+                                    <!--
                                     <li>
                                         <i class="fa fa-windows" aria-hidden="true"></i>
                                         <a class="white-link"
@@ -80,7 +81,6 @@ firefox http://localhost:8080</code>
                                             LessPass-win32-x64
                                         </a>
                                     </li>
-                                    <!--
                                     <li>
                                         <a href="#">
                                             <i class="white-link fa fa-apple" aria-hidden="true"></i> LessPass-mac-x64

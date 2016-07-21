@@ -240,4 +240,16 @@ locales.fr.settings = {
   credentialsMandatory: 'Le mot de passe actuel et le nouveau mot de passe sont obligatoires'
 };
 
+locales.en.download = {
+  desktopApp: 'Desktop App',
+  selfHosted: 'Self Hosted',
+  browserAddons: 'Browser addons'
+};
+
+locales.fr.download = {
+  desktopApp: 'Application',
+  selfHosted: 'Auto hébergement',
+  browserAddons: 'Extension navigateur'
+};
+
 export default locales;
