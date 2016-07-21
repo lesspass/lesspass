@@ -17,7 +17,15 @@ module.exports = {
       {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
       {test: /\.json$/, loader: 'json-loader'},
       {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")}
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")},
+      {
+        test: /\.(png|jpg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: '[name].[ext]?[hash]'
+        }
+      }
     ]
   },
   plugins: [
