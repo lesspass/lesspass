@@ -43,9 +43,8 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
+      output: {comments: false},
+      compress: {warnings: false}
     }),
     new webpack.optimize.OccurenceOrderPlugin()
   ]);

@@ -7,7 +7,8 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "dev": "webpack-dev-server",
-    "build": "rm -rf dist && NODE_ENV=production webpack",
+    "uncss": "uncss --stylesheets dist/lesspass-pure.css,dist/lesspass-vendors.css index.html > dist/lesspass.css",
+    "build": "rm -rf dist && NODE_ENV=production webpack && npm run uncss && rm dist/*-*.css*",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -40,6 +41,7 @@
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
+    "uncss": "^0.14.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
