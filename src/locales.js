@@ -175,6 +175,7 @@ locales.fr.entries = {
   entryDeleted: 'Votre entrée a bien été supprimée',
   errorDeletion: 'Une erreur est survenue pendant la suppression, retentez dans un instant',
   copyPassword: 'copier le mot de passe',
+  CopyPassword: 'Copier le mot de passe',
   Copy: 'Copier',
   copyToClipboard: 'Copier (CTRL + C)',
   login: 'Email / Nom d\'utilisateur',
