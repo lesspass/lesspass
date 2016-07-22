@@ -73,7 +73,6 @@ firefox http://localhost:8080</code>
                                             LessPass-linux-x64
                                         </a>
                                     </li>
-                                    <!--
                                     <li>
                                         <i class="fa fa-windows" aria-hidden="true"></i>
                                         <a class="white-link"
@@ -81,6 +80,7 @@ firefox http://localhost:8080</code>
                                             LessPass-win32-x64
                                         </a>
                                     </li>
+                                    <!--
                                     <li>
                                         <a href="#">
                                             <i class="white-link fa fa-apple" aria-hidden="true"></i> LessPass-mac-x64
