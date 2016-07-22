@@ -6,7 +6,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
-    "dev": "webpack-dev-server",
+    "dev": "webpack --watch",
     "uncss": "uncss --stylesheets dist/lesspass.css index.html > dist/lesspass.uncss.css",
     "build": "rm -rf dist && NODE_ENV=production webpack && npm run uncss && rm dist/lesspass.css* && cp src/logo.png dist/",
     "prepublish": "npm run build"
