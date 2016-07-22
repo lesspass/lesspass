@@ -4,13 +4,12 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
-    pure: "./src/app",
-    vendors: "./src/vendors"
+    lesspass: "./src/lesspass"
   },
   output: {
     path: 'dist',
     publicPath: '/dist/',
-    filename: 'lesspass-[name].js?[hash]'
+    filename: '[name].js'
   },
   module: {
     loaders: [
@@ -29,7 +28,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin("lesspass-[name].css")
+    new ExtractTextPlugin("[name].css")
   ],
   devtool: '#eval-source-map'
 };

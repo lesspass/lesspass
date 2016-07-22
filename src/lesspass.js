@@ -1,4 +1,4 @@
-import './app.scss'
+import './lesspass.scss'
 import lesspass from 'lesspass';
 import Clipboard from 'clipboard';
 
