@@ -8,6 +8,7 @@
     "build": "gulp",
     "build:linux": "electron-packager ./ --platform=linux --arch=x64 --icon=images/icon.ico --ignore=node_modules --ignore=build --overwrite && python zip.py",
     "build:windows": "electron-packager ./ --platform=win32 --arch=x64 --icon=images/icon.ico --ignore=node_modules --ignore=build --overwrite && python zip.py",
+    "build:osx": "electron-packager ./ LessPass --platform=darwin --arch=x64 --icon=images/icon.icns --ignore=node_modules --ignore=build --overwrite",
     "start": "electron .",
     "aws": "node aws.js"
   },
