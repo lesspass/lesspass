@@ -17,14 +17,17 @@ i {
   cursor: pointer;
 }
 
-#displayOptionsButton{
-  color:black;
+#displayOptionsButton {
   padding-left: 0;
   text-decoration: none;
 }
 
 .card {
   border: none;
+}
+
+#passwordGenerator, #passwordGenerator *{
+  color: #555;
 }
 
 #passwordGenerator input {
@@ -36,6 +39,7 @@ i {
 }
 
 #passwordGenerator svg {
+  fill: #555;
   width: 1rem;
   vertical-align: sub;
 }

@@ -9,12 +9,32 @@
         body {
             background-color: #008ed6;
         }
+
+        .outer {
+            display: table;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .middle {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .inner {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 550px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-<div class="container m-t-2">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+
+<div class="outer">
+    <div class="middle">
+        <div class="inner">
             <div id="passwordGenerator">
                 <div class="card">
                     <div class="card-header">
