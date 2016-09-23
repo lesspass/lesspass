@@ -1,10 +1,11 @@
-FROM python:3.5-alpine
+FROM python:3.5
 
 RUN mkdir /backend
 WORKDIR /backend
-RUN apk update && apk upgrade
-RUN apk add bash supervisor netcat-openbsd postgresql-dev gcc python3-dev musl-dev
-
+RUN apt-get update && apt-get install -y \
+    supervisor \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
 ADD requirements.txt /backend/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
