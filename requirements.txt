@@ -1,9 +1,9 @@
-Django==1.9.6
-djangorestframework==3.3.3
+Django==1.10.1
+djangorestframework==3.4.7
 djangorestframework-jwt==1.8.0
-smartconfigparser==0.1.1
-psycopg2==2.6.1
-gunicorn==19.4.5
-djoser==0.4.3
+psycopg2==2.6.2
+gunicorn==19.6.0
+djoser==0.5.1
+envparse==0.2.0
 # tests
-factory-boy==2.6.1
+factory-boy==2.7.0
