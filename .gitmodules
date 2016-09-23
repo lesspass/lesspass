@@ -22,3 +22,6 @@
 [submodule "cozy"]
 	path = cozy
 	url = https://github.com/lesspass/cozy.git
+[submodule "vue"]
+	path = vue
+	url = git@github.com:lesspass/vue.git
