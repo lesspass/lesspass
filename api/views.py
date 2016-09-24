@@ -39,6 +39,16 @@ class AuthViewSet(viewsets.ViewSet):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
+class PasswordViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.PasswordSerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    search_fields = ('site', 'email',)
+    ordering_fields = ('site', 'email', 'created')
+
+    def get_queryset(self):
+        return models.Password.objects.filter(user=self.request.user)
+
+
 class EntryViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.EntrySerializer
     permission_classes = (permissions.IsAuthenticated, IsOwner,)

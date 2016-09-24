@@ -9,11 +9,11 @@ class UserFactory(factory.DjangoModelFactory):
 
     email = factory.Sequence(lambda n: 'u{0}@lesspass.com'.format(n))
     password = factory.PostGenerationMethodCall('set_password', 'password')
-    is_staff = False
+    is_admin = False
 
 
 class AdminFactory(UserFactory):
-    is_staff = True
+    is_admin = True
 
 
 class PasswordInfoFactory(factory.DjangoModelFactory):

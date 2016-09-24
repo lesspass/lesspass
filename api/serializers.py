@@ -56,3 +56,15 @@ class EntrySerializer(serializers.ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
         return instance
+
+
+class PasswordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Password
+        fields = ('id', 'login', 'site', 'lowercase', 'uppercase', 'symbol', 'number', 'counter', 'length',
+                  'created', 'modified')
+        read_only_fields = ('created', 'modified')
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        return models.Password.objects.create(user=user, **validated_data)
