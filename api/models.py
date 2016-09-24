@@ -65,6 +65,24 @@ class DateMixin(models.Model):
         abstract = True
 
 
+class Password(DateMixin):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(LessPassUser, on_delete=models.CASCADE, related_name='passwords')
+    login = models.CharField(max_length=255, null=True, blank=True)
+    site = models.CharField(max_length=255, null=True, blank=True)
+
+    lowercase = models.BooleanField(default=True)
+    uppercase = models.BooleanField(default=True)
+    symbol = models.BooleanField(default=True)
+    number = models.BooleanField(default=True)
+
+    counter = models.IntegerField(default=1)
+    length = models.IntegerField(default=12)
+
+    def __str__(self):
+        return str(self.id)
+
+
 class PasswordInfo(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     counter = models.IntegerField(default=1)
