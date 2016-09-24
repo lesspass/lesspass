@@ -79,6 +79,13 @@ class EntryAdmin(admin.ModelAdmin):
     ordering = ('user',)
 
 
+class PasswordAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user',)
+    search_fields = ('user__email',)
+    ordering = ('user',)
+
+
+admin.site.register(models.Password, PasswordAdmin)
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(PasswordInfo)
 admin.site.register(LessPassUser, LessPassUserAdmin)
