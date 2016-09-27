@@ -77,8 +77,8 @@ class Password(DateMixin):
 
     lowercase = models.BooleanField(default=True)
     uppercase = models.BooleanField(default=True)
-    symbol = models.BooleanField(default=True)
-    number = models.BooleanField(default=True)
+    symbols = models.BooleanField(default=True)
+    numbers = models.BooleanField(default=True)
 
     counter = models.IntegerField(default=1)
     length = models.IntegerField(default=12)

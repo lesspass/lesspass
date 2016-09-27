@@ -61,7 +61,7 @@ class EntrySerializer(serializers.ModelSerializer):
 class PasswordSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Password
-        fields = ('id', 'login', 'site', 'lowercase', 'uppercase', 'symbol', 'number', 'counter', 'length',
+        fields = ('id', 'login', 'site', 'lowercase', 'uppercase', 'symbols', 'numbers', 'counter', 'length',
                   'created', 'modified')
         read_only_fields = ('created', 'modified')
 
