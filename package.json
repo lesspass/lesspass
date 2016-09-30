@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "description": "lesspass javascript module to generate idempotent passwords",
   "main": "lib/lesspass.js",
