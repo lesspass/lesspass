@@ -18,10 +18,12 @@
         symbols: true
     };
 
-    lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) => {
-        var generatedPassword = lesspass.deriveEncryptedLogin(encryptedLogin, site, options);
+    lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
+        var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
         if (generatedPassword === 'azYS7,olOL2]') {
             document.body.innerHTML = "generatePassword ok";
+        } else {
+            document.body.innerHTML = "generatePassword not ok " + generatedPassword + ' not equals azYS7,olOL2]';
         }
     });
 </script>

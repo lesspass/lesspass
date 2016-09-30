@@ -24,7 +24,7 @@ test('render password', t => {
         numbers: true,
         symbols: true
     };
-    t.is('azYS7,olOL2]', lesspass.deriveEncryptedLogin(encryptedLogin, site, passwordOptions));
+    t.is('azYS7,olOL2]', lesspass.renderPassword(encryptedLogin, site, passwordOptions));
 });
 
 
@@ -237,6 +237,6 @@ test('auto generated derive encrypted login tests', t => {
             numbers: password.numbers,
             symbols: password.symbols,
         };
-        t.is(password.generatedPassword, lesspass.deriveEncryptedLogin(password.encryptedLogin, password.site, passwordOption));
+        t.is(password.generatedPassword, lesspass.renderPassword(password.encryptedLogin, password.site, passwordOption));
     }
 });

@@ -12,8 +12,9 @@ var options = {
     numbers: true,
     symbols: true
 };
-
-lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) => {
-    var generatedPassword = lesspass.deriveEncryptedLogin(encryptedLogin, site, options);
-    assert(generatedPassword, 'azYS7,olOL2]');
+lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
+    var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
+    assert.equal(generatedPassword, 'azYS7,olOL2]');
+}).catch(function (err) {
+    console.log(err);
 });
