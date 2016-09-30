@@ -1,16 +1,19 @@
 var lesspass = require('../lib/lesspass');
+var assert = require('assert');
 
+var site = 'lesspass.com';
 var login = 'contact@lesspass.com';
 var masterPassword = 'password';
-var site = 'lesspass.com';
 var options = {
-  counter: 1,
-  password: {
+    counter: 1,
     length: 12,
-    settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
-  }
+    lowercase: true,
+    uppercase: true,
+    numbers: true,
+    symbols: true
 };
-lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
-  console.log(generatedPassword);  //azYS7,olOL2]
-});
 
+lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) => {
+    var generatedPassword = lesspass.deriveEncryptedLogin(encryptedLogin, site, options);
+    assert(generatedPassword, 'azYS7,olOL2]');
+});

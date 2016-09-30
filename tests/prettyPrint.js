@@ -1,5 +1,5 @@
 import test from 'ava';
-import lesspass from '../src/lesspass2';
+import lesspass from '../src/lesspass';
 
 test('should print different password if templates different', t => {
     const encryptedLogin = '78ae5892055ab59fdd54489ae30928d322841a27590b65cf875fcfdd083f7c32';

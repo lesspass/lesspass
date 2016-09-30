@@ -1,108 +1,86 @@
 import crypto from 'crypto';
 
-module.exports = {
-  generatePassword: _generatePassword,
-  encryptLogin: _encryptLogin,
-  renderPassword: _renderPassword,
-  _deriveHash,
-  _prettyPrint,
-  _getTemplate,
-  _getCharType,
-  _getPasswordChar,
-  _string2charCodes
-};
+export default {
+    encryptLogin(login, masterPassword) {
+        return new Promise((resolve, reject) => {
+            if (!login || !masterPassword) {
+                reject('login and master password parameters could not be empty');
+            }
+            const iterations = 8192;
+            const keylen = 32;
+            crypto.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', (error, key) => {
+                if (error) {
+                    reject('error in pbkdf2');
+                } else {
+                    resolve(key.toString('hex'));
+                }
+            });
+        })
+    },
 
-function _generatePassword(login, masterPassword, site, options) {
-  return new Promise((resolve, reject) => {
-    if (!login || !masterPassword || !site) {
-      reject('generatePassword invalid parameter');
+    deriveEncryptedLogin(encryptedLogin, site, passwordOptions) {
+        const derivedHash = this._deriveEncryptedLogin(encryptedLogin, site, passwordOptions);
+        const template = this._getPasswordTemplate(passwordOptions);
+        return this._prettyPrint(derivedHash, template);
+    },
+
+    _deriveEncryptedLogin(encryptedLogin, site, passwordOptions = {length: 12, counter: 1}) {
+        const salt = site + passwordOptions.counter.toString();
+        const derivedHash = crypto.createHmac('sha256', encryptedLogin).update(salt).digest('hex');
+        return derivedHash.substring(0, passwordOptions.length);
+    },
+
+    _getPasswordTemplate(passwordTypes) {
+        const templates = {
+            lowercase: 'vc',
+            uppercase: 'VC',
+            numbers: 'n',
+            symbols: 's',
+        };
+        let template = '';
+        for (let templateKey in templates) {
+            if (passwordTypes.hasOwnProperty(templateKey) && passwordTypes[templateKey]) {
+                template += templates[templateKey]
+            }
+        }
+        return template;
+    },
+
+    _prettyPrint(hash, template) {
+        let password = '';
+
+        this._string2charCodes(hash).forEach((charCode, index) => {
+            const charType = this._getCharType(template, index);
+            password += this._getPasswordChar(charType, charCode);
+        });
+        return password;
+    },
+
+    _string2charCodes(text) {
+        const charCodes = [];
+        for (let i = 0; i < text.length; i++) {
+            charCodes.push(text.charCodeAt(i));
+        }
+        return charCodes;
+    },
+
+    _getCharType(template, index) {
+        return template[index % template.length];
+    },
+
+    _getPasswordChar(charType, index) {
+        const passwordsChars = {
+            V: 'AEIOUY',
+            C: 'BCDFGHJKLMNPQRSTVWXZ',
+            v: 'aeiouy',
+            c: 'bcdfghjklmnpqrstvwxz',
+            A: 'AEIOUYBCDFGHJKLMNPQRSTVWXZ',
+            a: 'AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz',
+            n: '0123456789',
+            s: '@&%?,=[]_:-+*$#!\'^~;()/.',
+            x: 'AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz0123456789@&%?,=[]_:-+*$#!\'^~;()/.'
+        };
+        const passwordChar = passwordsChars[charType];
+        return passwordChar[index % passwordChar.length];
     }
-
-    _encryptLogin(login, masterPassword).then(hash => {
-      resolve(_renderPassword(hash, site, options));
-    });
-  });
 }
-
-function _renderPassword(hash, site, options) {
-  const derivedHash = _deriveHash(hash, site, options);
-  const template = _getTemplate(options.password.settings);
-  return _prettyPrint(derivedHash, template);
-}
-
-function _encryptLogin(login, masterPassword) {
-  return new Promise((resolve, reject) => {
-    if (!login || !masterPassword) {
-      reject('encryptLogin parameter could not be empty');
-    }
-    const iterations = 8192;
-    const keylen = 32;
-    crypto.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', (error, key) => {
-      if (error) {
-        reject('error in pbkdf2');
-      } else {
-        resolve(key.toString('hex'));
-      }
-    });
-  });
-}
-
-function _deriveHash(hash, site, {password = {length: 12}, counter = 1} = {}) {
-  const salt = site + counter.toString();
-  const derivedHash = crypto.createHmac('sha256', hash).update(salt).digest('hex');
-  return derivedHash.substring(0, password.length);
-}
-
-function _getTemplate(passwordTypes = ['strong']) {
-  const passwordTypesInfo = {
-    lowercase: {value: 'vc', order: 1},
-    uppercase: {value: 'VC', order: 2},
-    numbers: {value: 'n', order: 3},
-    symbols: {value: 's', order: 4},
-    strong: {value: 'Cvcvns', order: 5}
-  };
-  return passwordTypes
-    .map(passwordType => passwordTypesInfo[passwordType])
-    .sort((passwordType1, passwordType2) => passwordType1.order > passwordType2.order)
-    .map(passwordType => passwordType.value)
-    .join('');
-}
-
-function _prettyPrint(hash, template) {
-  let password = '';
-
-  _string2charCodes(hash).forEach((charCode, index) => {
-    const charType = _getCharType(template, index);
-    password += _getPasswordChar(charType, charCode);
-  });
-  return password;
-}
-
-function _string2charCodes(text) {
-  const charCodes = [];
-  for (let i = 0; i < text.length; i++) {
-    charCodes.push(text.charCodeAt(i));
-  }
-  return charCodes;
-}
-
-function _getCharType(template, index) {
-  return template[index % template.length];
-}
-
-function _getPasswordChar(charType, index) {
-  const passwordsChars = {
-    V: 'AEIOUY',
-    C: 'BCDFGHJKLMNPQRSTVWXZ',
-    v: 'aeiouy',
-    c: 'bcdfghjklmnpqrstvwxz',
-    A: 'AEIOUYBCDFGHJKLMNPQRSTVWXZ',
-    a: 'AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz',
-    n: '0123456789',
-    s: '@&%?,=[]_:-+*$#!\'^~;()/.',
-    x: 'AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz0123456789@&%?,=[]_:-+*$#!\'^~;()/.'
-  };
-  const passwordChar = passwordsChars[charType];
-  return passwordChar[index % passwordChar.length];
-}
-
