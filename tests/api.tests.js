@@ -1,7 +1,7 @@
 import test from 'ava';
 import lesspass from '../src/lesspass';
 
-test('encrypt login', t => {
+test('encrypt login with pbkdf2 8192 iterations and sha256', t => {
     return lesspass.encryptLogin('test@example.org', 'password').then(encryptedLogin => {
         t.is('d8af5f918db6b65b1db3d3984e5a400e39e1dbb19462220e4431de283809f472', encryptedLogin);
     })

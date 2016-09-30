@@ -24,14 +24,16 @@ It works with the browser and NodeJs
     var masterPassword = 'password';
     var site = 'lesspass.com';
     var options = {
-      counter: 1,
-      password: {
+        counter: 1,
         length: 12,
-        settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
-      }
+        lowercase: true,
+        uppercase: true,
+        numbers: true,
+        symbols: true
     };
-    lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
-      console.log(generatedPassword);  //azYS7,olOL2]
+    lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
+        var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
+        console.log(generatedPassword); //azYS7,olOL2]
     });
 
 
@@ -44,62 +46,27 @@ It works with the browser and NodeJs
         <meta charset="UTF-8">
     </head>
     <body>
-    <script src="lesspass.min.js"></script>
+    <script src="../dist/lesspass.min.js"></script>
     <script>
-      var login = 'contact@lesspass.com';
-      var masterPassword = 'password';
-      var site = 'lesspass.com';
-      var options = {
-        counter: 1,
-        password: {
-          length: 12,
-          settings: ['lowercase', 'uppercase', 'numbers', 'symbols']
-        }
-      };
-      lesspass.generatePassword(login, masterPassword, site, options).then(function (generatedPassword) {
-        console.log(generatedPassword);  //azYS7,olOL2]
-      });
+        var site = 'lesspass.com';
+        var login = 'contact@lesspass.com';
+        var masterPassword = 'password';
+        var options = {
+            counter: 1,
+            length: 12,
+            lowercase: true,
+            uppercase: true,
+            numbers: true,
+            symbols: true
+        };
+    
+        lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
+            var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
+            console.log(generatedPassword);  //azYS7,olOL2]
+        });
     </script>
     </body>
     </html>
-
-## API
-
-### `generatePassword(login, masterPassword, site, options)`
-
-generate unique password based on login, masterPassword, site and options.
-
-paramaters :
-
- * `login`: string
- * `masterPassword`: string
- * `site`: string
- * option: dict with lesspass options
-   * `counter`: integer (default: 1)
-   * `password.length`: integer between 6 and 64 (default: 12)
-   * `password.settings`: array of string in `lowercase`, `uppercase`, `numbers` or `symbols` (default: `['lowercase', 'uppercase', 'numbers', 'symbols']`)
-
-exemple :
-
-     var options = {
-        counter: 2,
-        password: {
-            length: 14,
-            settings: ['lowercase', 'uppercase', 'numbers']
-        }
-    };
-
-
-return a promise with generated password :
-
-
-    lesspass.generatePassword(login, masterPassword, site, options)
-        .then(function (generatedPassword) {
-            console.log(generatedPassword);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
 
 
 see [tests/api.tests.js](tests/api.tests.js) for more examples
