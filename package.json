@@ -5,7 +5,7 @@
   "description": "lesspass javascript module to generate idempotent passwords",
   "main": "lib/lesspass.js",
   "scripts": {
-    "test": "ava --require babel-core/register && xo",
+    "test": "ava --require babel-core/register",
     "browserify": "browserify src/lesspass.js --standalone lesspass | uglifyjs > dist/lesspass.min.js",
     "babelify": "babel src/lesspass.js -o lib/lesspass.js",
     "build": "rm -rf dist lib && mkdir dist lib && npm run browserify && npm run babelify",
@@ -39,8 +39,7 @@
     "karma-ava": "0.0.1",
     "karma-chrome-launcher": "^1.0.1",
     "karma-firefox-launcher": "^1.0.0",
-    "uglify-js": "^2.6.4",
-    "xo": "^0.16.0"
+    "uglify-js": "^2.6.4"
   },
   "babel": {
     "presets": [
@@ -50,20 +49,6 @@
   "browserify": {
     "transform": [
       "babelify"
-    ]
-  },
-  "xo": {
-    "esnext": true,
-    "space": true,
-    "envs": [
-      "browser",
-      "webextensions",
-      "shared-node-browser",
-      "es6"
-    ],
-    "ignores": [
-      "lib/**",
-      "tests/node.js"
     ]
   },
   "ava": {
