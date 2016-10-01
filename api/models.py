@@ -80,11 +80,22 @@ class Password(DateMixin):
     symbols = models.BooleanField(default=True)
     numbers = models.BooleanField(default=True)
 
-    counter = models.IntegerField(default=1)
     length = models.IntegerField(default=12)
+    counter = models.IntegerField(default=1)
 
     def __str__(self):
         return str(self.id)
+
+    def options(self):
+        return {
+            'lowercase': self.lowercase,
+            'uppercase': self.uppercase,
+            'symbols': self.symbols,
+            'numbers': self.numbers,
+            'counter': self.counter,
+            'length': self.length,
+
+        }
 
 
 class PasswordInfo(models.Model):
