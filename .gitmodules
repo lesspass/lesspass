@@ -13,15 +13,9 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/lesspass/frontend.git
-[submodule "pure"]
-	path = pure
-	url = https://github.com/lesspass/pure.git
 [submodule "desktop"]
 	path = desktop
 	url = https://github.com/lesspass/desktop.git
 [submodule "cozy"]
 	path = cozy
 	url = https://github.com/lesspass/cozy.git
-[submodule "vue"]
-	path = vue
-	url = git@github.com:lesspass/vue.git
