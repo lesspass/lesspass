@@ -115,7 +115,7 @@
                 this.auth.login(this.user, this.baseURL)
                         .then(()=> {
                             this.storage.save({baseURL: this.baseURL});
-                            this.$store.dispatch('userAuthenticated');
+                            this.$store.dispatch('userAuthenticated', {email: this.user.email});
                             this.$store.dispatch('go', 'index');
                             this.$store.dispatch('loadPasswords');
                         })

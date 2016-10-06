@@ -27,7 +27,7 @@ const mutations = {
         state.page = page
     },
     logout(state){
-        state.user.authenticated = false;
+        state.user = {authenticated: false};
         state.page = 'login';
         state.currentPassword = {
             site: '',
@@ -43,8 +43,9 @@ const mutations = {
         };
         state.passwords = [];
     },
-    userAuthenticated(state){
+    userAuthenticated(state, user){
         state.user.authenticated = true;
+        state.user.email = user.email;
     },
     loadPasswords(state, passwords){
         state.passwords = passwords
@@ -53,7 +54,7 @@ const mutations = {
 
 const actions = {
     go: ({commit}, page) => commit('go', page),
-    userAuthenticated: ({commit}) => commit('userAuthenticated'),
+    userAuthenticated: ({commit}, user) => commit('userAuthenticated', user),
     logout: ({commit}) => {
         auth.logout();
         commit('logout');
@@ -72,6 +73,7 @@ const getters = {
     isGuest: state => !state.user.authenticated,
     passwords: state => state.passwords,
     currentPassword: state => state.currentPassword,
+    user: state => state.user,
     baseURL: state => state.baseURL
 };
 

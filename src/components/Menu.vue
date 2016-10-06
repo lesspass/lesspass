@@ -4,7 +4,8 @@
         border-color: #555;
         color: #FFF;
     }
-    #title{
+
+    #title {
         cursor: pointer;
     }
 </style>
@@ -19,7 +20,7 @@
                     <div class="btn-group">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="background-color:transparent; padding:0;">
-                            email@example.org
+                            {{user.email}}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <button class="dropdown-item" type="button" v-on:click="go('passwords')">Passwords</button>
@@ -69,7 +70,8 @@
         computed: mapGetters([
             'page',
             'isAuthenticated',
-            'isGuest'
+            'isGuest',
+            'user'
         ])
     }
 </script>
