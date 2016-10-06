@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome-webpack';
+import 'font-awesome/css/font-awesome.css';
 import 'hint.css/hint.css';
 import LessPass from './App.vue'
 import 'bootstrap/dist/js/bootstrap.min';

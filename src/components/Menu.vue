@@ -19,8 +19,7 @@
                     <div class="btn-group">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="background-color:transparent; padding:0;">
-                            <img src="https://avatars3.githubusercontent.com/u/943762?v=3&s=40" alt=""
-                                 style="height: 22px;">
+                            email@example.org
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <button class="dropdown-item" type="button" v-on:click="go('passwords')">Passwords</button>
