@@ -157,7 +157,7 @@
                 for (let i = 0; i < passwords.length; i++) {
                     if (newSite === passwords[i].site) {
                         this.password = Object.assign({}, passwords[i]);
-                        this.cleanAndSelectMasterPasswordField();
+                        this.masterPassword = '';
                     }
                 }
             },
@@ -171,7 +171,7 @@
             },
             'currentPassword': function (newPassword) {
                 this.password = Object.assign({}, newPassword);
-                this.cleanAndSelectMasterPasswordField();
+                this.masterPassword = '';
             },
             'passwords': function (newPasswords) {
                 this.passwords = newPasswords;
@@ -183,10 +183,6 @@
             }
         }),
         methods: {
-            cleanAndSelectMasterPasswordField(){
-                this.masterPassword = '';
-                document.getElementById('masterPassword').focus();
-            },
             encryptLogin: debounce(function () {
                 if (this.password.login && this.masterPassword) {
                     lesspass.encryptLogin(this.password.login, this.masterPassword).then(encryptedLogin => {
