@@ -47,13 +47,14 @@
                         <i class="fa fa-lock"></i>
                         <input id="masterPassword"
                                name="masterPassword"
+                               ref="masterPassword"
                                type="password"
                                class="form-control"
                                placeholder="Master password"
                                autocorrect="off"
                                autocapitalize="none"
                                v-model="masterPassword">
-                        <fingerprint :fingerprint="masterPassword"></fingerprint>
+                        <fingerprint :fingerprint="masterPassword" v-on:click.native="showMasterPassword"></fingerprint>
                     </div>
                 </div>
             </div>
@@ -200,6 +201,13 @@
                     return;
                 }
                 return lesspass.renderPassword(this.encryptedLogin, this.password.site, this.password.options);
+            },
+            showMasterPassword(e){
+                if (this.$refs.masterPassword.type === 'password') {
+                    this.$refs.masterPassword.type = 'text';
+                } else {
+                    this.$refs.masterPassword.type = 'password';
+                }
             }
         },
         created: function () {
