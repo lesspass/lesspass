@@ -108,20 +108,22 @@
                 }, 3000);
             },
             login(){
-                if (!this.user.email || !this.user.password || !this.baseURL) {
+                var baseURL = this.baseURL;
+                var email = this.user.email;
+                if (!email || !this.user.password || !baseURL) {
                     this.showErrorMessage('email, password and url ');
                     return;
                 }
-                this.auth.login(this.user, this.baseURL)
+                this.auth.login(this.user, baseURL)
                         .then(()=> {
-                            this.storage.save({baseURL: this.baseURL});
-                            this.$store.dispatch('userAuthenticated', {email: this.user.email});
+                            this.storage.save({baseURL: baseURL, email: email});
+                            this.$store.dispatch('userAuthenticated', {email: email});
                             this.$store.dispatch('go', 'index');
                             this.$store.dispatch('loadPasswords');
                         })
                         .catch(err => {
                             if (err.response === undefined) {
-                                if (this.baseURL === "https://lesspass.com") {
+                                if (baseURL === "https://lesspass.com") {
                                     this.showErrorMessage('LessPass Database is not running. Sorry for the inconvenience.');
                                 } else {
                                     this.showErrorMessage('Your LessPass Database is not running');

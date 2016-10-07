@@ -12,9 +12,8 @@ const passwords = new HTTP('passwords', storage);
 
 const state = {
     page: 'index',
-    user: {
-        authenticated: auth.isAuthenticated()
-    },
+    authenticated: auth.isAuthenticated(),
+    email: '',
     passwords: [],
     currentPassword: {}
 };
@@ -27,7 +26,7 @@ const mutations = {
         state.page = page
     },
     logout(state){
-        state.user = {authenticated: false};
+        state.authenticated = false;
         state.page = 'login';
         state.currentPassword = {
             site: '',
@@ -44,8 +43,8 @@ const mutations = {
         state.passwords = [];
     },
     userAuthenticated(state, user){
-        state.user.authenticated = true;
-        state.user.email = user.email;
+        state.authenticated = true;
+        state.email = user.email;
     },
     loadPasswords(state, passwords){
         state.passwords = passwords
@@ -69,17 +68,17 @@ const actions = {
 
 const getters = {
     page: state => state.page,
-    isAuthenticated: state => state.user.authenticated,
-    isGuest: state => !state.user.authenticated,
+    isAuthenticated: state => state.authenticated,
+    isGuest: state => !state.authenticated,
     passwords: state => state.passwords,
     currentPassword: state => state.currentPassword,
-    user: state => state.user,
+    email: state => state.email,
     baseURL: state => state.baseURL
 };
 
 export default function (config) {
     return new Vuex.Store({
-        state: Object.assign(config, state),
+        state: Object.assign(state, config),
         getters,
         actions,
         mutations

@@ -9,6 +9,7 @@ import Store from './store'
 import Storage from './api/storage';
 
 const storage = new Storage();
+console.log(storage.json())
 const store = Store(storage.json());
 
 new Vue({

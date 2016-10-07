@@ -20,7 +20,7 @@
                     <div class="btn-group">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" style="background-color:transparent; padding:0;">
-                            {{user.email}}
+                            {{email}}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <button class="dropdown-item" type="button" v-on:click="go('passwords')">Passwords</button>
@@ -71,7 +71,7 @@
             'page',
             'isAuthenticated',
             'isGuest',
-            'user'
+            'email'
         ])
     }
 </script>
