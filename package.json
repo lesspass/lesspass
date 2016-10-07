@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "description": "LessPass javascript module to generate idempotent passwords",
   "main": "index",
@@ -12,10 +12,6 @@
     "test": "ava --require babel-core/register",
     "prepublish": "npm test"
   },
-  "files": [
-    "*.md",
-    "lib"
-  ],
   "keywords": [
     "password",
     "crypto",
