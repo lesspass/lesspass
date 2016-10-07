@@ -15,7 +15,9 @@
                                autocapitalize="none"
                                v-model="password.site">
                         <datalist id="savedSites">
-                            <option v-bind:value="pwd.site" v-for="pwd in passwords">
+                            <option v-bind:value="pwd.id" v-for="pwd in passwords">
+                                {{pwd.site}} ({{pwd.login}})
+                            </option>
                         </datalist>
                     </div>
                 </div>
@@ -152,12 +154,14 @@
             Fingerprint,
         },
         watch: {
-            'password.site': function (newSite) {
+            'password.site': function (siteId) {
                 var passwords = this.passwords;
                 for (let i = 0; i < passwords.length; i++) {
-                    if (newSite === passwords[i].site) {
-                        this.password = Object.assign({}, passwords[i]);
+                    var password = passwords[i];
+                    if (siteId === password.id) {
+                        this.password = Object.assign({}, password);
                         this.masterPassword = '';
+                        return password.site;
                     }
                 }
             },
