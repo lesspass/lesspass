@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-export default {
+module.exports = {
     encryptLogin: _encryptLogin,
     renderPassword: _renderPassword,
     _deriveEncryptedLogin,
