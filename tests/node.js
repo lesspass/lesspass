@@ -1,10 +1,10 @@
-import lesspass from '../index';
-import assert from 'assert';
+var lesspass = require('../lib/index');
+var assert = require('assert');
 
-const site = 'lesspass.com';
-const login = 'contact@lesspass.com';
-const masterPassword = 'password';
-const options = {
+var site = 'lesspass.com';
+var login = 'contact@lesspass.com';
+var masterPassword = 'password';
+var options = {
     counter: 1,
     length: 12,
     lowercase: true,
@@ -12,12 +12,8 @@ const options = {
     numbers: true,
     symbols: true
 };
-lesspass.encryptLogin(login, masterPassword)
-    .then(encryptedLogin => {
-        var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
-        assert.equal(generatedPassword, 'azYS7,olOL2]');
-        console.log('test node ES6 ok');
-    })
-    .catch(err => {
-        console.log(err);
-    });
+
+lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
+    var generatedPassword = lesspass.deriveEncryptedLogin(encryptedLogin, site, options);
+    assert(generatedPassword, 'azYS7,olOL2]');
+});
