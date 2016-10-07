@@ -4,26 +4,22 @@
 
 core library for LessPass password manager in javascript used to generate unique password.
 
-It works with the browser and NodeJs
-
 ## Requirements
 
-  - node 4.x.x
+  - node v4.6.x
 
 ## Install
 
     npm install lesspass
 
 ## Usage
-
-### Node
-
-    var lesspass = require('lesspass');
-
-    var login = 'contact@lesspass.com';
-    var masterPassword = 'password';
-    var site = 'lesspass.com';
-    var options = {
+    
+    import LessPass from 'lesspass';
+        
+    const site = 'lesspass.com';
+    const login = 'contact@lesspass.com';
+    const masterPassword = 'password';
+    const options = {
         counter: 1,
         length: 12,
         lowercase: true,
@@ -31,42 +27,11 @@ It works with the browser and NodeJs
         numbers: true,
         symbols: true
     };
-    lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
-        var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
-        console.log(generatedPassword); //azYS7,olOL2]
-    });
-
-
-
-### Browser
-
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-    <script src="../dist/lesspass.min.js"></script>
-    <script>
-        var site = 'lesspass.com';
-        var login = 'contact@lesspass.com';
-        var masterPassword = 'password';
-        var options = {
-            counter: 1,
-            length: 12,
-            lowercase: true,
-            uppercase: true,
-            numbers: true,
-            symbols: true
-        };
-    
-        lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
-            var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
-            console.log(generatedPassword);  //azYS7,olOL2]
+    LessPass.encryptLogin(login, masterPassword)
+        .then(encryptedLogin => {
+            var generatedPassword = LessPass.renderPassword(encryptedLogin, site, options);
+            console.log(generatedPassword); //azYS7,olOL2]
         });
-    </script>
-    </body>
-    </html>
 
 
 see [tests/api.tests.js](tests/api.tests.js) for more examples

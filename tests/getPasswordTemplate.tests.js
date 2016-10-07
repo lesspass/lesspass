@@ -1,5 +1,5 @@
 import test from 'ava';
-import lesspass from '../src/lesspass';
+import lesspass from '../index';
 
 test('should get default template', t => {
     t.is('vcVCns', lesspass._getPasswordTemplate({

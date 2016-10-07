@@ -1,5 +1,5 @@
 import test from 'ava';
-import lesspass from '../src/lesspass';
+import lesspass from '../index';
 
 test('should derive encrypted login with default length', t => {
     const encryptedLogin = '9f505f3a95fe0485da3242cb81c9fe25c2f400d8399737655a8dad2b52778d88';

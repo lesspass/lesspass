@@ -2,63 +2,41 @@
   "name": "lesspass",
   "version": "4.0.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
-  "description": "lesspass javascript module to generate idempotent passwords",
-  "main": "lib/lesspass.js",
+  "description": "LessPass javascript module to generate idempotent passwords",
+  "main": "index",
+  "repository": "lesspass/core",
+  "homepage": "https://github.com/lesspass/core#readme",
+  "bugs": "https://github.com/lesspass/core/issues",
   "scripts": {
+    "test-node": "cd tests && babel-node --presets es2015 node.js && cd ..",
     "test": "ava --require babel-core/register",
-    "browserify": "browserify src/lesspass.js --standalone lesspass | uglifyjs > dist/lesspass.min.js",
-    "babelify": "babel src/lesspass.js -o lib/lesspass.js",
-    "build": "rm -rf dist lib && mkdir dist lib && npm run browserify && npm run babelify",
-    "prepublish": "npm test && npm run build"
+    "prepublish": "npm test"
   },
+  "files": [
+    "*.md",
+    "lib"
+  ],
   "keywords": [
     "password",
     "crypto",
     "lesspass"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:lesspass/core.git"
-  },
-  "engines": {
-    "node": ">=4.2.6"
-  },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lesspass/core/issues"
-  },
-  "homepage": "https://github.com/lesspass/core#readme",
   "devDependencies": {
-    "ava": "^0.15.2",
-    "babel-cli": "^6.10.1",
-    "babel-core": "^6.10.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.0.1",
-    "karma": "^1.1.0",
-    "karma-ava": "0.0.1",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-firefox-launcher": "^1.0.0",
-    "uglify-js": "^2.6.4"
+    "ava": "^0.16.0",
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0",
+    "babel-preset-es2015": "^6.16.0"
   },
   "babel": {
     "presets": [
       "es2015"
     ]
   },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
-  },
   "ava": {
     "files": [
       "tests/*.js",
-      "!tests/karma.conf.js",
       "!tests/node.js"
-    ],
-    "source": [
-      "src/*.js"
     ]
   }
 }
