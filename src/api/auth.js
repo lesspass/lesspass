@@ -46,6 +46,14 @@ export default class Auth {
         });
     }
 
+    refreshToken() {
+        const config = this.storage.json();
+        const token = this.storage.getToken();
+        return Auth._requestNewToken({token: token.name}, config).then(token => {
+            this.storage.saveToken(token)
+        })
+    }
+
     static _requestNewToken(token, config = {}) {
         return axios.post('/api/tokens/refresh/', token, config).then(response => {
             return response.data.token;

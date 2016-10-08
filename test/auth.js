@@ -84,3 +84,14 @@ test('login custom endpoint', t => {
         t.is(JSON.parse(storage.getItem(LOCAL_STORAGE_KEY)).jwt, token);
     });
 });
+
+test('refresh token', t => {
+    const token = '3e3231';
+    const storage = new LocalStorageMock();
+    const auth = AuthFactory(token, storage);
+    const newToken = 'wibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9eyJzdWIiOiIxMjM0NTY3ODkwIi';
+    nock('https://lesspass.com').post('/api/tokens/refresh/', {token}).reply(200, {token: newToken});
+    return auth.refreshToken().then(() => {
+        t.is(JSON.parse(storage.getItem(LOCAL_STORAGE_KEY)).jwt, newToken);
+    });
+});
