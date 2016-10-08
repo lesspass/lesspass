@@ -128,6 +128,7 @@
     import lesspass from 'lesspass';
     import Clipboard from 'clipboard';
     import debounce from 'lodash.debounce';
+    import {showTooltip} from '../api/tooltip';
 
     export default {
         data(){
@@ -213,9 +214,11 @@
         created: function () {
             this.$store.dispatch('loadPasswords');
 
-            var cb = new Clipboard('#copyPasswordButton');
-            cb.on('success', function (e) {
-                e.clearSelection();
+            var clipboard = new Clipboard('#copyPasswordButton');
+            clipboard.on('success', function (e) {
+                if (e.text) {
+                    showTooltip(e.trigger, 'copied !');
+                }
             });
         }
     }
