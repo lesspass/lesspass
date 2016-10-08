@@ -50,15 +50,11 @@
                 })
             }
         }),
-
         methods: Object.assign(mapActions(['go']), {
             setCurrentPasswordAndGoIndex(password){
                 this.$store.dispatch('setCurrentPassword', password);
                 this.go('index');
             }
-        }),
-        created: function () {
-            this.$store.dispatch('loadPasswords');
-        }
+        })
     }
 </script>

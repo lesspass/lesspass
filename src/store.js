@@ -59,9 +59,11 @@ const actions = {
         commit('logout');
     },
     loadPasswords: ({commit}) => {
-        passwords.all().then(response => {
-            commit('loadPasswords', response.data.results);
-        });
+        if (auth.isAuthenticated()) {
+            passwords.all().then(response => {
+                commit('loadPasswords', response.data.results);
+            });
+        }
     },
     setCurrentPassword: ({commit}, password) => commit('setCurrentPassword', password),
 };
@@ -85,3 +87,10 @@ export default function (config) {
     });
 }
 
+const fiveMinutes = 1000 * 60 * 5;
+if (auth.isAuthenticated()) {
+    auth.refreshToken();
+    setInterval(()=> {
+        auth.refreshToken();
+    }, fiveMinutes);
+}

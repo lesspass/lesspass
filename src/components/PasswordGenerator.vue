@@ -142,17 +142,17 @@
                         numbers: true,
                         symbols: true,
                         length: 12,
-                        counter: 1,
+                        counter: 1
                     }
                 },
                 masterPassword: '',
                 encryptedLogin: '',
-                generatedPassword: '',
+                generatedPassword: ''
             }
         },
         components: {
             RemoveAutoComplete,
-            Fingerprint,
+            Fingerprint
         },
         watch: {
             'password.site': function (siteId) {
@@ -211,9 +211,7 @@
             }
         },
         created: function () {
-            if (this.isAuthenticated) {
-                this.$store.dispatch('loadPasswords');
-            }
+            this.$store.dispatch('loadPasswords');
 
             var cb = new Clipboard('#copyPasswordButton');
             cb.on('success', function (e) {
