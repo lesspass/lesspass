@@ -104,7 +104,7 @@
                 setTimeout(() => {
                     this.showError = false;
                     this.errorMessage = '';
-                }, 3000);
+                }, 4000);
             },
             login(){
                 var baseURL = this.baseURL;
@@ -130,7 +130,7 @@
                             } else if (err.response.status === 400) {
                                 this.showErrorMessage('Your login or password is not good. Do you have an account ?');
                             } else {
-                                this.showErrorMessage('An error appears, Sorry for the inconvenience.')
+                                this.showErrorMessage('Oops! Something went wrong. Retry in a few minutes.')
                             }
                         });
             }

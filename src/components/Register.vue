@@ -2,41 +2,24 @@
     .card-block {
         position: relative;
     }
-
-    .alert {
-        position: absolute;
-        z-index: 20;
-        width: 100%;
-        top: 0;
-        left: 0;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
-    }
-
-    .fade-enter, .fade-leave-active {
-        opacity: 0
-    }
 </style>
 <template>
     <div class="card-block">
-        <transition name="fade">
-            <div class="alert alert-danger" role="alert" v-if="showError">
-                {{ errorMessage }}
-            </div>
-        </transition>
         <form v-on:submit.prevent="register">
             <div class="form-group row">
                 <div class="col-xs-12">
                     <div class="inner-addon left-addon">
                         <i class="fa fa-user"></i>
-                        <input id="login"
+                        <input id="email"
                                class="form-control"
-                               name="login"
+                               name="email"
                                type="email"
                                placeholder="Email"
                                v-model="user.email">
+                        <small class="form-text text-muted text-danger">
+                            <span v-if="userNameAlreadyExist">Someone already use that username. Do you want to sign in ?</span>
+                            <span v-if="emailRequired">An email is required</span>
+                        </small>
                     </div>
                 </div>
             </div>
@@ -44,27 +27,24 @@
                 <div class="col-xs-12">
                     <div class="inner-addon left-addon">
                         <i class="fa fa-lock"></i>
-                        <input id="password1"
-                               name="password1"
+                        <input id="password"
+                               name="password"
                                type="password"
                                class="form-control"
                                placeholder="Password"
-                               v-model="user.password1">
+                               v-model="user.password">
+                        <small class="form-text text-muted text-danger">
+                            <span v-if="noErrors()">Do not use your master password here</span>
+                            <span v-if="passwordRequired">A password is required</span>
+                        </small>
                     </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-xs-12">
-                    <div class="inner-addon left-addon">
-                        <i class="fa fa-lock"></i>
-                        <input id="password2"
-                               name="password2"
-                               type="password"
-                               class="form-control"
-                               placeholder="Retype your password"
-                               v-model="user.password2">
-                        <small id="password2Help" class="form-text text-muted text-danger">Do not use your master password here</small>
-                    </div>
+                    <p v-if="errorMessage" class="form-text text-muted text-danger">
+                        Oops! Something went wrong. Retry in a few minutes.
+                    </p>
                 </div>
             </div>
             <div class="form-group row">
@@ -80,7 +60,7 @@
 <script type="text/ecmascript-6">
     import Auth from '../api/auth';
     import Storage from '../api/storage';
-    import {mapGetters} from 'vuex';
+    import {mapGetters, mapActions} from 'vuex';
 
     export default {
         data() {
@@ -91,26 +71,47 @@
                 storage,
                 user: {
                     email: '',
-                    password1: '',
-                    password2: ''
+                    password: ''
                 },
-                errorMessage: '',
-                showError: false
+                userNameAlreadyExist: false,
+                emailRequired: false,
+                passwordRequired: false,
+                errorMessage: false
             };
         },
-        methods: {
-            showErrorMessage(errorMessage){
-                this.errorMessage = errorMessage;
-                this.showError = true;
-                setTimeout(() => {
-                    this.showError = false;
-                    this.errorMessage = '';
-                }, 3000);
+        methods: Object.assign(mapActions(['go']), {
+            cleanErrors(){
+                this.userNameAlreadyExist = false;
+                this.emailRequired = false;
+                this.passwordRequired = false;
+                this.errorMessage = false;
+            },
+            noErrors(){
+                return !(this.userNameAlreadyExist || this.emailRequired || this.passwordRequired || this.errorMessage);
             },
             register(){
-               console.log('register')
+                this.cleanErrors();
+                if (!this.user.email) {
+                    this.emailRequired = true;
+                    return;
+                }
+                if (!this.user.password) {
+                    this.passwordRequired = true;
+                    return;
+                }
+                this.auth.register(this.user, 'https://lesspass.com')
+                        .then(()=> {
+                            this.go('login');
+                        })
+                        .catch(err => {
+                            if (err.response && (err.response.data.email[0].indexOf('already exists') !== -1)) {
+                                this.userNameAlreadyExist = true
+                            } else {
+                                this.errorMessage = true;
+                            }
+                        });
             }
-        },
+        }),
         computed: mapGetters([
             'baseURL'
         ])
