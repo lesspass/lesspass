@@ -11,7 +11,7 @@ const auth = new Auth(storage);
 const passwords = new HTTP('passwords', storage);
 
 const state = {
-    page: 'index',
+    page: 'register',
     authenticated: auth.isAuthenticated(),
     email: '',
     passwords: [],

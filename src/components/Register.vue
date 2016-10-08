@@ -26,7 +26,7 @@
                 {{ errorMessage }}
             </div>
         </transition>
-        <form v-on:submit.prevent="login">
+        <form v-on:submit.prevent="register">
             <div class="form-group row">
                 <div class="col-xs-12">
                     <div class="inner-addon left-addon">
@@ -44,34 +44,35 @@
                 <div class="col-xs-12">
                     <div class="inner-addon left-addon">
                         <i class="fa fa-lock"></i>
-                        <input id="password"
-                               name="password"
+                        <input id="password1"
+                               name="password1"
                                type="password"
                                class="form-control"
                                placeholder="Password"
-                               v-model="user.password">
+                               v-model="user.password1">
                     </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-xs-12">
                     <div class="inner-addon left-addon">
-                        <i class="fa fa-globe"></i>
-                        <input class="form-control" type="text" id="baseURL" v-model="$store.state.baseURL">
-                        <small id="siteHelp" class="form-text text-muted">You can use your self hosted LessPass Database
-                        </small>
+                        <i class="fa fa-lock"></i>
+                        <input id="password2"
+                               name="password2"
+                               type="password"
+                               class="form-control"
+                               placeholder="Retype your password"
+                               v-model="user.password2">
+                        <small id="password2Help" class="form-text text-muted text-danger">Do not use your master password here</small>
                     </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-xs-12">
                     <button id="loginButton" class="btn btn-primary" type="submit">
-                        Sign In
+                        Register
                     </button>
                 </div>
-            </div>
-            <div class="form-group row">
-                    <button class="btn btn-link" v-on:click="go('register')">Do not have an account ? Register</button>
             </div>
         </form>
     </div>
@@ -79,7 +80,7 @@
 <script type="text/ecmascript-6">
     import Auth from '../api/auth';
     import Storage from '../api/storage';
-    import {mapGetters,mapActions} from 'vuex';
+    import {mapGetters} from 'vuex';
 
     export default {
         data() {
@@ -90,14 +91,14 @@
                 storage,
                 user: {
                     email: '',
-                    password: ''
+                    password1: '',
+                    password2: ''
                 },
                 errorMessage: '',
                 showError: false
             };
         },
-
-        methods: Object.assign(mapActions(['go']), {
+        methods: {
             showErrorMessage(errorMessage){
                 this.errorMessage = errorMessage;
                 this.showError = true;
@@ -106,35 +107,10 @@
                     this.errorMessage = '';
                 }, 3000);
             },
-            login(){
-                var baseURL = this.baseURL;
-                var email = this.user.email;
-                if (!email || !this.user.password || !baseURL) {
-                    this.showErrorMessage('email, password and url ');
-                    return;
-                }
-                this.auth.login(this.user, baseURL)
-                        .then(()=> {
-                            this.storage.save({baseURL: baseURL, email: email});
-                            this.$store.dispatch('userAuthenticated', {email: email});
-                            this.$store.dispatch('go', 'index');
-                            this.$store.dispatch('loadPasswords');
-                        })
-                        .catch(err => {
-                            if (err.response === undefined) {
-                                if (baseURL === "https://lesspass.com") {
-                                    this.showErrorMessage('LessPass Database is not running. Sorry for the inconvenience.');
-                                } else {
-                                    this.showErrorMessage('Your LessPass Database is not running');
-                                }
-                            } else if (err.response.status === 400) {
-                                this.showErrorMessage('Your login or password is not good. Do you have an account ?');
-                            } else {
-                                this.showErrorMessage('An error appears, Sorry for the inconvenience.')
-                            }
-                        });
+            register(){
+               console.log('register')
             }
-        }),
+        },
         computed: mapGetters([
             'baseURL'
         ])

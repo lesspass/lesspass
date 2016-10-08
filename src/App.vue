@@ -95,6 +95,7 @@
         <div id="lesspass" class="card">
             <lesspass-menu></lesspass-menu>
             <login v-show="page === 'login'"></login>
+            <register v-show="page === 'register'"></register>
             <passwords v-show="page === 'passwords'"></passwords>
             <password-generator v-show="page === 'index'"></password-generator>
         </div>
@@ -103,6 +104,7 @@
 <script type="text/ecmascript-6">
     import PasswordGenerator from './components/PasswordGenerator';
     import Login from './components/Login';
+    import Register from './components/Register';
     import Passwords from './components/Passwords';
     import LesspassMenu from './components/Menu';
     import {mapGetters} from 'vuex'
@@ -111,6 +113,7 @@
         components: {
             PasswordGenerator,
             Login,
+            Register,
             LesspassMenu,
             Passwords,
         },
