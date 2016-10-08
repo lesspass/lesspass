@@ -59,4 +59,14 @@ export default class Auth {
             return response.data.token;
         });
     }
+
+    register(user, baseURL) {
+        const config = this.storage.json();
+        if (baseURL) {
+            config.baseURL = baseURL;
+        }
+        return axios.post('/api/auth/register/', user, config).then(response => {
+            return response.data;
+        });
+    }
 }

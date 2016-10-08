@@ -95,3 +95,17 @@ test('refresh token', t => {
         t.is(JSON.parse(storage.getItem(LOCAL_STORAGE_KEY)).jwt, newToken);
     });
 });
+
+test('should register a user', t => {
+    const user = {
+        email: 'test@lesspass.com',
+        password: 'password'
+    };
+    const localStorage = new LocalStorageMock();
+    const storage = new Storage(localStorage);
+    const auth = new Auth(storage);
+    nock('https://lesspass.com').post('/api/auth/register/', user).reply(201, {email: user.email, pk: 1});
+    return auth.register(user).then(newUser => {
+        t.is(newUser.email, user.email);
+    });
+});
