@@ -14,10 +14,18 @@ function AuthFactory(token, localStorage = new LocalStorageMock()) {
 test('request token', t => {
     const token = '5e0651';
     const user = {email: 'test@example.org', password: 'password'};
-
     nock('https://lesspass.com').post('/api/tokens/auth/', user).reply(201, {token});
     return Auth._requestToken(user, {baseURL: 'https://lesspass.com'}).then(requestedToken => {
         t.is(requestedToken, token);
+    });
+});
+
+test('request new token', t => {
+    const token = '3e3231';
+    const newToken = 'wibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9eyJzdWIiOiIxMjM0NTY3ODkwIi';
+    nock('https://lesspass.com').post('/api/tokens/refresh/', {token}).reply(200, {token: newToken});
+    return Auth._requestNewToken({token}, {baseURL: 'https://lesspass.com'}).then(refreshedToken => {
+        t.is(refreshedToken, newToken);
     });
 });
 

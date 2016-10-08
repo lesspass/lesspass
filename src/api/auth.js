@@ -45,4 +45,10 @@ export default class Auth {
             return response.data.token;
         });
     }
+
+    static _requestNewToken(token, config = {}) {
+        return axios.post('/api/tokens/refresh/', token, config).then(response => {
+            return response.data.token;
+        });
+    }
 }
