@@ -20,71 +20,88 @@
     }
 </style>
 <template>
-    <div class="card-block">
-        <transition name="fade">
-            <div class="alert alert-danger" role="alert" v-if="showError">
-                {{ errorMessage }}
-            </div>
-        </transition>
-        <form v-on:submit.prevent="login">
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <div class="inner-addon left-addon">
-                        <i class="fa fa-user"></i>
-                        <input id="login"
-                               class="form-control"
-                               name="login"
-                               type="email"
-                               placeholder="Email"
-                               v-model="user.email">
+    <div>
+        <div class="card-header card-header-dark">
+            <div class="row">
+                <div class="login-header">
+                    <div class="col-xs-1">
+                        <span class="link" v-on:click="go('index')">
+                            <i class="fa fa-chevron-circle-left white" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-xs-10 text-xs-center">
+                        Connect to LessPass Database
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <div class="inner-addon left-addon">
-                        <i class="fa fa-lock"></i>
-                        <input id="password"
-                               name="password"
-                               type="password"
-                               class="form-control"
-                               placeholder="Password"
-                               v-model="user.password">
+        </div>
+        <div class="card-block">
+            <transition name="fade">
+                <div class="alert alert-danger" role="alert" v-if="showError">
+                    {{ errorMessage }}
+                </div>
+            </transition>
+            <form v-on:submit.prevent="login">
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <div class="inner-addon left-addon">
+                            <i class="fa fa-user"></i>
+                            <input id="login"
+                                   class="form-control"
+                                   name="login"
+                                   type="email"
+                                   placeholder="Email"
+                                   v-model="user.email">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <div class="inner-addon left-addon">
-                        <i class="fa fa-globe"></i>
-                        <input class="form-control" type="text" id="baseURL" v-model="$store.state.baseURL">
-                        <small id="siteHelp" class="form-text text-muted">You can use your self hosted LessPass Database
-                        </small>
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <div class="inner-addon left-addon">
+                            <i class="fa fa-lock"></i>
+                            <input id="password"
+                                   name="password"
+                                   type="password"
+                                   class="form-control"
+                                   placeholder="Password"
+                                   v-model="user.password">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
-                    <button id="loginButton" class="btn btn-primary" type="submit">
-                        Sign In
-                    </button>
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <div class="inner-addon left-addon">
+                            <i class="fa fa-globe"></i>
+                            <input class="form-control" type="text" id="baseURL" v-model="$store.state.baseURL">
+                            <small id="siteHelp" class="form-text text-muted">You can use your self hosted LessPass
+                                Database
+                            </small>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <ul class="list-unstyled">
-                    <li>
-                        <button class="btn btn-link" v-on:click="go('register')">
-                            Do not have an account ? Register
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <button id="loginButton" class="btn btn-primary" type="submit">
+                            Sign In
                         </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-link" v-on:click="go('forgotPassword')">
-                            Forgot you password ?
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </form>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <ul class="list-unstyled">
+                        <li>
+                            <button class="btn btn-link" v-on:click="go('register')">
+                                Do not have an account ? Register
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn btn-link" v-on:click="go('forgotPassword')">
+                                Forgot you password ?
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 <script type="text/ecmascript-6">

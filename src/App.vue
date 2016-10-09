@@ -93,7 +93,6 @@
 <template>
     <div id="app">
         <div id="lesspass" class="card">
-            <lesspass-menu></lesspass-menu>
             <login v-show="page === 'login'"></login>
             <register v-show="page === 'register'"></register>
             <forgot-password v-show="page === 'forgotPassword'"></forgot-password>
@@ -108,7 +107,6 @@
     import Register from './components/Register';
     import ForgotPassword from './components/ForgotPassword';
     import Passwords from './components/Passwords';
-    import LesspassMenu from './components/Menu';
     import {mapGetters} from 'vuex'
 
     export default {
@@ -116,7 +114,6 @@
             PasswordGenerator,
             Login,
             Register,
-            LesspassMenu,
             ForgotPassword,
             Passwords,
         },

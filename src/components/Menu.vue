@@ -34,7 +34,7 @@
         </div>
         <div class="card-header card-header-dark" v-show="isGuest">
             <div class="row">
-                <div class="index-header" v-show="page === 'index'">
+                <div class="index-header">
                     <div class="col-xs-6">
                         LessPass
                     </div>
@@ -43,36 +43,6 @@
                                 style="background-color:transparent; padding:0; color:white;">
                             <i class="fa fa-user-secret white" aria-hidden="true"></i>
                         </button>
-                    </div>
-                </div>
-                <div class="login-header" v-show="page === 'login'">
-                    <div class="col-xs-1">
-                        <span class="link" v-on:click="go('index')">
-                            <i class="fa fa-chevron-circle-left white" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="col-xs-10 text-xs-center">
-                        Connect to LessPass Database
-                    </div>
-                </div>
-                <div class="login-header" v-show="page === 'register'">
-                    <div class="col-xs-1">
-                        <span class="link" v-on:click="go('login')">
-                            <i class="fa fa-chevron-circle-left white" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="col-xs-10 text-xs-center">
-                        Create a LessPass Database Account
-                    </div>
-                </div>
-                <div class="login-header" v-show="page === 'forgotPassword'">
-                    <div class="col-xs-1">
-                        <span class="link" v-on:click="go('login')">
-                            <i class="fa fa-chevron-circle-left white" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="col-xs-10 text-xs-center">
-                        Forgot Password
                     </div>
                 </div>
             </div>
@@ -88,7 +58,6 @@
             'logout'
         ]),
         computed: mapGetters([
-            'page',
             'isAuthenticated',
             'isGuest',
             'email'
