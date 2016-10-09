@@ -69,4 +69,12 @@ export default class Auth {
             return response.data;
         });
     }
+
+    resetPassword(email, baseURL) {
+        const config = this.storage.json();
+        if (baseURL) {
+            config.baseURL = baseURL;
+        }
+        return axios.post('/api/auth/password/reset/', email, config);
+    }
 }

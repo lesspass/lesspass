@@ -109,3 +109,12 @@ test('should register a user', t => {
         t.is(newUser.email, user.email);
     });
 });
+
+test('should reset a password', t => {
+    var email = 'test@lesspass.com';
+    const localStorage = new LocalStorageMock();
+    const storage = new Storage(localStorage);
+    const auth = new Auth(storage);
+    nock('https://lesspass.com').post('/api/auth/password/reset/', {email}).reply(204);
+    t.notThrows(auth.resetPassword({email}));
+});
