@@ -65,6 +65,16 @@
                         Create a LessPass Database Account
                     </div>
                 </div>
+                <div class="login-header" v-show="page === 'forgotPassword'">
+                    <div class="col-xs-1">
+                        <span class="link" v-on:click="go('login')">
+                            <i class="fa fa-chevron-circle-left white" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-xs-10 text-xs-center">
+                        Forgot Password
+                    </div>
+                </div>
             </div>
         </div>
     </div>

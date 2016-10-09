@@ -6,6 +6,11 @@
 <template>
     <div class="card-block">
         <form v-on:submit.prevent="register">
+            <div class="form-group row" v-if="errorMessage">
+                <div class="col-xs-12 text-muted text-danger">
+                    Oops! Something went wrong. Retry in a few minutes.
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-xs-12">
                     <div class="inner-addon left-addon">
@@ -42,13 +47,6 @@
             </div>
             <div class="form-group row">
                 <div class="col-xs-12">
-                    <p v-if="errorMessage" class="form-text text-muted text-danger">
-                        Oops! Something went wrong. Retry in a few minutes.
-                    </p>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12">
                     <button id="loginButton" class="btn btn-primary" type="submit">
                         Register
                     </button>
@@ -60,7 +58,7 @@
 <script type="text/ecmascript-6">
     import Auth from '../api/auth';
     import Storage from '../api/storage';
-    import {mapGetters, mapActions} from 'vuex';
+    import {mapActions} from 'vuex';
 
     export default {
         data() {
@@ -111,10 +109,7 @@
                             }
                         });
             }
-        }),
-        computed: mapGetters([
-            'baseURL'
-        ])
+        })
     }
 </script>
 

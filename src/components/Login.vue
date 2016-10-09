@@ -71,7 +71,18 @@
                 </div>
             </div>
             <div class="form-group row">
-                    <button class="btn btn-link" v-on:click="go('register')">Do not have an account ? Register</button>
+                <ul class="list-unstyled">
+                    <li>
+                        <button class="btn btn-link" v-on:click="go('register')">
+                            Do not have an account ? Register
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-link" v-on:click="go('forgotPassword')">
+                            Forgot you password ?
+                        </button>
+                    </li>
+                </ul>
             </div>
         </form>
     </div>
@@ -79,7 +90,7 @@
 <script type="text/ecmascript-6">
     import Auth from '../api/auth';
     import Storage from '../api/storage';
-    import {mapGetters,mapActions} from 'vuex';
+    import {mapGetters, mapActions} from 'vuex';
 
     export default {
         data() {
