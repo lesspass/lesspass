@@ -10,14 +10,6 @@
         top: 0;
         left: 0;
     }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
-    }
-
-    .fade-enter, .fade-leave-active {
-        opacity: 0
-    }
 </style>
 <template>
     <div>
@@ -36,12 +28,12 @@
             </div>
         </div>
         <div class="card-block">
-            <transition name="fade">
-                <div class="alert alert-danger" role="alert" v-if="showError">
-                    {{ errorMessage }}
-                </div>
-            </transition>
             <form v-on:submit.prevent="login">
+                <div class="form-group row" v-if="showError">
+                    <div class="col-xs-12 text-muted text-danger">
+                        {{ errorMessage }}
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-xs-12">
                         <div class="inner-addon left-addon">
@@ -84,21 +76,15 @@
                         <button id="loginButton" class="btn btn-primary" type="submit">
                             Sign In
                         </button>
+                        <button id="registerButton" class="btn btn-secondary" type="button" v-on:click="go('register')">
+                            Register
+                        </button>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <ul class="list-unstyled">
-                        <li>
-                            <button class="btn btn-link" v-on:click="go('register')">
-                                Do not have an account ? Register
-                            </button>
-                        </li>
-                        <li>
-                            <button class="btn btn-link" v-on:click="go('forgotPassword')">
-                                Forgot you password ?
-                            </button>
-                        </li>
-                    </ul>
+                    <button class="btn btn-link" type="button" v-on:click="go('forgotPassword')">
+                        Forgot you password ?
+                    </button>
                 </div>
             </form>
         </div>
@@ -130,11 +116,15 @@
                 this.errorMessage = errorMessage;
                 this.showError = true;
                 setTimeout(() => {
-                    this.showError = false;
-                    this.errorMessage = '';
-                }, 4000);
+                    this.cleanErrors();
+                }, 6000);
+            },
+            cleanErrors(){
+                this.showError = false;
+                this.errorMessage = '';
             },
             login(){
+                this.cleanErrors();
                 var baseURL = this.baseURL;
                 var email = this.user.email;
                 if (!email || !this.user.password || !baseURL) {
@@ -151,7 +141,7 @@
                         .catch(err => {
                             if (err.response === undefined) {
                                 if (baseURL === "https://lesspass.com") {
-                                    this.showErrorMessage('LessPass Database is not running. Sorry for the inconvenience.');
+                                    this.showErrorMessage('Oops! Something went wrong. Retry in a few minutes.');
                                 } else {
                                     this.showErrorMessage('Your LessPass Database is not running');
                                 }

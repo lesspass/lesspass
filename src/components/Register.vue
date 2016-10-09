@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="login-header">
                     <div class="col-xs-1">
-                        <span class="link" v-on:click="go('index')">
+                        <span class="link" v-on:click="go('login')">
                             <i class="fa fa-chevron-circle-left white" aria-hidden="true"></i>
                         </span>
                     </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="card-block">
             <form v-on:submit.prevent="register">
-                <div class="form-group row" v-if="errorMessage">
+                <div class="form-group row" v-if="showError">
                     <div class="col-xs-12 text-muted text-danger">
                         Oops! Something went wrong. Retry in a few minutes.
                     </div>
@@ -90,7 +90,7 @@
                 userNameAlreadyExist: false,
                 emailRequired: false,
                 passwordRequired: false,
-                errorMessage: false
+                showError: false
             };
         },
         methods: Object.assign(mapActions(['go']), {
@@ -98,10 +98,10 @@
                 this.userNameAlreadyExist = false;
                 this.emailRequired = false;
                 this.passwordRequired = false;
-                this.errorMessage = false;
+                this.showError = false;
             },
             noErrors(){
-                return !(this.userNameAlreadyExist || this.emailRequired || this.passwordRequired || this.errorMessage);
+                return !(this.userNameAlreadyExist || this.emailRequired || this.passwordRequired || this.showError);
             },
             register(){
                 this.cleanErrors();
@@ -121,7 +121,7 @@
                             if (err.response && (err.response.data.email[0].indexOf('already exists') !== -1)) {
                                 this.userNameAlreadyExist = true
                             } else {
-                                this.errorMessage = true;
+                                this.showError = true;
                             }
                         });
             }

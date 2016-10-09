@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="login-header">
                     <div class="col-xs-1">
-                        <span class="link" v-on:click="go('index')">
+                        <span class="link" v-on:click="go('login')">
                             <i class="fa fa-chevron-circle-left white" aria-hidden="true"></i>
                         </span>
                     </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="card-block">
             <form v-on:submit.prevent="forgotPassword">
-                <div class="form-group row" v-if="errorMessage">
+                <div class="form-group row" v-if="showError">
                     <div class="col-xs-12 text-muted text-danger">
                         Oops! Something went wrong. Retry in a few minutes.
                     </div>
@@ -72,18 +72,18 @@
                 storage,
                 email: '',
                 emailRequired: false,
-                errorMessage: false,
+                showError: false,
                 successMessage: false,
             };
         },
         methods: Object.assign(mapActions(['go']), {
             cleanErrors(){
                 this.emailRequired = false;
-                this.errorMessage = false;
+                this.showError = false;
                 this.successMessage = false;
             },
             noErrors(){
-                return !(this.emailRequired || this.errorMessage);
+                return !(this.emailRequired || this.showError);
             },
             forgotPassword(){
                 this.cleanErrors();
@@ -94,7 +94,7 @@
                 this.auth.resetPassword({email: this.email}).then(()=> {
                     this.successMessage = true
                 }).catch(err => {
-                    this.errorMessage = true;
+                    this.showError = true;
                 });
             }
         })
