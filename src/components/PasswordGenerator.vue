@@ -215,7 +215,6 @@
             fetchPasswords(){
                 Passwords.all().then(response => {
                     this.passwords = response.data.results;
-                    this.$store.dispatch('setPasswords', response.data.results);
                 });
             },
             fetchPassword(id){
