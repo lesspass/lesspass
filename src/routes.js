@@ -11,8 +11,9 @@ import Passwords from './components/Passwords';
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/', component: PasswordGenerator},
-    {path: '/password/reset/confirm/:uid/:token', name:'passwordResetConfirm', component: PasswordResetConfirm},
+    {path: '/', name: 'home', component: PasswordGenerator},
+    {path: '/login', component: Login},
+    {path: '/password/reset/confirm/:uid/:token', name: 'passwordResetConfirm', component: PasswordResetConfirm},
 ];
 
 const router = new VueRouter({

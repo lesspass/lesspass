@@ -5,16 +5,21 @@
         color: #FFF;
     }
 
-    #menu-title {
-        cursor: pointer;
+    .menu-link {
+        color: white;
+    }
+
+    .menu-link:hover, .menu-link:focus, .menu-link:active {
+        text-decoration: none;
+        color: white;
     }
 </style>
 <template>
     <div id="menu">
-        <div class="card-header" v-show="isAuthenticated">
+        <!--<div class="card-header" v-show="isAuthenticated">
             <div class="row">
                 <div class="col-xs-6">
-                    <span id="menu-title" v-on:click="go('index')">LessPass</span>
+                    <router-link to="/">LessPass</router-link>
                 </div>
                 <div class="col-xs-6 text-xs-right">
                     <div class="btn-group">
@@ -31,18 +36,17 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="card-header card-header-dark" v-show="isGuest">
             <div class="row">
                 <div class="index-header">
                     <div class="col-xs-6">
-                        LessPass
+                        <router-link class="menu-link" to="/">LessPass</router-link>
                     </div>
                     <div class="col-xs-6 text-xs-right">
-                        <button type="button" class="btn" v-on:click="go('login')"
-                                style="background-color:transparent; padding:0; color:white;">
+                        <router-link class="menu-link" to="/login">
                             <i class="fa fa-user-secret white" aria-hidden="true"></i>
-                        </button>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -64,3 +68,12 @@
         ])
     }
 </script>
+
+module.exports = function (string, context) {
+for (var key in context) {
+var find = `\\$\\{(${key})\\}`;
+var re = new RegExp(find, 'g');
+string = string.replace(re, context[key]);
+}
+return string
+};
