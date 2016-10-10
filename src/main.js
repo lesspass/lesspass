@@ -7,6 +7,7 @@ import LessPass from './App.vue'
 import 'bootstrap/dist/js/bootstrap.min';
 import Store from './store'
 import Storage from './api/storage';
+import router from './routes';
 
 const storage = new Storage();
 const store = Store(storage.json());
@@ -14,5 +15,6 @@ const store = Store(storage.json());
 new Vue({
     el: '#app',
     store,
+    router,
     render: h => h(LessPass)
 });

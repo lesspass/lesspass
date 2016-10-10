@@ -93,32 +93,7 @@
 <template>
     <div id="app">
         <div id="lesspass" class="card">
-            <login v-show="page === 'login'"></login>
-            <register v-show="page === 'register'"></register>
-            <forgot-password v-show="page === 'forgotPassword'"></forgot-password>
-            <passwords v-show="page === 'passwords'"></passwords>
-            <password-generator v-show="page === 'index'"></password-generator>
+            <router-view></router-view>
         </div>
     </div>
 </template>
-<script type="text/ecmascript-6">
-    import PasswordGenerator from './components/PasswordGenerator';
-    import Login from './components/Login';
-    import Register from './components/Register';
-    import ForgotPassword from './components/ForgotPassword';
-    import Passwords from './components/Passwords';
-    import {mapGetters} from 'vuex'
-
-    export default {
-        components: {
-            PasswordGenerator,
-            Login,
-            Register,
-            ForgotPassword,
-            Passwords,
-        },
-        computed: mapGetters([
-            'page'
-        ])
-    }
-</script>
