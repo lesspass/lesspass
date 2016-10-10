@@ -1,78 +1,75 @@
 <template>
-    <div>
-        <lesspass-menu></lesspass-menu>
-        <div class="card-block">
-            <form>
-                <div class="form-group row">
-                    <div class="col-xs-12">
-                        <div class="inner-addon left-addon">
-                            <i class="fa fa-globe"></i>
-                            <input id="site"
-                                   name="site"
-                                   type="text"
-                                   class="form-control"
-                                   placeholder="Site"
-                                   list="savedSites"
-                                   autocorrect="off"
-                                   autocapitalize="none"
-                                   v-model="password.site">
-                            <datalist id="savedSites">
-                                <option v-bind:value="pwd.id" v-for="pwd in passwords">
-                                    {{pwd.site}} ({{pwd.login}})
-                                </option>
-                            </datalist>
-                        </div>
-                    </div>
+    <form>
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="inner-addon left-addon">
+                    <i class="fa fa-globe"></i>
+                    <input id="site"
+                           name="site"
+                           type="text"
+                           class="form-control"
+                           placeholder="Site"
+                           list="savedSites"
+                           autocorrect="off"
+                           autocapitalize="none"
+                           v-model="password.site">
+                    <datalist id="savedSites">
+                        <option v-bind:value="pwd.id" v-for="pwd in passwords">
+                            {{pwd.site}} ({{pwd.login}})
+                        </option>
+                    </datalist>
                 </div>
-                <remove-auto-complete></remove-auto-complete>
-                <div class="form-group row">
-                    <div class="col-xs-12">
-                        <div class="inner-addon left-addon">
-                            <i class="fa fa-user"></i>
-                            <label for="login" class="sr-only">Login</label>
-                            <input id="login"
-                                   name="login"
-                                   type="text"
-                                   class="form-control"
-                                   placeholder="Login"
-                                   autocomplete="off"
-                                   autocorrect="off"
-                                   autocapitalize="none"
-                                   v-model="password.login">
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <remove-auto-complete></remove-auto-complete>
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="inner-addon left-addon">
+                    <i class="fa fa-user"></i>
+                    <label for="login" class="sr-only">Login</label>
+                    <input id="login"
+                           name="login"
+                           type="text"
+                           class="form-control"
+                           placeholder="Login"
+                           autocomplete="off"
+                           autocorrect="off"
+                           autocapitalize="none"
+                           v-model="password.login">
                 </div>
-                <div class="form-group row">
-                    <div class="col-xs-12">
-                        <div class="inner-addon left-addon input-group">
-                            <label for="masterPassword" class="sr-only">Password</label>
-                            <i class="fa fa-lock"></i>
-                            <input id="masterPassword"
-                                   name="masterPassword"
-                                   ref="masterPassword"
-                                   type="password"
-                                   class="form-control"
-                                   placeholder="Master password"
-                                   autocorrect="off"
-                                   autocapitalize="none"
-                                   v-model="masterPassword">
-                            <fingerprint :fingerprint="masterPassword"
-                                         v-on:click.native="showMasterPassword"></fingerprint>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="inner-addon left-addon input-group">
+                    <label for="masterPassword" class="sr-only">Password</label>
+                    <i class="fa fa-lock"></i>
+                    <input id="masterPassword"
+                           name="masterPassword"
+                           ref="masterPassword"
+                           type="password"
+                           class="form-control"
+                           placeholder="Master password"
+                           autocorrect="off"
+                           autocapitalize="none"
+                           v-model="masterPassword">
+                    <fingerprint :fingerprint="masterPassword"
+                                 v-on:click.native="showMasterPassword"></fingerprint>
                 </div>
-                <div class="form-group row">
-                    <div class="col-xs-12">
-                        <div class="input-group">
-                            <label for="generatedPassword" class="sr-only">Password Generated</label>
-                            <input id="generatedPassword"
-                                   name="generatedPassword"
-                                   type="text"
-                                   class="form-control"
-                                   tabindex="-1"
-                                   readonly
-                                   v-model="generatedPassword">
-                            <span class="input-group-btn">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <label for="generatedPassword" class="sr-only">Password Generated</label>
+                    <input id="generatedPassword"
+                           name="generatedPassword"
+                           type="text"
+                           class="form-control"
+                           tabindex="-1"
+                           readonly
+                           v-model="generatedPassword">
+                    <span class="input-group-btn">
                           <button id="copyPasswordButton" class="btn-copy btn btn-primary"
                                   :disabled="!generatedPassword"
                                   v-on:click="generatePassword()"
@@ -81,60 +78,57 @@
                             <i class="fa fa-clipboard white"></i> Copy
                           </button>
                         </span>
-                        </div>
-                    </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-xs-12">
-                        Password options
-                        <hr style="margin:0;">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-xs-12">
-                        <label class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="lowercase"
-                                   v-model="password.options.lowercase"> abc
-                        </label>
-                        <label class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="uppercase"
-                                   v-model="password.options.uppercase"> ABC
-                        </label>
-                        <label class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="numbers"
-                                   v-model="password.options.numbers">
-                            123
-                        </label>
-                        <label class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="symbols"
-                                   v-model="password.options.symbols">
-                            %!@
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="passwordLength" class="col-xs-3 col-form-label">Length</label>
-                    <div class="col-xs-3 p-l-0">
-                        <input class="form-control" type="number" id="passwordLength" v-model="password.options.length">
-                    </div>
-                    <label for="passwordCounter" class="col-xs-3 col-form-label">Counter</label>
-                    <div class="col-xs-3 p-l-0">
-                        <input class="form-control" type="number" id="passwordCounter"
-                               v-model="password.options.counter">
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
+        <div class="form-group row">
+            <div class="col-xs-12">
+                Password options
+                <hr style="margin:0;">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <label class="form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="lowercase"
+                           v-model="password.options.lowercase"> abc
+                </label>
+                <label class="form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="uppercase"
+                           v-model="password.options.uppercase"> ABC
+                </label>
+                <label class="form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="numbers"
+                           v-model="password.options.numbers">
+                    123
+                </label>
+                <label class="form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="symbols"
+                           v-model="password.options.symbols">
+                    %!@
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="passwordLength" class="col-xs-3 col-form-label">Length</label>
+            <div class="col-xs-3 p-l-0">
+                <input class="form-control" type="number" id="passwordLength" v-model="password.options.length">
+            </div>
+            <label for="passwordCounter" class="col-xs-3 col-form-label">Counter</label>
+            <div class="col-xs-3 p-l-0">
+                <input class="form-control" type="number" id="passwordCounter"
+                       v-model="password.options.counter">
+            </div>
+        </div>
+    </form>
 </template>
 
 <script type="text/ecmascript-6">
-    import {mapGetters} from 'vuex'
-    import RemoveAutoComplete from './RemoveAutoComplete'
-    import Fingerprint from './Fingerprint'
+    import {mapGetters} from 'vuex';
+    import RemoveAutoComplete from './RemoveAutoComplete';
+    import Fingerprint from './Fingerprint';
     import lesspass from 'lesspass';
     import Clipboard from 'clipboard';
-    import LesspassMenu from './Menu';
     import debounce from 'lodash.debounce';
     import {showTooltip} from '../api/tooltip';
 
@@ -160,7 +154,6 @@
             }
         },
         components: {
-            LesspassMenu,
             RemoveAutoComplete,
             Fingerprint
         },

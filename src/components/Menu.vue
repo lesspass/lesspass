@@ -5,16 +5,16 @@
         color: #FFF;
     }
 
-    #title {
+    #menu-title {
         cursor: pointer;
     }
 </style>
 <template>
-    <div>
+    <div id="menu">
         <div class="card-header" v-show="isAuthenticated">
             <div class="row">
                 <div class="col-xs-6">
-                    <span id="title" v-on:click="go('index')">LessPass</span>
+                    <span id="menu-title" v-on:click="go('index')">LessPass</span>
                 </div>
                 <div class="col-xs-6 text-xs-right">
                     <div class="btn-group">

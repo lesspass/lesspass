@@ -1,9 +1,9 @@
 import 'babel-polyfill';
-import Vue from 'vue'
+import Vue from 'vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 import 'hint.css/hint.css';
-import LessPass from './App.vue'
+import App from './App';
 import 'bootstrap/dist/js/bootstrap.min';
 import Store from './store'
 import Storage from './api/storage';
@@ -16,5 +16,5 @@ new Vue({
     el: '#app',
     store,
     router,
-    render: h => h(LessPass)
+    render: h => h(App)
 });

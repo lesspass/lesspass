@@ -89,11 +89,27 @@
     .link {
         cursor: pointer;
     }
+
+    .card-block {
+        position: relative;
+    }
 </style>
 <template>
     <div id="app">
         <div id="lesspass" class="card">
-            <router-view></router-view>
+            <lesspass-menu></lesspass-menu>
+            <div class="card-block">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
+<script type="text/ecmascript-6">
+    import LesspassMenu from './components/Menu';
+
+    export default {
+        components: {
+            LesspassMenu
+        }
+    }
+</script>
