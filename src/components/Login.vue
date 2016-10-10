@@ -106,7 +106,6 @@
                         .then(()=> {
                             this.storage.save({baseURL: baseURL, email: email});
                             this.$store.dispatch('userAuthenticated', {email: email});
-                            this.$store.dispatch('loadPasswords');
                             this.$router.push({name: 'home'});
                         })
                         .catch(err => {

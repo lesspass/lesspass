@@ -14,7 +14,8 @@ const routes = [
     {path: '/', name: 'home', component: PasswordGenerator},
     {path: '/login', name: 'login', component: Login},
     {path: '/register', name: 'register', component: Register},
-    {path: '/passwords', name: 'passwords', component: Passwords},
+    {path: '/passwords/', name: 'passwords', component: Passwords},
+    {path: '/passwords/:passwordId', name: 'password', component: PasswordGenerator},
     {path: '/password/reset', name: 'passwordReset', component: PasswordReset},
     {path: '/password/reset/confirm/:uid/:token', name: 'passwordResetConfirm', component: PasswordResetConfirm},
 ];

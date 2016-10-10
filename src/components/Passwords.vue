@@ -24,11 +24,12 @@
             </div>
         </form>
         <div id="passwords">
-            <a href="#" class="list-group-item list-group-item-action" v-for="password in filteredPasswords"
-               v-on:click="setCurrentPasswordAndGoIndex(password)">
+            <router-link class="list-group-item list-group-item-action"
+                         :to="{ name: 'password', params: { passwordId: password.id }}"
+                         v-for="password in filteredPasswords">
                 <h5 class="list-group-item-heading">{{password.site}}</h5>
                 <p class="list-group-item-text">{{password.login}}</p>
-            </a>
+            </router-link>
         </div>
     </div>
 </template>
@@ -47,12 +48,6 @@
                     return password.site.indexOf(this.searchQuery) > -1 || password.login.indexOf(this.searchQuery) > -1
                 })
             }
-        }),
-        methods: {
-            setCurrentPasswordAndGoIndex(password){
-                this.$store.dispatch('setCurrentPassword', password);
-                this.$router.push({name: 'home'});
-            }
-        }
+        })
     }
 </script>

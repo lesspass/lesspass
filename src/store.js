@@ -1,48 +1,30 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Auth from './api/auth';
-import HTTP from './api/http';
 import Storage from './api/storage';
 
 Vue.use(Vuex);
 
 const storage = new Storage();
 const auth = new Auth(storage);
-const passwords = new HTTP('passwords', storage);
 
 const state = {
     authenticated: auth.isAuthenticated(),
     email: '',
-    passwords: [],
-    currentPassword: {}
+    passwords: []
 };
 
 const mutations = {
-    setCurrentPassword(state, password){
-        state.currentPassword = password
+    setPasswords(state, passwords){
+        state.passwords = passwords
     },
     logout(state){
         state.authenticated = false;
-        state.currentPassword = {
-            site: '',
-            login: '',
-            options: {
-                uppercase: true,
-                lowercase: true,
-                numbers: true,
-                symbols: true,
-                length: 12,
-                counter: 1,
-            }
-        };
         state.passwords = [];
     },
     userAuthenticated(state, user){
         state.authenticated = true;
         state.email = user.email;
-    },
-    loadPasswords(state, passwords){
-        state.passwords = passwords
     }
 };
 
@@ -52,21 +34,13 @@ const actions = {
         auth.logout();
         commit('logout');
     },
-    loadPasswords: ({commit}) => {
-        if (auth.isAuthenticated()) {
-            passwords.all().then(response => {
-                commit('loadPasswords', response.data.results);
-            });
-        }
-    },
-    setCurrentPassword: ({commit}, password) => commit('setCurrentPassword', password),
+    setPasswords: ({commit}, password) => commit('setPasswords', password),
 };
 
 const getters = {
     isAuthenticated: state => state.authenticated,
     isGuest: state => !state.authenticated,
     passwords: state => state.passwords,
-    currentPassword: state => state.currentPassword,
     email: state => state.email,
     baseURL: state => state.baseURL
 };

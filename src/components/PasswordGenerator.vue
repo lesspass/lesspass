@@ -131,23 +131,30 @@
     import Clipboard from 'clipboard';
     import debounce from 'lodash.debounce';
     import {showTooltip} from '../api/tooltip';
+    import Storage from '../api/storage';
+    import HTTP from '../api/http';
+
+    const storage = new Storage();
+    const Passwords = new HTTP('passwords', storage);
+
+    const defaultPassword = {
+        site: '',
+        login: '',
+        options: {
+            uppercase: true,
+            lowercase: true,
+            numbers: true,
+            symbols: true,
+            length: 12,
+            counter: 1,
+        }
+    };
 
     export default {
         data(){
             return {
                 passwords: [],
-                password: {
-                    site: '',
-                    login: '',
-                    options: {
-                        uppercase: true,
-                        lowercase: true,
-                        numbers: true,
-                        symbols: true,
-                        length: 12,
-                        counter: 1
-                    }
-                },
+                password: defaultPassword,
                 masterPassword: '',
                 encryptedLogin: '',
                 generatedPassword: ''
@@ -176,16 +183,9 @@
             'masterPassword': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
-            },
-            'currentPassword': function (newPassword) {
-                this.password = Object.assign({}, newPassword);
-                this.masterPassword = '';
-            },
-            'passwords': function (newPasswords) {
-                this.passwords = newPasswords;
             }
         },
-        computed: Object.assign(mapGetters(['passwords', 'isAuthenticated', 'currentPassword']), {
+        computed: Object.assign(mapGetters(['isAuthenticated']), {
             generatedPassword(){
                 return this.generatePassword();
             }
@@ -211,10 +211,34 @@
                 } else {
                     this.$refs.masterPassword.type = 'password';
                 }
+            },
+            fetchPasswords(){
+                Passwords.all().then(response => {
+                    this.passwords = response.data.results;
+                    this.$store.dispatch('setPasswords', response.data.results);
+                });
+            },
+            fetchPassword(id){
+                Passwords.get({id}).then(response => {
+                    this.password = response.data;
+                });
+            },
+            clean(mutation, state){
+                if (mutation.type == 'logout') {
+                    this.password = Object.assign({}, defaultPassword);
+                }
             }
         },
         created: function () {
-            this.$store.dispatch('loadPasswords');
+            if (this.isAuthenticated) {
+                const passwordId = this.$route.params.passwordId;
+                if (passwordId) {
+                    this.fetchPassword(passwordId);
+                }
+                this.fetchPasswords();
+            }
+
+            this.$store.subscribe(this.clean);
 
             var clipboard = new Clipboard('#copyPasswordButton');
             clipboard.on('success', function (e) {

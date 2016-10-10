@@ -12,6 +12,7 @@
 
     .menu-link:hover, .menu-link:focus, .menu-link:active {
         color: #373a3c;
+        text-decoration: none;
     }
 
     .menu-link-white {
@@ -63,12 +64,15 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import {mapGetters, mapActions} from 'vuex';
+    import {mapGetters} from 'vuex';
 
     export default {
-        methods: mapActions([
-            'logout'
-        ]),
+        methods: {
+            logout(){
+                this.$store.dispatch('logout');
+                this.$router.push({name: 'home'});
+            }
+        },
         computed: mapGetters([
             'isAuthenticated',
             'isGuest',
