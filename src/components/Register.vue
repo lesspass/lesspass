@@ -1,8 +1,3 @@
-<style>
-    .card-block {
-        position: relative;
-    }
-</style>
 <template>
     <form v-on:submit.prevent="register">
         <div class="form-group row" v-if="showError">
