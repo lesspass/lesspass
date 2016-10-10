@@ -1,5 +1,5 @@
-<style scoped>
-    #sites {
+<style>
+    #passwords {
         max-height: 320px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -23,7 +23,7 @@
                 </div>-->
             </div>
         </form>
-        <div id="sites">
+        <div id="passwords">
             <a href="#" class="list-group-item list-group-item-action" v-for="password in filteredPasswords"
                v-on:click="setCurrentPasswordAndGoIndex(password)">
                 <h5 class="list-group-item-heading">{{password.site}}</h5>
@@ -32,8 +32,6 @@
         </div>
     </div>
 </template>
-
-
 <script type="text/ecmascript-6">
     import {mapGetters} from 'vuex';
 

@@ -37,9 +37,9 @@
                            class="form-control"
                            placeholder="Password"
                            v-model="user.password">
-                    <small class="form-text text-muted text-danger">
-                        <span v-if="noErrors()">Do not use your master password here</span>
-                        <span v-if="passwordRequired">A password is required</span>
+                    <small class="form-text text-muted">
+                        <span v-if="noErrors()" class="text-warning">Do not use your master password here</span>
+                        <span v-if="passwordRequired" class="text-danger">A password is required</span>
                     </small>
                 </div>
             </div>

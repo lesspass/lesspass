@@ -2,10 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import PasswordGenerator from './components/PasswordGenerator';
-import PasswordResetConfirm from './components/PasswordResetConfirm';
 import Login from './components/Login';
 import Register from './components/Register';
-import ForgotPassword from './components/ForgotPassword';
+import PasswordReset from './components/PasswordReset';
+import PasswordResetConfirm from './components/PasswordResetConfirm';
 import Passwords from './components/Passwords';
 
 Vue.use(VueRouter);
@@ -13,6 +13,9 @@ Vue.use(VueRouter);
 const routes = [
     {path: '/', name: 'home', component: PasswordGenerator},
     {path: '/login', name: 'login', component: Login},
+    {path: '/register', name: 'register', component: Register},
+    {path: '/passwords', name: 'passwords', component: Passwords},
+    {path: '/password/reset', name: 'passwordReset', component: PasswordReset},
     {path: '/password/reset/confirm/:uid/:token', name: 'passwordResetConfirm', component: PasswordResetConfirm},
 ];
 
