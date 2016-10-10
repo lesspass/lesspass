@@ -118,3 +118,16 @@ test('should reset a password', t => {
     nock('https://lesspass.com').post('/api/auth/password/reset/', {email}).reply(204);
     t.notThrows(auth.resetPassword({email}));
 });
+
+test('should confirm reset password', t => {
+    var newPassword ={
+        uid: 'MQ',
+        token: '5g1-2bd69bd6f6dcd73f8124',
+        new_password: 'password1'
+    };
+    const localStorage = new LocalStorageMock();
+    const storage = new Storage(localStorage);
+    const auth = new Auth(storage);
+    nock('https://lesspass.com').post('/api/auth/password/reset/confirm/', newPassword).reply(204);
+    t.notThrows(auth.confirmResetPassword(newPassword));
+});
