@@ -6,20 +6,29 @@
     }
 
     .menu-link {
-        color: white;
+        color: #373a3c;
+        text-decoration: none;
     }
 
     .menu-link:hover, .menu-link:focus, .menu-link:active {
+        color: #373a3c;
+    }
+
+    .menu-link-white {
+        color: white;
+    }
+
+    .menu-link-white:hover, .menu-link-white:focus, .menu-link-white:active {
         text-decoration: none;
         color: white;
     }
 </style>
 <template>
     <div id="menu">
-        <!--<div class="card-header" v-show="isAuthenticated">
+        <div class="card-header" v-show="isAuthenticated">
             <div class="row">
                 <div class="col-xs-6">
-                    <router-link to="/">LessPass</router-link>
+                    <router-link class="menu-link" :to="{ name: 'home'}">LessPass</router-link>
                 </div>
                 <div class="col-xs-6 text-xs-right">
                     <div class="btn-group">
@@ -28,23 +37,23 @@
                             {{email}}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button" v-on:click="go('passwords')">Passwords</button>
-                            <button class="dropdown-item" type="button">Help</button>
+                            <router-link class="dropdown-item" :to="{ name: 'passwords'}">Passwords</router-link>
+                            <router-link class="dropdown-item" :to="{ name: 'help'}">Help</router-link>
                             <div class="dropdown-divider"></div>
                             <button class="dropdown-item" type="button" v-on:click="logout">Log out</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
         <div class="card-header card-header-dark" v-show="isGuest">
             <div class="row">
                 <div class="index-header">
                     <div class="col-xs-6">
-                        <router-link class="menu-link" to="/">LessPass</router-link>
+                        <router-link class="menu-link-white" :to="{ name: 'home'}">LessPass</router-link>
                     </div>
                     <div class="col-xs-6 text-xs-right">
-                        <router-link class="menu-link" to="/login">
+                        <router-link class="menu-link-white" :to="{ name: 'login'}">
                             <i class="fa fa-user-secret white" aria-hidden="true"></i>
                         </router-link>
                     </div>
@@ -58,7 +67,6 @@
 
     export default {
         methods: mapActions([
-            'go',
             'logout'
         ]),
         computed: mapGetters([
@@ -68,12 +76,3 @@
         ])
     }
 </script>
-
-module.exports = function (string, context) {
-for (var key in context) {
-var find = `\\$\\{(${key})\\}`;
-var re = new RegExp(find, 'g');
-string = string.replace(re, context[key]);
-}
-return string
-};

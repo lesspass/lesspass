@@ -11,7 +11,6 @@ const auth = new Auth(storage);
 const passwords = new HTTP('passwords', storage);
 
 const state = {
-    page: 'index',
     authenticated: auth.isAuthenticated(),
     email: '',
     passwords: [],
@@ -22,12 +21,8 @@ const mutations = {
     setCurrentPassword(state, password){
         state.currentPassword = password
     },
-    go(state, page){
-        state.page = page
-    },
     logout(state){
         state.authenticated = false;
-        state.page = 'login';
         state.currentPassword = {
             site: '',
             login: '',
@@ -52,7 +47,6 @@ const mutations = {
 };
 
 const actions = {
-    go: ({commit}, page) => commit('go', page),
     userAuthenticated: ({commit}, user) => commit('userAuthenticated', user),
     logout: ({commit}) => {
         auth.logout();
@@ -69,7 +63,6 @@ const actions = {
 };
 
 const getters = {
-    page: state => state.page,
     isAuthenticated: state => state.authenticated,
     isGuest: state => !state.authenticated,
     passwords: state => state.passwords,

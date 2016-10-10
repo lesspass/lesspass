@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 
 const routes = [
     {path: '/', name: 'home', component: PasswordGenerator},
-    {path: '/login', component: Login},
+    {path: '/login', name: 'login', component: Login},
     {path: '/password/reset/confirm/:uid/:token', name: 'passwordResetConfirm', component: PasswordResetConfirm},
 ];
 

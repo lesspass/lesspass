@@ -47,15 +47,17 @@
                 <button id="loginButton" class="btn btn-primary" type="submit">
                     Sign In
                 </button>
-                <button id="registerButton" class="btn btn-secondary" type="button" v-on:click="go('register')">
+                <router-link class="btn btn-secondary" :to="{ name: 'register'}">
                     Register
-                </button>
+                </router-link>
             </div>
         </div>
         <div class="form-group row">
-            <button class="btn btn-link" type="button" v-on:click="go('forgotPassword')">
-                Forgot you password ?
-            </button>
+            <div class="col-xs-12">
+                <router-link :to="{ name: 'resetPassword'}">
+                    Forgot you password ?
+                </router-link>
+            </div>
         </div>
     </form>
 </template>
@@ -105,7 +107,7 @@
                             this.storage.save({baseURL: baseURL, email: email});
                             this.$store.dispatch('userAuthenticated', {email: email});
                             this.$store.dispatch('loadPasswords');
-                            this.$router.push({ name: 'home'});
+                            this.$router.push({name: 'home'});
                         })
                         .catch(err => {
                             if (err.response === undefined) {
