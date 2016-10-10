@@ -2,17 +2,40 @@ version: '2'
 services:
   db:
     restart: always
+    image: postgres:9.5
+    volumes:
+      - postgresql:/var/lib/postgresql/data
   backend:
     restart: always
-    volumes:
-      - backend:/backend
-    command: /usr/bin/supervisord
+    image: lesspass/api:latest
+    expose:
+      - '8000'
+    depends_on:
+      - db
+    environment:
+      DATABASE_ENGINE: 'django.db.backends.postgresql'
+      DATABASE_NAME: 'postgres'
+      DATABASE_USER: 'postgres'
+      DATABASE_PASSWORD: ''
+      DATABASE_HOST: 'db'
+      DATABASE_PORT: '5432'
   frontend:
     restart: always
+    image: lesspass/frontend:gh-pages
   nginx:
     restart: always
+    image: lesspass/nginx:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes_from:
+      - backend
+    volumes:
+      - ./ssl:/certificates
+    links:
+      - backend
+      - frontend
     environment:
       - domain=lesspass.com
 volumes:
-  backend:
-  frontend:
+  postgresql:
