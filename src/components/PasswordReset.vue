@@ -1,5 +1,5 @@
 <template>
-    <form v-on:submit.prevent="forgotPassword">
+    <form v-on:submit.prevent="resetPassword">
         <div class="form-group row" v-if="showError">
             <div class="col-xs-12 text-muted text-danger">
                 Oops! Something went wrong. Retry in a few minutes.
@@ -62,7 +62,7 @@
             noErrors(){
                 return !(this.emailRequired || this.showError);
             },
-            forgotPassword(){
+            resetPassword(){
                 this.cleanErrors();
                 if (!this.email) {
                     this.emailRequired = true;
