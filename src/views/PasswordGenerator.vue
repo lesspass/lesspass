@@ -9,15 +9,9 @@
                            type="text"
                            class="form-control"
                            placeholder="Site"
-                           list="savedSites"
                            autocorrect="off"
                            autocapitalize="none"
                            v-model="password.site">
-                    <datalist id="savedSites">
-                        <option v-bind:value="pwd.id" v-for="pwd in passwords">
-                            {{pwd.site}} ({{pwd.login}})
-                        </option>
-                    </datalist>
                 </div>
             </div>
         </div>
@@ -69,14 +63,14 @@
                            readonly
                            v-model="generatedPassword">
                     <span class="input-group-btn">
-                        <button id="copyPasswordButton" class="btn-copy btn btn-primary"
-                                :disabled="!generatedPassword"
-                                v-on:click="generatePassword()"
-                                type="button"
-                                data-clipboard-target="#generatedPassword">
-                        <i class="fa fa-clipboard white"></i> Copy
-                        </button>
-                    </span>
+                         <button id="copyPasswordButton" class="btn-copy btn btn-primary"
+                                 :disabled="!generatedPassword"
+                                 v-on:click="generatePassword()"
+                                 type="button"
+                                 data-clipboard-target="#generatedPassword">
+                         <i class="fa fa-clipboard white"></i> Copy
+                         </button>
+                     </span>
                 </div>
             </div>
         </div>
@@ -125,56 +119,62 @@
 
 <script type="text/ecmascript-6">
     import {mapGetters} from 'vuex';
-    import RemoveAutoComplete from './RemoveAutoComplete';
-    import Fingerprint from './Fingerprint';
+    import RemoveAutoComplete from '../components/RemoveAutoComplete';
+    import Fingerprint from '../components/Fingerprint';
     import lesspass from 'lesspass';
     import Clipboard from 'clipboard';
     import debounce from 'lodash.debounce';
     import {showTooltip} from '../api/tooltip';
-    import Storage from '../api/storage';
-    import HTTP from '../api/http';
     import Password from '../domain/password';
 
-    const storage = new Storage();
-    const Passwords = new HTTP('passwords', storage);
+    function fetchPasswords(store) {
+        return store.dispatch('FETCH_PASSWORDS')
+    }
 
-    const defaultPassword = {
-        site: '',
-        login: '',
-        uppercase: true,
-        lowercase: true,
-        numbers: true,
-        symbols: true,
-        length: 12,
-        counter: 1,
-    };
+    function fetchPassword(store, id) {
+        return store.dispatch('FETCH_PASSWORD', {id})
+    }
 
     export default {
+        name: 'password-generator-view',
+        components: {
+            RemoveAutoComplete,
+            Fingerprint
+        },
+        computed: {
+            ...mapGetters(['passwords', 'password']),
+            generatedPassword(){
+                const password = new Password(this.password);
+                if (!this.encryptedLogin || !this.password.site) {
+                    this.generatedPassword = '';
+                    return;
+                }
+                return lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options);
+            }
+        },
+        preFetch: fetchPasswords,
+        beforeMount () {
+            const passwordId = this.$route.params.passwordId;
+            if (passwordId) {
+                fetchPassword(this.$store, passwordId);
+            } else {
+                fetchPasswords(this.$store);
+            }
+            var clipboard = new Clipboard('#copyPasswordButton');
+            clipboard.on('success', function (e) {
+                if (e.text) {
+                    showTooltip(e.trigger, 'copied !');
+                }
+            });
+        },
         data(){
             return {
-                passwords: [],
-                password: defaultPassword,
                 masterPassword: '',
                 encryptedLogin: '',
                 generatedPassword: ''
             }
         },
-        components: {
-            RemoveAutoComplete,
-            Fingerprint
-        },
         watch: {
-            'password.site': function (siteId) {
-                var passwords = this.passwords;
-                for (let i = 0; i < passwords.length; i++) {
-                    var password = passwords[i];
-                    if (siteId === password.id) {
-                        this.password = Object.assign({}, password);
-                        this.masterPassword = '';
-                        return password.site;
-                    }
-                }
-            },
             'password.login': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
@@ -194,11 +194,6 @@
                 }
             }
         },
-        computed: Object.assign(mapGetters(['isAuthenticated']), {
-            generatedPassword(){
-                return this.generatePassword();
-            }
-        }),
         methods: {
             encryptLogin: debounce(function () {
                 if (this.password.login && this.masterPassword) {
@@ -207,54 +202,13 @@
                     });
                 }
             }, 500),
-            generatePassword(){
-                const password = new Password(this.password);
-                if (!this.encryptedLogin || !this.password.site) {
-                    this.generatedPassword = '';
-                    return;
-                }
-                return lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options);
-            },
-            showMasterPassword(e){
+            showMasterPassword(){
                 if (this.$refs.masterPassword.type === 'password') {
                     this.$refs.masterPassword.type = 'text';
                 } else {
                     this.$refs.masterPassword.type = 'password';
                 }
-            },
-            fetchPasswords(){
-                Passwords.all().then(response => {
-                    this.passwords = response.data.results;
-                });
-            },
-            fetchPassword(id){
-                Passwords.get({id}).then(response => {
-                    this.password = response.data;
-                });
-            },
-            clean(mutation, state){
-                if (mutation.type == 'logout') {
-                    this.password = Object.assign({}, defaultPassword);
-                }
             }
-        },
-        created: function () {
-            if (this.isAuthenticated) {
-                const passwordId = this.$route.params.passwordId;
-                if (passwordId) {
-                    this.fetchPassword(passwordId);
-                }
-                this.fetchPasswords();
-            }
-
-            this.$store.subscribe(this.clean);
-
-            var clipboard = new Clipboard('#copyPasswordButton');
-            clipboard.on('success', function (e) {
-                if (e.text) {
-                    showTooltip(e.trigger, 'copied !');
-                }
-            });
         }
     }
 </script>

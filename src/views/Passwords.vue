@@ -15,15 +15,9 @@
                         <input class="form-control" name="search" placeholder="Search" v-model="searchQuery">
                     </div>
                 </div>
-                <!--<div class="col-xs-5 text-xs-right">
-                    <button class="btn btn-secondary">
-                        <i class="fa fa-save"></i>
-                        download
-                    </button>
-                </div>-->
             </div>
         </form>
-        <div id="passwords" class="row" v-if="!loading">
+        <div id="passwords" class="row">
             <div class="col-xs-12">
                 <table class="table">
                     <tbody>
@@ -34,7 +28,7 @@
                             <router-link :to="{ name: 'home'}">Would you like to create one ?</router-link>
                         </td>
                     </tr>
-                    <tr v-for="password in filteredPasswords">
+                    <tr v-for="password in passwords">
                         <td>
                             <router-link :to="{ name: 'password', params: { passwordId: password.id }}">
                                 {{password.site}}
@@ -43,7 +37,7 @@
                             {{password.login}}
                         </td>
                         <td class="text-xs-right">
-                            <delete-button :promise="deletePassword" :object="password"
+                            <delete-button :action="deletePassword" :object="password"
                                            text="Are you sure you want to delete this password ?">
                             </delete-button>
                         </td>
@@ -55,46 +49,37 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import DeleteButton from './DeleteButton';
-    import Storage from '../api/storage';
-    import HTTP from '../api/http';
+    import DeleteButton from '../components/DeleteButton';
+    import {mapGetters} from 'vuex';
 
-    const storage = new Storage();
-    const Passwords = new HTTP('passwords', storage);
+    function fetchPasswords(store) {
+        return store.dispatch('FETCH_PASSWORDS')
+    }
 
     export default {
+        name: 'passwords-view',
         data(){
             return {
-                passwords: [],
-                loading: true,
                 searchQuery: ''
             }
         },
-        components: {
-            DeleteButton
-        },
-        methods: {
-            fetchPasswords(){
-                Passwords.all().then(response => {
-                    this.passwords = response.data.results;
-                    this.loading = false;
-                });
-            },
-            deletePassword(password){
-                return Passwords.remove({id: password.id}).then(() => {
-                    this.fetchPasswords();
-                });
-            }
-        },
+        components: {DeleteButton},
         computed: {
+            ...mapGetters(['passwords', 'email']),
             filteredPasswords(){
                 return this.passwords.filter(password => {
                     return password.site.indexOf(this.searchQuery) > -1 || password.login.indexOf(this.searchQuery) > -1
                 })
             }
         },
-        created: function () {
-            this.fetchPasswords();
+        preFetch: fetchPasswords,
+        beforeMount () {
+            fetchPasswords(this.$store);
+        },
+        methods: {
+            deletePassword(password){
+                return this.$store.dispatch('DELETE_PASSWORD', {id: password.id});
+            }
         }
     }
 </script>

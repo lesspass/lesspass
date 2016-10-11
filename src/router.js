@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import PasswordGenerator from './components/PasswordGenerator';
+import PasswordGenerator from './views/PasswordGenerator';
 import Login from './components/Login';
 import Register from './components/Register';
 import PasswordReset from './components/PasswordReset';
 import PasswordResetConfirm from './components/PasswordResetConfirm';
-import Passwords from './components/Passwords';
+import Passwords from './views/Passwords';
 
 Vue.use(VueRouter);
 

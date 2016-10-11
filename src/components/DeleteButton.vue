@@ -18,7 +18,7 @@
             }
         },
         props: {
-            promise: {type: Function, required: true},
+            action: {type: Function, required: true},
             text: {type: String, required: true},
             object: {type: Object, required: true}
         },
@@ -27,7 +27,7 @@
                 this.pending = true;
                 var response = confirm(this.text);
                 if (response == true) {
-                    this.promise(this.object);
+                    this.action(this.object);
                 }
             }
         }

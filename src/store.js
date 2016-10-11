@@ -15,7 +15,20 @@ const state = {
     email: '',
     isPasswordNew: false,
     passwordCreated: false,
-    newPassword: {}
+    newPassword: {},
+
+    passwords: [],
+    password: {},
+    defaultPassword: {
+        site: '',
+        login: '',
+        uppercase: true,
+        lowercase: true,
+        numbers: true,
+        symbols: true,
+        length: 12,
+        counter: 1,
+    }
 };
 
 const mutations = {
@@ -39,6 +52,22 @@ const mutations = {
         setTimeout(()=> {
             state.passwordCreated = false;
         }, 5000);
+    },
+    SET_PASSWORDS(state, passwords){
+        state.passwords = passwords;
+    },
+    SET_PASSWORD(state, {password}){
+        state.password = password;
+    },
+    DELETE_PASSWORD(state, {id}){
+        var passwords = state.passwords;
+        state.passwords = passwords.filter(password => {
+            return password.id !== id;
+        });
+
+        if (state.password.id === id) {
+            state.password = state.defaultPassword;
+        }
     }
 };
 
@@ -63,9 +92,30 @@ const actions = {
             });
         }
     },
+    FETCH_PASSWORDS: ({commit}) => {
+        if (auth.isAuthenticated()) {
+            Passwords.all().then(response => commit('SET_PASSWORDS', response.data.results));
+        }
+    },
+    FETCH_PASSWORD: ({commit}, password) => {
+        Passwords.get(password).then(response => commit('SET_PASSWORD', {password: response.data}));
+    },
+    DELETE_PASSWORD: ({commit}, {id}) => {
+        Passwords.remove({id}).then(()=> {
+            commit('DELETE_PASSWORD', {id});
+        });
+    }
 };
 
 const getters = {
+    passwords: state => state.passwords,
+    password: state => {
+        var password = state.password;
+        if (Object.keys(password).length === 0) {
+            return state.defaultPassword;
+        }
+        return password;
+    },
     isAuthenticated: state => state.authenticated,
     isGuest: state => !state.authenticated,
     isPasswordNew: state => state.isPasswordNew,

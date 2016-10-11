@@ -7,7 +7,7 @@ import App from './App';
 import 'bootstrap/dist/js/bootstrap';
 import Store from './store';
 import Storage from './api/storage';
-import router from './routes';
+import router from './router';
 
 const storage = new Storage();
 const store = Store(storage.json());
