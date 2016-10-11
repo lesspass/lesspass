@@ -51,7 +51,7 @@ export default class Auth {
         const token = this.storage.getToken();
         return Auth._requestNewToken({token: token.name}, config).then(token => {
             this.storage.saveToken(token)
-        })
+        });
     }
 
     static _requestNewToken(token, config = {}) {

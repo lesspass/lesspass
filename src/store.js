@@ -55,7 +55,14 @@ const actions = {
             commit('existingPassword');
             commit('passwordCreated');
         })
-    }
+    },
+    refreshToken: ({commit}) => {
+        if (auth.isAuthenticated()) {
+            auth.refreshToken().catch(() => {
+                commit('logout');
+            });
+        }
+    },
 };
 
 const getters = {
@@ -74,12 +81,4 @@ export default function (config) {
         actions,
         mutations
     });
-}
-
-const fiveMinutes = 1000 * 60 * 5;
-if (auth.isAuthenticated()) {
-    auth.refreshToken();
-    setInterval(()=> {
-        auth.refreshToken();
-    }, fiveMinutes);
 }
