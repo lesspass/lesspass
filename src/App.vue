@@ -31,7 +31,7 @@
     }
 
     i {
-        color: #555
+        color: #555;
     }
 
     .white {

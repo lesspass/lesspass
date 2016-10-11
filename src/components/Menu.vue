@@ -23,6 +23,10 @@
         text-decoration: none;
         color: white;
     }
+
+    .fa-clickable {
+        cursor: pointer;
+    }
 </style>
 <template>
     <div id="menu">
@@ -30,6 +34,8 @@
             <div class="row">
                 <div class="col-xs-6">
                     <router-link class="menu-link" :to="{ name: 'home'}">LessPass</router-link>
+                    <i class="fa fa-save m-l-1 fa-clickable" v-if="isPasswordNew" v-on:click="savePassword"></i>
+                    <i class="fa fa-check m-l-1 text-success" v-if="passwordCreated"></i>
                 </div>
                 <div class="col-xs-6 text-xs-right">
                     <div class="btn-group">
@@ -71,12 +77,17 @@
             logout(){
                 this.$store.dispatch('logout');
                 this.$router.push({name: 'home'});
+            },
+            savePassword(){
+                this.$store.dispatch('savePassword');
             }
         },
         computed: mapGetters([
             'isAuthenticated',
             'isGuest',
-            'email'
+            'email',
+            'isPasswordNew',
+            'passwordCreated'
         ])
     }
 </script>

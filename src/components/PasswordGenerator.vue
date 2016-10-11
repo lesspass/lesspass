@@ -53,8 +53,7 @@
                            autocorrect="off"
                            autocapitalize="none"
                            v-model="masterPassword">
-                    <fingerprint :fingerprint="masterPassword"
-                                 v-on:click.native="showMasterPassword"></fingerprint>
+                    <fingerprint :fingerprint="masterPassword" v-on:click.native="showMasterPassword"></fingerprint>
                 </div>
             </div>
         </div>
@@ -70,14 +69,14 @@
                            readonly
                            v-model="generatedPassword">
                     <span class="input-group-btn">
-                          <button id="copyPasswordButton" class="btn-copy btn btn-primary"
-                                  :disabled="!generatedPassword"
-                                  v-on:click="generatePassword()"
-                                  type="button"
-                                  data-clipboard-target="#generatedPassword">
-                            <i class="fa fa-clipboard white"></i> Copy
-                          </button>
-                        </span>
+                        <button id="copyPasswordButton" class="btn-copy btn btn-primary"
+                                :disabled="!generatedPassword"
+                                v-on:click="generatePassword()"
+                                type="button"
+                                data-clipboard-target="#generatedPassword">
+                        <i class="fa fa-clipboard white"></i> Copy
+                        </button>
+                    </span>
                 </div>
             </div>
         </div>
@@ -112,12 +111,13 @@
         <div class="form-group row">
             <label for="passwordLength" class="col-xs-3 col-form-label">Length</label>
             <div class="col-xs-3 p-l-0">
-                <input class="form-control" type="number" id="passwordLength" v-model="password.options.length">
+                <input class="form-control" type="number" id="passwordLength" v-model="password.options.length"
+                       min="6">
             </div>
             <label for="passwordCounter" class="col-xs-3 col-form-label">Counter</label>
             <div class="col-xs-3 p-l-0">
                 <input class="form-control" type="number" id="passwordCounter"
-                       v-model="password.options.counter">
+                       v-model="password.options.counter" min="1">
             </div>
         </div>
     </form>
@@ -133,6 +133,7 @@
     import {showTooltip} from '../api/tooltip';
     import Storage from '../api/storage';
     import HTTP from '../api/http';
+    import Password from '../domain/password';
 
     const storage = new Storage();
     const Passwords = new HTTP('passwords', storage);
@@ -183,6 +184,16 @@
             'masterPassword': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
+            },
+            'generatedPassword': function (newPassword) {
+                const password = new Password(this.password);
+
+                if (password.isNewPassword(this.passwords)) {
+                    this.$store.dispatch('newPassword', password.json());
+                }
+                else {
+                    this.$store.dispatch('existingPassword');
+                }
             }
         },
         computed: Object.assign(mapGetters(['isAuthenticated']), {
