@@ -25,22 +25,37 @@
         </form>
         <div id="passwords" class="row" v-if="!loading">
             <div class="col-xs-12">
-                <div class="col-xs-12" v-if="passwords.length === 0">
-                    You don't have any passwords saved in your database.
-                    <br>
-                    <router-link :to="{ name: 'home'}">Would you like to create one ?</router-link>
-                </div>
-                <router-link class="list-group-item list-group-item-action"
-                             :to="{ name: 'password', params: { passwordId: password.id }}"
-                             v-for="password in filteredPasswords">
-                    <h5 class="list-group-item-heading">{{password.site}}</h5>
-                    <p class="list-group-item-text">{{password.login}}</p>
-                </router-link>
+                <table class="table">
+                    <tbody>
+                    <tr v-if="passwords.length === 0">
+                        <td>
+                            You don't have any passwords saved in your database.
+                            <br>
+                            <router-link :to="{ name: 'home'}">Would you like to create one ?</router-link>
+                        </td>
+                    </tr>
+                    <tr v-for="password in filteredPasswords">
+                        <td>
+                            <router-link :to="{ name: 'password', params: { passwordId: password.id }}">
+                                {{password.site}}
+                            </router-link>
+                            <br>
+                            {{password.login}}
+                        </td>
+                        <td class="text-xs-right">
+                            <delete-button :promise="deletePassword" :object="password"
+                                           text="Are you sure you want to delete this password ?">
+                            </delete-button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </template>
 <script type="text/ecmascript-6">
+    import DeleteButton from './DeleteButton';
     import Storage from '../api/storage';
     import HTTP from '../api/http';
 
@@ -55,11 +70,19 @@
                 searchQuery: ''
             }
         },
+        components: {
+            DeleteButton
+        },
         methods: {
             fetchPasswords(){
                 Passwords.all().then(response => {
                     this.passwords = response.data.results;
                     this.loading = false;
+                });
+            },
+            deletePassword(password){
+                return Passwords.remove({id: password.id}).then(() => {
+                    this.fetchPasswords();
                 });
             }
         },
