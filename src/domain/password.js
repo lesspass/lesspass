@@ -12,4 +12,8 @@ export default class Password {
         });
         return isNew;
     }
+
+    json() {
+        return this.password
+    }
 }
