@@ -1,6 +1,14 @@
 export default class Password {
     constructor(password) {
         this.password = password;
+        this.options = {
+            uppercase: password.uppercase,
+            lowercase: password.lowercase,
+            numbers: password.numbers,
+            symbols: password.symbols,
+            length: password.length,
+            counter: password.counter,
+        }
     }
 
     isNewPassword(passwords) {

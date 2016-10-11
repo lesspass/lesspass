@@ -90,20 +90,20 @@
             <div class="col-xs-12">
                 <label class="form-check-inline">
                     <input class="form-check-input" type="checkbox" id="lowercase"
-                           v-model="password.options.lowercase"> abc
+                           v-model="password.lowercase"> abc
                 </label>
                 <label class="form-check-inline">
                     <input class="form-check-input" type="checkbox" id="uppercase"
-                           v-model="password.options.uppercase"> ABC
+                           v-model="password.uppercase"> ABC
                 </label>
                 <label class="form-check-inline">
                     <input class="form-check-input" type="checkbox" id="numbers"
-                           v-model="password.options.numbers">
+                           v-model="password.numbers">
                     123
                 </label>
                 <label class="form-check-inline">
                     <input class="form-check-input" type="checkbox" id="symbols"
-                           v-model="password.options.symbols">
+                           v-model="password.symbols">
                     %!@
                 </label>
             </div>
@@ -111,13 +111,13 @@
         <div class="form-group row">
             <label for="passwordLength" class="col-xs-3 col-form-label">Length</label>
             <div class="col-xs-3 p-l-0">
-                <input class="form-control" type="number" id="passwordLength" v-model="password.options.length"
+                <input class="form-control" type="number" id="passwordLength" v-model="password.length"
                        min="6">
             </div>
             <label for="passwordCounter" class="col-xs-3 col-form-label">Counter</label>
             <div class="col-xs-3 p-l-0">
                 <input class="form-control" type="number" id="passwordCounter"
-                       v-model="password.options.counter" min="1">
+                       v-model="password.counter" min="1">
             </div>
         </div>
     </form>
@@ -141,14 +141,12 @@
     const defaultPassword = {
         site: '',
         login: '',
-        options: {
-            uppercase: true,
-            lowercase: true,
-            numbers: true,
-            symbols: true,
-            length: 12,
-            counter: 1,
-        }
+        uppercase: true,
+        lowercase: true,
+        numbers: true,
+        symbols: true,
+        length: 12,
+        counter: 1,
     };
 
     export default {
@@ -210,11 +208,12 @@
                 }
             }, 500),
             generatePassword(){
-                if (!this.encryptedLogin || !this.password.site || !this.password.options.length) {
+                const password = new Password(this.password);
+                if (!this.encryptedLogin || !this.password.site) {
                     this.generatedPassword = '';
                     return;
                 }
-                return lesspass.renderPassword(this.encryptedLogin, this.password.site, this.password.options);
+                return lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options);
             },
             showMasterPassword(e){
                 if (this.$refs.masterPassword.type === 'password') {
