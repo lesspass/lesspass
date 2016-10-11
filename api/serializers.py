@@ -61,7 +61,8 @@ class EntrySerializer(serializers.ModelSerializer):
 class PasswordSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Password
-        fields = ('id', 'login', 'site', 'options', 'created', 'modified')
+        fields = ('id', 'login', 'site', 'lowercase', 'uppercase', 'symbols', 'numbers', 'counter', 'length',
+                  'created', 'modified')
         read_only_fields = ('created', 'modified')
 
     def create(self, validated_data):

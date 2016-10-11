@@ -86,17 +86,6 @@ class Password(DateMixin):
     def __str__(self):
         return str(self.id)
 
-    def options(self):
-        return {
-            'lowercase': self.lowercase,
-            'uppercase': self.uppercase,
-            'symbols': self.symbols,
-            'numbers': self.numbers,
-            'counter': self.counter,
-            'length': self.length,
-
-        }
-
 
 class PasswordInfo(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
