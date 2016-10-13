@@ -3,55 +3,41 @@ import Vuex from 'vuex'
 import Auth from './api/auth';
 import HTTP from './api/http';
 import Storage from './api/storage';
+import Password from './domain/password';
 
 Vue.use(Vuex);
 
 const storage = new Storage();
 const auth = new Auth(storage);
-const Passwords = new HTTP('passwords', storage);
+const PasswordsAPI = new HTTP('passwords', storage);
+
+const defaultPassword = {
+    id: '',
+    site: '',
+    login: '',
+    uppercase: true,
+    lowercase: true,
+    numbers: true,
+    symbols: true,
+    length: 12,
+    counter: 1,
+};
 
 const state = {
     authenticated: auth.isAuthenticated(),
     email: '',
-    isPasswordNew: false,
-    passwordCreated: false,
-    newPassword: {},
-
+    passwordStatus: 'CLEAN',
     passwords: [],
-    password: {},
-    defaultPassword: {
-        site: '',
-        login: '',
-        uppercase: true,
-        lowercase: true,
-        numbers: true,
-        symbols: true,
-        length: 12,
-        counter: 1,
-    }
+    password: {}
 };
 
 const mutations = {
-    logout(state){
+    LOGOUT(state){
         state.authenticated = false;
     },
-    userAuthenticated(state, user){
+    USER_AUTHENTICATED(state, user){
         state.authenticated = true;
         state.email = user.email;
-    },
-    newPassword(state, newPassword){
-        state.isPasswordNew = true;
-        state.newPassword = newPassword;
-    },
-    existingPassword(state){
-        state.isPasswordNew = false;
-        state.newPassword = {};
-    },
-    passwordCreated(state){
-        state.passwordCreated = true;
-        setTimeout(()=> {
-            state.passwordCreated = false;
-        }, 5000);
     },
     SET_PASSWORDS(state, passwords){
         state.passwords = passwords;
@@ -68,42 +54,71 @@ const mutations = {
         if (state.password.id === id) {
             state.password = state.defaultPassword;
         }
+    },
+    PASSWORD_CLEAN(state){
+        setTimeout(()=> {
+            state.passwordStatus = 'CLEAN';
+        }, 5000);
+    },
+    CHANGE_PASSWORD_STATUS(state, status){
+        state.passwordStatus = status;
+    },
+    SET_DEFAULT_PASSWORD(state){
+        state.password = Object.assign({}, defaultPassword)
     }
 };
 
 const actions = {
-    userAuthenticated: ({commit}, user) => commit('userAuthenticated', user),
-    newPassword: ({commit}, newPassword) => commit('newPassword', newPassword),
-    existingPassword: ({commit}) => commit('existingPassword'),
-    logout: ({commit}) => {
+    USER_AUTHENTICATED: ({commit}, user) => commit('USER_AUTHENTICATED', user),
+    LOGOUT: ({commit}) => {
         auth.logout();
-        commit('logout');
+        commit('LOGOUT');
     },
-    savePassword: ({commit, state}) => {
-        Passwords.create(state.newPassword).then(() => {
-            commit('existingPassword');
-            commit('passwordCreated');
-        })
+    SAVE_OR_UPDATE_PASSWORD: ({commit, state, dispatch}) => {
+        const password = new Password(state.password);
+
+        if (password.isNewPassword(state.passwords)) {
+            PasswordsAPI.create(password.json()).then(() => {
+                commit('CHANGE_PASSWORD_STATUS', 'CREATED');
+                commit('PASSWORD_CLEAN');
+                dispatch('FETCH_PASSWORDS');
+            })
+        } else {
+            PasswordsAPI.update(password.json()).then(() => {
+                commit('CHANGE_PASSWORD_STATUS', 'UPDATED');
+                commit('PASSWORD_CLEAN');
+                dispatch('FETCH_PASSWORDS');
+            })
+        }
     },
-    refreshToken: ({commit}) => {
+    REFRESH_TOKEN: ({commit}) => {
         if (auth.isAuthenticated()) {
             auth.refreshToken().catch(() => {
-                commit('logout');
+                commit('LOGOUT');
             });
         }
     },
+    PASSWORD_CHANGE({commit}, {password}){
+        commit('SET_PASSWORD', {password});
+    },
+    PASSWORD_GENERATED: ({commit}) => {
+        commit('CHANGE_PASSWORD_STATUS', 'DIRTY');
+    },
     FETCH_PASSWORDS: ({commit}) => {
         if (auth.isAuthenticated()) {
-            Passwords.all().then(response => commit('SET_PASSWORDS', response.data.results));
+            PasswordsAPI.all().then(response => commit('SET_PASSWORDS', response.data.results));
         }
     },
-    FETCH_PASSWORD: ({commit}, password) => {
-        Passwords.get(password).then(response => commit('SET_PASSWORD', {password: response.data}));
+    FETCH_PASSWORD: ({commit}, {id}) => {
+        PasswordsAPI.get({id}).then(response => commit('SET_PASSWORD', {password: response.data}));
     },
     DELETE_PASSWORD: ({commit}, {id}) => {
-        Passwords.remove({id}).then(()=> {
+        PasswordsAPI.remove({id}).then(()=> {
             commit('DELETE_PASSWORD', {id});
         });
+    },
+    LOAD_DEFAULT_PASSWORD: ({commit})=> {
+        commit('SET_DEFAULT_PASSWORD');
     }
 };
 
@@ -118,8 +133,7 @@ const getters = {
     },
     isAuthenticated: state => state.authenticated,
     isGuest: state => !state.authenticated,
-    isPasswordNew: state => state.isPasswordNew,
-    passwordCreated: state => state.passwordCreated,
+    passwordStatus: state => state.passwordStatus,
     email: state => state.email,
     baseURL: state => state.baseURL
 };

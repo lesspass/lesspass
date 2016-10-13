@@ -17,7 +17,7 @@
 <template>
     <span class="input-group-btn" v-if="fingerprint">
         <button id="fingerprint" class="btn" type="button" tabindex="-1">
-            <small class="hint--top" aria-label="fingerprint">
+            <small class="hint--left" aria-label="master password fingerprint">
                 <i class="fa fa-fw" v-bind:class="[icon1]" v-bind:style="{ color: color1 }"></i>
                 <i class="fa fa-fw" v-bind:class="[icon2]" v-bind:style="{ color: color2 }"></i>
                 <i class="fa fa-fw" v-bind:class="[icon3]" v-bind:style="{ color: color3 }"></i>

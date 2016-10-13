@@ -34,12 +34,15 @@
             <div class="row">
                 <div class="col-xs-6">
                     <router-link class="menu-link" :to="{ name: 'home'}">LessPass</router-link>
-                    <span class=" hint--right" aria-label="Save password info"
-                          v-on:click="savePassword">
-                        <i class="fa fa-save m-l-1 fa-clickable" v-if="isPasswordNew"></i>
+                    <span class=" hint--right" aria-label="Save password"
+                          v-on:click="saveOrUpdatePassword">
+                        <i class="fa fa-save m-l-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
                     </span>
-                    <span v-if="passwordCreated" class="text-success">
+                    <span v-if="passwordStatus=='CREATED'" class="text-success">
                         <i class="fa fa-check m-l-1 text-success"></i> saved
+                    </span>
+                    <span v-if="passwordStatus=='UPDATED'" class="text-success">
+                        <i class="fa fa-check m-l-1 text-success"></i> updated
                     </span>
                 </div>
                 <div class="col-xs-6 text-xs-right">
@@ -80,19 +83,18 @@
     export default {
         methods: {
             logout(){
-                this.$store.dispatch('logout');
+                this.$store.dispatch('LOGOUT');
                 this.$router.push({name: 'home'});
             },
-            savePassword(){
-                this.$store.dispatch('savePassword');
+            saveOrUpdatePassword(){
+                this.$store.dispatch('SAVE_OR_UPDATE_PASSWORD');
             }
         },
         computed: mapGetters([
             'isAuthenticated',
             'isGuest',
             'email',
-            'isPasswordNew',
-            'passwordCreated'
+            'passwordStatus'
         ])
     }
 </script>

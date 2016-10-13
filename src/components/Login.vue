@@ -105,7 +105,7 @@
                 this.auth.login(this.user, baseURL)
                         .then(()=> {
                             this.storage.save({baseURL: baseURL, email: email});
-                            this.$store.dispatch('userAuthenticated', {email: email});
+                            this.$store.dispatch('USER_AUTHENTICATED', {email: email});
                             this.$router.push({name: 'home'});
                         })
                         .catch(err => {

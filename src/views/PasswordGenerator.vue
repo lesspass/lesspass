@@ -7,11 +7,18 @@
                     <input id="site"
                            name="site"
                            type="text"
+                           ref="site"
                            class="form-control"
                            placeholder="Site"
+                           list="savedSites"
                            autocorrect="off"
                            autocapitalize="none"
                            v-model="password.site">
+                    <datalist id="savedSites">
+                        <option v-for="pwd in passwords">
+                            {{pwd.site}} | {{pwd.login}}
+                        </option>
+                    </datalist>
                 </div>
             </div>
         </div>
@@ -44,6 +51,7 @@
                            type="password"
                            class="form-control"
                            placeholder="Master password"
+                           autocomplete="new-password"
                            autocorrect="off"
                            autocapitalize="none"
                            v-model="masterPassword">
@@ -65,7 +73,6 @@
                     <span class="input-group-btn">
                          <button id="copyPasswordButton" class="btn-copy btn btn-primary"
                                  :disabled="!generatedPassword"
-                                 v-on:click="generatePassword()"
                                  type="button"
                                  data-clipboard-target="#generatedPassword">
                          <i class="fa fa-clipboard white"></i> Copy
@@ -131,10 +138,6 @@
         return store.dispatch('FETCH_PASSWORDS')
     }
 
-    function fetchPassword(store, id) {
-        return store.dispatch('FETCH_PASSWORD', {id})
-    }
-
     export default {
         name: 'password-generator-view',
         components: {
@@ -144,26 +147,30 @@
         computed: {
             ...mapGetters(['passwords', 'password']),
             generatedPassword(){
-                const password = new Password(this.password);
                 if (!this.encryptedLogin || !this.password.site) {
                     this.generatedPassword = '';
                     return;
                 }
+                const password = new Password(this.password);
                 return lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options);
             }
         },
         preFetch: fetchPasswords,
         beforeMount () {
-            const passwordId = this.$route.params.passwordId;
-            if (passwordId) {
-                fetchPassword(this.$store, passwordId);
+            const id = this.$route.params.id;
+            if (id) {
+                this.$store.dispatch('FETCH_PASSWORD', {id});
             } else {
                 fetchPasswords(this.$store);
+                this.$store.dispatch('LOAD_DEFAULT_PASSWORD');
             }
+
             var clipboard = new Clipboard('#copyPasswordButton');
-            clipboard.on('success', function (e) {
-                if (e.text) {
-                    showTooltip(e.trigger, 'copied !');
+            var vm = this;
+            clipboard.on('success', event => {
+                vm.$store.dispatch('PASSWORD_GENERATED');
+                if (event.text) {
+                    showTooltip(event.trigger, 'copied !');
                 }
             });
         },
@@ -175,6 +182,24 @@
             }
         },
         watch: {
+            'password.site': function (newValue) {
+                const values = newValue.split(" | ");
+                if (values.length === 2) {
+                    const site = values[0];
+                    const login = values[1];
+                    const passwords = this.passwords;
+                    for (var i = 0; i < passwords.length; i++) {
+                        var password = passwords[i];
+                        if (password.site === site && password.login === login) {
+                            this.$store.dispatch('PASSWORD_CHANGE', {password: {...password}});
+                            this.$refs.masterPassword.focus();
+                            break;
+                        }
+                    }
+                    return site;
+                }
+                return newValue;
+            },
             'password.login': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
@@ -182,16 +207,6 @@
             'masterPassword': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
-            },
-            'generatedPassword': function (newPassword) {
-                const password = new Password(this.password);
-
-                if (password.isNewPassword(this.passwords)) {
-                    this.$store.dispatch('newPassword', password.json());
-                }
-                else {
-                    this.$store.dispatch('existingPassword');
-                }
             }
         },
         methods: {

@@ -30,7 +30,7 @@
                     </tr>
                     <tr v-for="password in passwords">
                         <td>
-                            <router-link :to="{ name: 'password', params: { passwordId: password.id }}">
+                            <router-link :to="{ name: 'password', params: { id: password.id }}">
                                 {{password.site}}
                             </router-link>
                             <br>
