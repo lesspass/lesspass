@@ -5,14 +5,9 @@
     }
 
     body {
+        background: #008ed6 fixed top;
+        background-size: cover;
         margin: 0;
-    }
-
-    @media (min-width: 768px) {
-        body {
-            background: #008ed6 fixed top;
-            background-size: cover;
-        }
     }
 
     * {
@@ -34,7 +29,11 @@
         color: #555;
     }
 
-    .white {
+    .white, .white-link {
+        color: #FFFFFF;
+    }
+
+    .white-link:hover, .white-link:active, .white-link:focus {
         color: #FFFFFF;
     }
 
@@ -93,22 +92,134 @@
     .card-block {
         position: relative;
     }
+
+    #hero {
+        height: 100vh;
+    }
+
+    .feature-image {
+        width: 64px;
+    }
 </style>
 <template>
     <div id="app">
-        <div id="lesspass" class="card">
-            <lesspass-menu></lesspass-menu>
-            <div class="card-block">
-                <router-view></router-view>
+        <div id="hero">
+            <div id="lesspass" class="card">
+                <lesspass-menu></lesspass-menu>
+                <div class="card-block">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="white">
+            <div class="m-y-1 hidden-sm-down" id="navbar">
+                <div class="container">
+                    <div class="row">
+                        <lesspass-header></lesspass-header>
+                    </div>
+                </div>
+            </div>
+            <div class="container m-t-3 p-t-3">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 m-b-3">
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object feature-image" src="./images/responsive.png"
+                                     alt="Generic placeholder image">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Available everywhere</h4>
+                                <p>
+                                    LessPass is a web application and works on all devices (computer, smartphone, tablet
+                                    and
+                                    your smartTV)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 m-b-3">
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object feature-image" src="./images/no-cloud.png"
+                                     alt="Generic placeholder image">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">No storage</h4>
+                                <p>
+                                    LessPass regenerates your passwords when you need them. No cloud storage is required
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 m-b-3">
+                        <div class="media">
+                            <a class="media-left" href="https://github.com/lesspass/lesspass/">
+                                <img class="media-object feature-image" src="./images/open-source.png"
+                                     alt="Generic placeholder image">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Open Source</h4>
+                                <p>
+                                    LessPass is <strong>open-source</strong>. So its security can be audited. Source
+                                    code is available on <a class="white-link"
+                                                            href="https://github.com/lesspass/lesspass/">Github</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 m-b-3">
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object feature-image" src="./images/free.png"
+                                     alt="Generic placeholder image">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Free</h4>
+                                <p>
+                                    LessPass is free<br>and always will be
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container p-y-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="hero__title p-y-2">
+                            Next-Gen Open Source Password Manager
+                        </h1>
+                        <h4 class="hero__subtitle">
+                            Stop wasting time synchronize your encrypted vault.
+                            Remember one master password to access your passwords, anywhere, anytime.<br>No sync needed.
+                        </h4>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="./images/demo.gif" class="img-fluid" alt="demo">
+                    </div>
+                </div>
+            </div>
+            <div class="container m-y-3 text-xs-center text-sm-left">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <small>
+                            Copyright LessPass <br>
+                            Created by <a class="white-link" href="https://twitter.com/guillaume20100">Guillaume
+                            Vincent</a>
+                        </small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script type="text/ecmascript-6">
+    import LesspassHeader from './components/LesspassHeader';
     import LesspassMenu from './components/Menu';
 
     export default {
         components: {
+            LesspassHeader,
             LesspassMenu
         },
         created(){
