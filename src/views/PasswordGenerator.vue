@@ -1,5 +1,37 @@
+<style>
+    #password-generator {
+        color: #555;
+    }
+
+    .inner-addon i {
+        position: absolute;
+        padding: 10px;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .inner-addon {
+        position: relative;
+    }
+
+    .left-addon i {
+        left: 0;
+    }
+
+    .right-addon i {
+        right: 0;
+    }
+
+    .left-addon input {
+        padding-left: 30px;
+    }
+
+    .right-addon input {
+        padding-right: 30px;
+    }
+</style>
 <template>
-    <form>
+    <form id="password-generator">
         <div class="form-group row">
             <div class="col-xs-12">
                 <div class="inner-addon left-addon">
