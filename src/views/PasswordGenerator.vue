@@ -106,6 +106,7 @@
                          <button id="copyPasswordButton" class="btn-copy btn btn-primary"
                                  :disabled="!generatedPassword"
                                  type="button"
+                                 v-on:click="cleanFormInSeconds(10)"
                                  data-clipboard-target="#generatedPassword">
                          <i class="fa fa-clipboard white"></i> Copy
                          </button>
@@ -183,8 +184,7 @@
                     this.generatedPassword = '';
                     return;
                 }
-                const password = new Password(this.password);
-                return lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options);
+                return this.generatePassword();
             }
         },
         preFetch: fetchPasswords,
@@ -198,9 +198,7 @@
             }
 
             var clipboard = new Clipboard('#copyPasswordButton');
-            var vm = this;
             clipboard.on('success', event => {
-                vm.$store.dispatch('PASSWORD_GENERATED');
                 if (event.text) {
                     showTooltip(event.trigger, 'copied !');
                 }
@@ -210,7 +208,8 @@
             return {
                 masterPassword: '',
                 encryptedLogin: '',
-                generatedPassword: ''
+                generatedPassword: '',
+                cleanTimeout: null
             }
         },
         watch: {
@@ -239,6 +238,9 @@
             'masterPassword': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
+            },
+            'generatedPassword': function () {
+                this.cleanFormInSeconds(30);
             }
         },
         methods: {
@@ -255,6 +257,20 @@
                 } else {
                     this.$refs.masterPassword.type = 'password';
                 }
+            },
+            generatePassword(){
+                const password = new Password(this.password);
+                const generatedPassword = lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options);
+                this.$store.dispatch('PASSWORD_GENERATED');
+                return generatedPassword;
+            },
+            cleanFormInSeconds(seconds){
+                clearTimeout(this.cleanTimeout);
+                this.cleanTimeout = setTimeout(() => {
+                    this.masterPassword = '';
+                    this.encryptedLogin = '';
+                    this.generatedPassword = '';
+                }, 1000 * seconds);
             }
         }
     }
