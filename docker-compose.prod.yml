@@ -10,6 +10,8 @@ services:
     image: lesspass/api:latest
     expose:
       - '8000'
+    volumes:
+      - www:/backend/www
     depends_on:
       - db
     environment:
@@ -39,3 +41,4 @@ services:
       - domain=lesspass.com
 volumes:
   postgresql:
+  www:

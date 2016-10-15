@@ -5,7 +5,7 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql/data
   backend:
-    build: ./backend
+    build: ./api
     expose:
       - '8000'
     depends_on:
