@@ -9,11 +9,12 @@ RUN apt-get update && apt-get install -y \
 ADD requirements.txt /backend/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+ADD entrypoint.sh /backend/
+RUN chmod 755 /backend/entrypoint.sh
+ENTRYPOINT ["/backend/entrypoint.sh"]
+
 ADD . /backend/
 
-COPY entrypoint.sh /
-RUN chmod 755 /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
-
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
