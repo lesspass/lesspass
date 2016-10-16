@@ -16,9 +16,9 @@ def get_secret_key(secret_key):
 
 SECRET_KEY = env('SECRET_KEY', preprocessor=get_secret_key, default=None)
 
-DEBUG = env.bool('DJANGO_DEBUG', default=True)
+DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=['localhost', '127.0.0.1', '.lesspass.com'])
 
 ADMIN = [('Guillaume Vincent', 'guillaume@oslab.fr'), ]
 
@@ -177,3 +177,5 @@ DJOSER = {
 }
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
