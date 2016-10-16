@@ -16,7 +16,6 @@ COPY conf.d/nginx.conf /etc/nginx/nginx.conf
 COPY conf.d/mime.types /etc/nginx/mime.types
 
 RUN rm /etc/nginx/conf.d/default.conf
-COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir /dockersible
 COPY dockersible/ /dockersible

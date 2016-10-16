@@ -6,7 +6,7 @@ from dockersible.files import copy, template
 
 
 def get_ssl_context(environ):
-    domain = environ['domain']
+    domain = environ['DOMAIN']
     nginx_info = {
         'domain': domain,
         'dhparam': False,
@@ -44,8 +44,8 @@ def get_certificates(domain):
 
 
 if __name__ == "__main__":
-    pk, crt = get_certificates(os.environ['domain'])
+    pk, crt = get_certificates(os.environ['DOMAIN'])
     copy(source=pk, destination='/etc/ssl/private', basename='private.key', mode='0600')
     copy(source=crt, destination='/etc/ssl/certs', basename='certificate.crt', mode='0644')
 
-    template('/backend.conf.j2', get_ssl_context(os.environ), '/etc/nginx/conf.d/backend.conf')
+    template('/backend.conf.j2', get_ssl_context(os.environ), '/etc/nginx/conf.d/default.conf')
