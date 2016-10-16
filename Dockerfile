@@ -7,12 +7,12 @@ WORKDIR /backend
 COPY requirements.txt /backend/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
 COPY api/ /backend/api/
 COPY lesspass/ /backend/lesspass/
 COPY manage.py /backend/manage.py
-
 COPY entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
-
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
