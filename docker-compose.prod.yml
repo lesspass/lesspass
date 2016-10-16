@@ -38,7 +38,7 @@ services:
       - backend
       - frontend
     environment:
-      - domain=lesspass.com
+      - DOMAIN=lesspass.com
 volumes:
   postgresql:
   www:
