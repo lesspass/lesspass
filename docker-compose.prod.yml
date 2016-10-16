@@ -7,7 +7,7 @@ services:
       - postgresql:/var/lib/postgresql/data
   backend:
     restart: always
-    image: lesspass/api:latest
+    image: lesspass/backend:latest
     expose:
       - '8000'
     volumes:

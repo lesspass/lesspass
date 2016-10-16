@@ -9,7 +9,7 @@ LessPass open source password manager (https://lesspass.com)
 
 ## LessPass submodules
 
- - [api](https://github.com/lesspass/api) : backend api used to store information about passwords
+ - [backend](https://github.com/lesspass/backend) : backend used to store information about passwords
  - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
  - [cozy](https://github.com/lesspass/cozy) : MyCozyCloud application
  - [desktop](https://github.com/lesspass/desktop) : desktop app built with electron
@@ -22,7 +22,7 @@ LessPass open source password manager (https://lesspass.com)
 
 | module | tests |
 | --- | --- |
-| [frontend](https://github.com/lesspass/frontend) | [![Build Status](https://travis-ci.org/lesspass/frontend.svg?branch=master)](https://travis-ci.org/lesspass/frontend) |
+| [backend](https://github.com/lesspass/backend) | [![Build Status](https://travis-ci.org/lesspass/api.svg?branch=master)](https://travis-ci.org/lesspass/backend) |
 | [core](https://github.com/lesspass/core) | [![Build Status](https://travis-ci.org/lesspass/core.svg?branch=master)](https://travis-ci.org/lesspass/core) |
-| [backend](https://github.com/lesspass/api) | [![Build Status](https://travis-ci.org/lesspass/api.svg?branch=master)](https://travis-ci.org/lesspass/api) |
+| [frontend](https://github.com/lesspass/frontend) | [![Build Status](https://travis-ci.org/lesspass/frontend.svg?branch=master)](https://travis-ci.org/lesspass/frontend) |
 | [web extension](https://github.com/lesspass/webextension) | [![Build Status](https://travis-ci.org/lesspass/webextension.svg?branch=master)](https://travis-ci.org/lesspass/webextension) |
