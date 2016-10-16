@@ -1,9 +1,6 @@
-FROM python:3.5
+FROM python:3.5-alpine
 
-RUN apt-get update && apt-get install -y \
-    supervisor \
-    netcat \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache supervisor netcat-openbsd postgresql-dev gcc python3-dev musl-dev
 
 RUN mkdir /backend
 WORKDIR /backend
