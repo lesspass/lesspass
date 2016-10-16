@@ -4,7 +4,7 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
+    "dev": "npm install && webpack-dev-server --inline --hot --host 0.0.0.0",
     "build": "NODE_ENV=production webpack --display-error-details --progress --hide-modules",
     "test": "ava test --compilers js:babel-register"
   },
