@@ -8,16 +8,3 @@ body {
     background-size: cover;
     margin: 0;
 }
-
-* {
-    border-radius: 0 !important;
-}
-
-.white-link {
-    color: white;
-}
-
-.white-link:hover, .white-link:focus, .white-link:active {
-    text-decoration: none;
-    color: white;
-}

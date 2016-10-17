@@ -1,5 +1,19 @@
+<style>
+    #lesspass .white-link {
+        color: white;
+    }
+
+    #lesspass .white-link:hover, #lesspass .white-link:focus, #lesspass .white-link:active {
+        text-decoration: none;
+        color: white;
+    }
+
+    #lesspass * {
+        border-radius: 0 !important;
+    }
+</style>
 <template>
-    <div class="card" style="border:none;">
+    <div id="lesspass" class="card" style="border:none;">
         <lesspass-menu></lesspass-menu>
         <div class="card-block" style="min-height: 400px;">
             <router-view></router-view>
