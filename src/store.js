@@ -138,11 +138,9 @@ const getters = {
     baseURL: state => state.baseURL
 };
 
-export default function (config) {
-    return new Vuex.Store({
-        state: Object.assign(state, config),
-        getters,
-        actions,
-        mutations
-    });
-}
+export default new Vuex.Store({
+    state: Object.assign(state, storage.json()),
+    getters,
+    actions,
+    mutations
+});

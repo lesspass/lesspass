@@ -6,12 +6,8 @@ import 'hint.css/hint.css';
 import './App.css';
 import App from './App';
 import 'bootstrap/dist/js/bootstrap';
-import Store from './store';
-import Storage from './api/storage';
+import store from './store';
 import router from './router';
-
-const storage = new Storage();
-const store = Store(storage.json());
 
 new Vue({
     el: '#app',
