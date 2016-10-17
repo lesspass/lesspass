@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: #008ed6 fixed top;
+    background-size: cover;
+    margin: 0;
+}
+
+* {
+    border-radius: 0 !important;
+}
+
+.white-link {
+    color: white;
+}
+
+.white-link:hover, .white-link:focus, .white-link:active {
+    text-decoration: none;
+    color: white;
+}

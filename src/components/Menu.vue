@@ -15,15 +15,6 @@
         text-decoration: none;
     }
 
-    .menu-link-white {
-        color: white;
-    }
-
-    .menu-link-white:hover, .menu-link-white:focus, .menu-link-white:active {
-        text-decoration: none;
-        color: white;
-    }
-
     .fa-clickable {
         cursor: pointer;
     }
@@ -65,10 +56,10 @@
             <div class="row">
                 <div class="index-header">
                     <div class="col-xs-6">
-                        <router-link class="menu-link-white" :to="{ name: 'home'}">LessPass</router-link>
+                        <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
                     </div>
                     <div class="col-xs-6 text-xs-right">
-                        <router-link class="menu-link-white" :to="{ name: 'login'}">
+                        <router-link class="white-link" :to="{ name: 'login'}">
                             <i class="fa fa-user-secret white" aria-hidden="true"></i>
                         </router-link>
                     </div>

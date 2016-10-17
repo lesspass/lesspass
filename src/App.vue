@@ -1,19 +1,3 @@
-<style>
-    html, body {
-        height: 100%;
-        width: 100%;
-    }
-
-    body {
-        background: #008ed6 fixed top;
-        background-size: cover;
-        margin: 0;
-    }
-
-    * {
-        border-radius: 0 !important;
-    }
-</style>
 <template>
     <div>
         <navigation-bar></navigation-bar>
