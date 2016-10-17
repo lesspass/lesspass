@@ -15,6 +15,15 @@
         text-decoration: none;
     }
 
+    .white-link {
+        color: white;
+    }
+
+    .white-link:hover, .white-link:focus, .white-link:active {
+        text-decoration: none;
+        color: white;
+    }
+
     .fa-clickable {
         cursor: pointer;
     }

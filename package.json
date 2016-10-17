@@ -1,11 +1,14 @@
 {
   "name": "lesspass-frontend",
+  "version": "1.0.0",
   "description": "frontend for LessPass with vuejs",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
-  "private": true,
+  "repository": "lesspass/frontend",
+  "homepage": "https://github.com/lesspass/frontend#readme",
+  "bugs": "https://github.com/lesspass/frontend/issues",
   "scripts": {
     "dev": "npm install && webpack-dev-server --inline --hot --host 0.0.0.0",
-    "build": "NODE_ENV=production webpack --display-error-details --progress --hide-modules",
+    "build": "rm -rf dist && NODE_ENV=production webpack --display-error-details --progress --hide-modules",
     "test": "ava test --compilers js:babel-register"
   },
   "dependencies": {
