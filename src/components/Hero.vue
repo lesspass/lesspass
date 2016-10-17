@@ -8,6 +8,7 @@
 
     #hero-text {
         color: #ffffff;
+        padding-top: 6em;
     }
 
     @media (max-width: 544px) {
@@ -32,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="hero-text" class="col-lg-6 pull-lg-6 p-t-3">
+                <div id="hero-text" class="col-lg-6 pull-lg-6">
                     <h1 class="display-5">Next-Gen Open Source Password Manager</h1>
                     <p class="lead">
                         Stop wasting time synchronize your encrypted vault.
