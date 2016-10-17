@@ -9,11 +9,26 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["dist/content.min.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "dist/content.min.js"
+      ],
       "run_at": "document_end"
     }
   ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "windows": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L",
+        "chromeos": "Ctrl+Shift+L",
+        "linux": "Ctrl+Shift+L"
+      }
+    }
+  },
   "permissions": [
     "activeTab",
     "storage"
