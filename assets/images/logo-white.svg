@@ -12,10 +12,10 @@
    id="svg3039"
    version="1.1"
    inkscape:version="0.91 r13725"
-   width="400"
+   width="420"
    height="90"
    sodipodi:docname="logo-white.svg"
-   inkscape:export-filename="/home/guillaume/workspace/lesspass/lesspass/app/1-header/logo.png"
+   inkscape:export-filename="/home/guillaume/workspace/lesspass/frontend/src/images/logo-white.png"
    inkscape:export-xdpi="80"
    inkscape:export-ydpi="80">
   <metadata
@@ -35,7 +35,7 @@
     <filter
        id="filter5169"
        inkscape:label="Drop Shadow"
-       color-interpolation-filters="sRGB">
+       style="color-interpolation-filters:sRGB">
       <feFlood
          id="feFlood5171"
          flood-opacity="0.4"
@@ -66,7 +66,7 @@
     <filter
        id="filter3013"
        inkscape:label="Drop Shadow"
-       color-interpolation-filters="sRGB">
+       style="color-interpolation-filters:sRGB">
       <feFlood
          id="feFlood3015"
          flood-opacity="0.4"
@@ -97,7 +97,7 @@
     <filter
        id="filter3097"
        inkscape:label="Drop Shadow"
-       color-interpolation-filters="sRGB">
+       style="color-interpolation-filters:sRGB">
       <feFlood
          id="feFlood3099"
          flood-opacity="0.4"
@@ -139,9 +139,9 @@
      inkscape:window-height="1056"
      id="namedview3041"
      showgrid="false"
-     inkscape:zoom="0.60866769"
-     inkscape:cx="-85.396436"
-     inkscape:cy="112.67144"
+     inkscape:zoom="1.7215722"
+     inkscape:cx="118.92499"
+     inkscape:cy="-14.621505"
      inkscape:window-x="49"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -162,7 +162,7 @@
      inkscape:export-ydpi="63" />
   <text
      xml:space="preserve"
-     style="font-size:72.84078979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Manga Temple;-inkscape-font-specification:Manga Temple;"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:72.84078979px;line-height:100%;font-family:'Manga Temple';-inkscape-font-specification:'Manga Temple';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
      x="98.325371"
      y="72.074348"
      id="text3050"
@@ -174,5 +174,5 @@
        id="tspan3052"
        x="98.325371"
        y="72.074348"
-       style="font-size:87.40895081px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;letter-spacing:-4.14706755px;fill:#ffffff;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;">lesspass</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:87.40895081px;line-height:100%;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;letter-spacing:-4.14706755px;fill:#ffffff;fill-opacity:1">LessPass</tspan></text>
 </svg>
