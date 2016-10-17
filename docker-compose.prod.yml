@@ -28,7 +28,7 @@ services:
       SECRET_KEY: ${SECRET_KEY}
   frontend:
     restart: always
-    image: lesspass/frontend:gh-pages
+    image: lesspass/frontend:latest
   nginx:
     restart: always
     image: lesspass/nginx:latest
