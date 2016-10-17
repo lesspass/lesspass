@@ -18,13 +18,6 @@
             'hero': Hero,
             'features': Features,
             'lesspass-footer': Footer,
-        },
-        created(){
-            const fiveMinutes = 1000 * 60 * 5;
-            this.$store.dispatch('REFRESH_TOKEN');
-            setInterval(()=> {
-                this.$store.dispatch('REFRESH_TOKEN');
-            }, fiveMinutes);
         }
     }
 </script>
