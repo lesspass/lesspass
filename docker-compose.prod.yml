@@ -43,7 +43,7 @@ services:
       - backend
       - frontend
     environment:
-      - DOMAIN=lesspass.com
+      - DOMAIN=${DOMAIN}
 volumes:
   postgresql:
   www:

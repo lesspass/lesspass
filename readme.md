@@ -18,6 +18,20 @@ LessPass open source password manager (https://lesspass.com)
  - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for lesspass password manager
 
 
+## Self Host your LessPass Database
+
+### requirements 
+
+ * docker
+ * docker-compose
+
+### install 
+
+simply run 
+
+    bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/lesspass.sh)
+
+
 ## Status
 
 | module | tests |
