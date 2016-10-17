@@ -1,5 +1,4 @@
 <style scoped>
-
     .jumbotron {
         background-color: transparent;
         padding-left: 0;
@@ -26,12 +25,7 @@
         <div class="jumbotron">
             <div class="row">
                 <div id="hero__password-generator-block" class="col-lg-6 push-lg-6">
-                    <div class="card" style="border:none;">
-                        <lesspass-menu></lesspass-menu>
-                        <div class="card-block" style="min-height: 400px;">
-                            <router-view></router-view>
-                        </div>
-                    </div>
+                    <lesspass></lesspass>
                 </div>
                 <div id="hero-text" class="col-lg-6 pull-lg-6">
                     <h1 class="display-5">Next-Gen Open Source Password Manager</h1>
@@ -49,11 +43,11 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import LessPassMenu from './Menu.vue';
+    import LessPass from './LessPass';
 
     export default {
         components: {
-            'lesspass-menu': LessPassMenu
+            'lesspass': LessPass
         }
     }
 </script>
