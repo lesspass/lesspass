@@ -1,9 +1,5 @@
-# LessPass Desktop App
+# deprecated
 
-desktop application for [lesspass.com](https://lesspass.com)
-
-# Run
-
-    npm install && npm start
+desktop application for [lesspass.com](https://lesspass.com) is deprecated
 
 see [LessPass](https://github.com/lesspass/lesspass) project
