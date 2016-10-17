@@ -39,7 +39,7 @@ services:
       - backend
       - frontend
     environment:
-      - DOMAIN=lesspass.com
+      - DOMAIN=localhost
 volumes:
   postgresql:
   node_modules:
