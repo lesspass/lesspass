@@ -19,14 +19,13 @@
                 <div class="media">
                     <div class="media-left">
                         <img class="media-object feature-image" src="../images/responsive.png"
-                             alt="Generic placeholder image">
+                             alt="Available far and wide">
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">Available everywhere</h4>
                         <p>
-                            LessPass is a web application and works on all devices (computer, smartphone, tablet
-                            and
-                            your smartTV)
+                            LessPass is a web application and works on all devices
+                            (computer, smartphone, tablet and your smartTV)
                         </p>
                     </div>
                 </div>
@@ -35,7 +34,7 @@
                 <div class="media">
                     <div class="media-left">
                         <img class="media-object feature-image" src="../images/no-cloud.png"
-                             alt="Generic placeholder image">
+                             alt="No Cloud">
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">No storage</h4>
@@ -48,16 +47,16 @@
             <div class="clearfix hidden-lg-up"></div>
             <div class="col-md-6 col-lg-3 m-b-3">
                 <div class="media">
-                    <a class="media-left" href="https://github.com/lesspass/lesspass/">
+                    <a class="media-left white-link" href="https://github.com/lesspass/lesspass/">
                         <img class="media-object feature-image" src="../images/open-source.png"
-                             alt="Generic placeholder image">
+                             alt="Open Source">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">Open Source</h4>
                         <p>
-                            LessPass is <strong>open-source</strong>. So its security can be audited. Source
-                            code is available on <a class="white-link"
-                                                    href="https://github.com/lesspass/lesspass/">Github</a>
+                            LessPass is <strong>open-source</strong>. So its security can be audited.
+                            Source code is available on
+                            <a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a>
                         </p>
                     </div>
                 </div>
@@ -66,7 +65,7 @@
                 <div class="media">
                     <div class="media-left">
                         <img class="media-object feature-image" src="../images/free.png"
-                             alt="Generic placeholder image">
+                             alt="Free">
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">Free</h4>

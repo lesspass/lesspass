@@ -6,8 +6,8 @@
 <template>
     <div class="container p-l-0 p-r-0 p-y-2 hidden-sm-down">
         <div class="col-xs-6">
-            <router-link class="nav-link" :to="{ name: 'home'}">
-                <img src="../images/logo-white.png" alt="logo" id="navbar__logo">
+            <router-link class="nav-link white-link" :to="{ name: 'home'}">
+                <img src="../images/logo-white.png" alt="LessPass" id="navbar__logo">
             </router-link>
         </div>
         <div class="col-xs-6 text-xs-right">
