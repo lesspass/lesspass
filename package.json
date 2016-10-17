@@ -1,6 +1,6 @@
 {
   "name": "lesspass-frontend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "frontend for LessPass with vuejs",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/frontend",
