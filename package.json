@@ -38,6 +38,7 @@
     "pilou": "^0.1.4",
     "style-loader": "^0.13.1",
     "tether": "^1.3.7",
+    "tldjs": "^1.7.0",
     "url-loader": "^0.5.7",
     "vue": "^2.0.1",
     "vue-loader": "^9.5.1",
