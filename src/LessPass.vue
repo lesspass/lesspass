@@ -8,7 +8,7 @@
         color: white;
     }
 
-    #lesspass * {
+    #lesspass, #lesspass * {
         border-radius: 0 !important;
     }
 </style>
