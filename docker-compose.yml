@@ -25,7 +25,6 @@ services:
     volumes:
       - ./frontend:/frontend
       - node_modules:/frontend/node_modules
-    command: npm run dev
   nginx:
     build: ./nginx
     ports:

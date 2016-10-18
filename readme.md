@@ -11,6 +11,7 @@ LessPass open source password manager (https://lesspass.com)
 
  - [backend](https://github.com/lesspass/backend) : backend used to store information about passwords
  - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
+ - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
  - [cozy](https://github.com/lesspass/cozy) : MyCozyCloud application
  - [frontend](https://github.com/lesspass/frontend) : frontend for LessPass with vuejs
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
@@ -37,5 +38,5 @@ simply run
 | --- | --- |
 | [backend](https://github.com/lesspass/backend) | [![Build Status](https://travis-ci.org/lesspass/backend.svg?branch=master)](https://travis-ci.org/lesspass/backend) |
 | [core](https://github.com/lesspass/core) | [![Build Status](https://travis-ci.org/lesspass/core.svg?branch=master)](https://travis-ci.org/lesspass/core) |
-| [frontend](https://github.com/lesspass/frontend) | [![Build Status](https://travis-ci.org/lesspass/frontend.svg?branch=master)](https://travis-ci.org/lesspass/frontend) |
+| [pure](https://github.com/lesspass/pure) | [![Build Status](https://travis-ci.org/lesspass/pure.svg?branch=master)](https://travis-ci.org/lesspass/pure) |
 | [web extension](https://github.com/lesspass/webextension) | [![Build Status](https://travis-ci.org/lesspass/webextension.svg?branch=master)](https://travis-ci.org/lesspass/webextension) |
