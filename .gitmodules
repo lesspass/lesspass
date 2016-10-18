@@ -1,21 +1,21 @@
 [submodule "nginx"]
 	path = nginx
-	url = https://github.com/lesspass/nginx.git
+	url = git@github.com:lesspass/nginx.git
 [submodule "backend"]
 	path = backend
-	url = https://github.com/lesspass/backend.git
+	url = git@github.com:lesspass/backend.git
 [submodule "core"]
 	path = core
-	url = https://github.com/lesspass/core.git
+	url = git@github.com:lesspass/core.git
 [submodule "webextension"]
 	path = webextension
-	url = https://github.com/lesspass/webextension.git
+	url = git@github.com:lesspass/webextension.git
 [submodule "frontend"]
 	path = frontend
-	url = https://github.com/lesspass/frontend.git
+	url = git@github.com:lesspass/frontend.git
 [submodule "cozy"]
 	path = cozy
-	url = https://github.com/lesspass/cozy.git
+	url = git@github.com:lesspass/cozy.git
 [submodule "pure"]
 	path = pure
-	url = https://github.com/lesspass/pure.git
+	url = git@github.com:lesspass/pure.git
