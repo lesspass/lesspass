@@ -5,10 +5,179 @@
     <title>LessPass</title>
     <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="dist/styles.css">
+    <link rel="stylesheet" href="dist/lesspass.css">
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: #008ed6 fixed top;
+            background-size: cover;
+            margin: 0;
+        }
+
+        #navbar__logo {
+            height: 2em;
+        }
+
+        .white-link {
+            color: white;
+        }
+
+        .white-link:hover, .white-link:focus, .white-link:active {
+            text-decoration: none;
+            color: white;
+        }
+
+        .jumbotron {
+            background-color: transparent;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #hero-text {
+            color: #ffffff;
+            padding-top: 6em;
+        }
+
+        @media (max-width: 544px) {
+            #hero__password-generator-block {
+                padding: 0;
+            }
+
+            .jumbotron {
+                padding: 0;
+            }
+        }
+
+        .feature-image {
+            width: 64px;
+        }
+
+        * {
+            border-radius: 0 !important;
+        }
+        .white{
+            color:white;
+        }
+    </style>
 </head>
 <body>
-<div id="app"></div>
-<script src="dist/bundle.js"></script>
+<div class="container p-l-0 p-r-0 p-y-2 hidden-sm-down">
+    <div class="col-xs-6">
+        <a class="nav-link white-link" href="/">
+            <img src="dist/logo-white.png" alt="LessPass" id="navbar__logo">
+        </a>
+    </div>
+    <div class="col-xs-6 text-xs-right">
+        <nav class="nav nav-inline pull-sm-right" style="line-height: 2em">
+            <a class="nav-link white-link"
+               href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
+                <i class="fa fa-firefox" aria-hidden="true"></i> Firefox Extension
+            </a>
+            <a class="nav-link white-link"
+               href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+                <i class="fa fa-chrome" aria-hidden="true"></i> Chrome Extension
+            </a>
+        </nav>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div id="hero__password-generator-block" class="col-lg-6 push-lg-6">
+                <div id="lesspass"></div>
+            </div>
+            <div id="hero-text" class="col-lg-6 pull-lg-6">
+                <h1 class="display-5">Next-Gen Open Source Password Manager</h1>
+                <p class="lead">
+                    Stop wasting time synchronize your encrypted vault.
+                    Remember one master password to access your passwords, anywhere, anytime.
+                    No sync needed.
+                </p>
+                <p class="lead">
+                    <button class="btn btn-secondary">How it works ?</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container white">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object feature-image" src="dist/responsive.png"
+                         alt="Available far and wide">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Available everywhere</h4>
+                    <p>
+                        LessPass is a web application and works on all devices
+                        (computer, smartphone, tablet and your smartTV)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object feature-image" src="dist/no-cloud.png"
+                         alt="No Cloud">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">No storage</h4>
+                    <p>
+                        LessPass regenerates your passwords when you need them. No cloud storage is required
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix hidden-lg-up"></div>
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <a class="media-left white-link" href="https://github.com/lesspass/lesspass/">
+                    <img class="media-object feature-image" src="dist/open-source.png"
+                         alt="Open Source">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Open Source</h4>
+                    <p>
+                        LessPass is <strong>open-source</strong>. So its security can be audited.
+                        Source code is available on
+                        <a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 m-b-3">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object feature-image" src="dist/free.png"
+                         alt="Free">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Free</h4>
+                    <p>
+                        LessPass is free<br>and always will be
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-xs-center text-sm-left white m-y-3">
+    <div class="row">
+        <div class="col-xs-12">
+            <small>
+                Copyright LessPass <br>
+                Created by <a class="white-link" href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
+            </small>
+        </div>
+    </div>
+</div>
+<script src="dist/lesspass.js"></script>
 </body>
 </html>
