@@ -10,10 +10,10 @@
     "build": "rm -rf dist && gulp"
   },
   "dependencies": {
-    "express": "^4.14.0",
-    "lesspass-pure": "^2.0.1"
+    "express": "^4.14.0"
   },
   "devDependencies": {
+    "lesspass-pure": "^2.0.1",
     "gulp": "^3.9.1"
   }
 }
