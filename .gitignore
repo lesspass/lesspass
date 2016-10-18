@@ -1,2 +1,3 @@
-node_modules
-/domains/top-1m.csv
+.DS_Store
+node_modules/
+npm-debug.log

@@ -1,50 +1,65 @@
-var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: {
-    lesspass: "./src/lesspass"
-  },
-  output: {
-    path: 'dist',
-    publicPath: '/dist/',
-    filename: '[name].js'
-  },
-  module: {
-    loaders: [
-      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
-      {test: /\.json$/, loader: 'json-loader'},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")},
-      {
-        test: /\.(png|jpg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
+    entry: './src/main.js',
+    output: {
+        path: path.resolve(__dirname, './dist'),
+        publicPath: '/dist/',
+        filename: 'lesspass.js'
+    },
+    resolve: {
+        extensions: ['', '.js', '.vue'],
+        fallback: [path.join(__dirname, 'node_modules')],
+        alias: {
+            src: path.resolve(__dirname, './src'),
+            jquery: 'jquery/src/jquery'
         }
-      }
-    ]
-  },
-  plugins: [
-    new ExtractTextPlugin("[name].css")
-  ],
-  devtool: '#eval-source-map'
+    },
+    resolveLoader: {
+        root: path.join(__dirname, 'node_modules')
+    },
+    module: {
+        loaders: [
+            {test: /\.vue$/, loader: 'vue-loader'},
+            {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+            {test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=[name].[ext]',},
+            {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
+            {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=application/font-woff'},
+            {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=application/font-woff'},
+            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=application/octet-stream'},
+            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=image/svg+xml'},
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin('lesspass.css'),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            'window.Tether': 'tether'
+        })
+    ],
+    devtool: '#eval-source-map'
 };
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map';
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {comments: false},
-      compress: {warnings: false}
-    }),
-    new webpack.optimize.OccurenceOrderPlugin()
-  ]);
+    module.exports.devtool = false;
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: true
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false
+        })
+    ]);
 }
+

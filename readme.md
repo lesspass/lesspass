@@ -1,25 +1,23 @@
 # LessPass Pure
 
-LessPass pure html, js and css component used in the web extension and the frontend app.
+LessPass pure component for [lesspass.com](https://lesspass.com)
 
-![LessPass Component](screenshot.png?raw=true "Demo")
 
-# Install
+ - vuejs
+ - vue-router
+ - vuex
+ - ava for tests
+ - webpack
+ - ES6
 
-    npm install lesspass-pure
 
-# Test
+## Tests
 
-    npm run dev
+    npm install
+    npm test
 
-open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/)
-
-# Build
+## Build
 
     npm run build
-
-# Run
-
-    npm start
 
 see [LessPass](https://github.com/lesspass/lesspass) project
