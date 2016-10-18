@@ -18,14 +18,14 @@ services:
       - www:/backend/www
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
       DATABASE_ENGINE: 'django.db.backends.postgresql'
       DATABASE_NAME: 'lesspass'
       DATABASE_USER: 'lesspass'
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_HOST: 'db'
       DATABASE_PORT: '5432'
-      SECRET_KEY: ${SECRET_KEY}
   frontend:
     restart: always
     image: lesspass/frontend:latest
