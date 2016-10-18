@@ -12,7 +12,7 @@
     "test": "ava tests --compilers js:babel-register"
   },
   "dependencies": {
-    "lesspass-frontend": "^1.0.1",
+    "lesspass-pure": "^2.0.0",
     "tldjs": "^1.7.0"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 
 gulp.task('lesspass', [], function () {
-  return gulp.src(['node_modules/lesspass-frontend/dist/**/*'])
+  return gulp.src(['node_modules/lesspass-pure/dist/**/*'])
     .pipe(gulp.dest('extension/dist/'));
 });
 
