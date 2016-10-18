@@ -125,8 +125,6 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -173,9 +171,22 @@ if 'test' in sys.argv[1:] or 'jenkins' in sys.argv[1:]:
 
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': '#/activate/{uid}/{token}'
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True
 }
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+if DEBUG:
+    EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+else:
+    EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'localhost')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+EMAIL_PORT = os.getenv('EMAIL_PORT', 25)
+EMAIL_SUBJECT_PREFIX = os.getenv('EMAIL_SUBJECT_PREFIX', '[LessPass] ')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', False)
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False)
