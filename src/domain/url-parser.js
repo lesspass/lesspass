@@ -23,7 +23,7 @@ function isWebExtension() {
 }
 
 function getCurrentUrl() {
-    return new Promise(function (resolve) {
+    return new Promise(resolve => {
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
             resolve(tabs[0].url);
         });
@@ -37,7 +37,7 @@ function getSite() {
             return getDomainName(currentUrl)
         });
     }
-    return new Promise(function (resolve) {
+    return new Promise(resolve => {
         resolve('')
     });
 }

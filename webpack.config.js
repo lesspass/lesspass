@@ -24,6 +24,7 @@ module.exports = {
         loaders: [
             {test: /\.vue$/, loader: 'vue-loader'},
             {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+            {test: /\.json/, loader: 'json-loader'},
             {test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=[name].[ext]',},
             {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', {publicPath: ''})},
             {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=application/font-woff'},

@@ -67,6 +67,9 @@ const mutations = {
     },
     SET_DEFAULT_PASSWORD(state){
         state.password = Object.assign({}, defaultPassword)
+    },
+    UPDATE_SITE(state, {site}){
+        state.password.site = site
     }
 };
 

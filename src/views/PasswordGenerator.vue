@@ -166,6 +166,7 @@
     import debounce from 'lodash.debounce';
     import {showTooltip} from '../api/tooltip';
     import Password from '../domain/password';
+    import {getSite} from '../domain/url-parser';
 
     function fetchPasswords(store) {
         return store.dispatch('FETCH_PASSWORDS')
@@ -195,6 +196,12 @@
             } else {
                 fetchPasswords(this.$store);
             }
+
+            getSite().then(site => {
+                if (site) {
+                    this.$store.commit('UPDATE_SITE', {site})
+                }
+            });
 
             var clipboard = new Clipboard('#copyPasswordButton');
             clipboard.on('success', event => {
