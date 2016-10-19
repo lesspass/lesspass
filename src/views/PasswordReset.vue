@@ -29,6 +29,7 @@
         <div class="form-group row">
             <div class="col-xs-12">
                 <button id="loginButton" class="btn btn-primary" type="submit">
+                    <span v-if="loading"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
                     Send me a reset link
                 </button>
             </div>
@@ -50,11 +51,13 @@
                 email: '',
                 emailRequired: false,
                 showError: false,
+                loading: false,
                 successMessage: false,
             };
         },
         methods: {
             cleanErrors(){
+                this.loading = false;
                 this.emailRequired = false;
                 this.showError = false;
                 this.successMessage = false;
@@ -68,9 +71,12 @@
                     this.emailRequired = true;
                     return;
                 }
+                this.loading = true;
                 this.auth.resetPassword({email: this.email}).then(()=> {
-                    this.successMessage = true
-                }).catch(err => {
+                    this.cleanErrors();
+                    this.successMessage = true;
+                }).catch(() => {
+                    this.cleanErrors();
                     this.showError = true;
                 });
             }

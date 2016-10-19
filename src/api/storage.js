@@ -13,7 +13,8 @@ export default class Storage {
 
     json() {
         const defaultStorage = {
-            baseURL: 'https://lesspass.com'
+            baseURL: 'https://lesspass.com',
+            timeout: 5000
         };
         const localStorage = this._getLocalStorage();
         return Object.assign(defaultStorage, localStorage);
