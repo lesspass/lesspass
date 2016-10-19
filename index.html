@@ -24,6 +24,11 @@
 
         .white-link {
             color: white;
+            text-decoration: underline;
+        }
+
+        #hero__password-generator-block .white-link, #navbar .white-link {
+            text-decoration: none;
         }
 
         .white-link:hover, .white-link:focus, .white-link:active {
@@ -66,7 +71,7 @@
     </style>
 </head>
 <body>
-<div class="container p-l-0 p-r-0 p-y-2 hidden-sm-down">
+<div id="navbar" class="container p-l-0 p-r-0 p-y-2 hidden-sm-down">
     <div class="col-xs-6">
         <a class="nav-link white-link" href="/">
             <img src="dist/logo-white.png" alt="LessPass" id="navbar__logo">
@@ -172,13 +177,73 @@
         </div>
     </div>
 </div>
-<div class="container text-xs-center text-sm-left white m-y-3">
-    <div class="row">
-        <div class="col-xs-12">
-            <small>
-                Copyright LessPass <br>
-                Created by <a class="white-link" href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
-            </small>
+<div style="background-color: #226FAB;">
+    <div class="container white p-y-3 m-t-1">
+        <div class="row p-y-3 m-y-3">
+            <div class="col-xs-12">
+                <h1 class="display-5">Features</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <p class="lead">
+                    Generate password on client side, directly in your browser. No sync needed.
+                    The system derive your site, login and master password and it returns an unique password for your
+                    site.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img src="dist/demo.gif" class="img-fluid" alt="password generation">
+            </div>
+        </div>
+        <div class="row p-y-3 m-y-3">
+            <div class="col-md-5">
+                <img src="dist/masterPasswordPattern.png" class="img-fluid" alt="password pattern">
+            </div>
+            <div class="col-md-5">
+                <p class="lead">
+                    Memorize master password easily. Build a story in your head&nbsp;: "I like to eat in this luxury
+                    liner."
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <p class="lead">
+                    Save and load complex password on LessPass Database. If you don't want to use our database, you can
+                    host your own with
+                    <a class="white-link" href="https://github.com/lesspass/lesspass#self-host-your-lesspass-database">one
+                        command</a>.
+                    To register an account on LessPass click on the <i class="fa fa-user-secret white" aria-hidden="true"></i> icon in the LessPass component header.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img src="dist/demo2.gif" class="img-fluid" alt="password load">
+            </div>
+        </div>
+        <div class="row p-y-3 m-y-3">
+            <div class="col-md-5">
+                <img src="dist/webextension.png" class="img-fluid" alt="web extension">
+            </div>
+            <div class="col-md-5">
+                <p class="lead">
+                    Download the <a class="white-link" href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">Firefox</a>
+                    or the <a class="white-link" href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">Chrome</a> extension
+                    to use the same component everywhere. Use the <kbd><kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>L</kbd></kbd> shortcut to open the extension.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="background-color: #F8F9F9;">
+    <div class="container text-xs-center text-sm-left p-y-3">
+        <div class="row">
+            <div class="col-xs-12">
+                <small>
+                    Copyright LessPass <br>
+                    Created by <a href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
+                </small>
+            </div>
         </div>
     </div>
 </div>
