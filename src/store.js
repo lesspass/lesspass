@@ -28,6 +28,7 @@ const state = {
     email: '',
     passwordStatus: 'CLEAN',
     passwords: [],
+    baseURL: 'https://lesspass.com',
     password: {
         ...defaultPassword
     }
@@ -70,6 +71,12 @@ const mutations = {
     },
     UPDATE_SITE(state, {site}){
         state.password.site = site
+    },
+    UPDATE_BASE_URL(state, {baseURL}){
+        state.baseURL = baseURL
+    },
+    UPDATE_EMAIL(state, {email}){
+        state.email = email
     }
 };
 
@@ -133,8 +140,7 @@ const getters = {
     isAuthenticated: state => state.authenticated,
     isGuest: state => !state.authenticated,
     passwordStatus: state => state.passwordStatus,
-    email: state => state.email,
-    baseURL: state => state.baseURL
+    email: state => state.email
 };
 
 export default new Vuex.Store({
