@@ -10,7 +10,7 @@
     "build": "npm run clean && gulp && npm run zip"
   },
   "dependencies": {
-    "lesspass-pure": "^2.1.1"
+    "lesspass-pure": "^2.1.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
