@@ -6,8 +6,8 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: 'lesspass'
-      POSTGRES_USER: 'lesspass'
+      POSTGRES_DB: 'postgres'
+      POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
   backend:
     restart: always
@@ -22,8 +22,8 @@ services:
       - .env
     environment:
       DATABASE_ENGINE: 'django.db.backends.postgresql'
-      DATABASE_NAME: 'lesspass'
-      DATABASE_USER: 'lesspass'
+      DATABASE_NAME: 'postgres'
+      DATABASE_USER: 'postgres'
       DATABASE_HOST: 'db'
       DATABASE_PORT: '5432'
   frontend:
