@@ -1,8 +1,6 @@
 [![Build Status](https://travis-ci.org/lesspass/core.svg?branch=master)](https://travis-ci.org/lesspass/core)
 
-# LessPass Core
-
-core library for LessPass password manager in javascript used to generate unique password.
+> core library for LessPass password manager in javascript used to generate unique password.
 
 ## Requirements
 
