@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lesspass/cli.svg?branch=master)](https://travis-ci.org/lesspass/cli)
 
 
 > build LessPass passwords directly in command line with nodejs
