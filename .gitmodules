@@ -19,3 +19,6 @@
 [submodule "pure"]
 	path = pure
 	url = git@github.com:lesspass/pure.git
+[submodule "cli"]
+	path = cli
+	url = git@github.com:lesspass/cli.git
