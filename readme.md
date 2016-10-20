@@ -14,4 +14,9 @@ Install app with `https://github.com/lesspass/cozy@master` repository
 
     npm start
 
-see [LessPass](https://github.com/lesspass/lesspass) project
+## License
+
+MIT © [Guillaume Vincent](http://guillaumevincent.com)
+
+
+## [LessPass project](https://github.com/lesspass/lesspass)
