@@ -41,4 +41,9 @@ see [tests/api.tests.js](tests/api.tests.js) for more examples
 
     npm test
 
-see [LessPass](https://github.com/lesspass/lesspass) project
+## License
+
+MIT © [Guillaume Vincent](http://guillaumevincent.com)
+
+
+## [LessPass project](https://github.com/lesspass/lesspass)
