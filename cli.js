@@ -2,6 +2,7 @@
 'use strict';
 var meow = require('meow');
 var lesspass = require('lesspass');
+var read = require('read');
 
 var cli = meow(`
     Usage
@@ -29,14 +30,17 @@ var cli = meow(`
     }
 });
 
+function calcPassword(site, login, masterPassword, options) {
+    lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
+        var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
+        console.log(generatedPassword);
+    });
+}
 
 var lowercase = (cli.flags.lowercase || 'true').toLowerCase() === 'true';
 var uppercase = (cli.flags.uppercase || 'true').toLowerCase() === 'true';
 var symbols = (cli.flags.symbols || 'true').toLowerCase() === 'true';
 var numbers = (cli.flags.numbers || 'true').toLowerCase() === 'true';
-var site = cli.input[0];
-var login = cli.input[1];
-var masterPassword = cli.input[2];
 var options = {
     counter: cli.flags.counter || 1,
     length: cli.flags.length || 12,
@@ -46,7 +50,14 @@ var options = {
     symbols: symbols
 };
 
-lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
-    var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
-    console.log(generatedPassword);
-});
+var site = cli.input[0];
+var login = cli.input[1];
+
+if (cli.input.length === 3) {
+    var masterPassword = cli.input[2];
+    calcPassword(site, login, masterPassword, options)
+} else {
+    read({prompt: 'master password: ', silent: true}, function (er, password) {
+        calcPassword(site, login, password, options)
+    });
+}

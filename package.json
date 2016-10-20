@@ -25,7 +25,8 @@
   ],
   "dependencies": {
     "lesspass": "^4.0.4",
-    "meow": "^3.3.0"
+    "meow": "^3.3.0",
+    "read": "^1.0.7"
   },
   "devDependencies": {
     "ava": "^0.16.0",
