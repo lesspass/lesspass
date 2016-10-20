@@ -1,7 +1,6 @@
-# LessPass Pure
+[![Build Status](https://travis-ci.org/lesspass/pure.svg?branch=master)](https://travis-ci.org/lesspass/pure)
 
-LessPass pure component for [lesspass.com](https://lesspass.com)
-
+> LessPass pure component for [lesspass.com](https://lesspass.com)
 
  - vuejs
  - vue-router
