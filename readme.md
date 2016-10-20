@@ -1,6 +1,4 @@
-# LessPass Cozy
-
-LessPass Cozy App
+> LessPass Cozy App
 
 # Install
 
