@@ -40,4 +40,9 @@ Example if your domain is `lesspass.com`
     ls ssl/
     lesspass.com.ca.crt  lesspass.com.crt  lesspass.com.dhparam.pem  lesspass.com.key
 
-see [LessPass](https://github.com/lesspass/lesspass) project
+## License
+
+MIT © [Guillaume Vincent](http://guillaumevincent.com)
+
+
+## [LessPass project](https://github.com/lesspass/lesspass)
