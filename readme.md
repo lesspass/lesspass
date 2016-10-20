@@ -21,4 +21,9 @@ extensions are in `./build` folder
     ./build/lesspass.firefox.xpi
 
 
-see [LessPass](https://github.com/lesspass/lesspass) project
+## License
+
+MIT © [Guillaume Vincent](http://guillaumevincent.com)
+
+
+## [LessPass project](https://github.com/lesspass/lesspass)
