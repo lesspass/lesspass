@@ -16,4 +16,9 @@ api server with django rest framework for LessPass password manager
     pip install -r requirements.txt
     python manage.py test
 
-see [LessPass](https://github.com/lesspass/lesspass) project
+## License
+
+MIT © [Guillaume Vincent](http://guillaumevincent.com)
+
+
+## [LessPass project](https://github.com/lesspass/lesspass)
