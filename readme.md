@@ -1,7 +1,8 @@
-# LessPass frontend
+> Frontend application for [lesspass.com](https://lesspass.com)
 
-Frontend application for [lesspass.com](https://lesspass.com)
+## build
 
+    npm run build
 
 ## License
 
