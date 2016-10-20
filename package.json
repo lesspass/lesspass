@@ -1,6 +1,6 @@
 {
   "name": "lesspass-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "build LessPass passwords directly in command line",
   "license": "MIT",
   "repository": "lesspass/cli",
