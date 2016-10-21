@@ -2,7 +2,7 @@
 
 > chrome and firefox web extension for LessPass password manager
 
-![demo LessPass extension](demo.gif?raw=true "LessPass demo")
+![LessPass extension](screenshot.png?raw=true "LessPass screenshot")
 
 # Tests
 
