@@ -37,13 +37,21 @@ $ lesspass --help
 
 ## FAQ
 
-How can I generate a password if I have a quote (`'`) in my master password ?
+### How can I generate a password if I have a quote (`'`) in my master password ?
 
 Escape the quote like this :
 
     lesspass lesspass.com contact@lesspass.com 'my parents'\'' house is great'
 
 Replace `'` by `'\''`
+
+### password prompt 
+
+If you omit master password, lesspass-cli will ask you a master password:
+
+    lesspass lesspass.com contact@lesspass.com --length=14
+    master password: 
+
 
 ## License
 
