@@ -13,6 +13,7 @@ LessPass open source password manager (https://lesspass.com)
  - [backend](https://github.com/lesspass/backend) : backend used to store information about passwords
  - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
  - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
+ - [cli](https://github.com/lesspass/cli) : build LessPass passwords directly in command line with nodejs
  - [cozy](https://github.com/lesspass/cozy) : MyCozyCloud application
  - [frontend](https://github.com/lesspass/frontend) : frontend for LessPass with vuejs
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
