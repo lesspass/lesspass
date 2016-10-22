@@ -12,8 +12,13 @@ gulp.task('images', [], function () {
         .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('assets', [], function () {
+    return gulp.src(['manifest.json'])
+        .pipe(gulp.dest('dist/'));
+});
+
 gulp.task('build', [], function () {
-    gulp.start('lesspass', 'images');
+    gulp.start('lesspass', 'images', 'assets');
 });
 
 gulp.task('default', ['build'], function () {

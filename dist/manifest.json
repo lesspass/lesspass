@@ -1,0 +1,15 @@
+{
+  "name": "LessPass",
+  "start_url": "./",
+  "display": "standalone",
+  "description": "Next-Gen Open Source Password Manager",
+  "background_color": "#008ed6",
+  "theme_color": "#008ed6",
+  "icons": [
+    {
+      "src": "dist/icon.png",
+      "sizes": "80x80",
+      "type": "image/png"
+    }
+  ]
+}
