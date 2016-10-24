@@ -7,13 +7,15 @@
   "homepage": "https://github.com/lesspass/frontend#readme",
   "bugs": "https://github.com/lesspass/frontend/issues",
   "scripts": {
-    "build": "rm -rf dist && gulp"
+    "build": "rm -rf dist && gulp && rm dist/index.html"
   },
   "dependencies": {
     "express": "^4.14.0"
   },
   "devDependencies": {
+    "favicons": "^4.8.3",
     "gulp": "^3.9.1",
+    "gulp-favicons": "^2.2.6",
     "lesspass-pure": "^2.1.3"
   }
 }
