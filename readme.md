@@ -44,6 +44,10 @@ simply run
 | [cli](https://github.com/lesspass/cli) | [![Build Status](https://travis-ci.org/lesspass/cli.svg?branch=master)](https://travis-ci.org/lesspass/cli) |
 | [web extension](https://github.com/lesspass/webextension) | [![Build Status](https://travis-ci.org/lesspass/webextension.svg?branch=master)](https://travis-ci.org/lesspass/webextension) |
 
+## Contributors
+
+see contributors.md
+
 ## License
 
 MIT © [Guillaume Vincent](http://guillaumevincent.com)
