@@ -13,7 +13,6 @@ gulp.task('images', [], function () {
         .pipe(gulp.dest('dist/'));
 });
 
-
 gulp.task('favicon', function () {
     return gulp.src('images/favicon.png')
         .pipe(favicons({
