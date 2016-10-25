@@ -16,26 +16,6 @@ class AdminFactory(UserFactory):
     is_admin = True
 
 
-class PasswordInfoFactory(factory.DjangoModelFactory):
-    class Meta:
-        model = models.PasswordInfo
-
-    settings = '["lowercase", "uppercase", "numbers", "symbols"]'
-
-
-class EntryFactory(factory.DjangoModelFactory):
-    class Meta:
-        model = models.Entry
-
-    user = factory.SubFactory(UserFactory)
-    password = factory.SubFactory(PasswordInfoFactory)
-
-    title = 'twitter'
-    site = 'twitter'
-    username = 'guillaume20100'
-    url = 'https://twitter.com/'
-
-
 class PasswordFactory(factory.DjangoModelFactory):
     class Meta:
         model = models.Password

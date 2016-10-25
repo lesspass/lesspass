@@ -1,5 +1,5 @@
 from api import models
-from api.models import PasswordInfo, Entry, LessPassUser
+from api.models import LessPassUser
 
 from django import forms
 from django.contrib import admin
@@ -79,14 +79,6 @@ class PasswordAdmin(admin.ModelAdmin):
     ordering = ('user',)
 
 
-class EntryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user',)
-    search_fields = ('user__email',)
-    ordering = ('user',)
-
-
 admin.site.register(models.Password, PasswordAdmin)
-admin.site.register(Entry, EntryAdmin)
-admin.site.register(PasswordInfo)
 admin.site.register(LessPassUser, LessPassUserAdmin)
 admin.site.unregister(Group)

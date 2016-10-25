@@ -5,7 +5,6 @@ from rest_framework.routers import DefaultRouter
 from api import views
 
 router = DefaultRouter()
-router.register(r'entries', views.EntryViewSet, base_name='entries')
 router.register(r'passwords', views.PasswordViewSet, base_name='passwords')
 
 urlpatterns = [
