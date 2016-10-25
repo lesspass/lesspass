@@ -1,36 +1,20 @@
 import test from 'ava';
 import lesspass from '../index';
 
-test('encrypt login with pbkdf2 8192 iterations and sha256', t => {
-    return lesspass.encryptLogin('test@example.org', 'password').then(encryptedLogin => {
+test('should use pbkdf2 with 8192 iterations and sha256', t=> {
+    lesspass.encryptLogin('test@example.org', 'password').then(function (encryptedLogin) {
         t.is('d8af5f918db6b65b1db3d3984e5a400e39e1dbb19462220e4431de283809f472', encryptedLogin);
-    })
+    });
 });
 
-test('encrypt login with utf8 parameter', t => {
-    return lesspass.encryptLogin('test@example.org', '♥ LessPass ♥').then(encryptedLogin => {
-        t.is('063092c809334979f505df88ed37845d298c01f7e8a03cbd661edbc084c650ca', encryptedLogin);
-    })
+test('should allow utf8 parameter', t=> {
+    lesspass.encryptLogin('test@example.org', '♥ LessPass ♥').then(function (encryptedLogin) {
+        t.is('997fe81d3d0db236e039c75efdb487f17a902fdf94f9dacaa9884329c85d9651', encryptedLogin);
+    });
 });
-
-test('render password', t => {
-    const site = 'lesspass.com';
-    const encryptedLogin = '63d850713d0b2f7f2c4396fe93f4ac0c6bc7485f9e7473c4b8c4a33ec12199c0';
-    const passwordOptions = {
-        counter: 1,
-        length: 12,
-        lowercase: true,
-        uppercase: true,
-        numbers: true,
-        symbols: true
-    };
-    t.is('azYS7,olOL2]', lesspass.renderPassword(encryptedLogin, site, passwordOptions));
-});
-
-
 test('auto generated encrypt login tests', t => {
-    const promises = [];
-    const passwords = [
+    var promises = [];
+    var passwords = [
         {
             login: 'contact@lesspass.com',
             masterPassword: 'password',
@@ -88,20 +72,34 @@ test('auto generated encrypt login tests', t => {
         }
     ];
 
-    for (const entry of passwords) {
+    for (var entry of passwords) {
         promises.push(lesspass.encryptLogin(entry.login, entry.masterPassword));
     }
 
-    t.plan(passwords.length);
     return Promise.all(promises).then(values => {
         for (let i = 0; i < values.length; i++) {
             t.is(passwords[i].encryptedLogin, values[i]);
         }
     });
 });
-
-test('auto generated derive encrypted login tests', t => {
-    const passwords = [
+test('render password', t => {
+    var site = 'lesspass.com';
+    var encryptedLogin = '63d850713d0b2f7f2c4396fe93f4ac0c6bc7485f9e7473c4b8c4a33ec12199c0';
+    var passwordOptions = {
+        counter: 1,
+        length: 12,
+        lowercase: true,
+        uppercase: true,
+        numbers: true,
+        symbols: true
+    };
+    lesspass.renderPassword(encryptedLogin, site, passwordOptions).then(function (generatedPassword) {
+        t.is('azYS7,olOL2]', generatedPassword);
+    })
+});
+test('auto generated render password tests', t => {
+    var promises = [];
+    var passwords = [
         {
             encryptedLogin: '63d850713d0b2f7f2c4396fe93f4ac0c6bc7485f9e7473c4b8c4a33ec12199c0',
             site: 'lesspass.com',
@@ -225,18 +223,22 @@ test('auto generated derive encrypted login tests', t => {
         }
     ];
 
-
-    t.plan(passwords.length);
-    for (let i = 0; i < passwords.length; i++) {
-        let password = passwords[i];
-        let passwordOption = {
-            counter: password.counter,
-            length: password.length,
-            lowercase: password.lowercase,
-            uppercase: password.uppercase,
-            numbers: password.numbers,
-            symbols: password.symbols,
+    for (var entry of passwords) {
+        var passwordOption = {
+            counter: entry.counter,
+            length: entry.length,
+            lowercase: entry.lowercase,
+            uppercase: entry.uppercase,
+            numbers: entry.numbers,
+            symbols: entry.symbols,
         };
-        t.is(password.generatedPassword, lesspass.renderPassword(password.encryptedLogin, password.site, passwordOption));
+        promises.push(lesspass.renderPassword(entry.encryptedLogin, entry.site, passwordOption));
     }
+
+    return Promise.all(promises).then(values => {
+        for (let i = 0; i < values.length; i++) {
+            t.is(passwords[i].generatedPassword, values[i]);
+        }
+    });
 });
+

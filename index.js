@@ -9,6 +9,7 @@ module.exports = {
     _string2charCodes,
     _getCharType,
     _getPasswordChar,
+    _createHmac
 };
 
 function _encryptLogin(login, masterPassword) {
@@ -29,15 +30,23 @@ function _encryptLogin(login, masterPassword) {
 }
 
 function _renderPassword(encryptedLogin, site, passwordOptions) {
-    const derivedEncryptedLogin = this._deriveEncryptedLogin(encryptedLogin, site, passwordOptions);
-    const template = this._getPasswordTemplate(passwordOptions);
-    return this._prettyPrint(derivedEncryptedLogin, template);
+    return _deriveEncryptedLogin(encryptedLogin, site, passwordOptions).then(function (derivedEncryptedLogin) {
+        const template = _getPasswordTemplate(passwordOptions);
+        return _prettyPrint(derivedEncryptedLogin, template);
+    });
+}
+
+function _createHmac(encryptedLogin, salt) {
+    return new Promise(resolve => {
+        resolve(crypto.createHmac('sha256', encryptedLogin).update(salt).digest('hex'));
+    });
 }
 
 function _deriveEncryptedLogin(encryptedLogin, site, passwordOptions = {length: 12, counter: 1}) {
     const salt = site + passwordOptions.counter.toString();
-    const derivedHash = crypto.createHmac('sha256', encryptedLogin).update(salt).digest('hex');
-    return derivedHash.substring(0, passwordOptions.length);
+    return _createHmac(encryptedLogin, salt).then(derivedHash => {
+        return derivedHash.substring(0, passwordOptions.length);
+    });
 }
 
 function _getPasswordTemplate(passwordTypes) {
@@ -59,9 +68,9 @@ function _getPasswordTemplate(passwordTypes) {
 function _prettyPrint(hash, template) {
     let password = '';
 
-    this._string2charCodes(hash).forEach((charCode, index) => {
-        const charType = this._getCharType(template, index);
-        password += this._getPasswordChar(charType, charCode);
+    _string2charCodes(hash).forEach((charCode, index) => {
+        const charType = _getCharType(template, index);
+        password += _getPasswordChar(charType, charCode);
     });
     return password;
 }

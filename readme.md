@@ -4,7 +4,7 @@
 
 ## Requirements
 
-  - node v4.6.x
+  - node LTS v6
 
 ## Install
 
@@ -12,12 +12,12 @@
 
 ## Usage
     
-    import LessPass from 'lesspass';
-        
-    const site = 'lesspass.com';
-    const login = 'contact@lesspass.com';
-    const masterPassword = 'password';
-    const options = {
+    var LessPass = require('lesspass');
+    
+    var site = 'lesspass.com';
+    var login = 'contact@lesspass.com';
+    var masterPassword = 'password';
+    var options = {
         counter: 1,
         length: 12,
         lowercase: true,
@@ -25,11 +25,12 @@
         numbers: true,
         symbols: true
     };
-    LessPass.encryptLogin(login, masterPassword)
-        .then(encryptedLogin => {
-            var generatedPassword = LessPass.renderPassword(encryptedLogin, site, options);
-            console.log(generatedPassword); //azYS7,olOL2]
+    
+    LessPass.encryptLogin(login, masterPassword).then(encryptedLogin => {
+        LessPass.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
+             console.log(generatedPassword); //azYS7,olOL2]
         });
+    });
 
 
 see [tests/api.tests.js](tests/api.tests.js) for more examples

@@ -1,19 +1,21 @@
 {
   "name": "lesspass",
-  "version": "4.0.4",
+  "version": "5.0.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
-  "description": "LessPass javascript module to generate idempotent passwords",
+  "description": "LessPass node module used to generate LessPass passwords",
   "main": "lib/index.js",
   "jsnext:main": "index.js",
   "repository": "lesspass/core",
-  "homepage": "https://github.com/lesspass/core#readme",
-  "bugs": "https://github.com/lesspass/core/issues",
   "scripts": {
-    "test-node": "cd tests && babel-node --presets es2015 node.js && cd ..",
+    "test:node": "npm run build && cd tests && babel-node --presets es2015 node.js && cd ..",
     "test": "ava --require babel-core/register",
     "build": "rimraf lib && babel index.js -d lib",
     "prepublish": "npm test && npm run build"
   },
+  "files": [
+    "lib/",
+    "index.js"
+  ],
   "keywords": [
     "password",
     "crypto",
