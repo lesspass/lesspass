@@ -43,4 +43,6 @@ Example if your domain is `lesspass.com`
 MIT © [Guillaume Vincent](http://guillaumevincent.com)
 
 
-## [LessPass project](https://github.com/lesspass/lesspass)
+## Issues
+
+report issues on [LessPass project](https://github.com/lesspass/lesspass/issues)
