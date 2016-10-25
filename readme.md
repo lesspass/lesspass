@@ -56,3 +56,7 @@ If you omit master password, lesspass-cli will ask you a master password:
 ## License
 
 MIT © [Guillaume Vincent](http://guillaumevincent.com)
+
+## Issues
+
+report issues on [LessPass project](https://github.com/lesspass/lesspass/issues)
