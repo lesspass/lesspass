@@ -144,14 +144,13 @@
         </div>
         <div class="form-group row">
             <label for="passwordLength" class="col-xs-3 col-form-label">Length</label>
-            <div class="col-xs-3 p-l-0">
+            <div class="col-xs-3 pl-0">
                 <input class="form-control" type="number" id="passwordLength" v-model="password.length"
                        min="6">
             </div>
             <label for="passwordCounter" class="col-xs-3 col-form-label">Counter</label>
-            <div class="col-xs-3 p-l-0">
-                <input class="form-control" type="number" id="passwordCounter"
-                       v-model="password.counter" min="1">
+            <div class="col-xs-3 pl-0">
+                <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
             </div>
         </div>
     </form>

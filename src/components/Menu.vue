@@ -36,13 +36,13 @@
                     <router-link class="menu-link" :to="{ name: 'home'}">LessPass</router-link>
                     <span class=" hint--right" aria-label="Save password"
                           v-on:click="saveOrUpdatePassword">
-                        <i class="fa fa-save m-l-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
+                        <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
                     </span>
                     <span v-if="passwordStatus=='CREATED'" class="text-success">
-                        <i class="fa fa-check m-l-1 text-success"></i> saved
+                        <i class="fa fa-check ml-1 text-success"></i> saved
                     </span>
                     <span v-if="passwordStatus=='UPDATED'" class="text-success">
-                        <i class="fa fa-check m-l-1 text-success"></i> updated
+                        <i class="fa fa-check ml-1 text-success"></i> updated
                     </span>
                 </div>
                 <div class="col-xs-6 text-xs-right">

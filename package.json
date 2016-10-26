@@ -19,7 +19,7 @@
     "babel-preset-stage-2": "^6.17.0",
     "babel-register": "^6.16.3",
     "babel-runtime": "^6.11.6",
-    "bootstrap": "^4.0.0-alpha.4",
+    "bootstrap": "4.0.0-alpha.5",
     "clipboard": "^1.5.12",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
