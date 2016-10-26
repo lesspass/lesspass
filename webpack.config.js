@@ -10,21 +10,25 @@ module.exports = {
         filename: 'lesspass.js'
     },
     resolve: {
-        extensions: ['', '.json', '.js', '.vue'],
+        extensions: ['.json', '.js', '.vue'],
         alias: {
             jquery: 'jquery/src/jquery'
         }
     },
-    resolveLoader: {
-        root: path.join(__dirname, 'node_modules')
-    },
     module: {
-        loaders: [
+        rules: [
             {test: /\.vue$/, loader: 'vue-loader'},
             {test: /\.js$/, include: [path.resolve(__dirname, './src')], loader: 'babel-loader'},
             {test: /\.json/, loader: 'json-loader'},
             {test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=[name].[ext]',},
-            {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', {publicPath: ''})},
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({
+                    fallbackLoader: 'style-loader',
+                    loader: 'css-loader',
+                    publicPath: ''
+                })
+            },
             {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=application/font-woff'},
             {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=application/font-woff'},
             {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=8192&mimetype=application/octet-stream'},
@@ -48,7 +52,6 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = false;
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.optimize.UglifyJsPlugin({
             compress: {

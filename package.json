@@ -22,7 +22,7 @@
     "bootstrap": "^4.0.0-alpha.4",
     "clipboard": "^1.5.12",
     "css-loader": "^0.25.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "font-awesome": "^4.6.3",
     "hint.css": "^2.3.2",
@@ -42,12 +42,17 @@
     "vue-loader": "^9.5.1",
     "vue-router": "^2.0.0",
     "vuex": "^2.0.0",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.9"
   },
   "babel": {
     "presets": [
-      "es2015",
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
       "stage-2"
     ],
     "plugins": [
