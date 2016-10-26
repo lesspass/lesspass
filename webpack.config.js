@@ -10,10 +10,8 @@ module.exports = {
         filename: 'lesspass.js'
     },
     resolve: {
-        extensions: ['', '.js', '.vue'],
-        fallback: [path.join(__dirname, 'node_modules')],
+        extensions: ['', '.json', '.js', '.vue'],
         alias: {
-            src: path.resolve(__dirname, './src'),
             jquery: 'jquery/src/jquery'
         }
     },
@@ -23,7 +21,7 @@ module.exports = {
     module: {
         loaders: [
             {test: /\.vue$/, loader: 'vue-loader'},
-            {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+            {test: /\.js$/, include: [path.resolve(__dirname, './src')], loader: 'babel-loader'},
             {test: /\.json/, loader: 'json-loader'},
             {test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=[name].[ext]',},
             {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', {publicPath: ''})},

@@ -27,37 +27,40 @@
 </template>
 
 <script type="text/ecmascript-6">
-    const crypto = require('crypto');
-
     export default {
         data(){
             return {
+                lesspass: window.LessPass,
                 icon1: '',
                 icon2: '',
                 icon3: '',
                 color1: '',
                 color2: '',
-                color3: '',
+                color3: ''
             }
         },
         props: ['fingerprint'],
         watch: {
-            fingerprint: function (newFingerprint) {
-                const sha256 = crypto.createHmac('sha256', newFingerprint).digest('hex');
-                const hash1 = sha256.substring(0, 6);
-                const hash2 = sha256.substring(6, 12);
-                const hash3 = sha256.substring(12, 18);
-                this.icon1 = this.getIcon(hash1);
-                this.icon2 = this.getIcon(hash2);
-                this.icon3 = this.getIcon(hash3);
-                this.color1 = this.getColor(hash1);
-                this.color2 = this.getColor(hash2);
-                this.color3 = this.getColor(hash3);
+            fingerprint(newFingerprint) {
+                if (!newFingerprint){
+                    return;
+                }
+                this.lesspass.createFingerprint(newFingerprint).then(sha256 => {
+                    const hash1 = sha256.substring(0, 6);
+                    const hash2 = sha256.substring(6, 12);
+                    const hash3 = sha256.substring(12, 18);
+                    this.icon1 = this.getIcon(hash1);
+                    this.icon2 = this.getIcon(hash2);
+                    this.icon3 = this.getIcon(hash3);
+                    this.color1 = this.getColor(hash1);
+                    this.color2 = this.getColor(hash2);
+                    this.color3 = this.getColor(hash3);
+                });
             }
         },
         methods: {
             getColor(color) {
-                var colors = ['#000000','#074750', '#009191', '#FF6CB6', '#FFB5DA', '#490092','#006CDB','#B66DFF','#6DB5FE','#B5DAFE','#920000','#924900','#DB6D00','#24FE23'];
+                var colors = ['#000000', '#074750', '#009191', '#FF6CB6', '#FFB5DA', '#490092', '#006CDB', '#B66DFF', '#6DB5FE', '#B5DAFE', '#920000', '#924900', '#DB6D00', '#24FE23'];
                 var index = parseInt(color, 16) % colors.length;
                 return colors[index];
             },

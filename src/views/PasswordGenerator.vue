@@ -161,7 +161,6 @@
     import {mapGetters} from 'vuex';
     import RemoveAutoComplete from '../components/RemoveAutoComplete';
     import Fingerprint from '../components/Fingerprint';
-    import lesspass from 'lesspass';
     import Clipboard from 'clipboard';
     import debounce from 'lodash.debounce';
     import {showTooltip} from '../api/tooltip';
@@ -178,16 +177,7 @@
             RemoveAutoComplete,
             Fingerprint
         },
-        computed: {
-            ...mapGetters(['passwords', 'password']),
-            generatedPassword(){
-                if (!this.encryptedLogin || !this.password.site) {
-                    this.generatedPassword = '';
-                    return;
-                }
-                return this.generatePassword();
-            }
-        },
+        computed: mapGetters(['passwords', 'password']),
         preFetch: fetchPasswords,
         beforeMount () {
             const id = this.$route.params.id;
@@ -212,6 +202,7 @@
         },
         data(){
             return {
+                lesspass: window.LessPass,
                 masterPassword: '',
                 encryptedLogin: '',
                 generatedPassword: '',
@@ -247,12 +238,24 @@
             },
             'generatedPassword': function () {
                 this.cleanFormInSeconds(30);
-            }
+            },
+            'encryptedLogin': function () {
+                if (!this.encryptedLogin || !this.password.site) {
+                    this.generatedPassword = '';
+                    return;
+                }
+                const password = new Password(this.password);
+                this.lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options)
+                        .then(generatedPassword => {
+                            this.$store.dispatch('PASSWORD_GENERATED');
+                            this.generatedPassword = generatedPassword;
+                        });
+            },
         },
         methods: {
             encryptLogin: debounce(function () {
                 if (this.password.login && this.masterPassword) {
-                    lesspass.encryptLogin(this.password.login, this.masterPassword).then(encryptedLogin => {
+                    this.lesspass.encryptLogin(this.password.login, this.masterPassword).then(encryptedLogin => {
                         this.encryptedLogin = encryptedLogin;
                     });
                 }
@@ -263,12 +266,6 @@
                 } else {
                     this.$refs.masterPassword.type = 'password';
                 }
-            },
-            generatePassword(){
-                const password = new Password(this.password);
-                const generatedPassword = lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options);
-                this.$store.dispatch('PASSWORD_GENERATED');
-                return generatedPassword;
             },
             cleanFormInSeconds(seconds){
                 clearTimeout(this.cleanTimeout);
