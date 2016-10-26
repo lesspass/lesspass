@@ -32,8 +32,9 @@ var cli = meow(`
 
 function calcPassword(site, login, masterPassword, options) {
     lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
-        var generatedPassword = lesspass.renderPassword(encryptedLogin, site, options);
-        console.log(generatedPassword);
+        lesspass.renderPassword(encryptedLogin, site, options).then(function (generatedPassword) {
+            console.log(generatedPassword);
+        });
     });
 }
 

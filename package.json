@@ -24,7 +24,7 @@
     "lesspass"
   ],
   "dependencies": {
-    "lesspass": "^4.0.4",
+    "lesspass": "^5.0.1",
     "meow": "^3.3.0",
     "read": "^1.0.7"
   },
