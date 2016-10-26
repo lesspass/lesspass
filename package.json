@@ -18,10 +18,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
-    "lesspass-pure": "^2.1.3"
+    "lesspass-pure": "^3.0.2"
   },
   "devDependencies": {
-    "lesspass-pure": "^2.0.1",
     "gulp": "^3.9.1"
   }
 }
