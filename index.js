@@ -3,6 +3,7 @@ import crypto from 'crypto';
 module.exports = {
     encryptLogin: _encryptLogin,
     renderPassword: _renderPassword,
+    createFingerprint: createFingerprint,
     _deriveEncryptedLogin,
     _getPasswordTemplate,
     _prettyPrint,
@@ -101,4 +102,10 @@ function _getPasswordChar(charType, index) {
     };
     const passwordChar = passwordsChars[charType];
     return passwordChar[index % passwordChar.length];
+}
+
+function createFingerprint(str) {
+    return new Promise(resolve => {
+        resolve(crypto.createHmac('sha256', str).digest('hex'))
+    });
 }

@@ -242,3 +242,10 @@ test('auto generated render password tests', t => {
     });
 });
 
+
+test('createFingerprint', t => {
+    return lesspass.createFingerprint('password').then(fingerprint => {
+        t.is('e56a207acd1e6714735487c199c6f095844b7cc8e5971d86c003a7b6f36ef51e', fingerprint);
+    });
+});
+
