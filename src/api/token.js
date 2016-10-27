@@ -1,4 +1,3 @@
-import moment from 'moment';
 import jwtDecode from 'jwt-decode';
 
 export const TOKEN_KEY = 'jwt';
@@ -8,7 +7,7 @@ export default class Token {
         this.name = tokenName
     }
 
-    stillValid(now = moment()) {
+    stillValid(now = new Date()) {
         try {
             return this._expirationDateSuperiorTo(now);
         }
@@ -17,9 +16,9 @@ export default class Token {
         }
     }
 
-    expiresIn(duration, unit, now = moment()) {
+    expiresInMinutes(minutes, now = new Date()) {
         try {
-            const nowPlusDuration = now.add(duration, moment.normalizeUnits(unit));
+            const nowPlusDuration = new Date(now.getTime() + minutes*60000);
             return this._expirationDateInferiorTo(nowPlusDuration);
         }
         catch (err) {
@@ -29,7 +28,7 @@ export default class Token {
 
     _expirationDateInferiorTo(date) {
         const expireDate = this._getTokenExpirationDate();
-        return expireDate.diff(date) < 0;
+        return expireDate < date;
     }
 
     _expirationDateSuperiorTo(date) {
@@ -38,6 +37,6 @@ export default class Token {
 
     _getTokenExpirationDate() {
         const decodedToken = jwtDecode(this.name);
-        return moment(decodedToken.exp * 1000);
+        return new Date(decodedToken.exp * 1000);
     }
 }

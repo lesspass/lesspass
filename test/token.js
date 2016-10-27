@@ -1,11 +1,10 @@
 import test from 'ava';
-import moment from 'moment';
 import Token from '../src/api/token';
 
 test('token is near the end', t => {
     const token = new Token('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE0MzcwMTg1ODIsImV4cCI6MTQzNzAxODU4M30.NmMv7sXjM1dW0eALNXud8LoXknZ0mH14GtnFclwJv0s');
-    t.true(token.expiresIn(15, 'minutes', moment(1437018283 * 1000)));
-    t.false(token.expiresIn(5, 'minutes', moment(1437018283 * 1000)));
+    t.true(token.expiresInMinutes(15, new Date(1437018283 * 1000)));
+    t.false(token.expiresInMinutes(5, new Date(1437018283 * 1000)));
 });
 
 test('token still valid', t => {
@@ -15,7 +14,7 @@ test('token still valid', t => {
 
 test('token still valid check payload date', t => {
     const token = new Token('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE0MzcwMTg1ODIsImV4cCI6MTQzNzAxODU4M30.NmMv7sXjM1dW0eALNXud8LoXknZ0mH14GtnFclwJv0s');
-    t.true(token.stillValid(moment(1437018283 * 1000)));
+    t.true(token.stillValid(new Date(1437018283 * 1000)));
 });
 
 test('token expired', t => {
