@@ -269,6 +269,7 @@
             cleanFormInSeconds(seconds){
                 clearTimeout(this.cleanTimeout);
                 this.cleanTimeout = setTimeout(() => {
+                    this.$store.commit('PASSWORD_CLEAN');
                     this.masterPassword = '';
                     this.encryptedLogin = '';
                     this.generatedPassword = '';
