@@ -19,7 +19,6 @@
     "lesspass": "^5.1.0",
     "lodash.debounce": "^4.0.8",
     "moment": "^2.15.2",
-    "pilou": "^0.1.4",
     "tldjs": "^1.7.0",
     "vue": "^2.0.3",
     "vue-router": "^2.0.1",

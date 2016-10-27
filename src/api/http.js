@@ -1,40 +1,39 @@
-import pilou from 'pilou';
+import axios from 'axios';
 import {TOKEN_KEY} from './storage';
 
 
 export default class HTTP {
-    constructor(resourceName, storage) {
+    constructor(resource, storage) {
         this.storage = storage;
-        this.resource = pilou(resourceName);
+        this.resource = resource;
     }
 
-    getRequestConfig() {
+    getRequestConfig(params = {}) {
         const config = this.storage.json();
         return {
+            ...params,
             baseURL: config.baseURL,
             headers: {Authorization: `JWT ${config[TOKEN_KEY]}`}
         };
     }
 
-    create(resource) {
-        return this.resource.create(resource, this.getRequestConfig());
+    create(resource, params = {}) {
+        return axios.post('/api/' + this.resource + '/', resource, this.getRequestConfig(params));
     }
 
     all(params = {}) {
-        const config = this.getRequestConfig();
-        config.params = params;
-        return this.resource.all(config);
+        return axios.get('/api/' + this.resource + '/', this.getRequestConfig(params));
     }
 
-    get(resource) {
-        return this.resource.get(resource, this.getRequestConfig());
+    get(resource, params = {}) {
+        return axios.get('/api/' + this.resource + '/' + resource.id + '/', this.getRequestConfig(params));
     }
 
-    update(resource) {
-        return this.resource.update({id: resource.id}, resource, this.getRequestConfig());
+    update(resource, params = {}) {
+        return axios.put('/api/' + this.resource + '/' + resource.id + '/', resource, this.getRequestConfig(params));
     }
 
-    remove(resource) {
-        return this.resource.delete(resource, this.getRequestConfig());
+    remove(resource, params = {}) {
+        return axios.delete('/api/' + this.resource + '/' + resource.id + '/', this.getRequestConfig(params));
     }
 }

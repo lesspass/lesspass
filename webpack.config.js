@@ -46,6 +46,7 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = false;
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.optimize.DedupePlugin(),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
