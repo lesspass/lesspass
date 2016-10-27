@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "description": "LessPass node module used to generate LessPass passwords",
   "main": "lib/index.js",
