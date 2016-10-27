@@ -21,7 +21,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import Menu from './components/Menu';
+    import Menu from './components/Menu.vue';
 
     export default {
         name: 'LessPass',

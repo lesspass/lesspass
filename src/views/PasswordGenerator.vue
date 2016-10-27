@@ -159,13 +159,13 @@
 <script type="text/ecmascript-6">
     import LessPass from 'lesspass';
     import {mapGetters} from 'vuex';
-    import RemoveAutoComplete from '../components/RemoveAutoComplete';
-    import Fingerprint from '../components/Fingerprint';
     import Clipboard from 'clipboard';
     import debounce from 'lodash.debounce';
     import {showTooltip} from '../api/tooltip';
     import Password from '../domain/password';
     import {getSite} from '../domain/url-parser';
+    import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
+    import Fingerprint from '../components/Fingerprint.vue';
 
     function fetchPasswords(store) {
         return store.dispatch('FETCH_PASSWORDS')

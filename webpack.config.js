@@ -13,7 +13,7 @@ module.exports = {
         filename: 'lesspass.min.js'
     },
     resolve: {
-        extensions: ['.json', '.js', '.vue']
+        extensions: ['.json', '.js']
     },
     module: {
         rules: [

@@ -49,7 +49,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import DeleteButton from '../components/DeleteButton';
+    import DeleteButton from '../components/DeleteButton.vue';
     import {mapGetters} from 'vuex';
 
     function fetchPasswords(store) {
