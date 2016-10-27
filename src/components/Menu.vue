@@ -5,12 +5,12 @@
         color: #FFF;
     }
 
-    .menu-link {
+    .grey-link {
         color: #373a3c;
         text-decoration: none;
     }
 
-    .menu-link:hover, .menu-link:focus, .menu-link:active {
+    .grey-link:hover, .grey-link:focus, .grey-link:active {
         color: #373a3c;
         text-decoration: none;
     }
@@ -33,7 +33,7 @@
         <div class="card-header" v-show="isAuthenticated">
             <div class="row">
                 <div class="col-xs-6">
-                    <router-link class="menu-link" :to="{ name: 'home'}">LessPass</router-link>
+                    <router-link class="grey-link" :to="{ name: 'home'}">LessPass</router-link>
                     <span class=" hint--right" aria-label="Save password"
                           v-on:click="saveOrUpdatePassword">
                         <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
@@ -46,17 +46,12 @@
                     </span>
                 </div>
                 <div class="col-xs-6 text-xs-right">
-                    <div class="btn-group">
-                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" style="background-color:transparent; padding:0;">
-                            {{email}}
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <router-link class="dropdown-item" :to="{ name: 'passwords'}">Passwords</router-link>
-                            <div class="dropdown-divider"></div>
-                            <button class="dropdown-item" type="button" v-on:click="logout">Log out</button>
-                        </div>
-                    </div>
+                    <router-link class="grey-link ml-1" :to="{ name: 'passwords'}">
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                    </router-link>
+                    <button class="grey-link ml-1 btn btn-link p-0 m-0" type="button" v-on:click="logout">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
         </div>
