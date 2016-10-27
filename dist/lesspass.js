@@ -22371,42 +22371,49 @@ exports.default = {
                         break;
                     }
                 }
-                return site;
             }
-            return newValue;
+            this.renderPassword();
         },
         'password.login': function passwordLogin() {
             this.encryptedLogin = '';
             this.encryptLogin();
         },
+        'password.uppercase': function passwordUppercase() {
+            this.renderPassword();
+        },
+        'password.lowercase': function passwordLowercase() {
+            this.renderPassword();
+        },
+        'password.numbers': function passwordNumbers() {
+            this.renderPassword();
+        },
+        'password.symbols': function passwordSymbols() {
+            this.renderPassword();
+        },
+        'password.length': function passwordLength() {
+            this.renderPassword();
+        },
+        'password.counter': function passwordCounter() {
+            this.renderPassword();
+        },
         'masterPassword': function masterPassword() {
             this.encryptedLogin = '';
             this.encryptLogin();
         },
+        'encryptedLogin': function encryptedLogin() {
+            this.renderPassword();
+        },
         'generatedPassword': function generatedPassword() {
             this.cleanFormInSeconds(30);
-        },
-        'encryptedLogin': function encryptedLogin() {
-            var _this2 = this;
-
-            if (!this.encryptedLogin || !this.password.site) {
-                this.generatedPassword = '';
-                return;
-            }
-            var password = new _password2.default(this.password);
-            _lesspass2.default.renderPassword(this.encryptedLogin, this.password.site, password.options).then(function (generatedPassword) {
-                _this2.$store.dispatch('PASSWORD_GENERATED');
-                _this2.generatedPassword = generatedPassword;
-            });
         }
     },
     methods: {
         encryptLogin: (0, _lodash2.default)(function () {
-            var _this3 = this;
+            var _this2 = this;
 
             if (this.password.login && this.masterPassword) {
                 _lesspass2.default.encryptLogin(this.password.login, this.masterPassword).then(function (encryptedLogin) {
-                    _this3.encryptedLogin = encryptedLogin;
+                    _this2.encryptedLogin = encryptedLogin;
                 });
             }
         }, 500),
@@ -22418,15 +22425,28 @@ exports.default = {
             }
         },
         cleanFormInSeconds: function cleanFormInSeconds(seconds) {
-            var _this4 = this;
+            var _this3 = this;
 
             clearTimeout(this.cleanTimeout);
             this.cleanTimeout = setTimeout(function () {
-                _this4.$store.commit('PASSWORD_CLEAN');
-                _this4.masterPassword = '';
-                _this4.encryptedLogin = '';
-                _this4.generatedPassword = '';
+                _this3.$store.commit('PASSWORD_CLEAN');
+                _this3.masterPassword = '';
+                _this3.encryptedLogin = '';
+                _this3.generatedPassword = '';
             }, 1000 * seconds);
+        },
+        renderPassword: function renderPassword() {
+            var _this4 = this;
+
+            if (!this.encryptedLogin || !this.password.site) {
+                this.generatedPassword = '';
+                return;
+            }
+            var password = new _password2.default(this.password);
+            _lesspass2.default.renderPassword(this.encryptedLogin, this.password.site, password.options).then(function (generatedPassword) {
+                _this4.$store.dispatch('PASSWORD_GENERATED');
+                _this4.generatedPassword = generatedPassword;
+            });
         }
     }
 };

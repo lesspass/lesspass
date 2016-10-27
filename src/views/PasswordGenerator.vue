@@ -223,32 +223,40 @@
                             break;
                         }
                     }
-                    return site;
                 }
-                return newValue;
+                this.renderPassword();
             },
             'password.login': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
             },
+            'password.uppercase': function () {
+                this.renderPassword();
+            },
+            'password.lowercase': function () {
+                this.renderPassword();
+            },
+            'password.numbers': function () {
+                this.renderPassword();
+            },
+            'password.symbols': function () {
+                this.renderPassword();
+            },
+            'password.length': function () {
+                this.renderPassword();
+            },
+            'password.counter': function () {
+                this.renderPassword();
+            },
             'masterPassword': function () {
                 this.encryptedLogin = '';
                 this.encryptLogin();
             },
+            'encryptedLogin': function () {
+                this.renderPassword();
+            },
             'generatedPassword': function () {
                 this.cleanFormInSeconds(30);
-            },
-            'encryptedLogin': function () {
-                if (!this.encryptedLogin || !this.password.site) {
-                    this.generatedPassword = '';
-                    return;
-                }
-                const password = new Password(this.password);
-                LessPass.renderPassword(this.encryptedLogin, this.password.site, password.options)
-                        .then(generatedPassword => {
-                            this.$store.dispatch('PASSWORD_GENERATED');
-                            this.generatedPassword = generatedPassword;
-                        });
             },
         },
         methods: {
@@ -274,6 +282,18 @@
                     this.encryptedLogin = '';
                     this.generatedPassword = '';
                 }, 1000 * seconds);
+            },
+            renderPassword(){
+                if (!this.encryptedLogin || !this.password.site) {
+                    this.generatedPassword = '';
+                    return;
+                }
+                const password = new Password(this.password);
+                LessPass.renderPassword(this.encryptedLogin, this.password.site, password.options)
+                        .then(generatedPassword => {
+                            this.$store.dispatch('PASSWORD_GENERATED');
+                            this.generatedPassword = generatedPassword;
+                        });
             }
         }
     }
