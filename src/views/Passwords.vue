@@ -28,7 +28,7 @@
                             <router-link :to="{ name: 'home'}">Would you like to create one ?</router-link>
                         </td>
                     </tr>
-                    <tr v-for="password in passwords">
+                    <tr v-for="password in filteredPasswords">
                         <td>
                             <router-link :to="{ name: 'password', params: { id: password.id }}">
                                 {{password.site}}
