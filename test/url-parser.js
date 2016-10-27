@@ -4,8 +4,9 @@ import {getDomainName, _ipIsValid, isWebExtension, getCurrentUrl, getSite} from 
 test(t => {
     t.is('lesspass.com', getDomainName('https://lesspass.com/#!/'));
     t.is('lesspass.com', getDomainName('https://lesspass.com/api/'));
-    t.is('lesspass.com', getDomainName('https://api.lesspass.com/'));
-    t.is('192.168.1.1', getDomainName('https://192.168.1.1:10443/webapp/'));
+    t.is('api.lesspass.com', getDomainName('https://api.lesspass.com/'));
+    t.is('lesspass.com', getDomainName('http://lesspass.com'));
+    t.is('192.168.1.1:10443', getDomainName('https://192.168.1.1:10443/webapp/'));
 });
 
 test('ip validator', t => {
