@@ -1,26 +1,26 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
 module.exports = {
-    entry: './src/main.js',
+    entry: {
+        app: './src/main.js',
+    },
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: 'lesspass.js'
+        filename: 'lesspass.min.js'
     },
     resolve: {
-        extensions: ['.json', '.js', '.vue'],
-        alias: {
-            jquery: 'jquery/src/jquery'
-        }
+        extensions: ['.json', '.js', '.vue']
     },
     module: {
         rules: [
             {test: /\.vue$/, loader: 'vue-loader'},
             {test: /\.js$/, include: [path.resolve(__dirname, './src')], loader: 'babel-loader'},
             {test: /\.json/, loader: 'json-loader'},
-            {test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=[name].[ext]',},
+            {test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=[name].[ext]'},
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({
@@ -37,13 +37,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('lesspass.css'),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            'window.Tether': 'tether'
-        })
+        new ExtractTextPlugin('lesspass.min.css')
     ],
     devtool: '#eval-source-map'
 };
@@ -52,16 +46,12 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = false;
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.optimize.DedupePlugin(),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: true
-            },
-            output: {
-                comments: false
-            },
-            sourceMap: false
-        })
+                warnings: false
+            }
+        }),
+        new UnminifiedWebpackPlugin()
     ]);
 }
 
