@@ -157,6 +157,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import LessPass from 'lesspass';
     import {mapGetters} from 'vuex';
     import RemoveAutoComplete from '../components/RemoveAutoComplete';
     import Fingerprint from '../components/Fingerprint';
@@ -201,7 +202,6 @@
         },
         data(){
             return {
-                lesspass: window.LessPass,
                 masterPassword: '',
                 encryptedLogin: '',
                 generatedPassword: '',
@@ -244,7 +244,7 @@
                     return;
                 }
                 const password = new Password(this.password);
-                this.lesspass.renderPassword(this.encryptedLogin, this.password.site, password.options)
+                LessPass.renderPassword(this.encryptedLogin, this.password.site, password.options)
                         .then(generatedPassword => {
                             this.$store.dispatch('PASSWORD_GENERATED');
                             this.generatedPassword = generatedPassword;
@@ -254,7 +254,7 @@
         methods: {
             encryptLogin: debounce(function () {
                 if (this.password.login && this.masterPassword) {
-                    this.lesspass.encryptLogin(this.password.login, this.masterPassword).then(encryptedLogin => {
+                    LessPass.encryptLogin(this.password.login, this.masterPassword).then(encryptedLogin => {
                         this.encryptedLogin = encryptedLogin;
                     });
                 }

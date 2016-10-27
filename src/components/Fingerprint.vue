@@ -27,10 +27,11 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import LessPass from 'lesspass';
+
     export default {
         data(){
             return {
-                lesspass: window.LessPass,
                 icon1: '',
                 icon2: '',
                 icon3: '',
@@ -42,10 +43,10 @@
         props: ['fingerprint'],
         watch: {
             fingerprint(newFingerprint) {
-                if (!newFingerprint){
+                if (!newFingerprint) {
                     return;
                 }
-                this.lesspass.createFingerprint(newFingerprint).then(sha256 => {
+                LessPass.createFingerprint(newFingerprint).then(sha256 => {
                     const hash1 = sha256.substring(0, 6);
                     const hash2 = sha256.substring(6, 12);
                     const hash3 = sha256.substring(12, 18);

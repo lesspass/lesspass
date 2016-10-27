@@ -29,7 +29,7 @@
     "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
     "jwt-decode": "^2.1.0",
-    "lesspass-webcrypto": "^0.2.2",
+    "lesspass": "^5.1.0",
     "lodash.debounce": "^4.0.8",
     "moment": "^2.15.0",
     "nock": "^8.1.0",
