@@ -40,7 +40,7 @@ Example if your domain is `lesspass.com`
 
 ## License
 
-MIT © [Guillaume Vincent](http://guillaumevincent.com)
+This project is licensed under the terms of the GNU GPLv3.
 
 
 ## Issues
