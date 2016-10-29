@@ -55,7 +55,7 @@ If you omit master password, lesspass-cli will ask you a master password:
 
 ## License
 
-MIT © [Guillaume Vincent](http://guillaumevincent.com)
+This project is licensed under the terms of the GNU GPLv3.
 
 ## Issues
 
