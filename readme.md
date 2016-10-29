@@ -42,7 +42,7 @@ see [tests/api.tests.js](tests/api.tests.js) for more examples
 
 ## License
 
-MIT © [Guillaume Vincent](http://guillaumevincent.com)
+This project is licensed under the terms of the GNU GPLv3.
 
 
 ## Issues
