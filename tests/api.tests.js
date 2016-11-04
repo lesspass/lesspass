@@ -9,12 +9,37 @@ describe('LessPass', function () {
             });
         });
 
+        it('should allow to customize number of iterations', function (done) {
+            LessPass.encryptLogin('test@example.org', 'password', {iterations: 4096}).then(function (encryptedLogin) {
+                assert.equal('0a91208545e3aa4935d3a22984ca097a7669259a04d261ac16361bdc1a2e960f', encryptedLogin);
+                done();
+            });
+        });
+
+        it('should allow to customize key length', function (done) {
+            LessPass.encryptLogin('test@example.org', 'password', {keylen: 16}).then(function (encryptedLogin) {
+                assert.equal('d8af5f918db6b65b1db3d3984e5a400e', encryptedLogin);
+                done();
+            });
+        });
+
+        it('should allow to customize iterations and key length', function (done) {
+            LessPass.encryptLogin('test@example.org', 'password', {
+                iterations: 4096,
+                keylen: 16
+            }).then(function (encryptedLogin) {
+                assert.equal('0a91208545e3aa4935d3a22984ca097a', encryptedLogin);
+                done();
+            });
+        });
+
         it('should allow utf8 parameter', function (done) {
             LessPass.encryptLogin('test@example.org', '♥ LessPass ♥').then(function (encryptedLogin) {
                 assert.equal('997fe81d3d0db236e039c75efdb487f17a902fdf94f9dacaa9884329c85d9651', encryptedLogin);
                 done();
             });
         });
+
         it('auto generated encrypt login tests', function () {
             var promises = [];
             var passwords = [
@@ -105,6 +130,8 @@ describe('LessPass', function () {
                 assert.equal('azYS7,olOL2]', generatedPassword);
             })
         });
+
+
         it('auto generated render password tests', function () {
             var promises = [];
             var passwords = [

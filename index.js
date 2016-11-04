@@ -13,13 +13,11 @@ module.exports = {
     _createHmac
 };
 
-function _encryptLogin(login, masterPassword) {
+function _encryptLogin(login, masterPassword, {iterations = 8192, keylen = 32}={}) {
     return new Promise((resolve, reject) => {
         if (!login || !masterPassword) {
             reject('login and master password parameters could not be empty');
         }
-        const iterations = 8192;
-        const keylen = 32;
         crypto.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', (error, key) => {
             if (error) {
                 reject('error in pbkdf2');
