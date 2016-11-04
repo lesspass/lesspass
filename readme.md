@@ -23,7 +23,8 @@
         lowercase: true,
         uppercase: true,
         numbers: true,
-        symbols: true
+        symbols: true,
+        template: 'vcVCns'
     };
     
     LessPass.encryptLogin(login, masterPassword).then(encryptedLogin => {
