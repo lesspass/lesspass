@@ -30,7 +30,7 @@ function _encryptLogin(login, masterPassword, {iterations = 8192, keylen = 32}={
 
 function _renderPassword(encryptedLogin, site, passwordOptions) {
     return _deriveEncryptedLogin(encryptedLogin, site, passwordOptions).then(function (derivedEncryptedLogin) {
-        const template = _getPasswordTemplate(passwordOptions);
+        const template = passwordOptions.template || _getPasswordTemplate(passwordOptions);
         return _prettyPrint(derivedEncryptedLogin, template);
     });
 }

@@ -115,7 +115,7 @@ describe('LessPass', function () {
 
 describe('LessPass', function () {
     describe('renderPassword', function () {
-        it('render password', function () {
+        it('render password', function (done) {
             var site = 'lesspass.com';
             var encryptedLogin = '63d850713d0b2f7f2c4396fe93f4ac0c6bc7485f9e7473c4b8c4a33ec12199c0';
             var passwordOptions = {
@@ -128,9 +128,63 @@ describe('LessPass', function () {
             };
             LessPass.renderPassword(encryptedLogin, site, passwordOptions).then(function (generatedPassword) {
                 assert.equal('azYS7,olOL2]', generatedPassword);
+                done();
             })
         });
 
+        it('render password with a custom template', function () {
+            var site = 'lesspass.com';
+            var encryptedLogin = '63d850713d0b2f7f2c4396fe93f4ac0c6bc7485f9e7473c4b8c4a33ec12199c0';
+            var passwordOptions = {
+                counter: 1,
+                length: 12,
+                lowercase: true,
+                uppercase: true,
+                numbers: true,
+                symbols: true,
+                template: 'n'
+            };
+            return LessPass.renderPassword(encryptedLogin, site, passwordOptions).then(function (generatedPassword) {
+                var i = generatedPassword.length;
+                while (i--) {
+                    assert('0123456789'.indexOf(generatedPassword[i]) !== -1)
+                }
+            })
+        });
+
+        it('render password with a custom template too short', function () {
+            var site = 'lesspass.com';
+            var encryptedLogin = '63d850713d0b2f7f2c4396fe93f4ac0c6bc7485f9e7473c4b8c4a33ec12199c0';
+            var passwordOptions = {
+                counter: 1,
+                length: 12,
+                lowercase: true,
+                uppercase: true,
+                numbers: true,
+                symbols: true,
+                template: 'CvcnCVsn'
+            };
+            return LessPass.renderPassword(encryptedLogin, site, passwordOptions).then(function (generatedPassword) {
+                assert.equal('Sor4WU:8Wad5', generatedPassword);
+            })
+        });
+
+        it('render password with a custom template too long', function () {
+            var site = 'lesspass.com';
+            var encryptedLogin = '63d850713d0b2f7f2c4396fe93f4ac0c6bc7485f9e7473c4b8c4a33ec12199c0';
+            var passwordOptions = {
+                counter: 1,
+                length: 6,
+                lowercase: true,
+                uppercase: true,
+                numbers: true,
+                symbols: true,
+                template: 'CvcnCVsn'
+            };
+            return LessPass.renderPassword(encryptedLogin, site, passwordOptions).then(function (generatedPassword) {
+                assert.equal('Sor4WU', generatedPassword);
+            })
+        });
 
         it('auto generated render password tests', function () {
             var promises = [];
@@ -281,10 +335,9 @@ describe('LessPass', function () {
 
 describe('LessPass', function () {
     describe('fingerprint', function () {
-        it('createFingerprint', function (done) {
-            LessPass.createFingerprint('password').then(function (fingerprint) {
+        it('createFingerprint', function () {
+            return LessPass.createFingerprint('password').then(function (fingerprint) {
                 assert.equal('e56a207acd1e6714735487c199c6f095844b7cc8e5971d86c003a7b6f36ef51e', fingerprint);
-                done();
             })
         });
     });
