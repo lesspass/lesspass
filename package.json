@@ -1,6 +1,6 @@
 {
   "name": "lesspass-pure",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "pure LessPass component for LessPass with vuejs",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/pure",
