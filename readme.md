@@ -6,7 +6,7 @@ LessPass open source password manager (https://lesspass.com)
 ## How it works ?
 
  * [FR] [LessPass comment ça marche ?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
- * [EN] [How it works ? ](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
+ * [EN] [LessPass How Does It Works?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
 
 ## LessPass submodules
 
@@ -24,8 +24,8 @@ LessPass open source password manager (https://lesspass.com)
 
 ### requirements 
 
- * docker
- * docker-compose
+ * `docker`
+ * `docker-compose`
 
 ### install 
 
