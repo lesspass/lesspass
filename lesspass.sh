@@ -12,8 +12,8 @@ cd $OUTPUT_DIR
 
 curl -o docker-compose.yml https://raw.githubusercontent.com/lesspass/lesspass/master/docker-compose.prod.yml
 
-DATABASE_PASSWORD=$(date +%s | sha256sum | base64 | head -c 32)
-SECRET_KEY=$(date +%s | sha256sum | base64 | head -c 32)
+DATABASE_PASSWORD=$(LC_ALL=C tr -dc A-Za-z0-9_ </dev/urandom | head -c 32)
+SECRET_KEY=$(LC_ALL=C tr -dc A-Za-z0-9_ </dev/urandom | head -c 32)
 
 echo "Please enter your domain name: "
 read DOMAIN
