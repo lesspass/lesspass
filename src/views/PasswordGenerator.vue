@@ -87,7 +87,7 @@
                            autocorrect="off"
                            autocapitalize="none"
                            v-model="masterPassword">
-                    <fingerprint :fingerprint="masterPassword" v-on:click.native="showMasterPassword"></fingerprint>
+                    <fingerprint :fingerprint="fingerprint" v-on:click.native="showMasterPassword"></fingerprint>
                 </div>
             </div>
         </div>
@@ -204,6 +204,7 @@
             return {
                 masterPassword: '',
                 encryptedLogin: '',
+                fingerprint: '',
                 generatedPassword: '',
                 cleanTimeout: null
             }
@@ -281,6 +282,7 @@
                     this.masterPassword = '';
                     this.encryptedLogin = '';
                     this.generatedPassword = '';
+                    this.fingerprint = '';
                 }, 1000 * seconds);
             },
             renderPassword(){
@@ -288,6 +290,7 @@
                     this.generatedPassword = '';
                     return;
                 }
+                this.fingerprint = this.masterPassword;
                 const password = new Password(this.password);
                 LessPass.renderPassword(this.encryptedLogin, this.password.site, password.options)
                         .then(generatedPassword => {
