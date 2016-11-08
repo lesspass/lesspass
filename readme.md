@@ -5,7 +5,7 @@ LessPass open source password manager (https://lesspass.com)
 
 ## How it works ?
 
- * [FR] [LessPass comment ça marche ?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
+ * [FR] [LessPass comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
  * [EN] [LessPass How Does It Works?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
 
 ## LessPass submodules
@@ -44,10 +44,17 @@ simply run
 | [cli](https://github.com/lesspass/cli) | [![Build Status](https://travis-ci.org/lesspass/cli.svg?branch=master)](https://travis-ci.org/lesspass/cli) |
 | [web extension](https://github.com/lesspass/webextension) | [![Build Status](https://travis-ci.org/lesspass/webextension.svg?branch=master)](https://travis-ci.org/lesspass/webextension) |
 
-## Contributors
-
-see contributors.md
 
 ## License
 
 This project is licensed under the terms of the GNU GPLv3.
+
+## Contributors :heart:
+
+Please do not contact contributors directly to report problems in LessPass.
+
+ * [Antoine Briand](https://github.com/antoine-briand)
+ * [Édouard Lopez](https://github.com/edouard-lopez)
+ * [Martin](https://github.com/martinseener)
+ * [Matthias Gliwka](https://github.com/gliwka)
+ * [Pierre Rudloff](https://github.com/Rudloff)
