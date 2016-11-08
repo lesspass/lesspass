@@ -22351,6 +22351,7 @@ exports.default = {
         return {
             masterPassword: '',
             encryptedLogin: '',
+            fingerprint: '',
             generatedPassword: '',
             cleanTimeout: null
         };
@@ -22433,6 +22434,7 @@ exports.default = {
                 _this3.masterPassword = '';
                 _this3.encryptedLogin = '';
                 _this3.generatedPassword = '';
+                _this3.fingerprint = '';
             }, 1000 * seconds);
         },
         renderPassword: function renderPassword() {
@@ -22442,6 +22444,7 @@ exports.default = {
                 this.generatedPassword = '';
                 return;
             }
+            this.fingerprint = this.masterPassword;
             var password = new _password2.default(this.password);
             _lesspass2.default.renderPassword(this.encryptedLogin, this.password.site, password.options).then(function (generatedPassword) {
                 _this4.$store.dispatch('PASSWORD_GENERATED');
@@ -34983,7 +34986,7 @@ module.exports={render:function (){with(this) {
     }
   }), " ", _h('fingerprint', {
     attrs: {
-      "fingerprint": masterPassword
+      "fingerprint": fingerprint
     },
     nativeOn: {
       "click": function($event) {
