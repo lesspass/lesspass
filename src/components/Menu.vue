@@ -39,10 +39,7 @@
                         <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
                     </span>
                     <span v-if="passwordStatus=='CREATED'" class="text-success">
-                        <i class="fa fa-check ml-1 text-success"></i> saved
-                    </span>
-                    <span v-if="passwordStatus=='UPDATED'" class="text-success">
-                        <i class="fa fa-check ml-1 text-success"></i> updated
+                        <i class="fa fa-check ml-1 text-success"></i>
                     </span>
                 </div>
                 <div class="col-xs-6 text-xs-right">
