@@ -1,15 +1,8 @@
-<style>
-    #passwords {
-        max-height: 320px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-</style>
 <template>
     <div>
         <form>
             <div class="form-group row">
-                <div class="col-sm-7">
+                <div class="col-xs-12">
                     <div class="inner-addon left-addon">
                         <i class="fa fa-search"></i>
                         <input class="form-control" name="search" placeholder="Search" v-model="searchQuery">
@@ -17,35 +10,31 @@
                 </div>
             </div>
         </form>
-        <div id="passwords" class="row">
-            <div class="col-xs-12">
-                <table class="table">
-                    <tbody>
-                    <tr v-if="passwords.length === 0">
-                        <td>
-                            You don't have any passwords saved in your database.
-                            <br>
-                            <router-link :to="{ name: 'home'}">Would you like to create one ?</router-link>
-                        </td>
-                    </tr>
-                    <tr v-for="password in filteredPasswords">
-                        <td>
+        <div id="passwords">
+            <div class="row" v-for="password in filteredPasswords">
+                <div class="col-xs-9">
+                    <ul class="list-unstyled">
+                        <li>
                             <router-link :to="{ name: 'password', params: { id: password.id }}">
                                 {{password.site}}
                             </router-link>
-                            <br>
+                        </li>
+                        <li>
                             {{password.login}}
-                        </td>
-                        <td class="text-xs-right">
-                            <delete-button :action="deletePassword" :object="password"
-                                           text="Are you sure you want to delete this password ?">
-                            </delete-button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-3">
+                    <delete-button class="float-xs-right"
+                                   style="position: absolute; right: 1em;margin-top: 3px;"
+                                   :action="deletePassword"
+                                   :object="password"
+                                   text="Are you sure you want to delete this password ?">
+                    </delete-button>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </template>
 <script type="text/ecmascript-6">
