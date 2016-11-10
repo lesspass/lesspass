@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "npm install && webpack-dev-server --inline --hot --host 0.0.0.0",
     "build": "rm -rf dist && NODE_ENV=production webpack --display-error-details --progress --hide-modules",
-    "test": "ava test --compilers js:babel-register"
+    "test": "ava test --compilers js:babel-register",
+    "prepublish": "npm test && npm run build"
   },
   "dependencies": {
     "axios": "^0.15.2",
