@@ -18,6 +18,7 @@
                            v-model="email">
                     <small class="form-text text-muted text-danger">
                         <span v-if="errors.userNameAlreadyExist">Someone already use that username. Do you want to sign in ?</span>
+                        <span v-if="errors.emailInvalid">Please enter a valid email</span>
                         <span v-if="errors.emailRequired">An email is required</span>
                     </small>
                 </div>
@@ -87,6 +88,7 @@
 
     const defaultErrors = {
         userNameAlreadyExist: false,
+        emailInvalid: false,
         baseURLRequired: false,
         emailRequired: false,
         passwordRequired: false,
@@ -109,7 +111,7 @@
         },
         methods: {
             noErrors(){
-                return !(this.errors.userNameAlreadyExist || this.errors.emailRequired || this.errors.passwordRequired || this.errors.baseURLRequired || this.showError);
+                return !(this.errors.userNameAlreadyExist || this.errors.emailInvalid || this.errors.emailRequired || this.errors.passwordRequired || this.errors.baseURLRequired || this.showError);
             },
             formIsValid(){
                 this.cleanErrors();
@@ -157,7 +159,7 @@
                                         this.showErrorMessage('Your LessPass Database is not running');
                                     }
                                 } else if (err.response.status === 400) {
-                                    this.showErrorMessage('Your email and/or password is not good. Do you have an account ?');
+                                    this.showErrorMessage('Your email and/or password is not good. Do you have an account?');
                                 } else {
                                     this.showErrorMessage()
                                 }
@@ -177,8 +179,13 @@
                             })
                             .catch(err => {
                                 this.cleanErrors();
-                                if (err.response && (err.response.data.email[0].indexOf('already exists') !== -1)) {
-                                    this.errors.userNameAlreadyExist = true;
+                                if (err.response && typeof err.response.data.email !== 'undefined') {
+                                    if (err.response.data.email[0].indexOf('already exists') !== -1) {
+                                        this.errors.userNameAlreadyExist = true;
+                                    }
+                                    if (err.response.data.email[0].indexOf('valid email') !== -1) {
+                                        this.errors.emailInvalid = true;
+                                    }
                                 } else {
                                     this.showErrorMessage();
                                 }
