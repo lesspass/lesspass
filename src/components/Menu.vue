@@ -59,8 +59,8 @@
                         <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
                     </div>
                     <div class="col-xs-6 text-xs-right">
-                        <router-link class="white-link" :to="{ name: 'login'}">
-                            <i class="fa fa-user-secret white" aria-hidden="true"></i>
+                        <router-link class="white-link pl-1" :to="{ name: 'login'}">
+                            <i class="fa fa-user-secret fa-clickable" aria-hidden="true"></i>
                         </router-link>
                     </div>
                 </div>
