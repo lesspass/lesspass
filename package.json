@@ -1,26 +1,25 @@
 {
   "name": "lesspass-cozy",
-  "description": "LessPass cozy app",
   "version": "1.1.0",
-  "cozy-type": "static",
-  "cozy-displayName": "LessPass",
-  "icon-path": "icon.png",
+  "description": "LessPass cozy app",
+  "license": "GPLv3",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
-  "repository": "lesspass/cozy",
-  "homepage": "https://github.com/lesspass/cozy#readme",
-  "bugs": "https://github.com/lesspass/cozy/issues",
   "main": "src/app.js",
+  "repository": "lesspass/cozy",
   "scripts": {
-    "start": "NODE_ENV=production node server.js",
+    "prebuild": "npm prune && npm install && gulp",
     "build": "rm -rf dist/ && gulp",
-    "prebuild": "npm prune && npm install && gulp"
+    "start": "NODE_ENV=production node server.js"
   },
-  "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
     "lesspass-pure": "^3.1.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
-  }
+  },
+  "private": true,
+  "cozy-displayName": "LessPass",
+  "cozy-type": "static",
+  "icon-path": "icon.png"
 }
