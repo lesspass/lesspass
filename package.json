@@ -2,27 +2,24 @@
   "name": "lesspass-cli",
   "version": "1.0.0",
   "description": "build LessPass passwords directly in command line",
-  "license": "MIT",
-  "repository": "lesspass/cli",
+  "keywords": [
+    "cli",
+    "cli-app",
+    "lesspass",
+    "password"
+  ],
+  "license": "GPLv3",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
-  "bin": {
-    "lesspass": "cli.js"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "scripts": {
-    "test": "ava"
-  },
   "files": [
     "cli.js"
   ],
-  "keywords": [
-    "cli-app",
-    "cli",
-    "password",
-    "lesspass"
-  ],
+  "bin": {
+    "lesspass": "cli.js"
+  },
+  "repository": "lesspass/cli",
+  "scripts": {
+    "test": "ava"
+  },
   "dependencies": {
     "lesspass": "^5.0.1",
     "meow": "^3.3.0",
