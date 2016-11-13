@@ -1,27 +1,32 @@
 {
   "name": "lesspass",
   "version": "5.2.0",
-  "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "description": "LessPass node module used to generate LessPass passwords",
-  "main": "lib/index.js",
-  "jsnext:main": "index.js",
-  "repository": "lesspass/core",
-  "scripts": {
-    "test:node": "npm run build && cd tests && babel-node --presets es2015 node.js && cd ..",
-    "test": "mocha --compilers js:babel-register --require ./tests/helper.js tests",
-    "build": "rimraf lib && babel index.js -d lib",
-    "prepublish": "npm test && npm run build && npm run test:node"
-  },
+  "keywords": [
+    "crypto",
+    "lesspass",
+    "password"
+  ],
+  "license": "GPLv3",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "files": [
     "lib/",
     "index.js"
   ],
-  "keywords": [
-    "password",
-    "crypto",
-    "lesspass"
-  ],
-  "license": "MIT",
+  "main": "lib/index.js",
+  "jsnext:main": "index.js",
+  "repository": "lesspass/core",
+  "scripts": {
+    "build": "rimraf lib && babel index.js -d lib",
+    "prepublish": "npm test && npm run build && npm run test:node",
+    "test": "mocha --compilers js:babel-register --require ./tests/helper.js tests",
+    "test:node": "npm run build && cd tests && babel-node --presets es2015 node.js && cd .."
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
@@ -29,10 +34,5 @@
     "chai": "^3.5.0",
     "mocha": "^3.1.2",
     "rimraf": "^2.5.4"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
   }
 }
