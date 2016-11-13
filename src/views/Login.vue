@@ -36,8 +36,12 @@
                            placeholder="LessPass password"
                            v-model="password">
                     <small class="form-text text-muted">
-                        <span v-if="noErrors()" class="text-warning">Do not use your master password here</span>
                         <span v-if="errors.passwordRequired" class="text-danger">A password is required</span>
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" v-model="useMasterPassword">
+                            Check me if you want to use your master password here.
+                            <a href="https://github.com/lesspass/lesspass/wiki/FAQ#you-should-never-save-your-master-password">Why?</a>
+                        </label>
                     </small>
                 </div>
             </div>
@@ -82,6 +86,7 @@
     </form>
 </template>
 <script type="text/ecmascript-6">
+    import LessPass from 'lesspass';
     import Auth from '../api/auth';
     import Storage from '../api/storage';
     import {mapGetters} from 'vuex';
@@ -102,6 +107,7 @@
                 auth,
                 storage,
                 password: '',
+                useMasterPassword: false,
                 showError: false,
                 errorMessage: '',
                 loadingRegister: false,
@@ -214,6 +220,35 @@
                     this.$store.commit('UPDATE_EMAIL', {email})
                 }
             }
+        },
+        watch: {
+            'useMasterPassword': function (useMasterPassword) {
+                if (!this.email || !this.password) {
+                    return;
+                }
+
+                if (!useMasterPassword) {
+                    this.password = '';
+                    return;
+                }
+
+                var site = 'lesspass.com';
+                var options = {
+                    counter: 1,
+                    length: 12,
+                    lowercase: true,
+                    uppercase: true,
+                    numbers: true,
+                    symbols: true
+                };
+
+                LessPass.encryptLogin(this.email, this.password)
+                        .then(encryptedLogin => {
+                            LessPass.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
+                                this.password = generatedPassword;
+                            });
+                        });
+            },
         }
     }
 </script>
