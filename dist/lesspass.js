@@ -22182,6 +22182,7 @@ exports.default = {
             storage: storage,
             password: '',
             useMasterPassword: false,
+            seeMasterPasswordHelp: false,
             showError: false,
             errorMessage: '',
             loadingRegister: false,
@@ -34746,7 +34747,17 @@ module.exports={render:function (){with(this) {
         }
       }
     }
-  }), "\n                        Check me if you want to use your master password here.\n                        ", _m(2)])])])])]), " ", _h('div', {
+  }), "\n                        Check me if you want to use your master password here.\n                        ", _h('span', {
+    staticClass: "tag tag-warning",
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        seeMasterPasswordHelp = !seeMasterPasswordHelp
+      }
+    }
+  }, ["\n                            ?\n                        "]), " ", (seeMasterPasswordHelp) ? _h('span', {
+    staticClass: "text-warning"
+  }, [_m(2), " Your master password ", _m(3), " on a database even encrypted.\n                            If you want to use your master password here, you can check the option.\n                            It will replace your master password with a LessPass generated password.\n                        "]) : _e()])])])])]), " ", _h('div', {
     staticClass: "form-group row"
   }, [_h('div', {
     staticClass: "col-xs-12 hint--bottom",
@@ -34755,7 +34766,7 @@ module.exports={render:function (){with(this) {
     }
   }, [_h('div', {
     staticClass: "inner-addon left-addon"
-  }, [_m(3), " ", _h('input', {
+  }, [_m(4), " ", _h('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -34794,7 +34805,7 @@ module.exports={render:function (){with(this) {
     on: {
       "click": signIn
     }
-  }, [(loadingSignIn) ? _h('span', [_m(4)]) : _e(), "\n                Sign In\n            "]), " ", _h('button', {
+  }, [(loadingSignIn) ? _h('span', [_m(5)]) : _e(), "\n                Sign In\n            "]), " ", _h('button', {
     staticClass: "btn btn-secondary",
     attrs: {
       "id": "registerButton",
@@ -34803,7 +34814,7 @@ module.exports={render:function (){with(this) {
     on: {
       "click": register
     }
-  }, [(loadingRegister) ? _h('span', [_m(5)]) : _e(), "\n                Register\n            "])])]), " ", _h('div', {
+  }, [(loadingRegister) ? _h('span', [_m(6)]) : _e(), "\n                Register\n            "])])]), " ", _h('div', {
     staticClass: "form-group row"
   }, [_h('div', {
     staticClass: "col-xs-12"
@@ -34823,11 +34834,9 @@ module.exports={render:function (){with(this) {
     staticClass: "fa fa-lock"
   })
 }},function (){with(this) {
-  return _h('a', {
-    attrs: {
-      "href": "https://github.com/lesspass/lesspass/wiki/FAQ#you-should-never-save-your-master-password"
-    }
-  }, ["Why?"])
+  return _h('br')
+}},function (){with(this) {
+  return _h('b', ["should not be saved"])
 }},function (){with(this) {
   return _h('i', {
     staticClass: "fa fa-globe"
