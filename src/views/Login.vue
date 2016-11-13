@@ -40,7 +40,14 @@
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" v-model="useMasterPassword">
                             Check me if you want to use your master password here.
-                            <a href="https://github.com/lesspass/lesspass/wiki/FAQ#you-should-never-save-your-master-password">Why?</a>
+                            <span class="tag tag-warning" v-on:click.prevent="seeMasterPasswordHelp=!seeMasterPasswordHelp">
+                                ?
+                            </span>
+                            <span class="text-warning" v-if="seeMasterPasswordHelp">
+                                <br> Your master password <b>should not be saved</b> on a database even encrypted.
+                                If you want to use your master password here, you can check the option.
+                                It will replace your master password with a LessPass generated password.
+                            </span>
                         </label>
                     </small>
                 </div>
@@ -108,6 +115,7 @@
                 storage,
                 password: '',
                 useMasterPassword: false,
+                seeMasterPasswordHelp: false,
                 showError: false,
                 errorMessage: '',
                 loadingRegister: false,
