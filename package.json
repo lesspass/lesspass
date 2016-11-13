@@ -1,18 +1,19 @@
 {
   "name": "lesspass-webextension",
   "description": "chrome and firefox web extension for LessPass",
+  "license": "GPLv3",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
-  "private": true,
   "scripts": {
     "prebuild": "npm prune && npm install",
+    "build": "npm run clean && gulp && npm run zip",
     "clean": "rm -rf extension/dist/ && mkdir extension/dist/",
-    "zip": "rm -rf build && mkdir build && cd extension && zip -r extension.zip ./* -x ./*.js && cp extension.zip ../build/lesspass.firefox.xpi && mv extension.zip ../build/lesspass.chrome.zip && cd ..",
-    "build": "npm run clean && gulp && npm run zip"
+    "zip": "rm -rf build && mkdir build && cd extension && zip -r extension.zip ./* -x ./*.js && cp extension.zip ../build/lesspass.firefox.xpi && mv extension.zip ../build/lesspass.chrome.zip && cd .."
   },
   "dependencies": {
     "lesspass-pure": "^3.1.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
-  }
+  },
+  "private": true
 }
