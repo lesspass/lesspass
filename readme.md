@@ -53,6 +53,7 @@ This project is licensed under the terms of the GNU GPLv3.
 
 Please do not contact contributors directly to report problems in LessPass.
 
+ * [Adam Harris](https://github.com/aharris88)
  * [Antoine Briand](https://github.com/antoine-briand)
  * [Arnaud Meuret](https://github.com/ameuret)
  * [Bran Sorem](https://github.com/bransorem)
