@@ -86,7 +86,7 @@
         <div class="form-group row">
             <div class="col-xs-12">
                 <router-link :to="{ name: 'passwordReset'}">
-                    Forgot you password ?
+                    Forgot your password?
                 </router-link>
             </div>
         </div>
