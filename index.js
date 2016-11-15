@@ -1,4 +1,5 @@
-import crypto from 'crypto';
+var pbkdf2 = require('pbkdf2');
+var createHmac = require('create-hmac');
 
 module.exports = {
     encryptLogin: _encryptLogin,
@@ -18,7 +19,7 @@ function _encryptLogin(login, masterPassword, {iterations = 8192, keylen = 32}={
         if (!login || !masterPassword) {
             reject('login and master password parameters could not be empty');
         }
-        crypto.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', (error, key) => {
+        pbkdf2.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', (error, key) => {
             if (error) {
                 reject('error in pbkdf2');
             } else {
@@ -37,7 +38,7 @@ function _renderPassword(encryptedLogin, site, passwordOptions) {
 
 function _createHmac(encryptedLogin, salt) {
     return new Promise(resolve => {
-        resolve(crypto.createHmac('sha256', encryptedLogin).update(salt).digest('hex'));
+        resolve(createHmac('sha256', new Buffer(encryptedLogin)).update(salt).digest('hex'));
     });
 }
 
@@ -104,6 +105,6 @@ function _getPasswordChar(charType, index) {
 
 function createFingerprint(str) {
     return new Promise(resolve => {
-        resolve(crypto.createHmac('sha256', str).digest('hex'))
+        resolve(createHmac('sha256', new Buffer(str)).digest('hex'))
     });
 }
