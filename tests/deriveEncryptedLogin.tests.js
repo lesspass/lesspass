@@ -23,7 +23,7 @@ describe('LessPass', function () {
             };
             var p1 = LessPass._deriveEncryptedLogin(encryptedLogin, site);
             var p2 = LessPass._deriveEncryptedLogin(encryptedLogin, site, option);
-            Promise.all([p1, p2]).then(generatedPasswords => {
+            Promise.all([p1, p2]).then(function(generatedPasswords) {
                 assert.equal(generatedPasswords[0], generatedPasswords[1])
             });
         });
@@ -45,7 +45,7 @@ describe('LessPass', function () {
             const site2 = 'facebook.com';
             var p1 = LessPass._deriveEncryptedLogin(encryptedLogin, site);
             var p2 = LessPass._deriveEncryptedLogin(encryptedLogin, site2);
-            Promise.all([p1, p2]).then(derivedEncryptedLogins => {
+            Promise.all([p1, p2]).then(function(derivedEncryptedLogins) {
                 assert.notEqual(derivedEncryptedLogins[0], derivedEncryptedLogins[1])
             });
         });
@@ -56,7 +56,7 @@ describe('LessPass', function () {
             const option2 = {counter: 2};
             var p1 = LessPass._deriveEncryptedLogin(encryptedLogin, site, option);
             var p2 = LessPass._deriveEncryptedLogin(encryptedLogin, site, option2);
-            Promise.all([p1, p2]).then(derivedEncryptedLogins => {
+            Promise.all([p1, p2]).then(function(derivedEncryptedLogins) {
                 assert.notEqual(derivedEncryptedLogins[0], derivedEncryptedLogins[1])
             });
         });

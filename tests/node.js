@@ -15,12 +15,12 @@ var options = {
 };
 
 LessPass.encryptLogin(login, masterPassword)
-    .then(encryptedLogin => {
-        LessPass.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
+    .then(function(encryptedLogin) {
+        LessPass.renderPassword(encryptedLogin, site, options).then(function(generatedPassword) {
             assert.equal(generatedPassword, 'azYS7,olOL2]');
             console.log('generated password ok');
         });
     })
-    .catch(e => {
+    .catch(function(e) {
         console.log(e);
     });

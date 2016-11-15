@@ -100,12 +100,12 @@ describe('LessPass', function () {
                 }
             ];
 
-            for (var entry of passwords) {
+            passwords.forEach(function (entry) {
                 promises.push(LessPass.encryptLogin(entry.login, entry.masterPassword));
-            }
+            });
 
-            return Promise.all(promises).then(values => {
-                for (let i = 0; i < values.length; i++) {
+            return Promise.all(promises).then(function (values) {
+                for (var i = 0; i < values.length; i++) {
                     assert.equal(passwords[i].encryptedLogin, values[i]);
                 }
             });
@@ -312,7 +312,7 @@ describe('LessPass', function () {
                 }
             ];
 
-            for (var entry of passwords) {
+            passwords.forEach(function (entry) {
                 var passwordOption = {
                     counter: entry.counter,
                     length: entry.length,
@@ -322,10 +322,10 @@ describe('LessPass', function () {
                     symbols: entry.symbols,
                 };
                 promises.push(LessPass.renderPassword(entry.encryptedLogin, entry.site, passwordOption));
-            }
+            });
 
-            return Promise.all(promises).then(values => {
-                for (let i = 0; i < values.length; i++) {
+            return Promise.all(promises).then(function(values) {
+                for (var i = 0; i < values.length; i++) {
                     assert.equal(passwords[i].generatedPassword, values[i]);
                 }
             });

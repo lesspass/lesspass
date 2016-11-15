@@ -1,8 +1,9 @@
 module.exports = function (config) {
-    config.set({
+    var configuration = {
         basePath: '..',
         frameworks: ['mocha', 'chai'],
         files: [
+            'node_modules/bluebird/js/browser/bluebird.core.min.js',
             'lib/lesspass.js',
             'tests/**/*.js'
         ],
@@ -20,5 +21,9 @@ module.exports = function (config) {
         browsers: ['Chrome', 'Firefox'],
         singleRun: true,
         concurrency: Infinity
-    })
+    };
+    if (process.env.TRAVIS) {
+        configuration.browsers = ['PhantomJS'];
+    }
+    config.set(configuration)
 };

@@ -1,23 +1,24 @@
 var pbkdf2 = require('pbkdf2');
 var createHmac = require('create-hmac');
+var Promise = require("bluebird");
 
 module.exports = {
     encryptLogin: _encryptLogin,
     renderPassword: _renderPassword,
     createFingerprint: createFingerprint,
-    _deriveEncryptedLogin,
-    _getPasswordTemplate,
-    _prettyPrint,
-    _string2charCodes,
-    _getCharType,
-    _getPasswordChar,
-    _createHmac
+    _deriveEncryptedLogin: _deriveEncryptedLogin,
+    _getPasswordTemplate: _getPasswordTemplate,
+    _prettyPrint: _prettyPrint,
+    _string2charCodes: _string2charCodes,
+    _getCharType: _getCharType,
+    _getPasswordChar: _getPasswordChar,
+    _createHmac: _createHmac
 };
 
 function _encryptLogin(login, masterPassword, options) {
-    const _options = options !== undefined ? options : {};
-    const iterations = _options.iterations || 8192;
-    const keylen = _options.keylen || 32;
+    var _options = options !== undefined ? options : {};
+    var iterations = _options.iterations || 8192;
+    var keylen = _options.keylen || 32;
 
     return new Promise(function (resolve, reject) {
         if (!login || !masterPassword) {
@@ -35,7 +36,7 @@ function _encryptLogin(login, masterPassword, options) {
 
 function _renderPassword(encryptedLogin, site, passwordOptions) {
     return _deriveEncryptedLogin(encryptedLogin, site, passwordOptions).then(function (derivedEncryptedLogin) {
-        const template = passwordOptions.template || _getPasswordTemplate(passwordOptions);
+        var template = passwordOptions.template || _getPasswordTemplate(passwordOptions);
         return _prettyPrint(derivedEncryptedLogin, template);
     });
 }
@@ -51,41 +52,41 @@ function _deriveEncryptedLogin(encryptedLogin, site, options) {
     var length = _options.length || 12;
     var counter = _options.counter || 1;
 
-    const salt = site + counter.toString();
+    var salt = site + counter.toString();
     return _createHmac(encryptedLogin, salt).then(function (derivedHash) {
         return derivedHash.substring(0, length);
     });
 }
 
 function _getPasswordTemplate(passwordTypes) {
-    const templates = {
+    var templates = {
         lowercase: 'vc',
         uppercase: 'VC',
         numbers: 'n',
         symbols: 's',
     };
-    let template = '';
-    for (let templateKey in templates) {
-        if (passwordTypes.hasOwnProperty(templateKey) && passwordTypes[templateKey]) {
-            template += templates[templateKey]
+    var returnedTemplate = '';
+    Object.keys(templates).forEach(function (template) {
+        if (passwordTypes.hasOwnProperty(template) && passwordTypes[template]) {
+            returnedTemplate += templates[template]
         }
-    }
-    return template;
+    });
+    return returnedTemplate;
 }
 
 function _prettyPrint(hash, template) {
-    let password = '';
+    var password = '';
 
     _string2charCodes(hash).forEach(function (charCode, index) {
-        const charType = _getCharType(template, index);
+        var charType = _getCharType(template, index);
         password += _getPasswordChar(charType, charCode);
     });
     return password;
 }
 
 function _string2charCodes(text) {
-    const charCodes = [];
-    for (let i = 0; i < text.length; i++) {
+    var charCodes = [];
+    for (var i = 0; i < text.length; i++) {
         charCodes.push(text.charCodeAt(i));
     }
     return charCodes;
@@ -96,7 +97,7 @@ function _getCharType(template, index) {
 }
 
 function _getPasswordChar(charType, index) {
-    const passwordsChars = {
+    var passwordsChars = {
         V: 'AEIOUY',
         C: 'BCDFGHJKLMNPQRSTVWXZ',
         v: 'aeiouy',
@@ -107,7 +108,7 @@ function _getPasswordChar(charType, index) {
         s: '@&%?,=[]_:-+*$#!\'^~;()/.',
         x: 'AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz0123456789@&%?,=[]_:-+*$#!\'^~;()/.'
     };
-    const passwordChar = passwordsChars[charType];
+    var passwordChar = passwordsChars[charType];
     return passwordChar[index % passwordChar.length];
 }
 
