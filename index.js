@@ -14,12 +14,16 @@ module.exports = {
     _createHmac
 };
 
-function _encryptLogin(login, masterPassword, {iterations = 8192, keylen = 32}={}) {
-    return new Promise((resolve, reject) => {
+function _encryptLogin(login, masterPassword, options) {
+    const _options = options !== undefined ? options : {};
+    const iterations = _options.iterations || 8192;
+    const keylen = _options.keylen || 32;
+
+    return new Promise(function (resolve, reject) {
         if (!login || !masterPassword) {
             reject('login and master password parameters could not be empty');
         }
-        pbkdf2.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', (error, key) => {
+        pbkdf2.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', function (error, key) {
             if (error) {
                 reject('error in pbkdf2');
             } else {
@@ -37,15 +41,19 @@ function _renderPassword(encryptedLogin, site, passwordOptions) {
 }
 
 function _createHmac(encryptedLogin, salt) {
-    return new Promise(resolve => {
+    return new Promise(function (resolve) {
         resolve(createHmac('sha256', new Buffer(encryptedLogin)).update(salt).digest('hex'));
     });
 }
 
-function _deriveEncryptedLogin(encryptedLogin, site, passwordOptions = {length: 12, counter: 1}) {
-    const salt = site + passwordOptions.counter.toString();
-    return _createHmac(encryptedLogin, salt).then(derivedHash => {
-        return derivedHash.substring(0, passwordOptions.length);
+function _deriveEncryptedLogin(encryptedLogin, site, options) {
+    var _options = options !== undefined ? options : {};
+    var length = _options.length || 12;
+    var counter = _options.counter || 1;
+
+    const salt = site + counter.toString();
+    return _createHmac(encryptedLogin, salt).then(function (derivedHash) {
+        return derivedHash.substring(0, length);
     });
 }
 
@@ -68,7 +76,7 @@ function _getPasswordTemplate(passwordTypes) {
 function _prettyPrint(hash, template) {
     let password = '';
 
-    _string2charCodes(hash).forEach((charCode, index) => {
+    _string2charCodes(hash).forEach(function (charCode, index) {
         const charType = _getCharType(template, index);
         password += _getPasswordChar(charType, charCode);
     });
@@ -104,7 +112,7 @@ function _getPasswordChar(charType, index) {
 }
 
 function createFingerprint(str) {
-    return new Promise(resolve => {
+    return new Promise(function (resolve) {
         resolve(createHmac('sha256', new Buffer(str)).digest('hex'))
     });
 }
