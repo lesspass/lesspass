@@ -22,6 +22,3 @@
 [submodule "cli"]
 	path = cli
 	url = git@github.com:lesspass/cli.git
-[submodule "webcrypto"]
-	path = webcrypto
-	url = git@github.com:lesspass/webcrypto.git
