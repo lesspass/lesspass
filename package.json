@@ -17,10 +17,13 @@
   "jsnext:main": "index.js",
   "repository": "lesspass/core",
   "scripts": {
-    "build": "rimraf lib && babel index.js -d lib",
+    "build": "rimraf lib && babel index.js -d lib && browserify --standalone LessPass index.js > lib/lesspass.js",
+    "gulp": "gulp",
     "prepublish": "npm test && npm run build && npm run test:node",
     "test": "mocha --compilers js:babel-register --require ./tests/helper.js tests",
-    "test:node": "npm run build && cd tests && babel-node --presets es2015 node.js && cd .."
+    "test:node": "npm run build && cd tests && babel-node --presets es2015 node.js && cd ..",
+    "test:webcrypto": "karma start tests/karma.webcrypto.config.js",
+    "test:browser": "npm run build && karma start tests/karma.config.js"
   },
   "babel": {
     "presets": [
@@ -29,13 +32,22 @@
   },
   "dependencies": {
     "create-hmac": "^1.1.4",
-    "pbkdf2": "^3.0.9"
+    "pbkdf2": "^3.0.9",
+    "unibabel": "^2.1.3"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
     "babel-preset-es2015": "^6.16.0",
+    "browserify": "^13.1.1",
     "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "karma": "^1.3.0",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^1.3.0",
     "mocha": "^3.1.2",
     "rimraf": "^2.5.4"
   }

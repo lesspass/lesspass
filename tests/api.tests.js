@@ -33,14 +33,14 @@ describe('LessPass', function () {
             });
         });
 
-        it('should allow utf8 parameter', function (done) {
-            LessPass.encryptLogin('test@example.org', '♥ LessPass ♥').then(function (encryptedLogin) {
+        it('should allow utf8 parameter', function () {
+            return LessPass.encryptLogin('test@example.org', '♥ LessPass ♥').then(function (encryptedLogin) {
                 assert.equal('997fe81d3d0db236e039c75efdb487f17a902fdf94f9dacaa9884329c85d9651', encryptedLogin);
-                done();
             });
         });
 
         it('auto generated encrypt login tests', function () {
+            this.timeout(10000);
             var promises = [];
             var passwords = [
                 {

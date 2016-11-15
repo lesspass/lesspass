@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../lib/lesspass.webcrypto.min.js"></script>
+</head>
+<body>
+<script>
+    var site = 'lesspass.com';
+    var login = 'contact@lesspass.com';
+    var masterPassword = 'password';
+    var options = {
+        counter: 1,
+        length: 12,
+        lowercase: true,
+        uppercase: true,
+        numbers: true,
+        symbols: true,
+        template: 'vcVCns'
+    };
+
+    LessPass.encryptLogin(login, masterPassword)
+            .then(encryptedLogin => {
+                LessPass.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
+                    console.log(generatedPassword); //azYS7,olOL2]
+                    document.body.innerHTML = document.body.innerHTML + "<br>generated password : " + generatedPassword
+                });
+            });
+
+    LessPass.createFingerprint('password').then(fingerprint => {
+        document.body.innerHTML = document.body.innerHTML + "fingerprint : " + fingerprint
+    });
+</script>
+</body>
+</html>
