@@ -24,4 +24,4 @@
 	url = git@github.com:lesspass/cli.git
 [submodule "native"]
 	path = native
-	url = https://github.com/lesspass/native
+	url = git@github.com:lesspass/native.git
