@@ -4,7 +4,8 @@ function cmd {
     pwd
 }
 
-submodules=( backend cli core cozy frontend nginx pure webcrypto webextension )
+submodules=( backend cli core cozy frontend nginx pure webextension native )
+#submodules=( cli core cozy frontend pure webextension native )
 #submodules=( cozy frontend webextension )
 for submodule in "${submodules[@]}"
 do
@@ -14,7 +15,7 @@ do
 done
 
 
-#VERSION=1.1.2
+#VERSION=
 #cd webextension
 #git archive -o webextension.zip master
 #mv webextension.zip /tmp
