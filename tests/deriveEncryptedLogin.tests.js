@@ -2,12 +2,11 @@ var assert = chai.assert;
 
 describe('LessPass', function () {
     describe('deriveEncryptedLogin', function () {
-        it('should createHmac', function (done) {
+        it('should createHmac', function () {
             var encryptedLogin = '9f505f3a95fe0485da3242cb81c9fe25c2f400d8399737655a8dad2b52778d88';
             var salt = 'lesspass.com1';
-            LessPass._createHmac(encryptedLogin, salt).then(function (hmac) {
+            return LessPass._createHmac(encryptedLogin, salt).then(function (hmac) {
                 assert.equal('be00f942fc8aa67d8e76fc2456862b9d66d166ebfdd3dc2f0116e278209532ed', hmac);
-                done();
             });
         });
         it('should derive encrypted login with default options', function () {
@@ -23,21 +22,20 @@ describe('LessPass', function () {
             };
             var p1 = LessPass._deriveEncryptedLogin(encryptedLogin, site);
             var p2 = LessPass._deriveEncryptedLogin(encryptedLogin, site, option);
-            Promise.all([p1, p2]).then(function(generatedPasswords) {
+            Promise.all([p1, p2]).then(function (generatedPasswords) {
                 assert.equal(generatedPasswords[0], generatedPasswords[1])
             });
         });
-        it('should derive encrypted login with defined length', function (done) {
+        it('should derive encrypted login with defined length', function () {
             var encryptedLogin = 'd79d8482f708122288af7b259393a58fe05840f4555cc935cdd3f062b9aa75ed';
             var site = 'lesspass.com';
             var option = {
                 counter: 1,
                 length: 10,
             };
-            LessPass._deriveEncryptedLogin(encryptedLogin, site, option).then(function (generatedPassword) {
+            return LessPass._deriveEncryptedLogin(encryptedLogin, site, option).then(function (generatedPassword) {
                 assert.equal(10, generatedPassword.length);
-                done();
-            })
+            });
         });
         it('should return two different passwords if site different', function () {
             const encryptedLogin = 'f4fd3885fb70085f2285c3382e2d9adb4c2553285fc45dd896791aa5e79070a9';
@@ -45,7 +43,7 @@ describe('LessPass', function () {
             const site2 = 'facebook.com';
             var p1 = LessPass._deriveEncryptedLogin(encryptedLogin, site);
             var p2 = LessPass._deriveEncryptedLogin(encryptedLogin, site2);
-            Promise.all([p1, p2]).then(function(derivedEncryptedLogins) {
+            return Promise.all([p1, p2]).then(function (derivedEncryptedLogins) {
                 assert.notEqual(derivedEncryptedLogins[0], derivedEncryptedLogins[1])
             });
         });
@@ -56,7 +54,7 @@ describe('LessPass', function () {
             const option2 = {counter: 2};
             var p1 = LessPass._deriveEncryptedLogin(encryptedLogin, site, option);
             var p2 = LessPass._deriveEncryptedLogin(encryptedLogin, site, option2);
-            Promise.all([p1, p2]).then(function(derivedEncryptedLogins) {
+            return Promise.all([p1, p2]).then(function (derivedEncryptedLogins) {
                 assert.notEqual(derivedEncryptedLogins[0], derivedEncryptedLogins[1])
             });
         });
