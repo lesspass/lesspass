@@ -17,7 +17,7 @@
   "scripts": {
     "build": "rimraf lib && mkdir lib && browserify --standalone LessPass index.js > lib/lesspass.js && gulp",
     "prepublish": "npm test && npm run build && npm run test:node && npm run test:browser",
-    "test": "mocha --require ./tests/helper.js tests",
+    "test": "mocha --require ./tests/helper.js tests/*",
     "test:node": "npm run build && cd tests && node node.js && cd ..",
     "test:webcrypto": "karma start tests/karma.webcrypto.config.js",
     "test:browser": "npm run build && karma start tests/karma.config.js"

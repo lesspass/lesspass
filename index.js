@@ -1,6 +1,7 @@
 var pbkdf2 = require('pbkdf2');
 var createHmac = require('create-hmac');
 var Promise = require("bluebird");
+var v2 = require('./src/v2');
 
 module.exports = {
     encryptLogin: _encryptLogin,
@@ -12,7 +13,8 @@ module.exports = {
     _string2charCodes: _string2charCodes,
     _getCharType: _getCharType,
     _getPasswordChar: _getPasswordChar,
-    _createHmac: _createHmac
+    _createHmac: _createHmac,
+    _calcEntropy: v2.calcEntropy
 };
 
 function _encryptLogin(login, masterPassword, options) {
