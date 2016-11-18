@@ -16,6 +16,7 @@ module.exports = {
     _createHmac: _createHmac,
     _calcEntropy: v2.calcEntropy,
     _getSetOfCharacters: v2.getSetOfCharacters,
+    _renderPassword: v2.renderPassword,
 };
 
 function _encryptLogin(login, masterPassword, options) {

@@ -1,5 +1,6 @@
 var Promise = require("bluebird");
 var pbkdf2 = require('pbkdf2');
+var bigInt = require("big-integer");
 
 exports.calcEntropy = function (site, login, masterPassword, passwordProfile) {
     return new Promise(function (resolve, reject) {
@@ -36,4 +37,19 @@ exports.getSetOfCharacters = function (passwordProfile) {
         }
     });
     return setOfCharacters;
+};
+
+function consumeEntropy(generatedPassword, quotient, setOfCharacters, maxLength) {
+    if (generatedPassword.length >= maxLength) {
+        return generatedPassword
+    }
+    var longDivision = quotient.divmod(setOfCharacters.length);
+    generatedPassword += setOfCharacters[longDivision.remainder];
+    return consumeEntropy(generatedPassword, longDivision.quotient, setOfCharacters, maxLength)
+}
+
+exports.renderPassword = function (entropy, setOfCharacters, passwordProfile) {
+    var _passwordProfile = passwordProfile !== undefined ? passwordProfile : {};
+    var length = _passwordProfile.length || 14;
+    return consumeEntropy('', bigInt(entropy, 16), setOfCharacters, length);
 };
