@@ -2,7 +2,12 @@ var Promise = require("bluebird");
 var pbkdf2 = require('pbkdf2');
 var bigInt = require("big-integer");
 
-exports.generatePassword = generatePassword;
+module.exports = {
+    generatePassword: generatePassword,
+    _calcEntropy: calcEntropy,
+    _getSetOfCharacters: getSetOfCharacters,
+    _renderPassword: renderPassword
+};
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
     return calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
@@ -10,11 +15,6 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
         return renderPassword(entropy, setOfCharacters, passwordProfile)
     });
 }
-
-exports._calcEntropy = calcEntropy;
-exports._getSetOfCharacters = getSetOfCharacters;
-exports._renderPassword = renderPassword;
-
 
 function calcEntropy(site, login, masterPassword, passwordProfile) {
     return new Promise(function (resolve, reject) {

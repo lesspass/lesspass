@@ -3,6 +3,7 @@ var assert = chai.assert;
 describe('LessPass v2', function () {
     describe('API', function () {
         it('render password', function () {
+            this.timeout(10000);
             var site = 'example.org';
             var login = 'contact@example.org';
             var masterPassword = 'password';
@@ -20,6 +21,7 @@ describe('LessPass v2', function () {
             });
         });
         it('render password only digit', function () {
+            this.timeout(10000);
             var site = 'example.org';
             var login = 'contact@example.org';
             var masterPassword = 'password';
@@ -37,6 +39,7 @@ describe('LessPass v2', function () {
             });
         });
         it('render password  no number', function () {
+            this.timeout(10000);
             var site = 'example.org';
             var login = 'contact@example.org';
             var masterPassword = 'password';
