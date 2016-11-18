@@ -5,18 +5,18 @@ var bigInt = require("big-integer");
 exports.generatePassword = generatePassword;
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
-    return _calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
-        var setOfCharacters = _getSetOfCharacters(passwordProfile);
-        return _renderPassword(entropy, setOfCharacters, passwordProfile)
+    return calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
+        var setOfCharacters = getSetOfCharacters(passwordProfile);
+        return renderPassword(entropy, setOfCharacters, passwordProfile)
     });
 }
 
-exports._calcEntropy = _calcEntropy;
-exports._getSetOfCharacters = _getSetOfCharacters;
-exports._renderPassword = _renderPassword;
+exports._calcEntropy = calcEntropy;
+exports._getSetOfCharacters = getSetOfCharacters;
+exports._renderPassword = renderPassword;
 
 
-function _calcEntropy(site, login, masterPassword, passwordProfile) {
+function calcEntropy(site, login, masterPassword, passwordProfile) {
     return new Promise(function (resolve, reject) {
         var salt = site + login + passwordProfile.counter.toString(16);
         var iterations = passwordProfile.iterations || 100000;
@@ -32,7 +32,7 @@ function _calcEntropy(site, login, masterPassword, passwordProfile) {
     });
 }
 
-function _getSetOfCharacters(passwordProfile) {
+function getSetOfCharacters(passwordProfile) {
     var subsetOfCharacters = {
         lowercase: 'abcdefghijklmnopqrstuvwxyz',
         uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -53,17 +53,17 @@ function _getSetOfCharacters(passwordProfile) {
     return setOfCharacters;
 }
 
-function _consumeEntropy(generatedPassword, quotient, setOfCharacters, maxLength) {
+function consumeEntropy(generatedPassword, quotient, setOfCharacters, maxLength) {
     if (generatedPassword.length >= maxLength) {
         return generatedPassword
     }
     var longDivision = quotient.divmod(setOfCharacters.length);
     generatedPassword += setOfCharacters[longDivision.remainder];
-    return _consumeEntropy(generatedPassword, longDivision.quotient, setOfCharacters, maxLength)
+    return consumeEntropy(generatedPassword, longDivision.quotient, setOfCharacters, maxLength)
 }
 
-function _renderPassword(entropy, setOfCharacters, passwordProfile) {
+function renderPassword(entropy, setOfCharacters, passwordProfile) {
     var _passwordProfile = passwordProfile !== undefined ? passwordProfile : {};
     var length = _passwordProfile.length || 14;
-    return _consumeEntropy('', bigInt(entropy, 16), setOfCharacters, length);
+    return consumeEntropy('', bigInt(entropy, 16), setOfCharacters, length);
 }
