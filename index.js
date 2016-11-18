@@ -14,9 +14,10 @@ module.exports = {
     _getCharType: _getCharType,
     _getPasswordChar: _getPasswordChar,
     _createHmac: _createHmac,
-    _calcEntropy: v2.calcEntropy,
-    _getSetOfCharacters: v2.getSetOfCharacters,
-    _renderPassword: v2.renderPassword,
+    generatePassword: v2.generatePassword,
+    _calcEntropy: v2._calcEntropy,
+    _getSetOfCharacters: v2._getSetOfCharacters,
+    _renderPassword: v2._renderPassword,
 };
 
 function _encryptLogin(login, masterPassword, options) {

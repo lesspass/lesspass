@@ -1,6 +1,6 @@
 var assert = chai.assert;
 
-describe('LessPass', function () {
+describe('LessPass v2', function () {
     describe('set of characters', function () {
         it('get default set of characters', function () {
             var setOfCharacters = LessPass._getSetOfCharacters();

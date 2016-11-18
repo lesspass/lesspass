@@ -1,6 +1,6 @@
 var assert = chai.assert;
 
-describe('LessPass', function () {
+describe('LessPass v2', function () {
     describe('entropy', function () {
         it('calc entropy pbkdf2 with default params (100000 iterations, 32 bytes length, sha256 digest)', function () {
             this.timeout(10000);
@@ -12,7 +12,7 @@ describe('LessPass', function () {
             };
             return LessPass._calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
                 assert.equal('dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e', entropy);
-            })
+            });
         });
 
         it('calc entropy with different options (8192 iterations, 16 bytes length, sha512 digest)', function () {

@@ -1,6 +1,6 @@
 var assert = chai.assert;
 
-describe('LessPass', function () {
+describe('LessPass v2', function () {
     it('render password use remainder of long division beetween entropy and set of chars length as an index ', function () {
         var entropy = 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e';
         var setOfCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
