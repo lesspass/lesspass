@@ -16,3 +16,24 @@ exports.calcEntropy = function (site, login, masterPassword, passwordProfile) {
         });
     })
 };
+
+exports.getSetOfCharacters = function (passwordProfile) {
+    var subsetOfCharacters = {
+        lowercase: 'abcdefghijklmnopqrstuvwxyz',
+        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        digits: '0123456789',
+        symbols: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+    };
+
+    if (typeof passwordProfile === 'undefined') {
+        return subsetOfCharacters.lowercase + subsetOfCharacters.uppercase + subsetOfCharacters.digits;
+    }
+
+    var setOfCharacters = '';
+    ['lowercase', 'uppercase', 'digits', 'symbols'].forEach(function (subset) {
+        if (passwordProfile.hasOwnProperty(subset) && passwordProfile[subset]) {
+            setOfCharacters += subsetOfCharacters[subset]
+        }
+    });
+    return setOfCharacters;
+};
