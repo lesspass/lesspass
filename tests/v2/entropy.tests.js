@@ -7,10 +7,7 @@ describe('LessPass v2', function () {
             var site = 'example.org';
             var login = 'contact@example.org';
             var masterPassword = 'password';
-            var passwordProfile = {
-                counter: 1
-            };
-            return LessPass._calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
+            return LessPass._calcEntropy(site, login, masterPassword).then(function (entropy) {
                 assert.equal('dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e', entropy);
             });
         });
@@ -32,14 +29,8 @@ describe('LessPass v2', function () {
             var site = 'example.org';
             var login = 'contact@example.org';
             var masterPassword = 'password';
-            var passwordProfile1 = {
-                iterations: 1,
-                counter: 1
-            };
-            var passwordProfile2 = {
-                iterations: 1,
-                counter: 2
-            };
+            var passwordProfile1 = {iterations: 1, keylen: 16, digest: 'sha256', counter: 1};
+            var passwordProfile2 = {iterations: 1, keylen: 16, digest: 'sha256', counter: 2};
             var p1 = LessPass._calcEntropy(site, login, masterPassword, passwordProfile1);
             var p2 = LessPass._calcEntropy(site, login, masterPassword, passwordProfile2);
             return Promise.all([p1, p2]).then(function (entropies) {

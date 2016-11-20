@@ -1,32 +1,42 @@
 var Promise = require("bluebird");
 var pbkdf2 = require('pbkdf2');
 var bigInt = require("big-integer");
+var objectAssign = require('object-assign');
 
 module.exports = {
     generatePassword: generatePassword,
     _calcEntropy: calcEntropy,
     _consumeEntropy: consumeEntropy,
     _getSetOfCharacters: getSetOfCharacters,
-    _numberSubsetsOfChars: numberSubsetsOfChars,
-    _includeOneCharPerSetOfCharacters: includeOneCharPerSetOfCharacters,
-    _generateOneCharPerSetOfCharacters: generateOneCharPerSetOfCharacters,
+    _validRules: validRules,
+    _insertStringPseudoRandomly: insertStringPseudoRandomly,
+    _getOneCharPerRule: getOneCharPerRule,
     _renderPassword: renderPassword
 };
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
     return calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
-        var setOfCharacters = getSetOfCharacters(passwordProfile);
-        return renderPassword(entropy, setOfCharacters, passwordProfile)
+        return renderPassword(entropy, passwordProfile)
     });
 }
 
+var defaultPasswordProfile = {
+    lowercase: true,
+    uppercase: true,
+    digits: true,
+    symbols: true,
+    length: 16,
+    counter: 1,
+    iterations: 100000,
+    keylen: 32,
+    digest: 'sha256'
+};
+
 function calcEntropy(site, login, masterPassword, passwordProfile) {
+    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
     return new Promise(function (resolve, reject) {
-        var salt = site + login + passwordProfile.counter.toString(16);
-        var iterations = passwordProfile.iterations || 100000;
-        var keylen = passwordProfile.keylen || 32;
-        var digest = passwordProfile.digest || 'sha256';
-        pbkdf2.pbkdf2(masterPassword, salt, iterations, keylen, digest, function (error, key) {
+        var salt = site + login + _passwordProfile.counter.toString(16);
+        pbkdf2.pbkdf2(masterPassword, salt, _passwordProfile.iterations, _passwordProfile.keylen, _passwordProfile.digest, function (error, key) {
             if (error) {
                 reject('error in pbkdf2');
             } else {
@@ -35,24 +45,23 @@ function calcEntropy(site, login, masterPassword, passwordProfile) {
         });
     });
 }
-var subsetOfCharacters = {
+
+var subsetOfChars = {
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     digits: '0123456789',
     symbols: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 };
 
-function getSetOfCharacters(passwordProfile) {
-    if (typeof passwordProfile === 'undefined') {
-        return subsetOfCharacters.lowercase + subsetOfCharacters.uppercase + subsetOfCharacters.digits + subsetOfCharacters.symbols;
+function getSetOfCharacters(rules) {
+    if (typeof rules === 'undefined') {
+        return subsetOfChars.lowercase + subsetOfChars.uppercase + subsetOfChars.digits + subsetOfChars.symbols;
     }
-    var setOfCharacters = '';
-    ['lowercase', 'uppercase', 'digits', 'symbols'].forEach(function (subset) {
-        if (passwordProfile.hasOwnProperty(subset) && passwordProfile[subset]) {
-            setOfCharacters += subsetOfCharacters[subset]
-        }
+    var setOfChars = '';
+    rules.forEach(function (rule) {
+        setOfChars += subsetOfChars[rule]
     });
-    return setOfCharacters;
+    return setOfChars;
 }
 
 function consumeEntropy(generatedPassword, quotient, setOfCharacters, maxLength) {
@@ -64,51 +73,36 @@ function consumeEntropy(generatedPassword, quotient, setOfCharacters, maxLength)
     return consumeEntropy(generatedPassword, longDivision.quotient, setOfCharacters, maxLength)
 }
 
-function includeOneCharPerSetOfCharacters(generatedPassword, entropy, oneCharPerSetOfCharacters) {
-    var finalPassword = generatedPassword;
-    var quotient = entropy;
-    for (var i = 0; i < oneCharPerSetOfCharacters.length; i++) {
-        var longDivision = quotient.divmod(finalPassword.length);
-        finalPassword = finalPassword.slice(0, longDivision.remainder) + oneCharPerSetOfCharacters[i] + finalPassword.slice(longDivision.remainder);
-        quotient = longDivision.quotient;
+function insertStringPseudoRandomly(generatedPassword, entropy, string) {
+    for (var i = 0; i < string.length; i++) {
+        var longDivision = entropy.divmod(generatedPassword.length);
+        generatedPassword = generatedPassword.slice(0, longDivision.remainder) + string[i] + generatedPassword.slice(longDivision.remainder);
+        entropy = longDivision.quotient;
     }
-    return finalPassword;
+    return generatedPassword;
 }
 
-function generateOneCharPerSetOfCharacters(entropy, passwordProfile) {
-    var oneCharPerSetOfCharacters = '';
-    var quotient = entropy;
-    ['lowercase', 'uppercase', 'digits', 'symbols'].forEach(function (subset) {
-        if (passwordProfile.hasOwnProperty(subset) && passwordProfile[subset]) {
-            var alphabet = subsetOfCharacters[subset];
-            var longDivision = quotient.divmod(alphabet.length);
-            oneCharPerSetOfCharacters += alphabet[longDivision.remainder];
-            quotient = longDivision.quotient;
-        }
+function getOneCharPerRule(entropy, rules) {
+    var oneCharPerRules = '';
+    rules.forEach(function (rule) {
+        var password = consumeEntropy('', entropy, subsetOfChars[rule], 1);
+        oneCharPerRules += password.value;
+        entropy = password.entropy;
     });
-    return {value: oneCharPerSetOfCharacters, entropy: quotient};
+    return {value: oneCharPerRules, entropy: entropy};
 }
 
-function numberSubsetsOfChars(passwordProfile) {
-    var numberOfSubsets = 0;
-    ['lowercase', 'uppercase', 'digits', 'symbols'].forEach(function (subset) {
-        if (passwordProfile.hasOwnProperty(subset) && passwordProfile[subset]) {
-            numberOfSubsets += 1;
-        }
+function validRules(passwordProfile) {
+    return ['lowercase', 'uppercase', 'digits', 'symbols'].filter(function (rule) {
+        return passwordProfile[rule];
     });
-    return numberOfSubsets;
 }
 
-function renderPassword(entropy, setOfCharacters, passwordProfile) {
-    var _passwordProfile = passwordProfile !== undefined ? passwordProfile : {
-        lowercase: true,
-        uppercase: true,
-        digits: true,
-        symbols: true
-    };
-    var length = _passwordProfile.length || 14;
-    var numberCharsWillBeAdded = numberSubsetsOfChars(_passwordProfile);
-    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, length - numberCharsWillBeAdded);
-    var oneCharPerSetOfCharacters = generateOneCharPerSetOfCharacters(password.entropy, _passwordProfile);
-    return includeOneCharPerSetOfCharacters(password.value, oneCharPerSetOfCharacters.entropy, oneCharPerSetOfCharacters.value);
+function renderPassword(entropy, passwordProfile) {
+    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
+    var rules = validRules(_passwordProfile);
+    var setOfCharacters = getSetOfCharacters(rules);
+    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, _passwordProfile.length - rules.length);
+    var charactersToAdd = getOneCharPerRule(password.entropy, rules);
+    return insertStringPseudoRandomly(password.value, charactersToAdd.entropy, charactersToAdd.value);
 }
