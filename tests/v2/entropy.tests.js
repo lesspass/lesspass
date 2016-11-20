@@ -14,7 +14,6 @@ describe('LessPass v2', function () {
                 assert.equal('dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e', entropy);
             });
         });
-
         it('calc entropy with different options (8192 iterations, 16 bytes length, sha512 digest)', function () {
             var site = 'example.org';
             var login = 'contact@example.org';
@@ -29,7 +28,6 @@ describe('LessPass v2', function () {
                 assert.equal('fff211c16a4e776b3574c6a5c91fd252', entropy);
             })
         });
-
         it('calc entropy different if counter different', function () {
             var site = 'example.org';
             var login = 'contact@example.org';
@@ -48,6 +46,10 @@ describe('LessPass v2', function () {
                 assert.notEqual(entropies[0], entropies[1])
             });
         });
-
+        it('consume entropy', function () {
+            var password = LessPass._consumeEntropy('', bigInt(4 * 4 + 2), "abcd", 2);
+            assert.equal('ca', password.value);
+            assert.equal(1, password.entropy)
+        });
     });
 });

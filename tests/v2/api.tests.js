@@ -12,12 +12,30 @@ describe('LessPass v2', function () {
                 lowercase: true,
                 uppercase: true,
                 digits: true,
+                symbols: true,
+                length: 16,
+                counter: 1
+            };
+            return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
+                assert.equal('WHLpUL)e00[iHR+w', generatedPassword);
+            });
+        });
+        it('render password no symbols', function () {
+            this.timeout(10000);
+            var site = 'example.org';
+            var login = 'contact@example.org';
+            var masterPassword = 'password';
+            var passwordProfile = {
+                iterations: 100000,
+                lowercase: true,
+                uppercase: true,
+                digits: true,
                 symbols: false,
                 length: 14,
                 counter: 1
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
-                assert.equal('y5m7Ctw2695ksh', generatedPassword);
+                assert.equal('y5Im77Ctww2695', generatedPassword);
             });
         });
         it('render password only digit', function () {
@@ -35,7 +53,7 @@ describe('LessPass v2', function () {
                 counter: 1
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
-                assert.equal('874236', generatedPassword);
+                assert.equal('874623', generatedPassword);
             });
         });
         it('render password no number', function () {
@@ -53,7 +71,7 @@ describe('LessPass v2', function () {
                 counter: 1
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
-                assert.equal("s>{F}wN/-fmMX?", generatedPassword);
+                assert.equal("sB>{qF}wN%/-fm", generatedPassword);
             });
         });
     });

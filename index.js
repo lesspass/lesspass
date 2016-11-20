@@ -15,6 +15,10 @@ module.exports = {
 
     generatePassword: v2.generatePassword,
     _calcEntropy: v2._calcEntropy,
+    _consumeEntropy: v2._consumeEntropy,
     _getSetOfCharacters: v2._getSetOfCharacters,
+    _numberSubsetsOfChars: v2._numberSubsetsOfChars,
+    _includeOneCharPerSetOfCharacters: v2._includeOneCharPerSetOfCharacters,
+    _generateOneCharPerSetOfCharacters: v2._generateOneCharPerSetOfCharacters,
     _renderPassword: v2._renderPassword,
 };

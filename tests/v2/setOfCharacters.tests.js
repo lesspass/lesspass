@@ -51,5 +51,25 @@ describe('LessPass v2', function () {
                 LessPass._getSetOfCharacters({symbols: true, digits: true})
             );
         });
+        it('generate one char per set of characters', function () {
+            var oneCharPerSetOfCharacters = LessPass._generateOneCharPerSetOfCharacters(
+                bigInt(26 * 26),
+                {uppercase: true, lowercase: true}
+            );
+            assert.equal('aA', oneCharPerSetOfCharacters.value);
+            assert.equal(2, oneCharPerSetOfCharacters.value.length);
+            assert.equal(1, oneCharPerSetOfCharacters.entropy);
+        });
+        it('number set of characters', function () {
+            assert.equal(1, LessPass._numberSubsetsOfChars({uppercase: true}));
+            assert.equal(2, LessPass._numberSubsetsOfChars({uppercase: true, lowercase: true}));
+            assert.equal(2, LessPass._numberSubsetsOfChars({uppercase: true, lowercase: true, symbols: false}));
+            assert.equal(4, LessPass._numberSubsetsOfChars({
+                lowercase: true,
+                uppercase: true,
+                symbols: true,
+                digits: true
+            }));
+        });
     });
 });
