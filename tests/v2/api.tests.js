@@ -38,7 +38,7 @@ describe('LessPass v2', function () {
                 assert.equal('874236', generatedPassword);
             });
         });
-        it('render password  no number', function () {
+        it('render password no number', function () {
             this.timeout(10000);
             var site = 'example.org';
             var login = 'contact@example.org';

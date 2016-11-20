@@ -4,8 +4,11 @@ describe('LessPass v2', function () {
     describe('set of characters', function () {
         it('get default set of characters', function () {
             var setOfCharacters = LessPass._getSetOfCharacters();
-            assert.equal('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', setOfCharacters);
-            assert.equal(26 * 2 + 10, setOfCharacters.length);
+            assert.equal(
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~',
+                setOfCharacters
+            );
+            assert.equal(26 * 2 + 10 + 32, setOfCharacters.length);
         });
         it('get default set of characters with object', function () {
             var setOfCharacters = LessPass._getSetOfCharacters({

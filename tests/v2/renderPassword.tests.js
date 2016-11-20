@@ -24,5 +24,4 @@ describe('LessPass v2', function () {
         };
         assert.equal(20, LessPass._renderPassword(entropy, setOfCharacters, passwordProfile).length);
     });
-
 });
