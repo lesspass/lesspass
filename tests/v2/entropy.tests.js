@@ -19,18 +19,18 @@ describe('LessPass v2', function () {
                 iterations: 8192,
                 keylen: 16,
                 digest: 'sha512',
-                counter: 1
+                index: 1
             };
             return LessPass._calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
                 assert.equal('fff211c16a4e776b3574c6a5c91fd252', entropy);
             })
         });
-        it('calc entropy different if counter different', function () {
+        it('calc entropy different if index different', function () {
             var site = 'example.org';
             var login = 'contact@example.org';
             var masterPassword = 'password';
-            var passwordProfile1 = {iterations: 1, keylen: 16, digest: 'sha256', counter: 1};
-            var passwordProfile2 = {iterations: 1, keylen: 16, digest: 'sha256', counter: 2};
+            var passwordProfile1 = {iterations: 1, keylen: 16, digest: 'sha256', index: 1};
+            var passwordProfile2 = {iterations: 1, keylen: 16, digest: 'sha256', index: 2};
             var p1 = LessPass._calcEntropy(site, login, masterPassword, passwordProfile1);
             var p2 = LessPass._calcEntropy(site, login, masterPassword, passwordProfile2);
             return Promise.all([p1, p2]).then(function (entropies) {
