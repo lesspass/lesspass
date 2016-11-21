@@ -15,9 +15,8 @@ module.exports = {
 };
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
-    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
-    return calcEntropy(site, login, masterPassword, _passwordProfile).then(function (entropy) {
-        return renderPassword(entropy, _passwordProfile);
+    return calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
+        return renderPassword(entropy, passwordProfile);
     });
 }
 
@@ -34,9 +33,10 @@ var defaultPasswordProfile = {
 };
 
 function calcEntropy(site, login, masterPassword, passwordProfile) {
+    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
     return new Promise(function (resolve, reject) {
-        var salt = site + login + passwordProfile.index.toString(16);
-        pbkdf2.pbkdf2(masterPassword, salt, passwordProfile.iterations, passwordProfile.keylen, passwordProfile.digest, function (error, key) {
+        var salt = site + login + _passwordProfile.index.toString(16);
+        pbkdf2.pbkdf2(masterPassword, salt, _passwordProfile.iterations, _passwordProfile.keylen, _passwordProfile.digest, function (error, key) {
             if (error) {
                 reject('error in pbkdf2');
             } else {
@@ -99,9 +99,10 @@ function getConfiguredRules(passwordProfile) {
 }
 
 function renderPassword(entropy, passwordProfile) {
-    var rules = getConfiguredRules(passwordProfile);
+    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
+    var rules = getConfiguredRules(_passwordProfile);
     var setOfCharacters = getSetOfCharacters(rules);
-    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, passwordProfile.length - rules.length);
+    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, _passwordProfile.length - rules.length);
     var charactersToAdd = getOneCharPerRule(password.entropy, rules);
     return insertStringPseudoRandomly(password.value, charactersToAdd.entropy, charactersToAdd.value);
 }
