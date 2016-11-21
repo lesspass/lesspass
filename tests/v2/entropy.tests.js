@@ -29,7 +29,7 @@ describe('LessPass v2', function () {
             };
             return LessPass._calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
                 assert.equal('fff211c16a4e776b3574c6a5c91fd252', entropy);
-            })
+            });
         });
         it('calc entropy different if index different', function () {
             var site = 'example.org';

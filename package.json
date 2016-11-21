@@ -17,7 +17,7 @@
   "scripts": {
     "build": "rimraf lib && mkdir lib && browserify --standalone LessPass index.js > lib/lesspass.js",
     "prepublish": "npm test && npm run build && npm run test:node && npm run test:browser",
-    "test": "mocha --require ./tests/helper.js tests/*",
+    "test": "mocha tests/*",
     "test:node": "npm run build && cd tests && node node.js && cd ..",
     "test:browser": "npm run build && karma start tests/karma.config.js"
   },
@@ -30,6 +30,7 @@
     "unibabel": "^2.1.3"
   },
   "devDependencies": {
+    "bluebird": "^3.4.6",
     "browserify": "^13.1.1",
     "chai": "^3.5.0",
     "karma": "^1.3.0",

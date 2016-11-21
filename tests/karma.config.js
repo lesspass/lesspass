@@ -5,8 +5,6 @@ module.exports = function (config) {
         files: [
             'node_modules/bluebird/js/browser/bluebird.core.min.js',
             'node_modules/big-integer/BigInteger.min.js',
-            'node_modules/unibabel/index.js',
-            'node_modules/unibabel/unibabel.hex.js',
             'lib/lesspass.js',
             'tests/**/*.js'
         ],
