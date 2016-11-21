@@ -5,6 +5,8 @@ module.exports = function (config) {
         files: [
             'node_modules/bluebird/js/browser/bluebird.core.min.js',
             'node_modules/big-integer/BigInteger.min.js',
+            'node_modules/unibabel/index.js',
+            'node_modules/unibabel/unibabel.hex.js',
             'lib/lesspass.js',
             'tests/**/*.js'
         ],
@@ -14,7 +16,7 @@ module.exports = function (config) {
             'tests/karma.webcrypto.config.js',
         ],
         preprocessors: {},
-        reporters: ['progress'],
+        reporters: ['spec'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,

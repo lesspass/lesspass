@@ -1,5 +1,6 @@
 var v1 = require('./src/v1');
 var v2 = require('./src/v2');
+var pbkdf2 = require('./src/pbkdf2');
 
 module.exports = {
     encryptLogin: v1.encryptLogin,
@@ -21,4 +22,6 @@ module.exports = {
     _insertStringPseudoRandomly: v2._insertStringPseudoRandomly,
     _getOneCharPerRule: v2._getOneCharPerRule,
     _renderPassword: v2._renderPassword,
+
+    pbkdf2: pbkdf2
 };
