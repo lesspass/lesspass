@@ -1,6 +1,6 @@
 var pbkdf2 = require('./pbkdf2');
 var createHMAC = require('create-hmac');
-var Promise = require("bluebird");
+var Promise = require('pinkie-promise');
 
 
 module.exports = {

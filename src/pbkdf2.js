@@ -1,5 +1,5 @@
 var pbkdf2 = require('pbkdf2');
-var Promise = require("bluebird");
+var Promise = require('pinkie-promise');
 
 
 function shouldUseNative() {
