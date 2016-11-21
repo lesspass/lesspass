@@ -83,5 +83,8 @@ class Password(DateMixin):
     length = models.IntegerField(default=12)
     counter = models.IntegerField(default=1)
 
+    version = models.IntegerField(default=1)
+
     def __str__(self):
         return str(self.id)
+
