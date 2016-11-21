@@ -44,11 +44,11 @@ describe('LessPass v2', function () {
             assert.equal(2, oneCharPerSetOfCharacters.value.length);
             assert.equal(1, oneCharPerSetOfCharacters.entropy);
         });
-        it('valid rules', function () {
-            assert.deepEqual(['uppercase'], LessPass._validRules({uppercase: true}));
-            assert.deepEqual(['lowercase', 'uppercase'], LessPass._validRules({uppercase: true, lowercase: true}));
-            assert.deepEqual(['lowercase'], LessPass._validRules({lowercase: true, symbols: false}));
-            assert.deepEqual(['lowercase', 'uppercase', 'digits', 'symbols'], LessPass._validRules({
+        it('configured rules', function () {
+            assert.deepEqual(['uppercase'], LessPass._getConfiguredRules({uppercase: true}));
+            assert.deepEqual(['lowercase', 'uppercase'], LessPass._getConfiguredRules({uppercase: true, lowercase: true}));
+            assert.deepEqual(['lowercase'], LessPass._getConfiguredRules({lowercase: true, symbols: false}));
+            assert.deepEqual(['lowercase', 'uppercase', 'digits', 'symbols'], LessPass._getConfiguredRules({
                 lowercase: true,
                 uppercase: true,
                 symbols: true,
