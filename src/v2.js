@@ -8,7 +8,7 @@ module.exports = {
     _calcEntropy: calcEntropy,
     _consumeEntropy: consumeEntropy,
     _getSetOfCharacters: getSetOfCharacters,
-    _validRules: validRules,
+    _getConfiguredRules: getConfiguredRules,
     _insertStringPseudoRandomly: insertStringPseudoRandomly,
     _getOneCharPerRule: getOneCharPerRule,
     _renderPassword: renderPassword
