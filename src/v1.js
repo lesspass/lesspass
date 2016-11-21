@@ -1,4 +1,4 @@
-var pbkdf2 = require('pbkdf2');
+var pbkdf2 = require('./pbkdf2');
 var createHMAC = require('create-hmac');
 var Promise = require("bluebird");
 
@@ -21,19 +21,7 @@ function encryptLogin(login, masterPassword, options) {
     var _options = options !== undefined ? options : {};
     var iterations = _options.iterations || 8192;
     var keylen = _options.keylen || 32;
-
-    return new Promise(function (resolve, reject) {
-        if (!login || !masterPassword) {
-            reject('login and master password parameters could not be empty');
-        }
-        pbkdf2.pbkdf2(masterPassword, login, iterations, keylen, 'sha256', function (error, key) {
-            if (error) {
-                reject('error in pbkdf2');
-            } else {
-                resolve(key.toString('hex'));
-            }
-        });
-    })
+    return pbkdf2(masterPassword, login, iterations, keylen, 'sha256');
 }
 
 function renderPassword(encryptedLogin, site, passwordOptions) {

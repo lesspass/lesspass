@@ -8,18 +8,18 @@ function shouldUseNative() {
 
 function pbkdf2Native(password, salt, iterations, keylen, digest) {
     var algorithms = {
-        'sha1':'SHA-1',
-        'sha-1':'SHA-1',
-        'sha256':'SHA-256',
-        'sha-256':'SHA-256',
-        'sha512':'SHA-512',
-        'sha-512':'SHA-512',
+        'sha1': 'SHA-1',
+        'sha-1': 'SHA-1',
+        'sha256': 'SHA-256',
+        'sha-256': 'SHA-256',
+        'sha512': 'SHA-512',
+        'sha-512': 'SHA-512',
     };
-    return window.crypto.subtle.importKey('raw', Unibabel.utf8ToBuffer(password), 'PBKDF2', false, ['deriveKey'])
+    return window.crypto.subtle.importKey('raw', new Buffer(password), 'PBKDF2', false, ['deriveKey'])
         .then(function (key) {
             var algo = {
                 name: 'PBKDF2',
-                salt: Unibabel.utf8ToBuffer(salt),
+                salt: new Buffer(salt),
                 iterations: iterations,
                 hash: algorithms[digest.toLowerCase()],
             };
@@ -29,8 +29,8 @@ function pbkdf2Native(password, salt, iterations, keylen, digest) {
             }, true, ['encrypt', 'decrypt']);
         })
         .then(function (derivedKey) {
-            return window.crypto.subtle.exportKey('raw', derivedKey).then(function (keyArrayBuffer) {
-                return Unibabel.bufferToHex(new Uint8Array(keyArrayBuffer));
+            return window.crypto.subtle.exportKey('raw', derivedKey).then(function (keyArray) {
+                return new Buffer(keyArray).toString('hex');
             });
         });
 }

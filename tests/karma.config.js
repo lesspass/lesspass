@@ -16,7 +16,7 @@ module.exports = function (config) {
             'tests/karma.webcrypto.config.js',
         ],
         preprocessors: {},
-        reporters: ['spec'],
+        reporters: ['progress'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
