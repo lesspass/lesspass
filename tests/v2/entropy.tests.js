@@ -7,7 +7,13 @@ describe('LessPass v2', function () {
             var site = 'example.org';
             var login = 'contact@example.org';
             var masterPassword = 'password';
-            return LessPass._calcEntropy(site, login, masterPassword).then(function (entropy) {
+            var passwordProfile = {
+                iterations: 100000,
+                keylen: 32,
+                digest: 'sha256',
+                index: 1
+            };
+            return LessPass._calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
                 assert.equal('dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e', entropy);
             });
         });

@@ -17,7 +17,7 @@ module.exports = {
     _calcEntropy: v2._calcEntropy,
     _consumeEntropy: v2._consumeEntropy,
     _getSetOfCharacters: v2._getSetOfCharacters,
-    _validRules: v2._validRules,
+    _getConfiguredRules: v2._getConfiguredRules,
     _insertStringPseudoRandomly: v2._insertStringPseudoRandomly,
     _getOneCharPerRule: v2._getOneCharPerRule,
     _renderPassword: v2._renderPassword,

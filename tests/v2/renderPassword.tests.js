@@ -1,17 +1,24 @@
 var assert = chai.assert;
 
 describe('LessPass v2', function () {
+    var defaultPasswordProfile = {
+        length: 16,
+        lowercase: true,
+        uppercase: true,
+        digits: true,
+        symbols: true
+    };
     it('render password use remainder of long division beetween entropy and set of chars length as an index', function () {
         var entropy = 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e';
-        assert.equal('W', LessPass._renderPassword(entropy)[0]);
+        assert.equal('W', LessPass._renderPassword(entropy, defaultPasswordProfile)[0]);
     });
     it('render password use quotient as second entropy recursively', function () {
         var entropy = 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e';
-        assert.equal('H', LessPass._renderPassword(entropy)[1]);
+        assert.equal('H', LessPass._renderPassword(entropy, defaultPasswordProfile)[1]);
     });
     it('render password has default length of 16', function () {
         var entropy = 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e';
-        assert.equal(16, LessPass._renderPassword(entropy).length);
+        assert.equal(16, LessPass._renderPassword(entropy, defaultPasswordProfile).length);
     });
     it('render password can specify length', function () {
         var entropy = 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e';

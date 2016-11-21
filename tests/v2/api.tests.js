@@ -13,7 +13,7 @@ describe('LessPass v2', function () {
                 digits: true,
                 symbols: true,
                 length: 16,
-                counter: 1,
+                index: 1,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -31,11 +31,11 @@ describe('LessPass v2', function () {
                 digits: true,
                 symbols: false,
                 length: 14,
-                counter: 1,
+                index: 2,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
-                assert.equal('y5Im77Ctww2695', generatedPassword);
+                assert.equal('MBAsB7b1Prt8Sl', generatedPassword);
             });
         });
         it('render password only digit', function () {
@@ -49,11 +49,11 @@ describe('LessPass v2', function () {
                 digits: true,
                 symbols: false,
                 length: 6,
-                counter: 1,
+                index: 3,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
-                assert.equal('874623', generatedPassword);
+                assert.equal('117843', generatedPassword);
             });
         });
         it('render password no number', function () {
@@ -67,7 +67,7 @@ describe('LessPass v2', function () {
                 digits: false,
                 symbols: true,
                 length: 14,
-                counter: 1,
+                index: 1,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
