@@ -5,7 +5,7 @@ module.exports = function (config) {
         files: [
             'node_modules/bluebird/js/browser/bluebird.core.min.js',
             'node_modules/big-integer/BigInteger.min.js',
-            'lib/lesspass.js',
+            'dist/lesspass.js',
             'tests/**/*.js'
         ],
         exclude: [
