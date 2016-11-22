@@ -10,10 +10,10 @@ describe('LessPass v2', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 16,
-                index: 1,
+                counter: 1,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -28,10 +28,10 @@ describe('LessPass v2', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: false,
                 length: 14,
-                index: 2,
+                counter: 2,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -46,10 +46,10 @@ describe('LessPass v2', function () {
             var passwordProfile = {
                 lowercase: false,
                 uppercase: false,
-                digits: true,
+                numbers: true,
                 symbols: false,
                 length: 6,
-                index: 3,
+                counter: 3,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -64,10 +64,10 @@ describe('LessPass v2', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: false,
+                numbers: false,
                 symbols: true,
                 length: 14,
-                index: 1,
+                counter: 1,
                 version: 2
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {

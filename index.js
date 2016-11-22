@@ -30,7 +30,7 @@ module.exports = {
 var defaultPasswordProfile = {
     version: 2,
     lowercase: true,
-    digits: true,
+    numbers: true,
     uppercase: true,
     symbols: true,
     keylen: 32,
@@ -44,11 +44,11 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
     var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
     if (_passwordProfile.version === 1) {
         var options = {
-            counter: _passwordProfile.index,
+            counter: _passwordProfile.counter,
             length: _passwordProfile.length,
             lowercase: _passwordProfile.lowercase,
             uppercase: _passwordProfile.uppercase,
-            numbers: _passwordProfile.digits,
+            numbers: _passwordProfile.numbers,
             symbols: _passwordProfile.symbols
         };
         return v1.encryptLogin(login, masterPassword)

@@ -372,10 +372,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -389,10 +389,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -407,10 +407,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 14,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -425,10 +425,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: false,
-                digits: false,
+                numbers: false,
                 symbols: false,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -443,10 +443,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: false,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -461,10 +461,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: false,
                 uppercase: false,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -479,10 +479,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: false,
                 uppercase: false,
-                digits: false,
+                numbers: false,
                 symbols: true,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -497,10 +497,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: false,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -515,10 +515,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: false,
+                numbers: false,
                 symbols: false,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -533,10 +533,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 12,
-                index: 2,
+                counter: 2,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -551,10 +551,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
@@ -569,10 +569,10 @@ describe('LessPass v1', function () {
             var passwordProfile = {
                 lowercase: true,
                 uppercase: true,
-                digits: true,
+                numbers: true,
                 symbols: true,
                 length: 12,
-                index: 1,
+                counter: 1,
                 version: 1,
             };
             return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {

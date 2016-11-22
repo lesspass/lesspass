@@ -31,7 +31,7 @@ module.exports = {
 var defaultPasswordProfile = {
     version: 2,
     lowercase: true,
-    digits: true,
+    numbers: true,
     uppercase: true,
     symbols: true,
     keylen: 32,
@@ -45,11 +45,11 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
     var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
     if (_passwordProfile.version === 1) {
         var options = {
-            counter: _passwordProfile.index,
+            counter: _passwordProfile.counter,
             length: _passwordProfile.length,
             lowercase: _passwordProfile.lowercase,
             uppercase: _passwordProfile.uppercase,
-            numbers: _passwordProfile.digits,
+            numbers: _passwordProfile.numbers,
             symbols: _passwordProfile.symbols
         };
         return v1.encryptLogin(login, masterPassword)
@@ -8496,20 +8496,20 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
 }
 
 function calcEntropy(site, login, masterPassword, passwordProfile) {
-    var salt = site + login + passwordProfile.index.toString(16);
+    var salt = site + login + passwordProfile.counter.toString(16);
     return pbkdf2(masterPassword, salt, passwordProfile.iterations, passwordProfile.keylen, passwordProfile.digest);
 }
 
 var characterSubsets = {
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    digits: '0123456789',
+    numbers: '0123456789',
     symbols: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 };
 
 function getSetOfCharacters(rules) {
     if (typeof rules === 'undefined') {
-        return characterSubsets.lowercase + characterSubsets.uppercase + characterSubsets.digits + characterSubsets.symbols;
+        return characterSubsets.lowercase + characterSubsets.uppercase + characterSubsets.numbers + characterSubsets.symbols;
     }
     var setOfChars = '';
     rules.forEach(function (rule) {
@@ -8547,7 +8547,7 @@ function getOneCharPerRule(entropy, rules) {
 }
 
 function getConfiguredRules(passwordProfile) {
-    return ['lowercase', 'uppercase', 'digits', 'symbols'].filter(function (rule) {
+    return ['lowercase', 'uppercase', 'numbers', 'symbols'].filter(function (rule) {
         return passwordProfile[rule];
     });
 }

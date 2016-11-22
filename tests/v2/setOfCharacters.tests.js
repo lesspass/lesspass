@@ -11,7 +11,7 @@ describe('LessPass v2', function () {
             assert.equal(26 * 2 + 10 + 32, setOfCharacters.length);
         });
         it('get default set of characters concat rules in order', function () {
-            var setOfCharacters = LessPass._getSetOfCharacters(['lowercase', 'uppercase', 'digits']);
+            var setOfCharacters = LessPass._getSetOfCharacters(['lowercase', 'uppercase', 'numbers']);
             assert.equal('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', setOfCharacters);
             assert.equal(26 * 2 + 10, setOfCharacters.length);
         });
@@ -25,8 +25,8 @@ describe('LessPass v2', function () {
             assert.equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ', setOfCharacters);
             assert.equal(26, setOfCharacters.length);
         });
-        it('get set of characters only digits', function () {
-            var setOfCharacters = LessPass._getSetOfCharacters(['digits']);
+        it('get set of characters only numbers', function () {
+            var setOfCharacters = LessPass._getSetOfCharacters(['numbers']);
             assert.equal('0123456789', setOfCharacters);
             assert.equal(10, setOfCharacters.length);
         });
@@ -48,11 +48,11 @@ describe('LessPass v2', function () {
             assert.deepEqual(['uppercase'], LessPass._getConfiguredRules({uppercase: true}));
             assert.deepEqual(['lowercase', 'uppercase'], LessPass._getConfiguredRules({uppercase: true, lowercase: true}));
             assert.deepEqual(['lowercase'], LessPass._getConfiguredRules({lowercase: true, symbols: false}));
-            assert.deepEqual(['lowercase', 'uppercase', 'digits', 'symbols'], LessPass._getConfiguredRules({
+            assert.deepEqual(['lowercase', 'uppercase', 'numbers', 'symbols'], LessPass._getConfiguredRules({
                 lowercase: true,
                 uppercase: true,
                 symbols: true,
-                digits: true
+                numbers: true
             }));
         });
     });

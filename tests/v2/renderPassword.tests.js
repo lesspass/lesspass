@@ -5,7 +5,7 @@ describe('LessPass v2', function () {
         length: 16,
         lowercase: true,
         uppercase: true,
-        digits: true,
+        numbers: true,
         symbols: true
     };
     it('render password use remainder of long division beetween entropy and set of chars length as an index', function () {
@@ -26,7 +26,7 @@ describe('LessPass v2', function () {
             length: 20,
             lowercase: true,
             uppercase: true,
-            digits: true,
+            numbers: true,
             symbols: true
         };
         assert.equal(20, LessPass._renderPassword(entropy, passwordProfile).length);
@@ -41,14 +41,14 @@ describe('LessPass v2', function () {
             length: 6,
             lowercase: true,
             uppercase: true,
-            digits: true,
+            numbers: true,
             symbols: true,
         };
         var generatedPassword = LessPass._renderPassword(entropy, passwordProfile);
         var passwordLength = generatedPassword.length;
         var lowercaseOk = false;
         var uppercaseOk = false;
-        var digitsOk = false;
+        var numbersOk = false;
         var symbolsOk = false;
         while (passwordLength--) {
             if ('abcdefghijklmnopqrstuvwxyz'.indexOf(generatedPassword[passwordLength]) !== -1) {
@@ -58,13 +58,13 @@ describe('LessPass v2', function () {
                 uppercaseOk = true;
             }
             if ('0123456789'.indexOf(generatedPassword[passwordLength]) !== -1) {
-                digitsOk = true;
+                numbersOk = true;
             }
             if ('!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'.indexOf(generatedPassword[passwordLength]) !== -1) {
                 symbolsOk = true;
             }
         }
         assert.equal(6, generatedPassword.length);
-        assert(lowercaseOk && uppercaseOk && digitsOk && symbolsOk, 'there is no at least one char in every characters set');
+        assert(lowercaseOk && uppercaseOk && numbersOk && symbolsOk, 'there is no at least one char in every characters set');
     });
 });
