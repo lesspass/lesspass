@@ -123,7 +123,7 @@
                 <label for="passwordLength">
                     Password Length
                 </label>
-                <input class="form-control" type="number" id="passwordLength" v-model="password.length" min="6">
+                <input class="form-control" type="number" id="passwordLength" v-model="password.length" min="4">
             </div>
             <div class="col-xs-12 col-sm-4 pb-1">
                 <label for="passwordLength">
