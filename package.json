@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "6.0.0-beta.2",
+  "version": "6.0.0-beta.3",
   "description": "LessPass node module used to generate LessPass passwords",
   "keywords": [
     "crypto",
