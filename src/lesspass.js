@@ -1,6 +1,6 @@
-var v1 = require('./src/v1');
-var v2 = require('./src/v2');
-var pbkdf2 = require('./src/pbkdf2');
+var v1 = require('./v1');
+var v2 = require('./v2');
+var pbkdf2 = require('./pbkdf2');
 var objectAssign = require('object-assign');
 
 module.exports = {

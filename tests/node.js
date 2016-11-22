@@ -1,4 +1,4 @@
-var LessPass = require('../index');
+var LessPass = require('../src/lesspass');
 var assert = require('assert');
 
 var site = 'lesspass.com';
