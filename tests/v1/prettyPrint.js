@@ -1,6 +1,6 @@
 var assert = chai.assert;
 
-describe('LessPass', function () {
+describe('LessPass v1', function () {
     describe('prettyPrint', function () {
         it('should print different password if templates different', function () {
             var encryptedLogin = '78ae5892055ab59fdd54489ae30928d322841a27590b65cf875fcfdd083f7c32';

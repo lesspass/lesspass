@@ -1,6 +1,6 @@
 var assert = chai.assert;
 
-describe('LessPass', function () {
+describe('Lessass v1', function () {
     describe('getPasswordTemplate', function () {
         it('should get default template', function () {
             assert.equal('vcVCns', LessPass._getPasswordTemplate({
