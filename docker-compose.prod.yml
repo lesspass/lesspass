@@ -16,7 +16,7 @@ services:
       - '8000'
     volumes:
       - www:/backend/www
-    depends_on:
+    links:
       - db
     env_file:
       - .env
