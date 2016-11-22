@@ -58,7 +58,5 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
                 });
             });
     }
-    if (_passwordProfile.version === 2) {
-        return v2.generatePassword(site, login, masterPassword, _passwordProfile);
-    }
+    return v2.generatePassword(site, login, masterPassword, _passwordProfile);
 }
