@@ -1,9 +1,4 @@
 <style>
-    .card-header-dark {
-        background-color: #555;
-        color: #FFF;
-    }
-
     .grey-link {
         color: #373a3c;
         text-decoration: none;
@@ -33,11 +28,10 @@
             <div class="row">
                 <div class="col-xs-6">
                     <router-link class="grey-link" :to="{ name: 'home'}">LessPass</router-link>
-                    <span class=" hint--right" aria-label="Save password"
-                          v-on:click="saveOrUpdatePassword">
+                    <span v-on:click="saveOrUpdatePassword">
                         <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
                     </span>
-                    <span v-if="passwordStatus=='CREATED'" class="text-success">
+                    <span v-if="passwordStatus=='CREATED' || passwordStatus=='UPDATED'" class="text-success">
                         <i class="fa fa-check ml-1 text-success"></i>
                     </span>
                 </div>
@@ -51,7 +45,8 @@
                 </div>
             </div>
         </div>
-        <div class="card-header" v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }" v-show="isGuest">
+        <div class="card-header" v-show="isGuest"
+             v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
                 <div class="index-header">
                     <div class="col-xs-6">
@@ -83,7 +78,6 @@
         computed: mapGetters([
             'isAuthenticated',
             'isGuest',
-            'email',
             'passwordStatus',
             'version'
         ])
