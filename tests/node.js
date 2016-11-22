@@ -10,8 +10,7 @@ var options = {
     lowercase: true,
     uppercase: true,
     numbers: true,
-    symbols: true,
-    template: 'vcVCns'
+    symbols: true
 };
 
 LessPass.encryptLogin(login, masterPassword)
