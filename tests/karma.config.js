@@ -3,7 +3,6 @@ module.exports = function (config) {
         basePath: '..',
         frameworks: ['mocha', 'chai'],
         files: [
-            'node_modules/bluebird/js/browser/bluebird.core.min.js',
             'node_modules/big-integer/BigInteger.min.js',
             'dist/lesspass.js',
             'tests/**/*.js'

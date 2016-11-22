@@ -1,6 +1,5 @@
 var pbkdf2 = require('./pbkdf2');
 var bigInt = require("big-integer");
-var objectAssign = require('object-assign');
 
 module.exports = {
     generatePassword: generatePassword,
@@ -14,23 +13,10 @@ module.exports = {
 };
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
-    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
-    return calcEntropy(site, login, masterPassword, _passwordProfile).then(function (entropy) {
-        return renderPassword(entropy, _passwordProfile);
+    return calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
+        return renderPassword(entropy, passwordProfile);
     });
 }
-
-var defaultPasswordProfile = {
-    lowercase: true,
-    uppercase: true,
-    digits: true,
-    symbols: true,
-    length: 16,
-    index: 1,
-    iterations: 100000,
-    keylen: 32,
-    digest: 'sha256'
-};
 
 function calcEntropy(site, login, masterPassword, passwordProfile) {
     var salt = site + login + passwordProfile.index.toString(16);
@@ -90,10 +76,9 @@ function getConfiguredRules(passwordProfile) {
 }
 
 function renderPassword(entropy, passwordProfile) {
-    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
-    var rules = getConfiguredRules(_passwordProfile);
+    var rules = getConfiguredRules(passwordProfile);
     var setOfCharacters = getSetOfCharacters(rules);
-    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, _passwordProfile.length - rules.length);
+    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, passwordProfile.length - rules.length);
     var charactersToAdd = getOneCharPerRule(password.entropy, rules);
     return insertStringPseudoRandomly(password.value, charactersToAdd.entropy, charactersToAdd.value);
 }

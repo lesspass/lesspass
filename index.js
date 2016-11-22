@@ -28,7 +28,16 @@ module.exports = {
 };
 
 var defaultPasswordProfile = {
-    version: 1
+    version: 2,
+    lowercase: true,
+    digits: true,
+    uppercase: true,
+    symbols: true,
+    keylen: 32,
+    digest: 'sha256',
+    length: 16,
+    index: 1,
+    iterations: 100000
 };
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
@@ -50,6 +59,6 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
             });
     }
     if (_passwordProfile.version === 2) {
-        return v2.generatePassword(site, login, masterPassword, passwordProfile);
+        return v2.generatePassword(site, login, masterPassword, _passwordProfile);
     }
 }

@@ -29,7 +29,16 @@ module.exports = {
 };
 
 var defaultPasswordProfile = {
-    version: 1
+    version: 2,
+    lowercase: true,
+    digits: true,
+    uppercase: true,
+    symbols: true,
+    keylen: 32,
+    digest: 'sha256',
+    length: 16,
+    index: 1,
+    iterations: 100000
 };
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
@@ -51,7 +60,7 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
             });
     }
     if (_passwordProfile.version === 2) {
-        return v2.generatePassword(site, login, masterPassword, passwordProfile);
+        return v2.generatePassword(site, login, masterPassword, _passwordProfile);
     }
 }
 },{"./src/pbkdf2":48,"./src/v1":49,"./src/v2":50,"object-assign":18}],2:[function(require,module,exports){
@@ -8468,7 +8477,6 @@ function createFingerprint(str) {
 },{"./pbkdf2":48,"buffer":6,"create-hmac":12,"pinkie-promise":21}],50:[function(require,module,exports){
 var pbkdf2 = require('./pbkdf2');
 var bigInt = require("big-integer");
-var objectAssign = require('object-assign');
 
 module.exports = {
     generatePassword: generatePassword,
@@ -8482,23 +8490,10 @@ module.exports = {
 };
 
 function generatePassword(site, login, masterPassword, passwordProfile) {
-    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
-    return calcEntropy(site, login, masterPassword, _passwordProfile).then(function (entropy) {
-        return renderPassword(entropy, _passwordProfile);
+    return calcEntropy(site, login, masterPassword, passwordProfile).then(function (entropy) {
+        return renderPassword(entropy, passwordProfile);
     });
 }
-
-var defaultPasswordProfile = {
-    lowercase: true,
-    uppercase: true,
-    digits: true,
-    symbols: true,
-    length: 16,
-    index: 1,
-    iterations: 100000,
-    keylen: 32,
-    digest: 'sha256'
-};
 
 function calcEntropy(site, login, masterPassword, passwordProfile) {
     var salt = site + login + passwordProfile.index.toString(16);
@@ -8558,13 +8553,12 @@ function getConfiguredRules(passwordProfile) {
 }
 
 function renderPassword(entropy, passwordProfile) {
-    var _passwordProfile = objectAssign({}, defaultPasswordProfile, passwordProfile);
-    var rules = getConfiguredRules(_passwordProfile);
+    var rules = getConfiguredRules(passwordProfile);
     var setOfCharacters = getSetOfCharacters(rules);
-    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, _passwordProfile.length - rules.length);
+    var password = consumeEntropy('', bigInt(entropy, 16), setOfCharacters, passwordProfile.length - rules.length);
     var charactersToAdd = getOneCharPerRule(password.entropy, rules);
     return insertStringPseudoRandomly(password.value, charactersToAdd.entropy, charactersToAdd.value);
 }
 
-},{"./pbkdf2":48,"big-integer":3,"object-assign":18}]},{},[1])(1)
+},{"./pbkdf2":48,"big-integer":3}]},{},[1])(1)
 });
