@@ -60,6 +60,21 @@ class LoginApiTestCase(APITestCase):
         self.client.post('/api/passwords/', password)
         self.assertEqual(1, models.Password.objects.count())
 
+    def test_create_password_v2(self):
+        password = {
+            "site": "lesspass.com",
+            "login": "test@oslab.fr",
+            "lowercase": True,
+            "uppercase": True,
+            "number": True,
+            "symbol": True,
+            "counter": 1,
+            "length": 12,
+            "version": 2
+        }
+        self.client.post('/api/passwords/', password)
+        self.assertEqual(2, models.Password.objects.first().version)
+
     def test_update_password(self):
         password = factories.PasswordFactory(user=self.user)
         self.assertNotEqual('facebook.com', password.site)
