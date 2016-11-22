@@ -59,6 +59,7 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Bran Sorem](https://github.com/bransorem)
  * [Édouard Lopez](https://github.com/edouard-lopez)
  * [Erik Mulder](https://github.com/ewjmulder)
+ * [Marc Sluiter](https://github.com/slintes)
  * [Martin](https://github.com/martinseener)
  * [Matthias Gliwka](https://github.com/gliwka)
  * [Pierre Rudloff](https://github.com/Rudloff)
