@@ -54,7 +54,7 @@ function generatePassword(site, login, masterPassword, passwordProfile) {
         };
         return v1.encryptLogin(login, masterPassword)
             .then(function (encryptedLogin) {
-                return v1.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
+                return v1.renderPassword(encryptedLogin, site, options).then(function (generatedPassword) {
                     return generatedPassword
                 });
             });
