@@ -40,7 +40,8 @@
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" v-model="useMasterPassword">
                             Check me if you want to use your master password here.
-                            <span class="tag tag-warning" v-on:click.prevent="seeMasterPasswordHelp=!seeMasterPasswordHelp">
+                            <span class="tag tag-warning"
+                                  v-on:click.prevent="seeMasterPasswordHelp=!seeMasterPasswordHelp">
                                 ?
                             </span>
                             <span class="text-warning" v-if="seeMasterPasswordHelp">
@@ -73,7 +74,8 @@
         </div>
         <div class="form-group row">
             <div class="col-xs-12">
-                <button id="signInButton" class="btn btn-primary" type="button" v-on:click="signIn">
+                <button id="signInButton" class="btn" type="button" v-on:click="signIn"
+                        v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     <span v-if="loadingSignIn"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
                     Sign In
                 </button>
@@ -212,6 +214,7 @@
             },
         },
         computed: {
+            ...mapGetters(['version']),
             baseURL: {
                 get () {
                     return this.$store.state.baseURL

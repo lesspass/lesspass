@@ -20,18 +20,26 @@ const defaultPassword = {
     numbers: true,
     symbols: true,
     length: 12,
-    counter: 1,
+    counter: 1
 };
+function getDefaultPasswordProfile(version) {
+    if (version === 1) {
+        return Object.assign({}, defaultPassword, {version: 1, length: 12});
+    }
+    if (version === 2) {
+        return Object.assign({}, defaultPassword, {version: 2, length: 16});
+    }
+}
 
+const versionLoadedByDefault = 1;
 const state = {
     authenticated: auth.isAuthenticated(),
     email: '',
     passwordStatus: 'CLEAN',
     passwords: [],
     baseURL: 'https://lesspass.com',
-    password: {
-        ...defaultPassword
-    }
+    password: getDefaultPasswordProfile(versionLoadedByDefault),
+    version: versionLoadedByDefault
 };
 
 const mutations = {
@@ -77,7 +85,12 @@ const mutations = {
     },
     UPDATE_EMAIL(state, {email}){
         state.email = email
-    }
+    },
+    CHANGE_VERSION(state, {version}){
+        state.password = getDefaultPasswordProfile(version);
+        state.version = version;
+        storage.save({version});
+    },
 };
 
 const actions = {
@@ -140,7 +153,8 @@ const getters = {
     isAuthenticated: state => state.authenticated,
     isGuest: state => !state.authenticated,
     passwordStatus: state => state.passwordStatus,
-    email: state => state.email
+    email: state => state.email,
+    version: state => state.version,
 };
 
 export default new Vuex.Store({

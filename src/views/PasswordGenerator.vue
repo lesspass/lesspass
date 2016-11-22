@@ -32,125 +32,134 @@
 </style>
 <template>
     <form id="password-generator">
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <div class="inner-addon left-addon">
-                    <i class="fa fa-globe"></i>
-                    <input id="site"
-                           name="site"
-                           type="text"
-                           ref="site"
-                           class="form-control"
-                           placeholder="Site"
-                           list="savedSites"
-                           autocorrect="off"
-                           autocapitalize="none"
-                           v-model="password.site">
-                    <datalist id="savedSites">
-                        <option v-for="pwd in passwords">
-                            {{pwd.site}} | {{pwd.login}}
-                        </option>
-                    </datalist>
-                </div>
+        <div class="form-group">
+            <div class="inner-addon left-addon">
+                <label for="site" class="sr-only">Site</label>
+                <i class="fa fa-globe"></i>
+                <input id="site"
+                       name="site"
+                       type="text"
+                       ref="site"
+                       class="form-control"
+                       placeholder="Site"
+                       list="savedSites"
+                       autocorrect="off"
+                       autocapitalize="none"
+                       v-model="password.site">
+                <datalist id="savedSites">
+                    <option v-for="pwd in passwords">
+                        {{pwd.site}} | {{pwd.login}}
+                    </option>
+                </datalist>
             </div>
         </div>
         <remove-auto-complete></remove-auto-complete>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <div class="inner-addon left-addon">
-                    <i class="fa fa-user"></i>
-                    <label for="login" class="sr-only">Login</label>
-                    <input id="login"
-                           name="login"
-                           type="text"
-                           class="form-control"
-                           placeholder="Login"
-                           autocomplete="off"
-                           autocorrect="off"
-                           autocapitalize="none"
-                           v-model="password.login">
-                </div>
+        <div class="form-group">
+            <div class="inner-addon left-addon">
+                <label for="login" class="sr-only">Login</label>
+                <i class="fa fa-user"></i>
+                <input id="login"
+                       name="login"
+                       type="text"
+                       class="form-control"
+                       placeholder="Login"
+                       autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="none"
+                       v-model="password.login">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <div class="inner-addon left-addon input-group">
-                    <label for="masterPassword" class="sr-only">Password</label>
-                    <i class="fa fa-lock"></i>
-                    <input id="masterPassword"
-                           name="masterPassword"
-                           ref="masterPassword"
-                           type="password"
-                           class="form-control"
-                           placeholder="Master password"
-                           autocomplete="new-password"
-                           autocorrect="off"
-                           autocapitalize="none"
-                           v-model="masterPassword">
-                    <fingerprint :fingerprint="fingerprint" v-on:click.native="showMasterPassword"></fingerprint>
-                </div>
+        <div class="form-group">
+            <div class="inner-addon left-addon input-group">
+                <label for="masterPassword" class="sr-only">Master Password</label>
+                <i class="fa fa-lock"></i>
+                <input id="masterPassword"
+                       name="masterPassword"
+                       ref="masterPassword"
+                       type="password"
+                       class="form-control"
+                       placeholder="Master password"
+                       autocomplete="new-password"
+                       autocorrect="off"
+                       autocapitalize="none"
+                       v-model="masterPassword">
+                <fingerprint :fingerprint="fingerprint" v-on:click.native="showMasterPassword"></fingerprint>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <div class="input-group">
-                    <label for="generatedPassword" class="sr-only">Password Generated</label>
-                    <input id="generatedPassword"
-                           name="generatedPassword"
-                           type="text"
-                           class="form-control"
-                           tabindex="-1"
-                           readonly
-                           v-model="generatedPassword">
-                    <span class="input-group-btn">
-                         <button id="copyPasswordButton" class="btn-copy btn btn-primary"
-                                 :disabled="!generatedPassword"
-                                 type="button"
-                                 v-on:click="cleanFormInSeconds(10)"
-                                 data-clipboard-target="#generatedPassword">
-                         <i class="fa fa-clipboard white"></i> Copy
-                         </button>
-                     </span>
-                </div>
-            </div>
+        <div class="form-group">
+            <button id="copyPasswordButton" type="button" class="btn" data-clipboard-text="" v-show="showCopyBtn"
+                    v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+                Copy to clipboard
+            </button>
+            <button type="button" class="btn btn-secondary" v-show="!showCopyBtn" v-on:click="renderPassword">
+                Generate Password
+            </button>
+            <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
+                <i class="fa fa-cog" aria-hidden="true"></i> Options
+            </button>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                Password options
-                <hr style="margin:0;">
-            </div>
+        <div class="form-group" v-if="showOptions">
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="lowercase"
+                       v-model="password.lowercase"> abc
+            </label>
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="uppercase"
+                       v-model="password.uppercase"> ABC
+            </label>
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="numbers"
+                       v-model="password.numbers">
+                123
+            </label>
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="symbols"
+                       v-model="password.symbols">
+                %!@
+            </label>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <label class="form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="lowercase"
-                           v-model="password.lowercase"> abc
+        <div class="form-group row" v-if="showOptions">
+            <div class="col-xs-12 col-sm-4 pb-1">
+                <label for="passwordLength">
+                    Password Length
                 </label>
-                <label class="form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="uppercase"
-                           v-model="password.uppercase"> ABC
-                </label>
-                <label class="form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="numbers"
-                           v-model="password.numbers">
-                    123
-                </label>
-                <label class="form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="symbols"
-                           v-model="password.symbols">
-                    %!@
-                </label>
+                <input class="form-control" type="number" id="passwordLength" v-model="password.length" min="6">
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="passwordLength" class="col-xs-3 col-form-label">Length</label>
-            <div class="col-xs-3 pl-0">
-                <input class="form-control" type="number" id="passwordLength" v-model="password.length"
-                       min="6">
-            </div>
-            <label for="passwordCounter" class="col-xs-3 col-form-label">Counter</label>
-            <div class="col-xs-3 pl-0">
+            <div class="col-xs-12 col-sm-4 pb-1">
+                <label for="passwordLength">
+                    Counter
+                </label>
                 <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
+            </div>
+            <div class="col-xs-12 col-sm-4 pb-1">
+                <label for="version">
+                    Version
+                </label>
+                <select id="version" v-model="password.version" v-on:change="selectVersion" class="form-control">
+                    <option value="1">V1</option>
+                    <option value="2">V2</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" v-if="showError">
+            <div class="alert alert-danger" role="alert">
+                site, login and master password fields are mandatory
+            </div>
+        </div>
+        <div class="form-group" v-if="version === 2 && password.version ===1 && !showError">
+            <div class="alert alert-warning" role="alert">
+                This is a password in version&nbsp;1.
+                You should update your password and use version&nbsp;2
+                <br>
+               <a href="#" v-on:click.prevent="showOptions=!showOptions" v-if="!showOptions"> show me the options</a>
+            </div>
+        </div>
+        <div class="form-group" v-if="version === 1 && !showError">
+            <div class="alert alert-warning" role="alert">
+                You are using LessPass <strong>version&nbsp;1</strong> which is deprecated.
+                We will load the <strong>version&nbsp;2</strong> by default on january 1st, 2017.
+                <br>You can still use version 1 in options after this period.
+                <br> <a href="#" v-on:click.prevent="changeVersion(2)">Use version 2 now</a>
             </div>
         </div>
     </form>
@@ -177,7 +186,7 @@
             RemoveAutoComplete,
             Fingerprint
         },
-        computed: mapGetters(['passwords', 'password']),
+        computed: mapGetters(['passwords', 'password', 'version']),
         preFetch: fetchPasswords,
         beforeMount () {
             const id = this.$route.params.id;
@@ -197,19 +206,28 @@
             clipboard.on('success', event => {
                 if (event.text) {
                     showTooltip(event.trigger, 'copied !');
+                    setTimeout(()=> {
+                        this.showCopyBtn = false;
+                        this.cleanFormInSeconds(8);
+                    }, 2000);
                 }
             });
         },
         data(){
             return {
                 masterPassword: '',
-                encryptedLogin: '',
                 fingerprint: '',
-                generatedPassword: '',
-                cleanTimeout: null
+                cleanTimeout: null,
+                showOptions: false,
+                showCopyBtn: false,
+                showError: false
             }
         },
         watch: {
+            'masterPassword': function () {
+                this.showCopyBtn = false;
+                this.showFingerprint();
+            },
             'password.site': function (newValue) {
                 const values = newValue.split(" | ");
                 if (values.length === 2) {
@@ -225,49 +243,12 @@
                         }
                     }
                 }
-                this.renderPassword();
-            },
-            'password.login': function () {
-                this.encryptedLogin = '';
-                this.encryptLogin();
-            },
-            'password.uppercase': function () {
-                this.renderPassword();
-            },
-            'password.lowercase': function () {
-                this.renderPassword();
-            },
-            'password.numbers': function () {
-                this.renderPassword();
-            },
-            'password.symbols': function () {
-                this.renderPassword();
-            },
-            'password.length': function () {
-                this.renderPassword();
-            },
-            'password.counter': function () {
-                this.renderPassword();
-            },
-            'masterPassword': function () {
-                this.encryptedLogin = '';
-                this.encryptLogin();
-            },
-            'encryptedLogin': function () {
-                this.renderPassword();
-            },
-            'generatedPassword': function () {
-                this.cleanFormInSeconds(30);
-            },
+            }
         },
         methods: {
-            encryptLogin: debounce(function () {
-                if (this.password.login && this.masterPassword) {
-                    LessPass.encryptLogin(this.password.login, this.masterPassword).then(encryptedLogin => {
-                        this.encryptedLogin = encryptedLogin;
-                    });
-                }
-            }, 500),
+            showFingerprint: debounce(function () {
+                this.fingerprint = this.masterPassword;
+            }, 3000),
             showMasterPassword(){
                 if (this.$refs.masterPassword.type === 'password') {
                     this.$refs.masterPassword.type = 'text';
@@ -280,23 +261,45 @@
                 this.cleanTimeout = setTimeout(() => {
                     this.$store.commit('PASSWORD_CLEAN');
                     this.masterPassword = '';
-                    this.encryptedLogin = '';
-                    this.generatedPassword = '';
                     this.fingerprint = '';
                 }, 1000 * seconds);
             },
             renderPassword(){
-                if (!this.encryptedLogin || !this.password.site) {
-                    this.generatedPassword = '';
+                clearTimeout(this.cleanTimeout);
+                var site = this.password.site;
+                var login = this.password.login;
+                var masterPassword = this.masterPassword;
+
+                if (!site || !login || !masterPassword) {
+                    this.showError = true;
                     return;
                 }
+
+                this.showError = false;
                 this.fingerprint = this.masterPassword;
-                const password = new Password(this.password);
-                LessPass.renderPassword(this.encryptedLogin, this.password.site, password.options)
-                        .then(generatedPassword => {
-                            this.$store.dispatch('PASSWORD_GENERATED');
-                            this.generatedPassword = generatedPassword;
-                        });
+
+                var passwordProfile = {
+                    lowercase: this.password.lowercase,
+                    uppercase: this.password.uppercase,
+                    numbers: this.password.numbers,
+                    symbols: this.password.symbols,
+                    length: this.password.length,
+                    counter: this.password.counter,
+                    version: this.password.version || this.version,
+                };
+                return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(generatedPassword => {
+                    window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
+                    this.showCopyBtn = !this.showCopyBtn;
+                    this.$store.dispatch('PASSWORD_GENERATED');
+                }).catch(err => {
+                    console.log(err)
+                });
+            },
+            changeVersion(version){
+                this.$store.commit('CHANGE_VERSION', {version});
+            },
+            selectVersion(event){
+                this.password.version = parseInt(event.target.value);
             }
         }
     }

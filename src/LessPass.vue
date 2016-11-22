@@ -13,9 +13,9 @@
     }
 </style>
 <template>
-    <div id="lesspass" class="card" style="border:none;">
+    <div id="lesspass" class="card" style="max-width: 475px;">
         <lesspass-menu></lesspass-menu>
-        <div class="card-block" style="min-height: 400px;">
+        <div class="card-block">
             <router-view></router-view>
         </div>
     </div>

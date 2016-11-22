@@ -1,7 +1,6 @@
 <style>
     .card-header-dark {
         background-color: #555;
-        border-color: #555;
         color: #FFF;
     }
 
@@ -52,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-header card-header-dark" v-show="isGuest">
+        <div class="card-header" v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }" v-show="isGuest">
             <div class="row">
                 <div class="index-header">
                     <div class="col-xs-6">
@@ -85,7 +84,8 @@
             'isAuthenticated',
             'isGuest',
             'email',
-            'passwordStatus'
+            'passwordStatus',
+            'version'
         ])
     }
 </script>
