@@ -151,15 +151,17 @@
                 This is a password in version&nbsp;1.
                 You should update your password and use version&nbsp;2
                 <br>
-               <a href="#" v-on:click.prevent="showOptions=!showOptions" v-if="!showOptions"> show me the options</a>
+                <a href="#" v-on:click.prevent="showOptions=!showOptions" v-if="!showOptions"> show me the options</a>
             </div>
         </div>
         <div class="form-group" v-if="version === 1 && !showError">
             <div class="alert alert-warning" role="alert">
-                You are using LessPass <strong>version&nbsp;1</strong> which is deprecated.
-                We will load the <strong>version&nbsp;2</strong> by default on january 1st, 2017.
-                <br>You can still use version 1 in options after this period.
-                <br> <a href="#" v-on:click.prevent="changeVersion(2)">Use version 2 now</a>
+                <small>
+                    You are using LessPass <strong>version&nbsp;1</strong> which is deprecated.
+                    We will load the <strong>version&nbsp;2</strong> by default on january 1st, 2017.
+                    <br>You can still use version 1 in options after this period.
+                    <br> <a href="#" v-on:click.prevent="changeVersion(2)">Use version 2 now</a>
+                </small>
             </div>
         </div>
     </form>
