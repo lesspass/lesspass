@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-outline-danger btn-sm"
                 v-if="!confirm"
                 v-on:click.prevent="confirm=true">
-            <i class="fa-white fa fa-trash fa-fw text-danger"></i>
+            <i class="fa fa-trash fa-fw"></i>
         </button>
     </div>
 </template>
