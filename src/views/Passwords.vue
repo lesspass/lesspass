@@ -10,7 +10,7 @@
         </div>
         <ul class="list-group">
             <li class="list-group-item" v-for="password in filteredPasswords">
-                <delete-button class="float-xs-right mt-1"
+                <delete-button class="float-xs-right mt-1 text-xs-right"
                                confirmText="Are you sure you want to delete this password profile?"
                                confirmButton="Sure delete it"
                                cancelButton="Oups no!"
