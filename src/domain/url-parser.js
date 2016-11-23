@@ -4,9 +4,28 @@ function _ipIsValid(ipAddress) {
     return Boolean(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAddress));
 }
 
-function getDomainName(urlStr) {
-    var matches = urlStr.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
-    return matches && matches[1];
+function getDomainNamev1(urlStr) {
+    var matchesDomainName = urlStr.match(/^(?:https?\:\/\/)([^\/?#]+)(?:[\/?#]|$)/i);
+    return matchesDomainName && matchesDomainName[1];
+}
+
+function getDomainNamev2(urlStr) {
+    var domainName = getDomainNamev1(urlStr);
+
+    var matchIp = domainName.match(/(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\:?([0-9]+)?/i);
+    if (matchIp) {
+        return matchIp[0];
+    }
+
+    var matchesTLD = domainName.match(/([^.]*\.[^.]{2,3})(?:\.[^.]{2,3})?$/i);
+    return matchesTLD && matchesTLD[0];
+}
+
+function getDomainName(urlStr, version = 1) {
+    if (version === 1) {
+        return getDomainNamev1(urlStr);
+    }
+    return getDomainNamev2(urlStr);
 }
 
 function isWebExtension() {
@@ -25,9 +44,9 @@ function getCurrentUrl() {
 }
 
 
-function getSite() {
+function getSite(version = 1) {
     if (isWebExtension()) {
-        return getCurrentUrl().then(currentUrl => {
+        return getCurrentUrl(version).then(currentUrl => {
             return getDomainName(currentUrl)
         });
     }

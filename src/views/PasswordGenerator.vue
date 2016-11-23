@@ -198,7 +198,7 @@
                 fetchPasswords(this.$store);
             }
 
-            getSite().then(site => {
+            getSite(this.version).then(site => {
                 if (site) {
                     this.$store.commit('UPDATE_SITE', {site})
                 }

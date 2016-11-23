@@ -6,7 +6,27 @@ test(t => {
     t.is('lesspass.com', getDomainName('https://lesspass.com/api/'));
     t.is('api.lesspass.com', getDomainName('https://api.lesspass.com/'));
     t.is('lesspass.com', getDomainName('http://lesspass.com'));
+    t.is('stackoverflow.com', getDomainName('http://stackoverflow.com/questions/3689423/google-chrome-plugin-how-to-get-domain-from-url-tab-url'));
+    t.is('v4-alpha.getbootstrap.com', getDomainName('http://v4-alpha.getbootstrap.com/components/buttons/'));
+    t.is('accounts.google.com', getDomainName('https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier'));
+    t.is('www.netflix.com', getDomainName('https://www.netflix.com/browse'));
+    t.is('www.bbc.co.uk', getDomainName('https://www.bbc.co.uk'));
     t.is('192.168.1.1:10443', getDomainName('https://192.168.1.1:10443/webapp/'));
+});
+
+test('getDomainName v2', t => {
+    t.is('lesspass.com', getDomainName('https://lesspass.com/#!/', 2));
+    t.is('lesspass.com', getDomainName('https://lesspass.com/api/', 2));
+    t.is('lesspass.com', getDomainName('https://api.lesspass.com/', 2));
+    t.is('lesspass.com', getDomainName('http://lesspass.com', 2));
+    t.is('stackoverflow.com', getDomainName('http://stackoverflow.com/questions/3689423/google-chrome-plugin-how-to-get-domain-from-url-tab-url', 2));
+    t.is('getbootstrap.com', getDomainName('http://v4-alpha.getbootstrap.com/components/buttons/', 2));
+    t.is('google.com', getDomainName('https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier', 2));
+    t.is('netflix.com', getDomainName('https://www.netflix.com/browse', 2));
+    t.is('bbc.co.uk', getDomainName('https://www.bbc.co.uk', 2));
+    t.is('192.168.1.1:10443', getDomainName('https://192.168.1.1:10443/webapp/', 2));
+    t.is('192.168.1.1', getDomainName('http://192.168.1.1', 2));
+    t.is('192.168.1.1', getDomainName('https://192.168.1.1/', 2));
 });
 
 test('ip validator', t => {
