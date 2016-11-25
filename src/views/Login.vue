@@ -1,10 +1,5 @@
 <template>
     <form>
-        <div class="form-group row" v-if="showError">
-            <div class="col-xs-12 text-muted text-danger">
-                {{ errorMessage }}
-            </div>
-        </div>
         <div class="form-group row">
             <div class="col-xs-12">
                 <div class="inner-addon left-addon">
@@ -56,25 +51,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-xs-12 hint--bottom" aria-label="You can use your self hosted LessPass Database">
-                <div class="inner-addon left-addon">
-                    <i class="fa fa-globe"></i>
-                    <input id="baseURL"
-                           class="form-control"
-                           type="text"
-                           placeholder="LessPass Database (https://...)"
-                           v-model="baseURL">
-                    <small class="form-text text-muted">
-                        <span v-if="noErrors()">You can use your self hosted LessPass Database</span>
-                        <span v-if="errors.baseURLRequired" class="text-danger">
-                            A LessPass database url is required
-                        </span>
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
+            <div class="col-xs-8" v-show="!generatedPassword">
                 <button id="signInButton" class="btn" type="button" v-on:click="signIn"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     <span v-if="loadingSignIn"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
@@ -85,10 +62,42 @@
                     Register
                 </button>
             </div>
+            <div class="col-xs-4 text-xs-right">
+                <button type="button" class="btn btn-secondary" v-on:click="toggleVersion"
+                        v-bind:class="{ 'btn-outline-warning': version===1, 'btn-outline-primary': version===2 }">
+                    <small v-show="version===1">v1</small>
+                    <small v-show="version===2">v2</small>
+                </button>
+                <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
+                    <i class="fa fa-sliders" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="form-group" v-if="showError">
+            <div class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+            </div>
+        </div>
+        <div class="form-group" v-if="showOptions">
+            <label for="baseURL">Self Hosted Url</label>
+            <div class="inner-addon left-addon">
+                <i class="fa fa-globe"></i>
+                <input id="baseURL"
+                       class="form-control"
+                       type="text"
+                       placeholder="LessPass Database (https://...)"
+                       v-model="baseURL">
+                <small class="form-text text-muted">
+                    <span v-if="noErrors()">You can use your self hosted LessPass Database</span>
+                    <span v-if="errors.baseURLRequired" class="text-danger">
+                            A LessPass database url is required
+                        </span>
+                </small>
+            </div>
         </div>
         <div class="form-group mb-0">
             <router-link :to="{ name: 'passwordReset'}">
-                Forgot your password?
+                <small>Forgot your password?</small>
             </router-link>
         </div>
     </form>
@@ -121,7 +130,8 @@
                 errorMessage: '',
                 loadingRegister: false,
                 loadingSignIn: false,
-                errors: {...defaultErrors}
+                errors: {...defaultErrors},
+                showOptions: false,
             };
         },
         methods: {
@@ -211,6 +221,13 @@
                 this.errorMessage = errorMessage;
                 this.showError = true;
             },
+            toggleVersion(){
+                if (this.version === 1) {
+                    this.$store.commit('CHANGE_VERSION', {version: 2});
+                } else {
+                    this.$store.commit('CHANGE_VERSION', {version: 1});
+                }
+            },
         },
         computed: {
             ...mapGetters(['version']),
@@ -242,22 +259,30 @@
                     return;
                 }
 
-                var site = 'lesspass.com';
-                var options = {
-                    counter: 1,
-                    length: 12,
-                    lowercase: true,
-                    uppercase: true,
-                    numbers: true,
-                    symbols: true
+                var passwordProfiles = {
+                    1: {
+                        lowercase: true,
+                        uppercase: true,
+                        numbers: true,
+                        symbols: true,
+                        length: 12,
+                        counter: 1,
+                        version: 1,
+                    },
+                    2: {
+                        lowercase: true,
+                        uppercase: true,
+                        numbers: true,
+                        symbols: true,
+                        length: 16,
+                        counter: 1,
+                        version: 2,
+                    }
                 };
 
-                LessPass.encryptLogin(this.email, this.password)
-                        .then(encryptedLogin => {
-                            LessPass.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
-                                this.password = generatedPassword;
-                            });
-                        });
+                return LessPass.generatePassword('lesspass.com', this.email, this.password, passwordProfiles[this.version]).then(generatedPassword => {
+                    this.password = generatedPassword;
+                });
             },
         }
     }

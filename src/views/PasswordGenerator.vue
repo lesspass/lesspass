@@ -104,9 +104,8 @@
                 </div>
             </div>
             <div class="col-xs-9" v-show="!generatedPassword">
-                <div class="btn-group" role="group">
                     <button type="button" class="btn" v-on:click="generatePassword"
-                            v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+                            v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
                         <span v-if="!generatingPassword">Generate</span>
                         <span v-if="generatingPassword">Generating...</span>
                     </button>
@@ -115,7 +114,6 @@
                         <small v-show="password.version===1">v1</small>
                         <small v-show="password.version===2">v2</small>
                     </button>
-                </div>
             </div>
             <div class="col-xs-3">
                 <div class="btn-group float-xs-right" role="group">

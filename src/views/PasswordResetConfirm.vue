@@ -30,7 +30,8 @@
         </div>
         <div class="form-group row">
             <div class="col-xs-12">
-                <button id="loginButton" class="btn btn-primary" type="submit">
+                <button id="loginButton" class="btn" type="submit"
+                        v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     Reset my password
                 </button>
             </div>
@@ -40,7 +41,7 @@
 <script type="text/ecmascript-6">
     import Auth from '../api/auth';
     import Storage from '../api/storage';
-    import {mapActions} from 'vuex';
+    import {mapActions, mapGetters} from 'vuex';
 
     export default {
         data() {
@@ -84,6 +85,9 @@
                     this.showError = true;
                 });
             }
-        }
+        },
+        computed: {
+            ...mapGetters(['version'])
+        },
     }
 </script>

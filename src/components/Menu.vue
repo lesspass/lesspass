@@ -1,14 +1,4 @@
 <style>
-    .grey-link {
-        color: #373a3c;
-        text-decoration: none;
-    }
-
-    .grey-link:hover, .grey-link:focus, .grey-link:active {
-        color: #373a3c;
-        text-decoration: none;
-    }
-
     .white-link {
         color: white;
     }
@@ -29,7 +19,7 @@
             <div class="row">
                 <div class="col-xs-6">
                     <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
-                    <span v-on:click="saveOrUpdatePassword">
+                    <span v-on:click="saveOrUpdatePassword" class="white-link">
                         <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
                     </span>
                     <span v-if="passwordStatus=='CREATED' || passwordStatus=='UPDATED'" class="text-success">

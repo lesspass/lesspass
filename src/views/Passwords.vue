@@ -9,6 +9,10 @@
             </div>
         </div>
         <ul class="list-group">
+            <li class="list-group-item" v-if="passwords.length === 0">
+                You don't have any passwords saved in your database.
+                <router-link :to="{ name: 'home'}">Would you like to create one ?</router-link>
+            </li>
             <li class="list-group-item" v-for="password in filteredPasswords">
                 <delete-button class="float-xs-right mt-1 text-xs-right"
                                confirmText="Are you sure you want to delete this password profile?"
