@@ -121,7 +121,7 @@ LOGGING = {
 AUTH_USER_MODEL = 'api.LessPassUser'
 
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=60),
     'JWT_ALLOW_REFRESH': True,
 }
 
