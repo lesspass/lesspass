@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "lesspass-pure": "^3.2.1"
+    "lesspass-pure": "^4.0.0"
   },
   "devDependencies": {
     "favicons": "^4.8.3",
