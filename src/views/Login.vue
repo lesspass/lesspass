@@ -34,7 +34,8 @@
                            class="form-control"
                            required
                            placeholder="LessPass password"
-                           v-model="password">
+                           v-model="password"
+                           v-on:keyup.enter.prevent="signIn">
                     <small class="form-text text-muted">
                         <span v-if="errors.passwordRequired" class="text-danger">A password is required</span>
                         <label class="form-check-label">
@@ -85,12 +86,10 @@
                 </button>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <router-link :to="{ name: 'passwordReset'}">
-                    Forgot your password?
-                </router-link>
-            </div>
+        <div class="form-group mb-0">
+            <router-link :to="{ name: 'passwordReset'}">
+                Forgot your password?
+            </router-link>
         </div>
     </form>
 </template>

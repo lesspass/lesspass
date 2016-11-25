@@ -24,10 +24,11 @@
 </style>
 <template>
     <div id="menu">
-        <div class="card-header" v-show="isAuthenticated">
+        <div class="card-header" v-show="isAuthenticated"
+             v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
                 <div class="col-xs-6">
-                    <router-link class="grey-link" :to="{ name: 'home'}">LessPass</router-link>
+                    <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
                     <span v-on:click="saveOrUpdatePassword">
                         <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
                     </span>
@@ -36,10 +37,10 @@
                     </span>
                 </div>
                 <div class="col-xs-6 text-xs-right">
-                    <router-link class="grey-link ml-1" :to="{ name: 'passwords'}">
+                    <router-link class="white-link ml-1" :to="{ name: 'passwords'}">
                         <i class="fa fa-key" aria-hidden="true"></i>
                     </router-link>
-                    <button class="grey-link ml-1 btn btn-link p-0 m-0" type="button" v-on:click="logout">
+                    <button class="white-link ml-1 btn btn-link p-0 m-0" type="button" v-on:click="logout">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                     </button>
                 </div>

@@ -22,12 +22,12 @@ const defaultPassword = {
     length: 12,
     counter: 1
 };
-function getDefaultPasswordProfile(version) {
+function getDefaultPasswordProfile(version, passwordProfile = {}) {
     if (version === 1) {
-        return Object.assign({}, defaultPassword, {version: 1, length: 12});
+        return Object.assign({}, defaultPassword, passwordProfile, {version: 1, length: 12});
     }
     if (version === 2) {
-        return Object.assign({}, defaultPassword, {version: 2, length: 16});
+        return Object.assign({}, defaultPassword, passwordProfile, {version: 2, length: 16});
     }
 }
 
@@ -87,9 +87,8 @@ const mutations = {
         state.email = email
     },
     CHANGE_VERSION(state, {version}){
-        state.password = getDefaultPasswordProfile(version);
+        state.password = getDefaultPasswordProfile(version, state.password);
         state.version = version;
-        storage.save({version});
     },
 };
 

@@ -82,72 +82,76 @@
                        autocomplete="new-password"
                        autocorrect="off"
                        autocapitalize="off"
-                       v-model="masterPassword">
-                <fingerprint :fingerprint="fingerprint" v-on:click.native="showMasterPassword"></fingerprint>
+                       v-model="masterPassword"
+                       v-on:keyup.enter.prevent="generatePassword">
+                <fingerprint :fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.masterPassword)">
+                </fingerprint>
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-xs-8">
-                <input id="generatedPassword" type="text" class="form-control mb-0" v-bind:value="generatedPassword"
-                       v-show="showPassword && showCopyBtn" readonly>
-                <button id="copyPasswordButton" type="button" v-show="!showPassword && showCopyBtn"
-                        data-clipboard-text=""
-                        class="btn btn-block mt-0"
-                        v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-                    <i class="fa fa-clipboard" aria-hidden="true"></i>
-                    Copy
-                </button>
-                <button type="button" class="btn btn-block mt-0" v-show="!showCopyBtn" v-on:click="generatePassword"
-                        v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
-                    <i class="fa fa-calculator fa-fw" aria-hidden="true"></i>
-                    Generate
-                </button>
+            <div class="col-xs-9" v-show="generatedPassword">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn"
+                                ref="copyPasswordButton"
+                                v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+                            <i class="fa fa-clipboard" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                    <input type="password" class="form-control read-only" readonly tabindex="-1"
+                           v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }"
+                           v-on:click="togglePasswordType($event.target)" v-bind:value="generatedPassword">
+                </div>
             </div>
-            <div class="col-xs-4 pl-0">
+            <div class="col-xs-9" v-show="!generatedPassword">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn" v-on:click="generatePassword"
+                            v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+                        <span v-if="!generatingPassword">Generate</span>
+                        <span v-if="generatingPassword">Generating...</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" v-on:click="toggleVersion"
+                            v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+                        <small v-show="password.version===1">v1</small>
+                        <small v-show="password.version===2">v2</small>
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-3">
                 <div class="btn-group float-xs-right" role="group">
-                    <button type="button" class="btn btn-secondary" v-show="showPassword && showCopyBtn"
-                            v-on:click="showPassword=false">
-                        <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                    </button>
-                    <button type="button" class="btn btn-secondary" v-show="!showPassword && showCopyBtn"
-                            v-on:click="showPassword=true">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </button>
                     <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
                         <i class="fa fa-sliders" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="form-group row pt-1" v-if="showOptions">
-            <div class="col-xs-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" id="lowercase" v-model="password.lowercase"> abc
-                </label>
-            </div>
-            <div class="col-xs-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" id="uppercase"
-                           v-model="password.uppercase"> ABC
-                </label>
-            </div>
-            <div class="col-xs-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" id="numbers"
-                           v-model="password.numbers">
-                    123
-                </label>
-            </div>
-            <div class="col-xs-3 text-right-center">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" id="symbols"
-                           v-model="password.symbols">
-                    %!@
-                </label>
-            </div>
+        <div class="form-group" v-if="showOptions">
+            Options
+        </div>
+        <div class="form-group" v-if="showOptions">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" id="lowercase" v-model="password.lowercase" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">abc</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" id="uppercase" v-model="password.uppercase" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">ABC</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" id="numbers" v-model="password.numbers" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">123</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" id="symbols" v-model="password.symbols" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">%!@</span>
+            </label>
         </div>
         <div class="form-group row" v-if="showOptions">
-            <div class="col-xs-5">
+            <div class="col-xs-6">
                 <label for="passwordLength">Length</label>
                 <div class="input-group">
                     <input class="form-control" type="number" id="passwordLength" v-model="password.length" min="4">
@@ -159,7 +163,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-xs-5 offset-xs-2">
+            <div class="col-xs-6">
                 <label for="passwordCounter">Counter</label>
                 <div class="input-group">
                     <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
@@ -172,38 +176,19 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row" v-if="showOptions">
-            <div class="col-xs-12 col-sm-4 pb-1">
-                <label for="version">
-                    Version
-                </label>
-                <select id="version" v-model="password.version" v-on:change="selectVersion" class="form-control">
-                    <option value="1">v1</option>
-                    <option value="2">v2</option>
-                </select>
-            </div>
-        </div>
         <div class="form-group" v-if="showError">
             <div class="alert alert-danger" role="alert">
                 site, login and master password fields are mandatory
             </div>
         </div>
-        <div class="form-group" v-if="version === 2 && password.version ===1 && !showError">
-            <div class="alert alert-warning" role="alert">
-                This is a password in version&nbsp;1.
-                You should update your password and use version&nbsp;2
-                <br>
-                <a href="#" v-on:click.prevent="showOptions=!showOptions" v-if="!showOptions"> show me the options</a>
-            </div>
-        </div>
-        <div class="form-group" v-if="version === 1 && !showError">
-            <div class="alert alert-warning" role="alert">
+        <div class="form-group mb-0" v-if="version === 1 && !showError">
+            <div class="alert alert-warning mb-0" role="alert">
                 <small>
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                     You use an obsolette version of LessPass.
-                    <br>
-                    The default version will be version&nbsp;2 in <strong>{{ getDayBeforeV2() }}&nbsp;days</strong>.
-                    You can still use LessPass version 1 in the options.
+                    The default version will be version&nbsp;2 in
+                    <strong aria-label="10 jan 2017" class="hint--right">{{ getDayBeforeV2() }}&nbsp;days</strong>.
+                    You can continue to use version 1 even if we advise you to update your passwords.
                 </small>
             </div>
         </div>
@@ -264,9 +249,8 @@
                 generatedPassword: '',
                 cleanTimeout: null,
                 showOptions: false,
-                showPassword: false,
-                showCopyBtn: false,
-                showError: false
+                showError: false,
+                generatingPassword: false
             }
         },
         watch: {
@@ -313,6 +297,7 @@
             },
             'masterPassword': function () {
                 this.cleanErrors();
+                this.cleanFormInSeconds(30);
                 this.showFingerprint();
             }
         },
@@ -320,16 +305,16 @@
             showFingerprint: debounce(function () {
                 this.fingerprint = this.masterPassword;
             }, 3000),
-            showMasterPassword(){
-                if (this.$refs.masterPassword.type === 'password') {
-                    this.$refs.masterPassword.type = 'text';
+            togglePasswordType(element){
+                if (element.type === 'password') {
+                    element.type = 'text';
                 } else {
-                    this.$refs.masterPassword.type = 'password';
+                    element.type = 'password';
                 }
             },
             cleanErrors(){
-                this.showPassword = false;
-                this.showCopyBtn = false;
+                clearTimeout(this.cleanTimeout);
+                this.generatedPassword = '';
                 this.showError = false;
             },
             cleanFormInSeconds(seconds){
@@ -352,6 +337,7 @@
                     return;
                 }
 
+                this.generatingPassword = true;
                 this.cleanErrors();
                 this.fingerprint = this.masterPassword;
 
@@ -365,14 +351,22 @@
                     version: this.password.version || this.version,
                 };
                 return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(generatedPassword => {
-                    this.showCopyBtn = true;
+                    this.generatingPassword = false;
                     this.generatedPassword = generatedPassword;
                     window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
                     this.$store.dispatch('PASSWORD_GENERATED');
                 });
             },
-            selectVersion(event){
-                this.password.version = parseInt(event.target.value);
+            setDefaultVersion(version){
+                this.$store.commit('CHANGE_VERSION', {version});
+            },
+            toggleVersion(){
+                if (this.password.version === 1) {
+                    this.password.version = 2;
+                } else {
+                    this.password.version = 1;
+                }
+                this.$store.commit('CHANGE_VERSION', {version: this.password.version});
             },
             getDayBeforeV2(){
                 var oneDay = 24 * 60 * 60 * 1000;
