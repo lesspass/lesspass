@@ -21,12 +21,12 @@
     "test": "ava"
   },
   "dependencies": {
-    "lesspass": "^5.0.1",
+    "lesspass": "^6.0.0",
     "meow": "^3.3.0",
     "read": "^1.0.7"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
+    "ava": "^0.17.0",
     "execa": "^0.5.0"
   }
 }
