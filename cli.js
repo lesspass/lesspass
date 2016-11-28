@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 var meow = require('meow');
-var lesspass = require('lesspass');
+var LessPass = require('lesspass');
 var read = require('read');
 
 var cli = meow(`
@@ -31,10 +31,8 @@ var cli = meow(`
 });
 
 function calcPassword(site, login, masterPassword, options) {
-    lesspass.encryptLogin(login, masterPassword).then(function (encryptedLogin) {
-        lesspass.renderPassword(encryptedLogin, site, options).then(function (generatedPassword) {
-            console.log(generatedPassword);
-        });
+    LessPass.generatePassword(site, login, masterPassword, options).then(generatedPassword => {
+        console.log(generatedPassword);
     });
 }
 
@@ -44,7 +42,7 @@ var symbols = (cli.flags.symbols || 'true').toLowerCase() === 'true';
 var numbers = (cli.flags.numbers || 'true').toLowerCase() === 'true';
 var options = {
     counter: cli.flags.counter || 1,
-    length: cli.flags.length || 12,
+    length: cli.flags.length || 16,
     lowercase: lowercase,
     uppercase: uppercase,
     numbers: numbers,
