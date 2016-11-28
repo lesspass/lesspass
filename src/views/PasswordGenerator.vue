@@ -183,10 +183,10 @@
             <div class="alert alert-warning mb-0" role="alert">
                 <small>
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                    You use an obsolette version of LessPass.
+                    You are using a deprecated version of LessPass.
                     The default version will be version&nbsp;2 in
                     <strong aria-label="10 jan 2017" class="hint--right">{{ getDayBeforeV2() }}&nbsp;days</strong>.
-                    You can continue to use version 1 even if we advise you to update your passwords.
+                    You can continue to use version 1, but we strongly advise you to migrate your passwords to version 2.
                 </small>
             </div>
         </div>
