@@ -1,8 +1,6 @@
 import os
 import shutil
 
-import boto3
-
 
 def get_version():
     with open('package.json') as f:
@@ -21,12 +19,6 @@ def zip_folder(folder, name, format='zip'):
 def move(zip_name):
     print('move %s into build folder' % zip_name)
     shutil.move(zip_name, os.path.join(build_folder, zip_name))
-
-
-def send_s3(filepath):
-    s3 = boto3.resource('s3')
-    with open(filepath, 'rb') as data:
-        s3.Bucket('lesspass-download').put_object(Key=os.path.basename(filepath), Body=data)
 
 
 build_folder = 'build'
@@ -48,5 +40,4 @@ if os.path.exists(linux_folder):
     basename = 'LessPass-v%s.linux-x64' % get_version()
     filename = '%s.tar.gz' % basename
     zip_folder(linux_folder, basename, 'gztar')
-    send_s3(filename)
     move(filename)

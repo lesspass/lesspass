@@ -2,28 +2,27 @@
   "name": "lesspass-desktop",
   "version": "1.0.0",
   "description": "lesspass app",
-  "main": "main.js",
-  "productName": "LessPass",
-  "scripts": {
-    "build": "gulp",
-    "build:linux": "electron-packager ./ --platform=linux --arch=x64 --icon=images/icon.ico --ignore=node_modules --ignore=build --overwrite && python zip.py",
-    "build:windows": "electron-packager ./ --platform=win32 --arch=x64 --icon=images/icon.ico --ignore=node_modules --ignore=build --overwrite && python zip.py",
-    "build:osx": "electron-packager ./ LessPass --platform=darwin --arch=x64 --icon=images/icon.icns --ignore=node_modules --ignore=build --overwrite",
-    "start": "electron .",
-    "aws": "node aws.js"
-  },
-  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
   "bugs": {
     "url": "https://github.com/electron/electron-quick-start/issues"
   },
-  "homepage": "https://github.com/electron/electron-quick-start#readme",
-  "devDependencies": {
-    "aws-sdk": "^2.4.6",
-    "electron-packager": "^8.3.0",
-    "electron-prebuilt": "^1.2.0",
-    "gulp": "^3.9.1"
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "main": "main.js",
+  "scripts": {
+    "build": "rimraf build && rimraf dist && gulp",
+    "build:linux": "npm run build && electron-packager ./ --platform=linux --arch=x64 --icon=images/icon.png --ignore=node_modules --overwrite && python zip.py",
+    "build:osx": "npm run build && electron-packager ./ LessPass --platform=darwin --arch=x64 --icon=images/icon.icns --ignore=node_modules --overwrite",
+    "build:windows": "npm run build && electron-packager ./ --platform=win32 --arch=x64 --icon=images/icon.ico --ignore=node_modules --overwrite && python zip.py",
+    "start": "electron ."
   },
   "dependencies": {
     "lesspass-pure": "^4.0.0"
-  }
+  },
+  "devDependencies": {
+    "electron-packager": "^8.3.0",
+    "electron-prebuilt": "^1.2.0",
+    "gulp": "^3.9.1",
+    "rimraf": "^2.5.4"
+  },
+  "productName": "LessPass"
 }
