@@ -3,9 +3,10 @@
         color: white;
     }
 
-    #lesspass.card {
-        border: none;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    @media (max-width: 544px) {
+        #lesspass.card {
+            border: none;
+        }
     }
 
     #lesspass .white-link:hover, #lesspass .white-link:focus, #lesspass .white-link:active {
@@ -39,7 +40,7 @@
         created(){
             const fiveMinutes = 1000 * 60 * 5;
             this.$store.dispatch('REFRESH_TOKEN');
-            setInterval(()=> {
+            setInterval(() => {
                 this.$store.dispatch('REFRESH_TOKEN');
             }, fiveMinutes);
         }

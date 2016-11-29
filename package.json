@@ -58,6 +58,7 @@
     "unminified-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.7",
     "vue-loader": "^10.0.1",
+    "vue-template-compiler": "^2.1.3",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-server": "2.1.0-beta.9"
   },
