@@ -98,9 +98,16 @@
                             <i class="fa fa-clipboard" aria-hidden="true"></i>
                         </button>
                     </span>
-                    <input type="password" class="form-control read-only" readonly tabindex="-1"
-                           v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }"
-                           v-on:click="togglePasswordType($event.target)" v-bind:value="generatedPassword">
+                    <input type="password" class="form-control" tabindex="-1"
+                           ref="generatedPassword" v-bind:value="generatedPassword"
+                           v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+                    <span class="input-group-btn">
+                        <button id="revealGeneratedPassword" type="button" class="btn"
+                                v-on:click="togglePasswordType($refs.generatedPassword)"
+                                v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </span>
                 </div>
             </div>
             <div class="col-xs-9" v-show="!generatedPassword">
@@ -184,7 +191,8 @@
                     You are using a deprecated version of LessPass.
                     The default version will be version&nbsp;2 in
                     <strong aria-label="10 jan 2017" class="hint--right">{{ getDayBeforeV2() }}&nbsp;days</strong>.
-                    You can continue to use version&nbsp;1, but we strongly advise you to migrate your passwords to version&nbsp;2.
+                    You can continue to use version&nbsp;1, but we strongly advise you to migrate your passwords to
+                    version&nbsp;2.
                 </small>
             </div>
         </div>
