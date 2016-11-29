@@ -1,12 +1,22 @@
 
-> LessPass desktop application for [lesspass.com](https://lesspass.com)
-
- - electron
+> LessPass desktop application build with electron for [lesspass.com](https://lesspass.com)
 
 
-## Build
+## run locally
 
-    npm run build
+    npm start
+
+## Build Linux
+ 
+     npm run build:linux
+
+## Build Osx
+ 
+     npm run build:osx
+
+## Build Windows
+ 
+     npm run build:windows
 
 ## License
 
