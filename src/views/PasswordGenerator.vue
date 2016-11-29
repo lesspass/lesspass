@@ -130,10 +130,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group" v-if="showOptions">
-            Options
-        </div>
-        <div class="form-group" v-if="showOptions">
+        <div class="form-group pt-1" v-if="showOptions">
             <label class="form-check-inline">
                 <input class="form-check-input" type="checkbox" id="lowercase"
                        v-model="password.lowercase"> abc
@@ -178,6 +175,14 @@
                     </span>
                 </div>
             </div>
+        </div>
+        <div class="form-group" v-if="showOptions">
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="saveDefault">
+                save as default
+            </button>
+            <span class="text-success" v-if="optionsSaved">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </span>
         </div>
         <div class="form-group" v-if="showError">
             <div class="alert alert-danger" role="alert">
@@ -254,7 +259,8 @@
                 cleanTimeout: null,
                 showOptions: false,
                 showError: false,
-                generatingPassword: false
+                generatingPassword: false,
+                optionsSaved: false,
             }
         },
         watch: {
@@ -393,6 +399,13 @@
             },
             incrementCounter(){
                 this.password.counter += 1
+            },
+            saveDefault(){
+                this.$store.commit('SAVE_DEFAULT_OPTIONS');
+                this.optionsSaved = true;
+                setTimeout(() => {
+                    this.optionsSaved = false;
+                }, 3000);
             }
         }
     }

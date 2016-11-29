@@ -22,6 +22,7 @@ const defaultPassword = {
     length: 12,
     counter: 1
 };
+
 function getDefaultPasswordProfile(version, passwordProfile = {}) {
     if (version === 1) {
         return Object.assign({}, defaultPassword, passwordProfile, {version: 1, length: 12});
@@ -31,7 +32,7 @@ function getDefaultPasswordProfile(version, passwordProfile = {}) {
     }
 }
 
-const versionLoadedByDefault = 1;
+const versionLoadedByDefault = storage.json().version || 1;
 const state = {
     authenticated: auth.isAuthenticated(),
     email: '',
@@ -67,7 +68,7 @@ const mutations = {
         }
     },
     PASSWORD_CLEAN(state){
-        setTimeout(()=> {
+        setTimeout(() => {
             state.passwordStatus = 'CLEAN';
         }, 5000);
     },
@@ -90,6 +91,11 @@ const mutations = {
         state.password = getDefaultPasswordProfile(version, state.password);
         state.version = version;
     },
+    SAVE_DEFAULT_OPTIONS: (state) => {
+        const password = new Password(state.password);
+        const jsonPassword = password.json();
+        storage.save({password: jsonPassword, version: jsonPassword.version});
+    }
 };
 
 const actions = {
@@ -137,11 +143,11 @@ const actions = {
         PasswordsAPI.get({id}).then(response => commit('SET_PASSWORD', {password: response.data}));
     },
     DELETE_PASSWORD: ({commit}, {id}) => {
-        PasswordsAPI.remove({id}).then(()=> {
+        PasswordsAPI.remove({id}).then(() => {
             commit('DELETE_PASSWORD', {id});
         });
     },
-    LOAD_DEFAULT_PASSWORD: ({commit})=> {
+    LOAD_DEFAULT_PASSWORD: ({commit}) => {
         commit('SET_DEFAULT_PASSWORD');
     }
 };
