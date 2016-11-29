@@ -4,9 +4,9 @@ function cmd {
     pwd
 }
 
-submodules=( backend cli core cozy frontend nginx pure webextension native )
-#submodules=( cli core cozy frontend pure webextension native )
-#submodules=( cozy frontend webextension )
+submodules=( backend cli core cozy frontend nginx pure webextension native desktop )
+#submodules=( cli core cozy frontend pure webextension native desktop )
+#submodules=( cozy frontend webextension desktop )
 for submodule in "${submodules[@]}"
 do
 	cd $submodule

@@ -25,3 +25,6 @@
 [submodule "native"]
 	path = native
 	url = git@github.com:lesspass/native.git
+[submodule "desktop"]
+	path = desktop
+	url = git@github.com:lesspass/desktop.git
