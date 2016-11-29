@@ -104,16 +104,16 @@
                 </div>
             </div>
             <div class="col-xs-9" v-show="!generatedPassword">
-                    <button type="button" class="btn" v-on:click="generatePassword"
-                            v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-                        <span v-if="!generatingPassword">Generate</span>
-                        <span v-if="generatingPassword">Generating...</span>
-                    </button>
-                    <button type="button" class="btn btn-secondary" v-on:click="toggleVersion"
-                            v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
-                        <small v-show="password.version===1">v1</small>
-                        <small v-show="password.version===2">v2</small>
-                    </button>
+                <button type="button" class="btn" v-on:click="generatePassword"
+                        v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+                    <span v-if="!generatingPassword">Generate</span>
+                    <span v-if="generatingPassword">Generating...</span>
+                </button>
+                <button type="button" class="btn btn-secondary" v-on:click="toggleVersion"
+                        v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+                    <small v-show="password.version===1">v1</small>
+                    <small v-show="password.version===2">v2</small>
+                </button>
             </div>
             <div class="col-xs-3">
                 <div class="btn-group float-xs-right" role="group">
@@ -127,25 +127,23 @@
             Options
         </div>
         <div class="form-group" v-if="showOptions">
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="lowercase" v-model="password.lowercase" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">abc</span>
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="lowercase"
+                       v-model="password.lowercase"> abc
             </label>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="uppercase" v-model="password.uppercase" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">ABC</span>
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="uppercase"
+                       v-model="password.uppercase"> ABC
             </label>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="numbers" v-model="password.numbers" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">123</span>
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="numbers"
+                       v-model="password.numbers">
+                123
             </label>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="symbols" v-model="password.symbols" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">%!@</span>
+            <label class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="symbols"
+                       v-model="password.symbols">
+                %!@
             </label>
         </div>
         <div class="form-group row" v-if="showOptions">
@@ -186,7 +184,7 @@
                     You are using a deprecated version of LessPass.
                     The default version will be version&nbsp;2 in
                     <strong aria-label="10 jan 2017" class="hint--right">{{ getDayBeforeV2() }}&nbsp;days</strong>.
-                    You can continue to use version 1, but we strongly advise you to migrate your passwords to version 2.
+                    You can continue to use version&nbsp;1, but we strongly advise you to migrate your passwords to version&nbsp;2.
                 </small>
             </div>
         </div>
@@ -234,7 +232,7 @@
             clipboard.on('success', event => {
                 if (event.text) {
                     showTooltip(event.trigger, 'copied !');
-                    setTimeout(()=> {
+                    setTimeout(() => {
                         this.cleanFormInSeconds(10);
                     }, 2000);
                 }
