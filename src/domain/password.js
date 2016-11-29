@@ -1,6 +1,6 @@
 export default class Password {
-    constructor(password) {
-        this.password = password;
+    constructor(pwd) {
+        let password = Object.assign({}, pwd);
         this.options = {
             uppercase: password.uppercase,
             lowercase: password.lowercase,
@@ -8,7 +8,8 @@ export default class Password {
             symbols: password.symbols,
             length: password.length,
             counter: password.counter,
-        }
+        };
+        this.password = password;
     }
 
     isNewPassword(passwords) {
