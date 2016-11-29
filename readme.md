@@ -60,6 +60,7 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Derek Shockey](https://github.com/derelk)
  * [Édouard Lopez](https://github.com/edouard-lopez)
  * [Erik Mulder](https://github.com/ewjmulder)
+ * [Ilya Pirozhenko](https://github.com/sochix)
  * [Marc Sluiter](https://github.com/slintes)
  * [Martin](https://github.com/martinseener)
  * [Matthias Gliwka](https://github.com/gliwka)
