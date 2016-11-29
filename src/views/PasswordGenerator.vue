@@ -179,7 +179,7 @@
                 site, login and master password fields are mandatory
             </div>
         </div>
-        <div class="form-group mb-0" v-if="version === 1 && !showError">
+        <div class="form-group mb-0" v-if="version === 1 && !showError && !showOptions">
             <div class="alert alert-warning mb-0" role="alert">
                 <small>
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
