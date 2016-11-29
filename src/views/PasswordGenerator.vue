@@ -300,7 +300,7 @@
         methods: {
             showFingerprint: debounce(function () {
                 this.fingerprint = this.masterPassword;
-            }, 3000),
+            }, 1000),
             togglePasswordType(element){
                 if (element.type === 'password') {
                     element.type = 'text';
