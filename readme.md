@@ -26,6 +26,7 @@ $ lesspass --help
       --uppercase, -u    true or false (default true)    
       --symbols, -s      true or false (default true)    
       --numbers, -n      true or false (default true)
+      --clipboard, -C    true or false (default false)
       --length, -L       int (default 12)
       --counter, -c      int (default 1)
 
