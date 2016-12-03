@@ -16,6 +16,7 @@ const routes = [
     {path: '/passwords/:id', name: 'password', component: PasswordGenerator},
     {path: '/password/reset', name: 'passwordReset', component: PasswordReset},
     {path: '/password/reset/confirm/:uid/:token', name: 'passwordResetConfirm', component: PasswordResetConfirm},
+    {path: '*', redirect: '/'}
 ];
 
 const router = new VueRouter({
