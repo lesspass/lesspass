@@ -26,6 +26,7 @@
     "babel-loader": "^6.2.7",
     "bootstrap": "4.0.0-alpha.5",
     "clipboard": "^1.5.15",
+    "css-loader": "^0.26.1",
     "font-awesome": "^4.7.0",
     "hint.css": "^2.4.1",
     "jwt-decode": "^2.1.0",
@@ -33,9 +34,10 @@
     "lodash.debounce": "^4.0.8",
     "nock": "^9.0.2",
     "primer-css": "^4.3.0",
-    "vue": "^2.0.7",
+    "vue": "^2.1.4",
     "vue-loader": "^10.0.1",
-    "vue-router": "^2.0.2",
+    "vue-router": "^2.1.1",
+    "vue-template-compiler": "^2.1.4",
     "vuex": "^2.0.0"
   },
   "devDependencies": {
@@ -53,14 +55,16 @@
     "file-loader": "^0.9.0",
     "json-loader": "^0.5.4",
     "nock": "^9.0.0",
+    "node-sass": "^3.13.0",
     "optimize-css-assets-webpack-plugin": "^1.3.0",
+    "purifycss-webpack-plugin": "^2.0.3",
+    "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
-    "unminified-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.7",
     "vue-loader": "^10.0.1",
     "vue-template-compiler": "^2.1.3",
-    "webpack": "2.1.0-beta.25",
-    "webpack-dev-server": "2.1.0-beta.9"
+    "webpack": "^2.1.0-beta.27",
+    "webpack-dev-server": "^2.1.0-beta.12"
   },
   "ava": {
     "require": [
