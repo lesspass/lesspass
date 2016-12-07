@@ -239,9 +239,6 @@
             getSite(this.version).then(site => {
                 if (site) {
                     this.$store.commit('UPDATE_SITE', {site});
-                    this.$refs.login.focus();
-                }else{
-                    this.$refs.site.focus();
                 }
             });
 
@@ -254,6 +251,13 @@
                     }, 2000);
                 }
             });
+        },
+        mounted(){
+            if (this.password.site) {
+                this.$refs.login.focus();
+            } else {
+                this.$refs.site.focus();
+            }
         },
         data(){
             return {
