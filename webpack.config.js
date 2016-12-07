@@ -1,8 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var purify = require("purifycss-webpack-plugin");
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const purify = require("purifycss-webpack-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -39,8 +39,7 @@ module.exports = {
                 "src/**/*.vue"
             ]
         })
-    ],
-    devtool: '#eval-source-map'
+    ]
 };
 
 if (process.env.NODE_ENV === 'production') {
@@ -48,9 +47,8 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.plugins = (module.exports.plugins || []).concat([
         new OptimizeCssAssetsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
+            output: {comments: false},
+            compress: {warnings: false}
         })
     ]);
 }
