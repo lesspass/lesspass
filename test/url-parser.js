@@ -27,6 +27,7 @@ test('getDomainName v2', t => {
     t.is('192.168.1.1:10443', getDomainName('https://192.168.1.1:10443/webapp/', 2));
     t.is('192.168.1.1', getDomainName('http://192.168.1.1', 2));
     t.is('192.168.1.1', getDomainName('https://192.168.1.1/', 2));
+    t.is('', getDomainName(undefined, 2));
 });
 
 test('ip validator', t => {

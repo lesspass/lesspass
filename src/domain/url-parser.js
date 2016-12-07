@@ -22,6 +22,9 @@ function getDomainNamev2(urlStr) {
 }
 
 function getDomainName(urlStr, version = 1) {
+    if (typeof urlStr === 'undefined') {
+        return '';
+    }
     if (version === 1) {
         return getDomainNamev1(urlStr);
     }
