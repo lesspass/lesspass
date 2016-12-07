@@ -61,6 +61,7 @@
                 <input id="login"
                        name="login"
                        type="text"
+                       ref="login"
                        class="form-control"
                        placeholder="Login"
                        autocomplete="off"
@@ -237,7 +238,10 @@
 
             getSite(this.version).then(site => {
                 if (site) {
-                    this.$store.commit('UPDATE_SITE', {site})
+                    this.$store.commit('UPDATE_SITE', {site});
+                    this.$refs.login.focus();
+                }else{
+                    this.$refs.site.focus();
                 }
             });
 
