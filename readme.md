@@ -19,20 +19,23 @@ $ lesspass --help
   build LessPass passwords directly in command line
 
   Usage
+    $ lesspass <site> <login>
     $ lesspass <site> <login> <masterPassword>
 
   Options
-      --lowercase, -l    true or false (default true)        
-      --uppercase, -u    true or false (default true)    
-      --symbols, -s      true or false (default true)    
-      --numbers, -n      true or false (default true)
-      --clipboard, -C    true or false (default false)
-      --length, -L       int (default 12)
-      --counter, -c      int (default 1)
+      --no-lowercase          remove lowercase from password
+      --no-uppercase          remove uppercase from password
+      --no-symbols            remove symbols from password
+      --no-digits             remove digits from password
+      --length, -L            int (default 16)
+      --counter, -c           int (default 1)
+    
+      --clipboard, -C         copy generated password to clipboard. 
+                              Need pbcopy (OSX), xclip (Linux) or clip (Windows).
 
   Examples
-    $ lesspass lesspass.com contact@lesspass.com 'my Master Password' --length=14 -s=false
-    onAV7eqIM1arOZ
+    $ lesspass lesspass.com contact@lesspass.com 'my Master Password' -L=14 --no-symbols
+    xG2au952QoDTaz
 ```
 
 

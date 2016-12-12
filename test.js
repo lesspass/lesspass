@@ -27,51 +27,22 @@ test('counter shortcut', async t => {
 });
 
 test('no lowercase', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--lowercase=false']);
+    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--no-lowercase']);
     t.is(stdout, 'JBG\\`3{+0[\"(E\\JJ');
-});
-
-test('no lowercase shortcut', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '-l=false']);
-    t.is(stdout, 'JBG\\`3{+0[\"(E\\JJ');
-});
-
-test('boolean option case insensitive', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--lowercase=FalSe']);
-    t.is(stdout, 'JBG\\`3{+0[\"(E\\JJ');
-});
-
-test('boolean option case insensitive', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--lowercase=TrUe']);
-    t.is(stdout, '\\g-A1-.OHEwrXjT#');
 });
 
 test('no uppercase', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--uppercase=false']);
-    t.is(stdout, 'jbg\\`3{+0[\"(e\\jj');
-});
-
-test('no uppercase shortcut', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '-u=false']);
+    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--no-uppercase']);
     t.is(stdout, 'jbg\\`3{+0[\"(e\\jj');
 });
 
 test('no numbers', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--numbers=false']);
+    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--no-digits']);
     t.is(stdout, ';zkB#m]mNF$;J_Ej');
 });
 
-test('no numbers shortcut', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '-n=false']);
-    t.is(stdout, ';zkB#m]mNF$;J_Ej');
-});
 test('no symbols', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--symbols=false']);
-    t.is(stdout, 'OlfK63bmUhqrGODR');
-});
-
-test('no symbols shortcut', async t => {
-    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '-s=false']);
+    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--no-symbols']);
     t.is(stdout, 'OlfK63bmUhqrGODR');
 });
 
