@@ -12,26 +12,23 @@
 
 ## Usage
     
-    var LessPass = require('lesspass');
-    
-    var site = 'lesspass.com';
-    var login = 'contact@lesspass.com';
-    var masterPassword = 'password';
-    var options = {
-        counter: 1,
-        length: 12,
+    const site = 'lesspass.com';
+    const login = 'contact@lesspass.com';
+    const masterPassword = 'password';
+    const passwordProfile = {
         lowercase: true,
         uppercase: true,
         numbers: true,
         symbols: true,
-        template: 'vcVCns'
+        length: 16,
+        counter: 1,
+        version: 2
     };
-    
-    LessPass.encryptLogin(login, masterPassword).then(encryptedLogin => {
-        LessPass.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
-             console.log(generatedPassword); //azYS7,olOL2]
+    LessPass.generatePassword(site, login, masterPassword, passwordProfile)
+        .then(function (generatedPassword) {
+            assert.equal(generatedPassword, '\\g-A1-.OHEwrXjT#');
+            console.log('generated password ok');
         });
-    });
 
 
 see [tests/api.tests.js](tests/api.tests.js) for more examples

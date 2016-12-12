@@ -6,26 +6,22 @@
 </head>
 <body>
 <script>
-    var site = 'lesspass.com';
-    var login = 'contact@lesspass.com';
-    var masterPassword = 'password';
-    var options = {
-        counter: 1,
-        length: 12,
+    const site = 'example.org';
+    const login = 'contact@example.org';
+    const masterPassword = 'password';
+    const passwordProfile = {
         lowercase: true,
         uppercase: true,
         numbers: true,
         symbols: true,
-        template: 'vcVCns'
+        length: 16,
+        counter: 1,
+        version: 2
     };
-
-    LessPass.encryptLogin(login, masterPassword)
-            .then(encryptedLogin => {
-                LessPass.renderPassword(encryptedLogin, site, options).then(generatedPassword => {
-                    console.log(generatedPassword); //azYS7,olOL2]
-                    document.body.innerHTML = document.body.innerHTML + "<br>generated password : " + generatedPassword
-                });
-            });
+    LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
+        console.log(generatedPassword); //WHLpUL)e00[iHR+w
+        document.body.innerHTML = document.body.innerHTML + "<br>generated password : <b>" + generatedPassword + "</b> === WHLpUL)e00[iHR+w"
+    });
 
     LessPass.createFingerprint('password').then(fingerprint => {
         document.body.innerHTML = document.body.innerHTML + "fingerprint : " + fingerprint
