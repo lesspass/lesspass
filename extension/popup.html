@@ -9,12 +9,24 @@
     <style>
         body {
             width: 470px;
+            height: 500px;
+        }
+
+        .loading {
+            width: 64px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
         }
     </style>
 </head>
 <body>
-<div id="lesspass"></div>
-<script src="dist/lesspass.js"></script>
+<div id="lesspass">
+    <img src="icons/loading.svg" alt="loading" class="loading">
+</div>
 <script src="dist/popup.js"></script>
 </body>
 </html>
