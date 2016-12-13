@@ -282,7 +282,7 @@
                     for (let i = 0; i < passwords.length; i++) {
                         const password = passwords[i];
                         if (password.site === site && password.login === login) {
-                            this.$store.dispatch('PASSWORD_CHANGE', {password: {...password}});
+                            this.$store.commit('SET_PASSWORD', {password});
                             this.$refs.masterPassword.focus();
                             break;
                         }
@@ -372,7 +372,7 @@
                     this.generatingPassword = false;
                     this.generatedPassword = generatedPassword;
                     window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
-                    this.$store.dispatch('PASSWORD_GENERATED');
+                    this.$store.commit('CHANGE_PASSWORD_STATUS', 'DIRTY');
                 });
             },
             setDefaultVersion(version){

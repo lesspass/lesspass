@@ -171,8 +171,8 @@
                     this.auth.login({email, password}, baseURL)
                             .then(()=> {
                                 this.loadingSignIn = false;
-                                this.storage.save({baseURL, email});
-                                this.$store.dispatch('USER_AUTHENTICATED', {email});
+                                this.storage.save({baseURL});
+                                this.$store.commit('LOGIN');
                                 this.$router.push({name: 'home'});
                             })
                             .catch(err => {
@@ -259,7 +259,7 @@
                     return;
                 }
 
-                var passwordProfiles = {
+                const passwordProfiles = {
                     1: {
                         lowercase: true,
                         uppercase: true,

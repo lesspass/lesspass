@@ -35,7 +35,6 @@ function getDefaultPasswordProfile(version, passwordProfile = {}) {
 const versionLoadedByDefault = storage.json().version || 1;
 const state = {
     authenticated: auth.isAuthenticated(),
-    email: '',
     passwordStatus: 'CLEAN',
     passwords: [],
     baseURL: 'https://lesspass.com',
@@ -47,9 +46,8 @@ export const mutations = {
     LOGOUT(state){
         state.authenticated = false;
     },
-    USER_AUTHENTICATED(state, user){
+    LOGIN(state){
         state.authenticated = true;
-        state.email = user.email;
     },
     SET_PASSWORDS(state, passwords){
         state.passwords = passwords;
@@ -148,7 +146,6 @@ const getters = {
     isAuthenticated: state => state.authenticated,
     isGuest: state => !state.authenticated,
     passwordStatus: state => state.passwordStatus,
-    email: state => state.email,
     version: state => state.version,
 };
 
