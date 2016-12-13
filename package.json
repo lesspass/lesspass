@@ -2,6 +2,7 @@
   "name": "lesspass-pure",
   "version": "4.2.1",
   "description": "pure LessPass component for LessPass with vuejs",
+  "license": "GPLv3",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/pure",
   "scripts": {
@@ -22,27 +23,21 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.7",
     "bootstrap": "4.0.0-alpha.5",
     "clipboard": "^1.5.15",
-    "css-loader": "^0.26.1",
     "font-awesome": "^4.7.0",
     "hint.css": "^2.4.1",
     "jwt-decode": "^2.1.0",
     "lesspass": "^6.0.0",
     "lodash.debounce": "^4.0.8",
-    "nock": "^9.0.2",
     "primer-css": "^4.3.0",
-    "vue": "^2.1.4",
-    "vue-loader": "^10.0.1",
+    "vue": "^2.1.5",
     "vue-router": "^2.1.1",
-    "vue-template-compiler": "^2.1.4",
     "vuex": "^2.0.0"
   },
   "devDependencies": {
     "ava": "^0.17.0",
-    "babel-core": "^6.17.0",
+    "babel-core": "^6.20.0",
     "babel-loader": "^6.2.6",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.16.0",
@@ -63,8 +58,8 @@
     "url-loader": "^0.5.7",
     "vue-loader": "^10.0.1",
     "vue-template-compiler": "^2.1.3",
-    "webpack": "^2.1.0-beta.27",
-    "webpack-dev-server": "^2.1.0-beta.12"
+    "webpack": "2.1.0-beta.28",
+    "webpack-dev-server": "2.1.0-beta.12"
   },
   "ava": {
     "require": [

@@ -2,12 +2,11 @@
 
 > LessPass pure component for [lesspass.com](https://lesspass.com)
 
- - vuejs
+ - vue
  - vue-router
  - vuex
- - ava for tests
+ - ava
  - webpack
- - ES6
 
 
 ## Tests
