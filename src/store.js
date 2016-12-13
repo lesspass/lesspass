@@ -43,7 +43,7 @@ const state = {
     version: versionLoadedByDefault
 };
 
-const mutations = {
+export const mutations = {
     LOGOUT(state){
         state.authenticated = false;
     },
@@ -58,7 +58,7 @@ const mutations = {
         state.password = password;
     },
     DELETE_PASSWORD(state, {id}){
-        var passwords = state.passwords;
+        const passwords = state.passwords;
         state.passwords = passwords.filter(password => {
             return password.id !== id;
         });
@@ -99,7 +99,6 @@ const mutations = {
 };
 
 const actions = {
-    USER_AUTHENTICATED: ({commit}, user) => commit('USER_AUTHENTICATED', user),
     LOGOUT: ({commit}) => {
         auth.logout();
         commit('LOGOUT');
@@ -128,12 +127,6 @@ const actions = {
             });
         }
     },
-    PASSWORD_CHANGE({commit}, {password}){
-        commit('SET_PASSWORD', {password});
-    },
-    PASSWORD_GENERATED: ({commit}) => {
-        commit('CHANGE_PASSWORD_STATUS', 'DIRTY');
-    },
     FETCH_PASSWORDS: ({commit}) => {
         if (auth.isAuthenticated()) {
             PasswordsAPI.all().then(response => commit('SET_PASSWORDS', response.data.results));
@@ -146,9 +139,6 @@ const actions = {
         PasswordsAPI.remove({id}).then(() => {
             commit('DELETE_PASSWORD', {id});
         });
-    },
-    LOAD_DEFAULT_PASSWORD: ({commit}) => {
-        commit('SET_DEFAULT_PASSWORD');
     }
 };
 
