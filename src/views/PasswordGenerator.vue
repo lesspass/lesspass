@@ -112,16 +112,14 @@
                 </div>
             </div>
             <div class="col-xs-9" v-show="!generatedPassword">
-                <button type="button" class="btn" v-on:click="generatePassword"
-                        v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-                    <span v-if="!generatingPassword">Generate</span>
-                    <span v-if="generatingPassword">Generating...</span>
-                </button>
-                <button type="button" class="btn btn-secondary" v-on:click="toggleVersion"
-                        v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
-                    <small v-show="password.version===1">v1</small>
-                    <small v-show="password.version===2">v2</small>
-                </button>
+                <div style="display: inline-block">
+                    <button type="button" class="btn" v-on:click="generatePassword"
+                            v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+                        <span v-if="!generatingPassword">Generate</span>
+                        <span v-if="generatingPassword">Generating...</span>
+                    </button>
+                </div>
+                <version-button :version="password.version"></version-button>
             </div>
             <div class="col-xs-3">
                 <div class="btn-group float-xs-right" role="group">
@@ -215,6 +213,7 @@
     import {getSite} from '../domain/url-parser';
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
     import Fingerprint from '../components/Fingerprint.vue';
+    import VersionButton from '../components/VersionButton.vue';
 
     function fetchPasswords(store) {
         return store.dispatch('FETCH_PASSWORDS')
@@ -224,7 +223,8 @@
         name: 'password-generator-view',
         components: {
             RemoveAutoComplete,
-            Fingerprint
+            Fingerprint,
+            VersionButton
         },
         computed: mapGetters(['passwords', 'password', 'version']),
         preFetch: fetchPasswords,
@@ -242,7 +242,7 @@
                 }
             });
 
-            var clipboard = new Clipboard('#copyPasswordButton');
+            const clipboard = new Clipboard('#copyPasswordButton');
             clipboard.on('success', event => {
                 if (event.text) {
                     showTooltip(event.trigger, 'copied !');
@@ -279,8 +279,8 @@
                     const site = values[0];
                     const login = values[1];
                     const passwords = this.passwords;
-                    for (var i = 0; i < passwords.length; i++) {
-                        var password = passwords[i];
+                    for (let i = 0; i < passwords.length; i++) {
+                        const password = passwords[i];
                         if (password.site === site && password.login === login) {
                             this.$store.dispatch('PASSWORD_CHANGE', {password: {...password}});
                             this.$refs.masterPassword.focus();
@@ -345,9 +345,9 @@
                 }, 1000 * seconds);
             },
             generatePassword(){
-                var site = this.password.site;
-                var login = this.password.login;
-                var masterPassword = this.masterPassword;
+                const site = this.password.site;
+                const login = this.password.login;
+                const masterPassword = this.masterPassword;
 
                 if (!site || !login || !masterPassword) {
                     this.showOptions = false;
@@ -359,7 +359,7 @@
                 this.cleanErrors();
                 this.fingerprint = this.masterPassword;
 
-                var passwordProfile = {
+                const passwordProfile = {
                     lowercase: this.password.lowercase,
                     uppercase: this.password.uppercase,
                     numbers: this.password.numbers,
@@ -378,18 +378,10 @@
             setDefaultVersion(version){
                 this.$store.commit('CHANGE_VERSION', {version});
             },
-            toggleVersion(){
-                if (this.password.version === 1) {
-                    this.password.version = 2;
-                } else {
-                    this.password.version = 1;
-                }
-                this.$store.commit('CHANGE_VERSION', {version: this.password.version});
-            },
             getDayBeforeV2(){
-                var oneDay = 24 * 60 * 60 * 1000;
-                var now = new Date();
-                var v2DefaultDate = new Date(2017, 1, 10);
+                const oneDay = 24 * 60 * 60 * 1000;
+                const now = new Date();
+                const v2DefaultDate = new Date(2017, 1, 10);
                 return Math.round(Math.abs((now.getTime() - v2DefaultDate.getTime()) / (oneDay)));
             },
             decrementPasswordLength(){
