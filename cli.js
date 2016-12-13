@@ -6,27 +6,40 @@ const LessPass = require('lesspass');
 const read = require('read');
 const chalk = require('chalk');
 
-const alias = {l: 'lowercase', u: 'uppercase', s: 'symbols', d: 'digits', L: 'length', c: 'counter', C: 'clipboard'};
 const cli = meow(`
     Usage
-      $ lesspass <site> <login>
-      $ lesspass <site> <login> <masterPassword>
+      $ lesspass <site> <login> [masterPassword] [options] 
 
     Options
-        --no-lowercase          remove lowercase from password
-        --no-uppercase          remove uppercase from password
-        --no-symbols            remove symbols from password
-        --no-digits             remove digits from password
-        --length, -L            int (default 16)
-        --counter, -c           int (default 1)
+        -l                  add lowercase in password
+        -u                  add uppercase in password
+        -d                  add digits in password
+        -s                  add symbols in password
+
+        --no-lowercase      remove lowercase from password
+        --no-uppercase      remove uppercase from password
+        --no-digits         remove digits from password
+        --no-symbols        remove symbols from password
+
+        --length, -L        int (default 16)
+        --counter, -c       int (default 1)
         
-        --clipboard, -C         copy generated password to clipboard. 
-                                Need pbcopy (OSX), xclip (Linux) or clip (Windows).
+        --clipboard, -C     copy generated password to clipboard rather than displaying it.
+                            Need pbcopy (OSX), xclip (Linux) or clip (Windows).
 
     Examples
-      $ lesspass lesspass.com contact@lesspass.com 'my Master Password' -L=14 --no-symbols
-      xG2au952QoDTaz
-`, {alias: alias});
+      # no symbols
+      $ lesspass lesspass.com contact@lesspass.com password --no-symbols 
+      OlfK63bmUhqrGODR
+      
+      # no symbols shortcut
+      $ lesspass lesspass.com contact@lesspass.com password -lud
+      OlfK63bmUhqrGODR
+      
+      # only digits and length of 8
+      $ lesspass lesspass.com contact@lesspass.com  -d -L8
+        master password: 
+        75837019`, {alias: {L: 'length', c: 'counter', C: 'clipboard'}});
 
 
 function calcPassword(site, login, masterPassword, passwordProfile) {
@@ -44,14 +57,24 @@ function calcPassword(site, login, masterPassword, passwordProfile) {
         });
 }
 
+
+function hasNoShortOption(options) {
+    let hasShortOption = false;
+    ['l', 'u', 'd', 's'].forEach(function (shortOption) {
+        if (typeof options[shortOption] !== 'undefined' && options[shortOption]) {
+            hasShortOption = true;
+        }
+    });
+    return !hasShortOption;
+}
+
 function getOptionBoolean(options, optionString) {
     let shortOption = optionString.substring(0, 1);
     if (options[shortOption]) {
-        console.log(chalk.yellow('warning: deprecated option, prefer --no-' + alias[shortOption]));
-        return false;
+        return true;
     }
     if (typeof options[optionString] === 'undefined') {
-        return true;
+        return hasNoShortOption(options);
     }
     return options[optionString]
 }
