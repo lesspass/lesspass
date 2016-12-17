@@ -1,0 +1,19 @@
+{
+  "name": "lesspass-cordova",
+  "version": "1.0.0",
+  "description": "LessPass cordova app",
+  "license": "GPLv3",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "repository": "lesspass/cordova",
+  "scripts": {
+    "prebuild": "npm prune && npm install && gulp",
+    "build": "rm -rf www/dist/ && gulp"
+  },
+  "dependencies": {
+    "lesspass-pure": "^4.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "private": true
+}
