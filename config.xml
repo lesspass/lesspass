@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.lesspass.cordova" version="1.0.0" android-versionCode="10001" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>LessPass</name>
+    <description>
+        Next-Gen Open Source Password Manager.
+    </description>
+    <author email="contact@lesspass.com" href="https://lesspass.com">
+        LessPass Team
+    </author>
+    <content src="index.html"/>
+
+    <!--<preference name="SplashScreenDelay" value="2000"/>-->
+    <preference name="SplashScreen" value="screen"/>
+
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.1"/>
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1"/>
+    <preference name="ShowSplashScreenSpinner" value="false"/>
+
+    <access origin="*"/>
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+
+    <allow-navigation href="http://*/*"/>
+    <allow-navigation href="https://*/*"/>
+    <allow-navigation href="data:*"/>
+
+    <platform name="android">
+        <allow-intent href="market:*"/>
+        <icon src="www/res/drawable-ldpi/icon.png" density="ldpi"/>
+        <icon src="www/res/drawable-mdpi/icon.png" density="mdpi"/>
+        <icon src="www/res/drawable-hdpi/icon.png" density="hdpi"/>
+        <icon src="www/res/drawable-xhdpi/icon.png" density="xhdpi"/>
+        <icon src="www/res/drawable-xxhdpi/icon.png" density="xxhdpi"/>
+        <icon src="www/res/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
+
+        <splash src="www/res/drawable-land-hdpi/screen.png" density="land-hdpi"/>
+        <splash src="www/res/drawable-land-ldpi/screen.png" density="land-ldpi"/>
+        <splash src="www/res/drawable-land-mdpi/screen.png" density="land-mdpi"/>
+        <splash src="www/res/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
+        <splash src="www/res/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
+        <splash src="www/res/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
+        <splash src="www/res/drawable-hdpi/screen.png" density="port-hdpi"/>
+        <splash src="www/res/drawable-port-ldpi/screen.png" density="port-ldpi"/>
+        <splash src="www/res/drawable-port-mdpi/screen.png" density="port-mdpi"/>
+        <splash src="www/res/drawable-xhdpi/screen.png" density="port-xhdpi"/>
+        <splash src="www/res/drawable-xxhdpi/screen.png" density="port-xxhdpi"/>
+        <splash src="www/res/drawable-xxxhdpi/screen.png" density="port-xxxhdpi"/>
+    </platform>
+</widget>
