@@ -31,24 +31,24 @@
 
     <platform name="android">
         <allow-intent href="market:*"/>
-        <icon src="www/res/drawable-ldpi/icon.png" density="ldpi"/>
-        <icon src="www/res/drawable-mdpi/icon.png" density="mdpi"/>
-        <icon src="www/res/drawable-hdpi/icon.png" density="hdpi"/>
-        <icon src="www/res/drawable-xhdpi/icon.png" density="xhdpi"/>
-        <icon src="www/res/drawable-xxhdpi/icon.png" density="xxhdpi"/>
-        <icon src="www/res/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
+        <icon src="www/icons/drawable-ldpi/icon.png" density="ldpi"/>
+        <icon src="www/icons/drawable-mdpi/icon.png" density="mdpi"/>
+        <icon src="www/icons/drawable-hdpi/icon.png" density="hdpi"/>
+        <icon src="www/icons/drawable-xhdpi/icon.png" density="xhdpi"/>
+        <icon src="www/icons/drawable-xxhdpi/icon.png" density="xxhdpi"/>
+        <icon src="www/icons/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
 
-        <splash src="www/res/drawable-land-hdpi/screen.png" density="land-hdpi"/>
-        <splash src="www/res/drawable-land-ldpi/screen.png" density="land-ldpi"/>
-        <splash src="www/res/drawable-land-mdpi/screen.png" density="land-mdpi"/>
-        <splash src="www/res/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
-        <splash src="www/res/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
-        <splash src="www/res/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
-        <splash src="www/res/drawable-hdpi/screen.png" density="port-hdpi"/>
-        <splash src="www/res/drawable-port-ldpi/screen.png" density="port-ldpi"/>
-        <splash src="www/res/drawable-port-mdpi/screen.png" density="port-mdpi"/>
-        <splash src="www/res/drawable-xhdpi/screen.png" density="port-xhdpi"/>
-        <splash src="www/res/drawable-xxhdpi/screen.png" density="port-xxhdpi"/>
-        <splash src="www/res/drawable-xxxhdpi/screen.png" density="port-xxxhdpi"/>
+        <splash src="www/icons/drawable-land-hdpi/screen.png" density="land-hdpi"/>
+        <splash src="www/icons/drawable-land-ldpi/screen.png" density="land-ldpi"/>
+        <splash src="www/icons/drawable-land-mdpi/screen.png" density="land-mdpi"/>
+        <splash src="www/icons/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
+        <splash src="www/icons/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
+        <splash src="www/icons/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
+        <splash src="www/icons/drawable-port-hdpi/screen.png" density="port-hdpi"/>
+        <splash src="www/icons/drawable-port-ldpi/screen.png" density="port-ldpi"/>
+        <splash src="www/icons/drawable-port-mdpi/screen.png" density="port-mdpi"/>
+        <splash src="www/icons/drawable-port-xhdpi/screen.png" density="port-xhdpi"/>
+        <splash src="www/icons/drawable-port-xxhdpi/screen.png" density="port-xxhdpi"/>
+        <splash src="www/icons/drawable-port-xxxhdpi/screen.png" density="port-xxxhdpi"/>
     </platform>
 </widget>
