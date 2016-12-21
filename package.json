@@ -2,12 +2,10 @@
   "name": "lesspass-desktop",
   "version": "1.0.0",
   "description": "lesspass app",
-  "homepage": "https://github.com/electron/electron-quick-start#readme",
-  "bugs": {
-    "url": "https://github.com/electron/electron-quick-start/issues"
-  },
+  "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "main": "main.js",
+  "repository": "lesspass/cozy",
   "scripts": {
     "build": "rimraf build && rimraf dist && gulp",
     "build:linux": "npm run build && electron-packager ./ --platform=linux --arch=x64 --icon=images/icon.png --ignore=node_modules --overwrite && python zip.py",
@@ -24,5 +22,6 @@
     "gulp": "^3.9.1",
     "rimraf": "^2.5.4"
   },
+  "private": true,
   "productName": "LessPass"
 }
