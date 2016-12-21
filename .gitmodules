@@ -28,3 +28,9 @@
 [submodule "desktop"]
 	path = desktop
 	url = git@github.com:lesspass/desktop.git
+[submodule "cordova"]
+	path = cordova
+	url = git@github.com:lesspass/cordova.git
+[submodule "snap"]
+	path = snap
+	url = git@github.com:lesspass/snap.git
