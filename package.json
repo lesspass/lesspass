@@ -8,7 +8,7 @@
     "lesspass",
     "password"
   ],
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "files": [
     "cli.js"
