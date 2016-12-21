@@ -349,7 +349,7 @@
                 const login = this.password.login;
                 const masterPassword = this.masterPassword;
 
-                if (!site || !login || !masterPassword) {
+                if (!site && !login || !masterPassword) {
                     this.showOptions = false;
                     this.showError = true;
                     return;
