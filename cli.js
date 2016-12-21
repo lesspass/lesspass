@@ -97,8 +97,8 @@ const passwordProfile = {
 const site = cli.input[0];
 const login = cli.input[1];
 
-if (typeof  site === 'undefined' || typeof login === 'undefined') {
-    console.log(chalk.red('site and login cannot be empty'));
+if (typeof  site === 'undefined' && typeof login === 'undefined') {
+    console.log(chalk.red('site or login cannot be empty'));
     console.log('type lesspass --help');
     process.exit(-1);
 }
