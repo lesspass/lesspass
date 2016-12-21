@@ -2,7 +2,7 @@
   "name": "lesspass-pure",
   "version": "4.2.1",
   "description": "pure LessPass component for LessPass with vuejs",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/pure",
   "scripts": {
