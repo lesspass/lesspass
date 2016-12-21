@@ -1,7 +1,7 @@
 {
   "name": "lesspass-webextension",
   "description": "chrome and firefox web extension for LessPass",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
     "prebuild": "npm prune && npm install",
