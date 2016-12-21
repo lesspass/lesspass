@@ -11,12 +11,16 @@ LessPass open source password manager (https://lesspass.com)
 ## LessPass submodules
 
  - [backend](https://github.com/lesspass/backend) : backend used to store information about passwords
- - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
- - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
  - [cli](https://github.com/lesspass/cli) : build LessPass passwords directly in command line with nodejs
+ - [cordova](https://github.com/lesspass/cordova) : Android and iOS application
+ - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
  - [cozy](https://github.com/lesspass/cozy) : MyCozyCloud application
+ - [desktop](https://github.com/lesspass/desktop) : LessPass desktop application build with electron
  - [frontend](https://github.com/lesspass/frontend) : frontend for LessPass with vuejs
+ - [native](https://github.com/lesspass/native) : native app build with React native
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
+ - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
+ - [snap](https://github.com/lesspass/snap) : snap for lesspass-cli 
  - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for lesspass password manager
 
 
