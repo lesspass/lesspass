@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const purify = require("purifycss-webpack-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
@@ -31,14 +30,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('lesspass.min.css'),
-        new purify({
-            basePath: __dirname,
-            paths: [
-                "src/**/*.html",
-                "src/**/*.vue"
-            ]
-        })
+        new ExtractTextPlugin('lesspass.min.css')
     ]
 };
 
