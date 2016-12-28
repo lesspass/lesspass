@@ -95,6 +95,9 @@
                     version = 1;
                 }
                 this.$store.commit('CHANGE_VERSION', {version: version});
+            },
+            version(value){
+                this.checked = value == 2;
             }
         }
     }
