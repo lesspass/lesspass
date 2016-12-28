@@ -83,8 +83,7 @@
                        autocomplete="new-password"
                        autocorrect="off"
                        autocapitalize="off"
-                       v-model="masterPassword"
-                       v-on:keyup.enter.prevent="generatePassword">
+                       v-model="masterPassword">
                 <fingerprint :fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.masterPassword)">
                 </fingerprint>
             </div>
