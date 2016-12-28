@@ -29,14 +29,13 @@
                            class="form-control"
                            required
                            placeholder="LessPass password"
-                           v-model="password"
-                           v-on:keyup.enter.prevent="signIn">
+                           v-model="password">
                     <small class="form-text text-muted">
                         <span v-if="errors.passwordRequired" class="text-danger">A password is required</span>
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" v-model="useMasterPassword">
-                            Check me if you want to use your master password here.
-                            <span class="tag tag-warning"
+                            Check me if you want to use your master password here
+                            <span class="tag tag-default"
                                   v-on:click.prevent="seeMasterPasswordHelp=!seeMasterPasswordHelp">
                                 ?
                             </span>
@@ -51,7 +50,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-xs-8" v-show="!generatedPassword">
+            <div class="col-xs-7">
                 <button id="signInButton" class="btn" type="button" v-on:click="signIn"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     <span v-if="loadingSignIn"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
@@ -62,12 +61,8 @@
                     Register
                 </button>
             </div>
-            <div class="col-xs-4 text-xs-right">
-                <button type="button" class="btn btn-secondary" v-on:click="toggleVersion"
-                        v-bind:class="{ 'btn-outline-warning': version===1, 'btn-outline-primary': version===2 }">
-                    <small v-show="version===1">v1</small>
-                    <small v-show="version===2">v2</small>
-                </button>
+            <div class="col-xs-5 text-xs-right">
+                <version-button :version="version"></version-button>
                 <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
                     <i class="fa fa-sliders" aria-hidden="true"></i>
                 </button>
@@ -107,6 +102,7 @@
     import Auth from '../api/auth';
     import Storage from '../api/storage';
     import {mapGetters} from 'vuex';
+    import VersionButton from '../components/VersionButton.vue';
 
     const defaultErrors = {
         userNameAlreadyExist: false,
@@ -123,7 +119,9 @@
             return {
                 auth,
                 storage,
+                email: '',
                 password: '',
+                baseURL: 'https://lesspass.com',
                 useMasterPassword: false,
                 seeMasterPasswordHelp: false,
                 showError: false,
@@ -133,6 +131,9 @@
                 errors: {...defaultErrors},
                 showOptions: false,
             };
+        },
+        components: {
+            VersionButton
         },
         methods: {
             noErrors(){
@@ -169,26 +170,28 @@
                     const password = this.password;
                     const baseURL = this.baseURL;
                     this.auth.login({email, password}, baseURL)
-                            .then(()=> {
-                                this.loadingSignIn = false;
-                                this.storage.save({baseURL});
-                                this.$store.commit('LOGIN');
-                                this.$router.push({name: 'home'});
-                            })
-                            .catch(err => {
-                                this.cleanErrors();
-                                if (err.response === undefined) {
-                                    if (baseURL === "https://lesspass.com") {
-                                        this.showErrorMessage();
-                                    } else {
-                                        this.showErrorMessage('Your LessPass Database is not running');
-                                    }
-                                } else if (err.response.status === 400) {
-                                    this.showErrorMessage('Your email and/or password is not good. Do you have an account?');
+                        .then(() => {
+                            this.loadingSignIn = false;
+                            this.storage.save({baseURL});
+                            this.$store.commit('LOGIN');
+                            this.$store.commit('UPDATE_BASE_URL', {baseURL});
+                            this.$store.commit('UPDATE_EMAIL', {email});
+                            this.$router.push({name: 'home'});
+                        })
+                        .catch(err => {
+                            this.cleanErrors();
+                            if (err.response === undefined) {
+                                if (baseURL === "https://lesspass.com") {
+                                    this.showErrorMessage();
                                 } else {
-                                    this.showErrorMessage()
+                                    this.showErrorMessage('Your LessPass Database is not running');
                                 }
-                            });
+                            } else if (err.response.status === 400) {
+                                this.showErrorMessage('Your email and/or password is not good. Do you have an account?');
+                            } else {
+                                this.showErrorMessage()
+                            }
+                        });
                 }
             },
             register(){
@@ -198,23 +201,23 @@
                     const password = this.password;
                     const baseURL = this.baseURL;
                     this.auth.register({email, password}, baseURL)
-                            .then(()=> {
-                                this.loadingRegister = false;
-                                this.signIn()
-                            })
-                            .catch(err => {
-                                this.cleanErrors();
-                                if (err.response && typeof err.response.data.email !== 'undefined') {
-                                    if (err.response.data.email[0].indexOf('already exists') !== -1) {
-                                        this.errors.userNameAlreadyExist = true;
-                                    }
-                                    if (err.response.data.email[0].indexOf('valid email') !== -1) {
-                                        this.errors.emailInvalid = true;
-                                    }
-                                } else {
-                                    this.showErrorMessage();
+                        .then(() => {
+                            this.loadingRegister = false;
+                            this.signIn()
+                        })
+                        .catch(err => {
+                            this.cleanErrors();
+                            if (err.response && typeof err.response.data.email !== 'undefined') {
+                                if (err.response.data.email[0].indexOf('already exists') !== -1) {
+                                    this.errors.userNameAlreadyExist = true;
                                 }
-                            });
+                                if (err.response.data.email[0].indexOf('valid email') !== -1) {
+                                    this.errors.emailInvalid = true;
+                                }
+                            } else {
+                                this.showErrorMessage();
+                            }
+                        });
                 }
             },
             showErrorMessage(errorMessage = 'Oops! Something went wrong. Retry in a few minutes.'){
@@ -231,31 +234,10 @@
         },
         computed: {
             ...mapGetters(['version']),
-            baseURL: {
-                get () {
-                    return this.$store.state.baseURL
-                },
-                set (baseURL) {
-                    this.$store.commit('UPDATE_BASE_URL', {baseURL})
-                }
-            },
-            email: {
-                get () {
-                    return this.$store.state.email
-                },
-                set (email) {
-                    this.$store.commit('UPDATE_EMAIL', {email})
-                }
-            }
         },
         watch: {
             'useMasterPassword': function (useMasterPassword) {
                 if (!this.email || !this.password) {
-                    return;
-                }
-
-                if (!useMasterPassword) {
-                    this.password = '';
                     return;
                 }
 
