@@ -31,7 +31,7 @@
         });
 
 
-see [tests/api.tests.js](tests/api.tests.js) for more examples
+see [tests/api.tests.js](tests/v2/api.tests.js) for more examples
 
 
 ## Tests
