@@ -152,7 +152,8 @@
             <div class="col-xs-6">
                 <label for="passwordLength">Length</label>
                 <div class="input-group">
-                    <input class="form-control" type="number" id="passwordLength" v-model="password.length" min="4">
+                    <input class="form-control" type="number" id="passwordLength" v-model="password.length"
+                           min="5" max="35">
                     <span class="input-group-addon" v-on:click.prevent="decrementPasswordLength">
                         <i class="fa fa-minus" aria-hidden="true"></i>
                     </span>
