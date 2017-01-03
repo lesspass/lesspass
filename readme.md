@@ -17,7 +17,6 @@ LessPass open source password manager (https://lesspass.com)
  - [cozy](https://github.com/lesspass/cozy) : MyCozyCloud application
  - [desktop](https://github.com/lesspass/desktop) : LessPass desktop application build with electron
  - [frontend](https://github.com/lesspass/frontend) : frontend for LessPass with vuejs
- - [native](https://github.com/lesspass/native) : native app build with React native
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
  - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
  - [snap](https://github.com/lesspass/snap) : snap for lesspass-cli 
