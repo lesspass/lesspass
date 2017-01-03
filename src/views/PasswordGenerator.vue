@@ -267,7 +267,6 @@
                         const password = passwords[i];
                         if (password.site === site && password.login === login) {
                             this.$store.commit('SET_PASSWORD', {password});
-                            this.$refs.masterPassword.focus();
                             break;
                         }
                     }
