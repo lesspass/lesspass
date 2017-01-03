@@ -54,7 +54,9 @@
             ...mapGetters(['passwords', 'email']),
             filteredPasswords(){
                 return this.passwords.filter(password => {
-                    return password.site.indexOf(this.searchQuery) > -1 || password.login.indexOf(this.searchQuery) > -1
+                    var loginMatch = password.login.match(new RegExp(this.searchQuery, 'i'));
+                    var siteMatch = password.site.match(new RegExp(this.searchQuery, 'i'));
+                    return loginMatch || siteMatch;
                 })
             }
         },
