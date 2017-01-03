@@ -11,6 +11,7 @@
                autocomplete="new-password"
                autocorrect="off"
                autocapitalize="off"
+               v-model="password"
                v-on:input="updatePassword($event.target.value)">
         <fingerprint v-bind:fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.password)">
         </fingerprint>
@@ -27,7 +28,14 @@
         props: ['value'],
         data(){
             return {
-                fingerprint: ''
+                fingerprint: '',
+                password: this.value
+            }
+        },
+        watch: {
+            'value': function (password) {
+                this.password = password;
+                this.updatePassword(password);
             }
         },
         methods: {

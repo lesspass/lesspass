@@ -25,25 +25,16 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="inner-addon left-addon">
-                <i class="fa fa-lock"></i>
-                <input id="password"
-                       name="password"
-                       type="password"
-                       class="form-control"
-                       required
-                       placeholder="LessPass password"
-                       v-model="password">
-                <small class="form-text text-muted passwordHelp text-xs-right">
-                    <span v-on:click.prevent="transformMasterPassword">click me to transform into a LessPass password</span>
-                    <span class="tag tag-default" v-on:click.prevent="showPasswordHelp=!showPasswordHelp">?</span>
-                </small>
-                <small class="form-text text-warning" v-if="showPasswordHelp">
-                    Your master password <b>should not be saved</b> on a database even encrypted.
-                    If you want to use your master password here, you can click the help to replace your master password
-                    with a LessPass generated password.
-                </small>
-            </div>
+            <master-password v-model="password"></master-password>
+            <small class="form-text text-muted passwordHelp">
+                <span v-on:click="transformMasterPassword">click me to transform into a LessPass password</span>
+                <span class="tag tag-default" v-on:click.prevent="showPasswordHelp=!showPasswordHelp">?</span>
+            </small>
+            <small class="form-text text-warning" v-if="showPasswordHelp">
+                Your master password <b>should not be saved</b> on a database even encrypted.
+                If you want to use your master password here, you can click the help to replace your master password
+                with a LessPass generated password.
+            </small>
         </div>
         <div class="form-group row">
             <div class="col-xs-7">
@@ -97,6 +88,7 @@
     import Storage from '../api/storage';
     import {mapGetters} from 'vuex';
     import VersionButton from '../components/VersionButton.vue';
+    import MasterPassword from '../components/MasterPassword.vue';
 
     const defaultErrors = {
         userNameAlreadyExist: false,
@@ -124,7 +116,8 @@
             };
         },
         components: {
-            VersionButton
+            VersionButton,
+            MasterPassword
         },
         computed: {
             ...mapGetters(['version']),
@@ -209,8 +202,6 @@
                 this.showError = true;
             },
             transformMasterPassword(){
-                const password = this.password;
-                this.password = '';
                 const defaultPasswordProfile = {
                     lowercase: true,
                     uppercase: true,
@@ -220,7 +211,7 @@
                     counter: 1,
                     version: this.version,
                 };
-                return LessPass.generatePassword('lesspass.com', this.email, password, defaultPasswordProfile).then(generatedPassword => {
+                return LessPass.generatePassword('lesspass.com', this.email, this.password, defaultPasswordProfile).then(generatedPassword => {
                     this.password = generatedPassword;
                 });
             }
