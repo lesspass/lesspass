@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form v-on:submit.prevent="signIn">
         <div class="form-group row">
             <div class="col-xs-12">
                 <div class="inner-addon left-addon">
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group row">
             <div class="col-xs-7">
-                <button id="signInButton" class="btn" type="button" v-on:click="signIn"
+                <button id="signInButton" class="btn" type="submit"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     <span v-if="loadingSignIn"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
                     Sign In
