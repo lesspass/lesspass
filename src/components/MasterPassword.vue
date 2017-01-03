@@ -32,12 +32,13 @@
         },
         methods: {
             updatePassword: function (password) {
+                this.fingerprint = Math.random().toString(36).substring(7);
                 this.showRealFingerprint(password);
                 this.$emit('input', password)
             },
             showRealFingerprint: debounce(function (password) {
                 this.fingerprint = password;
-            }, 1000),
+            }, 500),
             togglePasswordType(element){
                 if (element.type === 'password') {
                     element.type = 'text';
