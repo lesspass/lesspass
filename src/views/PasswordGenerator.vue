@@ -71,22 +71,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="inner-addon left-addon input-group">
-                <label for="masterPassword" class="sr-only">Master Password</label>
-                <i class="fa fa-lock"></i>
-                <input id="masterPassword"
-                       name="masterPassword"
-                       ref="masterPassword"
-                       type="password"
-                       class="form-control"
-                       placeholder="Master password"
-                       autocomplete="new-password"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       v-model="masterPassword">
-                <fingerprint :fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.masterPassword)">
-                </fingerprint>
-            </div>
+            <master-password v-model="masterPassword"></master-password>
         </div>
         <div class="form-group row">
             <div class="col-xs-9" v-show="generatedPassword">
@@ -207,12 +192,11 @@
     import LessPass from 'lesspass';
     import {mapGetters} from 'vuex';
     import Clipboard from 'clipboard';
-    import debounce from 'lodash.debounce';
     import {showTooltip} from '../api/tooltip';
     import Password from '../domain/password';
     import {getSite} from '../domain/url-parser';
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
-    import Fingerprint from '../components/Fingerprint.vue';
+    import MasterPassword from '../components/MasterPassword.vue';
     import VersionButton from '../components/VersionButton.vue';
 
     function fetchPasswords(store) {
@@ -223,7 +207,7 @@
         name: 'password-generator-view',
         components: {
             RemoveAutoComplete,
-            Fingerprint,
+            MasterPassword,
             VersionButton
         },
         computed: mapGetters(['passwords', 'password', 'version']),
@@ -268,7 +252,7 @@
                 showOptions: false,
                 showError: false,
                 generatingPassword: false,
-                optionsSaved: false,
+                optionsSaved: false
             }
         },
         watch: {
@@ -316,13 +300,9 @@
             'masterPassword': function () {
                 this.cleanErrors();
                 this.cleanFormInSeconds(30);
-                this.showFingerprint();
             }
         },
         methods: {
-            showFingerprint: debounce(function () {
-                this.fingerprint = this.masterPassword;
-            }, 1000),
             togglePasswordType(element){
                 if (element.type === 'password') {
                     element.type = 'text';
