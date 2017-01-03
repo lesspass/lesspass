@@ -1,3 +1,8 @@
+<style>
+    .passwordHelp {
+        cursor: pointer;
+    }
+</style>
 <template>
     <form v-on:submit.prevent="signIn">
         <div class="form-group row">
@@ -19,45 +24,34 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <div class="inner-addon left-addon">
-                    <i class="fa fa-lock"></i>
-                    <input id="password"
-                           name="password"
-                           type="password"
-                           class="form-control"
-                           required
-                           placeholder="LessPass password"
-                           v-model="password">
-                    <small class="form-text text-muted">
-                        <span v-if="errors.passwordRequired" class="text-danger">A password is required</span>
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" v-model="useMasterPassword">
-                            Check me if you want to use your master password here
-                            <span class="tag tag-default"
-                                  v-on:click.prevent="seeMasterPasswordHelp=!seeMasterPasswordHelp">
-                                ?
-                            </span>
-                            <span class="text-warning" v-if="seeMasterPasswordHelp">
-                                <br> Your master password <b>should not be saved</b> on a database even encrypted.
-                                If you want to use your master password here, you can check the option.
-                                It will replace your master password with a LessPass generated password.
-                            </span>
-                        </label>
-                    </small>
-                </div>
+        <div class="form-group">
+            <div class="inner-addon left-addon">
+                <i class="fa fa-lock"></i>
+                <input id="password"
+                       name="password"
+                       type="password"
+                       class="form-control"
+                       required
+                       placeholder="LessPass password"
+                       v-model="password">
+                <small class="form-text text-muted passwordHelp text-xs-right">
+                    <span v-on:click.prevent="transformMasterPassword">click me to transform into a LessPass password</span>
+                    <span class="tag tag-default" v-on:click.prevent="showPasswordHelp=!showPasswordHelp">?</span>
+                </small>
+                <small class="form-text text-warning" v-if="showPasswordHelp">
+                    Your master password <b>should not be saved</b> on a database even encrypted.
+                    If you want to use your master password here, you can click the help to replace your master password
+                    with a LessPass generated password.
+                </small>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-7">
                 <button id="signInButton" class="btn" type="submit"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
-                    <span v-if="loadingSignIn"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
                     Sign In
                 </button>
                 <button id="registerButton" class="btn btn-secondary" type="button" v-on:click="register">
-                    <span v-if="loadingRegister"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
                     Register
                 </button>
             </div>
@@ -122,18 +116,18 @@
                 email: '',
                 password: '',
                 baseURL: 'https://lesspass.com',
-                useMasterPassword: false,
-                seeMasterPasswordHelp: false,
+                showPasswordHelp: false,
                 showError: false,
                 errorMessage: '',
-                loadingRegister: false,
-                loadingSignIn: false,
                 errors: {...defaultErrors},
                 showOptions: false,
             };
         },
         components: {
             VersionButton
+        },
+        computed: {
+            ...mapGetters(['version']),
         },
         methods: {
             noErrors(){
@@ -157,21 +151,17 @@
                 return formIsValid;
             },
             cleanErrors(){
-                this.loadingRegister = false;
-                this.loadingSignIn = false;
                 this.showError = false;
                 this.errorMessage = '';
                 this.errors = {...defaultErrors}
             },
             signIn(){
                 if (this.formIsValid()) {
-                    this.loadingSignIn = true;
                     const email = this.email;
                     const password = this.password;
                     const baseURL = this.baseURL;
                     this.auth.login({email, password}, baseURL)
                         .then(() => {
-                            this.loadingSignIn = false;
                             this.storage.save({baseURL});
                             this.$store.commit('LOGIN');
                             this.$store.commit('UPDATE_BASE_URL', {baseURL});
@@ -180,12 +170,8 @@
                         })
                         .catch(err => {
                             this.cleanErrors();
-                            if (err.response === undefined) {
-                                if (baseURL === "https://lesspass.com") {
-                                    this.showErrorMessage();
-                                } else {
-                                    this.showErrorMessage('Your LessPass Database is not running');
-                                }
+                            if (err.response === undefined && baseURL !== "https://lesspass.com") {
+                                this.showErrorMessage('Your LessPass Database is not running');
                             } else if (err.response.status === 400) {
                                 this.showErrorMessage('Your email and/or password is not good. Do you have an account?');
                             } else {
@@ -196,13 +182,11 @@
             },
             register(){
                 if (this.formIsValid()) {
-                    this.loadingRegister = true;
                     const email = this.email;
                     const password = this.password;
                     const baseURL = this.baseURL;
                     this.auth.register({email, password}, baseURL)
                         .then(() => {
-                            this.loadingRegister = false;
                             this.signIn()
                         })
                         .catch(err => {
@@ -224,48 +208,22 @@
                 this.errorMessage = errorMessage;
                 this.showError = true;
             },
-            toggleVersion(){
-                if (this.version === 1) {
-                    this.$store.commit('CHANGE_VERSION', {version: 2});
-                } else {
-                    this.$store.commit('CHANGE_VERSION', {version: 1});
-                }
-            },
-        },
-        computed: {
-            ...mapGetters(['version']),
-        },
-        watch: {
-            'useMasterPassword': function (useMasterPassword) {
-                if (!this.email || !this.password) {
-                    return;
-                }
-
-                const passwordProfiles = {
-                    1: {
-                        lowercase: true,
-                        uppercase: true,
-                        numbers: true,
-                        symbols: true,
-                        length: 12,
-                        counter: 1,
-                        version: 1,
-                    },
-                    2: {
-                        lowercase: true,
-                        uppercase: true,
-                        numbers: true,
-                        symbols: true,
-                        length: 16,
-                        counter: 1,
-                        version: 2,
-                    }
+            transformMasterPassword(){
+                const password = this.password;
+                this.password = '';
+                const defaultPasswordProfile = {
+                    lowercase: true,
+                    uppercase: true,
+                    numbers: true,
+                    symbols: true,
+                    length: this.version == 2 ? 16 : 12,
+                    counter: 1,
+                    version: this.version,
                 };
-
-                return LessPass.generatePassword('lesspass.com', this.email, this.password, passwordProfiles[this.version]).then(generatedPassword => {
+                return LessPass.generatePassword('lesspass.com', this.email, password, defaultPasswordProfile).then(generatedPassword => {
                     this.password = generatedPassword;
                 });
-            },
+            }
         }
     }
 </script>
