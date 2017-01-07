@@ -74,7 +74,7 @@
             <master-password v-model="masterPassword"></master-password>
         </div>
         <div class="form-group row">
-            <div class="col-xs-9" v-show="generatedPassword">
+            <div class="col-9" v-show="generatedPassword">
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn"
@@ -95,7 +95,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-xs-9" v-show="!generatedPassword">
+            <div class="col-9" v-show="!generatedPassword">
                 <div style="display: inline-block">
                     <button type="button" class="btn" v-on:click="generatePassword"
                             v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
@@ -105,64 +105,77 @@
                 </div>
                 <version-button :version="password.version"></version-button>
             </div>
-            <div class="col-xs-3">
-                <div class="btn-group float-xs-right" role="group">
+            <div class="col-3">
+                <div class="btn-group float-right" role="group">
                     <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
                         <i class="fa fa-sliders" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="form-group pt-1" v-if="showOptions">
-            <label class="form-check-inline">
-                <input class="form-check-input" type="checkbox" id="lowercase"
-                       v-model="password.lowercase"> abc
+        <div class="form-group pt-1 mb-0" v-if="showOptions">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="lowercase" v-model="password.lowercase">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">abc</span>
             </label>
-            <label class="form-check-inline">
-                <input class="form-check-input" type="checkbox" id="uppercase"
-                       v-model="password.uppercase"> ABC
+
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="uppercase" v-model="password.uppercase">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">ABC</span>
             </label>
-            <label class="form-check-inline">
-                <input class="form-check-input" type="checkbox" id="numbers"
-                       v-model="password.numbers">
-                123
+
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="numbers" v-model="password.numbers">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">123</span>
             </label>
-            <label class="form-check-inline">
-                <input class="form-check-input" type="checkbox" id="symbols"
-                       v-model="password.symbols">
-                %!@
+
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="symbols" v-model="password.symbols">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">%!@</span>
             </label>
         </div>
         <div class="form-group row" v-if="showOptions">
-            <div class="col-xs-6">
-                <label for="passwordLength">Length</label>
-                <div class="input-group">
+            <div class="col-6 col-sm-4">
+                <label for="passwordLength"><small>Length</small></label>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-btn" v-on:click.prevent="decrementPasswordLength">
+                    <button class="btn btn-secondary" type="button" tabindex="-1">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                    </span>
                     <input class="form-control" type="number" id="passwordLength" v-model="password.length"
                            min="5" max="35">
-                    <span class="input-group-addon" v-on:click.prevent="decrementPasswordLength">
-                        <i class="fa fa-minus" aria-hidden="true"></i>
-                    </span>
-                    <span class="input-group-addon" v-on:click.prevent="incrementPasswordLength">
+                    <span class="input-group-btn" v-on:click.prevent="incrementPasswordLength">
+                    <button class="btn btn-secondary" type="button" tabindex="-1">
                         <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
                     </span>
                 </div>
             </div>
-            <div class="col-xs-6">
-                <label for="passwordCounter">Counter</label>
-                <div class="input-group">
-                    <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
-                    <span class="input-group-addon" v-on:click.prevent="decrementCounter">
+            <div class="col-6 col-sm-4">
+                <label for="passwordCounter"><small>Counter</small></label>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-btn" v-on:click.prevent="decrementCounter">
+                    <button class="btn btn-secondary" type="button" tabindex="-1">
                         <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
                     </span>
-                    <span class="input-group-addon" v-on:click.prevent="incrementCounter">
+                    <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
+                    <span class="input-group-btn" v-on:click.prevent="incrementCounter">
+                    <button class="btn btn-secondary" type="button" tabindex="-1">
                         <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
                     </span>
                 </div>
             </div>
         </div>
         <div class="form-group" v-if="showOptions">
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="saveDefault">
-                save as default
+                save default
             </button>
             <span class="text-success" v-if="optionsSaved">
                 <i class="fa fa-check" aria-hidden="true"></i>

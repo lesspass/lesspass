@@ -1,18 +1,18 @@
 <template>
     <form v-on:submit.prevent="resetPasswordConfirm">
         <div class="form-group row" v-if="showError">
-            <div class="col-xs-12 text-muted text-danger">
+            <div class="col-12 text-muted text-danger">
                 {{errorMessage}}
             </div>
         </div>
         <div class="form-group row" v-if="successMessage">
-            <div class="col-xs-12 text-muted text-success">
+            <div class="col-12 text-muted text-success">
                 You're password was reset successfully.
                 <router-link :to="{ name: 'login'}">Do you want to login ?</router-link>
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-xs-12">
+            <div class="col-12">
                 <div class="inner-addon left-addon">
                     <i class="fa fa-lock"></i>
                     <input id="new-password"
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-xs-12">
+            <div class="col-12">
                 <button id="loginButton" class="btn" type="submit"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     Reset my password

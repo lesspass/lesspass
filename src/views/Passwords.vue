@@ -1,37 +1,43 @@
 <template>
-    <div>
-        <div class="form-group row">
-            <div class="col-xs-12">
+    <div id="passwords">
+        <div class="row">
+            <div class="col">
                 <div class="inner-addon left-addon">
                     <i class="fa fa-search"></i>
                     <input class="form-control" name="search" placeholder="Search" v-model="searchQuery">
                 </div>
             </div>
         </div>
-        <ul class="list-group">
-            <li class="list-group-item" v-if="passwords.length === 0">
-                You don't have any passwords saved in your database.
-                <router-link :to="{ name: 'home'}">Would you like to create one ?</router-link>
-            </li>
-            <li class="list-group-item" v-for="password in filteredPasswords">
-                <delete-button class="float-xs-right mt-1 text-xs-right"
-                               confirmText="Are you sure you want to delete this password profile?"
-                               confirmButton="Sure delete it"
-                               cancelButton="Oups no!"
-                               v-on:remove="deletePassword(password)">
-                </delete-button>
-                <ul class="list-unstyled">
-                    <li>
-                        <router-link :to="{ name: 'password', params: { id: password.id }}">
-                            {{password.site}}
-                        </router-link>
-                    </li>
-                    <li>
-                        {{password.login}}
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <tbody>
+                    <tr v-for="password in filteredPasswords">
+                        <td class="col-5">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <router-link :to="{ name: 'password', params: { id: password.id }}">
+                                        {{password.site}}
+                                    </router-link>
+                                </li>
+                                <li>
+                                    {{password.login}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="col-7 text-center">
+                            <delete-button class="float-right mt-2"
+                                           confirmText="Are you sure you want to delete this password profile?"
+                                           confirmButton="Sure"
+                                           cancelButton="Oups no!"
+                                           v-on:remove="deletePassword(password)">
+                            </delete-button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </template>
 <script type="text/ecmascript-6">

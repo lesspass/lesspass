@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
-    "bootstrap": "4.0.0-alpha.5",
+    "bootstrap": "4.0.0-alpha.6",
     "clipboard": "^1.5.15",
     "font-awesome": "^4.7.0",
     "hint.css": "^2.4.1",

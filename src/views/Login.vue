@@ -6,7 +6,7 @@
 <template>
     <form v-on:submit.prevent="signIn">
         <div class="form-group row">
-            <div class="col-xs-12">
+            <div class="col-12">
                 <div class="inner-addon left-addon">
                     <i class="fa fa-user"></i>
                     <input id="email"
@@ -37,7 +37,7 @@
             </small>
         </div>
         <div class="form-group row">
-            <div class="col-xs-7">
+            <div class="col-7">
                 <button id="signInButton" class="btn" type="submit"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     Sign In
@@ -46,7 +46,7 @@
                     Register
                 </button>
             </div>
-            <div class="col-xs-5 text-xs-right">
+            <div class="col-5 text-right">
                 <version-button :version="version"></version-button>
                 <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
                     <i class="fa fa-sliders" aria-hidden="true"></i>

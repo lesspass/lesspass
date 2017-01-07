@@ -17,7 +17,7 @@
         <div class="card-header" v-show="isAuthenticated"
              v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-6">
                     <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
                     <span v-on:click="saveOrUpdatePassword" class="white-link">
                         <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
@@ -26,7 +26,7 @@
                         <i class="fa fa-check ml-1 text-success"></i>
                     </span>
                 </div>
-                <div class="col-xs-6 text-xs-right">
+                <div class="col-6 text-right">
                     <router-link class="white-link ml-1" :to="{ name: 'passwords'}">
                         <i class="fa fa-key" aria-hidden="true"></i>
                     </router-link>
@@ -39,15 +39,13 @@
         <div class="card-header" v-show="isGuest"
              v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
-                <div class="index-header">
-                    <div class="col-xs-6">
-                        <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
-                    </div>
-                    <div class="col-xs-6 text-xs-right">
-                        <router-link class="white-link pl-1" :to="{ name: 'login'}">
-                            <i class="fa fa-user-secret fa-clickable" aria-hidden="true"></i>
-                        </router-link>
-                    </div>
+                <div class="col-6">
+                    <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
+                </div>
+                <div class="col-6 text-right">
+                    <router-link class="white-link pl-1" :to="{ name: 'login'}">
+                        <i class="fa fa-user-secret fa-clickable" aria-hidden="true"></i>
+                    </router-link>
                 </div>
             </div>
         </div>
