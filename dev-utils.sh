@@ -4,8 +4,8 @@ function cmd {
     pwd
 }
 
-submodules=( backend cli core cozy frontend nginx pure webextension native desktop snap cordova )
-#submodules=( cli core cozy frontend pure webextension native desktop cordova)
+#submodules=( cli core cozy frontend pure webextension desktop cordova)
+submodules=( backend cli core cozy frontend nginx pure webextension desktop snap cordova )
 #submodules=( cozy frontend webextension desktop cordova)
 for submodule in "${submodules[@]}"
 do
@@ -14,8 +14,7 @@ do
 	cd ..
 done
 
-
-#VERSION=
+#VERSION=2.2.0
 #cd webextension
 #git archive -o webextension.zip master
 #mv webextension.zip /tmp
