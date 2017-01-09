@@ -44,7 +44,7 @@
                        placeholder="Site"
                        list="savedSites"
                        autocorrect="off"
-                       autocapitalize="off"
+                       autocapitalize="none"
                        v-model="password.site">
                 <datalist id="savedSites">
                     <option v-for="pwd in passwords">
@@ -66,7 +66,7 @@
                        placeholder="Login"
                        autocomplete="off"
                        autocorrect="off"
-                       autocapitalize="off"
+                       autocapitalize="none"
                        v-model="password.login">
             </div>
         </div>
