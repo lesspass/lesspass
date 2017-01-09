@@ -2,9 +2,7 @@
 
 ## Build
 
-    npm run build
-    cordova platform add android
-    cordova build
+    ./build.sh
     
 ## Run
     
