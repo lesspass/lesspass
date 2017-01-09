@@ -7,80 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="dist/lesspass.min.css">
     <link rel="manifest" href="dist/manifest.json">
-    <style>
-        html, body {
-            height: 100%;
-            width: 100%;
-        }
-
-        body {
-            background: #008ed6 fixed top;
-            background-size: cover;
-            margin: 0;
-        }
-
-        #navbar__logo {
-            height: 2em;
-        }
-
-        .white-link {
-            color: white;
-            text-decoration: underline;
-        }
-
-        #hero__password-generator-block .white-link, #navbar .white-link {
-            text-decoration: none;
-        }
-
-        .white-link:hover, .white-link:focus, .white-link:active {
-            text-decoration: none;
-            color: white;
-        }
-
-        .jumbotron {
-            background-color: transparent;
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        #hero-text {
-            color: #ffffff;
-            padding-top: 6em;
-        }
-
-        @media (max-width: 544px) {
-            #hero__password-generator-block {
-                padding: 0;
-            }
-
-            .jumbotron {
-                padding: 0;
-            }
-        }
-
-        .feature-image {
-            width: 64px;
-        }
-
-        * {
-            border-radius: 0 !important;
-        }
-
-        .white {
-            color: white;
-        }
-
-        #fold {
-            min-height: 100vh;
-        }
-
-        @media (min-width: 544px) {
-            .vcenter {
-                display: flex;
-                align-items: center;
-            }
-        }
-    </style>
     <link rel="manifest" href="dist/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#555555">
@@ -136,130 +62,148 @@
     <link rel="apple-touch-startup-image"
           media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
           href="dist/apple-touch-startup-image-1536x2008.png">
+    <style>
+        * {
+            border-radius: 0 !important;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: #fafafa;
+        }
+
+        #lesspass {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        nav {
+            background-color: transparent;
+        }
+
+        #fold::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0.9;
+            background-color: white;
+        }
+
+        #fold {
+            background: url(./dist/cover.jpeg) no-repeat center center;
+            background-size: cover;
+            animation-name: fadeIn;
+            animation-duration: 3.4s;
+            animation-delay: 0s;
+            animation-timing-function: ease;
+            animation-fill-mode: both;
+            backface-visibility: hidden;
+            position: relative;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 <div id="fold">
-    <div id="navbar" class="container pl-0 pr-0 py-3 hidden-sm-down">
-        <div class="col-xs-4">
-            <a class="nav-link white-link" href="/">
-                <img src="dist/logo-white.png" alt="LessPass" id="navbar__logo">
+    <div class="container">
+        <nav class="navbar navbar-light rounded navbar-toggleable-md py-lg-3 hidden-sm-down px-0">
+            <a class="navbar-brand" href="#">
+                <img src="svg/logo-favicon.svg" width="30" height="30" class="d-inline-block align-top" alt="LessPass">
+                LessPass
             </a>
-        </div>
-        <div class="col-xs-8 text-xs-right">
-            <nav class="nav nav-inline pull-sm-right" style="line-height: 2em">
-                <a class="nav-link white-link"
-                   href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
-                    <i class="fa fa-firefox" aria-hidden="true"></i> Firefox Extension
-                </a>
-                <a class="nav-link white-link"
-                   href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
-                    <i class="fa fa-chrome" aria-hidden="true"></i> Chrome Extension
-                </a>
-                <a class="nav-link white-link" target="_blank" href="https://blog.lesspass.com/">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> Blog
-                </a>
-            </nav>
+
+            <div class="collapse navbar-collapse" id="containerNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
+                            <i class="fa fa-firefox" aria-hidden="true"></i> Firefox Extension
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+                            <i class="fa fa-chrome" aria-hidden="true"></i> Chrome Extension
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://blog.lesspass.com/">
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-4 hidden-sm-down">
+                <p>No Sync &nbsp; - &nbsp; Open Source &nbsp; - &nbsp; Free</p>
+                <h2>Next Gen Password Manager</h2>
+                <p>Stop wasting your time synchronizing your encrypted vault. Remember one master password to
+                    access your passwords, anywhere, anytime. No sync needed.</p>
+                <p>
+                    <a href="https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh"
+                       class="btn btn-secondary">
+                        How does it works?
+                    </a>
+                </p>
+            </div>
+            <div class="col-lg-5 offset-lg-2 p-0">
+                <div id="lesspass" class="float-right"></div>
+                <div class="text-center text-sm-left">
+                    <small>
+                        <i class="fa fa-shield" aria-hidden="true"></i> For more security use browser extensions
+                    </small>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container">
-        <div class="jumbotron">
-            <div class="row">
-                <div id="hero__password-generator-block" class="col-lg-5 pt-2">
-                    <div id="lesspass"></div>
-                    <div class="text-xs-center text-sm-right">
-                        <small><span class="text-white"><i class="fa fa-shield" aria-hidden="true"></i> For more security use browser extensions</span></small>
-                    </div>
-                </div>
-                <div id="hero-text" class="col-lg-6 offset-lg-1">
-                    <h1 class="display-5">Next-Gen Open Source Password Manager</h1>
-                    <p class="lead">
-                        Stop wasting your time synchronizing your encrypted vault.
-                        Remember one master password to access your passwords, anywhere, anytime.
-                        No sync needed.
-                    </p>
-                    <p class="lead">
-                        <a href="https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh"
-                           class="btn btn-secondary">
-                            How does it work?
-                        </a>
-                    </p>
-                </div>
+        <div class="row my-5 py-5">
+            <div class="col-md-3">
+                <h2>Available everywhere</h2>
+                <p>
+                    LessPass is a web application and works on all devices (computer, smartphone, tablet, ...)
+                </p>
             </div>
-        </div>
-    </div>
-    <div class="container white">
-        <div class="row">
-            <div class="col-md-6 col-lg-3 mb-3">
-                <div class="media">
-                    <div class="media-left">
-                        <img class="media-object feature-image" src="dist/responsive.png"
-                             alt="Available far and wide">
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Available everywhere</h4>
-                        <p>
-                            LessPass is a web application and works on all devices
-                            (computer, smartphone, tablet and your smartTV)
-                        </p>
-                    </div>
-                </div>
+            <div class="col-md-3">
+                <h2>No storage</h2>
+                <p>
+                    LessPass regenerates your passwords when you need them. No cloud storage is required
+                </p>
             </div>
-            <div class="col-md-6 col-lg-3 mb-3">
-                <div class="media">
-                    <div class="media-left">
-                        <img class="media-object feature-image" src="dist/no-cloud.png" alt="No Cloud">
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">No storage</h4>
-                        <p>
-                            LessPass regenerates your passwords when you need them. No cloud storage is required
-                        </p>
-                    </div>
-                </div>
+            <div class="col-md-3">
+                <h2>Open Source</h2>
+                <p>
+                    LessPass is <strong>open-source</strong>. So its security can be audited. Source code is available
+                    on
+                    <a href="https://github.com/lesspass/lesspass/">Github</a>
+                </p>
             </div>
-            <div class="clearfix hidden-lg-up"></div>
-            <div class="col-md-6 col-lg-3 mb-3">
-                <div class="media">
-                    <a class="media-left white-link" href="https://github.com/lesspass/lesspass/">
-                        <img class="media-object feature-image" src="dist/open-source.png"
-                             alt="Open Source">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Open Source</h4>
-                        <p>
-                            LessPass is <strong>open-source</strong>. So its security can be audited.
-                            Source code is available on
-                            <a class="white-link" href="https://github.com/lesspass/lesspass/">Github</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-3">
-                <div class="media">
-                    <div class="media-left">
-                        <img class="media-object feature-image" src="dist/free.png"
-                             alt="Free">
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Free</h4>
-                        <p>
-                            LessPass is free<br>and always will be
-                        </p>
-                    </div>
-                </div>
+            <div class="col-md-3">
+                <h2>Free</h2>
+                <p>
+                    LessPass is free<br>and always will be
+                </p>
             </div>
         </div>
     </div>
 </div>
-<div style="background-color: #226FAB;" class="py-3">
+<div style="background-color: #226FAB; color:white;">
     <div class="container white">
-        <div class="row pb-3">
-            <div class="col-xs-12">
+        <div class="row py-5">
+            <div class="col-12">
                 <h1 class="display-5">Features</h1>
             </div>
         </div>
-        <div class="row vcenter pb-3 mb-3">
-            <div class="col-md-6 ">
+        <div class="row py-5 align-items-center">
+            <div class="col-md-6">
                 <h1 class="display-6">Manage your passwords directly from your browser</h1>
                 <p class="lead">
                     <br>
@@ -271,8 +215,8 @@
                 <img src="dist/demo.gif" class="img-fluid" alt="password generation">
             </div>
         </div>
-        <div class="row vcenter py-3 my-3">
-            <div class="col-md-6 pb-2">
+        <div class="row py-5 align-items-center ">
+            <div class="col-md-6">
                 <img src="dist/masterPasswordPattern.png" class="img-fluid" alt="password pattern">
 
             </div>
@@ -283,7 +227,7 @@
                 </p>
             </div>
         </div>
-        <div class="row vcenter py-3 my-3">
+        <div class="row py-5 align-items-center">
             <div class="col-md-6">
                 <h1 class="display-6">Use LessPass Database for complex passwords</h1>
                 <p class="lead">
@@ -303,8 +247,8 @@
                 <img src="dist/demo2.gif" class="img-fluid" alt="password load">
             </div>
         </div>
-        <div class="row vcenter py-3 my-3">
-            <div class="col-xs-12 text-xs-center">
+        <div class="row py-5 align-items-center">
+            <div class="col-12 text-center">
                 <h1 class="display-6">Self Hosted</h1>
 
                 <p class="lead">
@@ -314,8 +258,8 @@
                 </p>
             </div>
         </div>
-        <div class="row vcenter py-3 my-3">
-            <div class="col-md-6 pb-2">
+        <div class="row py-5 align-items-center">
+            <div class="col-md-6">
                 <img src="dist/webextension.png" class="img-fluid" alt="web extension">
             </div>
             <div class="col-md-6">
@@ -333,10 +277,10 @@
         </div>
     </div>
 </div>
-<div style="background-color: #F8F9F9;" class="py-3">
-    <div class="container text-xs-center text-sm-left py-3">
+<div style="background-color: #F8F9F9;" class="py-5">
+    <div class="container text-center text-sm-left py-5">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-12">
                 <small>
                     Copyright LessPass <br>
                     Created by <a href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
