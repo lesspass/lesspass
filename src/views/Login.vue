@@ -28,7 +28,7 @@
             <master-password v-model="password"></master-password>
             <small class="form-text text-muted passwordHelp">
                 <span v-on:click="transformMasterPassword">click me to transform into a LessPass password</span>
-                <span class="tag tag-default" v-on:click.prevent="showPasswordHelp=!showPasswordHelp">?</span>
+                <span class="badge badge-default" v-on:click.prevent="showPasswordHelp=!showPasswordHelp">?</span>
             </small>
             <small class="form-text text-warning" v-if="showPasswordHelp">
                 Your master password <b>should not be saved</b> on a database even encrypted.
