@@ -3,9 +3,19 @@
         color: white;
     }
 
-    @media (max-width: 544px) {
-        #lesspass.card {
+    #lesspass.card {
+        border: none;
+    }
+
+    #lesspass .card-block {
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-top: none;
+    }
+
+    @media (max-width: 470px) {
+        #lesspass .card-block {
             border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         }
     }
 

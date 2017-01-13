@@ -30,8 +30,8 @@
                 </span>
             </label>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12 col-sm-6">
+        <div class="form-group row justify-content-between no-gutters">
+            <div class="col col-auto">
                 <button id="signInButton" class="btn" type="submit"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     Sign In
@@ -40,13 +40,9 @@
                     Register
                 </button>
             </div>
-            <div class="col-xs-12 col-sm-6 mt-3 mt-sm-0">
-                <div class="float-sm-right">
-                    <version-button :version="version" class="mr-1"></version-button>
-                    <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
-                        <i class="fa fa-sliders" aria-hidden="true"></i>
-                    </button>
-                </div>
+            <div class="col col-auto">
+                <version-button :version="version"></version-button>
+                <options-button v-on:click.native="showOptions=!showOptions"></options-button>
             </div>
         </div>
         <div class="form-group" v-if="showError">
@@ -55,7 +51,7 @@
             </div>
         </div>
         <div class="form-group row" v-if="showOptions || errors.baseURLRequired">
-            <div class="col-6 col-sm-8">
+            <div class="col-12 col-sm-8">
                 <label for="baseURL">LessPass Database Url</label>
                 <div class="inner-addon left-addon">
                     <i class="fa fa-globe"></i>
@@ -82,8 +78,9 @@
     import Auth from '../api/auth';
     import Storage from '../api/storage';
     import {mapGetters} from 'vuex';
-    import VersionButton from '../components/VersionButton.vue';
     import MasterPassword from '../components/MasterPassword.vue';
+    import OptionsButton from '../components/OptionsButton.vue';
+    import VersionButton from '../components/VersionButton.vue';
 
     const defaultErrors = {
         userNameAlreadyExist: false,
@@ -111,8 +108,9 @@
             };
         },
         components: {
-            VersionButton,
-            MasterPassword
+            MasterPassword,
+            OptionsButton,
+            VersionButton
         },
         computed: {
             ...mapGetters(['version'])

@@ -73,8 +73,8 @@
         <div class="form-group">
             <master-password v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
         </div>
-        <div class="form-group row">
-            <div class="col" v-show="!generatedPassword">
+        <div class="form-group row justify-content-between no-gutters">
+            <div class="col col-auto" v-show="!generatedPassword">
                 <div style="display: inline-block">
                     <button type="button" class="btn" v-on:click="generatePassword"
                             v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
@@ -83,7 +83,7 @@
                     </button>
                 </div>
             </div>
-            <div class="col-12 col-sm-8" v-show="generatedPassword">
+            <div class="col-8" v-show="generatedPassword">
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn"
@@ -104,13 +104,9 @@
                     </span>
                 </div>
             </div>
-            <div class="col" v-show="!generatedPassword">
-                <div class="float-right">
-                    <version-button :version="password.version" class="mr-1"></version-button>
-                    <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
-                        <i class="fa fa-sliders" aria-hidden="true"></i>
-                    </button>
-                </div>
+            <div class="col col-auto">
+                <version-button :version="password.version" class="mr-1"></version-button>
+                <options-button v-on:click.native="showOptions=!showOptions"></options-button>
             </div>
         </div>
         <div class="form-group py-1 mb-0" v-if="showOptions">
@@ -139,7 +135,7 @@
             </label>
         </div>
         <div class="form-group row" v-if="showOptions">
-            <div class="col-6">
+            <div class="col-6 col-sm-4">
                 <label for="passwordLength">
                     Length
                 </label>
@@ -158,7 +154,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 col-sm-4">
                 <label for="passwordCounter">
                     Counter
                 </label>
@@ -215,6 +211,7 @@
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
     import MasterPassword from '../components/MasterPassword.vue';
     import VersionButton from '../components/VersionButton.vue';
+    import OptionsButton from '../components/OptionsButton.vue';
 
     function fetchPasswords(store) {
         return store.dispatch('FETCH_PASSWORDS')
@@ -225,7 +222,8 @@
         components: {
             RemoveAutoComplete,
             MasterPassword,
-            VersionButton
+            VersionButton,
+            OptionsButton
         },
         computed: mapGetters(['passwords', 'password', 'version']),
         preFetch: fetchPasswords,
