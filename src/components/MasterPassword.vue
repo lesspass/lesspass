@@ -8,7 +8,6 @@
                type="password"
                class="form-control"
                placeholder="Master password"
-               autocomplete="new-password"
                autocorrect="off"
                autocapitalize="off"
                v-model="password"
