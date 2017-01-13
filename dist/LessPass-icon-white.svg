@@ -12,9 +12,9 @@
    id="svg3039"
    version="1.1"
    inkscape:version="0.91 r13725"
-   width="150"
-   height="150"
-   sodipodi:docname="logo-favicon.svg">
+   width="180"
+   height="180"
+   sodipodi:docname="LessPass-icon-white.svg">
   <metadata
      id="metadata3045">
     <rdf:RDF>
@@ -137,38 +137,18 @@
      id="namedview3041"
      showgrid="false"
      inkscape:zoom="2.814285"
-     inkscape:cx="85.560035"
-     inkscape:cy="43.359742"
+     inkscape:cx="83.115942"
+     inkscape:cy="134.0767"
      inkscape:window-x="49"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg3039"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:showpageshadow="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0" />
-  <rect
-     style="opacity:0.9;fill:#0275d8;fill-opacity:1;stroke:none"
-     id="rect3843"
-     width="120.10646"
-     height="120.10646"
-     x="-60.05323"
-     y="46.012787"
-     rx="24.021292"
-     transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
-     inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png"
-     inkscape:export-xdpi="115.20001"
-     inkscape:export-ydpi="115.20001" />
+     inkscape:showpageshadow="false" />
   <path
-     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10;marker:none;filter:url(#filter3013);enable-background:accumulate"
-     d="m 75.000003,30.000067 c -12.36404,0 -22.47187,10.13599 -22.47187,22.5 0,10.27949 6.99118,18.97952 16.45312,21.62813 l 0,45.871873 4.21875,0 7.81876,0 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.2375 c 0,-0.12594 -0.10402,-0.26004 -0.225,-0.225 l -6.21562,0 0,-3.85312 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.237503 c 0,-0.12595 -0.099,-0.225 -0.225,-0.225 l -6.21562,0 0,-20.64375 c 9.46192,-2.64861 16.45312,-11.34863 16.45312,-21.62813 0,-12.36402 -10.10788,-22.5 -22.47188,-22.5 z m 0,8.83125 c 7.59627,0 13.64063,6.07247 13.64063,13.66875 0,7.59632 -6.04436,13.64063 -13.64063,13.64063 -7.59624,0 -13.64062,-6.04431 -13.64062,-13.64063 0,-7.59628 6.04438,-13.66875 13.64062,-13.66875 z"
-     id="path3056"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ssccccssssccssssccsssssss"
-     inkscape:export-xdpi="115.20001"
-     inkscape:export-ydpi="115.20001"
-     inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png" />
+     style="opacity:0.9;fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter3097)"
+     d="m 88.85937,15.01627 c -5.751278,0.27568 -11.432799,2.6203 -15.843752,7.031248 L 22.046868,73.01626 c -9.410033,9.41003 -9.410033,24.55872 0,33.96875 l 50.96875,50.96875 c 9.410033,9.41003 24.558722,9.41003 33.968752,0 l 50.96875,-50.96875 c 9.41003,-9.41003 9.41003,-24.55872 0,-33.96875 L 106.98437,22.047518 C 101.98529,17.04844 95.37748,14.70383 88.85937,15.01627 Z m 0,30 c 0.38173,-0.0196 0.76987,0 1.15625,0 12.364,0 22.46875,10.13598 22.46875,22.49999 0,10.2795 -7.00683,18.97639 -16.46875,21.625 l 0,20.625 6.21875,0 c 0.126,0 0.21875,0.0928 0.21875,0.21875 l 0,10.25 c 0,0.1259 -0.0928,0.21875 -0.21875,0.21875 l -6.21875,0 0,3.875 6.21875,0 c 0.12098,-0.035 0.21875,0.0928 0.21875,0.21875 l 0,10.21875 c 0,0.1259 -0.0928,0.25 -0.21875,0.25 l -6.21875,0 -7.8125,0 -4.218752,0 0,-45.875 c -9.46194,-2.64861 -16.46875,-11.34551 -16.46875,-21.625 0,-11.97763 9.510121,-21.89377 21.343752,-22.49999 z m 1.15625,8.8125 c -7.596242,0 -13.656252,6.09122 -13.656252,13.68749 0,7.59632 6.06001,13.625 13.656252,13.625 7.59627,0 13.625,-6.02868 13.625,-13.625 0,-7.59627 -6.02873,-13.68749 -13.625,-13.68749 z"
+     id="rect3044"
+     inkscape:connector-curvature="0" />
 </svg>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="130mm"
+   viewBox="0 0 744.09449 460.62992"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   inkscape:export-filename="/home/guillaume/workspace/lesspass/frontend/images/blue-white-cover.png"
+   inkscape:export-xdpi="250.05"
+   inkscape:export-ydpi="250.05"
+   sodipodi:docname="hero-cover.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="399.09117"
+     inkscape:cy="114.77254"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1871"
+     inkscape:window-height="1056"
+     inkscape:window-x="49"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-591.73228)">
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#024379;fill-opacity:1;stroke:none;stroke-width:2.9000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4136"
+       sodipodi:sides="3"
+       sodipodi:cx="163.64471"
+       sodipodi:cy="1232.1694"
+       sodipodi:r1="319.17783"
+       sodipodi:r2="159.58891"
+       sodipodi:arg1="-0.2104302"
+       sodipodi:arg2="0.83676735"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 475.78184,1165.4994 270.54798,1350.6613 65.31412,1535.8231 7.5761502,1265.5045 -50.16182,995.18578 212.81001,1080.3426 Z"
+       inkscape:transform-center-x="96.852046"
+       inkscape:transform-center-y="25.923131"
+       transform="matrix(-1.9699271,0,0,0.77765472,762.84496,95.005776)" />
+    <rect
+       style="opacity:1;fill:#3398eb;fill-opacity:1;stroke:none;stroke-width:2.9000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4140"
+       width="782.86823"
+       height="481.84277"
+       x="-25.253815"
+       y="578.60065" />
+  </g>
+</svg>
