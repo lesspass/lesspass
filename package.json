@@ -7,7 +7,7 @@
   "repository": "lesspass/pure",
   "scripts": {
     "build": "rm -rf dist && cross-env NODE_ENV=production webpack --display-error-details --progress --hide-modules",
-    "dev": "npm install && webpack-dev-server --inline --hot --host 0.0.0.0",
+    "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
     "prepublish": "npm test && npm run build",
     "test": "ava test --compilers js:babel-register"
   },
