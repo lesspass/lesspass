@@ -112,7 +112,7 @@
                 showError: false,
                 errorMessage: '',
                 errors: {...defaultErrors},
-                showOptions: false,
+                showOptions: false
             };
         },
         components: {
@@ -120,7 +120,7 @@
             MasterPassword
         },
         computed: {
-            ...mapGetters(['version']),
+            ...mapGetters(['version'])
         },
         methods: {
             noErrors(){
