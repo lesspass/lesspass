@@ -12,7 +12,8 @@
                autocorrect="off"
                autocapitalize="off"
                v-model="password"
-               v-on:input="updatePassword($event.target.value)">
+               v-on:input="updatePassword($event.target.value)"
+               v-on:keyup.enter="triggerEnterMethod">
         <fingerprint v-bind:fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.password)">
         </fingerprint>
     </div>
@@ -23,9 +24,9 @@
 
     export default {
         components: {
-            Fingerprint,
+            Fingerprint
         },
-        props: ['value'],
+        props: ['value', 'keyupEnter'],
         data(){
             return {
                 fingerprint: '',
@@ -52,6 +53,11 @@
                     element.type = 'text';
                 } else {
                     element.type = 'password';
+                }
+            },
+            triggerEnterMethod(){
+                if (typeof this.keyupEnter !== undefined) {
+                    this.keyupEnter()
                 }
             }
         }

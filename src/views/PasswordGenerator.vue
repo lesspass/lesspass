@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="form-group">
-            <master-password v-model="masterPassword"></master-password>
+            <master-password v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
         </div>
         <div class="form-group row">
             <div class="col-9" v-show="generatedPassword">
@@ -140,7 +140,9 @@
         </div>
         <div class="form-group row" v-if="showOptions">
             <div class="col-6 col-sm-4">
-                <label for="passwordLength"><small>Length</small></label>
+                <label for="passwordLength">
+                    <small>Length</small>
+                </label>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn" v-on:click.prevent="decrementPasswordLength">
                     <button class="btn btn-secondary" type="button" tabindex="-1">
@@ -157,7 +159,9 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4">
-                <label for="passwordCounter"><small>Counter</small></label>
+                <label for="passwordCounter">
+                    <small>Counter</small>
+                </label>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn" v-on:click.prevent="decrementCounter">
                     <button class="btn btn-secondary" type="button" tabindex="-1">
