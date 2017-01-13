@@ -74,7 +74,16 @@
             <master-password v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
         </div>
         <div class="form-group row">
-            <div class="col-9" v-show="generatedPassword">
+            <div class="col" v-show="!generatedPassword">
+                <div style="display: inline-block">
+                    <button type="button" class="btn" v-on:click="generatePassword"
+                            v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+                        <span v-if="!generatingPassword">Generate</span>
+                        <span v-if="generatingPassword">Generating...</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-sm-8" v-show="generatedPassword">
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn"
@@ -95,25 +104,16 @@
                     </span>
                 </div>
             </div>
-            <div class="col-9" v-show="!generatedPassword">
-                <div style="display: inline-block">
-                    <button type="button" class="btn" v-on:click="generatePassword"
-                            v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-                        <span v-if="!generatingPassword">Generate</span>
-                        <span v-if="generatingPassword">Generating...</span>
-                    </button>
-                </div>
-                <version-button :version="password.version"></version-button>
-            </div>
-            <div class="col-3">
-                <div class="btn-group float-right" role="group">
+            <div class="col" v-show="!generatedPassword">
+                <div class="float-right">
+                    <version-button :version="password.version" class="mr-1"></version-button>
                     <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
                         <i class="fa fa-sliders" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="form-group pt-1 mb-0" v-if="showOptions">
+        <div class="form-group py-1 mb-0" v-if="showOptions">
             <label class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="lowercase" v-model="password.lowercase">
                 <span class="custom-control-indicator"></span>
@@ -139,9 +139,9 @@
             </label>
         </div>
         <div class="form-group row" v-if="showOptions">
-            <div class="col-6 col-sm-4">
+            <div class="col-6">
                 <label for="passwordLength">
-                    <small>Length</small>
+                    Length
                 </label>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn" v-on:click.prevent="decrementPasswordLength">
@@ -158,9 +158,9 @@
                     </span>
                 </div>
             </div>
-            <div class="col-6 col-sm-4">
+            <div class="col-6">
                 <label for="passwordCounter">
-                    <small>Counter</small>
+                    Counter
                 </label>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn" v-on:click.prevent="decrementCounter">
@@ -178,7 +178,7 @@
             </div>
         </div>
         <div class="form-group" v-if="showOptions">
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="saveDefault">
+            <button type="button" class="btn btn-secondary" v-on:click="saveDefault">
                 save default
             </button>
             <span class="text-success" v-if="optionsSaved">
