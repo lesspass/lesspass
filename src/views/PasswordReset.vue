@@ -7,7 +7,8 @@
         </div>
         <div class="form-group row" v-if="successMessage">
             <div class="col-12 text-muted text-success">
-                If a matching account was found an email was sent to allow you to reset your password.
+                If the email address {{email}} is associated with a LessPass account, you will shortly receive an email
+                from LessPass with instructions on how to reset your password.
             </div>
         </div>
         <div class="form-group row">
