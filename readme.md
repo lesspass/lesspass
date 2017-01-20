@@ -14,6 +14,12 @@
     npm install
     npm test
 
+## Dev
+
+    npm run dev
+    
+Then open [http://0.0.0.0:8080/](http://0.0.0.0:8080/).
+
 ## Build
 
     npm run build
