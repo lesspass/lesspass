@@ -1,4 +1,8 @@
 <style>
+    #generated-password {
+        font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+    }
+
     #password-generator {
         color: #555;
     }
@@ -92,7 +96,7 @@
                             <i class="fa fa-clipboard" aria-hidden="true"></i>
                         </button>
                     </span>
-                    <input type="password" class="form-control" tabindex="-1"
+                    <input type="password" id="generated-password" class="form-control" tabindex="-1"
                            ref="generatedPassword" v-bind:value="generatedPassword"
                            v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
                     <span class="input-group-btn">
