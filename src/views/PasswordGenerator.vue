@@ -1,6 +1,6 @@
 <style>
     #generated-password {
-        font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
     }
 
     #password-generator {
@@ -209,7 +209,6 @@
     import LessPass from 'lesspass';
     import {mapGetters} from 'vuex';
     import Clipboard from 'clipboard';
-    import {showTooltip} from '../api/tooltip';
     import Password from '../domain/password';
     import {getSite} from '../domain/url-parser';
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
@@ -219,6 +218,15 @@
 
     function fetchPasswords(store) {
         return store.dispatch('FETCH_PASSWORDS')
+    }
+
+    function showTooltip(elem, msg) {
+        var classNames = elem.className;
+        elem.setAttribute('class', classNames + ' hint--right');
+        elem.setAttribute('aria-label', msg);
+        setTimeout(function () {
+            elem.setAttribute('class', classNames);
+        }, 2000);
     }
 
     export default {
