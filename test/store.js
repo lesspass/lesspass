@@ -22,6 +22,36 @@ test('SET_CURRENT_PASSWORD_PROFILE', t => {
         uppercase: true,
         version: 2
     });
-    t.true(state.currentPasswordProfile.version == 2);
+    t.is(state.currentPasswordProfile.version, 2);
     t.true(state.currentPasswordProfile.uppercase);
+});
+
+test('SET_CURRENT_PASSWORD_PROFILE immutable', t => {
+    const {SET_CURRENT_PASSWORD_PROFILE} = mutations;
+    const state = {};
+    const profile = {version: 2};
+    SET_CURRENT_PASSWORD_PROFILE(state, profile);
+    profile.version = 1;
+    t.is(state.currentPasswordProfile.version, 2);
+});
+
+test('SET_DEFAULT_OPTIONS', t => {
+    const {SET_DEFAULT_OPTIONS} = mutations;
+    const state = {
+        defaultOptions: {
+            uppercase: true,
+            lowercase: true,
+            numbers: true,
+            symbols: true,
+            length: 16,
+            counter: 1,
+            version: 2
+        }
+    };
+    SET_DEFAULT_OPTIONS(state, {
+        symbols: false,
+        length: 30
+    });
+    t.is(state.defaultOptions.length, 30);
+    t.false(state.defaultOptions.symbols);
 });
