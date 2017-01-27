@@ -1,6 +1,7 @@
+import Token from './token';
+
 export const LOCAL_STORAGE_KEY = 'lesspass';
 export const TOKEN_KEY = 'jwt';
-import Token from './token';
 
 export default class Storage {
     constructor(storage = window.localStorage) {
