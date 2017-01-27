@@ -14,3 +14,14 @@ test('LOGIN', t => {
     LOGIN(state);
     t.true(state.authenticated);
 });
+
+test('SET_CURRENT_PASSWORD_PROFILE', t => {
+    const {SET_CURRENT_PASSWORD_PROFILE} = mutations;
+    const state = {currentPasswordProfile: null};
+    SET_CURRENT_PASSWORD_PROFILE(state, {
+        uppercase: true,
+        version: 2
+    });
+    t.true(state.currentPasswordProfile.version == 2);
+    t.true(state.currentPasswordProfile.uppercase);
+});

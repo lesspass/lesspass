@@ -1,8 +1,13 @@
+import * as types from './mutation-types';
+
 export const mutations = {
-    LOGIN(state){
+    [types.LOGIN](state){
         state.authenticated = true;
     },
-    LOGOUT(state){
+    [types.LOGOUT](state){
         state.authenticated = false;
+    },
+    [types.SET_CURRENT_PASSWORD_PROFILE](state, passwordProfile){
+        state.currentPasswordProfile = passwordProfile;
     }
 };
