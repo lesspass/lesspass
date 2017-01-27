@@ -33,7 +33,7 @@ function getDefaultPasswordProfile(version, passwordProfile = {}) {
     }
 }
 
-const versionLoadedByDefault = storage.json().version || 1;
+const versionLoadedByDefault = storage.json().version || 2;
 const state = {
     authenticated: auth.isAuthenticated(),
     passwordStatus: 'CLEAN',
