@@ -4,6 +4,7 @@ import Auth from './api/auth';
 import HTTP from './api/http';
 import Storage from './api/storage';
 import Password from './domain/password';
+import * as getters from './store/getters';
 
 Vue.use(Vuex);
 
@@ -138,15 +139,6 @@ const actions = {
             commit('DELETE_PASSWORD', {id});
         });
     }
-};
-
-const getters = {
-    passwords: state => state.passwords,
-    password: state => state.password,
-    isAuthenticated: state => state.authenticated,
-    isGuest: state => !state.authenticated,
-    passwordStatus: state => state.passwordStatus,
-    version: state => state.version,
 };
 
 export default new Vuex.Store({
