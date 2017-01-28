@@ -1,20 +1,21 @@
 import {set} from 'vue';
+import * as types from './mutation-types';
 
 function setState(state, id, object) {
     set(state, id, Object.assign({}, object));
 }
 
 export const mutations = {
-    LOGIN(state){
+    [types.LOGIN](state){
         state.authenticated = true;
     },
-    LOGOUT(state){
+    [types.LOGOUT](state){
         state.authenticated = false;
     },
-    SET_CURRENT_PASSWORD_PROFILE(state, passwordProfile){
-        setState(state, 'currentPasswordProfile', passwordProfile);
+    [types.SET_CURRENT_PASSWORD](state, {password}){
+        setState(state, 'currentPassword', password);
     },
-    SET_DEFAULT_OPTIONS(state, options){
+    [types.SET_DEFAULT_OPTIONS](state, {options}){
         setState(state, 'defaultOptions', options);
     }
 };

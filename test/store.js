@@ -15,24 +15,21 @@ test('LOGIN', t => {
     t.true(state.authenticated);
 });
 
-test('SET_CURRENT_PASSWORD_PROFILE', t => {
-    const {SET_CURRENT_PASSWORD_PROFILE} = mutations;
-    const state = {currentPasswordProfile: null};
-    SET_CURRENT_PASSWORD_PROFILE(state, {
-        uppercase: true,
-        version: 2
-    });
-    t.is(state.currentPasswordProfile.version, 2);
-    t.true(state.currentPasswordProfile.uppercase);
+test('SET_CURRENT_PASSWORD', t => {
+    const {SET_CURRENT_PASSWORD} = mutations;
+    const state = {currentPassword: null};
+    SET_CURRENT_PASSWORD(state, {password: {uppercase: true, version: 2}});
+    t.is(state.currentPassword.version, 2);
+    t.true(state.currentPassword.uppercase);
 });
 
-test('SET_CURRENT_PASSWORD_PROFILE immutable', t => {
-    const {SET_CURRENT_PASSWORD_PROFILE} = mutations;
+test('SET_CURRENT_PASSWORD immutable', t => {
+    const {SET_CURRENT_PASSWORD} = mutations;
     const state = {};
-    const profile = {version: 2};
-    SET_CURRENT_PASSWORD_PROFILE(state, profile);
-    profile.version = 1;
-    t.is(state.currentPasswordProfile.version, 2);
+    const password = {version: 2};
+    SET_CURRENT_PASSWORD(state, {password});
+    password.version = 1;
+    t.is(state.currentPassword.version, 2);
 });
 
 test('SET_DEFAULT_OPTIONS', t => {
@@ -48,10 +45,7 @@ test('SET_DEFAULT_OPTIONS', t => {
             version: 2
         }
     };
-    SET_DEFAULT_OPTIONS(state, {
-        symbols: false,
-        length: 30
-    });
+    SET_DEFAULT_OPTIONS(state, {options: {symbols: false, length: 30}});
     t.is(state.defaultOptions.length, 30);
     t.false(state.defaultOptions.symbols);
 });
