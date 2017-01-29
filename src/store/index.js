@@ -7,8 +7,8 @@ import mutations from './mutations'
 Vue.use(Vuex);
 
 const state = {
-    currentPasswordProfile: null,
-    passwordProfiles: {},
+    currentPassword: null,
+    passwords: {},
     defaultOptions: {
         uppercase: true,
         lowercase: true,
