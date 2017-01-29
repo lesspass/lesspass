@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import './LessPass.scss';
 import LessPass from './LessPass.vue';
 import store from './store';
 import router from './router';

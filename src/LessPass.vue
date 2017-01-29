@@ -38,6 +38,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
+    import './LessPass.scss';
     import Menu from './components/Menu.vue';
     import {mapGetters} from 'vuex';
 
