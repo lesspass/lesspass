@@ -15,7 +15,6 @@
     @media (max-width: 470px) {
         #lesspass .card-block {
             border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         }
     }
 
