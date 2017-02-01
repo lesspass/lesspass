@@ -77,7 +77,7 @@
         <div class="form-group">
             <master-password v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
         </div>
-        <div class="form-group row justify-content-between no-gutters">
+        <div class="form-group row justify-content-between no-gutters mb-0">
             <div class="col col-auto" v-show="!generatedPassword">
                 <div style="display: inline-block">
                     <button type="button" class="btn" v-on:click="generatePassword"
@@ -87,7 +87,7 @@
                     </button>
                 </div>
             </div>
-            <div class="col-8" v-show="generatedPassword">
+            <div class="col-9" v-show="generatedPassword">
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn"
@@ -109,72 +109,57 @@
                 </div>
             </div>
             <div class="col col-auto">
-                <version-button :version="password.version" class="mr-1"></version-button>
                 <options-button v-on:click.native="showOptions=!showOptions"></options-button>
             </div>
         </div>
-        <div class="form-group py-1 mb-0" v-if="showOptions">
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="lowercase" v-model="password.lowercase">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">abc</span>
-            </label>
-
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="uppercase" v-model="password.uppercase">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">ABC</span>
-            </label>
-
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="numbers" v-model="password.numbers">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">123</span>
-            </label>
-
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="symbols" v-model="password.symbols">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">%!@</span>
-            </label>
+        <div class="form-group row mt-3 pt-3 no-gutters" v-if="showOptions">
+            <div class="col col-sm-2">
+                <label class="custom-control custom-checkbox mr-0">
+                    <input type="checkbox" class="custom-control-input" id="lowercase" v-model="password.lowercase">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">abc</span>
+                </label>
+            </div>
+            <div class="col col-sm-2">
+                <label class="custom-control custom-checkbox mr-0">
+                    <input type="checkbox" class="custom-control-input" id="uppercase" v-model="password.uppercase">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">ABC</span>
+                </label>
+            </div>
+            <div class="col col-sm-2">
+                <label class="custom-control custom-checkbox mr-0">
+                    <input type="checkbox" class="custom-control-input" id="numbers" v-model="password.numbers">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">123</span>
+                </label>
+            </div>
+            <div class="col col-sm-2">
+                <label class="custom-control custom-checkbox mr-0">
+                    <input type="checkbox" class="custom-control-input" id="symbols" v-model="password.symbols">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">%!@</span>
+                </label>
+            </div>
         </div>
         <div class="form-group row" v-if="showOptions">
-            <div class="col-6 col-sm-4">
+            <div class="col-4">
                 <label for="passwordLength">
                     Length
                 </label>
-                <div class="input-group input-group-sm">
-                    <span class="input-group-btn" v-on:click.prevent="decrementPasswordLength">
-                    <button class="btn btn-secondary" type="button" tabindex="-1">
-                        <i class="fa fa-minus" aria-hidden="true"></i>
-                    </button>
-                    </span>
-                    <input class="form-control" type="number" id="passwordLength" v-model="password.length"
-                           min="5" max="35">
-                    <span class="input-group-btn" v-on:click.prevent="incrementPasswordLength">
-                    <button class="btn btn-secondary" type="button" tabindex="-1">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                    </span>
-                </div>
+                <input class="form-control" type="number" id="passwordLength"
+                       v-model="password.length" min="5" max="35">
             </div>
-            <div class="col-6 col-sm-4">
+            <div class="col-4">
                 <label for="passwordCounter">
                     Counter
                 </label>
-                <div class="input-group input-group-sm">
-                    <span class="input-group-btn" v-on:click.prevent="decrementCounter">
-                    <button class="btn btn-secondary" type="button" tabindex="-1">
-                        <i class="fa fa-minus" aria-hidden="true"></i>
-                    </button>
-                    </span>
-                    <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
-                    <span class="input-group-btn" v-on:click.prevent="incrementCounter">
-                    <button class="btn btn-secondary" type="button" tabindex="-1">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                    </span>
-                </div>
+                <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
+            </div>
+            <div class="col-4">
+                <label>Version</label>
+                <br>
+                <version-button :version="password.version" class="mr-1"></version-button>
             </div>
         </div>
         <div class="form-group" v-if="showOptions">
@@ -185,21 +170,9 @@
                 <i class="fa fa-check" aria-hidden="true"></i>
             </span>
         </div>
-        <div class="form-group" v-if="showError">
+        <div class="form-group mt-3" v-if="showError">
             <div class="alert alert-danger" role="alert">
                 site, login and master password fields are mandatory
-            </div>
-        </div>
-        <div class="form-group mb-0" v-if="version === 1 && !showError && !showOptions">
-            <div class="alert alert-warning mb-0" role="alert">
-                <small>
-                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                    You are using a deprecated version of LessPass.
-                    The default version will be version 2 in
-                    <strong aria-label="10 jan 2017" class="hint--right">{{ getDayBeforeV2() }} days</strong>.
-                    You can continue to use version 1, but we strongly advise you to migrate your passwords to
-                    version 2.
-                </small>
             </div>
         </div>
     </form>
@@ -383,28 +356,6 @@
             },
             setDefaultVersion(version){
                 this.$store.commit('CHANGE_VERSION', {version});
-            },
-            getDayBeforeV2(){
-                const oneDay = 24 * 60 * 60 * 1000;
-                const now = new Date();
-                const v2DefaultDate = new Date(2017, 1, 10);
-                return Math.round(Math.abs((now.getTime() - v2DefaultDate.getTime()) / (oneDay)));
-            },
-            decrementPasswordLength(){
-                if (this.password.length > 4) {
-                    this.password.length -= 1
-                }
-            },
-            incrementPasswordLength(){
-                this.password.length += 1
-            },
-            decrementCounter(){
-                if (this.password.counter > 1) {
-                    this.password.counter -= 1
-                }
-            },
-            incrementCounter(){
-                this.password.counter += 1
             },
             saveDefault(){
                 this.$store.commit('SAVE_DEFAULT_OPTIONS');
