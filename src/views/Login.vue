@@ -41,7 +41,6 @@
                 </button>
             </div>
             <div class="col col-auto">
-                <version-button :version="version"></version-button>
                 <options-button v-on:click.native="showOptions=!showOptions"></options-button>
             </div>
         </div>
@@ -64,6 +63,9 @@
                         A LessPass database url is required
                     </small>
                 </div>
+            </div>
+            <div class="col-sm-4 col">
+                <version-button :version="version"></version-button>
             </div>
         </div>
         <div class="form-group my-0">

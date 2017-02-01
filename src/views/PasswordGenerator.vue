@@ -77,7 +77,7 @@
         <div class="form-group">
             <master-password v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
         </div>
-        <div class="form-group row justify-content-between no-gutters mb-0">
+        <div class="form-group row justify-content-between no-gutters">
             <div class="col col-auto" v-show="!generatedPassword">
                 <div style="display: inline-block">
                     <button type="button" class="btn" v-on:click="generatePassword"
@@ -112,7 +112,7 @@
                 <options-button v-on:click.native="showOptions=!showOptions"></options-button>
             </div>
         </div>
-        <div class="form-group row mt-3 pt-3 no-gutters" v-if="showOptions">
+        <div class="form-group row no-gutters pt-3" v-if="showOptions">
             <div class="col col-sm-2">
                 <label class="custom-control custom-checkbox mr-0">
                     <input type="checkbox" class="custom-control-input" id="lowercase" v-model="password.lowercase">
@@ -120,21 +120,21 @@
                     <span class="custom-control-description">abc</span>
                 </label>
             </div>
-            <div class="col col-sm-2">
+            <div class="col col-sm-2 text-center">
                 <label class="custom-control custom-checkbox mr-0">
                     <input type="checkbox" class="custom-control-input" id="uppercase" v-model="password.uppercase">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">ABC</span>
                 </label>
             </div>
-            <div class="col col-sm-2">
+            <div class="col col-sm-2 text-center">
                 <label class="custom-control custom-checkbox mr-0">
                     <input type="checkbox" class="custom-control-input" id="numbers" v-model="password.numbers">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">123</span>
                 </label>
             </div>
-            <div class="col col-sm-2">
+            <div class="col col-sm-2 text-right">
                 <label class="custom-control custom-checkbox mr-0">
                     <input type="checkbox" class="custom-control-input" id="symbols" v-model="password.symbols">
                     <span class="custom-control-indicator"></span>
@@ -147,28 +147,31 @@
                 <label for="passwordLength">
                     Length
                 </label>
-                <input class="form-control" type="number" id="passwordLength"
+                <input class="form-control form-control-sm" type="number" id="passwordLength"
                        v-model="password.length" min="5" max="35">
             </div>
-            <div class="col-4">
+            <div class="col-4 text-center text-sm-left">
                 <label for="passwordCounter">
                     Counter
                 </label>
-                <input class="form-control" type="number" id="passwordCounter" v-model="password.counter" min="1">
+                <input class="form-control form-control-sm" type="number" id="passwordCounter"
+                       v-model="password.counter" min="1">
             </div>
-            <div class="col-4">
-                <label>Version</label>
-                <br>
+            <div class="col-4 text-sm-left text-right">
                 <version-button :version="password.version" class="mr-1"></version-button>
             </div>
         </div>
-        <div class="form-group" v-if="showOptions">
-            <button type="button" class="btn btn-secondary" v-on:click="saveDefault">
-                save default
-            </button>
-            <span class="text-success" v-if="optionsSaved">
-                <i class="fa fa-check" aria-hidden="true"></i>
-            </span>
+        <div class="form-group row" v-if="showOptions">
+            <div class="col col-sm-8">
+                <button type="button" class="btn btn-secondary btn-sm btn-block" v-on:click="saveDefault">
+                    <span v-if="optionsSaved" class="text-success">
+                        <i class="fa fa-check" aria-hidden="true"></i> saved
+                    </span>
+                        <span v-else>
+                        save as default options
+                    </span>
+                </button>
+            </div>
         </div>
         <div class="form-group mt-3" v-if="showError">
             <div class="alert alert-danger" role="alert">
