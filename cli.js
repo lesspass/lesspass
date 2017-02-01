@@ -6,7 +6,7 @@ const LessPass = require('lesspass');
 const read = require('read');
 const chalk = require('chalk');
 
-const cli = meow(`
+const helpMessage = `
     Usage
       $ lesspass <site> <login> [masterPassword] [options] 
 
@@ -39,7 +39,12 @@ const cli = meow(`
       # only digits and length of 8
       $ lesspass lesspass.com contact@lesspass.com  -d -L8
         master password: 
-        75837019`, {alias: {L: 'length', c: 'counter', C: 'clipboard'}});
+        75837019`;
+
+const cli = meow(helpMessage, {
+    alias: {L: 'length', c: 'counter', C: 'clipboard'},
+    boolean: ['l', 'u', 'd', 's', 'C', 'clipboard']
+});
 
 
 function calcPassword(site, login, masterPassword, passwordProfile) {

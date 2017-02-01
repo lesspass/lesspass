@@ -6,6 +6,16 @@ test('default options', async t => {
     t.is(stdout, '\\g-A1-.OHEwrXjT#');
 });
 
+test('options can be before parameters', async t => {
+    const {stdout} = await execa('./cli.js', ['-C', 'lesspass.com', 'contact@lesspass.com', 'password']);
+    t.is(stdout, 'Copied to clipboard');
+});
+
+test('long options can be before parameters', async t => {
+    const {stdout} = await execa('./cli.js', ['--clipboard', 'lesspass.com', 'contact@lesspass.com', 'password']);
+    t.is(stdout, 'Copied to clipboard');
+});
+
 test('length', async t => {
     const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--length=14']);
     t.is(stdout, '=0\\A-.OHEKvwrX');
@@ -89,4 +99,39 @@ test('only symbols', async t => {
 test('test space in password', async t => {
     const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'my Master Password']);
     t.is(stdout, 'D1PBB34\\#fh!LY={');
+});
+
+test('doc 1', async t => {
+    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '--no-symbols']);
+    t.is(stdout, 'OlfK63bmUhqrGODR');
+});
+
+test('doc 1 options before', async t => {
+    const {stdout} = await execa('./cli.js', ['--no-symbols', 'lesspass.com', 'contact@lesspass.com', 'password']);
+    t.is(stdout, 'OlfK63bmUhqrGODR');
+});
+
+test('doc 2', async t => {
+    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '-lud']);
+    t.is(stdout, 'OlfK63bmUhqrGODR');
+});
+
+test('doc 2 options before', async t => {
+    const {stdout} = await execa('./cli.js', ['-lud', 'lesspass.com', 'contact@lesspass.com', 'password']);
+    t.is(stdout, 'OlfK63bmUhqrGODR');
+});
+
+test('doc 3', async t => {
+    const {stdout} = await execa('./cli.js', ['lesspass.com', 'contact@lesspass.com', 'password', '-d', '-L8']);
+    t.is(stdout, '75837019');
+});
+
+test('doc 3 options before', async t => {
+    const {stdout} = await execa('./cli.js', ['-d', '-L8', 'lesspass.com', 'contact@lesspass.com', 'password']);
+    t.is(stdout, '75837019');
+});
+
+test('doc 3 options before and after', async t => {
+    const {stdout} = await execa('./cli.js', ['-d', 'lesspass.com', 'contact@lesspass.com', 'password', '-L8']);
+    t.is(stdout, '75837019');
 });
