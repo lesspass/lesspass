@@ -13,6 +13,7 @@ export const mutations = {
         state.authenticated = false;
     },
     [types.SET_CURRENT_PASSWORD](state, {password}){
+        state.lastUse = new Date().getTime();
         setState(state, 'currentPassword', password);
     },
     [types.SET_DEFAULT_PASSWORD](state, {options}){

@@ -2,33 +2,45 @@ import test from 'ava';
 import timekeeper from 'timekeeper';
 
 import {mutations} from '../src/store/mutations';
+import * as types from '../src/store/mutation-types';
 import * as getters from '../src/store/getters';
 
 
 test('LOGOUT', t => {
-    const {LOGOUT} = mutations;
+    const LOGOUT = mutations[types.LOGOUT];
     const state = {authenticated: true};
     LOGOUT(state);
     t.false(state.authenticated);
 });
 
 test('LOGIN', t => {
-    const {LOGIN} = mutations;
+    const LOGIN = mutations[types.LOGIN];
     const state = {authenticated: false};
     LOGIN(state);
     t.true(state.authenticated);
 });
 
 test('SET_CURRENT_PASSWORD', t => {
-    const {SET_CURRENT_PASSWORD} = mutations;
+    const SET_CURRENT_PASSWORD = mutations[types.SET_CURRENT_PASSWORD];
     const state = {currentPassword: null};
     SET_CURRENT_PASSWORD(state, {password: {uppercase: true, version: 2}});
     t.is(state.currentPassword.version, 2);
     t.true(state.currentPassword.uppercase);
 });
 
+test('SET_CURRENT_PASSWORD change lastUse date', t => {
+    const SET_CURRENT_PASSWORD = mutations[types.SET_CURRENT_PASSWORD];
+    var now = 1485989236000;
+    var time = new Date(now);
+    timekeeper.freeze(time);
+    const state = {lastUse: null, currentPassword: null};
+    SET_CURRENT_PASSWORD(state, {password: {}});
+    t.is(now, state.lastUse);
+    timekeeper.reset();
+});
+
 test('SET_CURRENT_PASSWORD immutable', t => {
-    const {SET_CURRENT_PASSWORD} = mutations;
+    const SET_CURRENT_PASSWORD = mutations[types.SET_CURRENT_PASSWORD];
     const state = {};
     const password = {version: 2};
     SET_CURRENT_PASSWORD(state, {password});
@@ -37,7 +49,7 @@ test('SET_CURRENT_PASSWORD immutable', t => {
 });
 
 test('SET_DEFAULT_PASSWORD', t => {
-    const {SET_DEFAULT_PASSWORD} = mutations;
+    const SET_DEFAULT_PASSWORD = mutations[types.SET_DEFAULT_PASSWORD];
     const state = {
         defaultPassword: {
             site: '',
