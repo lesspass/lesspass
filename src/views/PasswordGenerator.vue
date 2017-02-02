@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="form-group">
-            <master-password v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
+            <master-password ref="masterPassword" v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
         </div>
         <div class="form-group row justify-content-between no-gutters">
             <div class="col col-auto" v-show="!generatedPassword">
@@ -350,6 +350,7 @@
                 return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(generatedPassword => {
                     this.generatingPassword = false;
                     this.generatedPassword = generatedPassword;
+                    this.$store.dispatch('savePassword', {password: this.password});
                     window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
                 });
             },
