@@ -126,3 +126,13 @@ test('store getter: get password more than 10 minutes after last use', t => {
     t.is(16, password.length);
     timekeeper.reset();
 });
+
+test('SET_PASSWORDS', t => {
+    const SET_PASSWORDS = mutations[types.SET_PASSWORDS];
+    const state = {
+        passwords: []
+    };
+    SET_PASSWORDS(state, {passwords: [{site: 'site1'}, {site: 'site2'}]});
+    t.is(state.passwords[0].site, 'site1');
+    t.is(state.passwords[1].site, 'site2');
+});

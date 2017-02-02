@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 const state = {
     currentPassword: null,
-    passwords: {},
+    passwords: [],
     defaultPassword: {
         login: '',
         site: '',

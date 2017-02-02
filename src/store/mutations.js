@@ -18,5 +18,8 @@ export const mutations = {
     },
     [types.SET_DEFAULT_PASSWORD](state, {options}){
         setState(state, 'defaultPassword', options);
+    },
+    [types.SET_PASSWORDS](state, {passwords}){
+        state.passwords = passwords;
     }
 };
