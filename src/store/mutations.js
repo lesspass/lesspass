@@ -29,5 +29,8 @@ export const mutations = {
         if (state.currentPassword && state.currentPassword.id === id) {
             state.currentPassword = Object.assign({}, state.defaultPassword);
         }
+    },
+    [types.SET_BASE_URL](state, {baseURL}){
+        state.baseURL = baseURL;
     }
 };

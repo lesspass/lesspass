@@ -30,8 +30,8 @@ test('SET_CURRENT_PASSWORD', t => {
 
 test('SET_CURRENT_PASSWORD change lastUse date', t => {
     const SET_CURRENT_PASSWORD = mutations[types.SET_CURRENT_PASSWORD];
-    var now = 1485989236000;
-    var time = new Date(now);
+    const now = 1485989236000;
+    const time = new Date(now);
     timekeeper.freeze(time);
     const state = {lastUse: null, currentPassword: null};
     SET_CURRENT_PASSWORD(state, {password: {}});
@@ -69,10 +69,10 @@ test('SET_DEFAULT_PASSWORD', t => {
 });
 
 test('store getter: get password 5 minutes after last use', t => {
-    var now = 1485989236;
-    var time = new Date(now * 1000);
+    const now = 1485989236;
+    const time = new Date(now * 1000);
     timekeeper.freeze(time);
-    var fiveMinutesBefore = (now - 5 * 60) * 1000;
+    const fiveMinutesBefore = (now - 5 * 60) * 1000;
     const state = {
         lastUse: fiveMinutesBefore,
         currentPassword: {
@@ -92,16 +92,16 @@ test('store getter: get password 5 minutes after last use', t => {
         }
     };
     const password = getters.getCurrentPassword(state);
-    t.is('test@example.org', password.login);
-    t.is(30, password.length);
+    t.is(password.login, 'test@example.org');
+    t.is(password.length, 30);
     timekeeper.reset();
 });
 
 test('store getter: get password more than 10 minutes after last use', t => {
-    var now = 1485989236;
-    var time = new Date(now * 1000);
+    const now = 1485989236;
+    const time = new Date(now * 1000);
     timekeeper.freeze(time);
-    var fifteenMinutesBefore = (now - 15 * 60) * 1000;
+    const fifteenMinutesBefore = (now - 15 * 60) * 1000;
     const state = {
         lastUse: fifteenMinutesBefore,
         currentPassword: {
@@ -156,4 +156,14 @@ test('DELETE_PASSWORD clean current password with default password if same id', 
     };
     DELETE_PASSWORD(state, {id: '1'});
     t.is(state.currentPassword.length, 16);
+});
+
+test('SET_BASE_URL', t => {
+    const SET_BASE_URL = mutations[types.SET_BASE_URL];
+    const state = {
+        baseURL: 'https://lesspass.com'
+    };
+    const baseURL = 'https://example.org';
+    SET_BASE_URL(state, {baseURL: baseURL});
+    t.is(state.baseURL, baseURL);
 });
