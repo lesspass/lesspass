@@ -1,6 +1,5 @@
 import test from 'ava';
 import timekeeper from 'timekeeper';
-
 import mutations from '../src/store/mutations';
 import * as types from '../src/store/mutation-types';
 
@@ -123,4 +122,70 @@ test('SET_VERSION password null', t => {
     };
     SET_VERSION(state, {version: 2});
     t.is(state.password.version, 2);
+});
+
+test('LOAD_PASSWORD_FIRST_TIME 5 minutes after last use', t => {
+    const now = 1485989236;
+    const time = new Date(now * 1000);
+    timekeeper.freeze(time);
+    const fiveMinutesBefore = (now - 5 * 60) * 1000;
+    const state = {
+        lastUse: fiveMinutesBefore,
+        password: {
+            login: 'test@example.org',
+            length: 30
+        },
+        defaultPassword: {
+            login: '',
+            length: 16
+        }
+    };
+    const LOAD_PASSWORD_FIRST_TIME = mutations[types.LOAD_PASSWORD_FIRST_TIME];
+    LOAD_PASSWORD_FIRST_TIME(state);
+    t.is(state.password.login, 'test@example.org');
+    t.is(state.password.length, 30);
+    timekeeper.reset();
+});
+
+test('LOAD_PASSWORD_FIRST_TIME more than 10 minutes after last use', t => {
+    const now = 1485989236;
+    const time = new Date(now * 1000);
+    timekeeper.freeze(time);
+    const fifteenMinutesBefore = (now - 15 * 60) * 1000;
+    const state = {
+        lastUse: fifteenMinutesBefore,
+        password: {
+            login: 'test@example.org',
+            length: 30
+        },
+        defaultPassword: {
+            login: '',
+            length: 16
+        }
+    };
+    const LOAD_PASSWORD_FIRST_TIME = mutations[types.LOAD_PASSWORD_FIRST_TIME];
+    LOAD_PASSWORD_FIRST_TIME(state);
+    t.is(state.password.login, '');
+    t.is(state.password.length, 16);
+    timekeeper.reset();
+});
+
+test('LOAD_PASSWORD_FIRST_TIME last use null', t => {
+    const time = new Date(1485989236000);
+    timekeeper.freeze(time);
+    const state = {
+        lastUse: null,
+        password: {
+            site: '',
+            version: 1
+        },
+        defaultPassword: {
+            site: '',
+            version: 2
+        }
+    };
+    const LOAD_PASSWORD_FIRST_TIME = mutations[types.LOAD_PASSWORD_FIRST_TIME];
+    LOAD_PASSWORD_FIRST_TIME(state);
+    t.is(state.password.version,2);
+    timekeeper.reset();
 });

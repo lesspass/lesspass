@@ -39,5 +39,12 @@ export default {
         } else {
             state.password.version = version;
         }
+    },
+    [types.LOAD_PASSWORD_FIRST_TIME](state){
+        const tenMinutesAgo = new Date().getTime() - 10 * 60 * 1000;
+
+        if (state.lastUse < tenMinutesAgo) {
+            setState(state, 'password', state.defaultPassword);
+        }
     }
 };
