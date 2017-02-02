@@ -75,7 +75,8 @@
             </div>
         </div>
         <div class="form-group">
-            <master-password ref="masterPassword" v-model="masterPassword" :keyupEnter="generatePassword"></master-password>
+            <master-password ref="masterPassword" v-model="masterPassword"
+                             :keyupEnter="generatePassword"></master-password>
         </div>
         <div class="form-group row justify-content-between no-gutters">
             <div class="col col-auto" v-show="!generatedPassword">
@@ -90,7 +91,7 @@
             <div class="col-9" v-show="generatedPassword">
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn"
+                        <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn btn-copy"
                                 ref="copyPasswordButton"
                                 v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
                             <i class="fa fa-clipboard" aria-hidden="true"></i>
@@ -162,6 +163,17 @@
             </div>
         </div>
         <div class="form-group" v-if="showOptions">
+            <div class="input-group input-group-sm">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary btn-copy" data-clipboard-target="#passwordURL" type="button">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                    </button>
+                </span>
+                <span class="input-group-addon">share current password</span>
+                <input id="passwordURL" type="text" class="form-control" v-model="passwordURL">
+            </div>
+        </div>
+        <div class="form-group" v-if="showOptions">
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="saveDefault">
                 <span v-if="optionsSaved" class="text-success">
                    <i class="fa fa-check" aria-hidden="true"></i> saved
@@ -183,7 +195,7 @@
     import LessPass from 'lesspass';
     import {mapGetters} from 'vuex';
     import Clipboard from 'clipboard';
-    import {getSite} from '../domain/url-parser';
+    import {getSite, getPasswordFromUrlQuery} from '../domain/url-parser';
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
     import MasterPassword from '../components/MasterPassword.vue';
     import VersionButton from '../components/VersionButton.vue';
@@ -210,9 +222,14 @@
             VersionButton,
             OptionsButton
         },
-        computed: mapGetters(['passwords', 'password']),
+        computed: mapGetters(['passwords', 'password', 'passwordURL']),
         preFetch: fetchPasswords,
         beforeMount () {
+            const query = this.$route.query;
+            if (Object.keys(query).length >= 9) {
+                this.$store.dispatch('savePassword', {password: getPasswordFromUrlQuery(query)});
+            }
+
             const id = this.$route.params.id;
             if (id) {
                 this.$store.dispatch('getPassword', {id});
@@ -227,7 +244,7 @@
                 }
             });
 
-            const clipboard = new Clipboard('#copyPasswordButton');
+            const clipboard = new Clipboard('.btn-copy');
             clipboard.on('success', event => {
                 if (event.text) {
                     showTooltip(event.trigger, 'copied !');

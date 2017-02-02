@@ -18,3 +18,22 @@ test('version no password', t => {
     const version = getters.version(state);
     t.is(version, 1);
 });
+
+test('passwordURL', t => {
+    const state = {
+        password: {
+            login: "test@example.org",
+            site: "example.org",
+            uppercase: true,
+            lowercase: true,
+            numbers: true,
+            symbols: false,
+            length: 16,
+            counter: 1,
+            version: 2
+        },
+        baseURL: 'https://lesspass.com'
+    };
+
+    t.is(getters.passwordURL(state), 'https://lesspass.com/#/?login=test@example.org&site=example.org&uppercase=true&lowercase=true&numbers=true&symbols=false&length=16&counter=1&version=2')
+});
