@@ -7,6 +7,7 @@ import mutations from './mutations'
 Vue.use(Vuex);
 
 const state = {
+    authenticated: false,
     currentPassword: null,
     passwords: [],
     defaultPassword: {
@@ -23,6 +24,8 @@ const state = {
     lastUse: new Date().getTime(),
     baseURL: 'https://lesspass.com',
 };
+
+actions.loadLocalStorage();
 
 export default new Vuex.Store({
     state,
