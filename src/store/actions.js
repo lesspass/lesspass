@@ -8,27 +8,24 @@ const storage = new Storage();
 const auth = new Auth(storage);
 const Passwords = new HTTP('passwords', storage);
 
-export const loadLocalStorage = ({state}) => {
-    Object.assign({}, state, storage.json())
+export const loadPasswordFirstTime = ({commit}) => {
+    commit(types.LOAD_PASSWORD_FIRST_TIME);
 };
 
 export const saveDefaultPassword = ({commit}, payload) => {
-    storage.save(payload);
     commit(types.SET_DEFAULT_PASSWORD, payload);
 };
 
 export const savePassword = ({commit}, payload) => {
-    storage.save(payload);
     commit(types.SET_PASSWORD, payload);
 };
 
 export const saveBaseURL = ({commit}, payload) => {
-    storage.save(payload);
     commit(types.SET_BASE_URL, payload);
 };
 
 export const saveVersion = ({commit}, payload) => {
-    commit(types.SET_BASE_URL, payload);
+    commit(types.SET_VERSION, payload);
 };
 
 export const login = ({commit}) => {

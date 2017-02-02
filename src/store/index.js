@@ -3,33 +3,35 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import mutations from './mutations'
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
-const state = {
-    authenticated: false,
-    password: null,
-    passwords: [],
-    defaultPassword: {
-        login: '',
-        site: '',
-        uppercase: true,
-        lowercase: true,
-        numbers: true,
-        symbols: true,
-        length: 16,
-        counter: 1,
-        version: 2
-    },
-    lastUse: new Date().getTime(),
-    baseURL: 'https://lesspass.com',
+const defaultPassword = {
+    login: '',
+    site: '',
+    uppercase: true,
+    lowercase: true,
+    numbers: true,
+    symbols: true,
+    length: 16,
+    counter: 1,
+    version: 2
 };
 
-actions.loadLocalStorage({state});
+const state = {
+    authenticated: false,
+    password: defaultPassword,
+    passwords: [],
+    defaultPassword: defaultPassword,
+    lastUse: null,
+    baseURL: 'https://lesspass.com',
+};
 
 export default new Vuex.Store({
     state,
     getters,
     actions,
     mutations,
+    plugins: [createPersistedState({key: 'lesspass'})]
 });
