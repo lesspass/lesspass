@@ -9,7 +9,9 @@ Vue.use(Vuex);
 const state = {
     currentPassword: null,
     passwords: {},
-    defaultOptions: {
+    defaultPassword: {
+        login: '',
+        site: '',
         uppercase: true,
         lowercase: true,
         numbers: true,
@@ -18,6 +20,7 @@ const state = {
         counter: 1,
         version: 2
     },
+    lastUse: new Date().getTime(),
     baseURL: 'https://lesspass.com',
 };
 
