@@ -136,3 +136,24 @@ test('SET_PASSWORDS', t => {
     t.is(state.passwords[0].site, 'site1');
     t.is(state.passwords[1].site, 'site2');
 });
+
+test('DELETE_PASSWORD', t => {
+    const DELETE_PASSWORD = mutations[types.DELETE_PASSWORD];
+    const state = {
+        passwords: [{id: '1', site: 'site1'}, {id: '2', site: 'site2'}]
+    };
+    t.is(state.passwords.length, 2);
+    DELETE_PASSWORD(state, {id: '1'});
+    t.is(state.passwords.length, 1);
+});
+
+test('DELETE_PASSWORD clean current password with default password if same id', t => {
+    const DELETE_PASSWORD = mutations[types.DELETE_PASSWORD];
+    const state = {
+        passwords: [{id: '1', length: 30}, {id: '2', length: 16}],
+        currentPassword: {id: '1', length: 30},
+        defaultPassword: {length: 16}
+    };
+    DELETE_PASSWORD(state, {id: '1'});
+    t.is(state.currentPassword.length, 16);
+});

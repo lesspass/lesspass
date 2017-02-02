@@ -21,5 +21,13 @@ export const mutations = {
     },
     [types.SET_PASSWORDS](state, {passwords}){
         state.passwords = passwords;
+    },
+    [types.DELETE_PASSWORD](state, {id}){
+        state.passwords = state.passwords.filter(password => {
+            return password.id !== id;
+        });
+        if (state.currentPassword && state.currentPassword.id === id) {
+            state.currentPassword = Object.assign({}, state.defaultPassword);
+        }
     }
 };
