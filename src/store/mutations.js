@@ -12,9 +12,9 @@ export const mutations = {
     [types.LOGOUT](state){
         state.authenticated = false;
     },
-    [types.SET_CURRENT_PASSWORD](state, {password}){
+    [types.SET_PASSWORD](state, {password}){
         state.lastUse = new Date().getTime();
-        setState(state, 'currentPassword', password);
+        setState(state, 'password', password);
     },
     [types.SET_DEFAULT_PASSWORD](state, {options}){
         setState(state, 'defaultPassword', options);
@@ -26,18 +26,18 @@ export const mutations = {
         state.passwords = state.passwords.filter(password => {
             return password.id !== id;
         });
-        if (state.currentPassword && state.currentPassword.id === id) {
-            state.currentPassword = Object.assign({}, state.defaultPassword);
+        if (state.password && state.password.id === id) {
+            state.password = Object.assign({}, state.defaultPassword);
         }
     },
     [types.SET_BASE_URL](state, {baseURL}){
         state.baseURL = baseURL;
     },
     [types.SET_VERSION](state, {version}){
-        if (state.currentPassword === null) {
-            state.currentPassword = {version};
+        if (state.password === null) {
+            state.password = {version};
         } else {
-            state.currentPassword.version = version;
+            state.password.version = version;
         }
     }
 };

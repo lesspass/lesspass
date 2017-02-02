@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 const state = {
     authenticated: false,
-    currentPassword: null,
+    password: null,
     passwords: [],
     defaultPassword: {
         login: '',
@@ -25,7 +25,7 @@ const state = {
     baseURL: 'https://lesspass.com',
 };
 
-actions.loadLocalStorage();
+actions.loadLocalStorage({state});
 
 export default new Vuex.Store({
     state,

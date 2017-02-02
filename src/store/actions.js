@@ -17,9 +17,9 @@ export const saveDefaultPassword = ({commit}, payload) => {
     commit(types.SET_DEFAULT_PASSWORD, payload);
 };
 
-export const saveCurrentPassword = ({commit}, payload) => {
+export const savePassword = ({commit}, payload) => {
     storage.save(payload);
-    commit(types.SET_CURRENT_PASSWORD, payload);
+    commit(types.SET_PASSWORD, payload);
 };
 
 export const saveBaseURL = ({commit}, payload) => {
@@ -48,17 +48,17 @@ export const getPasswords = ({commit}) => {
 
 export const getPassword = ({commit}, payload) => {
     if (auth.isAuthenticated()) {
-        Passwords.get(payload).then(response => commit(types.SET_CURRENT_PASSWORD, {password: response.data}));
+        Passwords.get(payload).then(response => commit(types.SET_PASSWORD, {password: response.data}));
     }
 };
 
-export const saveOrUpdateCurrentPassword = ({commit, state}) => {
-    if (state.currentPassword && typeof state.currentPassword.id === 'undefined') {
-        Passwords.create(state.currentPassword).then(() => {
+export const saveOrUpdatePassword = ({commit, state}) => {
+    if (state.password && typeof state.password.id === 'undefined') {
+        Passwords.create(state.password).then(() => {
             getPasswords({commit});
         })
     } else {
-        Passwords.update(state.currentPassword).then(() => {
+        Passwords.update(state.password).then(() => {
             getPasswords({commit});
         })
     }

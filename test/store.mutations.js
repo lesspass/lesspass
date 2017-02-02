@@ -18,32 +18,32 @@ test('LOGIN', t => {
     t.true(state.authenticated);
 });
 
-test('SET_CURRENT_PASSWORD', t => {
-    const SET_CURRENT_PASSWORD = mutations[types.SET_CURRENT_PASSWORD];
-    const state = {currentPassword: null};
-    SET_CURRENT_PASSWORD(state, {password: {uppercase: true, version: 2}});
-    t.is(state.currentPassword.version, 2);
-    t.true(state.currentPassword.uppercase);
+test('SET_PASSWORD', t => {
+    const SET_PASSWORD = mutations[types.SET_PASSWORD];
+    const state = {password: null};
+    SET_PASSWORD(state, {password: {uppercase: true, version: 2}});
+    t.is(state.password.version, 2);
+    t.true(state.password.uppercase);
 });
 
-test('SET_CURRENT_PASSWORD change lastUse date', t => {
-    const SET_CURRENT_PASSWORD = mutations[types.SET_CURRENT_PASSWORD];
+test('SET_PASSWORD change lastUse date', t => {
+    const SET_PASSWORD = mutations[types.SET_PASSWORD];
     const now = 1485989236000;
     const time = new Date(now);
     timekeeper.freeze(time);
-    const state = {lastUse: null, currentPassword: null};
-    SET_CURRENT_PASSWORD(state, {password: {}});
+    const state = {lastUse: null, password: null};
+    SET_PASSWORD(state, {password: {}});
     t.is(now, state.lastUse);
     timekeeper.reset();
 });
 
-test('SET_CURRENT_PASSWORD immutable', t => {
-    const SET_CURRENT_PASSWORD = mutations[types.SET_CURRENT_PASSWORD];
+test('SET_PASSWORD immutable', t => {
+    const SET_PASSWORD = mutations[types.SET_PASSWORD];
     const state = {};
     const password = {version: 2};
-    SET_CURRENT_PASSWORD(state, {password});
+    SET_PASSWORD(state, {password});
     password.version = 1;
-    t.is(state.currentPassword.version, 2);
+    t.is(state.password.version, 2);
 });
 
 test('SET_DEFAULT_PASSWORD', t => {
@@ -86,15 +86,15 @@ test('DELETE_PASSWORD', t => {
     t.is(state.passwords.length, 1);
 });
 
-test('DELETE_PASSWORD clean current password with default password if same id', t => {
+test('DELETE_PASSWORD clean password with default password if same id', t => {
     const DELETE_PASSWORD = mutations[types.DELETE_PASSWORD];
     const state = {
         passwords: [{id: '1', length: 30}, {id: '2', length: 16}],
-        currentPassword: {id: '1', length: 30},
+        password: {id: '1', length: 30},
         defaultPassword: {length: 16}
     };
     DELETE_PASSWORD(state, {id: '1'});
-    t.is(state.currentPassword.length, 16);
+    t.is(state.password.length, 16);
 });
 
 test('SET_BASE_URL', t => {
@@ -110,17 +110,17 @@ test('SET_BASE_URL', t => {
 test('SET_VERSION', t => {
     const SET_VERSION = mutations[types.SET_VERSION];
     const state = {
-        currentPassword: {version: 2},
+        password: {version: 2},
     };
     SET_VERSION(state, {version: 1});
-    t.is(state.currentPassword.version, 1);
+    t.is(state.password.version, 1);
 });
 
-test('SET_VERSION currentPassword null', t => {
+test('SET_VERSION password null', t => {
     const SET_VERSION = mutations[types.SET_VERSION];
     const state = {
-        currentPassword: null,
+        password: null,
     };
     SET_VERSION(state, {version: 2});
-    t.is(state.currentPassword.version, 2);
+    t.is(state.password.version, 2);
 });
