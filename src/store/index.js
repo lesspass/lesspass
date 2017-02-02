@@ -33,5 +33,5 @@ export default new Vuex.Store({
     getters,
     actions,
     mutations,
-    plugins: [createPersistedState({key: 'lesspass'})]
+    plugins: [createPersistedState({key: 'lesspass-store'})]
 });

@@ -51,9 +51,13 @@ export const getPassword = ({commit}, payload) => {
 
 export const saveOrUpdatePassword = ({commit, state}) => {
     if (state.password && typeof state.password.id === 'undefined') {
-        Passwords.create(state.password).then(() => {
-            getPasswords({commit});
-        })
+        const site = state.password.site;
+        const login = state.password.login;
+        if (site || login) {
+            Passwords.create(state.password).then(() => {
+                getPasswords({commit});
+            })
+        }
     } else {
         Passwords.update(state.password).then(() => {
             getPasswords({commit});

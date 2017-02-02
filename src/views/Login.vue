@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="col-sm-4 col">
-                <version-button :version="version"></version-button>
+                <version-button></version-button>
             </div>
         </div>
         <div class="form-group my-0">
@@ -135,7 +135,6 @@
                     version: this.version,
                 };
                 return LessPass.generatePassword('lesspass.com', this.email, this.password, defaultPasswordProfile).then(generatedPassword => {
-                    console.log(generatedPassword)
                     this.password = generatedPassword;
                 });
             }
@@ -174,9 +173,8 @@
                     this.auth.login({email, password}, baseURL)
                         .then(() => {
                             this.storage.save({baseURL});
-                            this.$store.commit('LOGIN');
-                            this.$store.commit('UPDATE_BASE_URL', {baseURL});
-                            this.$store.commit('UPDATE_EMAIL', {email});
+                            this.$store.dispatch('login');
+                            this.$store.dispatch('saveBaseURL', {baseURL});
                             this.$router.push({name: 'home'});
                         })
                         .catch(err => {

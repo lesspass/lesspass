@@ -1,5 +1,5 @@
 <style>
-    .white-link {
+    .white-link, .text-white {
         color: white;
     }
 
@@ -18,20 +18,20 @@
              v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
                 <div class="col-6">
-                    <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
-                    <span v-on:click="saveOrUpdatePassword" class="white-link">
-                        <i class="fa fa-save ml-1 fa-clickable" v-if="passwordStatus=='DIRTY'"></i>
-                    </span>
-                    <span v-if="passwordStatus=='CREATED' || passwordStatus=='UPDATED'" class="text-success">
-                        <i class="fa fa-check ml-1 text-success"></i>
-                    </span>
+                    <a href="/" v-on:click="fullReload()" class="white-link">LessPass</a>
                 </div>
                 <div class="col-6 text-right">
-                    <router-link class="white-link ml-1" :to="{ name: 'passwords'}">
-                        <i class="fa fa-key" aria-hidden="true"></i>
+                    <span class="text-white" v-if="saved">
+                       <small><i class="fa fa-lg fa-check" aria-hidden="true"></i> saved</small>
+                    </span>
+                    <span v-on:click="saveOrUpdatePassword" class="white-link" v-else>
+                        <i class="fa fa-lg fa-save fa-clickable"></i>
+                    </span>
+                    <router-link class="white-link pl-2" :to="{ name: 'passwords'}">
+                        <i class="fa  fa-lg fa-key" aria-hidden="true"></i>
                     </router-link>
-                    <button class="white-link ml-1 btn btn-link p-0 m-0" type="button" v-on:click="logout">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <button class="white-link btn btn-link p-0 m-0 pl-2" type="button" v-on:click="logout">
+                        <i class="fa fa-lg fa-sign-out" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-6 text-right">
                     <router-link class="white-link pl-1" :to="{ name: 'login'}">
-                        <i class="fa fa-user-secret fa-clickable" aria-hidden="true"></i>
+                        <i class="fa fa-lg fa-user-secret fa-clickable" aria-hidden="true"></i>
                     </router-link>
                 </div>
             </div>
@@ -55,19 +55,32 @@
     import {mapGetters} from 'vuex';
 
     export default {
+        data(){
+            return {
+                saved: false
+            }
+        },
         methods: {
+            fullReload(){
+                this.$store.dispatch('savePassword', {password: this.defaultPassword});
+            },
             logout(){
-                this.$store.dispatch('LOGOUT');
+                this.$store.dispatch('logout');
                 this.$router.push({name: 'home'});
             },
             saveOrUpdatePassword(){
-                this.$store.dispatch('SAVE_OR_UPDATE_PASSWORD');
+                this.$store.dispatch('saveOrUpdatePassword');
+                this.saved = true;
+                setTimeout(() => {
+                    this.saved = false;
+                }, 3000);
             }
         },
         computed: mapGetters([
             'isAuthenticated',
             'isGuest',
-            'passwordStatus',
+            'password',
+            'defaultPassword',
             'version'
         ])
     }

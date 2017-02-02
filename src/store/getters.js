@@ -2,6 +2,8 @@ export const passwords = state => state.passwords;
 
 export const password = state => state.password;
 
+export const defaultPassword = state => state.defaultPassword;
+
 export const isAuthenticated = state => state.authenticated;
 
 export const isGuest = state => !state.authenticated;

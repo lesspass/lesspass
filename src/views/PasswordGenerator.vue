@@ -158,20 +158,18 @@
                        v-model="password.counter" min="1">
             </div>
             <div class="col-4 text-sm-left text-right">
-                <version-button :version="password.version" class="mr-1"></version-button>
+                <version-button class="mr-1"></version-button>
             </div>
         </div>
-        <div class="form-group row" v-if="showOptions">
-            <div class="col col-sm-8">
-                <button type="button" class="btn btn-secondary btn-sm btn-block" v-on:click="saveDefault">
-                    <span v-if="optionsSaved" class="text-success">
-                        <i class="fa fa-check" aria-hidden="true"></i> saved
-                    </span>
-                        <span v-else>
-                        save as default options
-                    </span>
-                </button>
-            </div>
+        <div class="form-group" v-if="showOptions">
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="saveDefault">
+                <span v-if="optionsSaved" class="text-success">
+                   <i class="fa fa-check" aria-hidden="true"></i> saved
+                </span>
+                <span v-else>
+                  save as default options
+                </span>
+            </button>
         </div>
         <div class="form-group mt-3" v-if="showError">
             <div class="alert alert-danger" role="alert">
@@ -185,7 +183,6 @@
     import LessPass from 'lesspass';
     import {mapGetters} from 'vuex';
     import Clipboard from 'clipboard';
-    import Password from '../domain/password';
     import {getSite} from '../domain/url-parser';
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
     import MasterPassword from '../components/MasterPassword.vue';
@@ -193,7 +190,7 @@
     import OptionsButton from '../components/OptionsButton.vue';
 
     function fetchPasswords(store) {
-        return store.dispatch('FETCH_PASSWORDS')
+        return store.dispatch('getPasswords')
     }
 
     function showTooltip(elem, msg) {
@@ -213,19 +210,20 @@
             VersionButton,
             OptionsButton
         },
-        computed: mapGetters(['passwords', 'password', 'version']),
+        computed: mapGetters(['passwords', 'password']),
         preFetch: fetchPasswords,
         beforeMount () {
             const id = this.$route.params.id;
             if (id) {
-                this.$store.dispatch('FETCH_PASSWORD', {id});
+                this.$store.dispatch('getPassword', {id});
             } else {
                 fetchPasswords(this.$store);
             }
 
-            getSite(this.version).then(site => {
+            getSite(this.password.version).then(site => {
                 if (site) {
-                    this.$store.commit('UPDATE_SITE', {site});
+                    this.password.site = site;
+                    this.$store.dispatch('savePassword', {password: this.password});
                 }
             });
 
@@ -269,7 +267,7 @@
                     for (let i = 0; i < passwords.length; i++) {
                         const password = passwords[i];
                         if (password.site === site && password.login === login) {
-                            this.$store.commit('SET_PASSWORD', {password});
+                            this.$store.dispatch('savePassword', {password});
                             break;
                         }
                     }
@@ -323,7 +321,6 @@
                     this.masterPassword = '';
                     this.generatedPassword = '';
                     this.fingerprint = '';
-                    this.$store.commit('PASSWORD_CLEAN');
                 }, 1000 * seconds);
             },
             generatePassword(){
@@ -348,20 +345,16 @@
                     symbols: this.password.symbols,
                     length: this.password.length,
                     counter: this.password.counter,
-                    version: this.password.version || this.version,
+                    version: this.password.version,
                 };
                 return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(generatedPassword => {
                     this.generatingPassword = false;
                     this.generatedPassword = generatedPassword;
                     window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
-                    this.$store.commit('CHANGE_PASSWORD_STATUS', 'DIRTY');
                 });
             },
-            setDefaultVersion(version){
-                this.$store.commit('CHANGE_VERSION', {version});
-            },
             saveDefault(){
-                this.$store.commit('SAVE_DEFAULT_OPTIONS');
+                this.$store.dispatch('saveDefaultPassword', {password: this.password});
                 this.optionsSaved = true;
                 setTimeout(() => {
                     this.optionsSaved = false;

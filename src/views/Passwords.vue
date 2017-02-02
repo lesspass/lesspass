@@ -45,7 +45,7 @@
     import {mapGetters} from 'vuex';
 
     function fetchPasswords(store) {
-        return store.dispatch('FETCH_PASSWORDS')
+        return store.dispatch('getPasswords')
     }
 
     export default {
@@ -57,7 +57,7 @@
         },
         components: {DeleteButton},
         computed: {
-            ...mapGetters(['passwords', 'email']),
+            ...mapGetters(['passwords']),
             filteredPasswords(){
                 return this.passwords.filter(password => {
                     var loginMatch = password.login.match(new RegExp(this.searchQuery, 'i'));
@@ -72,7 +72,7 @@
         },
         methods: {
             deletePassword(password){
-                return this.$store.dispatch('DELETE_PASSWORD', {id: password.id});
+                return this.$store.dispatch('deletePassword', {id: password.id});
             }
         }
     }
