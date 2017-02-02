@@ -3,8 +3,6 @@ import timekeeper from 'timekeeper';
 
 import {mutations} from '../src/store/mutations';
 import * as types from '../src/store/mutation-types';
-import * as getters from '../src/store/getters';
-
 
 test('LOGOUT', t => {
     const LOGOUT = mutations[types.LOGOUT];
@@ -66,65 +64,6 @@ test('SET_DEFAULT_PASSWORD', t => {
     SET_DEFAULT_PASSWORD(state, {options: {symbols: false, length: 30}});
     t.is(state.defaultPassword.length, 30);
     t.false(state.defaultPassword.symbols);
-});
-
-test('store getter: get password 5 minutes after last use', t => {
-    const now = 1485989236;
-    const time = new Date(now * 1000);
-    timekeeper.freeze(time);
-    const fiveMinutesBefore = (now - 5 * 60) * 1000;
-    const state = {
-        lastUse: fiveMinutesBefore,
-        currentPassword: {
-            login: 'test@example.org',
-            length: 30
-        },
-        defaultPassword: {
-            site: '',
-            login: '',
-            uppercase: true,
-            lowercase: true,
-            numbers: true,
-            symbols: true,
-            length: 16,
-            counter: 1,
-            version: 2
-        }
-    };
-    const password = getters.getCurrentPassword(state);
-    t.is(password.login, 'test@example.org');
-    t.is(password.length, 30);
-    timekeeper.reset();
-});
-
-test('store getter: get password more than 10 minutes after last use', t => {
-    const now = 1485989236;
-    const time = new Date(now * 1000);
-    timekeeper.freeze(time);
-    const fifteenMinutesBefore = (now - 15 * 60) * 1000;
-    const state = {
-        lastUse: fifteenMinutesBefore,
-        currentPassword: {
-            login: 'test@example.org',
-            length: 30
-        },
-        defaultPassword: {
-            site: '',
-            login: '',
-            uppercase: true,
-            lowercase: true,
-            numbers: true,
-            symbols: true,
-            length: 16,
-            counter: 1,
-            version: 2
-        }
-    };
-    const password = getters.getCurrentPassword(state);
-    t.is('', password.login);
-    t.is('', password.site);
-    t.is(16, password.length);
-    timekeeper.reset();
 });
 
 test('SET_PASSWORDS', t => {

@@ -17,3 +17,10 @@ export const getCurrentPassword = state => {
     }
     return Object.assign({}, state.defaultPassword, state.currentPassword);
 };
+
+export const getVersion = state => {
+    if(state.currentPassword === null){
+        return state.defaultPassword.version;
+    }
+    return state.currentPassword.version;
+};
