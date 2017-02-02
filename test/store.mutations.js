@@ -1,7 +1,7 @@
 import test from 'ava';
 import timekeeper from 'timekeeper';
 
-import {mutations} from '../src/store/mutations';
+import mutations from '../src/store/mutations';
 import * as types from '../src/store/mutation-types';
 
 test('LOGOUT', t => {
@@ -61,7 +61,7 @@ test('SET_DEFAULT_PASSWORD', t => {
             version: 2
         }
     };
-    SET_DEFAULT_PASSWORD(state, {options: {symbols: false, length: 30}});
+    SET_DEFAULT_PASSWORD(state, {password: {symbols: false, length: 30}});
     t.is(state.defaultPassword.length, 30);
     t.false(state.defaultPassword.symbols);
 });

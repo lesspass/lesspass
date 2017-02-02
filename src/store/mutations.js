@@ -5,7 +5,7 @@ function setState(state, id, object) {
     set(state, id, Object.assign({}, object));
 }
 
-export const mutations = {
+export default {
     [types.LOGIN](state){
         state.authenticated = true;
     },
@@ -16,8 +16,8 @@ export const mutations = {
         state.lastUse = new Date().getTime();
         setState(state, 'password', password);
     },
-    [types.SET_DEFAULT_PASSWORD](state, {options}){
-        setState(state, 'defaultPassword', options);
+    [types.SET_DEFAULT_PASSWORD](state, {password}){
+        setState(state, 'defaultPassword', password);
     },
     [types.SET_PASSWORDS](state, {passwords}){
         state.passwords = passwords;
