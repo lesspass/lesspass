@@ -49,8 +49,8 @@
                 {{ errorMessage }}
             </div>
         </div>
-        <div class="form-group row mt-3" v-if="showOptions || errors.baseURLRequired">
-            <div class="col-12 col-sm-8">
+        <div class="form-group row" v-if="showOptions || errors.baseURLRequired">
+            <div class="col-12 col-sm-8 mt-3">
                 <label for="baseURL">LessPass Database Url</label>
                 <div class="inner-addon left-addon">
                     <i class="fa fa-globe"></i>
@@ -64,8 +64,8 @@
                     </small>
                 </div>
             </div>
-            <div class="col-sm-4 col">
-                <version-button></version-button>
+            <div class="col-sm-4 col mt-3">
+                <version-button :small="false"></version-button>
             </div>
         </div>
         <div class="form-group my-0">

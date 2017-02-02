@@ -2,7 +2,7 @@
     <div>
         <label>Version</label>
         <br>
-        <div class="btn-group btn-group-sm">
+        <div class="btn-group" v-bind:class="{'btn-group-sm':small}">
             <button type="button" class="btn"
                     v-bind:class="{'btn-primary':version===2,'btn-secondary':version!==2}" v-on:click="setVersion(2)">
                 v2
@@ -17,6 +17,12 @@
 <script type="text/ecmascript-6">
     import {mapGetters} from 'vuex';
     export default {
+        props: {
+            small: {
+                type: Boolean,
+                default: true
+            }
+        },
         computed: {
             ...mapGetters(['version'])
         },
