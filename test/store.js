@@ -167,3 +167,21 @@ test('SET_BASE_URL', t => {
     SET_BASE_URL(state, {baseURL: baseURL});
     t.is(state.baseURL, baseURL);
 });
+
+test('SET_VERSION', t => {
+    const SET_VERSION = mutations[types.SET_VERSION];
+    const state = {
+        currentPassword: {version: 2},
+    };
+    SET_VERSION(state, {version: 1});
+    t.is(state.currentPassword.version, 1);
+});
+
+test('SET_VERSION currentPassword null', t => {
+    const SET_VERSION = mutations[types.SET_VERSION];
+    const state = {
+        currentPassword: null,
+    };
+    SET_VERSION(state, {version: 2});
+    t.is(state.currentPassword.version, 2);
+});

@@ -32,5 +32,12 @@ export const mutations = {
     },
     [types.SET_BASE_URL](state, {baseURL}){
         state.baseURL = baseURL;
+    },
+    [types.SET_VERSION](state, {version}){
+        if (state.currentPassword === null) {
+            state.currentPassword = {version};
+        } else {
+            state.currentPassword.version = version;
+        }
     }
 };
