@@ -120,7 +120,7 @@
             <div class="input-group input-group-sm">
                 <span class="input-group-btn btn-copy" data-clipboard-target="#passwordURL">
                     <button class="btn btn-secondary" type="button">
-                        <i class="fa fa-share-alt" aria-hidden="true"></i>
+                        <i class="fa fa-share-alt" aria-hidden="true"></i> share
                     </button>
                 </span>
                 <input id="passwordURL" type="text" class="form-control" v-model="passwordURL">

@@ -1,64 +1,94 @@
 <template>
-    <div>
-        <div class="form-group row no-gutters pt-3">
-            <div class="col col-sm-2">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="lowercase" v-model="options.lowercase">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">abc</span>
-                </label>
-            </div>
-            <div class="col col-sm-2 text-center">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="uppercase" v-model="options.uppercase">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">ABC</span>
-                </label>
-            </div>
-            <div class="col col-sm-2 text-center">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="numbers" v-model="options.numbers">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">123</span>
-                </label>
-            </div>
-            <div class="col col-sm-2 text-right">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="symbols" v-model="options.symbols">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">%!@</span>
-                </label>
+    <div id="options">
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col">
+                        <label for="types">Types</label>
+                    </div>
+                </div>
+                <div id="types" class="row">
+                    <div class="col-3">
+                        <button type="button" class="btn btn-block btn-sm px-0"
+                                v-bind:class="{'btn-primary':options.lowercase===true && options.version===2,'btn-warning':options.lowercase===true && options.version===1,'btn-secondary':options.lowercase===false}"
+                                v-on:click="options.lowercase=!options.lowercase">
+                            abc
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-block btn-sm px-0"
+                                v-bind:class="{'btn-primary':options.uppercase===true && options.version===2,'btn-warning':options.uppercase===true && options.version===1,'btn-secondary':options.uppercase===false}"
+                                v-on:click="options.uppercase=!options.uppercase">
+                            ABC
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-block btn-sm px-0"
+                                v-bind:class="{'btn-primary':options.numbers===true && options.version===2,'btn-warning':options.numbers===true && options.version===1,'btn-secondary':options.numbers===false}"
+                                v-on:click="options.numbers=!options.numbers">
+                            123
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-block btn-sm px-0"
+                                v-bind:class="{'btn-primary':options.symbols===true && options.version===2,'btn-warning':options.symbols===true && options.version===1,'btn-secondary':options.symbols===false}"
+                                v-on:click="options.symbols=!options.symbols">
+                            %!@
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-4">
-                <label for="passwordLength">
-                    Length
-                </label>
-                <input id="passwordLength" class="form-control form-control-sm" type="number"
-                       v-model="options.length" min="5" max="35">
+            <div class="col-6 col-sm-4 mb-3 mb-sm-0">
+                <label for="passwordLength">Length</label>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button"><i class="fa fa-minus"></i></button>
+                    </span>
+                    <input id="passwordLength" class="form-control form-control-sm" type="number"
+                           v-model="options.length" min="5" max="35">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button"><i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
             </div>
-            <div class="col-4 text-center text-sm-left">
-                <label for="passwordCounter">
-                    Counter
-                </label>
-                <input id="passwordCounter" class="form-control form-control-sm" type="number"
-                       v-model="options.counter" min="1">
+            <div class="col-6 col-sm-4 mb-3 mb-sm-0">
+                <label for="passwordCounter">Counter</label>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button"><i class="fa fa-minus"></i></button>
+                    </span>
+                    <input id="passwordCounter" class="form-control form-control-sm" type="number"
+                           v-model="options.counter" min="1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button"><i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
             </div>
-            <div class="col-4 text-sm-left text-right">
-                <label>Version</label>
-                <br>
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn"
-                            v-bind:class="{'btn-primary':options.version===2,'btn-secondary':options.version!==2}"
-                            v-on:click="setVersion(2)">
-                        v2
-                    </button>
-                    <button type="button" class="btn"
-                            v-bind:class="{'btn-warning':options.version===1,'btn-secondary':options.version!==1}"
-                            v-on:click="setVersion(1)">
-                        v1
-                    </button>
+            <div class="clearfix hidden-sm-up"></div>
+            <div class="col-12 col-sm-4">
+                <div class="row hidden-sm-down">
+                    <div class="col">
+                        <label>Version</label>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-block btn-sm border-right-0"
+                                v-bind:class="{'btn-primary':options.version===2,'btn-secondary':options.version!==2}"
+                                v-on:click="setVersion(2)">
+                            v<span class="hidden-sm-up">ersion </span>2
+                        </button>
+
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-block btn-sm border-left-0"
+                                v-bind:class="{'btn-warning':options.version===1,'btn-secondary':options.version!==1}"
+                                v-on:click="setVersion(1)">
+                            v<span class="hidden-sm-up">ersion </span>1
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
