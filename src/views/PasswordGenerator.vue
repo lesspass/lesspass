@@ -3,10 +3,6 @@
         font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
     }
 
-    #password-generator {
-        color: #555;
-    }
-
     .inner-addon i {
         position: absolute;
         padding: 10px;
