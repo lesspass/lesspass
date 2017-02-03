@@ -64,9 +64,6 @@
                     </small>
                 </div>
             </div>
-            <div class="col-sm-4 col mt-3">
-                <version-button :small="false"></version-button>
-            </div>
         </div>
         <div class="form-group my-0">
             <router-link :to="{ name: 'passwordReset'}">
@@ -82,7 +79,6 @@
     import {mapGetters} from 'vuex';
     import MasterPassword from '../components/MasterPassword.vue';
     import OptionsButton from '../components/OptionsButton.vue';
-    import VersionButton from '../components/VersionButton.vue';
 
     const defaultErrors = {
         userNameAlreadyExist: false,
@@ -111,8 +107,7 @@
         },
         components: {
             MasterPassword,
-            OptionsButton,
-            VersionButton
+            OptionsButton
         },
         computed: {
             ...mapGetters(['version'])
@@ -130,9 +125,9 @@
                     uppercase: true,
                     numbers: true,
                     symbols: true,
-                    length: this.version == 2 ? 16 : 12,
+                    length: 16,
                     counter: 1,
-                    version: this.version,
+                    version: 2,
                 };
                 return LessPass.generatePassword('lesspass.com', this.email, this.password, defaultPasswordProfile).then(generatedPassword => {
                     this.password = generatedPassword;

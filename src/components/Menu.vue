@@ -27,6 +27,9 @@
                     <span v-on:click="saveOrUpdatePassword" class="white-link" v-else>
                         <i class="fa fa-lg fa-save fa-clickable"></i>
                     </span>
+                    <router-link class="white-link pl-2" :to="{ name: 'configureOptions'}">
+                        <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
+                    </router-link>
                     <router-link class="white-link pl-2" :to="{ name: 'passwords'}">
                         <i class="fa  fa-lg fa-key" aria-hidden="true"></i>
                     </router-link>
@@ -43,6 +46,9 @@
                     <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
                 </div>
                 <div class="col-6 text-right">
+                    <router-link class="white-link pl-2" :to="{ name: 'configureOptions'}">
+                        <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
+                    </router-link>
                     <router-link class="white-link pl-1" :to="{ name: 'login'}">
                         <i class="fa fa-lg fa-user-secret fa-clickable" aria-hidden="true"></i>
                     </router-link>

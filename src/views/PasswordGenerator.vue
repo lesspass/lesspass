@@ -113,74 +113,16 @@
                 <options-button v-on:click.native="showOptions=!showOptions"></options-button>
             </div>
         </div>
-        <div class="form-group row no-gutters pt-3" v-if="showOptions">
-            <div class="col col-sm-2">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="lowercase" v-model="password.lowercase">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">abc</span>
-                </label>
-            </div>
-            <div class="col col-sm-2 text-center">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="uppercase" v-model="password.uppercase">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">ABC</span>
-                </label>
-            </div>
-            <div class="col col-sm-2 text-center">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="numbers" v-model="password.numbers">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">123</span>
-                </label>
-            </div>
-            <div class="col col-sm-2 text-right">
-                <label class="custom-control custom-checkbox mr-0">
-                    <input type="checkbox" class="custom-control-input" id="symbols" v-model="password.symbols">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">%!@</span>
-                </label>
-            </div>
-        </div>
-        <div class="form-group row" v-if="showOptions">
-            <div class="col-4">
-                <label for="passwordLength">
-                    Length
-                </label>
-                <input class="form-control form-control-sm" type="number" id="passwordLength"
-                       v-model="password.length" min="5" max="35">
-            </div>
-            <div class="col-4 text-center text-sm-left">
-                <label for="passwordCounter">
-                    Counter
-                </label>
-                <input class="form-control form-control-sm" type="number" id="passwordCounter"
-                       v-model="password.counter" min="1">
-            </div>
-            <div class="col-4 text-sm-left text-right">
-                <version-button class="mr-1"></version-button>
-            </div>
-        </div>
+        <options :password="password" v-on:optionsUpdated="updatePassword" v-if="showOptions"></options>
         <div class="form-group" v-if="showOptions">
             <div class="input-group input-group-sm">
-                <span class="input-group-btn btn-copy" data-clipboard-target="#passwordURL" >
-                    <button class="btn btn-secondary"type="button">
+                <span class="input-group-btn btn-copy" data-clipboard-target="#passwordURL">
+                    <button class="btn btn-secondary" type="button">
                         <i class="fa fa-share-alt" aria-hidden="true"></i>
                     </button>
                 </span>
                 <input id="passwordURL" type="text" class="form-control" v-model="passwordURL">
             </div>
-        </div>
-        <div class="form-group" v-if="showOptions">
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="saveDefault">
-                <span v-if="optionsSaved" class="text-success">
-                   <i class="fa fa-check" aria-hidden="true"></i> saved
-                </span>
-                <span v-else>
-                  save as default options
-                </span>
-            </button>
         </div>
         <div class="form-group mt-3" v-if="showError">
             <div class="alert alert-danger" role="alert">
@@ -197,8 +139,8 @@
     import {getSite, getPasswordFromUrlQuery} from '../domain/url-parser';
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
     import MasterPassword from '../components/MasterPassword.vue';
-    import VersionButton from '../components/VersionButton.vue';
     import OptionsButton from '../components/OptionsButton.vue';
+    import Options from '../components/Options.vue';
 
     function fetchPasswords(store) {
         return store.dispatch('getPasswords')
@@ -218,7 +160,7 @@
         components: {
             RemoveAutoComplete,
             MasterPassword,
-            VersionButton,
+            Options,
             OptionsButton
         },
         computed: mapGetters(['passwords', 'password', 'passwordURL']),
@@ -268,8 +210,7 @@
                 cleanTimeout: null,
                 showOptions: false,
                 showError: false,
-                generatingPassword: false,
-                optionsSaved: false
+                generatingPassword: false
             }
         },
         watch: {
@@ -290,24 +231,6 @@
                 }
             },
             'password.login': function () {
-                this.cleanErrors();
-            },
-            'password.uppercase': function () {
-                this.cleanErrors();
-            },
-            'password.lowercase': function () {
-                this.cleanErrors();
-            },
-            'password.numbers': function () {
-                this.cleanErrors();
-            },
-            'password.symbols': function () {
-                this.cleanErrors();
-            },
-            'password.length': function () {
-                this.cleanErrors();
-            },
-            'password.counter': function () {
                 this.cleanErrors();
             },
             'generatedPassword': function () {
@@ -370,12 +293,9 @@
                     window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
                 });
             },
-            saveDefault(){
-                this.$store.dispatch('saveDefaultPassword', {password: this.password});
-                this.optionsSaved = true;
-                setTimeout(() => {
-                    this.optionsSaved = false;
-                }, 3000);
+            updatePassword(password){
+                this.cleanErrors();
+                this.$store.dispatch('savePassword', {password: password});
             }
         }
     }
