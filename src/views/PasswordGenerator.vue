@@ -178,7 +178,7 @@
                 fetchPasswords(this.$store);
             }
 
-            getSite(this.password.version).then(site => {
+            getSite().then(site => {
                 if (site) {
                     this.password.site = site;
                     this.$store.dispatch('savePassword', {password: this.password});
