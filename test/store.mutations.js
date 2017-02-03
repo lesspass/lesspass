@@ -125,10 +125,10 @@ test('SET_VERSION password null', t => {
 });
 
 test('LOAD_PASSWORD_FIRST_TIME 5 minutes after last use', t => {
-    const now = 1485989236;
-    const time = new Date(now * 1000);
+    const now = 1485989236000;
+    const time = new Date(now);
     timekeeper.freeze(time);
-    const fiveMinutesBefore = (now - 5 * 60) * 1000;
+    const fiveMinutesBefore = now - 5 * 60 * 1000;
     const state = {
         lastUse: fiveMinutesBefore,
         password: {
@@ -148,12 +148,12 @@ test('LOAD_PASSWORD_FIRST_TIME 5 minutes after last use', t => {
 });
 
 test('LOAD_PASSWORD_FIRST_TIME more than 10 minutes after last use', t => {
-    const now = 1485989236;
-    const time = new Date(now * 1000);
+    const now = 1485989236000;
+    const time = new Date(now);
     timekeeper.freeze(time);
-    const fifteenMinutesBefore = (now - 15 * 60) * 1000;
+    const twentyMinutesBefore = now - 20 * 60 * 1000;
     const state = {
-        lastUse: fifteenMinutesBefore,
+        lastUse: twentyMinutesBefore,
         password: {
             login: 'test@example.org',
             length: 30
