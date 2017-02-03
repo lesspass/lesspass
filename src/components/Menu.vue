@@ -23,7 +23,7 @@
                     <span class="text-white" v-if="saved && isAuthenticated">
                        <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
                     </span>
-                    <span v-on:click="saveOrUpdatePassword" class="white-link" v-if="!save && isAuthenticated">
+                    <span v-on:click="saveOrUpdatePassword()" class="white-link" v-if="!saved && isAuthenticated">
                         <i class="fa fa-lg fa-save fa-clickable"></i>
                     </span>
                     <router-link class="white-link pl-3" :to="{ name: 'configureOptions'}">
