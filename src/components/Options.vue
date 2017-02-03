@@ -43,12 +43,12 @@
             <div class="col-6 col-sm-4 mb-3 mb-sm-0">
                 <label for="passwordLength">Length</label>
                 <div class="input-group input-group-sm">
-                    <span class="input-group-btn">
+                    <span class="input-group-btn" v-on:click="options.length-=1">
                         <button class="btn btn-secondary" type="button"><i class="fa fa-minus"></i></button>
                     </span>
                     <input id="passwordLength" class="form-control form-control-sm" type="number"
                            v-model="options.length" min="5" max="35">
-                    <span class="input-group-btn">
+                    <span class="input-group-btn" v-on:click="options.length+=1">
                         <button class="btn btn-secondary" type="button"><i class="fa fa-plus"></i></button>
                     </span>
                 </div>
@@ -56,12 +56,12 @@
             <div class="col-6 col-sm-4 mb-3 mb-sm-0">
                 <label for="passwordCounter">Counter</label>
                 <div class="input-group input-group-sm">
-                    <span class="input-group-btn">
+                    <span class="input-group-btn" v-on:click="options.counter-=1">
                         <button class="btn btn-secondary" type="button"><i class="fa fa-minus"></i></button>
                     </span>
                     <input id="passwordCounter" class="form-control form-control-sm" type="number"
                            v-model="options.counter" min="1">
-                    <span class="input-group-btn">
+                    <span class="input-group-btn" v-on:click="options.counter+=1">
                         <button class="btn btn-secondary" type="button"><i class="fa fa-plus"></i></button>
                     </span>
                 </div>
