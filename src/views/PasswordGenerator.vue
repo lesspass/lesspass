@@ -164,12 +164,11 @@
         </div>
         <div class="form-group" v-if="showOptions">
             <div class="input-group input-group-sm">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary btn-copy" data-clipboard-target="#passwordURL" type="button">
-                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                <span class="input-group-btn btn-copy" data-clipboard-target="#passwordURL" >
+                    <button class="btn btn-secondary"type="button">
+                        <i class="fa fa-share-alt" aria-hidden="true"></i>
                     </button>
                 </span>
-                <span class="input-group-addon">share current password</span>
                 <input id="passwordURL" type="text" class="form-control" v-model="passwordURL">
             </div>
         </div>
