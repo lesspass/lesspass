@@ -20,6 +20,10 @@ export const saveDefaultPassword = ({commit}, payload) => {
     commit(types.SET_DEFAULT_PASSWORD, payload);
 };
 
+export const passwordGenerated = ({commit}) => {
+    commit(types.PASSWORD_GENERATED);
+};
+
 export const savePassword = ({commit}, payload) => {
     commit(types.SET_PASSWORD, payload);
 };

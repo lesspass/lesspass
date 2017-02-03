@@ -25,13 +25,24 @@ test('SET_PASSWORD', t => {
     t.true(state.password.uppercase);
 });
 
-test('SET_PASSWORD change lastUse date', t => {
+test('SET_PASSWORD dont change lastUse date', t => {
     const SET_PASSWORD = mutations[types.SET_PASSWORD];
     const now = 1485989236000;
     const time = new Date(now);
     timekeeper.freeze(time);
     const state = {lastUse: null, password: null};
     SET_PASSWORD(state, {password: {}});
+    t.true(state.lastUse === null);
+    timekeeper.reset();
+});
+
+test('PASSWORD_GENERATED change lastUse date', t => {
+    const PASSWORD_GENERATED = mutations[types.PASSWORD_GENERATED];
+    const now = 1485989236000;
+    const time = new Date(now);
+    timekeeper.freeze(time);
+    const state = {lastUse: null};
+    PASSWORD_GENERATED(state);
     t.is(now, state.lastUse);
     timekeeper.reset();
 });

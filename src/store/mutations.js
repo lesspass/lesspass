@@ -13,8 +13,10 @@ export default {
         state.authenticated = false;
     },
     [types.SET_PASSWORD](state, {password}){
-        state.lastUse = new Date().getTime();
         setState(state, 'password', password);
+    },
+    [types.PASSWORD_GENERATED](state){
+        state.lastUse = new Date().getTime();
     },
     [types.SET_DEFAULT_PASSWORD](state, {password}){
         setState(state, 'defaultPassword', password);

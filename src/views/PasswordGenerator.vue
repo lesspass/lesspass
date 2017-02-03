@@ -267,6 +267,7 @@
                     this.generatingPassword = false;
                     this.generatedPassword = generatedPassword;
                     this.$store.dispatch('savePassword', {password: this.password});
+                    this.$store.dispatch('passwordGenerated');
                     window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
                 });
             },
