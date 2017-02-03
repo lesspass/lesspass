@@ -16,14 +16,15 @@
     <div id="menu">
         <div class="card-header" v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                     <a href="/#/" v-on:click="fullReload()" class="white-link">LessPass</a>
                 </div>
-                <div class="col-8 text-right">
+                <div class="col-9 text-right">
                     <span class="text-white" v-if="saved && isAuthenticated">
                        <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
                     </span>
-                    <span v-on:click="saveOrUpdatePassword()" class="white-link" v-if="!saved && isAuthenticated">
+                    <span v-on:click="saveOrUpdatePassword()" class="white-link"
+                          v-if="!saved && isAuthenticated && $store.state.route.path==='/' ">
                         <i class="fa fa-lg fa-save fa-clickable"></i>
                     </span>
                     <span class="white-link btn-copy pl-3" v-bind:data-clipboard-text="passwordURL">

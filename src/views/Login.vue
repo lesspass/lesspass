@@ -9,7 +9,6 @@
 <template>
     <form v-on:submit.prevent="signIn">
         <div class="form-group">
-            <label for="baseURL">Connect to:</label>
             <div class="inner-addon left-addon">
                 <i class="fa fa-globe"></i>
                 <input id="baseURL"
