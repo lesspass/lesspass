@@ -110,7 +110,9 @@
                 </div>
             </div>
             <div class="col col-auto">
-                <options-button v-on:click.native="showOptions=!showOptions"></options-button>
+                <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
+                    <i class="fa fa-sliders" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
         <options :password="password" v-on:optionsUpdated="updatePassword" v-if="showOptions"></options>
@@ -139,7 +141,6 @@
     import {getSite, getPasswordFromUrlQuery} from '../domain/url-parser';
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
     import MasterPassword from '../components/MasterPassword.vue';
-    import OptionsButton from '../components/OptionsButton.vue';
     import Options from '../components/Options.vue';
 
     function fetchPasswords(store) {
@@ -160,8 +161,7 @@
         components: {
             RemoveAutoComplete,
             MasterPassword,
-            Options,
-            OptionsButton
+            Options
         },
         computed: mapGetters(['passwords', 'password', 'passwordURL']),
         preFetch: fetchPasswords,

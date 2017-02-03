@@ -1,5 +1,27 @@
+<style>
+    #signInButton {
+        border-right: none;
+    }
+    #registerButton {
+        border-left: none;
+    }
+</style>
 <template>
     <form v-on:submit.prevent="signIn">
+        <div class="form-group">
+            <label for="baseURL">Connect to:</label>
+            <div class="inner-addon left-addon">
+                <i class="fa fa-globe"></i>
+                <input id="baseURL"
+                       class="form-control"
+                       type="text"
+                       placeholder="https://lesspass.com"
+                       v-model="baseURL">
+                <small class="form-text text-danger" v-if="errors.baseURLRequired">
+                    A LessPass database url is required
+                </small>
+            </div>
+        </div>
         <div class="form-group row">
             <div class="col-12">
                 <div class="inner-addon left-addon">
@@ -19,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <master-password v-model="password"></master-password>
             <label class="custom-control custom-checkbox hint--top hint--medium mb-0"
                    data-hint="Check me to generate encrypted password for lesspass.com">
@@ -30,39 +52,22 @@
                 </span>
             </label>
         </div>
-        <div class="form-group row justify-content-between no-gutters mb-0">
-            <div class="col col-auto">
-                <button id="signInButton" class="btn" type="submit"
+        <div class="form-group row no-gutters mb-0">
+            <div class="col">
+                <button id="signInButton" class="btn btn-block" type="submit"
                         v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
                     Sign In
                 </button>
-                <button id="registerButton" class="btn btn-secondary" type="button" v-on:click="register">
+            </div>
+            <div class="col">
+                <button id="registerButton" class="btn btn-secondary btn-block" type="button" v-on:click="register">
                     Register
                 </button>
-            </div>
-            <div class="col col-auto">
-                <options-button v-on:click.native="showOptions=!showOptions"></options-button>
             </div>
         </div>
         <div class="form-group" v-if="showError">
             <div class="alert alert-danger" role="alert">
                 {{ errorMessage }}
-            </div>
-        </div>
-        <div class="form-group row" v-if="showOptions || errors.baseURLRequired">
-            <div class="col-12 col-sm-8 mt-3">
-                <label for="baseURL">LessPass Database Url</label>
-                <div class="inner-addon left-addon">
-                    <i class="fa fa-globe"></i>
-                    <input id="baseURL"
-                           class="form-control"
-                           type="text"
-                           placeholder="https://example.org"
-                           v-model="baseURL">
-                    <small class="form-text text-danger" v-if="errors.baseURLRequired">
-                        A LessPass database url is required
-                    </small>
-                </div>
             </div>
         </div>
         <div class="form-group my-0">
@@ -78,7 +83,6 @@
     import Storage from '../api/storage';
     import {mapGetters} from 'vuex';
     import MasterPassword from '../components/MasterPassword.vue';
-    import OptionsButton from '../components/OptionsButton.vue';
 
     const defaultErrors = {
         userNameAlreadyExist: false,
@@ -106,8 +110,7 @@
             };
         },
         components: {
-            MasterPassword,
-            OptionsButton
+            MasterPassword
         },
         computed: {
             ...mapGetters(['version'])
