@@ -14,42 +14,29 @@
 </style>
 <template>
     <div id="menu">
-        <div class="card-header" v-show="isAuthenticated"
-             v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
+        <div class="card-header" v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                     <a href="/" v-on:click="fullReload()" class="white-link">LessPass</a>
                 </div>
-                <div class="col-6 text-right">
-                    <span class="text-white" v-if="saved">
-                       <small><i class="fa fa-lg fa-check" aria-hidden="true"></i> saved</small>
+                <div class="col-8 text-right">
+                    <span class="text-white" v-if="saved && isAuthenticated">
+                       <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
                     </span>
-                    <span v-on:click="saveOrUpdatePassword" class="white-link" v-else>
+                    <span v-on:click="saveOrUpdatePassword" class="white-link" v-if="!save && isAuthenticated">
                         <i class="fa fa-lg fa-save fa-clickable"></i>
                     </span>
-                    <router-link class="white-link pl-2" :to="{ name: 'configureOptions'}">
+                    <router-link class="white-link pl-3" :to="{ name: 'configureOptions'}">
                         <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
                     </router-link>
-                    <router-link class="white-link pl-2" :to="{ name: 'passwords'}">
+                    <router-link class="white-link pl-3" :to="{ name: 'passwords'}" v-if="isAuthenticated">
                         <i class="fa  fa-lg fa-key" aria-hidden="true"></i>
                     </router-link>
-                    <button class="white-link btn btn-link p-0 m-0 pl-2" type="button" v-on:click="logout">
+                    <button class="white-link btn btn-link p-0 m-0 pl-3" type="button" v-if="isAuthenticated"
+                            v-on:click="logout">
                         <i class="fa fa-lg fa-sign-out" aria-hidden="true"></i>
                     </button>
-                </div>
-            </div>
-        </div>
-        <div class="card-header" v-show="isGuest"
-             v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
-            <div class="row">
-                <div class="col-6">
-                    <router-link class="white-link" :to="{ name: 'home'}">LessPass</router-link>
-                </div>
-                <div class="col-6 text-right">
-                    <router-link class="white-link pl-2" :to="{ name: 'configureOptions'}">
-                        <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
-                    </router-link>
-                    <router-link class="white-link pl-1" :to="{ name: 'login'}">
+                    <router-link class="white-link pl-3" :to="{ name: 'login'}" v-if="isGuest">
                         <i class="fa fa-lg fa-user-secret fa-clickable" aria-hidden="true"></i>
                     </router-link>
                 </div>
