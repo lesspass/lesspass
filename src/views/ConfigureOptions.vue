@@ -9,7 +9,7 @@
                    <i class="fa fa-check" aria-hidden="true"></i> saved
                 </span>
                 <span v-else>
-                  save as default options
+                  Save
                 </span>
             </button>
         </div>
