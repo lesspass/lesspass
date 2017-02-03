@@ -116,16 +116,6 @@
             </div>
         </div>
         <options :password="password" v-on:optionsUpdated="updatePassword" v-if="showOptions"></options>
-        <div class="form-group" v-if="showOptions">
-            <div class="input-group input-group-sm">
-                <span class="input-group-btn btn-copy" data-clipboard-target="#passwordURL">
-                    <button class="btn btn-secondary" type="button">
-                        <i class="fa fa-share-alt" aria-hidden="true"></i> share
-                    </button>
-                </span>
-                <input id="passwordURL" type="text" class="form-control" v-model="passwordURL">
-            </div>
-        </div>
         <div class="form-group mt-3" v-if="showError">
             <div class="alert alert-danger" role="alert">
                 site, login and master password fields are mandatory
@@ -142,18 +132,10 @@
     import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
     import MasterPassword from '../components/MasterPassword.vue';
     import Options from '../components/Options.vue';
+    import {showTooltip} from '../services/tooltip';
 
     function fetchPasswords(store) {
         return store.dispatch('getPasswords')
-    }
-
-    function showTooltip(elem, msg) {
-        var classNames = elem.className;
-        elem.setAttribute('class', classNames + ' hint--right');
-        elem.setAttribute('aria-label', msg);
-        setTimeout(function () {
-            elem.setAttribute('class', classNames);
-        }, 2000);
     }
 
     export default {
