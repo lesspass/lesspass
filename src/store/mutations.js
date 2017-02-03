@@ -45,5 +45,19 @@ export default {
         if (tenMinutesAgo > state.lastUse) {
             setState(state, 'password', state.defaultPassword);
         }
+    },
+    [types.LOAD_PASSWORD_FOR_SITE](state, {site, url}){
+        state.password.site = site;
+        const passwords = state.passwords;
+        for (let i = 0; i < state.passwords.length; i++) {
+            const password = passwords[i];
+            if (password.site.endsWith(site)) {
+                setState(state, 'password', password);
+            }
+            if (typeof url !== 'undefined' && url.includes(password.site)) {
+                setState(state, 'password', password);
+                break;
+            }
+        }
     }
 };

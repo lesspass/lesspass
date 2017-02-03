@@ -18,7 +18,11 @@ export function getSite() {
     return new Promise(resolve => {
         if (typeof chrome !== 'undefined' && typeof chrome.tabs !== 'undefined' && typeof chrome.tabs.query !== 'undefined') {
             chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-                resolve(getDomainName(tabs[0].url));
+                const url = tabs[0].url;
+                resolve({
+                    site: getDomainName(url),
+                    url: url
+                });
             });
         } else {
             resolve('');

@@ -186,6 +186,52 @@ test('LOAD_PASSWORD_FIRST_TIME last use null', t => {
     };
     const LOAD_PASSWORD_FIRST_TIME = mutations[types.LOAD_PASSWORD_FIRST_TIME];
     LOAD_PASSWORD_FIRST_TIME(state);
-    t.is(state.password.version,2);
+    t.is(state.password.version, 2);
     timekeeper.reset();
+});
+
+test('LOAD_PASSWORD_FOR_SITE', t => {
+    const state = {
+        password: {
+            site: ''
+        },
+        passwords: [
+            {id: '1', site: 'www.example.org'},
+            {id: '2', site: 'www.google.com'}
+        ]
+    };
+    const LOAD_PASSWORD_FOR_SITE = mutations[types.LOAD_PASSWORD_FOR_SITE];
+    LOAD_PASSWORD_FOR_SITE(state, {site: 'google.com'});
+    t.is(state.password.id, '2');
+    t.is(state.password.site, 'www.google.com');
+});
+
+test('LOAD_PASSWORD_FOR_SITE no passwords', t => {
+    const state = {
+        password: {
+            site: ''
+        },
+        passwords: []
+    };
+    const LOAD_PASSWORD_FOR_SITE = mutations[types.LOAD_PASSWORD_FOR_SITE];
+    LOAD_PASSWORD_FOR_SITE(state, {site: 'google.com'});
+    t.false('id' in state.password);
+    t.is(state.password.site, 'google.com');
+});
+
+test('LOAD_PASSWORD_FOR_SITE multiple accounts matching criteria', t => {
+    const state = {
+        password: {
+            site: ''
+        },
+        passwords: [
+            {id: '1', site: 'www.example.org'},
+            {id: '2', site: 'www.google.com'},
+            {id: '3', site: 'account.google.com'},
+        ]
+    };
+    const LOAD_PASSWORD_FOR_SITE = mutations[types.LOAD_PASSWORD_FOR_SITE];
+    LOAD_PASSWORD_FOR_SITE(state, {site: 'google.com', url: 'https://www.google.com'});
+    t.is(state.password.id, '2');
+    t.is(state.password.site, 'www.google.com');
 });

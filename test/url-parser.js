@@ -26,8 +26,9 @@ test('get current tab', t => {
             }
         }
     };
-    return urlParser.getSite().then(site => {
-        t.is(site, 'example.org')
+    return urlParser.getSite().then(response => {
+        t.is(response.url, url);
+        t.is(response.site, 'example.org')
     });
 });
 

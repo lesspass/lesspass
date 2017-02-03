@@ -12,6 +12,10 @@ export const loadPasswordFirstTime = ({commit}) => {
     commit(types.LOAD_PASSWORD_FIRST_TIME);
 };
 
+export const loadPasswordForSite = ({commit}, payload) => {
+    commit(types.LOAD_PASSWORD_FOR_SITE, payload);
+};
+
 export const saveDefaultPassword = ({commit}, payload) => {
     commit(types.SET_DEFAULT_PASSWORD, payload);
 };

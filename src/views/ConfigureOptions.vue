@@ -43,7 +43,6 @@
                 }, 3000);
             },
             updatePassword(password){
-                console.log(password);
                 this.options = password;
             }
         }

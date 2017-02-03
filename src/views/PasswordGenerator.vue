@@ -180,8 +180,7 @@
 
             getSite().then(site => {
                 if (site) {
-                    this.password.site = site;
-                    this.$store.dispatch('savePassword', {password: this.password});
+                    this.$store.dispatch('loadPasswordForSite', site);
                 }
             });
 
