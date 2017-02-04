@@ -39,17 +39,12 @@
     </form>
 </template>
 <script type="text/ecmascript-6">
-    import Auth from '../api/auth';
-    import Storage from '../api/storage';
+    import User from '../api/user';
     import {mapActions, mapGetters} from 'vuex';
 
     export default {
         data() {
-            const storage = new Storage();
-            const auth = new Auth(storage);
             return {
-                auth,
-                storage,
                 new_password: '',
                 passwordRequired: false,
                 showError: false,
@@ -72,18 +67,19 @@
                     this.passwordRequired = true;
                     return;
                 }
-                this.auth.confirmResetPassword({
-                    uid: this.$route.params.uid,
-                    token: this.$route.params.token,
-                    new_password: this.new_password
-                }).then(()=> {
-                    this.successMessage = true
-                }).catch(err => {
-                    if(err.response.status === 400){
-                        this.errorMessage = 'This password reset link become invalid.'
-                    }
-                    this.showError = true;
-                });
+                const resetPassword = {
+                    uid: this.$route.params.uid, token: this.$route.params.token, new_password: this.new_password
+                };
+                User.confirmResetPassword(resetPassword)
+                    .then(() => {
+                        this.successMessage = true
+                    })
+                    .catch(err => {
+                        if (err.response.status === 400) {
+                            this.errorMessage = 'This password reset link become invalid.'
+                        }
+                        this.showError = true;
+                    });
             }
         },
         computed: {

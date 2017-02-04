@@ -39,17 +39,12 @@
     </form>
 </template>
 <script type="text/ecmascript-6">
-    import Auth from '../api/auth';
-    import Storage from '../api/storage';
+    import User from '../api/user';
     import {mapActions, mapGetters} from 'vuex';
 
     export default {
         data() {
-            const storage = new Storage();
-            const auth = new Auth(storage);
             return {
-                auth,
-                storage,
                 email: '',
                 emailRequired: false,
                 showError: false,
@@ -77,13 +72,15 @@
                     return;
                 }
                 this.loading = true;
-                this.auth.resetPassword({email: this.email}).then(()=> {
-                    this.cleanErrors();
-                    this.successMessage = true;
-                }).catch(() => {
-                    this.cleanErrors();
-                    this.showError = true;
-                });
+                User.resetPassword({email: this.email})
+                    .then(() => {
+                        this.cleanErrors();
+                        this.successMessage = true;
+                    })
+                    .catch(() => {
+                        this.cleanErrors();
+                        this.showError = true;
+                    });
             }
         }
     }

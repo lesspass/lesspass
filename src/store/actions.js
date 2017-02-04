@@ -1,13 +1,6 @@
-import User from '../api/user';
-import Storage from '../api/storage';
-import Auth from '../api/auth';
-import HTTP from '../api/http';
+import Password from '../api/password';
 
 import * as types from './mutation-types'
-
-const storage = new Storage();
-const auth = new Auth(storage);
-const Passwords = new HTTP('passwords', storage);
 
 export const loadPasswordFirstTime = ({commit}) => {
     commit(types.LOAD_PASSWORD_FIRST_TIME);
@@ -44,19 +37,18 @@ export const login = ({commit}, payload) => {
 };
 
 export const logout = ({commit}) => {
-    auth.logout();
     commit(types.LOGOUT);
 };
 
-export const getPasswords = ({commit}) => {
-    if (auth.isAuthenticated()) {
-        Passwords.all().then(response => commit(types.SET_PASSWORDS, {passwords: response.data.results}));
+export const getPasswords = ({commit, state}) => {
+    if (state.authenticated) {
+        Password.all(state).then(response => commit(types.SET_PASSWORDS, {passwords: response.data.results}));
     }
 };
 
-export const getPassword = ({commit}, payload) => {
-    if (auth.isAuthenticated()) {
-        Passwords.get(payload).then(response => commit(types.SET_PASSWORD, {password: response.data}));
+export const getPassword = ({commit, state}, payload) => {
+    if (state.authenticated) {
+        Password.read(payload, state).then(response => commit(types.SET_PASSWORD, {password: response.data}));
     }
 };
 
@@ -65,19 +57,22 @@ export const saveOrUpdatePassword = ({commit, state}) => {
         const site = state.password.site;
         const login = state.password.login;
         if (site || login) {
-            Passwords.create(state.password).then(() => {
-                getPasswords({commit});
-            })
+            Password.create(state.password, state)
+                .then(() => {
+                    getPasswords({commit});
+                })
         }
     } else {
-        Passwords.update(state.password).then(() => {
-            getPasswords({commit});
-        })
+        Password.update(state.password, state)
+            .then(() => {
+                getPasswords({commit});
+            })
     }
 };
 
 export const deletePassword = ({commit}, payload) => {
-    Passwords.remove(payload).then(() => {
-        commit(types.DELETE_PASSWORD, payload);
-    });
+    Password.delete(payload, state)
+        .then(() => {
+            commit(types.DELETE_PASSWORD, payload);
+        });
 };
