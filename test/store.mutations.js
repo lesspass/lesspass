@@ -17,6 +17,14 @@ test('LOGIN', t => {
     t.true(state.authenticated);
 });
 
+test('SET_TOKEN', t => {
+    const token = '123456';
+    const SET_TOKEN = mutations[types.SET_TOKEN];
+    const state = {token: null};
+    SET_TOKEN(state, {token});
+    t.is(state.token, token);
+});
+
 test('SET_PASSWORD', t => {
     const SET_PASSWORD = mutations[types.SET_PASSWORD];
     const state = {password: null};

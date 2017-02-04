@@ -1,3 +1,4 @@
+import User from '../api/user';
 import Storage from '../api/storage';
 import Auth from '../api/auth';
 import HTTP from '../api/http';
@@ -36,7 +37,9 @@ export const saveVersion = ({commit}, payload) => {
     commit(types.SET_VERSION, payload);
 };
 
-export const login = ({commit}) => {
+export const login = ({commit}, payload) => {
+    commit(types.SET_BASE_URL, payload);
+    commit(types.SET_TOKEN, payload);
     commit(types.LOGIN);
 };
 
@@ -77,12 +80,4 @@ export const deletePassword = ({commit}, payload) => {
     Passwords.remove(payload).then(() => {
         commit(types.DELETE_PASSWORD, payload);
     });
-};
-
-export const refreshToken = ({commit}) => {
-    if (auth.isAuthenticated()) {
-        auth.refreshToken().catch(() => {
-            commit(types.LOGOUT);
-        });
-    }
 };

@@ -25,6 +25,7 @@ const state = {
     passwords: [],
     defaultPassword: defaultPassword,
     lastUse: null,
+    token: null,
     baseURL: 'https://lesspass.com',
 };
 

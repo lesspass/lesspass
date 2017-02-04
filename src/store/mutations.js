@@ -9,6 +9,9 @@ export default {
     [types.LOGIN](state){
         state.authenticated = true;
     },
+    [types.SET_TOKEN](state, {token}){
+        state.token = token;
+    },
     [types.LOGOUT](state){
         state.authenticated = false;
     },

@@ -1,5 +1,6 @@
 export const LOGOUT = 'LOGOUT';
 export const LOGIN = 'LOGIN';
+export const SET_TOKEN = 'SET_TOKEN';
 export const PASSWORD_GENERATED = 'PASSWORD_GENERATED';
 export const SET_PASSWORD = 'SET_PASSWORD';
 export const SET_DEFAULT_PASSWORD = 'SET_DEFAULT_PASSWORD';
