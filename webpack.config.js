@@ -12,9 +12,6 @@ module.exports = {
         publicPath: '/dist/',
         filename: 'lesspass.min.js'
     },
-    resolve: {
-        extensions: ['.json', '.js']
-    },
     module: {
         rules: [
             {test: /\.vue$/, loader: 'vue-loader'},
