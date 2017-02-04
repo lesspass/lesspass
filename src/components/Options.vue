@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row mb-0">
             <div class="col-6 col-sm-4 mb-3 mb-sm-0">
                 <label for="passwordLength">Length</label>
                 <div class="input-group input-group-sm">

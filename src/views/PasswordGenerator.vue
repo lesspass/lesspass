@@ -74,7 +74,7 @@
             <master-password ref="masterPassword" v-model="masterPassword"
                              :keyupEnter="generatePassword"></master-password>
         </div>
-        <div class="form-group row justify-content-between no-gutters">
+        <div class="form-group row justify-content-between no-gutters" v-bind:class="{'mb-0':showOptions===false}">
             <div class="col col-auto" v-show="!generatedPassword">
                 <div style="display: inline-block">
                     <button type="button" class="btn" v-on:click="generatePassword"
