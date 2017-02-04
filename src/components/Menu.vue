@@ -1,9 +1,9 @@
 <style>
-    .white-link, .text-white {
+    #menu .white-link, #menu .text-white {
         color: white;
     }
 
-    .white-link:hover, .white-link:focus, .white-link:active {
+    #menu .white-link:hover, #menu .white-link:focus, #menu .white-link:active {
         text-decoration: none;
         color: white;
     }

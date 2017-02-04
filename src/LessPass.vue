@@ -1,8 +1,4 @@
 <style>
-    #lesspass .white-link {
-        color: white;
-    }
-
     #lesspass.card {
         border: none;
     }
@@ -16,11 +12,6 @@
         #lesspass .card-block {
             border: none;
         }
-    }
-
-    #lesspass .white-link:hover, #lesspass .white-link:focus, #lesspass .white-link:active {
-        text-decoration: none;
-        color: white;
     }
 
     #lesspass, #lesspass * {
