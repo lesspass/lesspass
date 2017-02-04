@@ -49,12 +49,6 @@
         computed: mapGetters(['version']),
         created(){
             this.$store.dispatch('loadPasswordFirstTime');
-
-            const fiveMinutes = 1000 * 60 * 5;
-            this.$store.dispatch('refreshToken');
-            setInterval(() => {
-                this.$store.dispatch('refreshToken');
-            }, fiveMinutes);
         }
     }
 </script>
