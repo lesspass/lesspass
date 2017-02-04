@@ -34,3 +34,10 @@ test('confirmResetPassword', t => {
     nock('https://lesspass.com').post('/api/auth/password/reset/confirm/', newPassword).reply(204);
     t.notThrows(User.confirmResetPassword(newPassword, {baseURL: 'https://lesspass.com'}));
 });
+
+test('isAuthenticated', t => {
+    var store = {
+        authenticated: true
+    };
+    t.true(User.isAuthenticated(store));
+});

@@ -16,5 +16,8 @@ export default {
     },
     confirmResetPassword(password, config) {
         return axios.post('/api/auth/password/reset/confirm/', password, config);
+    },
+    isAuthenticated(store){
+        return store.authenticated;
     }
 }
