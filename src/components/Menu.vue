@@ -24,10 +24,11 @@
                        <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
                     </span>
                     <span v-on:click="saveOrUpdatePassword()" class="white-link"
-                          v-if="!saved && isAuthenticated && $store.state.route.path==='/' ">
+                          v-if="!saved && isAuthenticated && $store.state.route.path==='/'">
                         <i class="fa fa-lg fa-save fa-clickable"></i>
                     </span>
-                    <span class="white-link btn-copy pl-3" v-bind:data-clipboard-text="passwordURL">
+                    <span class="white-link btn-copy pl-3" v-bind:data-clipboard-text="passwordURL"
+                          v-if="$store.state.route.path==='/'">
                         <i class="fa fa-lg fa-share-alt fa-clickable"></i>
                     </span>
                     <router-link class="white-link pl-3" :to="{ name: 'configureOptions'}">
