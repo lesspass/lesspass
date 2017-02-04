@@ -2,6 +2,7 @@
     #signInButton {
         border-right: none;
     }
+
     #registerButton {
         border-left: none;
     }
@@ -78,8 +79,7 @@
 </template>
 <script type="text/ecmascript-6">
     import LessPass from 'lesspass';
-    import Auth from '../api/auth';
-    import Storage from '../api/storage';
+    import User from '../api/user';
     import {mapGetters} from 'vuex';
     import MasterPassword from '../components/MasterPassword.vue';
 
@@ -93,11 +93,7 @@
 
     export default {
         data() {
-            const storage = new Storage();
-            const auth = new Auth(storage);
             return {
-                auth,
-                storage,
                 email: '',
                 password: '',
                 baseURL: 'https://lesspass.com',
@@ -164,14 +160,10 @@
             },
             signIn(){
                 if (this.formIsValid()) {
-                    const email = this.email;
-                    const password = this.password;
                     const baseURL = this.baseURL;
-                    this.auth.login({email, password}, baseURL)
-                        .then(() => {
-                            this.storage.save({baseURL});
-                            this.$store.dispatch('login');
-                            this.$store.dispatch('saveBaseURL', {baseURL});
+                    User.login({email: this.email, password: this.password}, {baseURL})
+                        .then(response => {
+                            this.$store.dispatch('login', {token: response.token, baseURL});
                             this.$router.push({name: 'home'});
                         })
                         .catch(err => {
@@ -188,12 +180,10 @@
             },
             register(){
                 if (this.formIsValid()) {
-                    const email = this.email;
-                    const password = this.password;
                     const baseURL = this.baseURL;
-                    this.auth.register({email, password}, baseURL)
+                    User.register({email: this.email, password: this.password}, {baseURL})
                         .then(() => {
-                            this.signIn()
+                            this.signIn();
                         })
                         .catch(err => {
                             this.cleanErrors();
