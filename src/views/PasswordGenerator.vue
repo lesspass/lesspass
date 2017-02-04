@@ -29,6 +29,14 @@
     .right-addon input {
         padding-right: 30px;
     }
+
+    div.awesomplete {
+        display: block;
+    }
+
+    div.awesomplete > ul {
+        z-index: 11;
+    }
 </style>
 <template>
     <form id="password-generator">
@@ -40,17 +48,11 @@
                        name="site"
                        type="text"
                        ref="site"
-                       class="form-control"
+                       class="form-control awesomplete"
                        placeholder="Site"
-                       list="savedSites"
                        autocorrect="off"
                        autocapitalize="none"
                        v-model="password.site">
-                <datalist id="savedSites">
-                    <option v-for="pwd in passwords">
-                        {{pwd.site}} | {{pwd.login}}
-                    </option>
-                </datalist>
             </div>
         </div>
         <remove-auto-complete></remove-auto-complete>
@@ -129,6 +131,7 @@
     import MasterPassword from '../components/MasterPassword.vue';
     import Options from '../components/Options.vue';
     import {showTooltip} from '../services/tooltip';
+    import Awesomplete from 'awesomplete';
 
     function fetchPasswords(store) {
         return store.dispatch('getPasswords')
@@ -173,6 +176,17 @@
             });
         },
         mounted(){
+            const self = this;
+            new Awesomplete(this.$refs.site, {
+                list: this.passwords.map(password => {
+                    return {label: password.site + ' ' + password.login, value: password}
+                }),
+                replace: function (password) {
+                    self.$store.dispatch('savePassword', {password: password.value});
+                    this.input.value = password.value.site;
+                }
+            });
+
             if (this.password.site) {
                 this.$refs.login.focus();
             } else {
@@ -191,21 +205,8 @@
             }
         },
         watch: {
-            'password.site': function (newValue) {
+            'password.site': function () {
                 this.cleanErrors();
-                const values = newValue.split(" | ");
-                if (values.length === 2) {
-                    const site = values[0];
-                    const login = values[1];
-                    const passwords = this.passwords;
-                    for (let i = 0; i < passwords.length; i++) {
-                        const password = passwords[i];
-                        if (password.site === site && password.login === login) {
-                            this.$store.dispatch('savePassword', {password});
-                            break;
-                        }
-                    }
-                }
             },
             'password.login': function () {
                 this.cleanErrors();

@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
+    "awesomplete": "^1.1.1",
     "axios": "^0.15.2",
     "bootstrap": "4.0.0-alpha.6",
     "clipboard": "^1.5.15",
