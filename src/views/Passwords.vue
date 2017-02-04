@@ -8,34 +8,21 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <table class="table">
-                    <tbody>
-                    <tr v-for="password in filteredPasswords">
-                        <td class="col-5">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <router-link :to="{ name: 'password', params: { id: password.id }}">
-                                        {{password.site}}
-                                    </router-link>
-                                </li>
-                                <li>
-                                    {{password.login}}
-                                </li>
-                            </ul>
-                        </td>
-                        <td class="col-7 text-center">
-                            <delete-button class="float-right mt-2"
-                                           confirmText="Are you sure you want to delete this password profile?"
-                                           confirmButton="Sure"
-                                           cancelButton="Oups no!"
-                                           v-on:remove="deletePassword(password)">
-                            </delete-button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+        <div class="row py-2" v-for="password in filteredPasswords">
+            <div class="col-6">
+                <router-link :to="{ name: 'password', params: { id: password.id }}">
+                    {{password.site}}
+                </router-link>
+                <br>
+                {{password.login}}
+            </div>
+            <div class="col-6">
+                <delete-button class="float-right mt-2"
+                               confirmText="Are you sure you want to delete this password profile?"
+                               confirmButton="Sure"
+                               cancelButton="Oups no!"
+                               v-on:remove="deletePassword(password)">
+                </delete-button>
             </div>
         </div>
     </div>
