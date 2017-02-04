@@ -8,7 +8,7 @@
         color: white;
     }
 
-    .fa-clickable {
+    .pointer {
         cursor: pointer;
     }
 </style>
@@ -17,7 +17,7 @@
         <div class="card-header" v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
             <div class="row">
                 <div class="col-3">
-                    <a href="/#/" v-on:click="fullReload()" class="white-link">LessPass</a>
+                    <span v-on:click="fullReload()" class="white-link pointer">LessPass</span>
                 </div>
                 <div class="col-9 text-right">
                     <span class="text-white" v-if="saved && isAuthenticated">
@@ -25,11 +25,11 @@
                     </span>
                     <span v-on:click="saveOrUpdatePassword()" class="white-link"
                           v-if="!saved && isAuthenticated && $store.state.route.path==='/'">
-                        <i class="fa fa-lg fa-save fa-clickable"></i>
+                        <i class="fa fa-lg fa-save pointer"></i>
                     </span>
                     <span class="white-link btn-copy pl-3" v-bind:data-clipboard-text="passwordURL"
                           v-if="$store.state.route.path==='/'">
-                        <i class="fa fa-lg fa-share-alt fa-clickable"></i>
+                        <i class="fa fa-lg fa-share-alt pointer"></i>
                     </span>
                     <router-link class="white-link pl-3" :to="{ name: 'configureOptions'}">
                         <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
@@ -42,7 +42,7 @@
                         <i class="fa fa-lg fa-sign-out" aria-hidden="true"></i>
                     </button>
                     <router-link class="white-link pl-3" :to="{ name: 'login'}" v-if="isGuest">
-                        <i class="fa fa-lg fa-user-secret fa-clickable" aria-hidden="true"></i>
+                        <i class="fa fa-lg fa-user-secret pointer" aria-hidden="true"></i>
                     </router-link>
                 </div>
             </div>
@@ -74,6 +74,7 @@
         methods: {
             fullReload(){
                 this.$store.dispatch('savePassword', {password: this.defaultPassword});
+                this.$router.push({name: 'home'});
             },
             logout(){
                 this.$store.dispatch('logout');
