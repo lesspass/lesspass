@@ -1,6 +1,16 @@
 <template>
     <div>
         <div class="form-group">
+            <div class="alert alert-info" v-if="defaultPassword.version===2">
+                Default options are automatically saved <strong>locally</strong></small>
+            </div>
+            <div class="alert alert-danger" v-if="defaultPassword.version===1">
+                Version 1 is deprecated and will be removed in
+                <strong aria-label="April, 10 2017" class="hint--right">{{ getDayBeforeOnlyV2() }} days</strong>.
+                We strongly advise you to migrate your passwords to version 2.
+            </div>
+        </div>
+        <div class="form-group">
             <label for="login">Login</label>
             <div class="inner-addon left-addon">
                 <i class="fa fa-user"></i>
@@ -16,16 +26,6 @@
             </div>
         </div>
         <options v-bind:password="defaultPassword" v-on:optionsUpdated="updatePassword"></options>
-        <div class="form-group">
-            <div class="alert alert-info" v-if="defaultPassword.version===2">
-                Default options are automatically saved <strong>locally</strong></small>
-            </div>
-            <div class="alert alert-danger" v-if="defaultPassword.version===1">
-                Version 1 is deprecated and will be removed in
-                <strong aria-label="April, 10 2017" class="hint--right">{{ getDayBeforeOnlyV2() }} days</strong>.
-                We strongly advise you to migrate your passwords to version 2.
-            </div>
-        </div>
     </div>
 </template>
 
