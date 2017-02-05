@@ -53,7 +53,7 @@
             };
         },
         computed: {
-            ...mapGetters(['version'])
+            ...mapGetters(['version', 'baseURL'])
         },
         methods: {
             cleanErrors(){
@@ -72,7 +72,7 @@
                     return;
                 }
                 this.loading = true;
-                User.resetPassword({email: this.email})
+                User.resetPassword({email: this.email}, {baseURL: this.baseURL})
                     .then(() => {
                         this.cleanErrors();
                         this.successMessage = true;

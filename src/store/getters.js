@@ -8,6 +8,8 @@ export const isAuthenticated = state => state.authenticated;
 
 export const isGuest = state => !state.authenticated;
 
+export const baseURL = state => state.baseURL;
+
 export const passwordStatus = state => state.passwordStatus;
 
 export const version = state => {
