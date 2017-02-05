@@ -14,6 +14,9 @@ export default {
     },
     [types.LOGOUT](state){
         state.authenticated = false;
+        state.token = null;
+        state.passwords = [];
+        setState(state, 'password', state.defaultPassword);
     },
     [types.SET_PASSWORD](state, {password}){
         setState(state, 'password', password);

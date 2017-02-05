@@ -5,9 +5,25 @@ import * as types from '../src/store/mutation-types';
 
 test('LOGOUT', t => {
     const LOGOUT = mutations[types.LOGOUT];
-    const state = {authenticated: true};
+    const state = {
+        authenticated: true
+    };
     LOGOUT(state);
     t.false(state.authenticated);
+});
+
+test('LOGOUT clean user personal info', t => {
+    const LOGOUT = mutations[types.LOGOUT];
+    const state = {
+        token: '123456',
+        password: {counter: 2},
+        passwords: [{id: '1', site: 'test@example.org'}],
+        defaultPassword: {counter: 1},
+    };
+    LOGOUT(state);
+    t.true(state.token === null);
+    t.is(state.passwords.length, 0);
+    t.is(state.password.counter, 1);
 });
 
 test('LOGIN', t => {
