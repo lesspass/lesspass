@@ -3,6 +3,7 @@ import * as getters from '../src/store/getters';
 
 test('version', t => {
     const state = {
+        route: {path: '/'},
         password: {version: 2},
         defaultPassword: {version: 1}
     };
@@ -10,8 +11,19 @@ test('version', t => {
     t.is(version, 2);
 });
 
+test('version path equal default options', t => {
+    const state = {
+        route: {path: '/options/default'},
+        password: {version: 2},
+        defaultPassword: {version: 1}
+    };
+    const version = getters.version(state);
+    t.is(version, 1);
+});
+
 test('version no password', t => {
     const state = {
+        route: {path: '/'},
         password: null,
         defaultPassword: {version: 1}
     };
