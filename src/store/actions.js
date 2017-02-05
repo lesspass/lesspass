@@ -1,9 +1,19 @@
 import Password from '../api/password';
+import User from '../api/user';
 
 import * as types from './mutation-types'
 
 export const loadPasswordFirstTime = ({commit}) => {
     commit(types.LOAD_PASSWORD_FIRST_TIME);
+};
+
+export const refreshToken = ({commit, state}) => {
+    const token = state.token;
+    if (token) {
+        User.requestNewToken({token}, {baseURL: state.baseURL})
+            .then(newToken => commit(types.SET_TOKEN, {token: newToken}))
+            .catch(() => commit(types.LOGOUT));
+    }
 };
 
 export const loadPasswordForSite = ({commit}, payload) => {

@@ -20,6 +20,7 @@
         computed: mapGetters(['version']),
         created(){
             this.$store.dispatch('loadPasswordFirstTime');
+            this.$store.dispatch('refreshToken');
         }
     }
 </script>
