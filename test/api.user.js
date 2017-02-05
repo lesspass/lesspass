@@ -34,3 +34,12 @@ test('confirmResetPassword', t => {
     nock('https://lesspass.com').post('/api/auth/password/reset/confirm/', newPassword).reply(204);
     t.notThrows(User.confirmResetPassword(newPassword, {baseURL: 'https://lesspass.com'}));
 });
+
+test('refresh token', t => {
+    const token = '3e3231';
+    const newToken = 'wibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9eyJzdWIiOiIxMjM0NTY3ODkwIi';
+    nock('https://lesspass.com').post('/api/tokens/refresh/', {token}).reply(200, {token: newToken});
+    return User.requestNewToken({token}, {baseURL: 'https://lesspass.com'}).then(refreshedToken => {
+        t.is(refreshedToken, newToken);
+    });
+});

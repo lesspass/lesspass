@@ -16,5 +16,10 @@ export default {
     },
     confirmResetPassword(password, config) {
         return axios.post('/api/auth/password/reset/confirm/', password, config);
+    },
+    requestNewToken(token, config){
+        return axios.post('/api/tokens/refresh/', token, config).then(response => {
+            return response.data.token;
+        });
     }
 }
