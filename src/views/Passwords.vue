@@ -37,11 +37,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2" v-if="pagination.number_of_pages > 1">
                 <div class="col-4">
                     <i class="fa fa-arrow-left pointer"
                        v-on:click="pagination.current_page -= 1"
-                       v-bind:class="{'fa-none':this.pagination.current_page === 1}"></i>
+                       v-bind:class="{'fa-none':pagination.current_page === 1}"></i>
                 </div>
                 <div class="col-4 text-center">
                     {{pagination.current_page}} / {{Math.ceil(passwords.length/pagination.per_page)}}
@@ -49,12 +49,14 @@
                 <div class="col-4 text-right">
                     <i class="fa fa-arrow-right pointer"
                        v-on:click="pagination.current_page += 1"
-                       v-bind:class="{'fa-none':this.pagination.current_page === this.pagination.number_of_pages}"></i>
+                       v-bind:class="{'fa-none':pagination.current_page === pagination.number_of_pages}"></i>
                 </div>
             </div>
         </div>
         <div v-else>
-            You don't have any <span class="hint--bottom hint--medium" aria-label="A profile is the set of information needed to regenerate a password. No password is saved in a profile.">profile</span> saved in your database.
+            You don't have any <span class="hint--bottom hint--medium"
+                                     aria-label="A profile is the set of information needed to regenerate a password. No password is saved in a profile.">profile</span>
+            saved in your database.
             <br>
             <router-link :to="{ name: 'home'}">Would you like to create one?</router-link>
         </div>
