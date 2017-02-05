@@ -1,3 +1,12 @@
+<style>
+    .fa-none {
+        display: none
+    }
+
+    #passwordsList {
+        min-height: 320px;
+    }
+</style>
 <template>
     <div id="passwords">
         <div class="row">
@@ -8,21 +17,38 @@
                 </div>
             </div>
         </div>
-        <div class="row py-2" v-for="password in filteredPasswords">
-            <div class="col-6">
-                <router-link :to="{ name: 'password', params: { id: password.id }}">
-                    {{password.site}}
-                </router-link>
-                <br>
-                {{password.login}}
+        <div id="passwordsList">
+            <div class="row py-2" v-for="password in filteredPasswords">
+                <div class="col-6">
+                    <router-link :to="{ name: 'password', params: { id: password.id }}">
+                        {{password.site}}
+                    </router-link>
+                    <br>
+                    {{password.login}}
+                </div>
+                <div class="col-6">
+                    <delete-button class="float-right mt-2"
+                                   confirmText="Are you sure you want to delete this password profile?"
+                                   confirmButton="Sure"
+                                   cancelButton="Oups no!"
+                                   v-on:remove="deletePassword(password)">
+                    </delete-button>
+                </div>
             </div>
-            <div class="col-6">
-                <delete-button class="float-right mt-2"
-                               confirmText="Are you sure you want to delete this password profile?"
-                               confirmButton="Sure"
-                               cancelButton="Oups no!"
-                               v-on:remove="deletePassword(password)">
-                </delete-button>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4">
+                <i class="fa fa-arrow-left pointer"
+                   v-on:click="pagination.current_page -= 1"
+                   v-bind:class="{'fa-none':this.pagination.current_page === 1}"></i>
+            </div>
+            <div class="col-4 text-center">
+                {{pagination.current_page}} / {{Math.ceil(passwords.length/pagination.per_page)}}
+            </div>
+            <div class="col-4 text-right">
+                <i class="fa fa-arrow-right pointer"
+                   v-on:click="pagination.current_page += 1"
+                   v-bind:class="{'fa-none':this.pagination.current_page === this.pagination.number_of_pages}"></i>
             </div>
         </div>
     </div>
@@ -39,18 +65,28 @@
         name: 'passwords-view',
         data(){
             return {
-                searchQuery: ''
+                searchQuery: '',
+                pagination: {
+                    number_of_pages: 1,
+                    per_page: 5,
+                    current_page: 1
+                },
             }
         },
         components: {DeleteButton},
         computed: {
             ...mapGetters(['passwords']),
             filteredPasswords(){
-                return this.passwords.filter(password => {
+                const passwords = this.passwords.filter(password => {
                     var loginMatch = password.login.match(new RegExp(this.searchQuery, 'i'));
                     var siteMatch = password.site.match(new RegExp(this.searchQuery, 'i'));
                     return loginMatch || siteMatch;
-                })
+                });
+                this.pagination.number_of_pages = Math.ceil(passwords.length / this.pagination.per_page);
+                return passwords.slice(
+                    this.pagination.current_page * this.pagination.per_page - 5,
+                    this.pagination.current_page * this.pagination.per_page
+                );
             }
         },
         preFetch: fetchPasswords,
@@ -64,3 +100,5 @@
         }
     }
 </script>
+
+15

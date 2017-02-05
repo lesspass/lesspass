@@ -1,23 +1,3 @@
-<style>
-    #lesspass.card {
-        border: none;
-    }
-
-    #lesspass .card-block {
-        border: 1px solid rgba(0, 0, 0, 0.125);
-        border-top: none;
-    }
-
-    @media (max-width: 470px) {
-        #lesspass .card-block {
-            border: none;
-        }
-    }
-
-    #lesspass, #lesspass * {
-        border-radius: 0 !important;
-    }
-</style>
 <template>
     <div id="lesspass" class="card" style="max-width: 470px;"
          v-bind:class="{ 'v1': version===1, 'v2': version===2 }">

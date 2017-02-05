@@ -7,10 +7,6 @@
         text-decoration: none;
         color: white;
     }
-
-    .pointer {
-        cursor: pointer;
-    }
 </style>
 <template>
     <div id="menu">

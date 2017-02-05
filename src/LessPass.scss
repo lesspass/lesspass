@@ -44,7 +44,29 @@
 
 // Utility classes
 @import "~bootstrap/scss/utilities";
-
 @import '~font-awesome/css/font-awesome.css';
 @import '~hint.css/hint.css';
 @import '~awesomplete/awesomplete.css';
+
+#lesspass.card {
+  border: none;
+}
+
+#lesspass .card-block {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: none;
+}
+
+@media (max-width: 470px) {
+  #lesspass .card-block {
+    border: none;
+  }
+}
+
+#lesspass, #lesspass * {
+  border-radius: 0 !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
