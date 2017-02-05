@@ -11,7 +11,7 @@ export const isGuest = state => !state.authenticated;
 export const passwordStatus = state => state.passwordStatus;
 
 export const version = state => {
-    if (state.password === null) {
+    if (state.password === null || state.route.path === '/options/default') {
         return state.defaultPassword.version;
     }
     return state.password.version;
