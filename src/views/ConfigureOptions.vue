@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-group">
-            <div class="alert alert-info" v-if="defaultPassword.version===2">
+            <div class="alert alert-success" v-if="defaultPassword.version===2">
                 Default options are automatically saved <strong>locally</strong>.
             </div>
             <div class="alert alert-danger" v-if="defaultPassword.version===1">
