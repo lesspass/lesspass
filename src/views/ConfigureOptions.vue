@@ -2,7 +2,7 @@
     <div>
         <div class="form-group">
             <div class="alert alert-info" v-if="defaultPassword.version===2">
-                The default options are automatically saved <strong>locally</strong>.
+                Default options are automatically saved <strong>locally</strong>.
             </div>
             <div class="alert alert-danger" v-if="defaultPassword.version===1">
                 Version 1 is deprecated and will be removed in

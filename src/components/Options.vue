@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col">
-                        <label for="types">Types</label>
+                        <label for="types">Advanced options</label>
                     </div>
                 </div>
                 <div id="types" class="row">
@@ -12,21 +12,21 @@
                         <button type="button" class="btn btn-block btn-sm px-0"
                                 v-bind:class="{'btn-primary':options.lowercase===true && options.version===2,'btn-warning':options.lowercase===true && options.version===1,'btn-secondary':options.lowercase===false}"
                                 v-on:click="options.lowercase=!options.lowercase">
-                            abc
+                            a-z
                         </button>
                     </div>
                     <div class="col-3">
                         <button type="button" class="btn btn-block btn-sm px-0"
                                 v-bind:class="{'btn-primary':options.uppercase===true && options.version===2,'btn-warning':options.uppercase===true && options.version===1,'btn-secondary':options.uppercase===false}"
                                 v-on:click="options.uppercase=!options.uppercase">
-                            ABC
+                            A-Z
                         </button>
                     </div>
                     <div class="col-3">
                         <button type="button" class="btn btn-block btn-sm px-0"
                                 v-bind:class="{'btn-primary':options.numbers===true && options.version===2,'btn-warning':options.numbers===true && options.version===1,'btn-secondary':options.numbers===false}"
                                 v-on:click="options.numbers=!options.numbers">
-                            123
+                            0-9
                         </button>
                     </div>
                     <div class="col-3">
