@@ -94,14 +94,9 @@
             margin-left: 1.5rem;
         }
 
-        #fold .hero {
-            color: white;
-        }
-
         @media (min-width: 544px) {
-            .hero {
+             #fold .hero {
                 padding-top: 7rem;
-                padding-bottom: 7rem;
             }
         }
 
@@ -135,7 +130,8 @@
         </a>
         <div class="float-right">
             <h1 class="d-inline">
-                <a class="icon-download" href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+                <a class="icon-download"
+                   href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
                     <i class="fa fa-chrome" aria-hidden="true"></i>
                 </a>
             </h1>
@@ -145,7 +141,8 @@
                 </a>
             </h1>
             <h1 class="d-inline">
-                <a class="icon-download" href="https://play.google.com/store/apps/details?id=com.lesspass.cordova&hl=en">
+                <a class="icon-download"
+                   href="https://play.google.com/store/apps/details?id=com.lesspass.cordova&hl=en">
                     <i class="fa fa-android" aria-hidden="true"></i>
                 </a>
             </h1>
@@ -153,9 +150,16 @@
     </div>
     <div class="container hero">
         <div class="row align-items-center justify-content-between">
-            <div class="col-12 col-md-6 hidden-sm-down">
-                <p>No Sync &nbsp; - &nbsp; Open Source &nbsp; - &nbsp; Free</p>
-                <h1>Next Gen Password Manager</h1>
+            <div class="col-12 p-0 mb-5 mt-md-5 col-md-6 push-md-6 col-lg-5 offset-lg-1">
+                <div id="lesspass"></div>
+                <div class="text-center text-sm-left text-white">
+                    <small>
+                        <i class="fa fa-shield" aria-hidden="true"></i> For more security use browser extensions
+                    </small>
+                </div>
+            </div>
+            <div class="col-12 text-white col-md-6 pull-md-6">
+                <h2>Stateless Password Manager</h2>
                 <p class="lead">
                     Stop wasting your time synchronizing your encrypted vault. Remember one master password to
                     access your passwords, anywhere, anytime. No sync needed.
@@ -166,14 +170,6 @@
                         How does it works?
                     </a>
                 </p>
-            </div>
-            <div class="col-12 col-md-5 p-0 px-sm-3">
-                <div id="lesspass"></div>
-                <div class="text-center text-sm-left">
-                    <small>
-                        <i class="fa fa-shield" aria-hidden="true"></i> For more security use browser extensions
-                    </small>
-                </div>
             </div>
         </div>
     </div>
@@ -299,9 +295,12 @@
     <div class="container air">
         <div class="row">
             <div class="col-12">
+                <hr>
                 <small>
-                    Copyright LessPass <br>
-                    Created by <a href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
+                Released under the <a href="https://opensource.org/licenses/GPL-3.0">GPL v3 license</a><br>
+                    Copyright &copy; 2015
+                    <script>new Date().getFullYear() > 2010 && document.write("-" + new Date().getFullYear());</script>
+                    <a href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
                 </small>
             </div>
         </div>
