@@ -81,7 +81,7 @@ export const saveOrUpdatePassword = ({commit, state}) => {
     }
 };
 
-export const deletePassword = ({commit}, payload) => {
+export const deletePassword = ({commit, state}, payload) => {
     Password.delete(payload, state)
         .then(() => {
             commit(types.DELETE_PASSWORD, payload);
