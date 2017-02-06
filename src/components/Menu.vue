@@ -61,9 +61,6 @@
             clipboard.on('success', event => {
                 if (event.text) {
                     showTooltip(event.trigger, 'copied !');
-                    setTimeout(() => {
-                        this.cleanFormInSeconds(10);
-                    }, 2000);
                 }
             });
         },
