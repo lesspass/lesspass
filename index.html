@@ -95,7 +95,7 @@
         }
 
         @media (min-width: 544px) {
-             #fold .hero {
+            #fold .hero {
                 padding-top: 7rem;
             }
         }
@@ -105,6 +105,12 @@
             color: white;
             padding-top: 7rem;
             padding-bottom: 7rem;
+        }
+
+        @media (min-width: 544px) {
+            .feature p {
+                min-height: 120px;
+            }
         }
 
         .air {
@@ -189,25 +195,26 @@
             </div>
         </div>
         <div class="row air">
-            <div class="col-12 col-sm-4 py-5">
-                <img src="dist/options.png" class="img-fluid my-1" alt="LessPass options">
-                <p>
+            <div class="col-12 col-sm-4 py-5 feature">
+                <p class="lead">
                     Manage complex passwords with LessPass options (only numbers, length, etc...)
                 </p>
+                <img src="dist/options.png" class="img-fluid my-1" alt="LessPass options">
             </div>
-            <div class="col-12 col-sm-4 py-5">
-                <img src="dist/counter.png" class="img-fluid my-1" alt="LessPass counter">
-                <p>
+            <div class="col-12 col-sm-4 py-5 feature">
+                <p class="lead">
                     Change generated password without changing your master password. Increment counter field in your
                     options.
                 </p>
+                <img src="dist/counter.png" class="img-fluid my-1" alt="LessPass counter">
             </div>
-            <div class="col-12 col-sm-4 py-5">
-                <img src="dist/fingerprint.png" class="img-fluid my-1" alt="LessPass fingerprint">
-                <p>
-                    Detect an error in your master password without revealing it. Memorize your fingerprint ("<i>I like
-                    to eat in this luxury liner</i>").
+            <div class="col-12 col-sm-4 py-5 feature">
+                <p class="lead">
+                    Detect an error in your master password without revealing it. Memorize your fingerprint:
+                    <br>
+                    "<i>I like to eat in this luxury liner</i>".
                 </p>
+                <img src="dist/fingerprint.png" class="img-fluid my-1" alt="LessPass fingerprint">
             </div>
         </div>
         <div class="row align-items-center justify-content-center">
@@ -297,7 +304,7 @@
             <div class="col-12">
                 <hr>
                 <small>
-                Released under the <a href="https://opensource.org/licenses/GPL-3.0">GPL v3 license</a><br>
+                    Released under the <a href="https://github.com/lesspass/lesspass/blob/master/LICENSE">GPL v3 license</a><br>
                     Copyright &copy; 2015
                     <script>new Date().getFullYear() > 2010 && document.write("-" + new Date().getFullYear());</script>
                     <a href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
