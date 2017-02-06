@@ -1,8 +1,21 @@
 > LessPass Cordova App for [lesspass.com](https://lesspass.com)
 
+## requirements
+
+    cordova requirements
+
+## add Cordova platform
+
+    cordova platform add android
+
+## Test
+
+    cordova emulate android
+
 ## Build
 
     ./build.sh
+
     
 ## Run
     
@@ -10,7 +23,7 @@
     
 ## Build Release
 
-    cordova build --release -- --keystore=~/Android/android.jks --storePassword=... --alias=AndroidKey --password=...
+    cordova build --release -- --keystore=~/Android/lesspass.keystore --storePassword=... --alias=lesspass --password=...
     
 ## License
 

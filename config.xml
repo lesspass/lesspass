@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.lesspass.cordova" version="1.1.0" android-versionCode="10004" xmlns="http://www.w3.org/ns/widgets"
+<widget id="com.lesspass.android" version="2.0.0" android-versionCode="10000" xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>LessPass</name>
     <description>
-        Next-Gen Open Source Password Manager.
+        Stateless Password Manager
     </description>
     <author email="contact@lesspass.com" href="https://lesspass.com">
         LessPass Team
