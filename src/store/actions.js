@@ -68,14 +68,15 @@ export const saveOrUpdatePassword = ({commit, state}) => {
         const login = state.password.login;
         if (site || login) {
             Password.create(state.password, state)
-                .then(() => {
-                    getPasswords({commit});
+                .then(response => {
+                    savePassword({commit}, {password: response.data});
+                    getPasswords({commit, state});
                 })
         }
     } else {
         Password.update(state.password, state)
             .then(() => {
-                getPasswords({commit});
+                getPasswords({commit, state});
             })
     }
 };
