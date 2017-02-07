@@ -159,13 +159,13 @@ test('SET_VERSION password null', t => {
     t.is(state.password.version, 2);
 });
 
-test('LOAD_PASSWORD_FIRST_TIME 5 minutes after last use', t => {
+test('LOAD_PASSWORD_FIRST_TIME 30 seconds after last use', t => {
     const now = 1485989236000;
     const time = new Date(now);
     timekeeper.freeze(time);
-    const fiveMinutesBefore = now - 5 * 60 * 1000;
+    const thirtySecondBefore = now - 30 * 1000;
     const state = {
-        lastUse: fiveMinutesBefore,
+        lastUse: thirtySecondBefore,
         password: {
             login: 'test@example.org',
             length: 30
@@ -182,13 +182,13 @@ test('LOAD_PASSWORD_FIRST_TIME 5 minutes after last use', t => {
     timekeeper.reset();
 });
 
-test('LOAD_PASSWORD_FIRST_TIME more than 10 minutes after last use', t => {
+test('LOAD_PASSWORD_FIRST_TIME more than 1 minute after last use', t => {
     const now = 1485989236000;
     const time = new Date(now);
     timekeeper.freeze(time);
-    const twentyMinutesBefore = now - 20 * 60 * 1000;
+    const oneMinuteAndOneSecond = now - 61 * 1000;
     const state = {
-        lastUse: twentyMinutesBefore,
+        lastUse: oneMinuteAndOneSecond,
         password: {
             login: 'test@example.org',
             length: 30

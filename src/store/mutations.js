@@ -49,7 +49,7 @@ export default {
         }
     },
     [types.LOAD_PASSWORD_FIRST_TIME](state){
-        const tenMinutesAgo = new Date().getTime() - 10 * 60 * 1000;
+        const tenMinutesAgo = new Date().getTime() - 60 * 1000;
         if (tenMinutesAgo > state.lastUse) {
             setState(state, 'password', state.defaultPassword);
         }
