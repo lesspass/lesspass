@@ -176,17 +176,6 @@
             });
         },
         mounted(){
-            const self = this;
-            new Awesomplete(this.$refs.site, {
-                list: this.passwords.map(password => {
-                    return {label: password.site + ' ' + password.login, value: password}
-                }),
-                replace: function (password) {
-                    self.$store.dispatch('savePassword', {password: password.value});
-                    this.input.value = password.value.site;
-                }
-            });
-
             if (this.password.site) {
                 this.$refs.login.focus();
             } else {
@@ -205,6 +194,21 @@
             }
         },
         watch: {
+            'passwords': function (passwords) {
+                var site = document.getElementById('site');
+                const self = this;
+                if (site !== null && passwords.length > 0) {
+                    new Awesomplete(site, {
+                        list: passwords.map(password => {
+                            return {label: password.site + ' ' + password.login, value: password}
+                        }),
+                        replace: function (password) {
+                            self.$store.dispatch('savePassword', {password: password.value});
+                            this.input.value = password.value.site;
+                        }
+                    });
+                }
+            },
             'password.site': function () {
                 this.cleanErrors();
             },
