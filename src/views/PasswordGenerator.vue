@@ -176,11 +176,7 @@
             });
         },
         mounted(){
-            if (this.password.site) {
-                this.$refs.login.focus();
-            } else {
-                this.$refs.site.focus();
-            }
+            this.selectBestField();
         },
         data(){
             return {
@@ -195,7 +191,7 @@
         },
         watch: {
             'passwords': function (passwords) {
-                var site = document.getElementById('site');
+                var site = this.$refs.site;
                 const self = this;
                 if (site !== null && passwords.length > 0) {
                     new Awesomplete(site, {
@@ -205,6 +201,7 @@
                         replace: function (password) {
                             self.$store.dispatch('savePassword', {password: password.value});
                             this.input.value = password.value.site;
+                            self.selectBestField();
                         }
                     });
                 }
@@ -279,6 +276,17 @@
             updatePassword(password){
                 this.cleanErrors();
                 this.$store.dispatch('savePassword', {password: password});
+            },
+            selectBestField(){
+                this.$refs.site.focus();
+
+                if (this.password.site) {
+                    if (this.password.login) {
+                        this.$refs.masterPassword.$refs.password.focus();
+                    } else {
+                        this.$refs.login.focus();
+                    }
+                }
             }
         }
     }

@@ -55,7 +55,7 @@
                 }
             },
             triggerEnterMethod(){
-                if (typeof this.keyupEnter !== undefined) {
+                if (typeof this.keyupEnter !== 'undefined' && this.password) {
                     this.keyupEnter()
                 }
             }
