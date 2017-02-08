@@ -6,7 +6,7 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/pure",
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production webpack --display-error-details --progress --hide-modules",
+    "build": "rm -rf dist && cross-env NODE_ENV=production webpack -p",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
     "prepublish": "npm test && npm run build",
     "test": "ava test --compilers js:babel-register"
@@ -46,6 +46,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "babel-runtime": "^6.22.0",
+    "cross-env": "^3.1.4",
     "css-loader": "^0.26.0",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.10.0",
