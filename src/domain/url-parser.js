@@ -5,13 +5,7 @@ export function getDomainName(urlStr) {
         return '';
     }
     var matchesDomainName = urlStr.match(/^(?:https?\:\/\/)([^\/?#]+)(?:[\/?#]|$)/i);
-    var domainName = matchesDomainName && matchesDomainName[1];
-    var matchIp = domainName.match(/(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\:?([0-9]+)?/i);
-    if (matchIp) {
-        return matchIp[0];
-    }
-    var matchesTLD = domainName.match(/([^.]*\.[^.]{2,3})(?:\.[^.]{2,3})?$/i);
-    return matchesTLD && matchesTLD[0];
+    return matchesDomainName && matchesDomainName[1];
 }
 
 export function getSite() {

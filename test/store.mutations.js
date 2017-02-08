@@ -236,7 +236,7 @@ test('LOAD_PASSWORD_FOR_SITE', t => {
         ]
     };
     const LOAD_PASSWORD_FOR_SITE = mutations[types.LOAD_PASSWORD_FOR_SITE];
-    LOAD_PASSWORD_FOR_SITE(state, {site: 'google.com'});
+    LOAD_PASSWORD_FOR_SITE(state, {site: 'www.google.com'});
     t.is(state.password.id, '2');
     t.is(state.password.site, 'www.google.com');
 });
@@ -249,9 +249,9 @@ test('LOAD_PASSWORD_FOR_SITE no passwords', t => {
         passwords: []
     };
     const LOAD_PASSWORD_FOR_SITE = mutations[types.LOAD_PASSWORD_FOR_SITE];
-    LOAD_PASSWORD_FOR_SITE(state, {site: 'google.com'});
+    LOAD_PASSWORD_FOR_SITE(state, {site: 'account.google.com'});
     t.false('id' in state.password);
-    t.is(state.password.site, 'google.com');
+    t.is(state.password.site, 'account.google.com');
 });
 
 test('LOAD_PASSWORD_FOR_SITE multiple accounts matching criteria', t => {
@@ -266,7 +266,7 @@ test('LOAD_PASSWORD_FOR_SITE multiple accounts matching criteria', t => {
         ]
     };
     const LOAD_PASSWORD_FOR_SITE = mutations[types.LOAD_PASSWORD_FOR_SITE];
-    LOAD_PASSWORD_FOR_SITE(state, {site: 'google.com', url: 'https://www.google.com'});
+    LOAD_PASSWORD_FOR_SITE(state, {site: 'www.google.com', url: 'https://www.google.com'});
     t.is(state.password.id, '2');
     t.is(state.password.site, 'www.google.com');
 });
