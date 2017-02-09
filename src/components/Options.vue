@@ -122,6 +122,7 @@
         },
         methods: {
             setVersion(value){
+                this.options.length = value === 1 ? 12 : 16;
                 this.options.version = value;
                 this.$store.dispatch('saveVersion', {version: value});
             }
