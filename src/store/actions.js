@@ -32,10 +32,6 @@ export const savePassword = ({commit}, payload) => {
     commit(types.SET_PASSWORD, payload);
 };
 
-export const saveBaseURL = ({commit}, payload) => {
-    commit(types.SET_BASE_URL, payload);
-};
-
 export const saveVersion = ({commit}, payload) => {
     commit(types.SET_VERSION, payload);
 };
