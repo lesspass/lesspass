@@ -42,11 +42,9 @@ export default {
         state.baseURL = baseURL;
     },
     [types.SET_VERSION](state, {version}){
-        if (state.password === null) {
-            state.password = {version};
-        } else {
-            state.password.version = version;
-        }
+        const length = version === 1 ? 12 : 16;
+        state.password.version = version;
+        state.password.length = length;
     },
     [types.LOAD_PASSWORD_FIRST_TIME](state){
         const tenMinutesAgo = new Date().getTime() - 60 * 1000;

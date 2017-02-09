@@ -150,13 +150,22 @@ test('SET_VERSION', t => {
     t.is(state.password.version, 1);
 });
 
-test('SET_VERSION password null', t => {
+test('SET_VERSION 1 should modify length to 12', t => {
     const SET_VERSION = mutations[types.SET_VERSION];
     const state = {
-        password: null,
+        password: {length: 16, version: 2},
+    };
+    SET_VERSION(state, {version: 1});
+    t.is(state.password.length, 12);
+});
+
+test('SET_VERSION 2 should modify length to 16', t => {
+    const SET_VERSION = mutations[types.SET_VERSION];
+    const state = {
+        password: {length: 12, version: 1},
     };
     SET_VERSION(state, {version: 2});
-    t.is(state.password.version, 2);
+    t.is(state.password.length, 16);
 });
 
 test('LOAD_PASSWORD_FIRST_TIME 30 seconds after last use', t => {
