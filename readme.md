@@ -69,6 +69,7 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Matthias Gliwka](https://github.com/gliwka)
  * [Panther2](https://github.com/panther2)
  * [Pascal Grange](https://github.com/pgrange)
+ * [Peter Medus](https://github.com/Facel3ss1)
  * [Philip Ulrich](https://github.com/philip-ulrich)
  * [Pierre Rudloff](https://github.com/Rudloff)
  
