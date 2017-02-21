@@ -67,6 +67,7 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Marc Sluiter](https://github.com/slintes)
  * [Martin](https://github.com/martinseener)
  * [Matthias Gliwka](https://github.com/gliwka)
+ * [Maxime Le Conte des Floris](https://github.com/mlcdf)
  * [Panther2](https://github.com/panther2)
  * [Pascal Grange](https://github.com/pgrange)
  * [Peter Medus](https://github.com/Facel3ss1)
