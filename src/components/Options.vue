@@ -1,3 +1,14 @@
+<style>
+    #options input[type="number"] {
+        -moz-appearance:textfield;
+    }
+
+    #options input[type="number"]::-webkit-outer-spin-button,
+    #options input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
 <template>
     <div id="options">
         <div class="form-group row">
