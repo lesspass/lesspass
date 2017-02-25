@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-const copyPaste = require('copy-paste');
+const clipboardy = require('clipboardy');
 const meow = require('meow');
 const LessPass = require('lesspass');
 const read = require('read');
@@ -8,7 +8,7 @@ const chalk = require('chalk');
 
 const helpMessage = `
     Usage
-      $ lesspass <site> <login> [masterPassword] [options] 
+      $ lesspass <site> <login> [masterPassword] [options]
 
     Options
         -l                  add lowercase in password
@@ -23,22 +23,22 @@ const helpMessage = `
 
         --length, -L        int (default 16)
         --counter, -c       int (default 1)
-        
+
         --clipboard, -C     copy generated password to clipboard rather than displaying it.
-                            Need pbcopy (OSX), xclip (Linux) or clip (Windows).
+                            Need pbcopy (OSX), xsel (Linux) or clip (Windows).
 
     Examples
       # no symbols
-      $ lesspass lesspass.com contact@lesspass.com password --no-symbols 
+      $ lesspass lesspass.com contact@lesspass.com password --no-symbols
       OlfK63bmUhqrGODR
-      
+
       # no symbols shortcut
       $ lesspass lesspass.com contact@lesspass.com password -lud
       OlfK63bmUhqrGODR
-      
+
       # only digits and length of 8
       $ lesspass lesspass.com contact@lesspass.com  -d -L8
-        master password: 
+        master password:
         75837019`;
 
 const cli = meow(helpMessage, {
@@ -51,10 +51,15 @@ function calcPassword(site, login, masterPassword, passwordProfile) {
     LessPass.generatePassword(site, login, masterPassword, passwordProfile)
         .then(function (generatedPassword) {
             if (passwordProfile.clipboard) {
-                copyPaste.copy(generatedPassword, function () {
-                    console.log("Copied to clipboard");
+              clipboardy.write(generatedPassword)
+                  .then(() => {
+                    console.log('Copied to clipboard');
                     process.exit();
-                });
+                  }).catch(err => {
+                    console.error(chalk.red('Copy failed.'));
+                    console.error(err.message);
+                    process.exit(1);
+                  });
             } else {
                 console.log(generatedPassword);
                 process.exit();
