@@ -10,7 +10,7 @@
     "zip": "rm -rf build && mkdir build && cd extension && zip -r extension.zip ./* -x ./*.js && cp extension.zip ../build/lesspass.firefox.xpi && mv extension.zip ../build/lesspass.chrome.zip && cd .."
   },
   "dependencies": {
-    "lesspass-pure": "^4.4.5"
+    "lesspass-pure": "^4.4.6"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
