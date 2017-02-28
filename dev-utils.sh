@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 function cmd {
-    npm install --save lesspass-pure@4.4.5
+    npm install --save lesspass-pure@4.4.6
     npm run build
     git add .
     git status
-    git commit -m 'add lesspass-pure version 4.4.5'
+    git commit -m 'add lesspass-pure version 4.4.6'
     git push --tags origin master
 }
 
@@ -19,7 +19,7 @@ do
 	cd ..
 done
 
-#VERSION=2.3.4
+#VERSION=2.3.5
 #cd webextension
 #git archive -o webextension.zip master
 #mv webextension.zip /tmp
