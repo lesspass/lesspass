@@ -34,8 +34,9 @@ LessPass open source password manager (https://lesspass.com)
 
 simply run 
 
-    bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/lesspass.sh)
+    bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/lesspass.sh) [DOMAIN]
 
+You can specify your domain (eg example.com). If not provided, you'll be asked to enter it.
 
 ## Status
 
