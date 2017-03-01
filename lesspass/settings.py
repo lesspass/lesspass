@@ -20,7 +20,7 @@ DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=['localhost', '127.0.0.1', '.lesspass.com'])
 
-ADMIN = [('Guillaume Vincent', 'guillaume@oslab.fr'), ]
+ADMINS = (('Guillaume Vincent', 'guillaume@oslab.fr'), )
 
 INSTALLED_APPS = [
     'django.contrib.admin',
