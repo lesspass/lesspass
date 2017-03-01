@@ -15,8 +15,13 @@ curl -o docker-compose.yml https://raw.githubusercontent.com/lesspass/lesspass/m
 DATABASE_PASSWORD=$(LC_ALL=C tr -dc A-Za-z0-9_ </dev/urandom | head -c 32)
 SECRET_KEY=$(LC_ALL=C tr -dc A-Za-z0-9_ </dev/urandom | head -c 32)
 
-echo "Please enter your domain name: "
-read DOMAIN
+if [ "$#" -eq  "1" ]
+then
+    DOMAIN=$1
+else
+    echo "Please enter your domain name: "
+    read DOMAIN
+fi
 
 # create env file
 cat >> .env << EOF
