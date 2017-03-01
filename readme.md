@@ -74,4 +74,5 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Peter Medus](https://github.com/Facel3ss1)
  * [Philip Ulrich](https://github.com/philip-ulrich)
  * [Pierre Rudloff](https://github.com/Rudloff)
- 
+ * [Pierre-Jean Vardanéga](https://github.com/pvardanega)
+
