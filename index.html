@@ -124,6 +124,14 @@
                 padding-bottom: 7rem;
             }
         }
+
+        #supported-platforms .card {
+            border: none;
+            background: none;
+        }
+        .text-black {
+            color: #292b2c;
+        }
     </style>
 </head>
 <body>
@@ -250,40 +258,70 @@
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-9">
-                <h2>You can use LessPass on:</h2>
-                <ul class="list-unstyled lead">
-                    <li>
-                        <a href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
-                            Chrome extension (<i class="fa fa-chrome" aria-hidden="true"></i>)
+        <div id="supported-platforms" class="row">
+            <div class="col-12 col-sm-12">
+                <h2>Supported Platforms</h2>
+                <div class="card-deck text-center justify-content-center">
+                    <div class="card">
+                        <a class="card-block text-success" href="https://play.google.com/store/apps/details?id=com.lesspass.cordova&hl=en">
+                            <div class="card-title"><i class="fa fa-fw fa-3x fa-android" aria-hidden="true"></i></div>
+                            <div class="card-text">
+                                Android
+                            </div>
                         </a>
-                    </li>
-                    <li>
-                        <a href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
-                            Firefox extension (<i class="fa fa-firefox" aria-hidden="true"></i>)
+                    </div>
+                    <div class="card">
+                        <a class="card-block" href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+                            <div class="card-title"><i class="fa fa-fw fa-3x fa-chrome" aria-hidden="true"></i></div>
+                            <div class="card-text">
+                                Chrome
+                            </div>
                         </a>
-                    </li>
-                    <li>
-                        <a href="https://play.google.com/store/apps/details?id=com.lesspass.cordova&hl=en">
-                            Android (<i class="fa fa-android" aria-hidden="true"></i>)
+                    </div>
+                    <div class="card">
+                        <a class="card-block" href="https://github.com/lesspass/cozy#install">
+                            <div class="card-title"><i class="fa fa-fw fa-3x fa-cloud text-info" aria-hidden="true"></i></div>
+                            <div class="card-text">
+                                Cozy Cloud
+                            </div>
                         </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/lesspass/cli#install">
-                            cli (<i class="fa fa-terminal" aria-hidden="true"></i>)
+                    </div>
+                    <div class="card">
+                        <a class="card-block text-warning" href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
+                            <div class="card-title"><i class="fa fa-fw fa-3x fa-firefox" aria-hidden="true"></i></div>
+                            <div class="card-text">
+                                Firefox
+                            </div>
                         </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/lesspass/cozy#install">
-                            Cozy Cloud
+                    </div>
+                    <div class="card">
+                        <a class="card-block text-black" href="https://twitter.com/snapcraftio/status/837091667693948929">
+                            <div class="card-title"><i class="fa fa-fw fa-3x fa-linux" aria-hidden="true"></i></div>
+                            <div class="card-text">
+                                Snapcraft
+                            </div>
                         </a>
-                    </li>
-                    <li>
-                        soon on Snapcraft (<i class="fa fa-linux" aria-hidden="true"></i>)
-                    </li>
-                </ul>
+                    </div>
+                                        <div class="card">
+                        <a class="card-block text-muted" href="https://github.com/lesspass/cli#install">
+                            <div class="card-title"><i class="fa fa-fw fa-3x fa-terminal" aria-hidden="true"></i></div>
+                            <div class="card-text">
+                                Terminal
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <a class="card-block text-black" href="https://github.com/lesspass/lesspass/issues/">
+                            <div class="card-title"><i class="fa fa-fw fa-3x fa-github" aria-hidden="true"></i></div>
+                            <div class="card-text">
+                                Contribute
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
+
         </div>
         <div class="row air">
             <div class="col-12 col-sm-9">
