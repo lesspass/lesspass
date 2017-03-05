@@ -31,3 +31,6 @@
 [submodule "snap"]
 	path = snap
 	url = git@github.com:lesspass/snap.git
+[submodule "sandbox"]
+	path = sandbox
+	url = git@github.com:lesspass/sandbox.git

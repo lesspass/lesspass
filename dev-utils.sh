@@ -10,7 +10,7 @@ function cmd {
 }
 
 #submodules=( cli core cozy frontend pure webextension desktop cordova )
-#submodules=( backend cli core cozy frontend nginx pure webextension desktop snap cordova )
+# submodules=( backend cli core cozy frontend nginx pure webextension desktop snap cordova sandbox)
 submodules=( cozy frontend webextension desktop cordova )
 for submodule in "${submodules[@]}"
 do
