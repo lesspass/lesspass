@@ -10,7 +10,7 @@
     "build": "rm -rf www/dist/ && gulp"
   },
   "dependencies": {
-    "lesspass-pure": "^4.4.5"
+    "lesspass-pure": "^4.4.6"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
