@@ -1,6 +1,6 @@
 <style>
     #options input[type="number"] {
-        -moz-appearance:textfield;
+        -moz-appearance: textfield;
     }
 
     #options input[type="number"]::-webkit-outer-spin-button,
@@ -66,7 +66,8 @@
             </div>
             <div class="col-6 col-sm-4 mb-3 mb-sm-0">
                 <label for="passwordCounter"
-                class="hint--top hint--medium" aria-label="Increment counter field to change generated password without changing your master password.">Counter</label>
+                       class="hint--top hint--medium"
+                       aria-label="Increment counter field to change generated password without changing your master password.">Counter</label>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn" v-on:click="options.counter-=1">
                         <button class="btn btn-secondary" type="button"><i class="fa fa-minus"></i></button>
@@ -95,7 +96,8 @@
 
                     </div>
                     <div class="col-6">
-                        <button type="button" class="btn btn-block btn-sm border-left-0 hint--top-left hint--medium hint--error"
+                        <button type="button"
+                                class="btn btn-block btn-sm border-left-0 hint--top-left hint--medium hint--error"
                                 aria-label="Version 1 is deprecated and will be removed. We strongly advise you to use version 2."
                                 v-bind:class="{'btn-warning':options.version===1,'btn-secondary':options.version!==1}"
                                 v-on:click="setVersion(1)">
@@ -109,7 +111,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-
     export default {
         name: 'options',
         props: {
@@ -120,12 +121,20 @@
         },
         data() {
             return {
-                options: this.password
+                options: {
+                    uppercase: this.password.uppercase,
+                    lowercase: this.password.lowercase,
+                    numbers: this.password.numbers,
+                    symbols: this.password.symbols,
+                    length: this.password.length,
+                    counter: this.password.counter,
+                    version: this.password.version
+                }
             };
         },
         watch: {
             options: {
-                handler: function (newOptions) {
+                handler: function(newOptions) {
                     this.$emit('optionsUpdated', newOptions)
                 },
                 deep: true

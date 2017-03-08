@@ -113,7 +113,7 @@
                 </button>
             </div>
         </div>
-        <options :password="password" v-on:optionsUpdated="updatePassword" v-if="showOptions"></options>
+        <options :password="password" v-on:optionsUpdated="optionsUpdated" v-if="showOptions"></options>
         <div class="form-group mt-3" v-if="showError">
             <div class="alert alert-danger" role="alert">
                 site, login and master password fields are mandatory
@@ -273,9 +273,10 @@
                     window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
                 });
             },
-            updatePassword(password){
+            optionsUpdated(options){
                 this.cleanErrors();
-                this.$store.dispatch('savePassword', {password: password});
+                const password = Object.assign({}, this.password, options);
+                this.$store.dispatch('savePassword', {password});
             },
             selectBestField(){
                 this.$refs.site.focus();
