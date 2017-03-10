@@ -10,7 +10,8 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+L"
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
       }
     }
   },
