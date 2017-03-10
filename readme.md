@@ -19,8 +19,9 @@ LessPass open source password manager (https://lesspass.com)
  - [frontend](https://github.com/lesspass/frontend) : frontend for LessPass with vuejs
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
  - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
- - [snap](https://github.com/lesspass/snap) : snap for lesspass-cli 
- - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for lesspass password manager
+ - [sandbox](https://github.com/lesspass/sandbox) : sandbox for LessPass interface
+ - [snap](https://github.com/lesspass/snap) : snap for lesspass-cli
+ - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for LessPass password manager
 
 
 ## Self Host your LessPass Database
