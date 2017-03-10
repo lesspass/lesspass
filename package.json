@@ -11,7 +11,7 @@
     "dev": "cd extension && web-ext run"
   },
   "dependencies": {
-    "lesspass-pure": "^4.4.6"
+    "lesspass-pure": "^4.4.7"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
