@@ -2,6 +2,10 @@
 
 ![LessPass extension](screenshot.png?raw=true "LessPass screenshot")
 
+# Dev
+
+    npm install && npm run dev
+
 # Build
 
     npm run build
