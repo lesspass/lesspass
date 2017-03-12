@@ -85,13 +85,9 @@ export const deletePassword = ({commit, state}, payload) => {
 };
 
 export const displayMessage = ({commit}, payload) => {
-    commit(types.SET_MESSAGE, {message: payload});
-    setTimeout(() => {
-        commit(types.CLEAN_MESSAGE);
-    }, 3000);
+    commit(types.SET_MESSAGE, payload);
 };
 
-
-export const cleanMessage = ({commit}, payload) => {
+export const cleanMessage = ({commit}) => {
     commit(types.CLEAN_MESSAGE);
 };
