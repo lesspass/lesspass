@@ -17,9 +17,6 @@
                        type="text"
                        placeholder="https://lesspass.com"
                        v-model="baseURL">
-                <small class="form-text text-danger" v-if="errors.baseURLRequired">
-                    A LessPass database url is required
-                </small>
             </div>
         </div>
         <div class="form-group row">
@@ -33,11 +30,6 @@
                            placeholder="Email"
                            required
                            v-model="email">
-                    <small class="form-text text-muted text-danger">
-                        <span v-if="errors.userNameAlreadyExist">Someone already use that username. Do you want to sign in ?</span>
-                        <span v-if="errors.emailInvalid">Please enter a valid email</span>
-                        <span v-if="errors.emailRequired">An email is required</span>
-                    </small>
                 </div>
             </div>
         </div>
@@ -65,11 +57,6 @@
                 </button>
             </div>
         </div>
-        <div class="form-group" v-if="showError">
-            <div class="alert alert-danger" role="alert">
-                {{ errorMessage }}
-            </div>
-        </div>
         <div class="form-group my-0">
             <router-link :to="{ name: 'passwordReset'}">
                 <small>Forgot your password?</small>
@@ -82,14 +69,7 @@
     import User from '../api/user';
     import {mapGetters} from 'vuex';
     import MasterPassword from '../components/MasterPassword.vue';
-
-    const defaultErrors = {
-        userNameAlreadyExist: false,
-        emailInvalid: false,
-        baseURLRequired: false,
-        emailRequired: false,
-        passwordRequired: false,
-    };
+    import message from '../services/message';
 
     export default {
         data() {
@@ -98,10 +78,6 @@
                 password: '',
                 baseURL: 'https://lesspass.com',
                 transformMasterPassword: false,
-                showError: false,
-                errorMessage: '',
-                errors: {...defaultErrors},
-                showOptions: false
             };
         },
         components: {
@@ -111,10 +87,10 @@
             ...mapGetters(['version'])
         },
         watch: {
-            password: function () {
+            password: function() {
                 this.transformMasterPassword = false;
             },
-            transformMasterPassword: function (transformPassword) {
+            transformMasterPassword: function(transformPassword) {
                 if (!transformPassword) {
                     return;
                 }
@@ -133,30 +109,12 @@
             }
         },
         methods: {
-            noErrors(){
-                return !(this.errors.userNameAlreadyExist || this.errors.emailInvalid || this.errors.emailRequired || this.errors.passwordRequired || this.errors.baseURLRequired || this.showError);
-            },
             formIsValid(){
-                this.cleanErrors();
-                let formIsValid = true;
-                if (!this.email) {
-                    this.errors.emailRequired = true;
-                    formIsValid = false;
+                if (!this.email || !this.password || !this.baseURL) {
+                    message.error('LessPass URL, email and password are mandatory');
+                    return false;
                 }
-                if (!this.password) {
-                    this.errors.passwordRequired = true;
-                    formIsValid = false;
-                }
-                if (!this.baseURL) {
-                    this.errors.baseURLRequired = true;
-                    formIsValid = false;
-                }
-                return formIsValid;
-            },
-            cleanErrors(){
-                this.showError = false;
-                this.errorMessage = '';
-                this.errors = {...defaultErrors}
+                return true;
             },
             signIn(){
                 if (this.formIsValid()) {
@@ -167,13 +125,12 @@
                             this.$router.push({name: 'home'});
                         })
                         .catch(err => {
-                            this.cleanErrors();
                             if (err.response === undefined && baseURL !== "https://lesspass.com") {
-                                this.showErrorMessage('Your LessPass Database is not running');
+                                message.error('Your LessPass Database is not running');
                             } else if (err.response.status === 400) {
-                                this.showErrorMessage('Your email and/or password is not good. Do you have an account?');
+                                message.error('The email and password you entered did not match our records. Please double-check and try again.');
                             } else {
-                                this.showErrorMessage()
+                                message.displayGenericError();
                             }
                         });
                 }
@@ -183,26 +140,22 @@
                     const baseURL = this.baseURL;
                     User.register({email: this.email, password: this.password}, {baseURL})
                         .then(() => {
+                            message.success(`Welcome ${this.email}, thank you for signing up.`);
                             this.signIn();
                         })
                         .catch(err => {
-                            this.cleanErrors();
                             if (err.response && typeof err.response.data.email !== 'undefined') {
                                 if (err.response.data.email[0].indexOf('already exists') !== -1) {
-                                    this.errors.userNameAlreadyExist = true;
+                                    message.error('This email is already registered. Want to login or recover your password?');
                                 }
                                 if (err.response.data.email[0].indexOf('valid email') !== -1) {
-                                    this.errors.emailInvalid = true;
+                                    message.error('Please enter a valid email');
                                 }
                             } else {
-                                this.showErrorMessage();
+                                message.displayGenericError();
                             }
                         });
                 }
-            },
-            showErrorMessage(errorMessage = 'Oops! Something went wrong. Retry in a few minutes.'){
-                this.errorMessage = errorMessage;
-                this.showError = true;
             }
         }
     }

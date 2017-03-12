@@ -21,7 +21,7 @@ export default {
     autoHideMessage(text){
         clearTimeout(this.timeout);
         this.deleteMessage = true;
-        const duration = Math.max(Math.min(text.length * 50, 2000), 7000);
+        const duration = Math.min(Math.max(text.length * 100, 3000), 8000);
         this.timeout = setTimeout(() => {
             if (this.deleteMessage) {
                 Store.dispatch('cleanMessage');
@@ -33,5 +33,8 @@ export default {
     },
     hideMessage(){
         Store.dispatch('cleanMessage');
+    },
+    displayGenericError(){
+        this.error('Oops! Something went wrong. Retry in a few minutes.');
     }
 }
