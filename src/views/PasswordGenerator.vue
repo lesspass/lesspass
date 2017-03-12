@@ -114,11 +114,6 @@
             </div>
         </div>
         <options :password="password" v-on:optionsUpdated="optionsUpdated" v-if="showOptions"></options>
-        <div class="form-group mt-3" v-if="showError">
-            <div class="alert alert-danger" role="alert">
-                site, login and master password fields are mandatory
-            </div>
-        </div>
     </form>
 </template>
 
@@ -131,6 +126,7 @@
     import MasterPassword from '../components/MasterPassword.vue';
     import Options from '../components/Options.vue';
     import {showTooltip} from '../services/tooltip';
+    import message from '../services/message';
     import Awesomplete from 'awesomplete';
 
     function fetchPasswords(store) {
@@ -185,7 +181,6 @@
                 generatedPassword: '',
                 cleanTimeout: null,
                 showOptions: false,
-                showError: false,
                 generatingPassword: false
             }
         },
@@ -231,7 +226,6 @@
             cleanErrors(){
                 clearTimeout(this.cleanTimeout);
                 this.generatedPassword = '';
-                this.showError = false;
             },
             cleanFormInSeconds(seconds){
                 clearTimeout(this.cleanTimeout);
@@ -248,7 +242,7 @@
 
                 if (!site && !login || !masterPassword) {
                     this.showOptions = false;
-                    this.showError = true;
+                    message.error('Site, login and master password fields are mandatory.');
                     return;
                 }
 
