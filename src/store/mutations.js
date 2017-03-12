@@ -1,9 +1,4 @@
-import {set} from 'vue';
 import * as types from './mutation-types';
-
-function setState(state, id, object) {
-    set(state, id, Object.assign({}, object));
-}
 
 export default {
     [types.LOGIN](state){
@@ -16,16 +11,16 @@ export default {
         state.authenticated = false;
         state.token = null;
         state.passwords = [];
-        setState(state, 'password', state.defaultPassword);
+        state.password = {...state.defaultPassword};
     },
     [types.SET_PASSWORD](state, {password}){
-        setState(state, 'password', password);
+        state.password = {...password};
     },
     [types.PASSWORD_GENERATED](state){
         state.lastUse = new Date().getTime();
     },
     [types.SET_DEFAULT_PASSWORD](state, {password}){
-        setState(state, 'defaultPassword', password);
+        state.defaultPassword = {...password};
     },
     [types.SET_PASSWORDS](state, {passwords}){
         state.passwords = passwords;
@@ -49,7 +44,7 @@ export default {
     [types.LOAD_PASSWORD_FIRST_TIME](state){
         const tenMinutesAgo = new Date().getTime() - 60 * 1000;
         if (tenMinutesAgo > state.lastUse) {
-            setState(state, 'password', state.defaultPassword);
+            state.password = {...state.defaultPassword};
         }
     },
     [types.LOAD_PASSWORD_FOR_SITE](state, {site, url}){
@@ -58,10 +53,10 @@ export default {
         for (let i = 0; i < state.passwords.length; i++) {
             const password = passwords[i];
             if (password.site.endsWith(site)) {
-                setState(state, 'password', password);
+                state.password = {...password};
             }
             if (typeof url !== 'undefined' && url.includes(password.site)) {
-                setState(state, 'password', password);
+                state.password = {...password};
                 break;
             }
         }
