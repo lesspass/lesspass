@@ -279,3 +279,19 @@ test('LOAD_PASSWORD_FOR_SITE multiple accounts matching criteria', t => {
     t.is(state.password.id, '2');
     t.is(state.password.site, 'www.google.com');
 });
+
+test('SET_MESSAGE', t => {
+    const SET_MESSAGE = mutations[types.SET_MESSAGE];
+    const state = {};
+    SET_MESSAGE(state, {message: {text: 'success message', status: 'success'}});
+    t.is(state.message.text, 'success message');
+    t.is(state.message.status, 'success');
+});
+
+test('CLEAN_MESSAGE', t => {
+    const CLEAN_MESSAGE = mutations[types.CLEAN_MESSAGE];
+    const state = {message: {text: 'error message', status: 'error'}};
+    CLEAN_MESSAGE(state);
+    t.is(state.message.text, '');
+    t.is(state.message.status, 'success');
+});

@@ -49,3 +49,12 @@ test('passwordURL', t => {
 
     t.is(getters.passwordURL(state), 'https://lesspass.com/#/?login=test@example.org&site=example.org&uppercase=true&lowercase=true&numbers=true&symbols=false&length=16&counter=1&version=2')
 });
+
+test('message', t => {
+    const state = {
+        message: {text: 'error message', status:'error'}
+    };
+    const message = getters.message(state);
+    t.is(message.text, state.message.text);
+    t.is(message.status, state.message.status);
+});

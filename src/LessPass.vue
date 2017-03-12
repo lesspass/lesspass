@@ -2,6 +2,7 @@
     <div id="lesspass" class="card" style="max-width: 420px;"
          v-bind:class="{ 'v1': version===1, 'v2': version===2 }">
         <lesspass-menu></lesspass-menu>
+        <lesspass-message></lesspass-message>
         <div class="card-block">
             <router-view></router-view>
         </div>
@@ -10,15 +11,18 @@
 <script type="text/ecmascript-6">
     import './LessPass.scss';
     import Menu from './components/Menu.vue';
+    import Message from './components/Message.vue';
     import {mapGetters} from 'vuex';
 
     export default {
         name: 'LessPass',
         components: {
-            'lesspass-menu': Menu
+            'lesspass-menu': Menu,
+            'lesspass-message': Message
         },
         computed: mapGetters(['version']),
         created(){
+            this.$store.dispatch('cleanMessage');
             this.$store.dispatch('loadPasswordFirstTime');
             this.$store.dispatch('refreshToken');
         }

@@ -60,5 +60,11 @@ export default {
                 break;
             }
         }
-    }
+    },
+    [types.SET_MESSAGE](state, {message}){
+        state.message = message;
+    },
+    [types.CLEAN_MESSAGE](state){
+        state.message = {text: '', status: 'success'};
+    },
 };

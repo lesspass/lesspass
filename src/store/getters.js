@@ -10,7 +10,7 @@ export const isGuest = state => !state.authenticated;
 
 export const baseURL = state => state.baseURL;
 
-export const passwordStatus = state => state.passwordStatus;
+export const message = state => state.message;
 
 export const version = state => {
     if (state.password === null || state.route.path === '/options/default') {
