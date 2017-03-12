@@ -1,6 +1,5 @@
 <template>
-    <div id="lesspass" class="card" style="max-width: 420px;"
-         v-bind:class="{ 'v1': version===1, 'v2': version===2 }">
+    <div id="lesspass" class="card" style="max-width: 420px;">
         <lesspass-menu></lesspass-menu>
         <lesspass-message></lesspass-message>
         <div class="card-block">

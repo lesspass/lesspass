@@ -1,16 +1,21 @@
 <style>
     #menu .white-link, #menu .text-white {
-        color: white;
+        color: inherit;
     }
 
     #menu .white-link:hover, #menu .white-link:focus, #menu .white-link:active {
         text-decoration: none;
-        color: white;
+        color: inherit;
+    }
+
+    .card-inverse {
+        background-color: #333;
+        border-color: #333;
     }
 </style>
 <template>
     <div id="menu">
-        <div class="card-header" v-bind:class="{ 'card-warning': version===1, 'card-primary': version===2 }">
+        <div class="card-header" v-bind:class="{ 'card-inverse': isGuest}">
             <div class="row">
                 <div class="col-3">
                     <span v-on:click="fullReload()" class="white-link pointer">LessPass</span>
@@ -86,7 +91,6 @@
             'isGuest',
             'password',
             'defaultPassword',
-            'version',
             'passwordURL'
         ])
     }

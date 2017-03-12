@@ -48,17 +48,12 @@
 @import '~hint.css/hint.css';
 @import '~awesomplete/awesomplete.css';
 
-#lesspass.card {
-  border: none;
+#lesspass {
+  color: #464646;
 }
 
-#lesspass .card-block {
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-top: none;
-}
-
-@media (max-width: 420px) {
-  #lesspass .card-block {
+@media (max-width: 419px) {
+  #lesspass{
     border: none;
   }
 }
@@ -67,6 +62,6 @@
   border-radius: 0 !important;
 }
 
-.pointer {
+button, .pointer {
   cursor: pointer;
 }
