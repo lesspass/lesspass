@@ -1,12 +1,5 @@
 <template>
     <div>
-        <div class="form-group" v-if="defaultOptions.version===1">
-            <div class="alert alert-danger">
-                Version 1 is deprecated and will be removed in
-                <strong aria-label="April, 10 2017" class="hint--right">{{ getDayBeforeOnlyV2() }} days</strong>.
-                We strongly advise you to migrate your passwords to version 2.
-            </div>
-        </div>
         <div class="form-group">
             <label for="login">Login</label>
             <div class="inner-addon left-addon">
@@ -56,12 +49,6 @@
             },
             saveOptionsAsDefault(){
                 this.$store.dispatch('saveDefaultPassword', {password: this.defaultOptions});
-            },
-            getDayBeforeOnlyV2(){
-                const oneDay = 24 * 60 * 60 * 1000;
-                const now = new Date();
-                const onlyV2DefaultDate = new Date(2017, 4, 10);
-                return Math.round(Math.abs((now.getTime() - onlyV2DefaultDate.getTime()) / (oneDay)));
             },
         }
     }

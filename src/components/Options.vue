@@ -97,8 +97,7 @@
                     </div>
                     <div class="col-6">
                         <button type="button"
-                                class="btn btn-block btn-sm border-left-0 hint--top-left hint--medium hint--error"
-                                aria-label="Version 1 is deprecated and will be removed. We strongly advise you to use version 2."
+                                class="btn btn-block btn-sm border-left-0"
                                 v-bind:class="{'btn-warning':options.version===1,'btn-secondary':options.version!==1}"
                                 v-on:click="setVersion(1)">
                             v<span class="hidden-sm-up">ersion </span>1
@@ -111,6 +110,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import Message from '../services/message';
+
     export default {
         name: 'options',
         props: {
@@ -135,6 +136,12 @@
         watch: {
             options: {
                 handler: function(newOptions) {
+                    if (newOptions.version === 1) {
+                        const dayBeforeOnlyV2 = this.getDayBeforeOnlyV2();
+                        const message = `Version 1 is deprecated and will be removed in ${dayBeforeOnlyV2} days. We strongly advise you to migrate your passwords to version 2.`;
+                        Message.error(message);
+                    }
+
                     this.$emit('optionsUpdated', newOptions)
                 },
                 deep: true
@@ -145,7 +152,13 @@
                 this.options.length = value === 1 ? 12 : 16;
                 this.options.version = value;
                 this.$store.dispatch('saveVersion', {version: value});
-            }
+            },
+            getDayBeforeOnlyV2(){
+                const oneDay = 24 * 60 * 60 * 1000;
+                const now = new Date();
+                const onlyV2DefaultDate = new Date(2017, 4, 10);
+                return Math.round(Math.abs((now.getTime() - onlyV2DefaultDate.getTime()) / (oneDay)));
+            },
         }
     }
 </script>
