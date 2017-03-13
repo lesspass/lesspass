@@ -1,31 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <script src="../dist/lesspass.js"></script>
+  <meta charset="UTF-8">
+  <script src="../dist/lesspass.js"></script>
 </head>
 <body>
 <script>
-    const site = 'example.org';
-    const login = 'contact@example.org';
-    const masterPassword = 'password';
-    const passwordProfile = {
-        lowercase: true,
-        uppercase: true,
-        numbers: true,
-        symbols: true,
-        length: 16,
-        counter: 1,
-        version: 2
-    };
-    LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function (generatedPassword) {
-        console.log(generatedPassword); //WHLpUL)e00[iHR+w
-        document.body.innerHTML = document.body.innerHTML + "<br>generated password : <b>" + generatedPassword + "</b> === WHLpUL)e00[iHR+w"
-    });
+  const site = 'example.org';
+  const login = 'contact@example.org';
+  const masterPassword = 'password';
+  const passwordProfile = {
+    lowercase: true,
+    uppercase: true,
+    numbers: true,
+    symbols: true,
+    length: 16,
+    counter: 1,
+    version: 2
+  };
+  LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function(generatedPassword) {
+    console.log(generatedPassword); //WHLpUL)e00[iHR+w
+    document.body.innerHTML = document.body.innerHTML + "<br>generated password : <b>" + generatedPassword + "</b> === WHLpUL)e00[iHR+w"
+  });
 
-    LessPass.createFingerprint('password').then(fingerprint => {
-        document.body.innerHTML = document.body.innerHTML + "fingerprint : " + fingerprint
-    });
+  LessPass.createFingerprint('password').then(fingerprint => {
+    document.body.innerHTML = document.body.innerHTML + "fingerprint : " + fingerprint
+  });
 </script>
 </body>
 </html>
