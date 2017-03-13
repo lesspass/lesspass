@@ -4,7 +4,18 @@
   }
 
   #passwordsList {
-    min-height: 320px;
+    min-height: 280px;
+    padding-bottom: 1em;
+  }
+
+  .passwordProfile {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .passwordProfile:last-child {
+    border-bottom: none;
   }
 </style>
 <template>
@@ -18,7 +29,7 @@
       </div>
     </div>
     <div v-else>
-      <div class="row pb-2">
+      <div class="row pb-3">
         <div class="col">
           <div class="inner-addon left-addon">
             <i class="fa fa-search"></i>
@@ -35,23 +46,10 @@
       </div>
       <div v-else>
         <div id="passwordsList">
-          <div class="row py-2" v-for="password in filteredPasswords">
-            <div class="col-6">
-              <router-link :to="{ name: 'password', params: { id: password.id }}">
-                {{password.site}}
-              </router-link>
-              <br>
-              {{password.login}}
-            </div>
-            <div class="col-6">
-              <delete-button class="float-right mt-2"
-                             confirmText="Are you sure you want to delete this password profile?"
-                             confirmButton="Sure"
-                             cancelButton="Oups no!"
-                             v-on:remove="deletePassword(password)">
-              </delete-button>
-            </div>
-          </div>
+          <password-profile class="passwordProfile"
+                            v-bind:password="password"
+                            v-for="password in filteredPasswords"
+                            :key="password.id"></password-profile>
         </div>
         <div class="row mt-2" v-if="pagination.number_of_pages > 1">
           <div class="col-4">
@@ -73,7 +71,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import DeleteButton from '../components/DeleteButton.vue';
+  import PasswordProfile from '../components/PasswordProfile.vue';
   import {mapGetters} from 'vuex';
 
   function fetchPasswords(store) {
@@ -92,7 +90,7 @@
         },
       }
     },
-    components: {DeleteButton},
+    components: {PasswordProfile},
     computed: {
       ...mapGetters(['passwords']),
       filteredPasswords(){
@@ -103,7 +101,7 @@
         });
         this.pagination.number_of_pages = Math.ceil(passwords.length / this.pagination.per_page);
         return passwords.slice(
-          this.pagination.current_page * this.pagination.per_page - 5,
+          this.pagination.current_page * this.pagination.per_page - this.pagination.per_page,
           this.pagination.current_page * this.pagination.per_page
         );
       }
@@ -112,10 +110,5 @@
     beforeMount () {
       fetchPasswords(this.$store);
     },
-    methods: {
-      deletePassword(password){
-        return this.$store.dispatch('deletePassword', {id: password.id});
-      }
-    }
   }
 </script>
