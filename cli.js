@@ -42,51 +42,51 @@ const helpMessage = `
         75837019`;
 
 const cli = meow(helpMessage, {
-    alias: {L: 'length', c: 'counter', C: 'clipboard'},
-    boolean: ['l', 'u', 'd', 's', 'C', 'clipboard']
+  alias: {L: 'length', c: 'counter', C: 'clipboard'},
+  boolean: ['l', 'u', 'd', 's', 'C', 'clipboard']
 });
 
 
 function calcPassword(site, login, masterPassword, passwordProfile) {
-    LessPass.generatePassword(site, login, masterPassword, passwordProfile)
-        .then(function (generatedPassword) {
-            if (passwordProfile.clipboard) {
-              clipboardy.write(generatedPassword)
-                  .then(() => {
-                    console.log('Copied to clipboard');
-                    process.exit();
-                  }).catch(err => {
-                    console.error(chalk.red('Copy failed.'));
-                    console.error(err.message);
-                    process.exit(1);
-                  });
-            } else {
-                console.log(generatedPassword);
-                process.exit();
-            }
+  LessPass.generatePassword(site, login, masterPassword, passwordProfile)
+    .then(function(generatedPassword) {
+      if (passwordProfile.clipboard) {
+        clipboardy.write(generatedPassword)
+          .then(() => {
+            console.log('Copied to clipboard');
+            process.exit();
+          }).catch(err => {
+          console.error(chalk.red('Copy failed.'));
+          console.error(err.message);
+          process.exit(1);
         });
+      } else {
+        console.log(generatedPassword);
+        process.exit();
+      }
+    });
 }
 
 
 function hasNoShortOption(options) {
-    let hasShortOption = false;
-    ['l', 'u', 'd', 's'].forEach(function (shortOption) {
-        if (typeof options[shortOption] !== 'undefined' && options[shortOption]) {
-            hasShortOption = true;
-        }
-    });
-    return !hasShortOption;
+  let hasShortOption = false;
+  ['l', 'u', 'd', 's'].forEach(function(shortOption) {
+    if (typeof options[shortOption] !== 'undefined' && options[shortOption]) {
+      hasShortOption = true;
+    }
+  });
+  return !hasShortOption;
 }
 
 function getOptionBoolean(options, optionString) {
-    let shortOption = optionString.substring(0, 1);
-    if (options[shortOption]) {
-        return true;
-    }
-    if (typeof options[optionString] === 'undefined') {
-        return hasNoShortOption(options);
-    }
-    return options[optionString]
+  let shortOption = optionString.substring(0, 1);
+  if (options[shortOption]) {
+    return true;
+  }
+  if (typeof options[optionString] === 'undefined') {
+    return hasNoShortOption(options);
+  }
+  return options[optionString]
 }
 
 const lowercase = getOptionBoolean(cli.flags, 'lowercase');
@@ -95,30 +95,30 @@ const symbols = getOptionBoolean(cli.flags, 'symbols');
 const digits = getOptionBoolean(cli.flags, 'digits');
 
 const passwordProfile = {
-    lowercase: lowercase,
-    uppercase: uppercase,
-    symbols: symbols,
-    numbers: digits,
-    clipboard: cli.flags.clipboard || false,
-    length: cli.flags.length || 16,
-    counter: cli.flags.counter || 1
+  lowercase: lowercase,
+  uppercase: uppercase,
+  symbols: symbols,
+  numbers: digits,
+  clipboard: cli.flags.clipboard || false,
+  length: cli.flags.length || 16,
+  counter: cli.flags.counter || 1
 };
 
 const site = cli.input[0];
 const login = cli.input[1];
 
 if (typeof  site === 'undefined' && typeof login === 'undefined') {
-    console.log(chalk.red('site or login cannot be empty'));
-    console.log('type lesspass --help');
-    process.exit(-1);
+  console.log(chalk.red('site or login cannot be empty'));
+  console.log('type lesspass --help');
+  process.exit(-1);
 }
 
 
 if (cli.input.length === 3) {
-    const masterPassword = cli.input[2];
-    calcPassword(site, login, masterPassword, passwordProfile)
+  const masterPassword = cli.input[2];
+  calcPassword(site, login, masterPassword, passwordProfile)
 } else {
-    read({prompt: 'master password: ', silent: true}, function (er, password) {
-        calcPassword(site, login, password, passwordProfile)
-    });
+  read({prompt: 'master password: ', silent: true}, function(er, password) {
+    calcPassword(site, login, password, passwordProfile)
+  });
 }
