@@ -172,7 +172,9 @@
             });
         },
         mounted(){
-            this.selectBestField();
+            setTimeout(() => {
+                this.focusBestInputField();
+            }, 500);
         },
         data(){
             return {
@@ -196,7 +198,7 @@
                         replace: function (password) {
                             self.$store.dispatch('savePassword', {password: password.value});
                             this.input.value = password.value.site;
-                            self.selectBestField();
+                            self.focusBestInputField();
                         }
                     });
                 }
@@ -272,16 +274,11 @@
                 const password = Object.assign({}, this.password, options);
                 this.$store.dispatch('savePassword', {password});
             },
-            selectBestField(){
-                this.$refs.site.focus();
-
-                if (this.password.site) {
-                    if (this.password.login) {
-                        this.$refs.masterPassword.$refs.password.focus();
-                    } else {
-                        this.$refs.login.focus();
-                    }
-                }
+            focusBestInputField(){
+                const site = this.$refs.site;
+                const login = this.$refs.login;
+                const masterPassword = this.$refs.masterPassword.$refs.password;
+                site.value ? (login.value ? masterPassword.focus() : login.focus()) : site.focus();
             }
         }
     }
