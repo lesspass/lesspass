@@ -13,12 +13,12 @@ export const baseURL = state => state.baseURL;
 export const message = state => state.message;
 
 export const version = state => {
-    if (state.password === null || state.route.path === '/options/default') {
-        return state.defaultPassword.version;
-    }
-    return state.password.version;
+  if (state.password === null || state.route.path === '/options/default') {
+    return state.defaultPassword.version;
+  }
+  return state.password.version;
 };
 
 export const passwordURL = state => {
-    return `${state.baseURL}/#/?login=${state.password.login}&site=${state.password.site}&uppercase=${state.password.uppercase}&lowercase=${state.password.lowercase}&numbers=${state.password.numbers}&symbols=${state.password.symbols}&length=${state.password.length}&counter=${state.password.counter}&version=${state.password.version}`;
+  return `${state.baseURL}/#/?login=${state.password.login}&site=${state.password.site}&uppercase=${state.password.uppercase}&lowercase=${state.password.lowercase}&numbers=${state.password.numbers}&symbols=${state.password.symbols}&length=${state.password.length}&counter=${state.password.counter}&version=${state.password.version}`;
 };

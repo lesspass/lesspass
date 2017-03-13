@@ -1,89 +1,89 @@
 <template>
-    <form v-on:submit.prevent="resetPasswordConfirm">
-        <div class="form-group row" v-if="showError">
-            <div class="col-12 text-muted text-danger">
-                {{errorMessage}}
-            </div>
+  <form v-on:submit.prevent="resetPasswordConfirm">
+    <div class="form-group row" v-if="showError">
+      <div class="col-12 text-muted text-danger">
+        {{errorMessage}}
+      </div>
+    </div>
+    <div class="form-group row" v-if="successMessage">
+      <div class="col-12 text-muted text-success">
+        You're password was reset successfully.
+        <router-link :to="{ name: 'login'}">Do you want to login ?</router-link>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <div class="inner-addon left-addon">
+          <i class="fa fa-lock"></i>
+          <input id="new-password"
+                 class="form-control"
+                 name="new-password"
+                 type="password"
+                 autocomplete="new-password"
+                 placeholder="New Password"
+                 v-model="new_password">
+          <small class="form-text text-muted text-danger">
+            <span v-if="passwordRequired">A password is required</span>
+          </small>
         </div>
-        <div class="form-group row" v-if="successMessage">
-            <div class="col-12 text-muted text-success">
-                You're password was reset successfully.
-                <router-link :to="{ name: 'login'}">Do you want to login ?</router-link>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-12">
-                <div class="inner-addon left-addon">
-                    <i class="fa fa-lock"></i>
-                    <input id="new-password"
-                           class="form-control"
-                           name="new-password"
-                           type="password"
-                           autocomplete="new-password"
-                           placeholder="New Password"
-                           v-model="new_password">
-                    <small class="form-text text-muted text-danger">
-                        <span v-if="passwordRequired">A password is required</span>
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-12">
-                <button id="loginButton" class="btn" type="submit"
-                        v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
-                    Reset my password
-                </button>
-            </div>
-        </div>
-    </form>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <button id="loginButton" class="btn" type="submit"
+                v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
+          Reset my password
+        </button>
+      </div>
+    </div>
+  </form>
 </template>
 <script type="text/ecmascript-6">
-    import User from '../api/user';
-    import {mapActions, mapGetters} from 'vuex';
+  import User from '../api/user';
+  import {mapActions, mapGetters} from 'vuex';
 
-    export default {
-        data() {
-            return {
-                new_password: '',
-                passwordRequired: false,
-                showError: false,
-                successMessage: false,
-                errorMessage: 'Oops! Something went wrong. Retry in a few minutes.'
-            };
-        },
-        methods: {
-            cleanErrors(){
-                this.passwordRequired = false;
-                this.showError = false;
-                this.successMessage = false;
-            },
-            noErrors(){
-                return !(this.passwordRequired || this.showError);
-            },
-            resetPasswordConfirm(){
-                this.cleanErrors();
-                if (!this.new_password) {
-                    this.passwordRequired = true;
-                    return;
-                }
-                const resetPassword = {
-                    uid: this.$route.params.uid, token: this.$route.params.token, new_password: this.new_password
-                };
-                User.confirmResetPassword(resetPassword)
-                    .then(() => {
-                        this.successMessage = true
-                    })
-                    .catch(err => {
-                        if (err.response.status === 400) {
-                            this.errorMessage = 'This password reset link become invalid.'
-                        }
-                        this.showError = true;
-                    });
+  export default {
+    data() {
+      return {
+        new_password: '',
+        passwordRequired: false,
+        showError: false,
+        successMessage: false,
+        errorMessage: 'Oops! Something went wrong. Retry in a few minutes.'
+      };
+    },
+    methods: {
+      cleanErrors(){
+        this.passwordRequired = false;
+        this.showError = false;
+        this.successMessage = false;
+      },
+      noErrors(){
+        return !(this.passwordRequired || this.showError);
+      },
+      resetPasswordConfirm(){
+        this.cleanErrors();
+        if (!this.new_password) {
+          this.passwordRequired = true;
+          return;
+        }
+        const resetPassword = {
+          uid: this.$route.params.uid, token: this.$route.params.token, new_password: this.new_password
+        };
+        User.confirmResetPassword(resetPassword)
+          .then(() => {
+            this.successMessage = true
+          })
+          .catch(err => {
+            if (err.response.status === 400) {
+              this.errorMessage = 'This password reset link become invalid.'
             }
-        },
-        computed: {
-            ...mapGetters(['version'])
-        },
-    }
+            this.showError = true;
+          });
+      }
+    },
+    computed: {
+      ...mapGetters(['version'])
+    },
+  }
 </script>

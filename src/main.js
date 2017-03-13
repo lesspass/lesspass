@@ -7,8 +7,8 @@ import router from './router';
 sync(store, router);
 
 new Vue({
-    el: '#lesspass',
-    store,
-    router,
-    render: h => h(LessPass)
+  el: '#lesspass',
+  store,
+  router,
+  render: h => h(LessPass)
 });

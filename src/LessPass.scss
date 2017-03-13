@@ -1,11 +1,9 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/custom";
-
 // Reset and dependencies
 @import "~bootstrap/scss/normalize";
 //@import "~bootstrap/scss/print";
-
 // Core CSS
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
@@ -15,7 +13,6 @@
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
-
 // Components
 @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
@@ -35,13 +32,11 @@
 @import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/responsive-embed";
 @import "~bootstrap/scss/close";
-
 // Components w/ JavaScript
 //@import "~bootstrap/scss/modal";
 //@import "~bootstrap/scss/tooltip";
 //@import "~bootstrap/scss/popover";
 //@import "~bootstrap/scss/carousel";
-
 // Utility classes
 @import "~bootstrap/scss/utilities";
 @import '~font-awesome/css/font-awesome.css';
@@ -53,7 +48,7 @@
 }
 
 @media (max-width: 419px) {
-  #lesspass{
+  #lesspass {
     border: none;
   }
 }

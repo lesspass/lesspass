@@ -8,31 +8,31 @@ import createPersistedState from 'vuex-persistedstate';
 Vue.use(Vuex);
 
 const defaultPassword = {
-    login: '',
-    site: '',
-    uppercase: true,
-    lowercase: true,
-    numbers: true,
-    symbols: true,
-    length: 16,
-    counter: 1,
-    version: 2
+  login: '',
+  site: '',
+  uppercase: true,
+  lowercase: true,
+  numbers: true,
+  symbols: true,
+  length: 16,
+  counter: 1,
+  version: 2
 };
 
 const state = {
-    authenticated: false,
-    password: defaultPassword,
-    passwords: [],
-    defaultPassword: defaultPassword,
-    lastUse: null,
-    token: null,
-    baseURL: 'https://lesspass.com',
+  authenticated: false,
+  password: defaultPassword,
+  passwords: [],
+  defaultPassword: defaultPassword,
+  lastUse: null,
+  token: null,
+  baseURL: 'https://lesspass.com',
 };
 
 export default new Vuex.Store({
-    state,
-    getters,
-    actions,
-    mutations,
-    plugins: [createPersistedState({key: 'lesspass'})]
+  state,
+  getters,
+  actions,
+  mutations,
+  plugins: [createPersistedState({key: 'lesspass'})]
 });
