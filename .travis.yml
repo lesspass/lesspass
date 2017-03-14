@@ -1,9 +1,10 @@
+dist: trusty
+sudo: required
 language: python
 python:
-    - 3.4
     - 3.5
 addons:
-  postgresql: "9.4"
+  postgresql: "9.5"
 services:
   - postgresql
 env:
