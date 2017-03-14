@@ -19,12 +19,12 @@
   "scripts": {
     "precommit": "npm test",
     "prepush": "npm test",
-    "build": "rimraf dist && npm run build:debug && npm run build:min",
-    "build:debug": "webpack",
+    "dev": "webpack",
+    "build": "rimraf dist && npm run build:min",
     "build:min": "cross-env NODE_ENV=production webpack -p",
-    "prepublish": "npm test && npm run build && npm run test:umd && npm run test:browser",
+    "prepublish": "npm run build",
     "test": "mocha tests/*",
-    "test:umd": "npm run build && cd tests && node node.js && cd ..",
+    "test:node": "npm run build && cd tests && node node.js && cd ..",
     "test:browser": "npm run build && karma start tests/karma.config.js"
   },
   "dependencies": {
@@ -42,12 +42,9 @@
     "husky": "^0.13.2",
     "karma": "^1.3.0",
     "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^2.0.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-mocha": "^1.3.0",
-    "karma-phantomjs-launcher": "^1.0.2",
     "mocha": "^3.1.2",
-    "phantomjs": "^2.1.7",
     "rimraf": "^2.5.4",
     "webpack": "^2.2.1"
   }
