@@ -9,10 +9,10 @@ function cmd {
     git push --tags origin master
 }
 
-#submodules=( cli cordova core cozy desktop frontend pure webextension )
-#submodules=( backend cli cordova core cozy desktop frontend nginx pure sandbox snap webextension )
-submodules=( cordova cozy desktop frontend webextension )
-for submodule in "${submodules[@]}"
+#submodules="cli cordova core cozy desktop frontend pure webextension"
+#submodules="backend cli cordova core cozy desktop frontend nginx pure sandbox snap webextension"
+submodules="cordova cozy desktop frontend webextension"
+for submodule in ${submodules}
 do
 	cd $submodule
 	cmd
