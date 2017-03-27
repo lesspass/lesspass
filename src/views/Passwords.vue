@@ -23,8 +23,8 @@
     <div v-if="passwords.length === 0">
       <div class="row">
         <div class="col">
-          You don't have any password profile saved in your database.
-          <router-link :to="{ name: 'home'}">Would you like to create one?</router-link>
+          {{$t('NoPassword', "You don't have any password profile saved in your database.")}}
+          <router-link :to="{ name: 'home'}">{{$t('CreatePassword', 'Would you like to create one?')}}</router-link>
         </div>
       </div>
     </div>
@@ -40,7 +40,8 @@
       <div v-if="filteredPasswords.length === 0">
         <div class="row">
           <div class="col">
-            Oops! There are no matches for "{{searchQuery}}". Please try broadening your search.
+            {{$t('NoMatchFor', 'Oops! There are no matches for')}} "{{searchQuery}}".
+            {{$t('UpdateYourSearch', 'Please try broadening your search.')}}
           </div>
         </div>
       </div>

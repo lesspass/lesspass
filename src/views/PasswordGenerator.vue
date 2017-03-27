@@ -42,33 +42,33 @@
   <form id="password-generator">
     <div class="form-group">
       <div class="inner-addon left-addon">
-        <label for="site" class="sr-only">Site</label>
+        <label for="site" class="sr-only">{{ $t('Site') }}</label>
         <i class="fa fa-globe"></i>
         <input id="site"
                name="site"
                type="text"
                ref="site"
                class="form-control awesomplete"
-               placeholder="Site"
                autocorrect="off"
                autocapitalize="none"
+               v-bind:placeholder="$t('Site')"
                v-model="password.site">
       </div>
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
       <div class="inner-addon left-addon">
-        <label for="login" class="sr-only">Login</label>
+        <label for="login" class="sr-only">{{ $t('Login') }}</label>
         <i class="fa fa-user"></i>
         <input id="login"
                name="login"
                type="text"
                ref="login"
                class="form-control"
-               placeholder="Login"
                autocomplete="off"
                autocorrect="off"
                autocapitalize="none"
+               v-bind:placeholder="$t('Login')"
                v-model="password.login">
       </div>
     </div>
@@ -81,30 +81,30 @@
         <div style="display: inline-block">
           <button type="button" class="btn" v-on:click="generatePassword"
                   v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-            <span v-if="!generatingPassword">Generate</span>
-            <span v-if="generatingPassword">Generating...</span>
+            <span v-if="!generatingPassword">{{ $t('Generate') }}</span>
+            <span v-if="generatingPassword">{{ $t('Generating') }}...</span>
           </button>
         </div>
       </div>
       <div class="col-9" v-show="generatedPassword">
         <div class="input-group">
-                    <span class="input-group-btn">
-                        <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn btn-copy"
-                                ref="copyPasswordButton"
-                                v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-                            <i class="fa fa-clipboard" aria-hidden="true"></i>
-                        </button>
-                    </span>
+          <span class="input-group-btn">
+            <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn btn-copy"
+                    ref="copyPasswordButton"
+                    v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+              <i class="fa fa-clipboard" aria-hidden="true"></i>
+            </button>
+          </span>
           <input type="password" id="generated-password" class="form-control" tabindex="-1"
                  ref="generatedPassword" v-bind:value="generatedPassword"
                  v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
           <span class="input-group-btn">
-                        <button id="revealGeneratedPassword" type="button" class="btn"
-                                v-on:click="togglePasswordType($refs.generatedPassword)"
-                                v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                        </button>
-                    </span>
+            <button id="revealGeneratedPassword" type="button" class="btn"
+                    v-on:click="togglePasswordType($refs.generatedPassword)"
+                    v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+          </span>
         </div>
       </div>
       <div class="col col-auto">
@@ -164,7 +164,7 @@
       const clipboard = new Clipboard('.btn-copy');
       clipboard.on('success', event => {
         if (event.text) {
-          showTooltip(event.trigger, 'copied !');
+          showTooltip(event.trigger, this.$t('Copied', 'copied !'));
           setTimeout(() => {
             this.cleanFormInSeconds(10);
           }, 2000);
@@ -244,7 +244,7 @@
 
         if (!site && !login || !masterPassword) {
           this.showOptions = false;
-          message.error('Site, login and master password fields are mandatory.');
+          message.error(this.$t('SiteLoginMasterPasswordMandatory', 'Site, login and master password fields are mandatory.'));
           return;
         }
 

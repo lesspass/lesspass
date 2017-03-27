@@ -21,17 +21,17 @@
           <span v-on:click="fullReload()" class="white-link pointer">LessPass</span>
         </div>
         <div class="col-9 text-right">
-                    <span class="text-white" v-if="saved && isAuthenticated">
-                       <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
-                    </span>
+          <span class="text-white" v-if="saved && isAuthenticated">
+            <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
+          </span>
           <span v-on:click="saveOrUpdatePassword()" class="white-link"
                 v-if="!saved && isAuthenticated && $store.state.password.site !== ''">
-                        <i class="fa fa-lg fa-save pointer"></i>
-                    </span>
+            <i class="fa fa-lg fa-save pointer"></i>
+          </span>
           <span class="white-link btn-copy pl-3" v-bind:data-clipboard-text="passwordURL"
                 v-if="$store.state.password.site !== ''">
-                        <i class="fa fa-lg fa-share-alt pointer"></i>
-                    </span>
+            <i class="fa fa-lg fa-share-alt pointer"></i>
+          </span>
           <router-link class="white-link pl-3" :to="{ name: 'configureOptions'}">
             <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
           </router-link>
@@ -65,7 +65,7 @@
       const clipboard = new Clipboard('.btn-copy');
       clipboard.on('success', event => {
         if (event.text) {
-          showTooltip(event.trigger, 'copied !');
+          showTooltip(event.trigger, this.$t('copied', 'copied !'));
         }
       });
     },

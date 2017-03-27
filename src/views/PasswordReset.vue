@@ -17,7 +17,7 @@
       <div class="col-12">
         <button id="loginButton" class="btn" type="submit"
                 v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
-          Send me a reset link
+          {{$t('Reset my password')}}
         </button>
       </div>
     </div>
@@ -40,7 +40,7 @@
     methods: {
       resetPassword(){
         if (!this.email) {
-          message.error(`We need en email to find your account.`);
+          message.error(this.$t('EmailRequiredError', 'We need en email to find your account.'));
           return;
         }
         User.resetPassword({email: this.email}, {baseURL: this.baseURL})

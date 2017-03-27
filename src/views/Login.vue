@@ -27,7 +27,7 @@
                  class="form-control"
                  name="username"
                  type="email"
-                 placeholder="Email"
+                 v-bind:placeholder="$t('Email')"
                  required
                  v-model="email">
         </div>
@@ -36,30 +36,30 @@
     <div class="form-group mb-2">
       <master-password v-model="password"></master-password>
       <label class="custom-control custom-checkbox hint--top hint--medium mb-0"
-             data-hint="Check me to generate encrypted password for lesspass.com">
+             v-bind:data-hint="$t('EncryptMasterPassword', 'Click me to encrypt this password before sending it to lesspass.com')">
         <input type="checkbox" class="custom-control-input" v-model="transformMasterPassword">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description text-muted">
-                    encrypt before use
-                </span>
+          {{$t('Encrypt my master password')}}
+        </span>
       </label>
     </div>
     <div class="form-group row no-gutters mb-0">
       <div class="col">
         <button id="signInButton" class="btn btn-block" type="submit"
                 v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
-          Sign In
+          {{$t('Sign In')}}
         </button>
       </div>
       <div class="col">
         <button id="registerButton" class="btn btn-secondary btn-block" type="button" v-on:click="register">
-          Register
+          {{$t('Register')}}
         </button>
       </div>
     </div>
     <div class="form-group my-0">
       <router-link :to="{ name: 'passwordReset'}">
-        <small>Forgot your password?</small>
+        <small>{{$t('ForgotPassword', 'Forgot your password?')}}</small>
       </router-link>
     </div>
   </form>
@@ -111,7 +111,7 @@
     methods: {
       formIsValid(){
         if (!this.email || !this.password || !this.baseURL) {
-          message.error('LessPass URL, email and password are mandatory');
+          message.error(this.$t('LoginFormInvalid', 'LessPass URL, email and password are mandatory'));
           return false;
         }
         return true;
@@ -126,9 +126,9 @@
             })
             .catch(err => {
               if (err.response === undefined && baseURL !== "https://lesspass.com") {
-                message.error('Your LessPass Database is not running');
+                message.error(this.$t('DBNotRunning', 'Your LessPass Database is not running'));
               } else if (err.response.status === 400) {
-                message.error('The email and password you entered did not match our records. Please double-check and try again.');
+                message.error(this.$t('LoginIncorrectError', 'The email and password you entered did not match our records. Please double-check and try again.'));
               } else {
                 message.displayGenericError();
               }
@@ -140,16 +140,16 @@
           const baseURL = this.baseURL;
           User.register({email: this.email, password: this.password}, {baseURL})
             .then(() => {
-              message.success(`Welcome ${this.email}, thank you for signing up.`);
+              message.success(this.$t('WelcomeRegister', 'Welcome {email}, thank you for signing up.', {email: this.email}));
               this.signIn();
             })
             .catch(err => {
               if (err.response && typeof err.response.data.email !== 'undefined') {
                 if (err.response.data.email[0].indexOf('already exists') !== -1) {
-                  message.error('This email is already registered. Want to login or recover your password?');
+                  message.error(this.$t('EmailAlreadyExist', 'This email is already registered. Want to login or recover your password?'));
                 }
                 if (err.response.data.email[0].indexOf('valid email') !== -1) {
-                  message.error('Please enter a valid email');
+                  message.error(this.$t('EmailInvalid', 'Please enter a valid email'));
                 }
               } else {
                 message.displayGenericError();

@@ -1,16 +1,16 @@
 <template>
   <div id="masterPassword" class="inner-addon left-addon input-group">
-    <label for="password" class="sr-only">Master Password</label>
+    <label for="password" class="sr-only">{{ $t('Master Password') }}</label>
     <i class="fa fa-lock"></i>
     <input id="password"
            name="password"
            ref="password"
            type="password"
            class="form-control"
-           placeholder="Master password"
            autocorrect="off"
            autocapitalize="off"
            v-model="password"
+           v-bind:placeholder="$t('Master Password')"
            v-on:input="updatePassword($event.target.value)"
            v-on:keyup.enter="triggerEnterMethod">
     <fingerprint v-bind:fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.password)">

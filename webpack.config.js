@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -27,18 +28,15 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('lesspass.min.css')
+    new ExtractTextPlugin('lesspass.min.css'),
+    new CopyWebpackPlugin([{context: './src/i18n', from: '**/*.json', to: 'i18n'}])
   ]
 };
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = false;
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new OptimizeCssAssetsPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {comments: false},
-      compress: {warnings: false}
-    })
+    new OptimizeCssAssetsPlugin()
   ]);
 }
 

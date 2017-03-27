@@ -8,20 +8,20 @@
                name="login"
                type="text"
                class="form-control"
-               placeholder="Login"
                autocomplete="off"
                autocorrect="off"
                autocapitalize="none"
+               v-bind:placeholder="$t('Login')"
                v-model="defaultOptions.login">
       </div>
     </div>
     <options v-bind:password="defaultOptions" v-on:optionsUpdated="optionsUpdated"></options>
     <div class="form-group pt-3">
       <button type="button" class="btn btn-sm btn-block hint--top hint--medium"
-              aria-label="We use local storage to save default options locally. Each time you open the app, those options will be loaded by default."
+              v-bind:aria-label="$t('DefaultOptionLocalStorage', 'We use local storage to save default options locally. Each time you open the app, those options will be loaded by default.')"
               v-bind:class="{'btn-warning':defaultOptions.version===1,'btn-primary':defaultOptions.version!==1}"
               v-on:click="saveOptionsAsDefault">
-        Save default options locally
+        {{$t('Save default options locally')}}
       </button>
     </div>
   </div>

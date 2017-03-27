@@ -15,7 +15,7 @@
       <div class="col-12">
         <div class="row">
           <div class="col">
-            <label for="types">Advanced options</label>
+            <label for="types">{{ $t('Advanced options') }}</label>
           </div>
         </div>
         <div id="types" class="row">
@@ -52,38 +52,55 @@
     </div>
     <div class="form-group row mb-0">
       <div class="col-6 col-sm-4 mb-3 mb-sm-0">
-        <label for="passwordLength">Length</label>
+        <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
-                    <span class="input-group-btn" v-on:click="options.length-=1">
-                        <button class="btn btn-secondary" type="button"><i class="fa fa-minus"></i></button>
-                    </span>
-          <input id="passwordLength" class="form-control form-control-sm" type="number"
-                 v-model="options.length" min="5" max="35">
+          <span class="input-group-btn" v-on:click="options.length-=1">
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-minus"></i>
+            </button>
+          </span>
+          <input id="passwordLength"
+                 class="form-control form-control-sm"
+                 type="number"
+                 min="5"
+                 max="35"
+                 v-model="options.length">
           <span class="input-group-btn" v-on:click="options.length+=1">
-                        <button class="btn btn-secondary" type="button"><i class="fa fa-plus"></i></button>
-                    </span>
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-plus"></i>
+            </button>
+          </span>
         </div>
       </div>
       <div class="col-6 col-sm-4 mb-3 mb-sm-0">
         <label for="passwordCounter"
                class="hint--top hint--medium"
-               aria-label="Increment counter field to change generated password without changing your master password.">Counter</label>
+               v-bind:aria-label="$t('CounterFieldHelp','Increment this value to change generated password without changing your master password.')">
+          {{$t('Counter')}}
+        </label>
         <div class="input-group input-group-sm">
-                    <span class="input-group-btn" v-on:click="options.counter-=1">
-                        <button class="btn btn-secondary" type="button"><i class="fa fa-minus"></i></button>
-                    </span>
-          <input id="passwordCounter" class="form-control form-control-sm" type="number"
-                 v-model="options.counter" min="1">
+          <span class="input-group-btn" v-on:click="options.counter-=1">
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-minus"></i>
+            </button>
+          </span>
+          <input id="passwordCounter"
+                 class="form-control form-control-sm"
+                 type="number"
+                 min="1"
+                 v-model="options.counter">
           <span class="input-group-btn" v-on:click="options.counter+=1">
-                        <button class="btn btn-secondary" type="button"><i class="fa fa-plus"></i></button>
-                    </span>
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-plus"></i>
+            </button>
+          </span>
         </div>
       </div>
       <div class="clearfix hidden-sm-up"></div>
       <div class="col-12 col-sm-4">
         <div class="row hidden-sm-down">
           <div class="col">
-            <label>Version</label>
+            <label>{{ $t('Version') }}</label>
           </div>
         </div>
         <div class="row no-gutters">
@@ -91,16 +108,17 @@
             <button type="button" class="btn btn-block btn-sm border-right-0"
                     v-bind:class="{'btn-primary':options.version===2,'btn-secondary':options.version!==2}"
                     v-on:click="setVersion(2)">
-              v<span class="hidden-sm-up">ersion </span>2
+              <span class="hidden-sm-up">{{$t('version')}} </span>
+              <span class="hidden-sm-down">{{$t('versionShortcut', 'v')}}</span>2
             </button>
-
           </div>
           <div class="col-6">
             <button type="button"
                     class="btn btn-block btn-sm border-left-0"
                     v-bind:class="{'btn-warning':options.version===1,'btn-secondary':options.version!==1}"
                     v-on:click="setVersion(1)">
-              v<span class="hidden-sm-up">ersion </span>1
+              <span class="hidden-sm-up">{{$t('version')}} </span>
+              <span class="hidden-sm-down">{{$t('versionShortcut', 'v')}}</span>1
             </button>
           </div>
         </div>
@@ -138,7 +156,10 @@
         handler: function(newOptions) {
           if (newOptions.version === 1) {
             const dayBeforeOnlyV2 = this.getDayBeforeOnlyV2();
-            const message = `Version 1 is deprecated and will be removed in ${dayBeforeOnlyV2} days. We strongly advise you to migrate your passwords to version 2.`;
+            const message = this.$t(
+              "WarningV1",
+              "Version 1 is deprecated and will be removed in {dayBeforeOnlyV2} days. We strongly advise you to migrate your passwords to version 2.",
+              {dayBeforeOnlyV2});
             Message.error(message);
           }
 
