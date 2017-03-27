@@ -18,7 +18,7 @@ walker.on("file", (root, fileStats, next) => {
 });
 
 const I18N_DIR = '../src/i18n';
-const LANGUAGES_AVAILABLE = ['zh', 'fr', 'es', 'uk', 'de', 'it'];
+const LANGUAGES_AVAILABLE = ['zh', 'fr', 'es', 'uk', 'de', 'it', 'en'];
 walker.on("end", () => {
   LANGUAGES_AVAILABLE.forEach(lang => {
     const localeFile = path.join(I18N_DIR, `${lang}.json`);
