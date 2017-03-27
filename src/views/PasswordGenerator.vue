@@ -121,7 +121,7 @@
   import LessPass from 'lesspass';
   import {mapGetters} from 'vuex';
   import Clipboard from 'clipboard';
-  import {getSite, getPasswordFromUrlQuery} from '../domain/url-parser';
+  import {getSite, getPasswordFromUrlQuery} from '../services/url-parser';
   import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
   import MasterPassword from '../components/MasterPassword.vue';
   import Options from '../components/Options.vue';

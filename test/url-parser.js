@@ -1,5 +1,5 @@
 import test from 'ava';
-import * as urlParser from '../src/domain/url-parser';
+import * as urlParser from '../src/services/url-parser';
 
 test('urlParser.getDomainName', t => {
   t.is('lesspass.com', urlParser.getDomainName('https://lesspass.com/#!/'));
