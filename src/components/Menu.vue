@@ -28,10 +28,6 @@
                 v-if="!saved && isAuthenticated && $store.state.password.site !== ''">
             <i class="fa fa-lg fa-save pointer"></i>
           </span>
-          <span class="white-link btn-copy pl-3" v-bind:data-clipboard-text="passwordURL"
-                v-if="$store.state.password.site !== ''">
-            <i class="fa fa-lg fa-share-alt pointer"></i>
-          </span>
           <router-link class="white-link pl-3" :to="{ name: 'configureOptions'}">
             <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
           </router-link>
@@ -52,22 +48,12 @@
 </template>
 <script type="text/ecmascript-6">
   import {mapGetters} from 'vuex';
-  import Clipboard from 'clipboard';
-  import {showTooltip} from '../services/tooltip';
 
   export default {
     data(){
       return {
         saved: false
       }
-    },
-    created(){
-      const clipboard = new Clipboard('.btn-copy');
-      clipboard.on('success', event => {
-        if (event.text) {
-          showTooltip(event.trigger, this.$t('copied', 'copied !'));
-        }
-      });
     },
     methods: {
       fullReload(){
@@ -90,8 +76,7 @@
       'isAuthenticated',
       'isGuest',
       'password',
-      'defaultPassword',
-      'passwordURL'
+      'defaultPassword'
     ])
   }
 </script>

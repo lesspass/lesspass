@@ -4,5 +4,6 @@ export function showTooltip(elem, msg) {
   elem.setAttribute('aria-label', msg);
   setTimeout(function() {
     elem.setAttribute('class', classNames);
+    elem.setAttribute('aria-label', '');
   }, 2000);
 }

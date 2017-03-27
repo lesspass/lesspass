@@ -86,17 +86,24 @@
           </button>
         </div>
       </div>
-      <div class="col-9" v-show="generatedPassword">
+      <div class="col-8" v-show="generatedPassword">
         <div class="input-group">
           <span class="input-group-btn">
-            <button id="copyPasswordButton" type="button" data-clipboard-text="" class="btn btn-copy"
+            <button id="copyPasswordButton"
+                    class="btn btn-copy"
+                    type="button"
+                    data-clipboard-text=""
                     ref="copyPasswordButton"
                     v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
               <i class="fa fa-clipboard" aria-hidden="true"></i>
             </button>
           </span>
-          <input type="password" id="generated-password" class="form-control" tabindex="-1"
-                 ref="generatedPassword" v-bind:value="generatedPassword"
+          <input id="generated-password"
+                 type="password"
+                 class="form-control"
+                 tabindex="-1"
+                 ref="generatedPassword"
+                 v-bind:value="generatedPassword"
                  v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
           <span class="input-group-btn">
             <button id="revealGeneratedPassword" type="button" class="btn"
@@ -108,6 +115,12 @@
         </div>
       </div>
       <div class="col col-auto">
+        <button class="btn btn-copy btn-secondary"
+                type="button"
+                v-bind:data-clipboard-text="passwordURL"
+                v-bind:disabled="password.site.length === 0">
+          <i class="fa fa-lg fa-share-alt pointer" aria-hidden="true"></i>
+        </button>
         <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
           <i class="fa fa-sliders" aria-hidden="true"></i>
         </button>
