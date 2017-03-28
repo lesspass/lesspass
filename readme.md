@@ -65,6 +65,7 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Édouard Lopez](https://github.com/edouard-lopez)
  * [Erik Mulder](https://github.com/ewjmulder)
  * [Ilya Pirozhenko](https://github.com/sochix)
+ * [Leo Arias](https://github.com/elopio)
  * [Marc Sluiter](https://github.com/slintes)
  * [Martin](https://github.com/martinseener)
  * [Matthias Gliwka](https://github.com/gliwka)
