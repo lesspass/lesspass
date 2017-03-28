@@ -1,5 +1,5 @@
 <template>
-  <div id="lesspass" class="card" style="max-width: 420px;">
+  <div id="lesspass" class="card">
     <lesspass-menu></lesspass-menu>
     <lesspass-message></lesspass-message>
     <div class="card-block">

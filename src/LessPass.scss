@@ -43,8 +43,17 @@
 @import '~hint.css/hint.css';
 @import '~awesomplete/awesomplete.css';
 
+.lesspass--unbordered #lesspass{
+  border: none;
+}
+
+.lesspass--full-width #lesspass{
+  max-width: none !important;
+}
+
 #lesspass {
   color: #464646;
+  max-width: 420px;
 }
 
 @media (max-width: 419px) {
