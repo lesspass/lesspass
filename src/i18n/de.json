@@ -38,7 +38,6 @@
   "Version": "Version",
   "WarningV1": "Version 1 ist veraltet und wird in {dayBeforeOnlyV2} Tagen entfernt. Wir empfehlen Ihnen dringend, Ihre Passwörter auf die Version 2 zu migrieren.",
   "WelcomeRegister": "Willkommen {email}, danke für die Anmeldung.",
-  "copied": "Kopiert!",
   "version": "Version",
   "versionShortcut": "V"
 }

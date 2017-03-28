@@ -38,7 +38,6 @@
   "Version": "Versión",
   "WarningV1": "La versión 1 está obsoleta y será eliminada en {dayBeforeOnlyV2} días. Le recomendamos enérgicamente migrar sus contraseñas a la versión 2.",
   "WelcomeRegister": "Bienvenido o bienvenida {email}, gracias por registrarse.",
-  "copied": "¡ copiado !",
   "version": "versión",
   "versionShortcut": "v"
 }

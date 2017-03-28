@@ -7,7 +7,7 @@ import Polyglot from 'vue-polyglot';
 
 Vue.use(Polyglot, {
   defaultLanguage: 'en',
-  languagesAvailable: ['fr']
+  languagesAvailable: ['fr', 'es', 'de']
 });
 
 sync(store, router);

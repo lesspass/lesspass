@@ -38,7 +38,6 @@
   "Version": "Version",
   "WarningV1": "La version 1 est déconseillée et sera supprimée dans {dayBeforeOnlyV2} jours. Nous vous conseillons fortement de migrer vos mots de passe vers la version 2.",
   "WelcomeRegister": "Bienvenu {email}, merci pour vous être enregistré.",
-  "copied": "copied !",
   "version": "version",
   "versionShortcut": "v"
 }

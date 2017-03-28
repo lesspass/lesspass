@@ -38,7 +38,6 @@
   "Version": "Version",
   "WarningV1": "Version 1 is deprecated and will be removed in {dayBeforeOnlyV2} days. We strongly advise you to migrate your passwords to version 2.",
   "WelcomeRegister": "Welcome {email}, thank you for signing up.",
-  "copied": "copied !",
   "version": "version",
   "versionShortcut": "v"
 }
