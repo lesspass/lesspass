@@ -8,7 +8,7 @@
   "scripts": {
     "precommit": "npm test",
     "prepush": "npm test",
-    "build": "rm -rf dist &&npm run build:i18n && cross-env NODE_ENV=production webpack -p",
+    "build": "rm -rf dist && cross-env NODE_ENV=production webpack -p",
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
     "test": "ava test --compilers js:babel-register"
