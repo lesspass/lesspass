@@ -74,6 +74,15 @@ describe('LessPass v2', function() {
         assert.equal("sB>{qF}wN%/-fm", generatedPassword);
       });
     });
+    it('render password with default options', function() {
+      this.timeout(10000);
+      var site = 'example.org';
+      var login = 'contact@example.org';
+      var masterPassword = 'password';
+      return LessPass.generatePassword(site, login, masterPassword).then(function(generatedPassword) {
+        assert.equal('WHLpUL)e00[iHR+w', generatedPassword);
+      });
+    });
   });
 });
 

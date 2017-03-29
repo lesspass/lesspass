@@ -36,7 +36,7 @@ var defaultPasswordProfile = {
   keylen: 32,
   digest: 'sha256',
   length: 16,
-  index: 1,
+  counter: 1,
   iterations: 100000
 };
 
