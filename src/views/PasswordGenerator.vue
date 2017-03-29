@@ -257,7 +257,7 @@
 
         if (!site && !login || !masterPassword) {
           this.showOptions = false;
-          message.error(this.$t('SiteLoginMasterPasswordMandatory', 'Site, login and master password fields are mandatory.'));
+          message.error(this.$t('SiteLoginMasterPasswordMandatory', 'Site, login, and master password fields are mandatory.'));
           return;
         }
 

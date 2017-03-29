@@ -40,7 +40,7 @@
     methods: {
       resetPassword(){
         if (!this.email) {
-          message.error(this.$t('EmailRequiredError', 'We need en email to find your account.'));
+          message.error(this.$t('EmailRequiredError', 'We need an email to find your account.'));
           return;
         }
         User.resetPassword({email: this.email}, {baseURL: this.baseURL})

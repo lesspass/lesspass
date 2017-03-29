@@ -75,7 +75,7 @@
       <div class="col-6 col-sm-4 mb-3 mb-sm-0">
         <label for="passwordCounter"
                class="hint--top hint--medium"
-               v-bind:aria-label="$t('CounterFieldHelp','Increment this value to change generated password without changing your master password.')">
+               v-bind:aria-label="$t('CounterFieldHelp','Increment this value to change the generated password without changing your master password.')">
           {{$t('Counter')}}
         </label>
         <div class="input-group input-group-sm">

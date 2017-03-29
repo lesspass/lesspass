@@ -111,7 +111,7 @@
     methods: {
       formIsValid(){
         if (!this.email || !this.password || !this.baseURL) {
-          message.error(this.$t('LoginFormInvalid', 'LessPass URL, email and password are mandatory'));
+          message.error(this.$t('LoginFormInvalid', 'LessPass URL, email, and password are mandatory'));
           return false;
         }
         return true;
