@@ -65,6 +65,7 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Édouard Lopez](https://github.com/edouard-lopez)
  * [Erik Mulder](https://github.com/ewjmulder)
  * [Ilya Pirozhenko](https://github.com/sochix)
+ * [Kcchouette](https://github.com/Kcchouette)
  * [Leo Arias](https://github.com/elopio)
  * [Marc Sluiter](https://github.com/slintes)
  * [Martin](https://github.com/martinseener)
@@ -76,4 +77,5 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Philip Ulrich](https://github.com/philip-ulrich)
  * [Pierre Rudloff](https://github.com/Rudloff)
  * [Pierre-Jean Vardanéga](https://github.com/pvardanega)
+ * [朱震庭](https://github.com/r2qokk)
 
