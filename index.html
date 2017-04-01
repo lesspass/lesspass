@@ -8,18 +8,22 @@
   <link rel="stylesheet" href="dist/lesspass.min.css">
   <style>
     div.center {
-      width: 470px;
-      max-width: 100%;
+      max-width: 420px;
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
+
+    @media (min-width: 544px) {
+      #lesspass {
+        margin-top: 3em;
+      }
+    }
   </style>
 </head>
 <body>
-<div class="center">
-  <div class="py-1"></div>
-  <div id="lesspass" class="m-x-auto"></div>
+<div class="center lesspass--full-width">
+  <div id="lesspass"></div>
 </div>
 <script src="dist/lesspass.min.js"></script>
 </body>
