@@ -2,15 +2,15 @@
 
 ## requirements
 
-    cordova requirements
+    ./node_modules/.bin/cordova requirements
 
 ## add Cordova platform
 
-    cordova platform add android
+    ./node_modules/.bin/cordova platform add android
 
 ## Test
 
-    cordova emulate android
+    ./node_modules/.bin/cordova emulate android
 
 ## Build
 
@@ -19,11 +19,11 @@
     
 ## Run
     
-    cordova run android
+    ./node_modules/.bin/cordova run android
     
 ## Build Release
 
-    cordova build --release -- --keystore=~/Android/lesspass.keystore --storePassword=... --alias=lesspass --password=...
+    ./node_modules/.bin/cordova build --release -- --keystore=~/Android/lesspass.keystore --storePassword=... --alias=lesspass --password=...
     
 ## License
 
