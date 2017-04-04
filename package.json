@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.3",
-    "clipboardy": "^0.1.2",
+    "clipboardy": "^1.1.0",
     "lesspass": "6.0.0",
     "meow": "3.7.0",
     "read": "1.0.7"
