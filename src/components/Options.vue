@@ -54,7 +54,7 @@
       <div class="col-6 col-sm-4 mb-3 mb-sm-0">
         <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
-          <span class="input-group-btn" v-on:click="options.length-=1">
+          <span class="input-group-btn" v-on:click="options.length=decrement(options.length, {min: 5, max: 35})">
             <button class="btn btn-secondary" type="button">
               <i class="fa fa-minus"></i>
             </button>
@@ -65,7 +65,8 @@
                  min="5"
                  max="35"
                  v-model="options.length">
-          <span class="input-group-btn" v-on:click="options.length+=1">
+          <span class="input-group-btn"
+          v-on:click="options.length=increment(options.length, {min: 5, max: 35})">
             <button class="btn btn-secondary" type="button">
               <i class="fa fa-plus"></i>
             </button>
@@ -79,8 +80,8 @@
           {{$t('Counter')}}
         </label>
         <div class="input-group input-group-sm">
-          <span class="input-group-btn" v-on:click="options.counter-=1">
-            <button class="btn btn-secondary" type="button">
+          <span class="input-group-btn" v-on:click="options.counter=decrement(options.counter, {min: 1})">
+              <button class="btn btn-secondary" type="button">
               <i class="fa fa-minus"></i>
             </button>
           </span>
@@ -89,7 +90,7 @@
                  type="number"
                  min="1"
                  v-model="options.counter">
-          <span class="input-group-btn" v-on:click="options.counter+=1">
+                   <span class="input-group-btn" v-on:click="options.counter=increment(options.counter, {min: 1})">
             <button class="btn btn-secondary" type="button">
               <i class="fa fa-plus"></i>
             </button>
@@ -129,6 +130,7 @@
 
 <script type="text/ecmascript-6">
   import Message from '../services/message';
+  import {increment, decrement} from "../services/form-validator";
 
   export default {
     name: 'options',
@@ -169,6 +171,8 @@
       }
     },
     methods: {
+      decrement,
+      increment,
       setVersion(value){
         this.options.length = value === 1 ? 12 : 16;
         this.options.version = value;
