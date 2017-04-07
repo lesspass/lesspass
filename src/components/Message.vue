@@ -37,8 +37,8 @@
             <div class="col-12">
               <small>{{message.text}}</small>
               <span class="close-notification" v-on:click="hideMessage">
-                                <i class="fa fa-close"></i>
-                            </span>
+                <i class="fa fa-close"></i>
+              </span>
             </div>
           </div>
         </div>
