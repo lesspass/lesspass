@@ -45,7 +45,10 @@
         }
         User.resetPassword({email: this.email}, {baseURL: this.baseURL})
           .then(() => {
-            message.success(`If the email address ${this.email} is associated with a LessPass account, you will shortly receive an email from LessPass with instructions on how to reset your password.`)
+            const successMessage = this.$t('resetPasswordSuccess',
+              'If the email address {email} is associated with a LessPass account, you will shortly receive an email from LessPass with instructions on how to reset your password.',
+              {email: this.email});
+            message.success(successMessage);
           })
           .catch(() => {
             message.displayGenericError();
