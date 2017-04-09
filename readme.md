@@ -37,7 +37,7 @@ simply run
 
     bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/lesspass.sh) [DOMAIN]
 
-You can specify your domain (e.g. example.com). If not provided, you'll be asked to enter it.
+You can specify your domain (e.g. example.org). If not provided, you'll be asked to enter it.
 
 ### configure email
 

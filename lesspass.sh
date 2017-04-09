@@ -19,7 +19,7 @@ if [ "$#" -eq  "1" ]
 then
     DOMAIN=$1
 else
-    echo "Please enter your domain name: "
+    echo "Please enter your domain name (e.g. example.org): "
     read DOMAIN
 fi
 
@@ -37,3 +37,6 @@ docker-compose pull
 # restart container
 docker-compose down
 docker-compose up -d
+
+echo "LessPass Database is now running on $DOMAIN"
+echo "If you want to configure an email server for your LessPass Database see: https://github.com/lesspass/lesspass#configure-email"
