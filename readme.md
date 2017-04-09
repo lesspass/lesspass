@@ -39,6 +39,19 @@ simply run
 
 You can specify your domain (e.g. example.com). If not provided, you'll be asked to enter it.
 
+### configure email
+
+You can edit `.env` file to use your own email server (for reset password for example)
+
+```
+DEFAULT_FROM_EMAIL="LessPass" <admin@example.org>
+EMAIL_HOST=...
+EMAIL_HOST_USER=...
+EMAIL_HOST_PASSWORD=...
+EMAIL_PORT=...
+EMAIL_USE_TLS=1
+```
+
 ## Status
 
 | module | tests |
