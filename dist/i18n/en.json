@@ -38,6 +38,7 @@
   "Version": "Version",
   "WarningV1": "Version 1 is deprecated and will be removed in {dayBeforeOnlyV2} days. We strongly advise you to migrate your passwords to version 2.",
   "WelcomeRegister": "Welcome {email}, thank you for signing up.",
+  "resetPasswordSuccess": "If the email address {email} is associated with a LessPass account, you will shortly receive an email from LessPass with instructions on how to reset your password.",
   "version": "version",
   "versionShortcut": "v"
 }
