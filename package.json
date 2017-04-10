@@ -8,13 +8,14 @@
   "repository": "lesspass/cozy",
   "scripts": {
     "build": "rimraf build && rimraf dist && gulp",
-    "build:linux": "npm run build && electron-packager ./ --platform=linux --arch=x64 --icon=images/icon.png --ignore=node_modules --overwrite && python zip.py",
+    "build:linux": "npm run build && electron-packager ./ --platform=linux --arch=x64 --icon=images/icon.png --ignore=node_modules --overwrite",
     "build:osx": "npm run build && electron-packager ./ LessPass --platform=darwin --arch=x64 --icon=images/icon.icns --ignore=node_modules --overwrite",
-    "build:windows": "npm run build && electron-packager ./ --platform=win32 --arch=x64 --icon=images/icon.ico --ignore=node_modules --overwrite && python zip.py",
+    "build:windows": "npm run build && electron-packager ./ --platform=win32 --arch=x64 --icon=images/icon.ico --ignore=node_modules --overwrite",
+    "zip": "python zip.py",
     "start": "electron ."
   },
   "dependencies": {
-    "lesspass-pure": "^4.5.0"
+    "lesspass-pure": "^4.5.2"
   },
   "devDependencies": {
     "electron-packager": "^8.6.0",
