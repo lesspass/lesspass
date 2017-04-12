@@ -1,20 +1,26 @@
 {
   "name": "lesspass-webextension",
   "description": "chrome and firefox web extension for LessPass",
+  "version": "2.4.0",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
-    "prebuild": "npm prune && npm install",
-    "build": "npm run clean && gulp && npm run zip",
-    "clean": "rm -rf extension/dist/ && mkdir extension/dist/",
-    "zip": "rm -rf build && mkdir build && cd extension && zip -r extension.zip ./* -x ./*.js && cp extension.zip ../build/lesspass.firefox.xpi && mv extension.zip ../build/lesspass.chrome.zip && cd ..",
+    "clean": "rm -rf extension/dist/ && mkdir extension/dist/ && rm -rf build && mkdir build && npm prune && npm install",
+    "version": "json -I -f extension/manifest.json -e \"this.version='`echo $npm_package_version`'\"",
+    "zip:firefox": "cp build/lesspass.zip build/lesspass.firefox-v$npm_package_version.xpi",
+    "zip:chrome": "cp build/lesspass.zip build/lesspass.chrome-v$npm_package_version.zip",
+    "zip": "git archive -o build/lesspass.zip HEAD:extension && npm run zip:firefox && npm run zip:chrome && rm build/lesspass.zip",
+    "build": "npm run clean && npm run version && gulp && npm run zip",
+    "release": "npm run build && webstore upload --source build/lesspass.chrome-v$npm_package_version.zip --auto-publish",
     "dev": "cd extension && web-ext run"
   },
   "dependencies": {
     "lesspass-pure": "^4.5.0"
   },
   "devDependencies": {
+    "chrome-webstore-upload-cli": "^1.1.1",
     "gulp": "^3.9.1",
+    "json": "^9.0.6",
     "web-ext": "^1.8.1"
   },
   "private": true
