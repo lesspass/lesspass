@@ -15,7 +15,7 @@
     "dev": "cd extension && web-ext run"
   },
   "dependencies": {
-    "lesspass-pure": "^4.5.0"
+    "lesspass-pure": "^4.5.2"
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "^1.1.1",
