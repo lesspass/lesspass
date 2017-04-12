@@ -38,6 +38,7 @@
   "Version": "版本",
   "WarningV1": "版本 1 已不支援，并将在 {dayBeforeOnlyV2} 天内移除。我们强烈得建议您将密码换至版本 2。",
   "WelcomeRegister": "欢迎 {email}，谢谢您的注册。",
+  "resetPasswordSuccess": "如果电子邮件地址 {email} 与LessPass帐户相关联，您将很快收到LessPass的电子邮件，并提供如何重置密码的说明。",
   "version": "版本",
   "versionShortcut": "v"
 }

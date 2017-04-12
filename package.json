@@ -10,7 +10,7 @@
     "build": "rm -rf www/dist/ && gulp"
   },
   "dependencies": {
-    "lesspass-pure": "^4.5.0"
+    "lesspass-pure": "^4.5.2"
   },
   "devDependencies": {
     "cordova": "^6.5.0",
