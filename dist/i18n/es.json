@@ -38,6 +38,7 @@
   "Version": "Versión",
   "WarningV1": "La versión 1 está obsoleta y será eliminada en {dayBeforeOnlyV2} días. Le recomendamos enérgicamente migrar sus contraseñas a la versión 2.",
   "WelcomeRegister": "Bienvenido o bienvenida {email}, gracias por registrarse.",
+  "resetPasswordSuccess": "Si la dirección de correo electrónico {email} está asociada a una cuenta LessPass, recibirá un correo electrónico de LessPass con instrucciones sobre cómo restablecer su contraseña.",
   "version": "versión",
   "versionShortcut": "v"
 }
