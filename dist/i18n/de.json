@@ -38,6 +38,7 @@
   "Version": "Version",
   "WarningV1": "Version 1 ist veraltet und wird in {dayBeforeOnlyV2} Tagen entfernt. Wir empfehlen Ihnen dringend, Ihre Passwörter auf die Version 2 zu migrieren.",
   "WelcomeRegister": "Willkommen {email}, danke für die Anmeldung.",
+  "resetPasswordSuccess": "Wenn die E-Mail-Adresse {email} mit einem LessPass-Konto verknüpft ist, erhalten Sie in Kürze eine E-Mail von LessPass mit Anweisungen zum Zurücksetzen Ihres Passworts.",
   "version": "Version",
   "versionShortcut": "V"
 }
