@@ -1,0 +1,13 @@
+dist: trusty
+sudo: required
+language: node_js
+node_js:
+  - 6
+env:
+  - EXTENSION_ID=lcmbpoclaodbgkbjafnkbbinogcbnjih
+deploy:
+  provider: script
+  script: npm run release
+  on:
+    branch: master
+    tags: true
