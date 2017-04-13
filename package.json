@@ -12,7 +12,8 @@
     "zip": "git archive -o build/lesspass.zip HEAD:extension && npm run zip:firefox && npm run zip:chrome && rm build/lesspass.zip",
     "build": "npm run clean && gulp && npm run zip",
     "release": "npm run build && webstore upload --source build/lesspass.chrome-v$npm_package_version.zip --auto-publish",
-    "dev": "cd extension && web-ext run"
+    "dev": "cd extension && web-ext run",
+    "test": "echo 'no test'"
   },
   "dependencies": {
     "lesspass-pure": "^4.5.2"
