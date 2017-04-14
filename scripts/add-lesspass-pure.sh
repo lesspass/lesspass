@@ -9,6 +9,13 @@ function no_uncommitted_changes {
     fi
 }
 
+function commit-with-message {
+    git add .
+    git commit -m 'Adding the lastest version of lesspass-pure'
+    git status
+    git push --tags origin master
+}
+
 function cmd {
     echo
     echo "------------------------------------------------"
@@ -17,10 +24,7 @@ function cmd {
     if no_uncommitted_changes; then
         npm install --save lesspass-pure
         npm run build
-        git add .
-        git commit -m 'Adding the lastest version of lesspass-pure'
-        git status
-        git push --tags origin master
+        commit-with-message
     fi
 }
 
@@ -37,3 +41,5 @@ do
 	cmd
 	cd ..
 done
+
+commit-with-message
