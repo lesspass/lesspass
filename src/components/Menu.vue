@@ -39,7 +39,7 @@
             <i class="fa fa-lg fa-sign-out" aria-hidden="true"></i>
           </button>
           <router-link class="white-link pl-3" :to="{ name: 'login'}" v-if="isGuest">
-            <i class="fa fa-lg fa-user-secret pointer" aria-hidden="true"></i>
+            <i class="fa fa-lg fa-sign-in pointer" aria-hidden="true"></i>
           </router-link>
         </div>
       </div>
