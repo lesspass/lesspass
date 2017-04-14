@@ -1,6 +1,9 @@
 > chrome and firefox web extension for LessPass password manager
 
-![LessPass extension](screenshot.png?raw=true "LessPass screenshot")
+# Install
+
+ * [Firefox](https://addons.mozilla.org/en-US/firefox/addon/lesspass/)
+ * [Chrome](https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih)
 
 # Dev
 
