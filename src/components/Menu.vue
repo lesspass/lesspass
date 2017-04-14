@@ -28,9 +28,6 @@
                 v-if="!saved && isAuthenticated && $store.state.password.site !== ''">
             <i class="fa fa-lg fa-save pointer"></i>
           </span>
-          <router-link class="white-link pl-3" :to="{ name: 'configureOptions'}">
-            <i class="fa fa-lg fa-cog" aria-hidden="true"></i>
-          </router-link>
           <router-link class="white-link pl-3" :to="{ name: 'passwords'}" v-if="isAuthenticated">
             <i class="fa  fa-lg fa-key" aria-hidden="true"></i>
           </router-link>

@@ -50,12 +50,12 @@
         </div>
       </div>
     </div>
-    <div class="form-group row mb-0">
-      <div class="col-6 col-sm-4 mb-3 mb-sm-0">
+    <div class="form-group row">
+      <div class="col">
         <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
           <span class="input-group-btn" v-on:click="options.length=decrement(options.length, {min: 5, max: 35})">
-            <button class="btn btn-secondary" type="button">
+            <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-minus"></i>
             </button>
           </span>
@@ -66,14 +66,14 @@
                  max="35"
                  v-model="options.length">
           <span class="input-group-btn"
-          v-on:click="options.length=increment(options.length, {min: 5, max: 35})">
-            <button class="btn btn-secondary" type="button">
+                v-on:click="options.length=increment(options.length, {min: 5, max: 35})">
+            <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-plus"></i>
             </button>
           </span>
         </div>
       </div>
-      <div class="col-6 col-sm-4 mb-3 mb-sm-0">
+      <div class="col">
         <label for="passwordCounter"
                class="hint--top hint--medium"
                v-bind:aria-label="$t('CounterFieldHelp','Increment this value to change the generated password without changing your master password.')">
@@ -81,7 +81,7 @@
         </label>
         <div class="input-group input-group-sm">
           <span class="input-group-btn" v-on:click="options.counter=decrement(options.counter, {min: 1})">
-              <button class="btn btn-secondary" type="button">
+              <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-minus"></i>
             </button>
           </span>
@@ -90,39 +90,48 @@
                  type="number"
                  min="1"
                  v-model="options.counter">
-                   <span class="input-group-btn" v-on:click="options.counter=increment(options.counter, {min: 1})">
-            <button class="btn btn-secondary" type="button">
+          <span class="input-group-btn" v-on:click="options.counter=increment(options.counter, {min: 1})">
+            <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-plus"></i>
             </button>
           </span>
         </div>
       </div>
-      <div class="clearfix hidden-sm-up"></div>
-      <div class="col-12 col-sm-4">
-        <div class="row hidden-sm-down">
+      <div class="col">
+        <div class="row">
           <div class="col">
             <label>{{ $t('Version') }}</label>
           </div>
         </div>
         <div class="row no-gutters">
-          <div class="col-6">
+          <div class="col">
             <button type="button" class="btn btn-block btn-sm border-right-0"
                     v-bind:class="{'btn-primary':options.version===2,'btn-secondary':options.version!==2}"
                     v-on:click="setVersion(2)">
-              <span class="hidden-sm-up">{{$t('version')}} </span>
-              <span class="hidden-sm-down">{{$t('versionShortcut', 'v')}}</span>2
+              <span class="hidden-xs-up">{{$t('version')}} </span>
+              <span class="hidden-xs-down">{{$t('versionShortcut', 'v')}}</span>2
             </button>
           </div>
-          <div class="col-6">
+          <div class="col">
             <button type="button"
                     class="btn btn-block btn-sm border-left-0"
                     v-bind:class="{'btn-warning':options.version===1,'btn-secondary':options.version!==1}"
                     v-on:click="setVersion(1)">
-              <span class="hidden-sm-up">{{$t('version')}} </span>
-              <span class="hidden-sm-down">{{$t('versionShortcut', 'v')}}</span>1
+              <span class="hidden-xs-up">{{$t('version')}} </span>
+              <span class="hidden-xs-down">{{$t('versionShortcut', 'v')}}</span>1
             </button>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <div class="col">
+        <button type="button" class="btn btn-sm hint--top-right hint--medium"
+                v-bind:aria-label="$t('DefaultOptionLocalStorage', 'We use local storage to save default options locally. Each time you open the app, these options will be loaded by default.')"
+                v-bind:class="{'btn-outline-warning':options.version===1,'btn-outline-primary':options.version!==1}"
+                v-on:click="saveDefaultOptions()">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i> {{$t('Save options as default')}}
+        </button>
       </div>
     </div>
   </div>
@@ -183,6 +192,10 @@
         const now = new Date();
         const onlyV2DefaultDate = new Date(2017, 4, 10);
         return Math.round(Math.abs((now.getTime() - onlyV2DefaultDate.getTime()) / (oneDay)));
+      },
+      saveDefaultOptions(){
+        this.$store.dispatch('saveDefaultOptions', {options: this.options});
+        Message.success(this.$t('Your options have been saved successfully'));
       },
     }
   }

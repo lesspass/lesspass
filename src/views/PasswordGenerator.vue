@@ -115,11 +115,12 @@
         </div>
       </div>
       <div class="col col-auto">
-        <button class="btn btn-copy btn-secondary"
+        <button class="btn btn-copy btn-secondary hint--top"
                 type="button"
+                v-bind:aria-label="$t('Share this password')"
                 v-bind:data-clipboard-text="passwordURL"
-                v-bind:disabled="password.site === ''">
-          <i class="fa fa-lg fa-share-alt pointer" aria-hidden="true"></i>
+                v-if="password.site !== ''">
+          <i class="fa fa-share-alt pointer" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
           <i class="fa fa-sliders" aria-hidden="true"></i>

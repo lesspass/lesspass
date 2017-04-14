@@ -19,8 +19,8 @@ export default {
   [types.PASSWORD_GENERATED](state){
     state.lastUse = new Date().getTime();
   },
-  [types.SET_DEFAULT_PASSWORD](state, {password}){
-    state.defaultPassword = {...password};
+  [types.SET_DEFAULT_OPTIONS](state, {options}){
+    state.defaultPassword = Object.assign({}, state.defaultPassword, options);
   },
   [types.SET_PASSWORDS](state, {passwords}){
     state.passwords = passwords;
