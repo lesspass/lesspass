@@ -3,7 +3,7 @@
 
 rm -rf plateforms/android
 npm run build
-cordova clean
+./node_modules/.bin/cordova clean
 
 cp www/icons/mipmap-hdpi/icon.png platforms/android/res/mipmap-hdpi/icon.png
 cp www/icons/mipmap-ldpi/icon.png platforms/android/res/mipmap-ldpi/icon.png
