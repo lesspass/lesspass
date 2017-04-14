@@ -18,7 +18,6 @@ npm version $1
 TAG_NAME="$(git describe --abbrev=0 --tags)"
 
 npm run version
-git add extension/manifest.json
 npm run build
 git add .
 git commit --amend --no-edit
