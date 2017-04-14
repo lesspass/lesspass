@@ -20,7 +20,7 @@ DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=['localhost', '127.0.0.1', '.lesspass.com'])
 
-ADMINS = (('Guillaume Vincent', 'guillaume@oslab.fr'), )
+ADMINS = (('Guillaume Vincent', 'guillaume@oslab.fr'),)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -155,7 +155,7 @@ class DisableMigrations(object):
         return True
 
     def __getitem__(self, item):
-        return "notmigrations"
+        return None
 
 
 TESTS_IN_PROGRESS = False
