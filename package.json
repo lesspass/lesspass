@@ -10,7 +10,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "express": "^4.14.0",
+    "express": "^4.15.2",
     "lesspass-pure": "^4.5.2"
   },
   "devDependencies": {
