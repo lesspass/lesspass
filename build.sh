@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-
-rm -rf plateforms/android
-npm run build
-./node_modules/.bin/cordova clean
-
 cp www/icons/mipmap-hdpi/icon.png platforms/android/res/mipmap-hdpi/icon.png
 cp www/icons/mipmap-ldpi/icon.png platforms/android/res/mipmap-ldpi/icon.png
 cp www/icons/mipmap-mdpi/icon.png platforms/android/res/mipmap-mdpi/icon.png

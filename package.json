@@ -6,8 +6,9 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/cordova",
   "scripts": {
-    "prebuild": "npm prune && npm install && gulp",
-    "build": "rm -rf www/dist/ && gulp"
+    "prebuild": "npm prune && npm install",
+    "clean":"rm -rf plateforms/android && rm -rf www/dist/ && cordova clean",
+    "build": "npm run clean && gulp && ./build.sh"
   },
   "dependencies": {
     "lesspass-pure": "^4.5.3"
