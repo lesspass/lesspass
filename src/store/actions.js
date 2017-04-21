@@ -52,12 +52,6 @@ export const getPasswords = ({commit, state}) => {
   }
 };
 
-export const getPassword = ({commit, state}, payload) => {
-  if (state.authenticated) {
-    Password.read(payload, state).then(response => commit(types.SET_PASSWORD, {password: response.data}));
-  }
-};
-
 export const saveOrUpdatePassword = ({commit, state}) => {
   if (state.password && typeof state.password.id === 'undefined') {
     const site = state.password.site;

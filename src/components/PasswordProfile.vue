@@ -31,9 +31,7 @@
             class="passwordProfile__avatar"></avatar>
     <div class="passwordProfile__meta">
       <div class="passwordProfile__site">
-        <router-link :to="{ name: 'password', params: { id: password.id }}">
-          {{password.site}}
-        </router-link>
+        {{password.site}}
       </div>
       <div class="passwordProfile__login">
         {{password.login}}
@@ -45,8 +43,12 @@
       </span>
       <button type="button" class="btn btn-outline-danger btn-sm"
               v-if="selected"
-              v-on:click="deletePassword">
+              v-on:click="deletePassword()">
         <i class="fa fa-trash fa-fw"></i>
+      </button>
+      <button type="button" class="btn btn-outline-primary btn-sm"
+              v-on:click="setPassword()">
+        <i class="fa fa-eye fa-fw"></i>
       </button>
     </div>
   </div>
@@ -81,6 +83,10 @@
           message.success(this.$t('PasswordProfileSuccessfullyDeleted', 'Your password profile has been successfully deleted!'));
           return this.$store.dispatch('deletePassword', {id: this.password.id});
         }
+      },
+      setPassword(){
+          this.$store.dispatch('savePassword', {password: this.password});
+          this.$router.push({name: 'home'});
       }
     }
   }

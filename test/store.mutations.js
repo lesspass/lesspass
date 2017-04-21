@@ -120,7 +120,7 @@ test('DELETE_PASSWORD', t => {
   t.is(state.passwords.length, 1);
 });
 
-test('DELETE_PASSWORD clean password with default password if same id', t => {
+test('DELETE_PASSWORD replace state.password with state.defaultPassword', t => {
   const DELETE_PASSWORD = mutations[types.DELETE_PASSWORD];
   const state = {
     passwords: [{id: '1', length: 30}, {id: '2', length: 16}],

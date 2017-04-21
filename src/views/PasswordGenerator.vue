@@ -143,10 +143,6 @@
   import message from '../services/message';
   import Awesomplete from 'awesomplete';
 
-  function fetchPasswords(store) {
-    return store.dispatch('getPasswords')
-  }
-
   export default {
     name: 'password-generator-view',
     components: {
@@ -155,19 +151,13 @@
       Options
     },
     computed: mapGetters(['passwords', 'password', 'passwordURL']),
-    preFetch: fetchPasswords,
     beforeMount () {
       const query = this.$route.query;
       if (Object.keys(query).length >= 9) {
         this.$store.dispatch('savePassword', {password: getPasswordFromUrlQuery(query)});
       }
 
-      const id = this.$route.params.id;
-      if (id) {
-        this.$store.dispatch('getPassword', {id});
-      } else {
-        fetchPasswords(this.$store);
-      }
+      this.$store.dispatch('getPasswords');
 
       getSite().then(site => {
         if (site) {
