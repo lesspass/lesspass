@@ -6,6 +6,7 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/pure",
   "scripts": {
+    "start": "NODE_ENV=production node server.js",
     "precommit": "npm test",
     "prepush": "npm test",
     "build": "rm -rf dist && cross-env NODE_ENV=production webpack -p",
@@ -52,6 +53,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.2.3",
     "css-loader": "^0.27.1",
+    "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
     "husky": "^0.13.2",
