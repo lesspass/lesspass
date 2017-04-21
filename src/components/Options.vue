@@ -64,7 +64,7 @@
                  type="number"
                  min="5"
                  max="35"
-                 v-model="options.length">
+                 v-model.number="options.length">
           <span class="input-group-btn"
                 v-on:click="options.length=increment(options.length, {min: 5, max: 35})">
             <button class="btn btn-secondary p-1" type="button">
@@ -89,7 +89,7 @@
                  class="form-control form-control-sm"
                  type="number"
                  min="1"
-                 v-model="options.counter">
+                 v-model.number="options.counter">
           <span class="input-group-btn" v-on:click="options.counter=increment(options.counter, {min: 1})">
             <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-plus"></i>
