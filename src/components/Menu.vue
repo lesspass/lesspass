@@ -21,7 +21,7 @@
           <span v-on:click="fullReload()" class="white-link pointer">LessPass</span>
         </div>
         <div class="col-9 text-right">
-          <span class="text-white" v-if="saved && isAuthenticated">
+          <span v-if="saved && isAuthenticated">
             <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
           </span>
           <span v-on:click="saveOrUpdatePassword()" class="white-link"
