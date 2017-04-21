@@ -22,7 +22,9 @@ test('register', t => {
 test('resetPassword', t => {
   var email = 'test@lesspass.com';
   nock('https://lesspass.com').post('/api/auth/password/reset/', {email}).reply(204);
-  t.notThrows(User.resetPassword({email}, {baseURL: 'https://lesspass.com'}));
+  return User.resetPassword({email}, {baseURL: 'https://lesspass.com'}).then(data => {
+    t.is(data.status, 204)
+  });
 });
 
 test('confirmResetPassword', t => {
@@ -32,7 +34,9 @@ test('confirmResetPassword', t => {
     new_password: 'password1'
   };
   nock('https://lesspass.com').post('/api/auth/password/reset/confirm/', newPassword).reply(204);
-  t.notThrows(User.confirmResetPassword(newPassword, {baseURL: 'https://lesspass.com'}));
+  return User.confirmResetPassword(newPassword, {baseURL: 'https://lesspass.com'}).then(data => {
+    t.is(data.status, 204)
+  });
 });
 
 test('refresh token', t => {
