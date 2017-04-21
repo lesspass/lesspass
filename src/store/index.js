@@ -4,20 +4,9 @@ import * as actions from './actions'
 import * as getters from './getters'
 import mutations from './mutations'
 import createPersistedState from 'vuex-persistedstate';
+import defaultPassword from './defaultPassword';
 
 Vue.use(Vuex);
-
-const defaultPassword = {
-  login: '',
-  site: '',
-  uppercase: true,
-  lowercase: true,
-  numbers: true,
-  symbols: true,
-  length: 16,
-  counter: 1,
-  version: 2
-};
 
 const state = {
   authenticated: false,

@@ -1,3 +1,5 @@
+import {defaultOptions} from './defaultPassword';
+
 export const passwords = state => state.passwords;
 
 export const password = state => state.password;
@@ -21,4 +23,13 @@ export const version = state => {
 
 export const passwordURL = state => {
   return `${state.baseURL}/#/?login=${state.password.login}&site=${state.password.site}&uppercase=${state.password.uppercase}&lowercase=${state.password.lowercase}&numbers=${state.password.numbers}&symbols=${state.password.symbols}&length=${state.password.length}&counter=${state.password.counter}&version=${state.password.version}`;
+};
+
+export const optionsDifferentFromDefault = state => {
+  for(let key in defaultOptions){
+    if (defaultOptions[key] !== state.password[key]) {
+      return true;
+    }
+  }
+  return false;
 };

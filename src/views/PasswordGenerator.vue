@@ -186,7 +186,7 @@
         fingerprint: '',
         generatedPassword: '',
         cleanTimeout: null,
-        showOptions: false,
+        showOptions: this.$store.getters.optionsDifferentFromDefault,
         generatingPassword: false
       }
     },
@@ -247,7 +247,6 @@
         const masterPassword = this.masterPassword;
 
         if (!site && !login || !masterPassword) {
-          this.showOptions = false;
           message.error(this.$t('SiteLoginMasterPasswordMandatory', 'Site, login, and master password fields are mandatory.'));
           return;
         }
