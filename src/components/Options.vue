@@ -130,7 +130,7 @@
                 v-bind:aria-label="$t('DefaultOptionLocalStorage', 'We use local storage to save default options locally. Each time you open the app, these options will be loaded by default.')"
                 v-bind:class="{'btn-outline-warning':options.version===1,'btn-outline-primary':options.version!==1}"
                 v-on:click="saveDefaultOptions()">
-          <i class="fa fa-floppy-o" aria-hidden="true"></i> {{$t('Save options as default')}}
+          <i class="fa fa-floppy-o" aria-hidden="true"></i> {{$t('Save options')}}
         </button>
       </div>
     </div>

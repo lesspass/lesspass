@@ -117,7 +117,6 @@
       <div class="col col-auto">
         <button class="btn btn-copy btn-secondary hint--top"
                 type="button"
-                v-bind:aria-label="$t('Share this password')"
                 v-bind:data-clipboard-text="passwordURL"
                 v-if="password.site !== ''">
           <i class="fa fa-share-alt pointer" aria-hidden="true"></i>
