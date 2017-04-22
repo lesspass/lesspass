@@ -7,11 +7,11 @@
   "repository": "lesspass/cordova",
   "scripts": {
     "prebuild": "npm prune && npm install",
-    "clean":"rm -rf plateforms/android && rm -rf www/dist/ && cordova clean",
+    "clean": "rm -rf plateforms/android && rm -rf www/dist/ && cordova clean",
     "build": "npm run clean && gulp && ./build.sh"
   },
   "dependencies": {
-    "lesspass-pure": "^4.5.3"
+    "lesspass-pure": "^4.5.4"
   },
   "devDependencies": {
     "cordova": "^6.5.0",
