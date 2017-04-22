@@ -81,6 +81,7 @@
         var r = confirm(this.$t('DeleteProfileConfirm', 'Are you sure you want to delete this password profile?'));
         if (r === true) {
           message.success(this.$t('PasswordProfileSuccessfullyDeleted', 'Your password profile has been successfully deleted!'));
+          this.$emit('deleted');
           return this.$store.dispatch('deletePassword', {id: this.password.id});
         }
       },

@@ -1,35 +1,31 @@
 <style>
-  .fa-none {
-    display: none
-  }
-
-  #passwordsList {
-    min-height: 280px;
+  #passwords__list {
+    min-height: 235px;
     padding-bottom: 1em;
   }
 
-  .passwordProfile {
+  #passwords__pagination .pagination {
+    margin-bottom: 0;
+  }
+
+  #passwords__pagination .page-link {
+    cursor: pointer;
+  }
+
+  .passwords__profile {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   }
 
-  .passwordProfile:last-child {
+  .passwords__profile:last-child {
     border-bottom: none;
   }
 </style>
 <template>
   <div id="passwords">
-    <div v-if="passwords.length === 0">
+    <div id="passwords__search" class="pb-3">
       <div class="row">
-        <div class="col">
-          {{$t('NoPassword', "You don't have any password profile saved in your database.")}}
-          <router-link :to="{ name: 'home'}">{{$t('CreatePassword', 'Would you like to create one?')}}</router-link>
-        </div>
-      </div>
-    </div>
-    <div v-else>
-      <div class="row pb-3">
         <div class="col">
           <div class="inner-addon left-addon">
             <i class="fa fa-search"></i>
@@ -37,7 +33,17 @@
           </div>
         </div>
       </div>
-      <div v-if="filteredPasswords.length === 0">
+    </div>
+    <div id="passwords__list">
+      <div v-if="passwords.length === 0">
+        <div class="row">
+          <div class="col">
+            {{$t('NoPassword', "You don't have any password profile saved in your database.")}}
+            <router-link :to="{ name: 'home'}">{{$t('CreatePassword', 'Would you like to create one?')}}</router-link>
+          </div>
+        </div>
+      </div>
+      <div v-if="filteredPasswords.length === 0 && passwords.length > 0">
         <div class="row">
           <div class="col">
             {{$t('NoMatchFor', 'Oops! There are no matches for')}} "{{searchQuery}}".
@@ -45,39 +51,43 @@
           </div>
         </div>
       </div>
-      <div v-else>
-        <div id="passwordsList">
-          <password-profile class="passwordProfile"
-                            v-bind:password="password"
-                            v-for="password in filteredPasswords"
-                            :key="password.id"></password-profile>
-        </div>
-        <div class="row mt-2" v-if="pagination.number_of_pages > 1">
-          <div class="col-4">
-            <i class="fa fa-arrow-left pointer"
-               v-on:click="pagination.current_page -= 1"
-               v-bind:class="{'fa-none':pagination.current_page === 1}"></i>
-          </div>
-          <div class="col-4 text-center">
-            {{pagination.current_page}} / {{Math.ceil(passwords.length/pagination.per_page)}}
-          </div>
-          <div class="col-4 text-right">
-            <i class="fa fa-arrow-right pointer"
-               v-on:click="pagination.current_page += 1"
-               v-bind:class="{'fa-none':pagination.current_page === pagination.number_of_pages}"></i>
-          </div>
-        </div>
-      </div>
+      <password-profile
+        class="passwords__profile"
+        v-bind:password="password"
+        v-on:deleted="pagination.current_page=1"
+        v-for="password in filteredPasswords"
+        :key="password.id"></password-profile>
+    </div>
+    <div id="passwords__pagination" v-if="pagination.number_of_pages > 1">
+      <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+          <li class="page-item"
+              v-bind:class="{'disabled':pagination.current_page === 1}">
+               <span class="page-link" href="#" tabindex="-1"
+                     v-on:click="pagination.current_page -= 1">
+                 {{$t('Previous')}}
+               </span>
+          </li>
+          <li class="page-item"
+              v-for="pageNumber in pagination.number_of_pages"
+              v-bind:class="{'active':pageNumber === pagination.current_page}">
+            <span class="page-link" href="#" v-on:click="pagination.current_page = pageNumber">{{pageNumber}}</span>
+          </li>
+          <li class="page-item"
+              v-bind:class="{'disabled':pagination.current_page === pagination.number_of_pages}">
+               <span class="page-link" href="#"
+                     v-on:click="pagination.current_page += 1">
+                 {{$t('Next')}}
+               </span>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import PasswordProfile from '../components/PasswordProfile.vue';
   import {mapGetters} from 'vuex';
-
-  function fetchPasswords(store) {
-    return store.dispatch('getPasswords')
-  }
 
   export default {
     name: 'passwords-view',
@@ -86,7 +96,7 @@
         searchQuery: '',
         pagination: {
           number_of_pages: 1,
-          per_page: 5,
+          per_page: 4,
           current_page: 1
         },
       }
@@ -106,10 +116,6 @@
           this.pagination.current_page * this.pagination.per_page
         );
       }
-    },
-    preFetch: fetchPasswords,
-    beforeMount () {
-      fetchPasswords(this.$store);
-    },
+    }
   }
 </script>
