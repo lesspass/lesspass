@@ -15,14 +15,12 @@ fi
 
 cd webextension
 npm version $1
-TAG_NAME="$(git describe --abbrev=0 --tags)"
-
-npm run version
-npm run build
 git add .
 git commit --amend --no-edit
+TAG_NAME="$(git describe --abbrev=0 --tags)"
 git tag -d $TAG_NAME
 git tag $TAG_NAME
+npm run build
 
 git push --tags origin master
 cd ..
