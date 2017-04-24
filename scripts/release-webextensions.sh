@@ -15,9 +15,9 @@ fi
 
 cd webextension
 npm version $1
+TAG_NAME="$(git describe --abbrev=0 --tags)"
 git add .
 git commit --amend --no-edit
-TAG_NAME="$(git describe --abbrev=0 --tags)"
 git tag -d $TAG_NAME
 git tag $TAG_NAME
 npm run build
