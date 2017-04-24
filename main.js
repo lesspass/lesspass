@@ -7,7 +7,7 @@ const BrowserWindow = electron.BrowserWindow;
 let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({width: 475, height: 490, icon: path.resolve(__dirname, 'images/icon.png')});
+  mainWindow = new BrowserWindow({width: 475, height: 525, icon: path.resolve(__dirname, 'images/icon.png')});
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
