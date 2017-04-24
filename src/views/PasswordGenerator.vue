@@ -115,7 +115,7 @@
         </div>
       </div>
       <div class="col col-auto">
-        <button class="btn btn-copy btn-secondary hint--top"
+        <button class="btn btn-copy btn-secondary"
                 type="button"
                 v-bind:data-clipboard-text="passwordURL"
                 v-if="password.site !== ''">
