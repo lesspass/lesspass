@@ -134,7 +134,6 @@
   import LessPass from 'lesspass';
   import {mapGetters} from 'vuex';
   import Clipboard from 'clipboard';
-  import {getSite, getPasswordFromUrlQuery} from '../services/url-parser';
   import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
   import MasterPassword from '../components/MasterPassword.vue';
   import Options from '../components/Options.vue';
@@ -151,18 +150,9 @@
     },
     computed: mapGetters(['passwords', 'password', 'passwordURL']),
     beforeMount () {
-      const query = this.$route.query;
-      if (Object.keys(query).length >= 9) {
-        this.$store.dispatch('savePassword', {password: getPasswordFromUrlQuery(query)});
-      }
-
       this.$store.dispatch('getPasswords');
-
-      getSite().then(site => {
-        if (site) {
-          this.$store.dispatch('loadPasswordForSite', site);
-        }
-      });
+      this.$store.dispatch('getSite');
+      this.$store.dispatch('getPasswordFromUrlQuery', {query:this.$route.query});
 
       const clipboard = new Clipboard('.btn-copy');
       clipboard.on('success', event => {

@@ -1,22 +1,18 @@
 'use strict';
 
-export function getDomainName(urlStr) {
-  if (typeof urlStr === 'undefined') {
+export function getSite(url) {
+  if (typeof url === 'undefined') {
     return '';
   }
-  var matchesDomainName = urlStr.match(/^(?:https?\:\/\/)([^\/?#]+)(?:[\/?#]|$)/i);
+  var matchesDomainName = url.match(/^(?:https?\:\/\/)([^\/?#]+)(?:[\/?#]|$)/i);
   return matchesDomainName && matchesDomainName[1];
 }
 
-export function getSite() {
+export function getUrl() {
   return new Promise(resolve => {
     if (typeof chrome !== 'undefined' && typeof chrome.tabs !== 'undefined' && typeof chrome.tabs.query !== 'undefined') {
       chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-        const url = tabs[0].url;
-        resolve({
-          site: getDomainName(url),
-          url: url
-        });
+        resolve(tabs[0].url);
       });
     } else {
       resolve('');

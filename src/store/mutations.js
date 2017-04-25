@@ -36,6 +36,11 @@ export default {
   [types.SET_BASE_URL](state, {baseURL}){
     state.baseURL = baseURL;
   },
+  [types.SET_SITE](state, {site}){
+    if (!state.password.site) {
+      state.password.site = site;
+    }
+  },
   [types.SET_VERSION](state, {version}){
     const length = version === 1 ? 12 : 16;
     state.password.version = version;
@@ -47,17 +52,12 @@ export default {
       state.password = {...state.defaultPassword};
     }
   },
-  [types.LOAD_PASSWORD_FOR_SITE](state, {site, url}){
-    state.password.site = site;
+  [types.LOAD_PASSWORD_WITH_SITE](state, {site}){
     const passwords = state.passwords;
     for (let i = 0; i < state.passwords.length; i++) {
       const password = passwords[i];
       if (password.site.endsWith(site)) {
         state.password = {...password};
-      }
-      if (typeof url !== 'undefined' && url.includes(password.site)) {
-        state.password = {...password};
-        break;
       }
     }
   },

@@ -1,6 +1,6 @@
 import Password from '../api/password';
 import User from '../api/user';
-
+import * as urlParser from '../services/url-parser';
 import * as types from './mutation-types'
 
 export const loadPasswordFirstTime = ({commit}) => {
@@ -16,16 +16,29 @@ export const refreshToken = ({commit, state}) => {
   }
 };
 
-export const loadPasswordForSite = ({commit}, payload) => {
-  commit(types.LOAD_PASSWORD_FOR_SITE, payload);
-};
-
 export const saveDefaultOptions = ({commit}, payload) => {
   commit(types.SET_DEFAULT_OPTIONS, payload);
 };
 
 export const passwordGenerated = ({commit}) => {
   commit(types.PASSWORD_GENERATED);
+};
+
+export const getSite = ({commit}) => {
+  urlParser.getUrl().then(url => {
+    const site = urlParser.getSite(url);
+    if (site) {
+      commit(types.LOAD_PASSWORD_WITH_SITE, {site});
+      commit(types.SET_SITE, {site});
+    }
+  });
+};
+
+export const getPasswordFromUrlQuery = ({commit}, {query}) => {
+  if (Object.keys(query).length >= 9) {
+    const password = urlParser.getPasswordFromUrlQuery(query);
+    commit(types.SET_PASSWORD, {password});
+  }
 };
 
 export const savePassword = ({commit}, payload) => {
