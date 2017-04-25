@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lesspass/webextension.svg?branch=master)](https://travis-ci.org/lesspass/webextension)
+
 > chrome and firefox web extension for LessPass password manager
 
 # Install
