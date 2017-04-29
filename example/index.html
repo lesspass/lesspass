@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<script src="../dist/lesspass.js"></script>
+<script>
+  function displayInBody(txt) {
+    document.body.innerHTML = document.body.innerHTML + txt + '<br>';
+  }
+  function displayErrorInBody(txt) {
+    document.body.innerHTML = document.body.innerHTML + '<span style="color:red;">' + txt + '</span><br>';
+  }
+</script>
+<script>
+  displayInBody("createFingerprint :");
+  displayInBody("e56a207acd1e6714735487c199c6f095844b7cc8e5971d86c003a7b6f36ef51e");
+  try {
+    LessPass.createFingerprint('password').then(fingerprint => {
+      displayInBody(fingerprint + " (generated)")
+    });
+  }
+  catch (err) {
+    displayErrorInBody(err.message);
+  }
+</script>
+<script>
+  const site = 'example.org';
+  const login = 'contact@example.org';
+  const masterPassword = 'password';
+  const passwordProfile = {
+    lowercase: true,
+    uppercase: true,
+    numbers: true,
+    symbols: true,
+    length: 16,
+    counter: 1,
+    version: 2
+  };
+  displayInBody("<br>generatePassword :");
+  displayInBody("WHLpUL)e00[iHR+w");
+  try {
+    LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(function(generatedPassword) {
+      displayInBody(generatedPassword + " (generated)")
+    });
+  }
+  catch (err) {
+    displayErrorInBody(err.message);
+  }
+</script>
+</body>
+</html>

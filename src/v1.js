@@ -1,39 +1,68 @@
-var pbkdf2 = require('./pbkdf2');
-var createHMAC = require('create-hmac');
-var Promise = require('pinkie-promise');
-
+var pbkdf2 = require("./pbkdf2");
+var assign = require("lodash.assign");
+var createHMAC = require("create-hmac");
 
 module.exports = {
-  encryptLogin: encryptLogin,
-  renderPassword: renderPassword,
-  createFingerprint: createFingerprint,
+  generatePassword: generatePassword,
+  _renderPassword: renderPassword,
+  _createHmac: createHmac,
   _deriveEncryptedLogin: deriveEncryptedLogin,
   _getPasswordTemplate: getPasswordTemplate,
   _prettyPrint: prettyPrint,
   _string2charCodes: string2charCodes,
   _getCharType: getCharType,
-  _getPasswordChar: getPasswordChar,
-  _createHmac: createHmac,
+  _getPasswordChar: getPasswordChar
 };
 
+var defaultOptions = {
+  version: 1,
+  lowercase: true,
+  numbers: true,
+  uppercase: true,
+  symbols: true,
+  keylen: 32,
+  digest: "sha256",
+  length: 12,
+  counter: 1,
+  iterations: 8192
+};
 
-function encryptLogin(login, masterPassword, options) {
-  var _options = options !== undefined ? options : {};
-  var iterations = _options.iterations || 8192;
-  var keylen = _options.keylen || 32;
-  return pbkdf2(masterPassword, login, iterations, keylen, 'sha256');
+function generatePassword(site, login, masterPassword, options) {
+  var _options = assign({}, defaultOptions, options);
+  return pbkdf2(
+    masterPassword,
+    login,
+    _options.iterations,
+    _options.keylen,
+    "sha256"
+  ).then(function(encryptedLogin) {
+    return renderPassword(encryptedLogin, site, _options).then(function(
+      generatedPassword
+    ) {
+      return generatedPassword;
+    });
+  });
 }
 
 function renderPassword(encryptedLogin, site, passwordOptions) {
-  return deriveEncryptedLogin(encryptedLogin, site, passwordOptions).then(function(derivedEncryptedLogin) {
-    var template = passwordOptions.template || getPasswordTemplate(passwordOptions);
+  return deriveEncryptedLogin(
+    encryptedLogin,
+    site,
+    passwordOptions
+  ).then(function(derivedEncryptedLogin) {
+    var template =
+      passwordOptions.template || getPasswordTemplate(passwordOptions);
     return prettyPrint(derivedEncryptedLogin, template);
   });
 }
 
 function createHmac(encryptedLogin, salt) {
   return new Promise(function(resolve) {
-    resolve(createHMAC('sha256', new Buffer(encryptedLogin)).update(salt).digest('hex'));
+    resolve(
+      createHMAC("sha256", new Buffer(encryptedLogin))
+        .update(salt)
+        .digest("hex")
+    );
   });
 }
 
@@ -50,22 +79,22 @@ function deriveEncryptedLogin(encryptedLogin, site, options) {
 
 function getPasswordTemplate(passwordTypes) {
   var templates = {
-    lowercase: 'vc',
-    uppercase: 'VC',
-    numbers: 'n',
-    symbols: 's',
+    lowercase: "vc",
+    uppercase: "VC",
+    numbers: "n",
+    symbols: "s"
   };
-  var returnedTemplate = '';
+  var returnedTemplate = "";
   Object.keys(templates).forEach(function(template) {
     if (passwordTypes.hasOwnProperty(template) && passwordTypes[template]) {
-      returnedTemplate += templates[template]
+      returnedTemplate += templates[template];
     }
   });
   return returnedTemplate;
 }
 
 function prettyPrint(hash, template) {
-  var password = '';
+  var password = "";
 
   string2charCodes(hash).forEach(function(charCode, index) {
     var charType = getCharType(template, index);
@@ -88,22 +117,16 @@ function getCharType(template, index) {
 
 function getPasswordChar(charType, index) {
   var passwordsChars = {
-    V: 'AEIOUY',
-    C: 'BCDFGHJKLMNPQRSTVWXZ',
-    v: 'aeiouy',
-    c: 'bcdfghjklmnpqrstvwxz',
-    A: 'AEIOUYBCDFGHJKLMNPQRSTVWXZ',
-    a: 'AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz',
-    n: '0123456789',
-    s: '@&%?,=[]_:-+*$#!\'^~;()/.',
-    x: 'AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz0123456789@&%?,=[]_:-+*$#!\'^~;()/.'
+    V: "AEIOUY",
+    C: "BCDFGHJKLMNPQRSTVWXZ",
+    v: "aeiouy",
+    c: "bcdfghjklmnpqrstvwxz",
+    A: "AEIOUYBCDFGHJKLMNPQRSTVWXZ",
+    a: "AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz",
+    n: "0123456789",
+    s: "@&%?,=[]_:-+*$#!'^~;()/.",
+    x: "AEIOUYaeiouyBCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz0123456789@&%?,=[]_:-+*$#!'^~;()/."
   };
   var passwordChar = passwordsChars[charType];
   return passwordChar[index % passwordChar.length];
-}
-
-function createFingerprint(str) {
-  return new Promise(function(resolve) {
-    resolve(createHMAC('sha256', new Buffer(str)).digest('hex'))
-  });
 }
