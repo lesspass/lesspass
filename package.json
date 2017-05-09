@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "express": "^4.15.2",
-    "lesspass-pure": "^4.5.7"
+    "lesspass-pure": "^4.5.8"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
