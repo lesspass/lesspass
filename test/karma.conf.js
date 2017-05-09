@@ -2,7 +2,7 @@ module.exports = function(config) {
   config.set({
     basePath: "..",
     frameworks: ["browserify", "mocha"],
-    files: ["dist/lesspass.js", "test/**/*.js"],
+    files: ["dist/lesspass.min.js", "test/**/*.js"],
     exclude: [],
     preprocessors: {
       "test/**/*.js": ["browserify"]
