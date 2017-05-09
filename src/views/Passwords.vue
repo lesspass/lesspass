@@ -54,40 +54,31 @@
       <password-profile
         class="passwords__profile"
         v-bind:password="password"
-        v-on:deleted="pagination.current_page=1"
+        v-on:deleted="pagination.currentPage=1"
         v-for="password in filteredPasswords"
         :key="password.id"></password-profile>
     </div>
-    <div id="passwords__pagination" v-if="pagination.number_of_pages > 1">
-      <nav aria-label="...">
-        <ul class="pagination pagination-sm">
-          <li class="page-item"
-              v-bind:class="{'disabled':pagination.current_page === 1}">
-               <span class="page-link" href="#" tabindex="-1"
-                     v-on:click="pagination.current_page -= 1">
-                 {{$t('Previous')}}
-               </span>
-          </li>
-          <li class="page-item"
-              v-for="pageNumber in pagination.number_of_pages"
-              v-bind:class="{'active':pageNumber === pagination.current_page}">
-            <span class="page-link" href="#" v-on:click="pagination.current_page = pageNumber">{{pageNumber}}</span>
-          </li>
-          <li class="page-item"
-              v-bind:class="{'disabled':pagination.current_page === pagination.number_of_pages}">
-               <span class="page-link" href="#"
-                     v-on:click="pagination.current_page += 1">
-                 {{$t('Next')}}
-               </span>
-          </li>
-        </ul>
-      </nav>
+    <div id="passwords__pagination" v-if="pagination.pageCount > 1">
+      <paginate
+        :page-count="pagination.pageCount"
+        :click-handler="setCurrentPage"
+        :containerClass="'pagination pagination-sm'"
+        :page-class="'page-item'"
+        :prev-class="'page-item'"
+        :next-class="'page-item'"
+        :page-link-class="'page-link'"
+        :prev-link-class="'page-link'"
+        :next-link-class="'page-link'"
+        :prev-text="$t('Previous')"
+        :next-text="$t('Next')">
+      </paginate>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import PasswordProfile from '../components/PasswordProfile.vue';
   import {mapGetters} from 'vuex';
+  import Paginate from 'vuejs-paginate';
 
   export default {
     name: 'passwords-view',
@@ -95,13 +86,16 @@
       return {
         searchQuery: '',
         pagination: {
-          number_of_pages: 1,
-          per_page: 4,
-          current_page: 1
+          pageCount: 1,
+          perPage: 4,
+          currentPage: 1
         },
       }
     },
-    components: {PasswordProfile},
+    components: {
+      PasswordProfile,
+      Paginate
+    },
     computed: {
       ...mapGetters(['passwords']),
       filteredPasswords(){
@@ -110,11 +104,16 @@
           var siteMatch = password.site.match(new RegExp(this.searchQuery, 'i'));
           return loginMatch || siteMatch;
         });
-        this.pagination.number_of_pages = Math.ceil(passwords.length / this.pagination.per_page);
+        this.pagination.pageCount = Math.ceil(passwords.length / this.pagination.perPage);
         return passwords.slice(
-          this.pagination.current_page * this.pagination.per_page - this.pagination.per_page,
-          this.pagination.current_page * this.pagination.per_page
+          this.pagination.currentPage * this.pagination.perPage - this.pagination.perPage,
+          this.pagination.currentPage * this.pagination.perPage
         );
+      }
+    },
+    methods: {
+      setCurrentPage(page){
+        this.pagination.currentPage = page;
       }
     }
   }
