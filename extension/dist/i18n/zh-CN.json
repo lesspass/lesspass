@@ -38,7 +38,7 @@
   "SiteLoginMasterPasswordMandatory": "网站位址、登入帐号、主密码皆为必填栏位。",
   "UpdateYourSearch": "请试着放宽您的搜寻条件。",
   "Version": "版本",
-  "WarningV1": "版本 1 已不支援，并将在 {dayBeforeOnlyV2} 天内移除。我们强烈得建议您将密码换至版本 2。",
+  "WarningV1Deprecated": "版本 1 已不支援，不久将被删除。 我们强烈得建议您将密码换至版本 2。",
   "WelcomeRegister": "欢迎 {email}，谢谢您的注册。",
   "Your options have been saved successfully": "您的选项已成功保存",
   "resetPasswordSuccess": "如果电子邮件地址 {email} 与LessPass帐户相关联，您将很快收到LessPass的电子邮件，并提供如何重置密码的说明。",

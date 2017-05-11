@@ -16,7 +16,7 @@
     "test": "echo 'no test'"
   },
   "dependencies": {
-    "lesspass-pure": "^4.5.8"
+    "lesspass-pure": "^4.5.9"
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "^1.1.1",

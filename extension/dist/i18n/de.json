@@ -38,7 +38,7 @@
   "SiteLoginMasterPasswordMandatory": "Die Felder für Seite, Anmeldename und Masterpasswort sind obligatorisch.",
   "UpdateYourSearch": "Bitte erweitern Sie Ihre Suche.",
   "Version": "Version",
-  "WarningV1": "Version 1 ist veraltet und wird in {dayBeforeOnlyV2} Tagen entfernt. Wir empfehlen Ihnen dringend, Ihre Passwörter auf die Version 2 zu migrieren.",
+  "WarningV1Deprecated": "Version 1 ist veraltet und wird bald gelöscht werden. Wir empfehlen Ihnen dringend, Ihre Passwörter auf die Version 2 zu migrieren.",
   "WelcomeRegister": "Willkommen {email}, danke für die Anmeldung.",
   "Your options have been saved successfully": "Ihre Optionen wurden erfolgreich gespeichert",
   "resetPasswordSuccess": "Wenn die E-Mail-Adresse {email} mit einem LessPass-Konto verknüpft ist, erhalten Sie in Kürze eine E-Mail von LessPass mit Anweisungen zum Zurücksetzen Ihres Passworts.",
