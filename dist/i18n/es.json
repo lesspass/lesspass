@@ -38,7 +38,7 @@
   "SiteLoginMasterPasswordMandatory": "Los campos sitio, usuario y contraseña maestra son obligatorios.",
   "UpdateYourSearch": "Trate de ampliar su búsqueda.",
   "Version": "Versión",
-  "WarningV1": "La versión 1 está obsoleta y será eliminada en {dayBeforeOnlyV2} días. Le recomendamos enérgicamente migrar sus contraseñas a la versión 2.",
+  "WarningV1Deprecated": "La versión 1 está obsoleta y será eliminada pronto. Le recomendamos enérgicamente migrar sus contraseñas a la versión 2.",
   "WelcomeRegister": "Bienvenido o bienvenida {email}, gracias por registrarse.",
   "Your options have been saved successfully": "Sus opciones se han guardado correctamente",
   "resetPasswordSuccess": "Si la dirección de correo electrónico {email} está asociada a una cuenta LessPass, recibirá un correo electrónico de LessPass con instrucciones sobre cómo restablecer su contraseña.",
