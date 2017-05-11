@@ -166,11 +166,10 @@
       options: {
         handler: function(newOptions) {
           if (newOptions.version === 1) {
-            const dayBeforeOnlyV2 = this.getDayBeforeOnlyV2();
             const message = this.$t(
-              "WarningV1",
-              "Version 1 is deprecated and will be removed in {dayBeforeOnlyV2} days. We strongly advise you to migrate your passwords to version 2.",
-              {dayBeforeOnlyV2});
+              "WarningV1Deprecated",
+              "Version 1 is deprecated and will be deleted soon. We strongly advise you to migrate your passwords to version 2."
+            );
             Message.error(message);
           }
 
@@ -186,12 +185,6 @@
         this.options.length = value === 1 ? 12 : 16;
         this.options.version = value;
         this.$store.dispatch('saveVersion', {version: value});
-      },
-      getDayBeforeOnlyV2(){
-        const oneDay = 24 * 60 * 60 * 1000;
-        const now = new Date();
-        const onlyV2DefaultDate = new Date(2017, 4, 10);
-        return Math.round(Math.abs((now.getTime() - onlyV2DefaultDate.getTime()) / (oneDay)));
       },
       saveDefaultOptions(){
         this.$store.dispatch('saveDefaultOptions', {options: this.options});
