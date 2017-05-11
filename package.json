@@ -11,7 +11,7 @@
     "build": "npm run clean && gulp && ./build.sh"
   },
   "dependencies": {
-    "lesspass-pure": "^4.5.8"
+    "lesspass-pure": "^4.5.9"
   },
   "devDependencies": {
     "cordova": "^6.5.0",
