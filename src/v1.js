@@ -1,6 +1,6 @@
 var pbkdf2 = require("./pbkdf2");
 var assign = require("lodash.assign");
-var createHMAC = require("create-hmac");
+var hmac = require("./hmac");
 
 module.exports = {
   generatePassword: generatePassword,
@@ -58,11 +58,7 @@ function renderPassword(encryptedLogin, site, passwordOptions) {
 
 function createHmac(encryptedLogin, salt) {
   return new Promise(function(resolve) {
-    resolve(
-      createHMAC("sha256", new Buffer(encryptedLogin))
-        .update(salt)
-        .digest("hex")
-    );
+    resolve(hmac("sha256", encryptedLogin, salt));
   });
 }
 

@@ -1,8 +1,6 @@
 var v1 = require("./v1");
 var v2 = require("./v2");
-var createHMAC = require("create-hmac");
-var Buffer = require("buffer/").Buffer;
-var Promise = require("es6-promise").Promise;
+var hmac = require("./hmac");
 
 module.exports = {
   generatePassword: function(site, login, masterPassword, options) {
@@ -12,8 +10,6 @@ module.exports = {
     return v2.generatePassword(site, login, masterPassword, options);
   },
   createFingerprint: function(str) {
-    return new Promise(function(resolve) {
-      resolve(createHMAC("sha256", new Buffer(str)).digest("hex"));
-    });
+    return hmac("sha256", str);
   }
 };

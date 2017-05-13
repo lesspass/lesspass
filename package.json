@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "6.1.0",
+  "version": "7.0.0",
   "description": "LessPass node module used to generate LessPass passwords",
   "keywords": [
     "crypto",
@@ -13,8 +13,13 @@
     "dist",
     "src"
   ],
-  "main": "dist/lesspass.min.js",
+  "main": "src/lesspass.js",
+  "browser": {
+    "./src/pbkdf2.js": "./src/pbkdf2.browser.js",
+    "./src/hmac.js": "./src/hmac.browser.js"
+  },
   "module": "src/lesspass.js",
+  "jsnext:main": "src/lesspass.js",
   "repository": "lesspass/core",
   "scripts": {
     "precommit": "npm test && lint-staged",
@@ -27,11 +32,9 @@
   },
   "dependencies": {
     "big-integer": "^1.6.22",
-    "buffer": "^5.0.6",
-    "create-hmac": "^1.1.4",
     "es6-promise": "^4.1.0",
     "lodash.assign": "^4.2.0",
-    "pbkdf2": "^3.0.9"
+    "unibabel": "^2.1.4"
   },
   "devDependencies": {
     "browserify": "^14.3.0",
