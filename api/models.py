@@ -80,10 +80,10 @@ class Password(DateMixin):
     symbols = models.BooleanField(default=True)
     numbers = models.BooleanField(default=True)
 
-    length = models.IntegerField(default=12)
+    length = models.IntegerField(default=16)
     counter = models.IntegerField(default=1)
 
-    version = models.IntegerField(default=1)
+    version = models.IntegerField(default=2)
 
     def __str__(self):
         return str(self.id)
