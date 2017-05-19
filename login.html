@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>LessPass</title>
+<style>
+  * {
+    box-sizing: border-box
+  }
+
+  body {
+    background-color: #3398EB;
+  }
+
+  .lesspass__login-box {
+    width: 320px;
+    position: absolute;
+    left: 50%;
+    margin-left: -160px;
+    padding: 1rem;
+
+  }
+
+  .lesspass__card {
+    background-color: #fff;
+    border-radius: 1px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .lesspass__form-group {
+    margin-bottom: 1rem;
+  }
+
+  .lesspass__form-control {
+    background-color: rgb(255, 255, 255);
+    border-image-outset: 0 0 0 0;
+    border-radius: 1px;
+    border: 1px solid rgb(221, 221, 221);
+    box-sizing: border-box;
+    color: #454545;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    height: 42px;
+    line-height: 20px;
+    margin: 0;
+    padding: 9px;
+    transition-delay: 0s, 0s, 0s;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  .lesspass__button {
+    background: #2b71b1 linear-gradient(#2375b4, #3384c3) repeat-x;
+    border-radius: 1px;
+    border: none;
+    box-shadow: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0;
+    padding: 9px;
+    text-align: center;
+    text-shadow: none;
+    vertical-align: middle;
+  }
+
+  .lesspass__title {
+    color: #3e4552;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 20px 0;
+    text-rendering: optimizelegibility;
+
+  }
+</style>
+<body>
+<div class="lesspass__login-box lesspass__card">
+  <h2 class="lesspass__title">LessPass Move</h2>
+  <form class="lesspass__form">
+    <div class="lesspass__form-group">
+      <div class="lesspass__inner-addon lesspass__inner-addon--left">
+        <i class="fa fa-user"></i>
+        <label for="email" class="sr-only">Login</label>
+        <input id="email"
+               name="email"
+               type="email"
+               class="lesspass__form-control"
+               placeholder="Email">
+      </div>
+    </div>
+    <div class="lesspass__form-group">
+      <div class="lesspass__inner-addon lesspass__inner-addon--left">
+        <i class="fa fa-lock"></i>
+        <label for="password" class="sr-only">Master Password</label>
+        <input id="password"
+               name="password"
+               type="password"
+               class="lesspass__form-control"
+               placeholder="Master Password">
+      </div>
+    </div>
+    <div class="lesspass__form-group">
+      <button type="button" class="lesspass__button">
+        Log In
+      </button>
+    </div>
+  </form>
+</div>
+</body>
