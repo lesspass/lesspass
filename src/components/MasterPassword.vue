@@ -12,7 +12,8 @@
            v-model="password"
            v-bind:placeholder="$t('Master Password')"
            v-on:input="updatePassword($event.target.value)"
-           v-on:keyup.enter="triggerEnterMethod">
+           v-on:keyup.enter="triggerEnterMethod"
+           v-on:blur="hidePassword($refs.password)">
     <fingerprint v-bind:fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.password)">
     </fingerprint>
   </div>
@@ -53,6 +54,9 @@
         } else {
           element.type = 'password';
         }
+      },
+      hidePassword(element){
+        element.type = 'password';
       },
       triggerEnterMethod(){
         if (typeof this.keyupEnter !== 'undefined' && this.password) {
