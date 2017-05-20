@@ -36,5 +36,6 @@ walker.on("end", () => {
       }
     });
     fs.writeFileSync(localeFile, JSON.stringify(localeOrdered, null, 2));
+    fs.appendFileSync(localeFile, '\n');
   });
 });
