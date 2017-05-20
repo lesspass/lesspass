@@ -15,7 +15,6 @@
   "EncryptMasterPassword": "在将密码传至 lesspass.com 前，请点我加密。",
   "ForgotPassword": "忘记您的登入密码了吗？",
   "Generate": "产生",
-  "Generating": "产生中",
   "Length": "长度",
   "Login": "登入帐号",
   "LoginFormInvalid": "LessPass URL、邮件位址、登入密码皆为必填栏位。",

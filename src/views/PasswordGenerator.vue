@@ -76,17 +76,22 @@
       <master-password ref="masterPassword" v-model="masterPassword"
                        :keyupEnter="generatePassword"></master-password>
     </div>
-    <div class="form-group row justify-content-between no-gutters" v-bind:class="{'mb-0':showOptions===false}">
-      <div class="col col-auto" v-show="!generatedPassword">
-        <div style="display: inline-block">
-          <button type="button" class="btn" v-on:click="generatePassword"
-                  v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-            <span v-if="!generatingPassword">{{ $t('Generate') }}</span>
-            <span v-if="generatingPassword">{{ $t('Generating') }}...</span>
-          </button>
-        </div>
+    <div class="form-group">
+      <div v-show="!passwordGenerated">
+        <button type="button"
+                class="btn"
+                v-on:click="generatePassword"
+                v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+          {{ $t('Generate') }}
+        </button>
+        <button type="button"
+                class="btn btn-secondary pull-right"
+                v-show="!passwordGenerated"
+                v-on:click="showOptions=!showOptions">
+          <i class="fa fa-sliders" aria-hidden="true"></i>
+        </button>
       </div>
-      <div class="col-8" v-show="generatedPassword">
+      <div class="btn-group" v-show="passwordGenerated">
         <div class="input-group">
           <span class="input-group-btn">
             <button id="copyPasswordButton"
@@ -102,28 +107,31 @@
                  type="password"
                  class="form-control"
                  tabindex="-1"
-                 ref="generatedPassword"
-                 v-bind:value="generatedPassword"
-                 v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+                 ref="passwordGenerated"
+                 v-bind:value="passwordGenerated">
           <span class="input-group-btn">
-            <button id="revealGeneratedPassword" type="button" class="btn"
-                    v-on:click="togglePasswordType($refs.generatedPassword)"
-                    v-bind:class="{ 'btn-outline-warning': password.version===1, 'btn-outline-primary': password.version===2 }">
+            <button id="revealGeneratedPassword"
+                    type="button"
+                    class="btn btn-secondary"
+                    v-on:click="togglePasswordType($refs.passwordGenerated)">
               <i class="fa fa-eye" aria-hidden="true"></i>
             </button>
           </span>
+          <span class="input-group-btn">
+            <button type="button"
+                    class="btn btn-copy btn-secondary"
+                    v-bind:data-clipboard-text="passwordURL">
+              <i class="fa fa-share-alt pointer" aria-hidden="true"></i>
+            </button>
+          </span>
+          <span class="input-group-btn">
+            <button type="button"
+                    class="btn btn-secondary"
+                    v-on:click="showOptions=!showOptions">
+              <i class="fa fa-sliders" aria-hidden="true"></i>
+            </button>
+          </span>
         </div>
-      </div>
-      <div class="col col-auto">
-        <button class="btn btn-copy btn-secondary"
-                type="button"
-                v-bind:data-clipboard-text="passwordURL"
-                v-if="password.site !== ''">
-          <i class="fa fa-share-alt pointer" aria-hidden="true"></i>
-        </button>
-        <button type="button" class="btn btn-secondary" v-on:click="showOptions=!showOptions">
-          <i class="fa fa-sliders" aria-hidden="true"></i>
-        </button>
       </div>
     </div>
     <options :password="password" v-on:optionsUpdated="optionsUpdated" v-if="showOptions"></options>
@@ -152,7 +160,7 @@
     beforeMount () {
       this.$store.dispatch('getPasswords');
       this.$store.dispatch('getSite');
-      this.$store.dispatch('getPasswordFromUrlQuery', {query:this.$route.query});
+      this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
 
       const clipboard = new Clipboard('.btn-copy');
       clipboard.on('success', event => {
@@ -173,10 +181,9 @@
       return {
         masterPassword: '',
         fingerprint: '',
-        generatedPassword: '',
+        passwordGenerated: '',
         cleanTimeout: null,
-        showOptions: this.$store.getters.optionsDifferentFromDefault,
-        generatingPassword: false
+        showOptions: this.$store.getters.optionsDifferentFromDefault
       }
     },
     watch: {
@@ -202,7 +209,7 @@
       'password.login': function() {
         this.cleanErrors();
       },
-      'generatedPassword': function() {
+      'passwordGenerated': function() {
         this.cleanFormInSeconds(30);
       },
       'masterPassword': function() {
@@ -220,13 +227,13 @@
       },
       cleanErrors(){
         clearTimeout(this.cleanTimeout);
-        this.generatedPassword = '';
+        this.passwordGenerated = '';
       },
       cleanFormInSeconds(seconds){
         clearTimeout(this.cleanTimeout);
         this.cleanTimeout = setTimeout(() => {
           this.masterPassword = '';
-          this.generatedPassword = '';
+          this.passwordGenerated = '';
           this.fingerprint = '';
         }, 1000 * seconds);
       },
@@ -240,7 +247,6 @@
           return;
         }
 
-        this.generatingPassword = true;
         this.cleanErrors();
         this.fingerprint = this.masterPassword;
 
@@ -253,12 +259,11 @@
           counter: this.password.counter,
           version: this.password.version,
         };
-        return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(generatedPassword => {
-          this.generatingPassword = false;
-          this.generatedPassword = generatedPassword;
+        return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(passwordGenerated => {
+          this.passwordGenerated = passwordGenerated;
           this.$store.dispatch('savePassword', {password: this.password});
           this.$store.dispatch('passwordGenerated');
-          window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', generatedPassword);
+          window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', passwordGenerated);
         });
       },
       optionsUpdated(options){

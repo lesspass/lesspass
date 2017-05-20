@@ -15,7 +15,6 @@
   "EncryptMasterPassword": "Click me to encrypt this password before sending it to lesspass.com",
   "ForgotPassword": "Forgot your password?",
   "Generate": "Generate",
-  "Generating": "Generating",
   "Length": "Length",
   "Login": "Login",
   "LoginFormInvalid": "LessPass URL, email, and password are mandatory",

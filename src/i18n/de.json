@@ -15,7 +15,6 @@
   "EncryptMasterPassword": "Hier klicken, um dieses Passwort zu verschlüsseln, bevor es an lesspass.com gesendet wird",
   "ForgotPassword": "Passwort vergessen?",
   "Generate": "Erstelle",
-  "Generating": "Wird erstellt",
   "Length": "Länge",
   "Login": "Login",
   "LoginFormInvalid": "LessPass URL, email-Adresse und Passwort sind obligatorisch",
