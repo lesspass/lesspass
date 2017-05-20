@@ -1,0 +1,22 @@
+{
+  "name": "lesspass-move",
+  "version": "0.1.0",
+  "description": "A tool to change your LessPass passwords",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lesspass/move.git"
+  },
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/lesspass/move/issues"
+  },
+  "homepage": "https://github.com/lesspass/move#readme",
+  "devDependencies": {
+    "ava": "^0.19.1"
+  }
+}
