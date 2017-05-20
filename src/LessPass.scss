@@ -56,6 +56,10 @@
   max-width: 420px;
 }
 
+.lesspass__inner-box{
+  min-height: 256px;
+}
+
 @media (max-width: 419px) {
   #lesspass {
     border: none;

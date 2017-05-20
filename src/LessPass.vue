@@ -2,7 +2,7 @@
   <div id="lesspass" class="card">
     <lesspass-menu></lesspass-menu>
     <lesspass-message></lesspass-message>
-    <div class="card-block">
+    <div class="lesspass__inner-box card-block">
       <router-view></router-view>
     </div>
   </div>
