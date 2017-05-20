@@ -1,7 +1,15 @@
 <template>
-  <div id="masterPassword" class="inner-addon left-addon input-group">
+  <div id="masterPassword" class="input-group">
+    <span class="input-group-btn" v-if="showEncryptMasterPassword">
+        <button type="button"
+                tabindex="-1"
+                class="btn btn-secondary hint--right hint--medium"
+                v-on:click="encryptMasterPassword()"
+                v-bind:data-hint="$t('EncryptMasterPassword', 'Click me to encrypt this password before sending it to lesspass.com')">
+              <i class="fa fa-shield"></i>
+        </button>
+      </span>
     <label for="password" class="sr-only">{{ $t('Master Password') }}</label>
-    <i class="fa fa-lock"></i>
     <input id="password"
            name="password"
            ref="password"
@@ -26,7 +34,13 @@
     components: {
       Fingerprint
     },
-    props: ['value', 'keyupEnter'],
+    props: {
+      value: '',
+      keyupEnter: '',
+      showEncryptMasterPassword: {
+        'default': false
+      }
+    },
     data(){
       return {
         fingerprint: '',
@@ -62,6 +76,9 @@
         if (typeof this.keyupEnter !== 'undefined' && this.password) {
           this.keyupEnter()
         }
+      },
+      encryptMasterPassword(){
+        this.$emit('encryptMasterPassword')
       }
     }
   }

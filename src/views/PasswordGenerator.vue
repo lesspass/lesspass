@@ -3,33 +3,6 @@
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
   }
 
-  .inner-addon i {
-    position: absolute;
-    padding: 10px;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .inner-addon {
-    position: relative;
-  }
-
-  .left-addon i {
-    left: 0;
-  }
-
-  .right-addon i {
-    right: 0;
-  }
-
-  .left-addon input {
-    padding-left: 30px;
-  }
-
-  .right-addon input {
-    padding-right: 30px;
-  }
-
   div.awesomplete {
     display: block;
   }
@@ -41,36 +14,30 @@
 <template>
   <form id="password-generator">
     <div class="form-group">
-      <div class="inner-addon left-addon">
-        <label for="site" class="sr-only">{{ $t('Site') }}</label>
-        <i class="fa fa-globe"></i>
-        <input id="site"
-               name="site"
-               type="text"
-               ref="site"
-               class="form-control awesomplete"
-               autocorrect="off"
-               autocapitalize="none"
-               v-bind:placeholder="$t('Site')"
-               v-model="password.site">
-      </div>
+      <label for="site" class="sr-only">{{ $t('Site') }}</label>
+      <input id="site"
+             name="site"
+             type="text"
+             ref="site"
+             class="form-control awesomplete"
+             autocorrect="off"
+             autocapitalize="none"
+             v-bind:placeholder="$t('Site')"
+             v-model="password.site">
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
-      <div class="inner-addon left-addon">
-        <label for="login" class="sr-only">{{ $t('Login') }}</label>
-        <i class="fa fa-user"></i>
-        <input id="login"
-               name="login"
-               type="text"
-               ref="login"
-               class="form-control"
-               autocomplete="off"
-               autocorrect="off"
-               autocapitalize="none"
-               v-bind:placeholder="$t('Login')"
-               v-model="password.login">
-      </div>
+      <label for="login" class="sr-only">{{ $t('Login') }}</label>
+      <input id="login"
+             name="login"
+             type="text"
+             ref="login"
+             class="form-control"
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="none"
+             v-bind:placeholder="$t('Login')"
+             v-model="password.login">
     </div>
     <div class="form-group">
       <master-password ref="masterPassword" v-model="masterPassword"

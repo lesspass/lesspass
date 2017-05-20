@@ -10,39 +10,25 @@
 <template>
   <form v-on:submit.prevent="signIn">
     <div class="form-group">
-      <div class="inner-addon left-addon">
-        <i class="fa fa-globe"></i>
-        <input id="baseURL"
-               class="form-control"
-               type="text"
-               placeholder="https://lesspass.com"
-               v-model="baseURL">
-      </div>
+      <input id="baseURL"
+             class="form-control"
+             type="text"
+             v-bind:placeholder="$t('LessPass Database Url')"
+             v-model="baseURL">
     </div>
     <div class="form-group row">
       <div class="col-12">
-        <div class="inner-addon left-addon">
-          <i class="fa fa-user"></i>
-          <input id="email"
-                 class="form-control"
-                 name="username"
-                 type="email"
-                 v-bind:placeholder="$t('Email')"
-                 required
-                 v-model="email">
-        </div>
+        <input id="email"
+               class="form-control"
+               name="username"
+               type="email"
+               v-bind:placeholder="$t('Email')"
+               required
+               v-model="email">
       </div>
     </div>
-    <div class="form-group mb-2">
-      <master-password v-model="password"></master-password>
-      <label class="custom-control custom-checkbox hint--top hint--medium mb-0"
-             v-bind:data-hint="$t('EncryptMasterPassword', 'Click me to encrypt this password before sending it to lesspass.com')">
-        <input type="checkbox" class="custom-control-input" v-model="transformMasterPassword">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description text-muted">
-          {{$t('Encrypt my master password')}}
-        </span>
-      </label>
+    <div class="form-group">
+      <encrypt-master-password v-model="password" v-bind:email="email"></encrypt-master-password>
     </div>
     <div class="form-group row no-gutters mb-0">
       <div class="col">
@@ -65,10 +51,9 @@
   </form>
 </template>
 <script type="text/ecmascript-6">
-  import LessPass from 'lesspass';
   import User from '../api/user';
   import {mapGetters} from 'vuex';
-  import MasterPassword from '../components/MasterPassword.vue';
+  import EncryptMasterPassword from '../components/EncryptMasterPassword.vue';
   import message from '../services/message';
 
   export default {
@@ -76,37 +61,14 @@
       return {
         email: '',
         password: '',
-        baseURL: 'https://lesspass.com',
-        transformMasterPassword: false,
+        baseURL: 'https://lesspass.com'
       };
     },
     components: {
-      MasterPassword
+      EncryptMasterPassword
     },
     computed: {
       ...mapGetters(['version'])
-    },
-    watch: {
-      password: function() {
-        this.transformMasterPassword = false;
-      },
-      transformMasterPassword: function(transformPassword) {
-        if (!transformPassword) {
-          return;
-        }
-        const defaultPasswordProfile = {
-          lowercase: true,
-          uppercase: true,
-          numbers: true,
-          symbols: true,
-          length: 16,
-          counter: 1,
-          version: 2,
-        };
-        return LessPass.generatePassword('lesspass.com', this.email, this.password, defaultPasswordProfile).then(generatedPassword => {
-          this.password = generatedPassword;
-        });
-      }
     },
     methods: {
       formIsValid(){
