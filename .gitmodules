@@ -33,4 +33,4 @@
 	url = git@github.com:lesspass/snap.git
 [submodule "move"]
 	path = move
-	url = ./move
+	url = git@github.com:lesspass/move.git
