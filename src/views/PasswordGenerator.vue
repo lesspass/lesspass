@@ -62,10 +62,9 @@
         <div class="input-group">
           <span class="input-group-btn">
             <button id="copyPasswordButton"
-                    class="btn btn-copy"
+                    class="btn"
                     type="button"
-                    data-clipboard-text=""
-                    ref="copyPasswordButton"
+                    v-on:click="copyPassword()"
                     v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
               <i class="fa fa-clipboard" aria-hidden="true"></i>
             </button>
@@ -85,9 +84,10 @@
             </button>
           </span>
           <span class="input-group-btn">
-            <button type="button"
-                    class="btn btn-copy btn-secondary"
-                    v-bind:data-clipboard-text="passwordURL">
+            <button id="sharePasswordProfileButton"
+                    type="button"
+                    class="btn btn-secondary"
+                    v-on:click="sharePasswordProfile()">
               <i class="fa fa-share-alt pointer" aria-hidden="true"></i>
             </button>
           </span>
@@ -108,7 +108,7 @@
 <script type="text/ecmascript-6">
   import LessPass from 'lesspass';
   import {mapGetters} from 'vuex';
-  import Clipboard from 'clipboard';
+  import copy from 'copy-text-to-clipboard';
   import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
   import MasterPassword from '../components/MasterPassword.vue';
   import Options from '../components/Options.vue';
@@ -128,16 +128,6 @@
       this.$store.dispatch('getPasswords');
       this.$store.dispatch('getSite');
       this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
-
-      const clipboard = new Clipboard('.btn-copy');
-      clipboard.on('success', event => {
-        if (event.text) {
-          showTooltip(event.trigger, this.$t('Copied', 'copied !'));
-          setTimeout(() => {
-            this.cleanFormInSeconds(10);
-          }, 2000);
-        }
-      });
     },
     mounted(){
       setTimeout(() => {
@@ -196,7 +186,7 @@
         clearTimeout(this.cleanTimeout);
         this.passwordGenerated = '';
       },
-      cleanFormInSeconds(seconds){
+      cleanFormInSeconds(seconds = 15){
         clearTimeout(this.cleanTimeout);
         this.cleanTimeout = setTimeout(() => {
           this.masterPassword = '';
@@ -230,7 +220,6 @@
           this.passwordGenerated = passwordGenerated;
           this.$store.dispatch('savePassword', {password: this.password});
           this.$store.dispatch('passwordGenerated');
-          window.document.getElementById('copyPasswordButton').setAttribute('data-clipboard-text', passwordGenerated);
         });
       },
       optionsUpdated(options){
@@ -243,6 +232,34 @@
         const login = this.$refs.login;
         const masterPassword = this.$refs.masterPassword.$refs.password;
         site.value ? (login.value ? masterPassword.focus() : login.focus()) : site.focus();
+      },
+      copyPassword(){
+        const copied = copy(this.passwordGenerated);
+        if (copied) {
+          showTooltip(document.getElementById('copyPasswordButton'), this.$t('Copied', 'copied !'));
+          setTimeout(() => {
+            this.cleanFormInSeconds();
+          }, 2000);
+        } else {
+          message.warning(this.$t('SorryCopy', 'We are sorry the copy only works on modern browsers'))
+        }
+      },
+      sharePasswordProfile(){
+        const copied = copy(this.passwordURL);
+        if (copied) {
+          const copySuccessMessage = this.$t('PasswordProfileCopied', 'Your password profile has been copied');
+          showTooltip(
+            document.getElementById('sharePasswordProfileButton'),
+            copySuccessMessage,
+            'hint--top-left'
+          );
+          setTimeout(() => {
+            this.cleanFormInSeconds();
+          }, 2000);
+        }
+        else {
+          message.warning(this.$t('SorryCopy', 'We are sorry the copy only works on modern browsers'))
+        }
       }
     }
   }

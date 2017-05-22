@@ -28,7 +28,7 @@
     "awesomplete": "^1.1.1",
     "axios": "^0.16.1",
     "bootstrap": "4.0.0-alpha.6",
-    "clipboard": "^1.6.1",
+    "copy-text-to-clipboard": "^1.0.0",
     "font-awesome": "^4.7.0",
     "hint.css": "^2.5.0",
     "jwt-decode": "^2.2.0",

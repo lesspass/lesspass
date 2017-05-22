@@ -1,6 +1,6 @@
-export function showTooltip(elem, msg) {
+export function showTooltip(elem, msg, classes='hint--top') {
   var classNames = elem.className;
-  elem.setAttribute('class', classNames + ' hint--top');
+  elem.setAttribute('class', `${classNames} ${classes}`);
   elem.setAttribute('aria-label', msg);
   setTimeout(function() {
     elem.setAttribute('class', classNames);
