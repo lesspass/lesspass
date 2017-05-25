@@ -12,16 +12,14 @@
     "build": "rm -rf dist && cross-env NODE_ENV=production webpack -p",
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
-    "test": "ava test --compilers js:babel-register"
+    "test": "ava test"
   },
   "babel": {
-    "comments": false,
-    "plugins": [
-      "transform-runtime"
-    ],
     "presets": [
-      "es2015",
-      "stage-2"
+      "env"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
     ]
   },
   "dependencies": {
@@ -34,7 +32,7 @@
     "jwt-decode": "^2.2.0",
     "lesspass": "^6.0.0",
     "lodash.debounce": "^4.0.8",
-    "vue": "^2.3.2",
+    "vue": "^2.3.3",
     "vue-polyglot": "^0.1.8",
     "vue-router": "^2.5.3",
     "vuejs-paginate": "^0.9.0",
@@ -46,37 +44,31 @@
     "ava": "^0.19.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
     "babel-register": "^6.24.1",
-    "babel-runtime": "^6.23.0",
     "copy-webpack-plugin": "^4.0.1",
-    "cross-env": "^4.0.0",
-    "css-loader": "^0.28.1",
-    "express": "^4.15.2",
+    "cross-env": "^5.0.0",
+    "css-loader": "^0.28.2",
+    "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "husky": "^0.13.3",
-    "json-loader": "^0.5.4",
     "nock": "^9.0.13",
-    "node-sass": "^4.5.2",
-    "optimize-css-assets-webpack-plugin": "^1.3.1",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.17.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
     "timekeeper": "^1.0.0",
     "url-loader": "^0.5.8",
-    "vue-loader": "^12.0.3",
+    "vue-loader": "^12.1.0",
     "vue-polyglot-utils": "^0.1.1",
-    "vue-template-compiler": "^2.3.2",
+    "vue-template-compiler": "^2.3.3",
     "walk": "^2.3.9",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.5"
   },
   "ava": {
-    "require": [
-      "babel-register"
-    ],
+    "require": "babel-register",
     "babel": "inherit"
   }
 }
