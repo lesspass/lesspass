@@ -1,4 +1,12 @@
-[![Build Status](https://travis-ci.org/lesspass/webextension.svg?branch=master)](https://travis-ci.org/lesspass/webextension)
+[![Chrome version][badge-cws]][link-cws] [![Firefox version][badge-amo]][link-amo] [![Autodeployment][badge-travis]][link-travis]
+
+  [badge-cws]: https://img.shields.io/chrome-web-store/v/lcmbpoclaodbgkbjafnkbbinogcbnjih.svg?label=for%20chrome
+  [badge-amo]: https://img.shields.io/amo/v/lesspass.svg?label=for%20firefox
+  [badge-travis]: https://img.shields.io/travis/lesspass/lesspass/master.svg?label=autodeployment
+  [link-cws]: https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih "Version published on Chrome Web Store"
+  [link-amo]: https://addons.mozilla.org/en-US/firefox/addon/lesspass/ "Version published on Mozilla Add-ons"
+  [link-travis]: https://travis-ci.org/lesspass/webextension
+  
 
 > chrome and firefox web extension for LessPass password manager
 
