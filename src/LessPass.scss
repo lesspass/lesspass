@@ -43,11 +43,11 @@
 @import '~hint.css/hint.css';
 @import '~awesomplete/awesomplete.css';
 
-.lesspass--unbordered #lesspass{
+.lesspass--unbordered #lesspass {
   border: none;
 }
 
-.lesspass--full-width #lesspass{
+.lesspass--full-width #lesspass {
   max-width: none !important;
 }
 
@@ -56,8 +56,8 @@
   max-width: 420px;
 }
 
-.lesspass__inner-box{
-  min-height: 256px;
+.lesspass__inner-box {
+  min-height: 240px;
 }
 
 @media (max-width: 419px) {
@@ -72,4 +72,31 @@
 
 button, .pointer {
   cursor: pointer;
+}
+
+.inner-addon i {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.inner-addon {
+  position: relative;
+}
+
+.left-addon i {
+  left: 0;
+}
+
+.right-addon i {
+  right: 0;
+}
+
+.left-addon input {
+  padding-left: 30px;
+}
+
+.right-addon input {
+  padding-right: 30px;
 }

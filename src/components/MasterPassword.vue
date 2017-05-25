@@ -1,27 +1,19 @@
 <template>
-  <div id="masterPassword" class="input-group">
-    <span class="input-group-btn" v-if="showEncryptMasterPassword">
-        <button type="button"
-                tabindex="-1"
-                class="btn btn-secondary hint--right hint--medium"
-                v-on:click="encryptMasterPassword()"
-                v-bind:data-hint="$t('EncryptMasterPassword', 'Click me to encrypt this password before sending it to lesspass.com')">
-              <i class="fa fa-shield"></i>
-        </button>
-      </span>
+  <div id="masterPassword" class="input-group inner-addon left-addon">
     <label for="password" class="sr-only">{{ $t('Master Password') }}</label>
-    <input id="password"
-           name="password"
-           ref="password"
-           type="password"
-           class="form-control"
-           autocorrect="off"
-           autocapitalize="off"
-           v-model="password"
-           v-bind:placeholder="$t('Master Password')"
-           v-on:input="updatePassword($event.target.value)"
-           v-on:keyup.enter="triggerEnterMethod"
-           v-on:blur="hidePassword($refs.password)">
+      <i class="fa fa-lock"></i>
+      <input id="password"
+             name="password"
+             ref="password"
+             type="password"
+             class="form-control"
+             autocorrect="off"
+             autocapitalize="off"
+             v-model="password"
+             v-bind:placeholder="$t('Master Password')"
+             v-on:input="updatePassword($event.target.value)"
+             v-on:keyup.enter="triggerEnterMethod"
+             v-on:blur="hidePassword($refs.password)">
     <fingerprint v-bind:fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.password)">
     </fingerprint>
   </div>
@@ -34,13 +26,7 @@
     components: {
       Fingerprint
     },
-    props: {
-      value: '',
-      keyupEnter: '',
-      showEncryptMasterPassword: {
-        'default': false
-      }
-    },
+    props: ['value', 'keyupEnter'],
     data(){
       return {
         fingerprint: '',
@@ -76,9 +62,6 @@
         if (typeof this.keyupEnter !== 'undefined' && this.password) {
           this.keyupEnter()
         }
-      },
-      encryptMasterPassword(){
-        this.$emit('encryptMasterPassword')
       }
     }
   }

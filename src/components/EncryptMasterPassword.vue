@@ -2,9 +2,13 @@
   <div id="encryptMasterPassword">
     <master-password
       v-model="password"
-      showEncryptMasterPassword="true"
-      v-on:input="$emit('input', password)"
-      v-on:encryptMasterPassword="encryptMasterPassword"></master-password>
+      v-on:input="$emit('input', password)"></master-password>
+    <button type="button"
+            class="btn btn-link btn-sm hint--top hint--medium p-0"
+            v-on:click="encryptMasterPassword()"
+            v-bind:data-hint="$t('EncryptMasterPassword', 'Click me to encrypt this password before sending it to lesspass.com')">
+      <small>{{$t('Encrypt my master password')}}</small>
+    </button>
   </div>
 </template>
 <script type="text/ecmascript-6">

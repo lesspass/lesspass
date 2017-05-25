@@ -12,6 +12,7 @@
   "EmailInvalid": "請輸入一個有效的郵件位址",
   "EmailRequired": "需要一封電郵",
   "EmailRequiredError": "我們需要郵件位址來找到您的帳號。",
+  "Encrypt my master password": "加密我的主密码",
   "EncryptMasterPassword": "在將密碼傳至 lesspass.com 前，請點我加密。",
   "ForgotPassword": "忘記您的登入密碼了嗎？",
   "Generate": "產生",

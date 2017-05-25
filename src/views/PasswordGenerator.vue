@@ -15,35 +15,42 @@
   <form id="password-generator">
     <div class="form-group">
       <label for="site" class="sr-only">{{ $t('Site') }}</label>
-      <input id="site"
-             name="site"
-             type="text"
-             ref="site"
-             class="form-control awesomplete"
-             autocorrect="off"
-             autocapitalize="none"
-             v-bind:placeholder="$t('Site')"
-             v-model="password.site">
+      <div class="inner-addon left-addon">
+        <i class="fa fa-globe"></i>
+        <input id="site"
+               name="site"
+               type="text"
+               ref="site"
+               class="form-control awesomplete"
+               autocorrect="off"
+               autocapitalize="none"
+               v-bind:placeholder="$t('Site')"
+               v-model="password.site">
+      </div>
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
       <label for="login" class="sr-only">{{ $t('Login') }}</label>
-      <input id="login"
-             name="login"
-             type="text"
-             ref="login"
-             class="form-control"
-             autocomplete="off"
-             autocorrect="off"
-             autocapitalize="none"
-             v-bind:placeholder="$t('Login')"
-             v-model="password.login">
+      <div class="inner-addon left-addon">
+        <i class="fa fa-user"></i>
+        <input id="login"
+               name="login"
+               type="text"
+               ref="login"
+               class="form-control"
+               autocomplete="off"
+               autocorrect="off"
+               autocapitalize="none"
+               v-bind:placeholder="$t('Login')"
+               v-model="password.login">
+      </div>
     </div>
     <div class="form-group">
       <master-password ref="masterPassword" v-model="masterPassword"
                        :keyupEnter="generatePassword"></master-password>
     </div>
-    <div class="form-group">
+    <div class="form-group"
+         v-bind:class="{ 'mb-0': !showOptions }">
       <div v-show="!passwordGenerated">
         <button type="button"
                 class="btn"

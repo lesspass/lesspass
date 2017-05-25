@@ -2,12 +2,15 @@
   <form v-on:submit.prevent="resetPasswordConfirm">
     <div class="form-group row">
       <div class="col-12">
-        <input id="email"
-               class="form-control"
-               name="email"
-               type="email"
-               placeholder="Email"
-               v-model="email">
+        <div class="inner-addon left-addon">
+          <i class="fa fa-user"></i>
+          <input id="email"
+                 class="form-control"
+                 name="email"
+                 type="email"
+                 placeholder="Email"
+                 v-model="email">
+        </div>
       </div>
     </div>
     <div class="form-group row">

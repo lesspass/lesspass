@@ -10,24 +10,30 @@
 <template>
   <form v-on:submit.prevent="signIn">
     <div class="form-group">
-      <input id="baseURL"
-             class="form-control"
-             type="text"
-             v-bind:placeholder="$t('LessPass Database Url')"
-             v-model="baseURL">
+      <div class="inner-addon left-addon">
+        <i class="fa fa-globe"></i>
+        <input id="baseURL"
+               class="form-control"
+               type="text"
+               v-bind:placeholder="$t('LessPass Database Url')"
+               v-model="baseURL">
+      </div>
     </div>
     <div class="form-group row">
       <div class="col-12">
-        <input id="email"
-               class="form-control"
-               name="username"
-               type="email"
-               v-bind:placeholder="$t('Email')"
-               required
-               v-model="email">
+        <div class="inner-addon left-addon">
+          <i class="fa fa-user"></i>
+          <input id="email"
+                 class="form-control"
+                 name="username"
+                 type="email"
+                 v-bind:placeholder="$t('Email')"
+                 required
+                 v-model="email">
+        </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-2">
       <encrypt-master-password v-model="password" v-bind:email="email"></encrypt-master-password>
     </div>
     <div class="form-group row no-gutters mb-0">
@@ -43,10 +49,12 @@
         </button>
       </div>
     </div>
-    <div class="form-group my-0">
-      <router-link :to="{ name: 'passwordReset'}">
+    <div class="form-group mb-0">
+      <button type="button"
+              class="btn btn-link btn-sm p-0"
+              v-on:click="$router.push({name: 'passwordReset'})">
         <small>{{$t('ForgotPassword', 'Forgot your password?')}}</small>
-      </router-link>
+      </button>
     </div>
   </form>
 </template>

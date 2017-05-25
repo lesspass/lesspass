@@ -12,6 +12,7 @@
   "EmailInvalid": "Bitte geben Sie eine gültige email-Adresse ein",
   "EmailRequired": "Eine Email ist erforderlich",
   "EmailRequiredError": "Wir benötigen eine email-Adresse, um Ihr Konto zu finden.",
+  "Encrypt my master password": "Verschlüssele mein Masterpasswort",
   "EncryptMasterPassword": "Hier klicken, um dieses Passwort zu verschlüsseln, bevor es an lesspass.com gesendet wird",
   "ForgotPassword": "Passwort vergessen?",
   "Generate": "Erstelle",
