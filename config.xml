@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.lesspass.android" version="2.0.8" android-versionCode="20008" xmlns="http://www.w3.org/ns/widgets"
+<widget id="com.lesspass.android" version="2.0.9" android-versionCode="20009" xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>LessPass</name>
     <description>
