@@ -57,7 +57,7 @@
           .confirmResetPassword({
             uid: this.$route.params.uid,
             token: this.$route.params.token,
-            newPassword: this.newPassword
+            new_password: this.newPassword
           })
           .then(() => {
             message.success(this.$t('PasswordResetSuccessful', 'Your password was reset successfully.'));
