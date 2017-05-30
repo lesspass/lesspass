@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
+# context verification
 if [ ! -f readme.md ]; then
     echo "You seems to be in the wrong directory"
-    echo "Execute this script from the root of lesspass with ./scripts/zip-src-for-webextension.sh"
+    echo "Execute this script from the root of LessPass with ./scripts/${0##*/}"
     exit 1
 fi
+# verification completed
 
 CWD="$(pwd)"
 cd webextension
