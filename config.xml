@@ -1,48 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.lesspass.android" version="2.0.9" android-versionCode="20009" xmlns="http://www.w3.org/ns/widgets"
-        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="20100" id="com.lesspass.android" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>LessPass</name>
     <description>
-        Stateless Password Manager
-    </description>
+    Stateless Password Manager
+  </description>
     <author email="contact@lesspass.com" href="https://lesspass.com">
-        LessPass Team
-    </author>
-    <content src="index.html"/>
-
-    <!--<preference name="SplashScreenDelay" value="2000"/>-->
-    <preference name="SplashScreen" value="screen"/>
-
-    <plugin name="cordova-plugin-whitelist" spec="~1.3.2"/>
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.2"/>
-    <preference name="ShowSplashScreenSpinner" value="false"/>
-
-    <access origin="*"/>
-    <allow-intent href="http://*/*"/>
-    <allow-intent href="https://*/*"/>
-    <allow-intent href="tel:*"/>
-    <allow-intent href="sms:*"/>
-    <allow-intent href="mailto:*"/>
-    <allow-intent href="geo:*"/>
-
-    <allow-navigation href="http://*/*"/>
-    <allow-navigation href="https://*/*"/>
-    <allow-navigation href="data:*"/>
-
+    LessPass Team
+  </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="https://*/*" />
+    <allow-navigation href="https://*/*" />
     <platform name="android">
-        <allow-intent href="market:*"/>
-        <icon src="www/icons/mipmap-hdpi/icon.png" density="hdpi"/>
-        <icon src="www/icons/mipmap-ldpi/icon.png" density="ldpi"/>
-        <icon src="www/icons/mipmap-mdpi/icon.png" density="mdpi"/>
-        <icon src="www/icons/mipmap-xhdpi/icon.png" density="xhdpi"/>
-
-        <splash src="www/icons/drawable-land-hdpi/screen.png" density="land-hdpi"/>
-        <splash src="www/icons/drawable-land-ldpi/screen.png" density="land-ldpi"/>
-        <splash src="www/icons/drawable-land-mdpi/screen.png" density="land-mdpi"/>
-        <splash src="www/icons/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
-        <splash src="www/icons/drawable-port-hdpi/screen.png" density="port-hdpi"/>
-        <splash src="www/icons/drawable-port-ldpi/screen.png" density="port-ldpi"/>
-        <splash src="www/icons/drawable-port-mdpi/screen.png" density="port-mdpi"/>
-        <splash src="www/icons/drawable-port-xhdpi/screen.png" density="port-xhdpi"/>
+        <allow-intent href="market:*" />
+        <icon density="hdpi" src="www/icons/mipmap-hdpi/icon.png" />
+        <icon density="ldpi" src="www/icons/mipmap-ldpi/icon.png" />
+        <icon density="mdpi" src="www/icons/mipmap-mdpi/icon.png" />
+        <icon density="xhdpi" src="www/icons/mipmap-xhdpi/icon.png" />
     </platform>
+    <engine name="android" spec="^6.2.3" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
 </widget>

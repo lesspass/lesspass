@@ -1,20 +1,20 @@
 > LessPass Cordova App for [lesspass.com](https://lesspass.com)
 
+## Requirements
+
+ * Cordova (`npm install -g cordova`)
+
 ## Check everything ok
 
-    ./node_modules/.bin/cordova requirements
-
-## Add Android platform
-
-    ./node_modules/.bin/cordova platform add android
+    cordova requirements
 
 ## Test
 
-    ./node_modules/.bin/cordova emulate android
+    cordova run android
     
 ## Build Release
 
-    ./node_modules/.bin/cordova build --release -- --keystore=~/Android/lesspass.keystore --storePassword=... --alias=lesspass --password=...
+    cordova build --release -- --keystore=~/Android/lesspass.keystore --storePassword=... --alias=lesspass --password=...
     
 ## License
 
