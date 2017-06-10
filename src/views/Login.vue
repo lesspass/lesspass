@@ -34,7 +34,13 @@
       </div>
     </div>
     <div class="form-group mb-2">
-      <encrypt-master-password v-model="password" v-bind:email="email"></encrypt-master-password>
+      <master-password
+        v-model="password"
+        v-bind:label="$t('Master Password')"
+        v-bind:email="email"
+        v-bind:showEncryptButton="true"
+        v-bind:EncryptButtonHelp="$t('EncryptMasterPassword', 'Click me to encrypt this password before sending it to lesspass.com')"
+        v-bind:EncryptButtonText="$t('Encrypt my master password')"></master-password>
     </div>
     <div class="form-group row no-gutters mb-0">
       <div class="col">
@@ -61,7 +67,7 @@
 <script type="text/ecmascript-6">
   import User from '../api/user';
   import {mapGetters} from 'vuex';
-  import EncryptMasterPassword from '../components/EncryptMasterPassword.vue';
+  import MasterPassword from '../components/MasterPassword.vue';
   import message from '../services/message';
 
   export default {
@@ -73,7 +79,7 @@
       };
     },
     components: {
-      EncryptMasterPassword
+      MasterPassword
     },
     computed: {
       ...mapGetters(['version'])

@@ -47,7 +47,8 @@
     </div>
     <div class="form-group">
       <master-password ref="masterPassword" v-model="masterPassword"
-                       :keyupEnter="generatePassword"></master-password>
+                       :keyupEnter="generatePassword"
+                       v-bind:label="$t('Master Password')"></master-password>
     </div>
     <div class="form-group"
          v-bind:class="{ 'mb-0': !showOptions }">
@@ -237,7 +238,7 @@
       focusBestInputField(){
         const site = this.$refs.site;
         const login = this.$refs.login;
-        const masterPassword = this.$refs.masterPassword.$refs.password;
+        const masterPassword = this.$refs.masterPassword.$refs.passwordField;
         site.value ? (login.value ? masterPassword.focus() : login.focus()) : site.focus();
       },
       copyPassword(){

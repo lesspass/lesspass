@@ -1,53 +1,96 @@
+<style>
+  #fingerprint {
+    min-width: 90px;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+  }
+
+  #fingerprint i {
+    color: black;
+    position: relative;
+    padding: 0;
+    text-shadow: 1px 1px 0 white;
+    font-size: 1.3em;
+  }
+</style>
 <template>
-  <div id="masterPassword" class="input-group inner-addon left-addon">
-    <label for="password" class="sr-only">{{ $t('Master Password') }}</label>
+  <div class="masterPassword">
+    <div class="input-group inner-addon left-addon">
+      <label for="passwordField" class="sr-only">
+        {{ label }}
+      </label>
       <i class="fa fa-lock"></i>
-      <input id="password"
-             name="password"
-             ref="password"
+      <input id="passwordField"
+             name="passwordField"
+             ref="passwordField"
              type="password"
              class="form-control"
              autocorrect="off"
              autocapitalize="off"
              v-model="password"
-             v-bind:placeholder="$t('Master Password')"
-             v-on:input="updatePassword($event.target.value)"
-             v-on:keyup.enter="triggerEnterMethod"
-             v-on:blur="hidePassword($refs.password)">
-    <fingerprint v-bind:fingerprint="fingerprint" v-on:click.native="togglePasswordType($refs.password)">
-    </fingerprint>
+             v-bind:placeholder="label"
+             v-on:blur="hidePassword($refs.passwordField)">
+      <span class="input-group-btn"
+            v-if="fingerprint"
+            v-on:click="togglePasswordType($refs.passwordField)">
+        <button id="fingerprint" class="btn" type="button" tabindex="-1">
+            <small class="hint--left">
+                <i class="fa fa-fw" v-bind:class="[icon1]" v-bind:style="{ color: color1 }"></i>
+                <i class="fa fa-fw" v-bind:class="[icon2]" v-bind:style="{ color: color2 }"></i>
+                <i class="fa fa-fw" v-bind:class="[icon3]" v-bind:style="{ color: color3 }"></i>
+            </small>
+        </button>
+      </span>
+    </div>
+    <button type="button"
+            class="btn btn-link btn-sm p-0"
+            v-if="showEncryptButton"
+            v-on:click="encryptMasterPassword($refs.passwordField.value)"
+            v-bind:data-hint="EncryptButtonHelp"
+            v-bind:class="{'disabled': email === '', 'hint--top hint--medium': email !== ''}">
+      <small>{{ EncryptButtonText }}</small>
+    </button>
   </div>
 </template>
-<script type="text/ecmascript-6">
+<script>
+  import LessPass from 'lesspass';
   import debounce from 'lodash.debounce';
-  import Fingerprint from './Fingerprint.vue';
 
   export default {
-    components: {
-      Fingerprint
+    name: 'masterPassword',
+    props: {
+      value: String,
+      label: String,
+      email: String,
+      showEncryptButton: {
+        type: Boolean,
+        default: false
+      },
+      EncryptButtonHelp: String,
+      EncryptButtonText: String
     },
-    props: ['value', 'keyupEnter'],
     data(){
       return {
+        password: this.value,
         fingerprint: '',
-        password: this.value
+        icon1: '',
+        icon2: '',
+        icon3: '',
+        color1: '',
+        color2: '',
+        color3: ''
       }
     },
     watch: {
-      'value': function(password) {
-        this.password = password;
-        this.updatePassword(password);
+      password(newPassword){
+        const fakePassword = Math.random().toString(36).substring(7);
+        this.setFingerprint(fakePassword);
+        this.showRealFingerprint(newPassword);
+        this.$emit('input', newPassword);
       }
     },
     methods: {
-      updatePassword: function(password) {
-        this.fingerprint = Math.random().toString(36).substring(7);
-        this.showRealFingerprint(password);
-        this.$emit('input', password)
-      },
-      showRealFingerprint: debounce(function(password) {
-        this.fingerprint = password;
-      }, 500),
       togglePasswordType(element){
         if (element.type === 'password') {
           element.type = 'text';
@@ -58,10 +101,51 @@
       hidePassword(element){
         element.type = 'password';
       },
-      triggerEnterMethod(){
-        if (typeof this.keyupEnter !== 'undefined' && this.password) {
-          this.keyupEnter()
-        }
+      getColor(color) {
+        var colors = ['#000000', '#074750', '#009191', '#FF6CB6', '#FFB5DA', '#490092', '#006CDB', '#B66DFF', '#6DB5FE', '#B5DAFE', '#920000', '#924900', '#DB6D00', '#24FE23'];
+        var index = parseInt(color, 16) % colors.length;
+        return colors[index];
+      },
+      getIcon(hash) {
+        var icons = ['fa-hashtag', 'fa-heart', 'fa-hotel', 'fa-university', 'fa-plug', 'fa-ambulance', 'fa-bus', 'fa-car', 'fa-plane', 'fa-rocket', 'fa-ship', 'fa-subway', 'fa-truck', 'fa-jpy', 'fa-eur', 'fa-btc', 'fa-usd', 'fa-gbp', 'fa-archive', 'fa-area-chart', 'fa-bed', 'fa-beer', 'fa-bell', 'fa-binoculars', 'fa-birthday-cake', 'fa-bomb', 'fa-briefcase', 'fa-bug', 'fa-camera', 'fa-cart-plus', 'fa-certificate', 'fa-coffee', 'fa-cloud', 'fa-coffee', 'fa-comment', 'fa-cube', 'fa-cutlery', 'fa-database', 'fa-diamond', 'fa-exclamation-circle', 'fa-eye', 'fa-flag', 'fa-flask', 'fa-futbol-o', 'fa-gamepad', 'fa-graduation-cap'];
+        var index = parseInt(hash, 16) % icons.length;
+        return icons[index];
+      },
+      setFingerprint(password){
+        LessPass.createFingerprint(password).then(fingerprint => {
+          this.fingerprint = fingerprint;
+
+          const hash1 = fingerprint.substring(0, 6);
+          this.icon1 = this.getIcon(hash1);
+          this.color1 = this.getColor(hash1);
+
+          const hash2 = fingerprint.substring(6, 12);
+          this.icon2 = this.getIcon(hash2);
+          this.color2 = this.getColor(hash2);
+
+          const hash3 = fingerprint.substring(12, 18);
+          this.icon3 = this.getIcon(hash3);
+          this.color3 = this.getColor(hash3);
+        });
+      },
+      showRealFingerprint: debounce(function(password) {
+        this.setFingerprint(password);
+      }, 500),
+      encryptMasterPassword(password){
+        const defaultPasswordProfile = {
+          lowercase: true,
+          uppercase: true,
+          numbers: true,
+          symbols: true,
+          length: 16,
+          counter: 1,
+          version: 2,
+        };
+        return LessPass
+          .generatePassword('lesspass.com', this.email, password, defaultPasswordProfile)
+          .then(generatedPassword => {
+            this.password = generatedPassword;
+          });
       }
     }
   }
