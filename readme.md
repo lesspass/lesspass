@@ -92,5 +92,6 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Philip Ulrich](https://github.com/philip-ulrich)
  * [Pierre Rudloff](https://github.com/Rudloff)
  * [Pierre-Jean Vardanéga](https://github.com/pvardanega)
+ * [YFdyh000](https://github.com/yfdyh000)
  * [朱震庭](https://github.com/r2qokk)
 
