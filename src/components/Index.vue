@@ -6,55 +6,45 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <h3 class="mb-2">1 - Copy paste list of old profiles</h3>
+      <div class="col col-md-4">
+        <h3 class="mb-5"><span class="badge badge-pill badge-primary">1</span> Import your profiles</h3>
+        <login-form></login-form>
+      </div>
+      <div class="col col-md-2 align-self-center text-center">
+        <span class="badge badge-pill badge-primary">or</span>
+      </div>
+      <div class="col col-md-6">
+        <h3 class="mb-5"><span class="badge badge-pill badge-primary">1</span> Copy/Paste your profiles</h3>
+        <textarea id="oldProfiles" name="oldProfiles" class="form-control" rows="10" v-model="oldProfiles"
+                  placeholder="Copy list of password profiles"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col">
-            <textarea id="oldProfiles" name="oldProfiles" class="form-control" rows="10" v-model="oldProfiles"
-                      placeholder="Copy list of password profiles"></textarea>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="row">
-          <div class="col">
-            <h3 class="mt-5 mb-2">2 - Set your master password(s)</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <form class="form-inline">
-              <input
-                id="oldMasterPassword"
-                type="password"
-                placeholder="Old Master Password"
-                v-model="oldMasterPassword">
-              <input
-                id="newMasterPassword"
-                type="password"
-                v-model="newMasterPassword"
-                placeholder="New Master Password"
-                v-if="changeMyMasterPassword">
-            </form>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" v-model="changeMyMasterPassword">
-                Click me to change your master password at the same time
-              </label>
-            </div>
-          </div>
+        <h3 class="my-5"><span class="badge badge-pill badge-primary">2</span> Set your master password(s)</h3>
+        <form class="form-inline">
+          <input
+            id="oldMasterPassword"
+            class="mr-sm-2"
+            type="password"
+            placeholder="Old Master Password"
+            v-model="oldMasterPassword">
+          <input
+            id="newMasterPassword"
+            type="password"
+            v-model="newMasterPassword"
+            placeholder="New Master Password"
+            v-if="changeMyMasterPassword">
+        </form>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" v-model="changeMyMasterPassword">
+            Click me to change your master password at the same time
+          </label>
         </div>
       </div>
       <div class="col">
-        <div class="row">
-          <div class="col">
-            <h3 class="mt-5 mb-2">3 - Select rules:</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
+        <h3 class="my-5"><span class="badge badge-pill badge-default">3</span> Select rules (optional)</h3>
             <form action="">
               <div class="form-check">
                 <label class="form-check-label">
@@ -69,27 +59,15 @@
                 </label>
               </div>
             </form>
-          </div>
-        </div>
+      </div>
+      <div class="col">
+        <h3 class="my-5"><span class="badge badge-pill badge-primary">4</span> - Build your passwords</h3>
+        <button class="btn btn-primary" v-on:click="buildAllPasswords()">Build your passwords</button>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <h3 class="mt-5 mb-2">4 - Build your passwords:</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <button class="btn btn-primary" v-on:click="buildAllPasswords()">Build all passwords</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h3 class="mt-5 mb-2">5 - Copy paste old and new generated passwords:</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
+        <h3 class="my-5"><span class="badge badge-pill badge-primary">5</span> Copy paste old and new generated passwords:</h3>
         <table class="table table-bordered table-sm" v-if="newPasswordProfiles.length > 0">
           <thead class="thead-inverse">
           <tr>
@@ -196,15 +174,16 @@
   </div>
 </template>
 <script>
-  import MasterPassword from 'lesspass-pure/src/components/MasterPassword.vue'
   import password from '@/domain/password'
   import {V1ToV2DefaultRule, V1ToV2Rule, RulesController} from '@/domain/rules';
   import copy from '@/services/copy-text-to-clipboard';
-  import OptionThumb from '@/components/OptionThumb'
+  import OptionThumb from '@/components/OptionThumb';
+  import LoginForm from '@/components/Login';
+
   export default {
     name: 'index',
     components: {
-      MasterPassword,
+      LoginForm,
       OptionThumb
     },
     data(){
@@ -225,12 +204,12 @@
           this.newMasterPassword = this.oldMasterPassword
         }
 
-        var instanciatedRules={
-            'V1ToV2DefaultRule':new V1ToV2DefaultRule(),
-            'V1ToV2Rule':new V1ToV2Rule(),
+        var instanciatedRules = {
+          'V1ToV2DefaultRule': new V1ToV2DefaultRule(),
+          'V1ToV2Rule': new V1ToV2Rule(),
         };
         const controller = new RulesController();
-        this.rules.forEach(rule =>{
+        this.rules.forEach(rule => {
           controller.addRule(instanciatedRules[rule]);
         });
 
