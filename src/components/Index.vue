@@ -18,35 +18,64 @@
     </div>
     <div class="row">
       <div class="col">
-        <h3 class="mt-5 mb-2">2 - Set your(s) master password(s)</h3>
+        <div class="row">
+          <div class="col">
+            <h3 class="mt-5 mb-2">2 - Set your master password(s)</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form class="form-inline">
+              <input
+                id="oldMasterPassword"
+                type="password"
+                placeholder="Old Master Password"
+                v-model="oldMasterPassword">
+              <input
+                id="newMasterPassword"
+                type="password"
+                v-model="newMasterPassword"
+                placeholder="New Master Password"
+                v-if="changeMyMasterPassword">
+            </form>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" v-model="changeMyMasterPassword">
+                Click me to change your master password at the same time
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
       <div class="col">
-        <form class="form-inline">
-          <input
-            id="oldMasterPassword"
-            type="password"
-            placeholder="Old Master Password"
-            v-model="oldMasterPassword">
-          <input
-            id="newMasterPassword"
-            type="password"
-            v-model="newMasterPassword"
-            placeholder="New Master Password"
-            v-if="changeMyMasterPassword">
-        </form>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" v-model="changeMyMasterPassword">
-            Click me to change your master password at the same time
-          </label>
+        <div class="row">
+          <div class="col">
+            <h3 class="mt-5 mb-2">3 - Select rules:</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form action="">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" value="V1ToV2DefaultRule" v-model="rules">
+                  Transform default V1 profile into default V2 profile
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" value="V1ToV2Rule" v-model="rules">
+                  Migrate version 1 to version 2
+                </label>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <h3 class="mt-5 mb-2">3 - Build your passwords:</h3>
+        <h3 class="mt-5 mb-2">4 - Build your passwords:</h3>
       </div>
     </div>
     <div class="row">
@@ -56,18 +85,17 @@
     </div>
     <div class="row">
       <div class="col">
-        <h3 class="mt-5 mb-2">4 - Copy paste old and new generated passwords:</h3>
+        <h3 class="mt-5 mb-2">5 - Copy paste old and new generated passwords:</h3>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <table class="table table-bordered table-sm">
+        <table class="table table-bordered table-sm" v-if="newPasswordProfiles.length > 0">
           <thead class="thead-inverse">
           <tr>
-            <th class="text-center" colspan="8">Old profile</th>
+            <th class="text-center" colspan="9">Old profile</th>
             <th></th>
-            <th class="text-center" colspan="8">New profile</th>
-            <th></th>
+            <th class="text-center" colspan="9">New profile</th>
           </tr>
           </thead>
           <tbody>
@@ -80,6 +108,7 @@
             <td class="text-center"><b>%!@</b></td>
             <td class="text-center"><b>length</b></td>
             <td class="text-center"><b>counter</b></td>
+            <td class="text-center"><b>v</b></td>
             <td></td>
             <td class="text-center"><b>site</b></td>
             <td class="text-center"><b>login</b></td>
@@ -89,6 +118,7 @@
             <td class="text-center"><b>%!@</b></td>
             <td class="text-center"><b>length</b></td>
             <td class="text-center"><b>counter</b></td>
+            <td class="text-center"><b>v</b></td>
           </tr>
           <tr v-for="profile in newPasswordProfiles" v-if="profile.oldPassword!==profile.newPassword">
             <td>
@@ -116,6 +146,9 @@
             <td class="text-center"
                 v-bind:class="{'bg-warning': profile.oldProfile.counter !== profile.newProfile.counter }">
               {{profile.oldProfile.counter}}
+            </td>
+            <td class="text-center">
+              {{profile.oldProfile.version}}
             </td>
             <td class="text-center">
               <button class="btn btn-default btn-sm" v-on:click="copyPassword(profile.oldPassword)">
@@ -152,6 +185,9 @@
                 v-bind:class="{'bg-warning': profile.oldProfile.counter !== profile.newProfile.counter }">
               {{profile.newProfile.counter}}
             </td>
+            <td class="text-center">
+              {{profile.newProfile.version}}
+            </td>
           </tr>
           </tbody>
         </table>
@@ -161,7 +197,8 @@
 </template>
 <script>
   import MasterPassword from 'lesspass-pure/src/components/MasterPassword.vue'
-  import migration from '@/services/migration';
+  import password from '@/domain/password'
+  import {V1ToV2DefaultRule, V1ToV2Rule, RulesController} from '@/domain/rules';
   import copy from '@/services/copy-text-to-clipboard';
   import OptionThumb from '@/components/OptionThumb'
   export default {
@@ -176,16 +213,28 @@
         changeMyMasterPassword: false,
         oldMasterPassword: '',
         newMasterPassword: '',
-        newPasswordProfiles: []
+        newPasswordProfiles: [],
+        rules: ['V1ToV2DefaultRule', 'V1ToV2Rule']
       }
     },
     methods: {
       buildAllPasswords(){
         var oldProfiles = JSON.parse(this.oldProfiles);
+
         if (!this.changeMyMasterPassword) {
           this.newMasterPassword = this.oldMasterPassword
         }
-        migration.buildAllPasswords(migration.transformProfilesFromV1ToV2(oldProfiles), this.oldMasterPassword, this.newMasterPassword)
+
+        var instanciatedRules={
+            'V1ToV2DefaultRule':new V1ToV2DefaultRule(),
+            'V1ToV2Rule':new V1ToV2Rule(),
+        };
+        const controller = new RulesController();
+        this.rules.forEach(rule =>{
+          controller.addRule(instanciatedRules[rule]);
+        });
+
+        password.buildAllPasswords(controller.applyRules(oldProfiles), this.oldMasterPassword, this.newMasterPassword)
           .then(newPasswordProfiles => {
             this.newPasswordProfiles = newPasswordProfiles;
           });
