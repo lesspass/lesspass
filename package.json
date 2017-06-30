@@ -1,6 +1,6 @@
 {
   "name": "lesspass-move",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "password migration tool",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "private": true,
