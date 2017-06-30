@@ -2,72 +2,86 @@
   <div class="container-fluid pt-3">
     <div class="row">
       <div class="col">
-        <h1>LessPass Move</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-md-4">
-        <h3 class="mb-5"><span class="badge badge-pill badge-primary">1</span> Import your profiles</h3>
-        <login-form></login-form>
-      </div>
-      <div class="col col-md-2 align-self-center text-center">
-        <span class="badge badge-pill badge-primary">or</span>
-      </div>
-      <div class="col col-md-6">
-        <h3 class="mb-5"><span class="badge badge-pill badge-primary">1</span> Copy/Paste your profiles</h3>
-        <textarea id="oldProfiles" name="oldProfiles" class="form-control" rows="10" v-model="oldProfiles"
-                  placeholder="Copy list of password profiles"></textarea>
+        <h1>LessPass Move (v0.1.0-alpha)</h1>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <h3 class="my-5"><span class="badge badge-pill badge-primary">2</span> Set your master password(s)</h3>
-        <form class="form-inline">
-          <input
-            id="oldMasterPassword"
-            class="mr-sm-2"
-            type="password"
-            placeholder="Old Master Password"
-            v-model="oldMasterPassword">
-          <input
-            id="newMasterPassword"
-            type="password"
-            v-model="newMasterPassword"
-            placeholder="New Master Password"
-            v-if="changeMyMasterPassword">
+        <h3 class="mt-2 mb-4"><span class="badge badge-pill badge-primary">1</span> Import your profiles</h3>
+        <div class="login">
+          <div class="form-group">
+            <label for="url" class="sr-only">Url</label>
+            <input id="url" type="url" class="form-control" placeholder="Url" v-model="url">
+          </div>
+          <div class="form-group">
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" type="email" class="form-control" placeholder="Email" v-model="email">
+          </div>
+          <div class="form-group">
+            <master-password
+              id="password"
+              label="Master Password"
+              v-model="password"
+              v-bind:email="email"
+              v-bind:showEncryptButton="true"
+              EncryptButtonHelp="Click me to encrypt this password before sending it to lesspass.com"
+              EncryptButtonText="Encrypt my master password"></master-password>
+          </div>
+          <button class="btn btn-primary"
+                  v-on:click="importProfiles()"
+                  v-if="oldProfiles.length===0">Import your profiles
+          </button>
+          <div v-else>
+            <button class="btn btn-success"
+                    v-on:click="oldProfiles = []">
+              <i class="fa fa-check"></i> {{oldProfiles.length}} profiles
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h3 class="mt-2 mb-4"><span class="badge badge-pill badge-primary">2</span> Master Password</h3>
+        <form>
+          <div class="form-group">
+            <master-password
+              id="oldMasterPassword"
+              label="Old Master Password"
+              v-model="oldMasterPassword"></master-password>
+            <master-password
+              id="newMasterPassword"
+              label="New Master Password"
+              v-model="newMasterPassword"
+              v-if="changeMyMasterPassword"></master-password>
+          </div>
         </form>
         <div class="form-check">
           <label class="form-check-label">
             <input type="checkbox" class="form-check-input" v-model="changeMyMasterPassword">
-            Click me to change your master password at the same time
+            Change your master password
           </label>
         </div>
       </div>
       <div class="col">
-        <h3 class="my-5"><span class="badge badge-pill badge-default">3</span> Select rules (optional)</h3>
-            <form action="">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input" value="V1ToV2DefaultRule" v-model="rules">
-                  Transform default V1 profile into default V2 profile
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input" value="V1ToV2Rule" v-model="rules">
-                  Migrate version 1 to version 2
-                </label>
-              </div>
-            </form>
+        <h3 class="mt-2 mb-4"><span class="badge badge-pill badge-default">3</span> Select rules (optional)</h3>
+        <form action="">
+          <div class="form-check" v-for='rule in rules'>
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" v-bind:value="rule.name" v-model="rule.checked">
+              {{rule.description}}
+            </label>
+          </div>
+        </form>
       </div>
       <div class="col">
-        <h3 class="my-5"><span class="badge badge-pill badge-primary">4</span> - Build your passwords</h3>
+        <h3 class="mt-2 mb-4"><span class="badge badge-pill badge-primary">4</span> Build your passwords</h3>
         <button class="btn btn-primary" v-on:click="buildAllPasswords()">Build your passwords</button>
       </div>
     </div>
+
     <div class="row">
       <div class="col">
-        <h3 class="my-5"><span class="badge badge-pill badge-primary">5</span> Copy paste old and new generated passwords:</h3>
+        <h3 class="my-5"><span class="badge badge-pill badge-primary">5</span> Copy paste old and new generated
+          passwords</h3>
         <table class="table table-bordered table-sm" v-if="newPasswordProfiles.length > 0">
           <thead class="thead-inverse">
           <tr>
@@ -174,49 +188,79 @@
   </div>
 </template>
 <script>
+  import MasterPassword from 'lesspass-pure/src/components/MasterPassword.vue'
   import password from '@/domain/password'
   import {V1ToV2DefaultRule, V1ToV2Rule, RulesController} from '@/domain/rules';
   import copy from '@/services/copy-text-to-clipboard';
   import OptionThumb from '@/components/OptionThumb';
-  import LoginForm from '@/components/Login';
+  import axios from 'axios';
 
   export default {
     name: 'index',
     components: {
-      LoginForm,
+      MasterPassword,
       OptionThumb
     },
     data(){
       return {
-        oldProfiles: "[]",
+        url: 'https://lesspass.com',
+        email: '',
+        password: '',
+        oldProfiles: [],
         changeMyMasterPassword: false,
         oldMasterPassword: '',
         newMasterPassword: '',
         newPasswordProfiles: [],
-        rules: ['V1ToV2DefaultRule', 'V1ToV2Rule']
+        rules: [
+          {
+            name: 'V1ToV2DefaultRule',
+            checked: true,
+            order: 1,
+            description: 'Transform default V1 profile into default V2 profile',
+            instance: new V1ToV2DefaultRule()
+          },
+          {
+            name: 'V1ToV2Rule',
+            checked: true,
+            order: 2,
+            description: 'Migrate version 1 to version 2',
+            instance: new V1ToV2Rule()
+          }
+        ]
       }
     },
     methods: {
       buildAllPasswords(){
-        var oldProfiles = JSON.parse(this.oldProfiles);
-
         if (!this.changeMyMasterPassword) {
           this.newMasterPassword = this.oldMasterPassword
         }
 
-        var instanciatedRules = {
-          'V1ToV2DefaultRule': new V1ToV2DefaultRule(),
-          'V1ToV2Rule': new V1ToV2Rule(),
-        };
         const controller = new RulesController();
-        this.rules.forEach(rule => {
-          controller.addRule(instanciatedRules[rule]);
-        });
+        this.rules
+          .sort((r1, r2) => {
+            return r1.order - r2.order;
+          })
+          .filter(rule => {
+            return rule.checked;
+          })
+          .forEach(rule => {
+            controller.addRule(rule.instance);
+          });
 
-        password.buildAllPasswords(controller.applyRules(oldProfiles), this.oldMasterPassword, this.newMasterPassword)
+        password.buildAllPasswords(controller.applyRules(this.oldProfiles), this.oldMasterPassword, this.newMasterPassword)
           .then(newPasswordProfiles => {
             this.newPasswordProfiles = newPasswordProfiles;
           });
+      },
+      importProfiles(){
+        axios.get('/api/passwords/', {
+          baseURL: this.url, auth: {
+            username: this.email,
+            password: this.password
+          }
+        }).then(response => {
+          this.oldProfiles = response.data.results;
+        })
       },
       copyPassword(password){
         const copied = copy(password);
