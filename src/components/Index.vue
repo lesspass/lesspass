@@ -116,7 +116,7 @@
               generated
               passwords</h3>
             <div class="card-block">
-              <table class="table table-bordered table-sm" v-if="newPasswordProfiles.length > 0">
+              <table class="table table-bordered table-sm" v-if="newPasswordProfiles.length > 0 && !building">
                 <thead class="thead-inverse">
                 <tr>
                   <th class="text-center" colspan="9">Old profile</th>
