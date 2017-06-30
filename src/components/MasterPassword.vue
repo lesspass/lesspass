@@ -32,7 +32,7 @@
              v-bind:placeholder="label"
              v-on:blur="hidePassword($refs.passwordField)">
       <span class="input-group-btn"
-            v-if="fingerprint"
+            v-if="fingerprint && password"
             v-on:click="togglePasswordType($refs.passwordField)">
         <button id="fingerprint" class="btn" type="button" tabindex="-1">
             <small class="hint--left">
