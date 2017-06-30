@@ -1,11 +1,20 @@
+<style>
+  #app, #app * {
+    border-radius: 0 !important;
+  }
+</style>
 <template>
   <div id="app">
-    <router-view></router-view>
+    <index></index>
   </div>
 </template>
 
 <script>
+  import Index from '@/components/Index'
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      Index
+    },
   }
 </script>
