@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-right: auto;
+    flex-grow: 2;
   }
 
   .passwordProfile__actions {
@@ -25,11 +25,9 @@
   }
 </style>
 <template>
-  <div class="passwordProfile" v-on:click="selectPassword">
-    <avatar v-bind:name="password.site"
-            v-bind:selected="selected"
-            class="passwordProfile__avatar"></avatar>
-    <div class="passwordProfile__meta">
+  <div class="passwordProfile">
+    <avatar v-bind:name="password.site"></avatar>
+    <div class="passwordProfile__meta" v-on:click="setPassword">
       <div class="passwordProfile__site">
         {{password.site}}
       </div>
@@ -38,17 +36,9 @@
       </div>
     </div>
     <div class="passwordProfile__actions">
-      <span class="passwordProfile__version text-muted" v-if="password.version === 1 && !selected">
-        v{{password.version}}
-      </span>
       <button type="button" class="btn btn-outline-danger btn-sm"
-              v-if="selected"
               v-on:click="deletePassword()">
         <i class="fa fa-trash fa-fw"></i>
-      </button>
-      <button type="button" class="btn btn-outline-primary btn-sm"
-              v-on:click="setPassword()">
-        <i class="fa fa-eye fa-fw"></i>
       </button>
     </div>
   </div>
@@ -68,15 +58,7 @@
     components: {
       Avatar
     },
-    data(){
-      return {
-        selected: false
-      }
-    },
     methods: {
-      selectPassword(){
-        this.selected = !this.selected;
-      },
       deletePassword(){
         var r = confirm(this.$t('DeleteProfileConfirm', 'Are you sure you want to delete this password profile?'));
         if (r === true) {
