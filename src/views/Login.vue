@@ -39,7 +39,6 @@
         v-bind:label="$t('Master Password')"
         v-bind:email="email"
         v-bind:showEncryptButton="true"
-        v-bind:EncryptButtonHelp="$t('EncryptMasterPassword', 'Click me to encrypt this password before sending it to lesspass.com')"
         v-bind:EncryptButtonText="$t('Encrypt my master password')"></master-password>
     </div>
     <div class="form-group row no-gutters mb-0">

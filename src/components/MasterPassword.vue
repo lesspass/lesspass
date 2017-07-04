@@ -47,7 +47,6 @@
             class="btn btn-link btn-sm p-0"
             v-if="showEncryptButton"
             v-on:click="encryptMasterPassword($refs.passwordField.value)"
-            v-bind:data-hint="EncryptButtonHelp"
             v-bind:class="{'disabled': email === '', 'hint--top hint--medium': email !== ''}">
       <small>{{ EncryptButtonText }}</small>
     </button>
@@ -67,7 +66,6 @@
         type: Boolean,
         default: false
       },
-      EncryptButtonHelp: String,
       EncryptButtonText: String
     },
     data(){
