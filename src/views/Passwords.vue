@@ -12,13 +12,7 @@
     cursor: pointer;
   }
 
-  .passwords__profile {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  }
-
-  .passwords__profile:last-child {
+  .passwords__profile:last-child .passwordProfile{
     border-bottom: none;
   }
 </style>
