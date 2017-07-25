@@ -1,21 +1,9 @@
-export const passwords = state => state.passwords;
-
-export const password = state => state.password;
-
-export const defaultPassword = state => state.defaultPassword;
-
 export const isAuthenticated = state => state.authenticated;
 
 export const isGuest = state => !state.authenticated;
 
-export const baseURL = state => state.baseURL;
-
-export const message = state => state.message;
-
-export const showOptions = state => state.showOptions;
-
 export const version = state => {
-  if (state.password === null || state.route.path === "/options/default") {
+  if (state.password === null) {
     return state.defaultPassword.version;
   }
   return state.password.version;

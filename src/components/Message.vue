@@ -47,11 +47,11 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import {mapGetters} from 'vuex';
+  import {mapState} from 'vuex';
   import message from '../services/message';
 
   export default {
-    computed: mapGetters([
+    computed: mapState([
       'message'
     ]),
     methods: {

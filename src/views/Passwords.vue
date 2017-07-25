@@ -71,7 +71,7 @@
 </template>
 <script type="text/ecmascript-6">
   import PasswordProfile from '../components/PasswordProfile.vue';
-  import {mapGetters} from 'vuex';
+  import {mapState} from 'vuex';
   import Paginate from 'vuejs-paginate';
 
   export default {
@@ -91,7 +91,7 @@
       Paginate
     },
     computed: {
-      ...mapGetters(['passwords']),
+      ...mapState(['passwords']),
       filteredPasswords(){
         const passwords = this.passwords.filter(password => {
           var loginMatch = password.login.match(new RegExp(this.searchQuery, 'i'));

@@ -115,7 +115,7 @@
 
 <script type="text/ecmascript-6">
   import LessPass from 'lesspass';
-  import {mapGetters} from 'vuex';
+  import {mapState} from 'vuex';
   import copy from 'copy-text-to-clipboard';
   import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
   import MasterPassword from '../components/MasterPassword.vue';
@@ -131,7 +131,9 @@
       MasterPassword,
       Options
     },
-    computed: mapGetters(['passwords', 'password', 'passwordURL', 'showOptions']),
+    computed: {
+      ...mapState(['passwords', 'password', 'passwordURL', 'showOptions']),
+    },
     beforeMount () {
       this.$store.dispatch('getPasswords');
       this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});

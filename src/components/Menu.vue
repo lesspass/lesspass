@@ -44,7 +44,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import {mapGetters} from 'vuex';
+  import {mapState, mapGetters} from 'vuex';
 
   export default {
     data(){
@@ -69,11 +69,15 @@
         }, 3000);
       }
     },
-    computed: mapGetters([
-      'isAuthenticated',
-      'isGuest',
-      'password',
-      'defaultPassword'
-    ])
+    computed: {
+      ...mapState([
+        'password',
+        'defaultPassword'
+      ]),
+      ...mapGetters([
+        'isAuthenticated',
+        'isGuest'
+      ])
+    }
   }
 </script>

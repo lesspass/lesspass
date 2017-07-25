@@ -80,9 +80,7 @@
     components: {
       MasterPassword
     },
-    computed: {
-      ...mapGetters(['version'])
-    },
+    computed: mapGetters(['version']),
     methods: {
       formIsValid(){
         if (!this.email || !this.password || !this.baseURL) {

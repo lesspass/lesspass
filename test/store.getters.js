@@ -3,32 +3,20 @@ import * as getters from "../src/store/getters";
 
 test("version", t => {
   const state = {
-    route: { path: "/" },
-    password: { version: 2 },
-    defaultPassword: { version: 1 }
+    password: { version: 1 },
+    defaultPassword: { version: 2 }
+  };
+  const version = getters.version(state);
+  t.is(version, 1);
+});
+
+test("version no password return default password version", t => {
+  const state = {
+    password: null,
+    defaultPassword: { version: 2 }
   };
   const version = getters.version(state);
   t.is(version, 2);
-});
-
-test("version path equal default options", t => {
-  const state = {
-    route: { path: "/options/default" },
-    password: { version: 2 },
-    defaultPassword: { version: 1 }
-  };
-  const version = getters.version(state);
-  t.is(version, 1);
-});
-
-test("version no password", t => {
-  const state = {
-    route: { path: "/" },
-    password: null,
-    defaultPassword: { version: 1 }
-  };
-  const version = getters.version(state);
-  t.is(version, 1);
 });
 
 test("passwordURL", t => {
@@ -53,11 +41,18 @@ test("passwordURL", t => {
   );
 });
 
-test("message", t => {
+test("isAuthenticated", t => {
   const state = {
-    message: { text: "error message", status: "error" }
+    authenticated: true
   };
-  const message = getters.message(state);
-  t.is(message.text, state.message.text);
-  t.is(message.status, state.message.status);
+  t.true(getters.isAuthenticated(state));
+  t.false(getters.isGuest(state));
+});
+
+test("isGuest", t => {
+  const state = {
+    authenticated: false
+  };
+  t.false(getters.isAuthenticated(state));
+  t.true(getters.isGuest(state));
 });
