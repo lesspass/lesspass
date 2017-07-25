@@ -1,7 +1,7 @@
 import test from "ava";
 import timekeeper from "timekeeper";
-import mutations from "../src/store/mutations";
-import * as types from "../src/store/mutation-types";
+import mutations from "../../src/store/mutations";
+import * as types from "../../src/store/mutation-types";
 
 test("LOGOUT", t => {
   const LOGOUT = mutations[types.LOGOUT];

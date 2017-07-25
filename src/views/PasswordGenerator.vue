@@ -53,7 +53,8 @@
     <div class="form-group"
          v-bind:class="{ 'mb-0': !showOptions }">
       <div v-if="!passwordGenerated">
-        <button type="button"
+        <button id="generatePassword__btn"
+                type="button"
                 class="btn"
                 v-on:click="generatePassword"
                 v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">

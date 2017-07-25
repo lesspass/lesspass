@@ -1,5 +1,5 @@
 import test from "ava";
-import * as getters from "../src/store/getters";
+import * as getters from "../../src/store/getters";
 
 test("version", t => {
   const state = {

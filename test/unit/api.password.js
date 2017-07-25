@@ -1,6 +1,6 @@
 import test from "ava";
 import nock from "nock";
-import Passwords from "../src/api/password";
+import Passwords from "../../src/api/password";
 
 const token =
   "ZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFt";

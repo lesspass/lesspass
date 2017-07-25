@@ -43,7 +43,8 @@
         </button>
       </span>
     </div>
-    <button type="button"
+    <button id="encryptMasterPassword__btn"
+            type="button"
             class="btn btn-link btn-sm p-0"
             v-if="showEncryptButton"
             v-on:click="encryptMasterPassword($refs.passwordField.value)"

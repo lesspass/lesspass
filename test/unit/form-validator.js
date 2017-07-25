@@ -1,5 +1,5 @@
 import test from "ava";
-import formValidator from "../src/services/form-validator";
+import formValidator from "../../src/services/form-validator";
 
 test("formValidator.increment()", t => {
   t.is(formValidator.increment(1, { min: 0, max: 10 }), 2);

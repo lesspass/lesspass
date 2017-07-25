@@ -1,6 +1,6 @@
 import test from "ava";
 import nock from "nock";
-import User from "../src/api/user";
+import User from "../../src/api/user";
 
 test("login", t => {
   const token = "5e0651";
