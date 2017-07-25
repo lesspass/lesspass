@@ -19,11 +19,15 @@ function commit-with-message {
 
 function cmd {
     cd $1
-    git status
+    rm -rf package-lock.json node_modules
+    npm install
+    npm install --save lesspass-pure
+    npm run build
+    commit-with-message
     cd ..
 }
 
-submodules="cordova cozy desktop frontend webextension move"
+submodules="cordova cozy desktop webextension move"
 for submodule in ${submodules}
 do
 	cmd $submodule &
