@@ -52,7 +52,7 @@
     </div>
     <div class="form-group"
          v-bind:class="{ 'mb-0': !showOptions }">
-      <div v-show="!passwordGenerated">
+      <div v-if="!passwordGenerated">
         <button type="button"
                 class="btn"
                 v-on:click="generatePassword"
@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    <options :password="password" v-on:optionsUpdated="optionsUpdated" v-if="showOptions"></options>
+    <options v-if="showOptions"></options>
   </form>
 </template>
 
@@ -134,7 +134,7 @@
     computed: mapGetters(['passwords', 'password', 'passwordURL']),
     beforeMount () {
       this.$store.dispatch('getPasswords');
-      this.$store.dispatch('getSite');
+      this.$store.dispatch('loadBestPasswordProfile');
       this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
     },
     mounted(){
@@ -168,11 +168,11 @@
           });
         }
       },
-      'password.site': function() {
-        this.cleanErrors();
-      },
-      'password.login': function() {
-        this.cleanErrors();
+      'password': {
+        handler: function() {
+          this.cleanErrors();
+        },
+        deep: true
       },
       'passwordGenerated': function() {
         this.cleanFormInSeconds(30);
@@ -226,14 +226,8 @@
         };
         return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(passwordGenerated => {
           this.passwordGenerated = passwordGenerated;
-          this.$store.dispatch('savePassword', {password: this.password});
           this.$store.dispatch('passwordGenerated');
         });
-      },
-      optionsUpdated(options){
-        this.cleanErrors();
-        const password = Object.assign({}, this.password, options);
-        this.$store.dispatch('savePassword', {password});
       },
       focusBestInputField(){
         const site = this.$refs.site;

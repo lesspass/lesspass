@@ -22,7 +22,6 @@
     computed: mapGetters(['version']),
     created(){
       this.$store.dispatch('cleanMessage');
-      this.$store.dispatch('loadPasswordFirstTime');
       this.$store.dispatch('refreshToken');
     }
   }

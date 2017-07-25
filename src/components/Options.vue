@@ -21,29 +21,29 @@
         <div id="types" class="row">
           <div class="col-3">
             <button type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':options.lowercase===true && options.version===2,'btn-warning':options.lowercase===true && options.version===1,'btn-secondary':options.lowercase===false}"
-                    v-on:click="options.lowercase=!options.lowercase">
+                    v-bind:class="{'btn-primary':password.lowercase===true && password.version===2,'btn-warning':password.lowercase===true && password.version===1,'btn-secondary':password.lowercase===false}"
+                    v-on:click="password.lowercase=!password.lowercase">
               a-z
             </button>
           </div>
           <div class="col-3">
             <button type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':options.uppercase===true && options.version===2,'btn-warning':options.uppercase===true && options.version===1,'btn-secondary':options.uppercase===false}"
-                    v-on:click="options.uppercase=!options.uppercase">
+                    v-bind:class="{'btn-primary':password.uppercase===true && password.version===2,'btn-warning':password.uppercase===true && password.version===1,'btn-secondary':password.uppercase===false}"
+                    v-on:click="password.uppercase=!password.uppercase">
               A-Z
             </button>
           </div>
           <div class="col-3">
             <button type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':options.numbers===true && options.version===2,'btn-warning':options.numbers===true && options.version===1,'btn-secondary':options.numbers===false}"
-                    v-on:click="options.numbers=!options.numbers">
+                    v-bind:class="{'btn-primary':password.numbers===true && password.version===2,'btn-warning':password.numbers===true && password.version===1,'btn-secondary':password.numbers===false}"
+                    v-on:click="password.numbers=!password.numbers">
               0-9
             </button>
           </div>
           <div class="col-3">
             <button type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':options.symbols===true && options.version===2,'btn-warning':options.symbols===true && options.version===1,'btn-secondary':options.symbols===false}"
-                    v-on:click="options.symbols=!options.symbols">
+                    v-bind:class="{'btn-primary':password.symbols===true && password.version===2,'btn-warning':password.symbols===true && password.version===1,'btn-secondary':password.symbols===false}"
+                    v-on:click="password.symbols=!password.symbols">
               %!@
             </button>
           </div>
@@ -54,7 +54,7 @@
       <div class="col">
         <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
-          <span class="input-group-btn" v-on:click="options.length=decrement(options.length, {min: 5, max: 35})">
+          <span class="input-group-btn" v-on:click="password.length=decrement(password.length, {min: 5, max: 35})">
             <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-minus"></i>
             </button>
@@ -64,9 +64,9 @@
                  type="number"
                  min="5"
                  max="35"
-                 v-model.number="options.length">
+                 v-model.number="password.length">
           <span class="input-group-btn"
-                v-on:click="options.length=increment(options.length, {min: 5, max: 35})">
+                v-on:click="password.length=increment(password.length, {min: 5, max: 35})">
             <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-plus"></i>
             </button>
@@ -80,7 +80,7 @@
           {{$t('Counter')}}
         </label>
         <div class="input-group input-group-sm">
-          <span class="input-group-btn" v-on:click="options.counter=decrement(options.counter, {min: 1})">
+          <span class="input-group-btn" v-on:click="password.counter=decrement(password.counter, {min: 1})">
               <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-minus"></i>
             </button>
@@ -89,8 +89,8 @@
                  class="form-control form-control-sm"
                  type="number"
                  min="1"
-                 v-model.number="options.counter">
-          <span class="input-group-btn" v-on:click="options.counter=increment(options.counter, {min: 1})">
+                 v-model.number="password.counter">
+          <span class="input-group-btn" v-on:click="password.counter=increment(password.counter, {min: 1})">
             <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-plus"></i>
             </button>
@@ -106,7 +106,7 @@
         <div class="row no-gutters">
           <div class="col">
             <button type="button" class="btn btn-block btn-sm border-right-0"
-                    v-bind:class="{'btn-primary':options.version===2,'btn-secondary':options.version!==2}"
+                    v-bind:class="{'btn-primary':password.version===2,'btn-secondary':password.version!==2}"
                     v-on:click="setVersion(2)">
               <span class="hidden-xs-up">{{$t('version')}} </span>
               <span class="hidden-xs-down">{{$t('versionShortcut', 'v')}}</span>2
@@ -115,7 +115,7 @@
           <div class="col">
             <button type="button"
                     class="btn btn-block btn-sm border-left-0"
-                    v-bind:class="{'btn-warning':options.version===1,'btn-secondary':options.version!==1}"
+                    v-bind:class="{'btn-warning':password.version===1,'btn-secondary':password.version!==1}"
                     v-on:click="setVersion(1)">
               <span class="hidden-xs-up">{{$t('version')}} </span>
               <span class="hidden-xs-down">{{$t('versionShortcut', 'v')}}</span>1
@@ -128,7 +128,7 @@
       <div class="col">
         <button type="button" class="btn btn-sm hint--top-right hint--medium"
                 v-bind:aria-label="$t('DefaultOptionLocalStorage', 'We use local storage to save default options locally. Each time you open the app, these options will be loaded by default.')"
-                v-bind:class="{'btn-outline-warning':options.version===1,'btn-outline-primary':options.version!==1}"
+                v-bind:class="{'btn-outline-warning':password.version===1,'btn-outline-primary':password.version!==1}"
                 v-on:click="saveDefaultOptions()">
           <i class="fa fa-floppy-o" aria-hidden="true"></i> {{$t('Save options')}}
         </button>
@@ -138,57 +138,33 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Message from '../services/message';
+  import {mapGetters} from 'vuex';
+  import message from '../services/message';
   import {increment, decrement} from "../services/form-validator";
 
   export default {
     name: 'options',
-    props: {
-      password: {
-        type: Object,
-        required: true
-      }
-    },
-    data() {
-      return {
-        options: {
-          uppercase: this.password.uppercase,
-          lowercase: this.password.lowercase,
-          numbers: this.password.numbers,
-          symbols: this.password.symbols,
-          length: this.password.length,
-          counter: this.password.counter,
-          version: this.password.version
-        }
-      };
-    },
-    watch: {
-      options: {
-        handler: function(newOptions) {
-          if (newOptions.version === 1) {
-            const message = this.$t(
-              "WarningV1Deprecated",
-              "Version 1 is deprecated and will be deleted soon. We strongly advise you to migrate your passwords to version 2."
-            );
-            Message.error(message);
-          }
-
-          this.$emit('optionsUpdated', newOptions)
-        },
-        deep: true
-      }
-    },
+    computed: mapGetters(['password']),
     methods: {
       decrement,
       increment,
       setVersion(value){
-        this.options.length = value === 1 ? 12 : 16;
-        this.options.version = value;
+        if (value === 1) {
+          message.error(this.$t(
+            "WarningV1Deprecated",
+            "Version 1 is deprecated and will be deleted soon. We strongly advise you to migrate your passwords to version 2."
+          ));
+        }
+        const password = Object.assign({}, this.password, {
+          length: value === 1 ? 12 : 16,
+          version: value
+        });
+        this.$store.dispatch('savePassword', {password});
         this.$store.dispatch('saveVersion', {version: value});
       },
       saveDefaultOptions(){
         this.$store.dispatch('saveDefaultOptions', {options: this.options});
-        Message.success(this.$t('Your options have been saved successfully'));
+        message.success(this.$t('Your options have been saved successfully'));
       },
     }
   }

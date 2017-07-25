@@ -9,7 +9,7 @@ export const defaultOptions = {
 };
 
 export default {
-  login: '',
-  site: '',
+  login: "",
+  site: "",
   ...defaultOptions
 };

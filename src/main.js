@@ -1,23 +1,23 @@
-import Vue from 'vue';
-import LessPass from './LessPass.vue';
-import {sync} from 'vuex-router-sync';
-import store from './store';
-import router from './router';
-import Polyglot from 'vue-polyglot';
+import Vue from "vue";
+import LessPass from "./LessPass.vue";
+import { sync } from "vuex-router-sync";
+import store from "./store";
+import router from "./router";
+import Polyglot from "vue-polyglot";
 
 Vue.use(Polyglot, {
-  defaultLanguage: 'en',
-  languagesAvailable: ['fr', 'es', 'de', 'zh', 'zh-CN']
+  defaultLanguage: "en",
+  languagesAvailable: ["fr", "es", "de", "zh", "zh-CN"]
 });
 
 sync(store, router);
 
 new Vue({
-  el: '#lesspass',
+  el: "#lesspass",
   beforeCreate() {
     this.$polyglot.getLocale({
-      baseURL: 'dist/i18n',
-      lang: 'auto'
+      baseURL: "dist/i18n",
+      lang: "auto"
     });
   },
   store,
