@@ -1,3 +1,4 @@
+import { defaultOptions } from "./defaultPassword";
 import * as types from "./mutation-types";
 
 export default {
@@ -60,5 +61,17 @@ export default {
   },
   [types.CLEAN_MESSAGE](state) {
     state.message = { text: "", status: "success" };
+  },
+  [types.CHECK_SHOW_OPTIONS](state) {
+    let showOptions = false;
+    for (let key in defaultOptions) {
+      if (defaultOptions[key] !== state.password[key]) {
+        showOptions = true;
+      }
+    }
+    state.showOptions = showOptions;
+  },
+  [types.TOGGLE_SHOW_OPTIONS](state) {
+    state.showOptions = !state.showOptions;
   }
 };

@@ -62,7 +62,7 @@
         <button type="button"
                 class="btn btn-secondary pull-right"
                 v-show="!passwordGenerated"
-                v-on:click="showOptions=!showOptions">
+                v-on:click="toggleShowOptions()">
           <i class="fa fa-sliders" aria-hidden="true"></i>
         </button>
       </div>
@@ -102,7 +102,7 @@
           <span class="input-group-btn">
             <button type="button"
                     class="btn btn-secondary"
-                    v-on:click="showOptions=!showOptions">
+                    v-on:click="toggleShowOptions()">
               <i class="fa fa-sliders" aria-hidden="true"></i>
             </button>
           </span>
@@ -131,10 +131,9 @@
       MasterPassword,
       Options
     },
-    computed: mapGetters(['passwords', 'password', 'passwordURL']),
+    computed: mapGetters(['passwords', 'password', 'passwordURL', 'showOptions']),
     beforeMount () {
       this.$store.dispatch('getPasswords');
-      this.$store.dispatch('loadBestPasswordProfile');
       this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
     },
     mounted(){
@@ -147,8 +146,7 @@
         masterPassword: '',
         fingerprint: '',
         passwordGenerated: '',
-        cleanTimeout: null,
-        showOptions: this.$store.getters.optionsDifferentFromDefault
+        cleanTimeout: null
       }
     },
     watch: {
@@ -183,6 +181,9 @@
       }
     },
     methods: {
+      toggleShowOptions(){
+        this.$store.dispatch('toggleShowOptions');
+      },
       togglePasswordType(element){
         if (element.type === 'password') {
           element.type = 'text';

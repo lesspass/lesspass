@@ -35,6 +35,7 @@ export const getPasswordFromUrlQuery = ({ commit }, { query }) => {
 
 export const savePassword = ({ commit }, payload) => {
   commit(types.SET_PASSWORD, payload);
+  checkShowOptions({ commit });
 };
 
 export const saveVersion = ({ commit }, payload) => {
@@ -51,11 +52,22 @@ export const logout = ({ commit }) => {
   commit(types.LOGOUT);
 };
 
+export const checkShowOptions = ({ commit }) => {
+  commit(types.CHECK_SHOW_OPTIONS);
+};
+
+export const toggleShowOptions = ({ commit }) => {
+  commit(types.TOGGLE_SHOW_OPTIONS);
+};
+
 export const getPasswords = ({ commit, state }) => {
   if (state.authenticated) {
-    Password.all(state).then(response =>
-      commit(types.SET_PASSWORDS, { passwords: response.data.results })
-    );
+    Password.all(state)
+      .then(response => {
+        commit(types.SET_PASSWORDS, {passwords: response.data.results});
+      })
+      .then(() => loadBestPasswordProfile({ commit }))
+      .then(() => checkShowOptions({ commit }));
   }
 };
 
