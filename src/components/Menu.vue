@@ -25,7 +25,7 @@
             <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
           </span>
           <span v-on:click="saveOrUpdatePassword()" class="white-link"
-                v-if="!saved && isAuthenticated && $store.state.password.site !== ''">
+                v-if="!saved && isAuthenticated && $store.state.password.site !== '' && $store.state.route.path === '/'">
             <i class="fa fa-lg fa-save pointer"></i>
           </span>
           <router-link class="white-link pl-3" :to="{ name: 'passwords'}" v-if="isAuthenticated">

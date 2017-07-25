@@ -26,10 +26,14 @@
 
   .tooltip--undo {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    top: 49px;
     left: 0;
+    right: 0;
     z-index: 20;
+  }
+
+  .tooltip__btn--undo{
+    cursor: pointer;
   }
 
   .passwordProfile {
@@ -78,7 +82,7 @@
           <div class="col">
             <span class="text-white">{{ $t('Password profile deleted') }}</span>
             <span
-              class="pull-right text-warning btn-link"
+              class="pull-right text-warning btn-link tooltip__btn--undo"
               v-on:click="cancelDeletion()">{{ $t('UNDO') }}</span>
           </div>
         </div>
