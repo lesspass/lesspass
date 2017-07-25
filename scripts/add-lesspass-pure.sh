@@ -28,7 +28,7 @@ function cmd {
 submodules="cordova cozy desktop frontend webextension move"
 for submodule in ${submodules}
 do
-	cmd $submodule &
+	git status
 done
 wait
 
