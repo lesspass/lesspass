@@ -1,10 +1,13 @@
-const walk = require('walk');
-const fs = require('fs');
-const path = require('path');
-const parser = require('vue-polyglot-utils');
+const walk = require("walk");
+const fs = require("fs");
+const path = require("path");
+const parser = require("vue-polyglot-utils");
 
-const SOURCES_DIR = '../src';
-const walker = walk.walk(SOURCES_DIR, {followLinks: false, filters: ["i18n"]});
+const SOURCES_DIR = "../src";
+const walker = walk.walk(SOURCES_DIR, {
+  followLinks: false,
+  filters: ["i18n"]
+});
 const locale = {};
 walker.on("file", (root, fileStats, next) => {
   const file = path.join(root, fileStats.name);
@@ -17,8 +20,8 @@ walker.on("file", (root, fileStats, next) => {
   });
 });
 
-const I18N_DIR = '../src/i18n';
-const LANGUAGES_AVAILABLE = ['zh', 'zh-CN', 'fr', 'es', 'de', 'en'];
+const I18N_DIR = "../src/i18n";
+const LANGUAGES_AVAILABLE = ["zh", "zh-CN", "fr", "es", "de", "en"];
 walker.on("end", () => {
   LANGUAGES_AVAILABLE.forEach(lang => {
     const localeFile = path.join(I18N_DIR, `${lang}.json`);
@@ -36,6 +39,6 @@ walker.on("end", () => {
       }
     });
     fs.writeFileSync(localeFile, JSON.stringify(localeOrdered, null, 2));
-    fs.appendFileSync(localeFile, '\n');
+    fs.appendFileSync(localeFile, "\n");
   });
 });

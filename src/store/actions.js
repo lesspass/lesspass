@@ -64,7 +64,7 @@ export const getPasswords = ({ commit, state }) => {
   if (state.authenticated) {
     Password.all(state)
       .then(response => {
-        commit(types.SET_PASSWORDS, {passwords: response.data.results});
+        commit(types.SET_PASSWORDS, { passwords: response.data.results });
       })
       .then(() => loadBestPasswordProfile({ commit }))
       .then(() => checkShowOptions({ commit }));

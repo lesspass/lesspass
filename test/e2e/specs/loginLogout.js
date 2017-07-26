@@ -7,7 +7,7 @@ module.exports = {
       .waitForElementVisible(".fa-sign-in")
       .click(".fa-sign-in")
       .waitForElementVisible("#baseURL")
-      .assert.value('#baseURL', 'https://lesspass.com')
+      .assert.value("#baseURL", "https://lesspass.com")
       .setValue("#email", "test@lesspass.com")
       .setValue("#passwordField", "test@lesspass.com")
       .waitForElementVisible("#fingerprint .fa-cutlery")

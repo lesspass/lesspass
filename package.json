@@ -7,8 +7,7 @@
   "repository": "lesspass/pure",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
-    "precommit": "npm test",
-    "prepush": "npm test",
+    "precommit": "npm test && lint-staged",
     "build": "rm -rf dist && cross-env NODE_ENV=production webpack -p",
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
@@ -57,9 +56,11 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "husky": "^0.14.3",
+    "lint-staged": "^4.0.2",
     "nightwatch": "^0.9.16",
     "nock": "^9.0.14",
     "node-sass": "^4.5.3",
+    "prettier": "^1.5.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "timekeeper": "^1.0.0",
@@ -76,6 +77,12 @@
     "babel": "inherit",
     "files": [
       "test/unit/**/*.js"
+    ]
+  },
+  "lint-staged": {
+    "{src,test,scripts}/**/*.js": [
+      "prettier --write",
+      "git add"
     ]
   }
 }

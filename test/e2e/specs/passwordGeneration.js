@@ -14,7 +14,7 @@ module.exports = {
       .waitForElementVisible("#generatePassword__btn")
       .click("#generatePassword__btn")
       .waitForElementVisible("#generated-password")
-      .assert.value('#generated-password', 'hjV@\\5ULp3bIs,6B');
+      .assert.value("#generated-password", "hjV@\\5ULp3bIs,6B");
 
     browser.end();
   }
