@@ -16,9 +16,9 @@ module.exports = {
       },
       desiredCapabilities: {
         browserName: "chrome",
-        // chromeOptions: {
-        //   args: ['--headless','--no-sandbox','--disable-gpu','--window-size=1920x1080']
-        // }
+        chromeOptions: {
+          args: ['--headless','--no-sandbox','--disable-gpu','--window-size=1920x1080']
+        }
       }
     }
   }

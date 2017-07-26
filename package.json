@@ -12,7 +12,8 @@
     "build": "rm -rf dist && cross-env NODE_ENV=production webpack -p",
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
-    "test": "ava",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "ava",
     "test:e2e": "node test/e2e/runner.js"
   },
   "babel": {
@@ -74,7 +75,7 @@
     "require": "babel-register",
     "babel": "inherit",
     "files": [
-			"test/unit/**/*.js"
-		]
+      "test/unit/**/*.js"
+    ]
   }
 }
