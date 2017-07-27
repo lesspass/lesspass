@@ -20,28 +20,32 @@
         </div>
         <div id="types" class="row">
           <div class="col-3">
-            <button type="button" class="btn btn-block btn-sm px-0"
+            <button id="lowercase__btn"
+                    type="button" class="btn btn-block btn-sm px-0"
                     v-bind:class="{'btn-primary':password.lowercase===true && password.version===2,'btn-warning':password.lowercase===true && password.version===1,'btn-secondary':password.lowercase===false}"
                     v-on:click="password.lowercase=!password.lowercase">
               a-z
             </button>
           </div>
           <div class="col-3">
-            <button type="button" class="btn btn-block btn-sm px-0"
+            <button id="uppercase__btn"
+                    type="button" class="btn btn-block btn-sm px-0"
                     v-bind:class="{'btn-primary':password.uppercase===true && password.version===2,'btn-warning':password.uppercase===true && password.version===1,'btn-secondary':password.uppercase===false}"
                     v-on:click="password.uppercase=!password.uppercase">
               A-Z
             </button>
           </div>
           <div class="col-3">
-            <button type="button" class="btn btn-block btn-sm px-0"
+            <button id="numbers__btn"
+                    type="button" class="btn btn-block btn-sm px-0"
                     v-bind:class="{'btn-primary':password.numbers===true && password.version===2,'btn-warning':password.numbers===true && password.version===1,'btn-secondary':password.numbers===false}"
                     v-on:click="password.numbers=!password.numbers">
               0-9
             </button>
           </div>
           <div class="col-3">
-            <button type="button" class="btn btn-block btn-sm px-0"
+            <button id="symbols__btn"
+                    type="button" class="btn btn-block btn-sm px-0"
                     v-bind:class="{'btn-primary':password.symbols===true && password.version===2,'btn-warning':password.symbols===true && password.version===1,'btn-secondary':password.symbols===false}"
                     v-on:click="password.symbols=!password.symbols">
               %!@
@@ -55,7 +59,7 @@
         <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
           <span class="input-group-btn" v-on:click="password.length=decrement(password.length, {min: 5, max: 35})">
-            <button class="btn btn-secondary p-1" type="button">
+            <button id="decreaseLength__btn" class="btn btn-secondary p-1" type="button">
               <i class="fa fa-minus"></i>
             </button>
           </span>
@@ -67,7 +71,7 @@
                  v-model.number="password.length">
           <span class="input-group-btn"
                 v-on:click="password.length=increment(password.length, {min: 5, max: 35})">
-            <button class="btn btn-secondary p-1" type="button">
+            <button id="increaseLength__btn" class="btn btn-secondary p-1" type="button">
               <i class="fa fa-plus"></i>
             </button>
           </span>
@@ -80,7 +84,7 @@
           {{$t('Counter')}}
         </label>
         <div class="input-group input-group-sm">
-          <span class="input-group-btn" v-on:click="password.counter=decrement(password.counter, {min: 1})">
+          <span id="decreaseCounter__btn" class="input-group-btn" v-on:click="password.counter=decrement(password.counter, {min: 1})">
               <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-minus"></i>
             </button>
@@ -90,7 +94,7 @@
                  type="number"
                  min="1"
                  v-model.number="password.counter">
-          <span class="input-group-btn" v-on:click="password.counter=increment(password.counter, {min: 1})">
+          <span id="increaseCounter__btn" class="input-group-btn" v-on:click="password.counter=increment(password.counter, {min: 1})">
             <button class="btn btn-secondary p-1" type="button">
               <i class="fa fa-plus"></i>
             </button>
@@ -130,7 +134,7 @@
                 v-bind:aria-label="$t('DefaultOptionLocalStorage', 'We use local storage to save default options locally. Each time you open the app, these options will be loaded by default.')"
                 v-bind:class="{'btn-outline-warning':password.version===1,'btn-outline-primary':password.version!==1}"
                 v-on:click="saveDefaultOptions()">
-          <i class="fa fa-floppy-o" aria-hidden="true"></i> {{$t('Save options')}}
+          <i class="fa fa-floppy-o"></i> {{$t('Save options')}}
         </button>
       </div>
     </div>

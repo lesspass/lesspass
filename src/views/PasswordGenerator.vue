@@ -19,7 +19,6 @@
         <i class="fa fa-globe"></i>
         <input id="site"
                name="site"
-               type="text"
                ref="site"
                class="form-control awesomplete"
                autocorrect="off"
@@ -35,7 +34,6 @@
         <i class="fa fa-user"></i>
         <input id="login"
                name="login"
-               type="text"
                ref="login"
                class="form-control"
                autocomplete="off"
@@ -61,10 +59,10 @@
           {{ $t('Generate') }}
         </button>
         <button type="button"
-                class="btn btn-secondary pull-right"
+                class="btn btn-secondary pull-right showOptions__btn"
                 v-show="!passwordGenerated"
                 v-on:click="toggleShowOptions()">
-          <i class="fa fa-sliders" aria-hidden="true"></i>
+          <i class="fa fa-sliders"></i>
         </button>
       </div>
       <div class="btn-group" v-show="passwordGenerated">
@@ -75,7 +73,7 @@
                     type="button"
                     v-on:click="copyPassword()"
                     v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
-              <i class="fa fa-clipboard" aria-hidden="true"></i>
+              <i class="fa fa-clipboard"></i>
             </button>
           </span>
           <input id="generated-password"
@@ -89,7 +87,7 @@
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="togglePasswordType($refs.passwordGenerated)">
-              <i class="fa fa-eye" aria-hidden="true"></i>
+              <i class="fa fa-eye"></i>
             </button>
           </span>
           <span class="input-group-btn">
@@ -97,14 +95,14 @@
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="sharePasswordProfile()">
-              <i class="fa fa-share-alt pointer" aria-hidden="true"></i>
+              <i class="fa fa-share-alt pointer"></i>
             </button>
           </span>
           <span class="input-group-btn">
             <button type="button"
-                    class="btn btn-secondary"
+                    class="btn btn-secondary showOptions__btn"
                     v-on:click="toggleShowOptions()">
-              <i class="fa fa-sliders" aria-hidden="true"></i>
+              <i class="fa fa-sliders"></i>
             </button>
           </span>
         </div>
@@ -135,16 +133,16 @@
     computed: {
       ...mapState(['passwords', 'password', 'passwordURL', 'showOptions']),
     },
-    beforeMount () {
+    beforeMount() {
       this.$store.dispatch('getPasswords');
       this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
     },
-    mounted(){
+    mounted() {
       setTimeout(() => {
         this.focusBestInputField();
       }, 500);
     },
-    data(){
+    data() {
       return {
         masterPassword: '',
         fingerprint: '',
@@ -184,21 +182,21 @@
       }
     },
     methods: {
-      toggleShowOptions(){
+      toggleShowOptions() {
         this.$store.dispatch('toggleShowOptions');
       },
-      togglePasswordType(element){
+      togglePasswordType(element) {
         if (element.type === 'password') {
           element.type = 'text';
         } else {
           element.type = 'password';
         }
       },
-      cleanErrors(){
+      cleanErrors() {
         clearTimeout(this.cleanTimeout);
         this.passwordGenerated = '';
       },
-      cleanFormInSeconds(seconds = 15){
+      cleanFormInSeconds(seconds = 15) {
         clearTimeout(this.cleanTimeout);
         this.cleanTimeout = setTimeout(() => {
           this.masterPassword = '';
@@ -206,7 +204,7 @@
           this.fingerprint = '';
         }, 1000 * seconds);
       },
-      generatePassword(){
+      generatePassword() {
         const site = this.password.site;
         const login = this.password.login;
         const masterPassword = this.masterPassword;
@@ -233,13 +231,13 @@
           this.$store.dispatch('passwordGenerated');
         });
       },
-      focusBestInputField(){
+      focusBestInputField() {
         const site = this.$refs.site;
         const login = this.$refs.login;
         const masterPassword = this.$refs.masterPassword.$refs.passwordField;
         site.value ? (login.value ? masterPassword.focus() : login.focus()) : site.focus();
       },
-      copyPassword(){
+      copyPassword() {
         const copied = copy(this.passwordGenerated);
         if (copied) {
           showTooltip(document.getElementById('copyPasswordButton'), this.$t('Copied', 'copied !'));
@@ -250,7 +248,7 @@
           message.warning(this.$t('SorryCopy', 'We are sorry the copy only works on modern browsers'))
         }
       },
-      sharePasswordProfile(){
+      sharePasswordProfile() {
         const copied = copy(this.passwordURL);
         if (copied) {
           const copySuccessMessage = this.$t('PasswordProfileCopied', 'Your password profile has been copied');
