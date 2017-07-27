@@ -15,6 +15,7 @@
         <input id="baseURL"
                class="form-control"
                type="text"
+               autocapitalize="none"
                v-bind:placeholder="$t('LessPass Database Url')"
                v-model="baseURL">
       </div>
@@ -27,6 +28,7 @@
                  class="form-control"
                  name="username"
                  type="email"
+                 autocapitalize="none"
                  v-bind:placeholder="$t('Email')"
                  required
                  v-model="email">
