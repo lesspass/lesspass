@@ -1,11 +1,7 @@
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-{% if domain %}
     server_name {{ domain }} www.{{ domain }};
-{% else %}
-    server_name localhost;
-{% endif %}
     return 301 https://$server_name$request_uri;
 }
 
@@ -13,16 +9,14 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
 
-    ssl_certificate /etc/ssl/certs/certificate.crt;
-    ssl_certificate_key /etc/ssl/private/private.key;
+    ssl_certificate /etc/letsencrypt/live/{{ domain }}/cert.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ domain }}/privkey.pem;
     ssl_session_timeout 30m;
     ssl_session_cache shared:SSL:20m;
     ssl_session_tickets off;
 
-{% if dhparam %}
     # Diffie-Hellman parameter for DHE ciphersuites, recommended 2048 bits
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-{% endif %}
+    ssl_dhparam /etc/letsencrypt/live/{{ domain }}/dhparam.pem;
 
     # modern configuration. tweak to your needs.
     ssl_protocols TLSv1.2;
@@ -32,17 +26,15 @@ server {
     # HSTS (ngx_http_headers_module is required) (15768000 seconds = 6 months)
     add_header Strict-Transport-Security max-age=15768000;
 
-{% if ssl_trusted_certificate %}
     # OCSP Stapling ---
     # fetch OCSP records from URL in ssl_certificate and cache them
     ssl_stapling on;
     ssl_stapling_verify on;
 
     ## verify chain of trust of OCSP response using Root CA and Intermediate certs
-    ssl_trusted_certificate /etc/ssl/certs/ca.crt;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ domain }}/chain.pem;
 
     resolver 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 valid=300s;
-{% endif %}
 
     location ~ /(static|media)/ {
        autoindex on;
