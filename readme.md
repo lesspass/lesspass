@@ -19,12 +19,13 @@ LessPass open source password manager (https://lesspass.com)
  - [frontend](https://github.com/lesspass/frontend) : https://lesspass.com source code
  - [move](https://github.com/lesspass/move) : password migration tool for LessPass
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
+ - [openssl](https://github.com/lesspass/openssl) : configuration for openssl
  - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
  - [snap](https://github.com/lesspass/snap) : snap for lesspass-cli
  - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for LessPass password manager
 
 
-## Self Host your LessPass Database
+## Self Host your LessPass Database (WIP)
 
 ### requirements 
 
@@ -35,10 +36,9 @@ LessPass open source password manager (https://lesspass.com)
 
 simply run 
 
-    bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/letsencrypt.sh) [DOMAIN] [EMAIL]
+    bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/lesspass.sh) [DOMAIN] [EMAIL]
 
 `[DOMAIN]` and `[EMAIL]` are used to generate a LetsEncrypt certificate and configure LessPass.
-If not provided, you'll be asked to enter it.
 
 ### create super user
 
