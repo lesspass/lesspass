@@ -1,11 +1,12 @@
-FROM nginx:stable-alpine
+FROM nginx:stable
 
-RUN apk update && apk add \
+RUN apt-get update && apt-get install -y \
     python3 \
+    python3-pip \
     openssl \
-    && pip3 install --upgrade pip \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/*
 
+RUN pip3 install --upgrade pip
 RUN pip3 install Jinja2==2.8
 
 RUN rm /etc/nginx/nginx.conf
