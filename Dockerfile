@@ -4,4 +4,4 @@ RUN apk update && apk add \
     openssl \
     && rm -rf /var/cache/apk/*
 
-CMD ["openssl"]
+CMD openssl
