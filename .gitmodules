@@ -34,3 +34,6 @@
 [submodule "move"]
 	path = move
 	url = git@github.com:lesspass/move.git
+[submodule "openssl"]
+	path = openssl
+	url = git@github.com:lesspass/openssl.git
