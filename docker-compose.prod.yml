@@ -38,7 +38,7 @@ services:
     volumes_from:
       - backend
     volumes:
-      - ./ssl:/certificates
+      - ./letsencrypt:/etc/letsencrypt
     links:
       - backend
       - frontend

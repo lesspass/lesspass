@@ -35,9 +35,22 @@ LessPass open source password manager (https://lesspass.com)
 
 simply run 
 
-    bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/lesspass.sh) [DOMAIN]
+    bash <(curl -s https://raw.githubusercontent.com/lesspass/lesspass/master/letsencrypt.sh) [DOMAIN] [EMAIL]
 
-You can specify your domain (e.g. example.org). If not provided, you'll be asked to enter it.
+`[DOMAIN]` and `[EMAIL]` are used to generate a LetsEncrypt certificate and configure LessPass.
+If not provided, you'll be asked to enter it.
+
+### create super user
+
+Go into the backend container and create a super user
+
+```
+docker exec -it lesspass_backend_1 sh
+python manage.py createsuperuser
+```
+
+Now you can access and manage users and password profiles on `https://[DOMAIN]/admin`
+
 
 ### configure email
 
