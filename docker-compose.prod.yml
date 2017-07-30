@@ -31,7 +31,7 @@ services:
     image: lesspass/frontend:latest
   nginx:
     restart: always
-    image: lesspass/nginx:latest
+    image: lesspass/nginx:letsencrypt
     ports:
       - '80:80'
       - '443:443'
