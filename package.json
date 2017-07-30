@@ -13,7 +13,7 @@
     "dependencies": {
         "cordova-android": "^6.2.3",
         "cordova-plugin-whitelist": "~1.3.2",
-        "lesspass-pure": "^4.5.13"
+        "lesspass-pure": "^4.5.14"
     },
     "devDependencies": {
         "gulp": "^3.9.1"
