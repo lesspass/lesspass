@@ -1,7 +1,7 @@
 var assert = require("assert");
 
 module.exports = {
-  "Login logout tests": function(browser) {
+  "User set saved profile": function(browser) {
     browser
       .url(browser.launch_url)
       .pause(1000)
