@@ -15,15 +15,19 @@ module.exports = {
         waitForConditionTimeout: 5000
       },
       desiredCapabilities: {
-        browserName: "chrome",
+        browserName: "chrome"
+        /*
         chromeOptions: {
           args: [
             "--headless",
             "--no-sandbox",
             "--disable-gpu",
+            "--allow-running-insecure-content",
+            "--ignore-certificate-errors",
             "--window-size=1920x1080"
           ]
         }
+        */
       }
     }
   }

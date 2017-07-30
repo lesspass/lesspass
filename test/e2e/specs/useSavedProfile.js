@@ -7,21 +7,19 @@ module.exports = {
       .pause(1000)
       .waitForElementVisible(".fa-sign-in")
       .click(".fa-sign-in")
-      .waitForElementVisible("#baseURL")
-      .assert.value("#baseURL", "https://lesspass.com")
       .setValue("#email", "test@lesspass.com")
       .setValue("#passwordField", "test@lesspass.com")
-      .waitForElementVisible("#fingerprint .fa-cutlery")
-      .waitForElementVisible("#fingerprint .fa-subway")
-      .waitForElementVisible("#fingerprint .fa-plane")
       .waitForElementVisible("#encryptMasterPassword__btn")
       .click("#encryptMasterPassword__btn")
-      .waitForElementVisible("#fingerprint .fa-university")
-      .waitForElementVisible("#fingerprint .fa-btc")
-      .waitForElementVisible("#fingerprint .fa-subway")
       .waitForElementVisible("#signInButton")
       .click("#signInButton")
-      .waitForElementVisible("#site");
+      .waitForElementVisible(".fa-key")
+      .click(".fa-key")
+      .waitForElementVisible(".passwordProfile__site")
+      .click(".passwordProfile__site")
+      .waitForElementVisible("#site")
+      .assert.value("#site", "example.org")
+      .assert.value("#login", "contact@example.org");
 
     browser.end();
   }

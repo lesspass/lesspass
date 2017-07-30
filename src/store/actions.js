@@ -22,7 +22,9 @@ export const passwordGenerated = ({ commit }) => {
 
 export const loadBestPasswordProfile = ({ commit }) => {
   urlParser.getSite().then(site => {
-    commit(types.LOAD_PASSWORD_PROFILE, { site });
+    if (site) {
+      commit(types.LOAD_PASSWORD_PROFILE, { site });
+    }
   });
 };
 

@@ -14,7 +14,6 @@
         <i class="fa fa-globe"></i>
         <input id="baseURL"
                class="form-control"
-               type="text"
                autocapitalize="none"
                v-bind:placeholder="$t('LessPass Database Url')"
                v-model="baseURL">
@@ -45,7 +44,7 @@
     </div>
     <div class="form-group row no-gutters mb-0">
       <div class="col">
-        <button id="signInButton" class="btn btn-block" type="submit"
+        <button id="signInButton" class="btn btn-block"
                 v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
           {{$t('Sign In')}}
         </button>
@@ -102,7 +101,7 @@
             .catch(err => {
               if (err.response === undefined && baseURL !== "https://lesspass.com") {
                 message.error(this.$t('DBNotRunning', 'Your LessPass Database is not running'));
-              } else if (err.response.status === 400) {
+              } else if (err.response && err.response.status === 400) {
                 message.error(this.$t('LoginIncorrectError', 'The email and password you entered did not match our records. Please double-check and try again.'));
               } else {
                 message.displayGenericError();
