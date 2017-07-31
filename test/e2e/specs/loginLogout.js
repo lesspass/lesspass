@@ -4,7 +4,6 @@ module.exports = {
   "Login logout tests": function(browser) {
     browser
       .url(browser.launch_url)
-      .pause(1000)
       .waitForElementVisible(".fa-sign-in")
       .click(".fa-sign-in")
       .waitForElementVisible("#baseURL")

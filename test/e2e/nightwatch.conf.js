@@ -15,8 +15,7 @@ module.exports = {
         waitForConditionTimeout: 5000
       },
       desiredCapabilities: {
-        browserName: "chrome"
-        /*
+        browserName: "chrome",
         chromeOptions: {
           args: [
             "--headless",
@@ -27,7 +26,6 @@ module.exports = {
             "--window-size=1920x1080"
           ]
         }
-        */
       }
     }
   }
