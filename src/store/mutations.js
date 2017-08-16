@@ -42,11 +42,14 @@ export default {
     state.password.version = version;
     state.password.length = length;
   },
+  [types.SET_SITE](state, { site }) {
+    state.password.site = site;
+  },
   [types.LOAD_PASSWORD_PROFILE](state, { site }) {
     const oneMinuteAgo = new Date().getTime() - 60 * 1000;
     const siteDontMatch = !(site && site.endsWith(state.password.site));
     if (state.lastUse < oneMinuteAgo || siteDontMatch) {
-      state.password = { ...state.defaultPassword, site };
+      state.password = { ...state.defaultPassword };
     }
     const passwords = state.passwords || [];
     for (let i = 0; i < passwords.length; i++) {

@@ -2,6 +2,7 @@ import test from "ava";
 import timekeeper from "timekeeper";
 import mutations from "../../src/store/mutations";
 import * as types from "../../src/store/mutation-types";
+import defaultPassword from "../../src/store/defaultPassword";
 
 test("LOGOUT", t => {
   const LOGOUT = mutations[types.LOGOUT];
@@ -317,6 +318,7 @@ test("LOAD_PASSWORD_PROFILE empty login", t => {
       login: "",
       version: 1
     },
+    passwords: [],
     defaultPassword: {
       site: "",
       login: "",
@@ -325,7 +327,6 @@ test("LOAD_PASSWORD_PROFILE empty login", t => {
   };
   const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
   LOAD_PASSWORD_PROFILE(state, { site: "example.org" });
-  t.is(state.password.site, "example.org");
   t.is(state.password.login, "");
   t.is(state.password.version, 2);
   timekeeper.reset();
@@ -406,6 +407,18 @@ test("LOAD_PASSWORD_PROFILE without www", t => {
   LOAD_PASSWORD_PROFILE(state, { site: "www.reddit.com" });
   t.is(state.password.id, "1");
   t.is(state.password.site, "reddit.com");
+});
+
+test("SET_SITE default state", t => {
+  const state = {
+    password: defaultPassword,
+    passwords: [],
+    defaultPassword: defaultPassword,
+    lastUse: null
+  };
+  const SET_SITE = mutations[types.SET_SITE];
+  SET_SITE(state, { site: "www.example.org" });
+  t.deepEqual(state.password.site, "www.example.org");
 });
 
 test("SET_MESSAGE", t => {

@@ -135,6 +135,7 @@
     },
     beforeMount() {
       this.$store.dispatch('getPasswords');
+      this.$store.dispatch('getSite');
       this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
     },
     mounted() {

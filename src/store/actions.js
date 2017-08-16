@@ -23,7 +23,9 @@ export const passwordGenerated = ({ commit }) => {
 export const loadBestPasswordProfile = ({ commit }) => {
   urlParser.getSite().then(site => {
     if (site) {
+      commit(types.SET_SITE, { site });
       commit(types.LOAD_PASSWORD_PROFILE, { site });
+      commit(types.CHECK_SHOW_OPTIONS);
     }
   });
 };
@@ -37,11 +39,19 @@ export const getPasswordFromUrlQuery = ({ commit }, { query }) => {
 
 export const savePassword = ({ commit }, payload) => {
   commit(types.SET_PASSWORD, payload);
-  checkShowOptions({ commit });
+  commit(types.CHECK_SHOW_OPTIONS);
 };
 
 export const saveVersion = ({ commit }, payload) => {
   commit(types.SET_VERSION, payload);
+};
+
+export const getSite = ({ commit }) => {
+  urlParser.getSite().then(site => {
+    if (site) {
+      commit(types.SET_SITE, { site });
+    }
+  });
 };
 
 export const login = ({ commit }, payload) => {
@@ -54,10 +64,6 @@ export const logout = ({ commit }) => {
   commit(types.LOGOUT);
 };
 
-export const checkShowOptions = ({ commit }) => {
-  commit(types.CHECK_SHOW_OPTIONS);
-};
-
 export const toggleShowOptions = ({ commit }) => {
   commit(types.TOGGLE_SHOW_OPTIONS);
 };
@@ -68,8 +74,7 @@ export const getPasswords = ({ commit, state }) => {
       .then(response => {
         commit(types.SET_PASSWORDS, { passwords: response.data.results });
       })
-      .then(() => loadBestPasswordProfile({ commit }))
-      .then(() => checkShowOptions({ commit }));
+      .then(() => loadBestPasswordProfile({ commit }));
   }
 };
 
