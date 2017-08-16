@@ -1,3 +1,5 @@
+import { defaultOptions } from "./defaultPassword";
+
 export const isAuthenticated = state => state.authenticated;
 
 export const isGuest = state => !state.authenticated;
@@ -15,4 +17,14 @@ export const passwordURL = state => {
     .password.lowercase}&numbers=${state.password.numbers}&symbols=${state
     .password.symbols}&length=${state.password.length}&counter=${state.password
     .counter}&version=${state.password.version}`;
+};
+
+export const isDefaultProfile = state => {
+  let defaultProfile = true;
+  for (let key in defaultOptions) {
+    if (defaultOptions[key] !== state.password[key]) {
+      defaultProfile = false;
+    }
+  }
+  return defaultProfile;
 };

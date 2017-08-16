@@ -25,7 +25,6 @@ export const loadBestPasswordProfile = ({ commit }) => {
     if (site) {
       commit(types.SET_SITE, { site });
       commit(types.LOAD_PASSWORD_PROFILE, { site });
-      commit(types.CHECK_SHOW_OPTIONS);
     }
   });
 };
@@ -39,7 +38,6 @@ export const getPasswordFromUrlQuery = ({ commit }, { query }) => {
 
 export const savePassword = ({ commit }, payload) => {
   commit(types.SET_PASSWORD, payload);
-  commit(types.CHECK_SHOW_OPTIONS);
 };
 
 export const saveVersion = ({ commit }, payload) => {
@@ -62,10 +60,6 @@ export const login = ({ commit }, payload) => {
 
 export const logout = ({ commit }) => {
   commit(types.LOGOUT);
-};
-
-export const toggleShowOptions = ({ commit }) => {
-  commit(types.TOGGLE_SHOW_OPTIONS);
 };
 
 export const getPasswords = ({ commit, state }) => {

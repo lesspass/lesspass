@@ -61,7 +61,7 @@
         <button type="button"
                 class="btn btn-secondary pull-right showOptions__btn"
                 v-show="!passwordGenerated"
-                v-on:click="toggleShowOptions()">
+                v-on:click="showOptions =! showOptions">
           <i class="fa fa-sliders"></i>
         </button>
       </div>
@@ -101,20 +101,20 @@
           <span class="input-group-btn">
             <button type="button"
                     class="btn btn-secondary showOptions__btn"
-                    v-on:click="toggleShowOptions()">
+                    v-on:click="showOptions =! showOptions">
               <i class="fa fa-sliders"></i>
             </button>
           </span>
         </div>
       </div>
     </div>
-    <options v-if="showOptions"></options>
+    <options :options.sync="password" v-if="showOptions || !isDefaultProfile"></options>
   </form>
 </template>
 
 <script type="text/ecmascript-6">
   import LessPass from 'lesspass';
-  import {mapState} from 'vuex';
+  import {mapGetters, mapState} from 'vuex';
   import copy from 'copy-text-to-clipboard';
   import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
   import MasterPassword from '../components/MasterPassword.vue';
@@ -131,7 +131,8 @@
       Options
     },
     computed: {
-      ...mapState(['passwords', 'password', 'passwordURL', 'showOptions']),
+      ...mapState(['passwords']),
+      ...mapGetters(['passwordURL', 'isDefaultProfile'])
     },
     beforeMount() {
       this.$store.dispatch('getPasswords');
@@ -145,6 +146,8 @@
     },
     data() {
       return {
+        password: {...this.$store.state.password},
+        showOptions: false,
         masterPassword: '',
         fingerprint: '',
         passwordGenerated: '',
@@ -183,9 +186,6 @@
       }
     },
     methods: {
-      toggleShowOptions() {
-        this.$store.dispatch('toggleShowOptions');
-      },
       togglePasswordType(element) {
         if (element.type === 'password') {
           element.type = 'text';
@@ -235,8 +235,8 @@
       focusBestInputField() {
         const site = this.$refs.site;
         const login = this.$refs.login;
-        const masterPassword = this.$refs.masterPassword.$refs.passwordField;
-        site.value ? (login.value ? masterPassword.focus() : login.focus()) : site.focus();
+        const masterPassword = this.$refs.masterPassword;
+        site.value ? (login.value ? masterPassword.$refs.passwordField.focus() : login.focus()) : site.focus();
       },
       copyPassword() {
         const copied = copy(this.passwordGenerated);

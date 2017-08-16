@@ -18,7 +18,7 @@
     <div class="card-header" v-bind:class="{ 'card-inverse': isGuest}">
       <div class="row">
         <div class="col-3">
-          <span v-on:click="fullReload()" class="white-link pointer">LessPass</span>
+          <span id="title" v-on:click="fullReload()" class="white-link pointer">LessPass</span>
         </div>
         <div class="col-9 text-right">
           <span v-if="saved && isAuthenticated">
