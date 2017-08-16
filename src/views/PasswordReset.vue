@@ -15,7 +15,7 @@
     </div>
     <div class="form-group row">
       <div class="col-12">
-        <button id="loginButton" class="btn" type="submit"
+        <button id="loginButton" class="btn"
                 v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
           {{$t('Reset my password')}}
         </button>
