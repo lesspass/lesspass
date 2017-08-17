@@ -131,7 +131,7 @@
       Options
     },
     computed: {
-      ...mapState(['passwords']),
+      ...mapState(['passwords', 'password']),
       ...mapGetters(['passwordURL', 'isDefaultProfile'])
     },
     beforeMount() {
@@ -146,7 +146,6 @@
     },
     data() {
       return {
-        password: {...this.$store.state.password},
         showOptions: false,
         masterPassword: '',
         fingerprint: '',
@@ -229,7 +228,6 @@
         };
         return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(passwordGenerated => {
           this.passwordGenerated = passwordGenerated;
-          this.$store.dispatch('savePassword', {password: this.password});
           this.$store.dispatch('passwordGenerated');
         });
       },
