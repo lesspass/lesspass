@@ -229,6 +229,7 @@
         };
         return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(passwordGenerated => {
           this.passwordGenerated = passwordGenerated;
+          this.$store.dispatch('savePassword', {password: this.password});
           this.$store.dispatch('passwordGenerated');
         });
       },

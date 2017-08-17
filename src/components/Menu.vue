@@ -22,21 +22,22 @@
         </div>
         <div class="col-9 text-right">
           <span v-if="saved && isAuthenticated">
-            <small><i class="fa fa-lg fa-check pl-3" aria-hidden="true"></i> saved</small>
+            <small><i class="fa fa-lg fa-check pl-3"></i> saved</small>
           </span>
-          <span v-on:click="saveOrUpdatePassword()" class="white-link"
+          <span class="white-link"
+                v-on:click="saveOrUpdatePassword()"
                 v-if="!saved && isAuthenticated && $store.state.password.site !== '' && $store.state.route.path === '/'">
             <i class="fa fa-lg fa-save pointer"></i>
           </span>
           <router-link class="white-link pl-3" :to="{ name: 'passwords'}" v-if="isAuthenticated">
-            <i class="fa  fa-lg fa-key" aria-hidden="true"></i>
+            <i class="fa  fa-lg fa-key"></i>
           </router-link>
           <button class="white-link btn btn-link p-0 m-0 pl-3" type="button" v-if="isAuthenticated"
                   v-on:click="logout">
-            <i class="fa fa-lg fa-sign-out" aria-hidden="true"></i>
+            <i class="fa fa-lg fa-sign-out"></i>
           </button>
           <router-link class="white-link pl-3" :to="{ name: 'login'}" v-if="isGuest">
-            <i class="fa fa-lg fa-sign-in pointer" aria-hidden="true"></i>
+            <i class="fa fa-lg fa-sign-in pointer"></i>
           </router-link>
         </div>
       </div>
@@ -47,21 +48,21 @@
   import {mapState, mapGetters} from 'vuex';
 
   export default {
-    data(){
+    data() {
       return {
         saved: false
       }
     },
     methods: {
-      fullReload(){
+      fullReload() {
         this.$store.dispatch('savePassword', {password: this.defaultPassword});
         this.$router.push({name: 'home'});
       },
-      logout(){
+      logout() {
         this.$store.dispatch('logout');
         this.$router.push({name: 'home'});
       },
-      saveOrUpdatePassword(){
+      saveOrUpdatePassword() {
         this.$store.dispatch('saveOrUpdatePassword');
         this.saved = true;
         setTimeout(() => {
