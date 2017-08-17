@@ -15,11 +15,11 @@
     "start": "electron ."
   },
   "dependencies": {
+    "electron": "^1.7.5",
     "lesspass-pure": "^4.5.17"
   },
   "devDependencies": {
     "electron-packager": "^8.6.0",
-    "electron-prebuilt": "^1.2.0",
     "gulp": "^3.9.1",
     "rimraf": "^2.6.1"
   },
