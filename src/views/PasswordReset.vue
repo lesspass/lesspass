@@ -15,7 +15,8 @@
     </div>
     <div class="form-group row">
       <div class="col-12">
-        <button id="loginButton" class="btn"
+        <button id="password-reset__reset-password-btn"
+                class="btn"
                 v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
           {{$t('Reset my password')}}
         </button>
@@ -25,7 +26,7 @@
 </template>
 <script type="text/ecmascript-6">
   import User from '../api/user';
-  import {mapActions, mapGetters} from 'vuex';
+  import {mapState, mapGetters} from 'vuex';
   import message from '../services/message';
 
   export default {
@@ -35,15 +36,23 @@
       };
     },
     computed: {
-      ...mapGetters(['version', 'baseURL'])
+      ...mapState(['baseURL']),
+      ...mapGetters(['version'])
     },
     methods: {
-      resetPassword(){
+      resetPassword() {
+        const baseURL = this.baseURL;
+        if (!baseURL) {
+          message.displayGenericError();
+          return;
+        }
+
         if (!this.email) {
           message.error(this.$t('EmailRequiredError', 'We need an email to find your account.'));
           return;
         }
-        User.resetPassword({email: this.email}, {baseURL: this.baseURL})
+
+        User.resetPassword({email: this.email}, {baseURL})
           .then(() => {
             const successMessage = this.$t('resetPasswordSuccess',
               'If the email address {email} is associated with a LessPass account, you will shortly receive an email from LessPass with instructions on how to reset your password.',

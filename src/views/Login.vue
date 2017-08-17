@@ -56,7 +56,8 @@
       </div>
     </div>
     <div class="form-group mb-0">
-      <button type="button"
+      <button id="login__forgot-password-btn"
+              type="button"
               class="btn btn-link btn-sm p-0"
               v-on:click="$router.push({name: 'passwordReset'})">
         <small>{{$t('ForgotPassword', 'Forgot your password?')}}</small>

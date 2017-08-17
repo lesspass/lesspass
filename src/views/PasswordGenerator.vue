@@ -235,7 +235,13 @@
         const site = this.$refs.site;
         const login = this.$refs.login;
         const masterPassword = this.$refs.masterPassword;
-        site.value ? (login.value ? masterPassword.$refs.passwordField.focus() : login.focus()) : site.focus();
+        if(site && !site.value){
+          site.focus()
+        }else if(login && !login.value){
+          login.focus()
+        }else if(masterPassword){
+          masterPassword.$refs.passwordField.focus()
+        }
       },
       copyPassword() {
         const copied = copy(this.passwordGenerated);

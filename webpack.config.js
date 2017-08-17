@@ -16,7 +16,7 @@ module.exports = {
     rules: [
       {test: /\.vue$/, loader: 'vue-loader'},
       {test: /\.js$/, exclude: /node_modules\/(?!copy-text-to-clipboard)/, loader: "babel-loader"},
-      {test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=[name].[ext]'},
+      {test: /\.(png|jpg|jpeg|gif|ico)$/, loader: 'file-loader?name=[name].[ext]'},
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader!sass-loader', publicPath: ''})
