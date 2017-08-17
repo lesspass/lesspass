@@ -16,9 +16,6 @@ export default {
   [types.SET_PASSWORD](state, { password }) {
     state.password = { ...password };
   },
-  [types.PASSWORD_GENERATED](state) {
-    state.lastUse = new Date().getTime();
-  },
   [types.SET_DEFAULT_OPTIONS](state, { options }) {
     state.defaultPassword = Object.assign({}, state.defaultPassword, options);
   },
@@ -45,9 +42,8 @@ export default {
     state.password.site = site;
   },
   [types.LOAD_PASSWORD_PROFILE](state, { site }) {
-    const oneMinuteAgo = new Date().getTime() - 60 * 1000;
-    const siteDontMatch = !(site && site.endsWith(state.password.site));
-    if (state.lastUse < oneMinuteAgo || siteDontMatch) {
+    const siteDontMatch = site && !site.endsWith(state.password.site);
+    if (siteDontMatch) {
       state.password = { ...state.defaultPassword };
     }
     const passwords = state.passwords || [];

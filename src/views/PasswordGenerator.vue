@@ -45,7 +45,7 @@
     </div>
     <div class="form-group">
       <master-password ref="masterPassword" v-model="masterPassword"
-                       :keyupEnter="generatePassword"
+                       v-on:keyupEnter="generatePassword"
                        v-bind:label="$t('Master Password')"></master-password>
     </div>
     <div class="form-group"
@@ -111,7 +111,6 @@
     <options :options.sync="password" v-if="showOptions || !isDefaultProfile"></options>
   </form>
 </template>
-
 <script type="text/ecmascript-6">
   import LessPass from 'lesspass';
   import {mapGetters, mapState} from 'vuex';
@@ -135,9 +134,13 @@
       ...mapGetters(['passwordURL', 'isDefaultProfile'])
     },
     beforeMount() {
-      this.$store.dispatch('getPasswords');
-      this.$store.dispatch('getSite');
-      this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
+      this.$store
+        .dispatch('getPasswords')
+        .then(() => {
+          this.$store.dispatch('loadBestPasswordProfile');
+          this.$store.dispatch('getSite');
+          this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
+        });
     },
     mounted() {
       setTimeout(() => {
@@ -228,7 +231,6 @@
         };
         return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(passwordGenerated => {
           this.passwordGenerated = passwordGenerated;
-          this.$store.dispatch('passwordGenerated');
         });
       },
       focusBestInputField() {

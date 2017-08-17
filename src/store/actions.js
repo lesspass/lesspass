@@ -16,16 +16,9 @@ export const saveDefaultOptions = ({ commit }, payload) => {
   commit(types.SET_DEFAULT_OPTIONS, payload);
 };
 
-export const passwordGenerated = ({ commit }) => {
-  commit(types.PASSWORD_GENERATED);
-};
-
 export const loadBestPasswordProfile = ({ commit }) => {
   urlParser.getSite().then(site => {
-    if (site) {
-      commit(types.SET_SITE, { site });
-      commit(types.LOAD_PASSWORD_PROFILE, { site });
-    }
+    commit(types.LOAD_PASSWORD_PROFILE, { site });
   });
 };
 
@@ -64,12 +57,13 @@ export const logout = ({ commit }) => {
 
 export const getPasswords = ({ commit, state }) => {
   if (state.authenticated) {
-    Password.all(state)
-      .then(response => {
-        commit(types.SET_PASSWORDS, { passwords: response.data.results });
-      })
-      .then(() => loadBestPasswordProfile({ commit }));
+    return Password.all(state).then(response => {
+      const passwords = response.data.results;
+      commit(types.SET_PASSWORDS, { passwords });
+      return passwords;
+    });
   }
+  return Promise.resolve([]);
 };
 
 export const saveOrUpdatePassword = ({ commit, state }) => {

@@ -50,28 +50,6 @@ test("SET_PASSWORD", t => {
   t.true(state.password.uppercase);
 });
 
-test("SET_PASSWORD dont change lastUse date", t => {
-  const SET_PASSWORD = mutations[types.SET_PASSWORD];
-  const now = 1485989236000;
-  const time = new Date(now);
-  timekeeper.freeze(time);
-  const state = { lastUse: null, password: null };
-  SET_PASSWORD(state, { password: {} });
-  t.true(state.lastUse === null);
-  timekeeper.reset();
-});
-
-test("PASSWORD_GENERATED change lastUse date", t => {
-  const PASSWORD_GENERATED = mutations[types.PASSWORD_GENERATED];
-  const now = 1485989236000;
-  const time = new Date(now);
-  timekeeper.freeze(time);
-  const state = { lastUse: null };
-  PASSWORD_GENERATED(state);
-  t.is(now, state.lastUse);
-  timekeeper.reset();
-});
-
 test("SET_PASSWORD immutable", t => {
   const SET_PASSWORD = mutations[types.SET_PASSWORD];
   const state = {};
@@ -238,98 +216,19 @@ test("LOAD_PASSWORD_PROFILE", t => {
   t.deepEqual(state.password, state.passwords[1]);
 });
 
-test("LOAD_PASSWORD_PROFILE 30 seconds after last use", t => {
-  const now = 1485989236000;
-  const time = new Date(now);
-  timekeeper.freeze(time);
-  const thirtySecondBefore = now - 30 * 1000;
+test("LOAD_PASSWORD_PROFILE on different site", t => {
   const state = {
-    lastUse: thirtySecondBefore,
     password: {
       site: "example.org",
-      login: "test@example.org",
-      length: 30
+      login: "test@example.org"
     },
     defaultPassword: {
-      login: "",
-      length: 16
-    }
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "example.org" });
-  t.is(state.password.login, "test@example.org");
-  t.is(state.password.length, 30);
-  timekeeper.reset();
-});
-
-test("LOAD_PASSWORD_PROFILE 30 seconds after last use on different site #242", t => {
-  const now = 1485989236000;
-  const time = new Date(now);
-  timekeeper.freeze(time);
-  const thirtySecondBefore = now - 30 * 1000;
-  const state = {
-    lastUse: thirtySecondBefore,
-    password: {
-      site: "example.org",
-      login: "test@example.org",
-      length: 30
-    },
-    defaultPassword: {
-      login: "",
-      length: 16
+      login: ""
     }
   };
   const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
   LOAD_PASSWORD_PROFILE(state, { site: "lesspass.com" });
   t.is(state.password.login, "");
-  t.is(state.password.length, 16);
-  timekeeper.reset();
-});
-
-test("LOAD_PASSWORD_PROFILE more than 1 minute after last use", t => {
-  const now = 1485989236000;
-  const time = new Date(now);
-  timekeeper.freeze(time);
-  const oneMinuteAndOneSecond = now - 61 * 1000;
-  const state = {
-    lastUse: oneMinuteAndOneSecond,
-    password: {
-      site: "example.org",
-      login: "test@example.org",
-      length: 30
-    },
-    defaultPassword: {
-      login: "",
-      length: 16
-    }
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "example.org" });
-  t.is(state.password.login, "");
-  t.is(state.password.length, 16);
-  timekeeper.reset();
-});
-
-test("LOAD_PASSWORD_PROFILE empty login", t => {
-  const state = {
-    lastUse: null,
-    password: {
-      site: "",
-      login: "",
-      version: 1
-    },
-    passwords: [],
-    defaultPassword: {
-      site: "",
-      login: "",
-      version: 2
-    }
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "example.org" });
-  t.is(state.password.login, "");
-  t.is(state.password.version, 2);
-  timekeeper.reset();
 });
 
 test("LOAD_PASSWORD_PROFILE with passwords", t => {
@@ -348,7 +247,7 @@ test("LOAD_PASSWORD_PROFILE with passwords", t => {
   t.is(state.password.site, "www.google.com");
 });
 
-test("LOAD_PASSWORD_PROFILE with no site reset default", t => {
+test("LOAD_PASSWORD_PROFILE with no site keep password profile", t => {
   const state = {
     password: {
       site: "example.org",
@@ -363,8 +262,10 @@ test("LOAD_PASSWORD_PROFILE with no site reset default", t => {
   };
   const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
   LOAD_PASSWORD_PROFILE(state, { site: "" });
-  t.is(state.password.login, "");
-  t.is(state.password.length, 16);
+  t.is(state.password.site, "example.org");
+  t.is(state.password.login, "contact@example.org");
+  t.is(state.password.length, 8);
+  t.is(state.password.version, 1);
 });
 
 test("LOAD_PASSWORD_PROFILE no passwords", t => {

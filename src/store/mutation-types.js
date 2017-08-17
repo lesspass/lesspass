@@ -1,6 +1,5 @@
 export const LOGOUT = "LOGOUT";
 export const LOGIN = "LOGIN";
-export const PASSWORD_GENERATED = "PASSWORD_GENERATED";
 export const SET_BASE_URL = "SET_BASE_URL";
 export const SET_DEFAULT_OPTIONS = "SET_DEFAULT_OPTIONS";
 export const SET_MESSAGE = "SET_MESSAGE";

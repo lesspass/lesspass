@@ -13,7 +13,6 @@ const state = {
   password: defaultPassword,
   passwords: [],
   defaultPassword: defaultPassword,
-  lastUse: null,
   showOptions: false,
   token: null,
   baseURL: "https://lesspass.com"
