@@ -30,6 +30,7 @@
              autocapitalize="off"
              v-model="password"
              v-bind:placeholder="label"
+             v-on:keyup.enter="$emit('keyupEnter')"
              v-on:blur="hidePassword($refs.passwordField)">
       <span class="input-group-btn"
             v-if="fingerprint && password"
