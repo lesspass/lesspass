@@ -69,13 +69,9 @@ function calcPassword(site, login, masterPassword, passwordProfile) {
 
 
 function hasNoShortOption(options) {
-  let hasShortOption = false;
-  ['l', 'u', 'd', 's'].forEach(function(shortOption) {
-    if (typeof options[shortOption] !== 'undefined' && options[shortOption]) {
-      hasShortOption = true;
-    }
-  });
-  return !hasShortOption;
+  return !(['l', 'u', 'd', 's'].some(function(shortOption) {
+    return typeof options[shortOption] !== 'undefined' && options[shortOption];
+  }));
 }
 
 function getOptionBoolean(options, optionString) {
