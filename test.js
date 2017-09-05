@@ -6,6 +6,12 @@ test('default options', async t => {
   t.is(stdout, '\\g-A1-.OHEwrXjT#');
 });
 
+test('no login', async t => {
+  return execa.shell('echo password | ./cli.js "lesspass.com"').then(result => {
+    t.is(result.stdout, 'master password: 7Cw-APO5Co?G>W>u');
+  });
+});
+
 test('options can be before parameters', async t => {
   const {stdout} = await execa('./cli.js', ['-C', 'lesspass.com', 'contact@lesspass.com', 'password']);
   t.is(stdout, 'Copied to clipboard');
