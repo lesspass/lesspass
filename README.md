@@ -11,19 +11,19 @@ LessPass open source password manager (https://lesspass.com)
 
 ## LessPass submodules
 
- - [backend](https://github.com/lesspass/backend) : REST API used by lesspass-pure to store password profiles
- - [cli](https://github.com/lesspass/cli) : build LessPass passwords directly in command line with nodejs
- - [cordova](https://github.com/lesspass/cordova) : Android application
- - [core](https://github.com/lesspass/core) : npm module with a clean api used to create passwords
- - [cozy](https://github.com/lesspass/cozy) : MyCozyCloud application
+ - [backend](https://github.com/lesspass/backend) : REST API used by [lesspass-pure](https://github.com/lesspass/pure) to store password profiles
+ - [cli](https://github.com/lesspass/cli) : LessPass passwords directly in your terminal
+ - [cordova](https://github.com/lesspass/cordova) : LessPass Android application
+ - [core](https://github.com/lesspass/core) : npm core library used to generate LessPass passwords
+ - [cozy](https://github.com/lesspass/cozy) : LessPass for MyCozyCloud
  - [desktop](https://github.com/lesspass/desktop) : LessPass desktop application build with electron
- - [frontend](https://github.com/lesspass/frontend) : https://lesspass.com source code
+ - [frontend](https://github.com/lesspass/frontend) : [lesspass.com](https://lesspass.com) source code
  - [move](https://github.com/lesspass/move) : password migration tool for LessPass
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
  - [openssl](https://github.com/lesspass/openssl) : configuration for openssl
- - [pure](https://github.com/lesspass/pure) : pure component in vuejs used by cozy, frontend and webextension
- - [snap](https://github.com/lesspass/snap) : snap for lesspass-cli
- - [web extension](https://github.com/lesspass/webextension) : chrome and firefox web extension for LessPass password manager
+ - [pure](https://github.com/lesspass/pure) : LessPass web component
+ - [snap](https://github.com/lesspass/snap) : snap for [lesspass-cli](https://github.com/lesspass/cli)
+ - [web extension](https://github.com/lesspass/webextension) : Chrome and Firefox web extension
 
 
 ## Self Host your LessPass Database (WIP)
