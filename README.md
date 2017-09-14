@@ -1,4 +1,6 @@
-> LessPass Cordova App for [lesspass.com](https://lesspass.com)
+# LessPass cordova
+
+LessPass Android application
 
 ## Requirements
 
