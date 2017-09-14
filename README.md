@@ -1,6 +1,6 @@
+# LessPass desktop
 
-> LessPass desktop application build with electron for [lesspass.com](https://lesspass.com)
-
+LessPass desktop application build with electron
 
 ## run locally
 
