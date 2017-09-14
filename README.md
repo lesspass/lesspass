@@ -6,9 +6,10 @@
   [link-cws]: https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih "Version published on Chrome Web Store"
   [link-amo]: https://addons.mozilla.org/en-US/firefox/addon/lesspass/ "Version published on Mozilla Add-ons"
   [link-travis]: https://travis-ci.org/lesspass/webextension
-  
 
-> chrome and firefox web extension for LessPass password manager
+# LessPass webextension
+
+Chrome and Firefox web extension
 
 # Install
 
