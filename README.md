@@ -1,14 +1,16 @@
-> LessPass Cozy App
+# LessPass cozy
 
-# Install
+LessPass for MyCozyCloud
+
+## Install
 
 Install app with `https://github.com/lesspass/cozy@master` repository
 
-# Build
+## Build
 
     npm run build
 
-# Run
+## Run
 
     npm start
 
