@@ -1,13 +1,12 @@
-[![Build Status](https://travis-ci.org/lesspass/pure.svg?branch=master)](https://travis-ci.org/lesspass/pure)
+# LessPass pure
 
-> LessPass pure component for [lesspass.com](https://lesspass.com)
+LessPass web component
 
- - vue
- - vue-router
- - vuex
- - ava
- - webpack
-
+ * vue
+ * vue-router
+ * vuex
+ * ava
+ * webpack
 
 ## Tests
 
