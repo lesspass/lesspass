@@ -1,11 +1,10 @@
+# LessPass snap
 
-> snap for [lesspass.com](https://lesspass.com)
-
-
+snap for [lesspass-cli](https://github.com/lesspass/cli)
 
 ## Requirements
 
-  - snapcraft 2.22.x
+ * snapcraft 2+
 
 ## Build
 
