@@ -1,4 +1,6 @@
-> Frontend application for [lesspass.com](https://lesspass.com)
+# LessPass frontend
+
+[lesspass.com](https://lesspass.com) source code
 
 ## build
 
