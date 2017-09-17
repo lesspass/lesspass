@@ -3,7 +3,7 @@
 LessPass open source password manager (https://lesspass.com)
 
 
-## How it works ?
+## How does it work?
 
  * [FR] [LessPass comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
  * [EN] [LessPass How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
@@ -16,7 +16,7 @@ LessPass open source password manager (https://lesspass.com)
  - [cordova](https://github.com/lesspass/cordova) : LessPass Android application
  - [core](https://github.com/lesspass/core) : npm core library used to generate LessPass passwords
  - [cozy](https://github.com/lesspass/cozy) : LessPass for MyCozyCloud
- - [desktop](https://github.com/lesspass/desktop) : LessPass desktop application build with electron
+ - [desktop](https://github.com/lesspass/desktop) : LessPass desktop application built with electron
  - [frontend](https://github.com/lesspass/frontend) : [lesspass.com](https://lesspass.com) source code
  - [move](https://github.com/lesspass/move) : password migration tool for LessPass
  - [nginx](https://github.com/lesspass/nginx) : configuration for nginx
@@ -55,7 +55,7 @@ Now you can access and manage users and password profiles on `https://[DOMAIN]/a
 
 ### configure email
 
-You can edit `.env` file to use your own email server (for reset password for example)
+You can edit `.env` file to use your own email server (in order to reset the password for example)
 
 ```
 DEFAULT_FROM_EMAIL="LessPass" <admin@example.org>
