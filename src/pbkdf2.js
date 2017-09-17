@@ -1,5 +1,4 @@
 const crypto = require("crypto");
-var Promise = require("es6-promise").Promise;
 
 module.exports = function(password, salt, iterations, keylen, digest) {
   return new Promise(function(resolve, reject) {

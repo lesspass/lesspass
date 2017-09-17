@@ -32,8 +32,7 @@
   },
   "dependencies": {
     "big-integer": "^1.6.22",
-    "es6-promise": "^4.1.0",
-    "lodash.assign": "^4.2.0",
+    "lodash.merge": "^4.6.0",
     "unibabel": "^2.1.4"
   },
   "devDependencies": {
