@@ -119,6 +119,9 @@ if (cli.input.length === 3) {
   calcPassword(site, login, masterPassword, passwordProfile)
 } else {
   read({prompt: 'master password: ', silent: true}, function(er, password) {
+    if (er && er.message === 'canceled') {
+      process.exit();
+    }
     calcPassword(site, login, password, passwordProfile)
   });
 }
