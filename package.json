@@ -1,6 +1,6 @@
 {
   "name": "lesspass-cli",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "build LessPass passwords directly in command line",
   "keywords": [
     "cli",
