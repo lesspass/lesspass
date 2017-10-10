@@ -8,7 +8,7 @@
     font-weight: 600;
   }
 
-  .passwordProfile__site, .passwordProfile__login, .passwordProfile__version {
+  .passwordProfile__site, .passwordProfile__login {
     font-size: 0.8rem;
     line-height: 0.8rem;
   }

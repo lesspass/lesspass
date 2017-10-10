@@ -44,8 +44,7 @@
     </div>
     <div class="form-group row no-gutters mb-0">
       <div class="col">
-        <button id="signInButton" class="btn btn-block"
-                v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
+        <button id="signInButton" class="btn btn-primary btn-block">
           {{$t('Sign In')}}
         </button>
       </div>
@@ -67,7 +66,6 @@
 </template>
 <script type="text/ecmascript-6">
   import User from '../api/user';
-  import {mapGetters} from 'vuex';
   import MasterPassword from '../components/MasterPassword.vue';
   import message from '../services/message';
 
@@ -82,7 +80,6 @@
     components: {
       MasterPassword
     },
-    computed: mapGetters(['version']),
     methods: {
       formIsValid(){
         if (!this.email || !this.password || !this.baseURL) {

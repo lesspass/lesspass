@@ -1,6 +1,6 @@
 <style>
   #generated-password {
-    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
+    font-family: Consolas, Menlo, Monaco, Courier New, monospace, sans-serif;
   }
 
   div.awesomplete {
@@ -44,7 +44,8 @@
       </div>
     </div>
     <div class="form-group">
-      <master-password ref="masterPassword" v-model="masterPassword"
+      <master-password ref="masterPassword"
+                       v-model="masterPassword"
                        v-on:keyupEnter="generatePassword"
                        v-bind:label="$t('Master Password')"></master-password>
     </div>
@@ -53,13 +54,12 @@
       <div v-if="!passwordGenerated">
         <button id="generatePassword__btn"
                 type="button"
-                class="btn"
-                v-on:click="generatePassword"
-                v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+                class="btn btn-primary border-blue"
+                v-on:click="generatePassword">
           {{ $t('Generate') }}
         </button>
         <button type="button"
-                class="btn btn-secondary pull-right showOptions__btn"
+                class="btn btn-light pull-right showOptions__btn"
                 v-show="!passwordGenerated"
                 v-on:click="showOptions =! showOptions">
           <i class="fa fa-sliders"></i>
@@ -69,10 +69,9 @@
         <div class="input-group">
           <span class="input-group-btn">
             <button id="copyPasswordButton"
-                    class="btn"
+                    class="btn btn-primary border-blue"
                     type="button"
-                    v-on:click="copyPassword()"
-                    v-bind:class="{ 'btn-warning': password.version===1, 'btn-primary': password.version===2 }">
+                    v-on:click="copyPassword()">
               <i class="fa fa-clipboard"></i>
             </button>
           </span>
@@ -85,7 +84,7 @@
           <span class="input-group-btn">
             <button id="revealGeneratedPassword"
                     type="button"
-                    class="btn btn-secondary"
+                    class="btn btn-light"
                     v-on:click="togglePasswordType($refs.passwordGenerated)">
               <i class="fa fa-eye"></i>
             </button>
@@ -93,14 +92,14 @@
           <span class="input-group-btn">
             <button id="sharePasswordProfileButton"
                     type="button"
-                    class="btn btn-secondary"
+                    class="btn btn-light"
                     v-on:click="sharePasswordProfile()">
               <i class="fa fa-share-alt pointer"></i>
             </button>
           </span>
           <span class="input-group-btn">
             <button type="button"
-                    class="btn btn-secondary showOptions__btn"
+                    class="btn btn-light showOptions__btn"
                     v-on:click="showOptions =! showOptions">
               <i class="fa fa-sliders"></i>
             </button>
@@ -108,7 +107,7 @@
         </div>
       </div>
     </div>
-    <options :options.sync="password" v-if="showOptions || !isDefaultProfile"></options>
+    <options v-if="showOptions || !isDefaultProfile"></options>
   </form>
 </template>
 <script type="text/ecmascript-6">
@@ -151,7 +150,6 @@
       return {
         showOptions: false,
         masterPassword: '',
-        fingerprint: '',
         passwordGenerated: '',
         cleanTimeout: null
       }
@@ -178,13 +176,6 @@
           this.cleanErrors();
         },
         deep: true
-      },
-      'passwordGenerated': function() {
-        this.cleanFormInSeconds(30);
-      },
-      'masterPassword': function() {
-        this.cleanErrors();
-        this.cleanFormInSeconds(30);
       }
     },
     methods: {
@@ -200,26 +191,20 @@
         this.passwordGenerated = '';
       },
       cleanFormInSeconds(seconds = 15) {
-        clearTimeout(this.cleanTimeout);
         this.cleanTimeout = setTimeout(() => {
           this.masterPassword = '';
           this.passwordGenerated = '';
-          this.fingerprint = '';
         }, 1000 * seconds);
       },
       generatePassword() {
         const site = this.password.site;
         const login = this.password.login;
         const masterPassword = this.masterPassword;
-
         if (!site && !login || !masterPassword) {
           message.error(this.$t('SiteLoginMasterPasswordMandatory', 'Site, login, and master password fields are mandatory.'));
           return;
         }
-
         this.cleanErrors();
-        this.fingerprint = this.masterPassword;
-
         const passwordProfile = {
           lowercase: this.password.lowercase,
           uppercase: this.password.uppercase,
@@ -231,6 +216,7 @@
         };
         return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(passwordGenerated => {
           this.passwordGenerated = passwordGenerated;
+          this.cleanFormInSeconds(30);
         });
       },
       focusBestInputField() {
@@ -249,9 +235,6 @@
         const copied = copy(this.passwordGenerated);
         if (copied) {
           showTooltip(document.getElementById('copyPasswordButton'), this.$t('Copied', 'copied !'));
-          setTimeout(() => {
-            this.cleanFormInSeconds();
-          }, 2000);
         } else {
           message.warning(this.$t('SorryCopy', 'We are sorry the copy only works on modern browsers'))
         }
@@ -265,9 +248,6 @@
             copySuccessMessage,
             'hint--top-left'
           );
-          setTimeout(() => {
-            this.cleanFormInSeconds();
-          }, 2000);
         }
         else {
           message.warning(this.$t('SorryCopy', 'We are sorry the copy only works on modern browsers'))

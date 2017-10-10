@@ -1,24 +1,6 @@
 import test from "ava";
 import * as getters from "../../src/store/getters";
 
-test("version", t => {
-  const state = {
-    password: { version: 1 },
-    defaultPassword: { version: 2 }
-  };
-  const version = getters.version(state);
-  t.is(version, 1);
-});
-
-test("version no password return default password version", t => {
-  const state = {
-    password: null,
-    defaultPassword: { version: 2 }
-  };
-  const version = getters.version(state);
-  t.is(version, 2);
-});
-
 test("passwordURL", t => {
   const state = {
     password: {

@@ -2,7 +2,7 @@
   <div id="lesspass" class="card">
     <lesspass-menu></lesspass-menu>
     <lesspass-message></lesspass-message>
-    <div class="lesspass__inner-box card-block">
+    <div class="lesspass__inner-box card-body">
       <router-view></router-view>
     </div>
   </div>
@@ -11,7 +11,6 @@
   import './LessPass.scss';
   import Menu from './components/Menu.vue';
   import Message from './components/Message.vue';
-  import {mapGetters} from 'vuex';
 
   export default {
     name: 'LessPass',
@@ -19,7 +18,6 @@
       'lesspass-menu': Menu,
       'lesspass-message': Message
     },
-    computed: mapGetters(['version']),
     created(){
       this.$store.dispatch('cleanMessage');
       this.$store.dispatch('refreshToken');

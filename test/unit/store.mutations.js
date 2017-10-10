@@ -13,6 +13,16 @@ test("LOGOUT", t => {
   t.false(state.authenticated);
 });
 
+test("RESET_PASSWORD set default password", t => {
+  const RESET_PASSWORD = mutations[types.RESET_PASSWORD];
+  const state = {
+    password: { counter: 2 },
+    defaultPassword: { counter: 1 }
+  };
+  RESET_PASSWORD(state);
+  t.is(state.password.counter, 1);
+});
+
 test("LOGOUT clean user personal info", t => {
   const LOGOUT = mutations[types.LOGOUT];
   const state = {
@@ -24,7 +34,7 @@ test("LOGOUT clean user personal info", t => {
   LOGOUT(state);
   t.true(state.token === null);
   t.is(state.passwords.length, 0);
-  t.is(state.password.counter, 1);
+  t.is(state.password.counter, 2);
 });
 
 test("LOGIN", t => {
@@ -45,18 +55,18 @@ test("SET_TOKEN", t => {
 test("SET_PASSWORD", t => {
   const SET_PASSWORD = mutations[types.SET_PASSWORD];
   const state = { password: null };
-  SET_PASSWORD(state, { password: { uppercase: true, version: 2 } });
-  t.is(state.password.version, 2);
+  SET_PASSWORD(state, { password: { uppercase: true, counter: 2 } });
+  t.is(state.password.counter, 2);
   t.true(state.password.uppercase);
 });
 
 test("SET_PASSWORD immutable", t => {
   const SET_PASSWORD = mutations[types.SET_PASSWORD];
   const state = {};
-  const password = { version: 2 };
+  const password = { counter: 2 };
   SET_PASSWORD(state, { password });
-  password.version = 1;
-  t.is(state.password.version, 2);
+  password.counter = 1;
+  t.is(state.password.counter, 2);
 });
 
 test("SET_DEFAULT_OPTIONS", t => {
@@ -118,33 +128,6 @@ test("SET_BASE_URL", t => {
   const baseURL = "https://example.org";
   SET_BASE_URL(state, { baseURL: baseURL });
   t.is(state.baseURL, baseURL);
-});
-
-test("SET_VERSION", t => {
-  const SET_VERSION = mutations[types.SET_VERSION];
-  const state = {
-    password: { version: 2 }
-  };
-  SET_VERSION(state, { version: 1 });
-  t.is(state.password.version, 1);
-});
-
-test("SET_VERSION 1 should modify length to 12", t => {
-  const SET_VERSION = mutations[types.SET_VERSION];
-  const state = {
-    password: { length: 16, version: 2 }
-  };
-  SET_VERSION(state, { version: 1 });
-  t.is(state.password.length, 12);
-});
-
-test("SET_VERSION 2 should modify length to 16", t => {
-  const SET_VERSION = mutations[types.SET_VERSION];
-  const state = {
-    password: { length: 12, version: 1 }
-  };
-  SET_VERSION(state, { version: 2 });
-  t.is(state.password.length, 16);
 });
 
 test("LOAD_PASSWORD_PROFILE", t => {
@@ -253,7 +236,7 @@ test("LOAD_PASSWORD_PROFILE with no site keep password profile", t => {
       site: "example.org",
       login: "contact@example.org",
       length: 8,
-      version: 1
+      version: 2
     },
     defaultPassword: {
       login: "",
@@ -265,7 +248,7 @@ test("LOAD_PASSWORD_PROFILE with no site keep password profile", t => {
   t.is(state.password.site, "example.org");
   t.is(state.password.login, "contact@example.org");
   t.is(state.password.length, 8);
-  t.is(state.password.version, 1);
+  t.is(state.password.version, 2);
 });
 
 test("LOAD_PASSWORD_PROFILE no passwords", t => {

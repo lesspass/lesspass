@@ -11,6 +11,8 @@ export default {
     state.authenticated = false;
     state.token = null;
     state.passwords = [];
+  },
+  [types.RESET_PASSWORD](state) {
     state.password = { ...state.defaultPassword };
   },
   [types.SET_PASSWORD](state, { password }) {
@@ -32,11 +34,6 @@ export default {
   },
   [types.SET_BASE_URL](state, { baseURL }) {
     state.baseURL = baseURL;
-  },
-  [types.SET_VERSION](state, { version }) {
-    const length = version === 1 ? 12 : 16;
-    state.password.version = version;
-    state.password.length = length;
   },
   [types.SET_SITE](state, { site }) {
     state.password.site = site;

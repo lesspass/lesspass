@@ -4,13 +4,6 @@ export const isAuthenticated = state => state.authenticated;
 
 export const isGuest = state => !state.authenticated;
 
-export const version = state => {
-  if (state.password === null) {
-    return state.defaultPassword.version;
-  }
-  return state.password.version;
-};
-
 export const passwordURL = state => {
   return `${state.baseURL}/#/?login=${state.password.login}&site=${state
     .password.site}&uppercase=${state.password.uppercase}&lowercase=${state

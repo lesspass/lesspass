@@ -25,8 +25,7 @@
     </div>
     <div class="form-group row">
       <div class="col-12">
-        <button id="loginButton" class="btn"
-                v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
+        <button id="loginButton" class="btn btn-primary">
           {{$t('Reset my password')}}
         </button>
       </div>
@@ -35,14 +34,10 @@
 </template>
 <script type="text/ecmascript-6">
   import User from '../api/user';
-  import {mapActions, mapGetters} from 'vuex';
   import message from '../services/message';
   import MasterPassword from '../components/MasterPassword.vue';
 
   export default {
-    computed: {
-      ...mapGetters(['version'])
-    },
     components: {
       MasterPassword
     },

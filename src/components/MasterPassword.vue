@@ -28,12 +28,13 @@
              class="form-control"
              autocorrect="off"
              autocapitalize="off"
-             v-model="password"
+             v-bind:value="value"
              v-bind:placeholder="label"
+             v-on:input="updateValue($event.target.value)"
              v-on:keyup.enter="$emit('keyupEnter')"
              v-on:blur="hidePassword($refs.passwordField)">
       <span class="input-group-btn"
-            v-if="fingerprint && password"
+            v-if="fingerprint && value"
             v-on:click="togglePasswordType($refs.passwordField)">
         <button id="fingerprint" class="btn" type="button" tabindex="-1">
             <small class="hint--left">
@@ -48,7 +49,7 @@
             type="button"
             class="btn btn-link btn-sm p-0"
             v-if="showEncryptButton"
-            v-on:click="encryptMasterPassword($refs.passwordField.value)"
+            v-on:click="encryptMasterPassword()"
             v-bind:class="{'disabled': email === '', 'hint--top hint--medium': email !== ''}">
       <small>{{ EncryptButtonText }}</small>
     </button>
@@ -57,6 +58,7 @@
 <script>
   import LessPass from 'lesspass';
   import debounce from 'lodash.debounce';
+  import defaultPasswordProfile from '../store/defaultPassword';
 
   export default {
     name: 'masterPassword',
@@ -72,7 +74,6 @@
     },
     data(){
       return {
-        password: this.value,
         fingerprint: '',
         icon1: '',
         icon2: '',
@@ -82,15 +83,14 @@
         color3: ''
       }
     },
-    watch: {
-      password(newPassword){
+    methods: {
+      updateValue(newPassword){
         const fakePassword = Math.random().toString(36).substring(7);
         this.setFingerprint(fakePassword);
         this.showRealFingerprint(newPassword);
+        this.$refs.passwordField.value = newPassword;
         this.$emit('input', newPassword);
-      }
-    },
-    methods: {
+      },
       togglePasswordType(element){
         if (element.type === 'password') {
           element.type = 'text';
@@ -131,20 +131,12 @@
       showRealFingerprint: debounce(function(password) {
         this.setFingerprint(password);
       }, 500),
-      encryptMasterPassword(password){
-        const defaultPasswordProfile = {
-          lowercase: true,
-          uppercase: true,
-          numbers: true,
-          symbols: true,
-          length: 16,
-          counter: 1,
-          version: 2,
-        };
+      encryptMasterPassword(){
+        const password = this.$refs.passwordField.value;
         return LessPass
           .generatePassword('lesspass.com', this.email, password, defaultPasswordProfile)
           .then(generatedPassword => {
-            this.password = generatedPassword;
+            this.updateValue(generatedPassword);
           });
       }
     }

@@ -16,8 +16,7 @@
     <div class="form-group row">
       <div class="col-12">
         <button id="password-reset__reset-password-btn"
-                class="btn"
-                v-bind:class="{ 'btn-warning': version===1, 'btn-primary': version===2 }">
+                class="btn btn-primary">
           {{$t('Reset my password')}}
         </button>
       </div>
@@ -26,7 +25,7 @@
 </template>
 <script type="text/ecmascript-6">
   import User from '../api/user';
-  import {mapState, mapGetters} from 'vuex';
+  import {mapState} from 'vuex';
   import message from '../services/message';
 
   export default {
@@ -36,8 +35,7 @@
       };
     },
     computed: {
-      ...mapState(['baseURL']),
-      ...mapGetters(['version'])
+      ...mapState(['baseURL'])
     },
     methods: {
       resetPassword() {
