@@ -10,8 +10,9 @@ Vue.use(Vuex);
 
 const state = {
   authenticated: false,
-  password: defaultPassword,
+  password: Object.assign({}, defaultPassword),
   passwords: [],
+  message: "",
   defaultPassword: defaultPassword,
   showOptions: false,
   token: null,
@@ -23,5 +24,10 @@ export default new Vuex.Store({
   getters,
   actions,
   mutations,
-  plugins: [createPersistedState({ key: "lesspass" })]
+  plugins: [
+    createPersistedState({
+      key: "lesspass",
+      paths: ["token", "baseURL", "authenticated", "defaultPassword"]
+    })
+  ]
 });

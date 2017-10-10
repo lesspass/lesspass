@@ -45,7 +45,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import {mapState, mapGetters} from 'vuex';
+  import {mapGetters} from 'vuex';
 
   export default {
     data() {
@@ -55,7 +55,7 @@
     },
     methods: {
       fullReload() {
-        this.$store.dispatch('savePassword', {password: this.defaultPassword});
+        this.$store.dispatch('savePassword', {password: this.$store.state.defaultPassword});
         this.$router.push({name: 'home'});
       },
       logout() {
@@ -71,10 +71,6 @@
       }
     },
     computed: {
-      ...mapState([
-        'password',
-        'defaultPassword'
-      ]),
       ...mapGetters([
         'isAuthenticated',
         'isGuest'
