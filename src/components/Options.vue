@@ -55,12 +55,12 @@
       </div>
     </div>
     <div class="form-group row mb-0">
-      <div class="col-6 col-sm-4">
+      <div class="col-5 col-sm-4">
         <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
           <span class="input-group-btn" v-on:click="password.length=decrement(password.length, {min: 5, max: 35})">
             <button id="decreaseLength__btn" class="btn btn-primary border-blue px-2" type="button">
-              <i class="fa fa-minus"></i>
+              <small><i class="fa fa-minus"></i></small>
             </button>
           </span>
           <input id="passwordLength"
@@ -72,12 +72,12 @@
           <span class="input-group-btn"
                 v-on:click="password.length=increment(password.length, {min: 5, max: 35})">
             <button id="increaseLength__btn" class="btn btn-primary border-blue px-2" type="button">
-              <i class="fa fa-plus"></i>
+              <small><i class="fa fa-plus"></i></small>
             </button>
           </span>
         </div>
       </div>
-      <div class="col-6 col-sm-4">
+      <div class="col-5 col-sm-4">
         <label for="passwordCounter"
                class="hint--top hint--medium"
                v-bind:aria-label="$t('CounterFieldHelp','Increment this value to change the generated password without changing your master options.')">
@@ -87,7 +87,7 @@
           <span id="decreaseCounter__btn" class="input-group-btn"
                 v-on:click="password.counter=decrement(password.counter, {min: 1})">
               <button class="btn btn-primary border-blue px-2" type="button">
-              <i class="fa fa-minus"></i>
+              <small><i class="fa fa-minus"></i></small>
             </button>
           </span>
           <input id="passwordCounter"
@@ -98,7 +98,7 @@
           <span id="increaseCounter__btn" class="input-group-btn"
                 v-on:click="password.counter=increment(password.counter, {min: 1})">
             <button class="btn btn-primary border-blue px-2" type="button">
-              <i class="fa fa-plus"></i>
+              <small><i class="fa fa-plus"></i></small>
             </button>
           </span>
         </div>

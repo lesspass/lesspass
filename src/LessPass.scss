@@ -32,7 +32,6 @@
 //@import "~bootstrap/scss/popover";
 //@import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/utilities";
-
 @import '~font-awesome/css/font-awesome.css';
 @import '~hint.css/hint.css';
 @import '~awesomplete/awesomplete.css';
@@ -48,14 +47,20 @@
 #lesspass {
   color: #464646;
   max-width: 420px;
+  border: none;
+
+  .card-header {
+    border-bottom: none;
+  }
 }
 
 .lesspass__inner-box {
   min-height: 240px;
+  border: $card-border-width solid $card-border-color;
 }
 
 @media (max-width: 419px) {
-  #lesspass {
+  .lesspass__inner-box {
     border: none;
   }
 }
@@ -95,6 +100,6 @@ button, .pointer {
   padding-right: 30px;
 }
 
-.border-blue{
+.border-blue {
   border-color: $blue !important;
 }
