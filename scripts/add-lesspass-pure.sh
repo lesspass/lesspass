@@ -27,10 +27,10 @@ function cmd {
     cd ..
 }
 
-submodules="cordova frontend cozy desktop webextension move"
+submodules="frontend cozy desktop webextension"
 for submodule in ${submodules}
 do
-	cmd $submodule &
+	cmd ${submodule} &
 done
 wait
 
