@@ -26,7 +26,7 @@ LessPass open source password manager (https://lesspass.com)
  - [web extension](https://github.com/lesspass/webextension) : Chrome and Firefox web extension
 
 
-## Self Host your LessPass Database (WIP)
+## Self Host your LessPass Database
 
 ### requirements 
 
