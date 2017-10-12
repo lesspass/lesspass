@@ -37,11 +37,7 @@
   "SorryCopy": "Nous sommes désolés, la copie ne fonctionne que sur les navigateurs modernes",
   "UNDO": "ANNULER",
   "UpdateYourSearch": "Merci de modifier votre recherche.",
-  "Version": "Version",
-  "WarningV1Deprecated": "La version 1 est déconseillée et sera supprimée bientôt. Nous vous conseillons fortement de migrer vos mots de passe vers la version 2.",
   "WelcomeRegister": "Bienvenue {email}, merci pour vous être enregistré.",
   "Your options have been saved successfully": "Vos options ont été enregistrées avec succès",
-  "resetPasswordSuccess": "Si l'adresse email {email} est associée avec un compte LessPass, vous allez recevoir un email de la part de LessPass avec les instructions pour changer votre mot de passe.",
-  "version": "version",
-  "versionShortcut": "v"
+  "resetPasswordSuccess": "Si l'adresse email {email} est associée avec un compte LessPass, vous allez recevoir un email de la part de LessPass avec les instructions pour changer votre mot de passe."
 }

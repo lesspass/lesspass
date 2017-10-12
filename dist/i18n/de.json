@@ -37,11 +37,7 @@
   "SorryCopy": "Es tut uns leid, dass die Kopie nur auf modernen Browsern funktioniert",
   "UNDO": "STORNIEREN",
   "UpdateYourSearch": "Bitte erweitern Sie Ihre Suche.",
-  "Version": "Version",
-  "WarningV1Deprecated": "Version 1 ist veraltet und wird bald gelöscht werden. Wir empfehlen Ihnen dringend, Ihre Passwörter auf die Version 2 zu migrieren.",
   "WelcomeRegister": "Willkommen {email}, danke für die Anmeldung.",
   "Your options have been saved successfully": "Ihre Optionen wurden erfolgreich gespeichert",
-  "resetPasswordSuccess": "Wenn die E-Mail-Adresse {email} mit einem LessPass-Konto verknüpft ist, erhalten Sie in Kürze eine E-Mail von LessPass mit Anweisungen zum Zurücksetzen Ihres Passworts.",
-  "version": "Version",
-  "versionShortcut": "V"
+  "resetPasswordSuccess": "Wenn die E-Mail-Adresse {email} mit einem LessPass-Konto verknüpft ist, erhalten Sie in Kürze eine E-Mail von LessPass mit Anweisungen zum Zurücksetzen Ihres Passworts."
 }

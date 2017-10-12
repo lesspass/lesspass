@@ -37,11 +37,7 @@
   "SorryCopy": "我們很抱歉，該副本僅適用於現代瀏覽器",
   "UNDO": "解開",
   "UpdateYourSearch": "請試著放寬您的搜尋條件。",
-  "Version": "版本",
-  "WarningV1Deprecated": "版本 1 已不支援，不久將被刪除。 我們強烈得建議您將密碼換至版本 2。",
   "WelcomeRegister": "歡迎 {email}，謝謝您的註冊。",
   "Your options have been saved successfully": "您的選項已成功保存",
-  "resetPasswordSuccess": "如果电子邮件地址 {email} 与LessPass帐户相关联，您将很快收到LessPass的电子邮件，并提供如何重置密码的说明。",
-  "version": "版本",
-  "versionShortcut": "v"
+  "resetPasswordSuccess": "如果电子邮件地址 {email} 与LessPass帐户相关联，您将很快收到LessPass的电子邮件，并提供如何重置密码的说明。"
 }

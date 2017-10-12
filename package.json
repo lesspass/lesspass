@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "electron": "^1.7.5",
-    "lesspass-pure": "^4.6.2"
+    "lesspass-pure": "^5.0.0"
   },
   "devDependencies": {
     "electron-packager": "^8.6.0",
