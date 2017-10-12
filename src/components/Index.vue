@@ -12,7 +12,7 @@
 <template>
   <div>
     <nav class="navbar navbar-inverse bg-inverse sticky-top">
-      <h1 class="navbar-brand mb-0">LessPass Move</h1>
+      <h1 class="navbar-brand mb-0">LessPass Move <small>(beta)</small></h1>
     </nav>
     <div class="container-fluid pt-3">
       <div class="row">
