@@ -256,7 +256,10 @@ test("LOAD_PASSWORD_PROFILE no passwords", t => {
     password: {
       site: ""
     },
-    passwords: []
+    passwords: [],
+    defaultPassword: {
+      site: ""
+    }
   };
   const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
   LOAD_PASSWORD_PROFILE(state, { site: "account.google.com" });
@@ -278,6 +281,36 @@ test("LOAD_PASSWORD_PROFILE multiple accounts matching criteria", t => {
   LOAD_PASSWORD_PROFILE(state, { site: "www.google.com" });
   t.is(state.password.id, "2");
   t.is(state.password.site, "www.google.com");
+});
+
+test("LOAD_PASSWORD_PROFILE multiple accounts matching criteria order doesn't matter", t => {
+  const state = {
+    password: {
+      site: ""
+    },
+    passwords: [
+      { id: "1", site: "www.example.org" },
+      { id: "2", site: "account.google.com" },
+      { id: "3", site: "www.google.com" }
+    ]
+  };
+  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
+  LOAD_PASSWORD_PROFILE(state, { site: "www.google.com" });
+  t.is(state.password.id, "3");
+  t.is(state.password.site, "www.google.com");
+});
+
+test("LOAD_PASSWORD_PROFILE ends matching criteria nrt #285", t => {
+  const state = {
+    password: {
+      site: ""
+    },
+    passwords: [{ id: "1", site: "account.google.com" }]
+  };
+  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
+  LOAD_PASSWORD_PROFILE(state, { site: "www.google.com" });
+  t.is(state.password.id, "1");
+  t.is(state.password.site, "account.google.com");
 });
 
 test("LOAD_PASSWORD_PROFILE without www", t => {

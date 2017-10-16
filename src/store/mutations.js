@@ -39,16 +39,22 @@ export default {
     state.password.site = site;
   },
   [types.LOAD_PASSWORD_PROFILE](state, { site }) {
-    const siteDontMatch = site && !site.endsWith(state.password.site);
-    if (siteDontMatch) {
-      state.password = { ...state.defaultPassword };
-    }
+    let siteMatch = false;
     const passwords = state.passwords || [];
+    const siteWithoutWWW = site.replace(/^www./g, "");
     for (let i = 0; i < passwords.length; i++) {
       const password = passwords[i];
       if (site.endsWith(password.site)) {
         state.password = { ...password };
+        siteMatch = true;
+        break;
+      } else if (password.site.endsWith(siteWithoutWWW)) {
+        state.password = { ...password };
+        siteMatch = true;
       }
+    }
+    if (site && !siteMatch) {
+      state.password = { ...state.defaultPassword };
     }
   },
   [types.SET_MESSAGE](state, { message }) {
