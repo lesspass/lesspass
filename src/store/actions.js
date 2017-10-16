@@ -16,10 +16,8 @@ export const saveDefaultOptions = ({ commit }, payload) => {
   commit(types.SET_DEFAULT_OPTIONS, payload);
 };
 
-export const loadBestPasswordProfile = ({ commit }) => {
-  urlParser.getSite().then(site => {
-    commit(types.LOAD_PASSWORD_PROFILE, { site });
-  });
+export const loadPasswordProfile = ({ commit }, { site }) => {
+  commit(types.LOAD_PASSWORD_PROFILE, { site });
 };
 
 export const getPasswordFromUrlQuery = ({ commit }, { query }) => {
@@ -35,14 +33,6 @@ export const savePassword = ({ commit }, payload) => {
 
 export const resetPassword = ({ commit, state }) => {
   commit(types.RESET_PASSWORD);
-};
-
-export const getSite = ({ commit }) => {
-  urlParser.getSite().then(site => {
-    if (site) {
-      commit(types.SET_SITE, { site });
-    }
-  });
 };
 
 export const login = ({ commit }, payload) => {

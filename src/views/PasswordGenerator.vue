@@ -120,6 +120,7 @@
   import {showTooltip} from '../services/tooltip';
   import message from '../services/message';
   import Awesomplete from 'awesomplete';
+  import * as urlParser from "../services/url-parser";
 
   export default {
     name: 'password-generator-view',
@@ -136,8 +137,9 @@
       this.$store
         .dispatch('getPasswords')
         .then(() => {
-          this.$store.dispatch('loadBestPasswordProfile');
-          this.$store.dispatch('getSite');
+          urlParser.getSite().then(site => {
+            this.$store.dispatch('loadPasswordProfile', {site});
+          });
           this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
         });
     },
