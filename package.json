@@ -34,7 +34,7 @@
     "lesspass": "^6.0.0",
     "lodash.debounce": "^4.0.8",
     "vue": "^2.4.4",
-    "vue-polyglot": "^0.2.1",
+    "vue-polyglot": "^0.2.2",
     "vue-router": "^2.7.0",
     "vuejs-paginate": "^1.2.0",
     "vuex": "^2.3.1",
