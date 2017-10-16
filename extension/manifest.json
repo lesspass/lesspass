@@ -18,6 +18,7 @@
   "permissions": [
     "activeTab"
   ],
+  "web_accessible_resources": ["dist/i18n/*.json"],
   "browser_action": {
     "browser_style": false,
     "default_icon": "icons/logo-32.png",
