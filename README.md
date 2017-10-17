@@ -2,6 +2,7 @@
 
 LessPass open source password manager (https://lesspass.com)
 
+[![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](#sponsors)
 
 ## How does it work?
 
@@ -77,11 +78,15 @@ EMAIL_USE_TLS=1
 | [webextension](https://github.com/lesspass/webextension) | [![Build Status](https://travis-ci.org/lesspass/webextension.svg?branch=master)](https://travis-ci.org/lesspass/webextension) |
 
 
+
 ## License
 
 This project is licensed under the terms of the GNU GPLv3.
 
 ## Contributors :heart:
+
+This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
+<a href="graphs/contributors"><img src="https://opencollective.com/lesspass/contributors.svg?width=890" /></a>
 
 Please do not contact contributors directly to report problems in LessPass.
 
@@ -111,4 +116,26 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Toastal](https://github.com/toastal)
  * [YFdyh000](https://github.com/yfdyh000)
  * [朱震庭](https://github.com/r2qokk)
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/lesspass#backer)]
+
+<a href="https://opencollective.com/lesspass#backers" target="_blank"><img src="https://opencollective.com/lesspass/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/lesspass#sponsor)]
+
+<a href="https://opencollective.com/lesspass/sponsor/0/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/1/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/2/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/3/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/4/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/5/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/6/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/7/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/8/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/lesspass/sponsor/9/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/9/avatar.svg"></a>
 
