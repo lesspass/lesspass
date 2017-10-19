@@ -39,6 +39,9 @@ export default {
     state.password.site = site;
   },
   [types.LOAD_PASSWORD_PROFILE](state, { site }) {
+    if (!site || typeof state.password.id !== "undefined") {
+      return;
+    }
     let siteMatch = false;
     const passwords = state.passwords || [];
     const siteWithoutWWW = site.replace(/^www./g, "");
@@ -54,7 +57,7 @@ export default {
       }
     }
     if (site && !siteMatch) {
-      state.password = { ...state.defaultPassword };
+      state.password = Object.assign({}, state.password, { site });
     }
   },
   [types.SET_MESSAGE](state, { message }) {

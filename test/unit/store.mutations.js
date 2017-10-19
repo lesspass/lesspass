@@ -133,15 +133,15 @@ test("SET_BASE_URL", t => {
 test("LOAD_PASSWORD_PROFILE", t => {
   const state = {
     password: {
-      login: "contact@example.org",
-      site: "lesspass.com",
+      login: "",
+      site: "",
       uppercase: true,
       lowercase: true,
       numbers: true,
       symbols: true,
-      length: 12,
+      length: 16,
       counter: 1,
-      version: 1
+      version: 2
     },
     passwords: [
       {
@@ -159,7 +159,7 @@ test("LOAD_PASSWORD_PROFILE", t => {
       {
         id: "7cbadebf-49c8-4136-a579-6ee5beb6de7c",
         login: "contact@example.org",
-        site: "example.org",
+        site: "www.example.org",
         lowercase: true,
         uppercase: false,
         symbols: false,
@@ -199,19 +199,17 @@ test("LOAD_PASSWORD_PROFILE", t => {
   t.deepEqual(state.password, state.passwords[1]);
 });
 
-test("LOAD_PASSWORD_PROFILE on different site", t => {
+test("LOAD_PASSWORD_PROFILE do nothing if id not empty", t => {
   const state = {
     password: {
-      site: "example.org",
-      login: "test@example.org"
+      id: "1",
+      site: "example.org"
     },
-    defaultPassword: {
-      login: ""
-    }
+    passwords: []
   };
   const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
   LOAD_PASSWORD_PROFILE(state, { site: "lesspass.com" });
-  t.is(state.password.login, "");
+  t.is(state.password.site, "example.org");
 });
 
 test("LOAD_PASSWORD_PROFILE with passwords", t => {
@@ -233,18 +231,17 @@ test("LOAD_PASSWORD_PROFILE with passwords", t => {
 test("LOAD_PASSWORD_PROFILE with no site keep password profile", t => {
   const state = {
     password: {
+      id: "1",
       site: "example.org",
       login: "contact@example.org",
       length: 8,
       version: 2
     },
-    defaultPassword: {
-      login: "",
-      length: 16
-    }
+    passwords: []
   };
   const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
   LOAD_PASSWORD_PROFILE(state, { site: "" });
+  t.is(state.password.id, "1");
   t.is(state.password.site, "example.org");
   t.is(state.password.login, "contact@example.org");
   t.is(state.password.length, 8);
@@ -256,14 +253,11 @@ test("LOAD_PASSWORD_PROFILE no passwords", t => {
     password: {
       site: ""
     },
-    passwords: [],
-    defaultPassword: {
-      site: ""
-    }
+    passwords: []
   };
   const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
   LOAD_PASSWORD_PROFILE(state, { site: "account.google.com" });
-  t.is(state.password.site, "");
+  t.is(state.password.site, "account.google.com");
 });
 
 test("LOAD_PASSWORD_PROFILE multiple accounts matching criteria", t => {

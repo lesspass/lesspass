@@ -47,16 +47,10 @@
 #lesspass {
   color: #464646;
   max-width: 420px;
-  border: none;
-
-  .card-header {
-    border-bottom: none;
-  }
 }
 
 .lesspass__inner-box {
   min-height: 240px;
-  border: $card-border-width solid $card-border-color;
 }
 
 @media (max-width: 419px) {
