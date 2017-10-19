@@ -42,22 +42,17 @@ export default {
     if (!site || typeof state.password.id !== "undefined") {
       return;
     }
-    let siteMatch = false;
+    state.password = Object.assign({}, state.password, { site });
     const passwords = state.passwords || [];
     const siteWithoutWWW = site.replace(/^www./g, "");
     for (let i = 0; i < passwords.length; i++) {
       const password = passwords[i];
       if (site.endsWith(password.site)) {
         state.password = { ...password };
-        siteMatch = true;
         break;
       } else if (password.site.endsWith(siteWithoutWWW)) {
         state.password = { ...password };
-        siteMatch = true;
       }
-    }
-    if (site && !siteMatch) {
-      state.password = Object.assign({}, state.password, { site });
     }
   },
   [types.SET_MESSAGE](state, { message }) {
