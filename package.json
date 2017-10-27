@@ -26,7 +26,7 @@
   "dependencies": {
     "awesomplete": "^1.1.2",
     "axios": "^0.16.2",
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap": "^4.0.0-beta.2",
     "copy-text-to-clipboard": "^1.0.2",
     "font-awesome": "^4.7.0",
     "hint.css": "^2.5.0",
