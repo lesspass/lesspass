@@ -22,7 +22,7 @@
           <div class="col-3">
             <button id="lowercase__btn"
                     type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':password.lowercase===true, 'btn-light':password.lowercase===false}"
+                    v-bind:class="{'btn-primary':password.lowercase===true, 'btn-secondary':password.lowercase===false}"
                     v-on:click="password.lowercase=!password.lowercase">
               a-z
             </button>
@@ -30,7 +30,7 @@
           <div class="col-3">
             <button id="uppercase__btn"
                     type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':password.uppercase===true, 'btn-light':password.uppercase===false}"
+                    v-bind:class="{'btn-primary':password.uppercase===true, 'btn-secondary':password.uppercase===false}"
                     v-on:click="password.uppercase=!password.uppercase">
               A-Z
             </button>
@@ -38,7 +38,7 @@
           <div class="col-3">
             <button id="numbers__btn"
                     type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':password.numbers===true,'btn-light':password.numbers===false}"
+                    v-bind:class="{'btn-primary':password.numbers===true,'btn-secondary':password.numbers===false}"
                     v-on:click="password.numbers=!password.numbers">
               0-9
             </button>
@@ -46,7 +46,7 @@
           <div class="col-3">
             <button id="symbols__btn"
                     type="button" class="btn btn-block btn-sm px-0"
-                    v-bind:class="{'btn-primary':password.symbols===true,'btn-light':password.symbols===false}"
+                    v-bind:class="{'btn-primary':password.symbols===true,'btn-secondary':password.symbols===false}"
                     v-on:click="password.symbols=!password.symbols">
               %!@
             </button>

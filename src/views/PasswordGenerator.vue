@@ -59,7 +59,7 @@
           {{ $t('Generate') }}
         </button>
         <button type="button"
-                class="btn btn-light pull-right showOptions__btn"
+                class="btn btn-secondary pull-right showOptions__btn"
                 v-show="!passwordGenerated"
                 v-on:click="showOptions =! showOptions">
           <i class="fa fa-sliders"></i>
@@ -84,7 +84,7 @@
           <span class="input-group-btn">
             <button id="revealGeneratedPassword"
                     type="button"
-                    class="btn btn-light"
+                    class="btn btn-secondary"
                     v-on:click="togglePasswordType($refs.passwordGenerated)">
               <i class="fa fa-eye"></i>
             </button>
@@ -92,14 +92,14 @@
           <span class="input-group-btn">
             <button id="sharePasswordProfileButton"
                     type="button"
-                    class="btn btn-light"
+                    class="btn btn-secondary"
                     v-on:click="sharePasswordProfile()">
               <i class="fa fa-share-alt pointer"></i>
             </button>
           </span>
           <span class="input-group-btn">
             <button type="button"
-                    class="btn btn-light showOptions__btn"
+                    class="btn btn-secondary showOptions__btn"
                     v-on:click="showOptions =! showOptions">
               <i class="fa fa-sliders"></i>
             </button>
