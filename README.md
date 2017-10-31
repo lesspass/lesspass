@@ -100,6 +100,7 @@ Please do not contact contributors directly to report problems in LessPass.
  * [Erik Mulder](https://github.com/ewjmulder)
  * [Hugo Lopez](https://github.com/hugolpz)
  * [Ilya Pirozhenko](https://github.com/sochix)
+ * [João G. Packer](https://github.com/jgpacker)
  * [Josué Cau](https://github.com/josuecau)
  * [Kcchouette](https://github.com/Kcchouette)
  * [Leo Arias](https://github.com/elopio)
