@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<script src="../dist/lesspass-render-password.min.js"></script>
+<script>
+  function displayInBody(txt) {
+    document.body.innerHTML = document.body.innerHTML + txt + '<br>';
+  }
+
+  function renderPassword() {
+    var options = {
+      length: 16,
+      lowercase: true,
+      uppercase: true,
+      digits: true,
+      symbols: true
+    };
+    var entropy = "dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e";
+    var password = renderLessPassPassword(entropy, options);
+    displayInBody("renderLessPassPassword :");
+    displayInBody("WHLpUL)e00[iHR+w");
+    displayInBody(password + " (generated)");
+  }
+
+  renderPassword();
+</script>
+</body>
+</html>
