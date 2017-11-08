@@ -1039,14 +1039,31 @@ var bigInt = (function (undefined) {
     }
     var parseBase = function (text, base) {
         var length = text.length;
+		var i;
+		var absBase = Math.abs(base);
+		for(var i = 0; i < length; i++) {
+			var c = text[i].toLowerCase();
+			if(c === "-") continue;
+			if(/[a-z0-9]/.test(c)) {
+			    if(/[0-9]/.test(c) && +c >= absBase) {
+					if(c === "1" && absBase === 1) continue;
+                    throw new Error(c + " is not a valid digit in base " + base + ".");
+				} else if(c.charCodeAt(0) - 87 >= absBase) {
+					throw new Error(c + " is not a valid digit in base " + base + ".");
+				}
+			}
+		}
         if (2 <= base && base <= 36) {
             if (length <= LOG_MAX_INT / Math.log(base)) {
+				var result = parseInt(text, base);
+				if(isNaN(result)) {
+					throw new Error(c + " is not a valid digit in base " + base + ".");
+				}
                 return new SmallInteger(parseInt(text, base));
             }
         }
         base = parseValue(base);
         var digits = [];
-        var i;
         var isNegative = text[0] === "-";
         for (i = isNegative ? 1 : 0; i < text.length; i++) {
             var c = text[i].toLowerCase(),
@@ -1127,11 +1144,13 @@ var bigInt = (function (undefined) {
         var sign = this.sign ? "-" : "";
         return sign + str;
     };
+
     SmallInteger.prototype.toString = function (radix) {
         if (radix === undefined) radix = 10;
         if (radix != 10) return toBase(this, radix);
         return String(this.value);
     };
+    BigInteger.prototype.toJSON = SmallInteger.prototype.toJSON = function() { return this.toString(); }
 
     BigInteger.prototype.valueOf = function () {
         return +this.toString();
@@ -1235,6 +1254,112 @@ if ( typeof define === "function" && define.amd ) {
 }
 
 },{}],2:[function(require,module,exports){
+var consumeEntropy = require('./entropy').consumeEntropy;
+
+var _characterSubsets = {
+  lowercase: "abcdefghijklmnopqrstuvwxyz",
+  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  digits: "0123456789",
+  symbols: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+};
+
+function getSetOfCharacters(rules) {
+  if (typeof(rules) === "undefined") {
+    return (
+      _characterSubsets.lowercase +
+      _characterSubsets.uppercase +
+      _characterSubsets.digits +
+      _characterSubsets.symbols
+    );
+  }
+  var setOfChars = "";
+  rules.forEach(function(rule) {
+    setOfChars += _characterSubsets[rule];
+  });
+  return setOfChars;
+}
+
+function getOneCharPerRule(entropy, rules) {
+  var oneCharPerRules = "";
+  rules.forEach(function(rule) {
+    var password = consumeEntropy("", entropy, _characterSubsets[rule], 1);
+    oneCharPerRules += password.value;
+    entropy = password.entropy;
+  });
+  return {value: oneCharPerRules, entropy: entropy};
+}
+
+function getRules(options) {
+  return ["lowercase", "uppercase", "digits", "symbols"].filter(function(rule) {
+    return options[rule];
+  });
+}
+
+function insertStringPseudoRandomly(generatedPassword, entropy, string) {
+  for (var i = 0; i < string.length; i++) {
+    var longDivision = entropy.divmod(generatedPassword.length);
+    generatedPassword =
+      generatedPassword.slice(0, longDivision.remainder) +
+      string[i] +
+      generatedPassword.slice(longDivision.remainder);
+    entropy = longDivision.quotient;
+  }
+  return generatedPassword;
+}
+
+module.exports = {
+  getSetOfCharacters: getSetOfCharacters,
+  getOneCharPerRule: getOneCharPerRule,
+  insertStringPseudoRandomly: insertStringPseudoRandomly,
+  getRules: getRules,
+  characterSubsets: _characterSubsets
+};
+
+},{"./entropy":3}],3:[function(require,module,exports){
+function _consumeEntropy(generatedPassword,
+                         quotient,
+                         setOfCharacters,
+                         maxLength) {
+  if (generatedPassword.length >= maxLength) {
+    return {value: generatedPassword, entropy: quotient};
+  }
+  var longDivision = quotient.divmod(setOfCharacters.length);
+  generatedPassword += setOfCharacters[longDivision.remainder];
+  return _consumeEntropy(
+    generatedPassword,
+    longDivision.quotient,
+    setOfCharacters,
+    maxLength
+  );
+}
+
+module.exports = {
+  consumeEntropy: _consumeEntropy
+};
+
+},{}],4:[function(require,module,exports){
+var bigInt = require("big-integer");
+var chars = require("./chars");
+var consumeEntropy = require("./entropy").consumeEntropy;
+
+module.exports = function renderPassword(entropy, options) {
+  var rules = chars.getRules(options);
+  var setOfCharacters = chars.getSetOfCharacters(rules);
+  var password = consumeEntropy(
+    "",
+    bigInt(entropy, 16),
+    setOfCharacters,
+    options.length - rules.length
+  );
+  var charactersToAdd = chars.getOneCharPerRule(password.entropy, rules);
+  return chars.insertStringPseudoRandomly(
+    password.value,
+    charactersToAdd.entropy,
+    charactersToAdd.value
+  );
+};
+
+},{"./chars":2,"./entropy":3,"big-integer":1}],5:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -3445,7 +3570,7 @@ function stubFalse() {
 module.exports = merge;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],3:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function () {
 'use strict';
 
@@ -3551,7 +3676,7 @@ window.Unibabel = {
 
 }());
 
-},{}],4:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function () {
 'use strict';
 
@@ -3599,7 +3724,7 @@ window.Unibabel.bufferToHex = bufferToHex;
 
 }());
 
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require("unibabel");
 require("unibabel/unibabel.hex");
 
@@ -3632,11 +3757,11 @@ module.exports = function(digest, string, salt) {
     });
 };
 
-},{"unibabel":3,"unibabel/unibabel.hex":4}],6:[function(require,module,exports){
+},{"unibabel":6,"unibabel/unibabel.hex":7}],9:[function(require,module,exports){
 var hmac = require("./hmac");
 var pbkdf2 = require("./pbkdf2");
-var bigInt = require("big-integer");
 var merge = require("lodash.merge");
+var renderPassword = require("lesspass-render-password");
 
 var defaultProfile = {
   site: '',
@@ -3661,18 +3786,12 @@ module.exports = {
   generatePassword: generatePassword,
   createFingerprint: createFingerprint,
   isSupported: isSupported,
-  _calcEntropy: calcEntropy,
-  _consumeEntropy: consumeEntropy,
-  _getSetOfCharacters: getSetOfCharacters,
-  _getConfiguredRules: getConfiguredRules,
-  _insertStringPseudoRandomly: insertStringPseudoRandomly,
-  _getOneCharPerRule: getOneCharPerRule,
-  _renderPassword: renderPassword
+  _calcEntropy: _calcEntropy
 };
 
 function generatePassword(profile, masterPassword) {
   var _profile = merge({}, defaultProfile, profile);
-  return calcEntropy(_profile, masterPassword)
+  return _calcEntropy(_profile, masterPassword)
     .then(function(entropy) {
       return renderPassword(entropy, _profile.options);
     });
@@ -3687,7 +3806,7 @@ function isSupported() {
     var simpleProfile = merge({}, defaultProfile, {crypto: {iterations: 1}});
     return generatePassword(simpleProfile, 'LessPass')
       .then(function(generatedPassword) {
-        return generatedPassword == "n'LTsjPA#3E$e*2'";
+        return generatedPassword === "n'LTsjPA#3E$e*2'";
       });
   } catch (e) {
     console.error(e);
@@ -3695,7 +3814,7 @@ function isSupported() {
   }
 }
 
-function calcEntropy(profile, masterPassword) {
+function _calcEntropy(profile, masterPassword) {
   var salt = profile.site + profile.login + profile.options.counter.toString(16);
   return pbkdf2(
     masterPassword,
@@ -3706,92 +3825,7 @@ function calcEntropy(profile, masterPassword) {
   );
 }
 
-var characterSubsets = {
-  lowercase: "abcdefghijklmnopqrstuvwxyz",
-  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  digits: "0123456789",
-  symbols: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-};
-
-function getSetOfCharacters(rules) {
-  if (typeof rules === "undefined") {
-    return (
-      characterSubsets.lowercase +
-      characterSubsets.uppercase +
-      characterSubsets.digits +
-      characterSubsets.symbols
-    );
-  }
-  var setOfChars = "";
-  rules.forEach(function(rule) {
-    setOfChars += characterSubsets[rule];
-  });
-  return setOfChars;
-}
-
-function consumeEntropy(generatedPassword,
-                        quotient,
-                        setOfCharacters,
-                        maxLength) {
-  if (generatedPassword.length >= maxLength) {
-    return {value: generatedPassword, entropy: quotient};
-  }
-  var longDivision = quotient.divmod(setOfCharacters.length);
-  generatedPassword += setOfCharacters[longDivision.remainder];
-  return consumeEntropy(
-    generatedPassword,
-    longDivision.quotient,
-    setOfCharacters,
-    maxLength
-  );
-}
-
-function insertStringPseudoRandomly(generatedPassword, entropy, string) {
-  for (var i = 0; i < string.length; i++) {
-    var longDivision = entropy.divmod(generatedPassword.length);
-    generatedPassword =
-      generatedPassword.slice(0, longDivision.remainder) +
-      string[i] +
-      generatedPassword.slice(longDivision.remainder);
-    entropy = longDivision.quotient;
-  }
-  return generatedPassword;
-}
-
-function getOneCharPerRule(entropy, rules) {
-  var oneCharPerRules = "";
-  rules.forEach(function(rule) {
-    var password = consumeEntropy("", entropy, characterSubsets[rule], 1);
-    oneCharPerRules += password.value;
-    entropy = password.entropy;
-  });
-  return {value: oneCharPerRules, entropy: entropy};
-}
-
-function getConfiguredRules(passwordProfile) {
-  return ["lowercase", "uppercase", "digits", "symbols"].filter(function(rule) {
-    return passwordProfile[rule];
-  });
-}
-
-function renderPassword(entropy, passwordProfile) {
-  var rules = getConfiguredRules(passwordProfile);
-  var setOfCharacters = getSetOfCharacters(rules);
-  var password = consumeEntropy(
-    "",
-    bigInt(entropy, 16),
-    setOfCharacters,
-    passwordProfile.length - rules.length
-  );
-  var charactersToAdd = getOneCharPerRule(password.entropy, rules);
-  return insertStringPseudoRandomly(
-    password.value,
-    charactersToAdd.entropy,
-    charactersToAdd.value
-  );
-}
-
-},{"./hmac":5,"./pbkdf2":7,"big-integer":1,"lodash.merge":2}],7:[function(require,module,exports){
+},{"./hmac":8,"./pbkdf2":10,"lesspass-render-password":4,"lodash.merge":5}],10:[function(require,module,exports){
 require("unibabel");
 require("unibabel/unibabel.hex");
 
@@ -3835,5 +3869,5 @@ module.exports = function(password, salt, iterations, keylen, digest) {
     });
 };
 
-},{"unibabel":3,"unibabel/unibabel.hex":4}]},{},[6])(6)
+},{"unibabel":6,"unibabel/unibabel.hex":7}]},{},[9])(9)
 });
