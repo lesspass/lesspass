@@ -27,5 +27,3 @@ npm run build
 
 git push --tags origin master
 cd ..
-
-bash ./scripts/zip-src-for-webextension.sh
