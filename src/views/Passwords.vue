@@ -1,6 +1,6 @@
 <style>
   #passwords__list {
-    min-height: 200px;
+    min-height: 216px;
   }
 
   #passwords__pagination .pagination {
@@ -54,6 +54,8 @@
     <div id="passwords__pagination" v-if="pagination.pageCount > 1">
       <paginate
         :page-count="pagination.pageCount"
+        :page-range="1"
+        :margin-pages="1"
         :click-handler="setCurrentPage"
         :containerClass="'pagination pagination-sm'"
         :page-class="'page-item'"
