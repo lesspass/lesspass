@@ -12,8 +12,14 @@
   }
 </style>
 <template>
-  <div v-bind:style="avatarStyle" class="passwordProfile__avatar">
+  <div v-bind:style="avatarStyle"
+       class="passwordProfile__avatar">
+    <span v-if="selected">
+      <i class="fa fa-check"></i>
+    </span>
+    <span v-else>
       {{firstLetter}}
+    </span>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -23,9 +29,12 @@
       name: {
         type: String,
         required: true
+      },
+      selected: {
+        type: Boolean
       }
     },
-    data(){
+    data() {
       return {
         alphabetColors: {
           a: "#5A8770",
@@ -58,7 +67,7 @@
         firstLetter: ''
       }
     },
-    mounted(){
+    mounted() {
       this.firstLetter = this.$props.name.charAt(0);
     },
     computed: {
