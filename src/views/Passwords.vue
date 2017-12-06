@@ -1,7 +1,6 @@
 <style>
   #passwords__list {
-    min-height: 235px;
-    padding-bottom: 1em;
+    min-height: 200px;
   }
 
   #passwords__pagination .pagination {

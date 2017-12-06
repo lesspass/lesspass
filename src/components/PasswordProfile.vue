@@ -2,100 +2,51 @@
   .passwordProfile {
     display: flex;
     cursor: pointer;
+    margin-bottom: 1em;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .passwordProfile__site {
-    font-weight: 600;
-  }
-
-  .passwordProfile__site, .passwordProfile__login {
-    font-size: 0.8rem;
-    line-height: 0.8rem;
+  .passwordProfile__info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
   }
 
   .passwordProfile__meta {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    flex-grow: 2;
+    font-size: 0.8em;
+    line-height: 1.2em;
+    flex-grow: 1;
   }
 
-  .passwordProfile__actions {
-    line-height: 38px;
+  .passwordProfile__delete-icon {
+    margin: 0 1em;
   }
-
-  .tooltip--undo {
-    position: absolute;
-    top: 49px;
-    left: 0;
-    right: 0;
-    z-index: 20;
-  }
-
-  .tooltip__btn--undo{
-    cursor: pointer;
-  }
-
-  .passwordProfile {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  }
-
-  .tooltip-fade-enter-active {
-    transition: opacity 1s
-  }
-
-  .tooltip-fade-leave-active {
-    transition: opacity 0s
-  }
-
-  .tooltip-fade-enter, .tooltip-fade-leave-to {
-    opacity: 0
-  }
-
 </style>
 <template>
-  <div>
-    <transition name="fade">
-      <div class="passwordProfile" v-if="!undo">
-        <avatar v-bind:name="password.site"></avatar>
-        <div class="passwordProfile__meta" v-on:click="setPassword">
-          <div class="passwordProfile__site">
-            {{password.site}}
-          </div>
-          <div class="passwordProfile__login">
-            {{password.login}}
-          </div>
-        </div>
-        <div class="passwordProfile__actions">
-          <button type="button" class="btn btn-outline-danger btn-sm"
-                  v-on:click="deletePassword()">
-            <i class="fa fa-trash fa-fw"></i>
-          </button>
-        </div>
+  <div class="passwordProfile">
+    <div class="passwordProfile__info">
+      <avatar v-bind:name="password.site"
+              v-bind:selected="selected"
+              v-on:click.native="selected=!selected"></avatar>
+      <div class="passwordProfile__meta" v-on:click="setPassword()">
+        <b>{{password.site}}</b>
+        <br>
+        {{password.login}}
       </div>
-    </transition>
-    <transition name="tooltip-fade">
-      <div class="tooltip--undo card-inverse p-2" v-if="undo">
-        <div class="row">
-          <div class="col">
-            <span class="text-white">{{ $t('Password profile deleted') }}</span>
-            <span
-              class="pull-right text-warning btn-link tooltip__btn--undo"
-              v-on:click="cancelDeletion()">{{ $t('UNDO') }}</span>
-          </div>
-        </div>
-      </div>
-    </transition>
+    </div>
+    <div class="passwordProfile__actions">
+      <i class="passwordProfile__delete-icon fa fa-trash fa-fw text-danger"
+         v-if="selected"
+         v-on:click="deletePassword()"></i>
+    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import Avatar from './Avatar.vue';
-  import message from '../services/message';
 
   export default {
-    name: 'password',
+    name: 'passwordProfile',
     props: {
       password: {
         type: Object,
@@ -105,28 +56,18 @@
     components: {
       Avatar
     },
-    data(){
+    data() {
       return {
-        undo: false,
-        undoTimeout: null,
-        deleted: true
+        selected: false
       }
     },
     methods: {
-      deletePassword(){
-        this.undo = true;
-        this.undoTimeout = setTimeout(() => {
-          this.$emit('deleted');
-          this.$store.dispatch('deletePassword', {id: this.password.id});
-        }, 10000)
+      deletePassword() {
+        this.$store.dispatch('deletePassword', {id: this.password.id});
       },
-      setPassword(){
+      setPassword() {
         this.$store.dispatch('savePassword', {password: this.password});
         this.$router.push({name: 'home'});
-      },
-      cancelDeletion(){
-        clearTimeout(this.undoTimeout);
-        this.undo = false;
       }
     }
   }
