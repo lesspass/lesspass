@@ -22,7 +22,6 @@
   "Next": "下一步",
   "NoMatchFor": "没有找到符合下列条件的内容：",
   "NoPassword": "您的数据库里没有保存任何密码配置。",
-  "Password profile deleted": "密码配置文件被删",
   "PasswordProfileCopied": "已复制您的密码配置。",
   "PasswordResetRequired": "请输入登录密码",
   "PasswordResetSuccessful": "已成功重置您的登录密码。",
