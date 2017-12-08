@@ -2,7 +2,7 @@
   .passwordProfile {
     display: flex;
     cursor: pointer;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     justify-content: space-between;
     align-items: center;
   }
@@ -14,8 +14,8 @@
   }
 
   .passwordProfile__meta {
-    font-size: 0.8em;
-    line-height: 1.2em;
+    font-size: 0.8rem;
+    line-height: 1rem;
     flex-grow: 1;
   }
 

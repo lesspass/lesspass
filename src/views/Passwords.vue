@@ -1,6 +1,6 @@
 <style>
   #passwords__list {
-    min-height: 216px;
+    min-height: 11rem;
   }
 
   #passwords__pagination .pagination {
@@ -9,10 +9,6 @@
 
   #passwords__pagination .page-link {
     cursor: pointer;
-  }
-
-  .passwords__profile:last-child .passwordProfile{
-    border-bottom: none;
   }
 </style>
 <template>
@@ -45,7 +41,6 @@
         </div>
       </div>
       <password-profile
-        class="passwords__profile"
         v-bind:password="password"
         v-on:deleted="pagination.currentPage=1"
         v-for="password in filteredPasswords"
@@ -77,7 +72,7 @@
 
   export default {
     name: 'passwords-view',
-    data(){
+    data() {
       return {
         searchQuery: '',
         pagination: {
@@ -93,7 +88,7 @@
     },
     computed: {
       ...mapState(['passwords']),
-      filteredPasswords(){
+      filteredPasswords() {
         const passwords = this.passwords.filter(password => {
           var loginMatch = password.login.match(new RegExp(this.searchQuery, 'i'));
           var siteMatch = password.site.match(new RegExp(this.searchQuery, 'i'));
@@ -107,7 +102,7 @@
       }
     },
     methods: {
-      setCurrentPage(page){
+      setCurrentPage(page) {
         this.pagination.currentPage = page;
       }
     }
