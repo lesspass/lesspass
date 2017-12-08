@@ -1,10 +1,10 @@
 <style>
   .passwordProfile__avatar {
     display: inline-block;
-    width: 38px;
-    height: 38px;
+    width: 2rem;
+    height: 2rem;
     text-align: center;
-    line-height: 38px;
+    line-height: 2rem;
     margin-right: 1em;
     text-transform: uppercase;
     color: white;
