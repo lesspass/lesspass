@@ -14,8 +14,8 @@ module.exports = {
       .click("#signInButton")
       .waitForElementVisible(".fa-key")
       .click(".fa-key")
-      .waitForElementVisible(".passwordProfile__site")
-      .click(".passwordProfile__site")
+      .waitForElementVisible(".passwordProfile__meta")
+      .click(".passwordProfile__meta")
       .waitForElementVisible("#site")
       .assert.value("#site", "example.org")
       .assert.value("#login", "contact@example.org");
