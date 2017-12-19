@@ -24,7 +24,7 @@
   "browser_action": {
     "browser_style": false,
     "default_icon": "icons/logo-32.png",
-    "default_title": "LessPass",
+    "default_title": "LessPass (Ctrl+Shift+L)",
     "default_popup": "popup.html"
   },
   "applications": {
