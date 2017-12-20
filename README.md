@@ -86,7 +86,7 @@ This project is licensed under the terms of the GNU GPLv3.
 ## Contributors :heart:
 
 This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
-<a href="graphs/contributors"><img src="https://opencollective.com/lesspass/contributors.svg?width=890" /></a>
+<a href="https://github.com/lesspass/lesspass/graphs/contributors"><img src="https://opencollective.com/lesspass/contributors.svg?width=890" /></a>
 
 Please do not contact contributors directly to report problems in LessPass.
 
@@ -139,4 +139,3 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/lesspass/sponsor/7/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/7/avatar.svg"></a>
 <a href="https://opencollective.com/lesspass/sponsor/8/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/lesspass/sponsor/9/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/9/avatar.svg"></a>
-
