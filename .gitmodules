@@ -37,3 +37,6 @@
 [submodule "openssl"]
 	path = openssl
 	url = git@github.com:lesspass/openssl.git
+[submodule "render-password"]
+	path = render-password
+	url = git@github.com:lesspass/render-password.git

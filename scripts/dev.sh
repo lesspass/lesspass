@@ -12,7 +12,7 @@ function dev {
     echo
 }
 
-submodules="backend cli cordova core cozy desktop frontend move nginx pure snap webextension"
+submodules="backend cli cordova core cozy desktop frontend move nginx openssl pure render-password snap webextension"
 #submodules="cli cordova core cozy desktop frontend move pure webextension"
 for submodule in ${submodules}
 do
