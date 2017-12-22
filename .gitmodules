@@ -40,3 +40,12 @@
 [submodule "render-password"]
 	path = render-password
 	url = git@github.com:lesspass/render-password.git
+[submodule "mobile"]
+	path = mobile
+	url = git@github.com:lesspass/mobile.git
+[submodule "core-android"]
+	path = core-android
+	url = git@github.com:lesspass/core-android.git
+[submodule "core-ios"]
+	path = core-ios
+	url = git@github.com:lesspass/core-ios.git
