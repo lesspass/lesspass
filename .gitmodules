@@ -43,9 +43,9 @@
 [submodule "mobile"]
 	path = mobile
 	url = git@github.com:lesspass/mobile.git
-[submodule "core-android"]
-	path = core-android
-	url = git@github.com:lesspass/core-android.git
+[submodule "entropy-java"]
+	path = entropy-java
+	url = git@github.com:lesspass/entropy-java.git
 [submodule "core-ios"]
 	path = core-ios
 	url = git@github.com:lesspass/core-ios.git
