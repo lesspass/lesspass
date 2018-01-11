@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-const clipboardy = require('clipboardy');
-const meow = require('meow');
-const LessPass = require('lesspass');
-const read = require('read');
-const chalk = require('chalk');
+"use strict";
+const clipboardy = require("clipboardy");
+const meow = require("meow");
+const LessPass = require("lesspass");
+const read = require("read");
+const chalk = require("chalk");
 
 const helpMessage = `
     Usage
@@ -41,55 +41,56 @@ const helpMessage = `
         master password:
         75837019`;
 
-const cli = meow(helpMessage,{
-    flags: {
-        site: {type: 'string'},
-        login: {type: 'string'},
-        length: {
-            type: 'string',
-            alias: 'L'
-        },
-        counter: {
-            type: 'string',
-            alias: 'c'
-        },
-        clipboard: {
-            type: 'boolean',
-            alias: 'C'
-        },
-        l: {type: 'boolean'},
-        u: {type: 'boolean'},
-        d: {type: 'boolean'},
-        s: {type: 'boolean'},
-    }
-    });
-
+const cli = meow(helpMessage, {
+  flags: {
+    site: { type: "string" },
+    login: { type: "string" },
+    length: {
+      type: "string",
+      alias: "L"
+    },
+    counter: {
+      type: "string",
+      alias: "c"
+    },
+    clipboard: {
+      type: "boolean",
+      alias: "C"
+    },
+    l: { type: "boolean" },
+    u: { type: "boolean" },
+    d: { type: "boolean" },
+    s: { type: "boolean" }
+  }
+});
 
 function calcPassword(site, login, masterPassword, passwordProfile) {
-  LessPass.generatePassword(site, login, masterPassword, passwordProfile)
-    .then(function(generatedPassword) {
+  LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(
+    function(generatedPassword) {
       if (passwordProfile.clipboard) {
-        clipboardy.write(generatedPassword)
+        clipboardy
+          .write(generatedPassword)
           .then(() => {
-            console.log('Copied to clipboard');
+            console.log("Copied to clipboard");
             process.exit();
-          }).catch(err => {
-          console.error(chalk.red('Copy failed.'));
-          console.error(err.message);
-          process.exit(1);
-        });
+          })
+          .catch(err => {
+            console.error(chalk.red("Copy failed."));
+            console.error(err.message);
+            process.exit(1);
+          });
       } else {
         console.log(generatedPassword);
         process.exit();
       }
-    });
+    }
+  );
 }
 
-
 function hasNoShortOption(options) {
-  return !(['l', 'u', 'd', 's'].some(function(shortOption) {
-    return typeof options[shortOption] !== 'undefined' && options[shortOption];
-  }));
+  return !["l", "u", "d", "s"].some(function(shortOption) {
+    return typeof options[shortOption] !== "undefined" && options[shortOption];
+  });
 }
 
 function getOptionBoolean(options, optionString) {
@@ -97,16 +98,16 @@ function getOptionBoolean(options, optionString) {
   if (options[shortOption]) {
     return true;
   }
-  if (typeof options[optionString] === 'undefined') {
+  if (typeof options[optionString] === "undefined") {
     return hasNoShortOption(options);
   }
-  return options[optionString]
+  return options[optionString];
 }
 
-const lowercase = getOptionBoolean(cli.flags, 'lowercase');
-const uppercase = getOptionBoolean(cli.flags, 'uppercase');
-const symbols = getOptionBoolean(cli.flags, 'symbols');
-const digits = getOptionBoolean(cli.flags, 'digits');
+const lowercase = getOptionBoolean(cli.flags, "lowercase");
+const uppercase = getOptionBoolean(cli.flags, "uppercase");
+const symbols = getOptionBoolean(cli.flags, "symbols");
+const digits = getOptionBoolean(cli.flags, "digits");
 
 const passwordProfile = {
   lowercase: lowercase,
@@ -121,25 +122,24 @@ const passwordProfile = {
 const site = cli.input[0];
 let login = cli.input[1];
 
-if (typeof login === 'undefined') {
-  login = ''
+if (typeof login === "undefined") {
+  login = "";
 }
 
-if (typeof  site === 'undefined') {
-  console.log(chalk.red('site cannot be empty'));
-  console.log('type lesspass --help');
+if (typeof site === "undefined") {
+  console.log(chalk.red("site cannot be empty"));
+  console.log("type lesspass --help");
   process.exit(-1);
 }
 
-
 if (cli.input.length === 3) {
   const masterPassword = cli.input[2];
-  calcPassword(site, login, masterPassword, passwordProfile)
+  calcPassword(site, login, masterPassword, passwordProfile);
 } else {
-  read({prompt: 'master password: ', silent: true}, function(er, password) {
-    if (er && er.message === 'canceled') {
+  read({ prompt: "master password: ", silent: true }, function(er, password) {
+    if (er && er.message === "canceled") {
       process.exit();
     }
-    calcPassword(site, login, password, passwordProfile)
+    calcPassword(site, login, password, passwordProfile);
   });
 }
