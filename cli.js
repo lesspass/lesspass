@@ -41,10 +41,28 @@ const helpMessage = `
         master password:
         75837019`;
 
-const cli = meow(helpMessage, {
-  alias: {L: 'length', c: 'counter', C: 'clipboard'},
-  boolean: ['l', 'u', 'd', 's', 'C', 'clipboard']
-});
+const cli = meow(helpMessage,{
+    flags: {
+        site: {type: 'string'},
+        login: {type: 'string'},
+        length: {
+            type: 'string',
+            alias: 'L'
+        },
+        counter: {
+            type: 'string',
+            alias: 'c'
+        },
+        clipboard: {
+            type: 'boolean',
+            alias: 'C'
+        },
+        l: {type: 'boolean'},
+        u: {type: 'boolean'},
+        d: {type: 'boolean'},
+        s: {type: 'boolean'},
+    }
+    });
 
 
 function calcPassword(site, login, masterPassword, passwordProfile) {

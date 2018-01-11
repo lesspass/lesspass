@@ -141,3 +141,16 @@ test('doc 3 options before and after', async t => {
   const {stdout} = await execa('./cli.js', ['-d', 'lesspass.com', 'contact@lesspass.com', 'password', '-L8']);
   t.is(stdout, '75837019');
 });
+
+test('nrt numbers should be considered as string not integers', async t => {
+  const p = execa('./cli.js', ['example.org', '123', 'password']);
+  const p2 = execa('./cli.js', ['example.org', '0123', 'password']);
+  const p3 = execa('./cli.js', ['example.org', '"0123"', 'password']);
+  const p4 = execa('./cli.js', ['example.org', '00123', 'password']);
+  return Promise.all([p,p2,p3,p4]).then(v => {
+    t.is(v[0].stdout, 'sMb8}N&`J4wkF9q~')
+    t.is(v[1].stdout, '5,4SqhB2[=/h\\DZh')
+    t.is(v[2].stdout, 'u0Fz)EOJ4i\\{{;a~')
+    t.is(v[3].stdout, '=}|O7hN0ZHdjQ{">')
+  })
+});
