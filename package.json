@@ -15,13 +15,13 @@
     "start": "electron ."
   },
   "dependencies": {
-    "electron": "^1.7.5",
+    "electron": "^1.7.11",
     "lesspass-pure": "^5.0.8"
   },
   "devDependencies": {
-    "electron-packager": "^8.6.0",
+    "electron-packager": "^10.1.1",
     "gulp": "^3.9.1",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.2"
   },
   "private": true,
   "productName": "LessPass"
