@@ -18,18 +18,12 @@
     line-height: 1rem;
     flex-grow: 1;
   }
-
-  .passwordProfile__delete-icon {
-    margin: 0 1em;
-  }
 </style>
 <template>
   <div class="passwordProfile">
-    <div class="passwordProfile__info">
-      <avatar v-bind:name="password.site"
-              v-bind:selected="selected"
-              v-on:click.native="selected=!selected"></avatar>
-      <div class="passwordProfile__meta" v-on:click="setPassword()">
+    <div class="passwordProfile__info" v-on:click="setPassword()">
+      <avatar v-bind:name="password.site"></avatar>
+      <div class="passwordProfile__meta">
         <b>{{password.site}}</b>
         <br>
         {{password.login}}
@@ -37,7 +31,6 @@
     </div>
     <div class="passwordProfile__actions">
       <i class="passwordProfile__delete-icon fa fa-trash fa-fw text-danger"
-         v-if="selected"
          v-on:click="deletePassword()"></i>
     </div>
   </div>
@@ -55,11 +48,6 @@
     },
     components: {
       Avatar
-    },
-    data() {
-      return {
-        selected: false
-      }
     },
     methods: {
       deletePassword() {
