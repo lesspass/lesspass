@@ -14,12 +14,7 @@
 <template>
   <div v-bind:style="avatarStyle"
        class="passwordProfile__avatar">
-    <span v-if="selected">
-      <i class="fa fa-check"></i>
-    </span>
-    <span v-else>
       {{firstLetter}}
-    </span>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -29,9 +24,6 @@
       name: {
         type: String,
         required: true
-      },
-      selected: {
-        type: Boolean
       }
     },
     data() {
@@ -73,7 +65,7 @@
     computed: {
       avatarStyle: function() {
         return {
-          backgroundColor: this.$props.selected ? '#333333' : this.alphabetColors[this.firstLetter] || '#5A8770'
+          backgroundColor: this.alphabetColors[this.firstLetter] || '#5A8770'
         }
       }
     }
