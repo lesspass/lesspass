@@ -3,7 +3,7 @@
 const clipboardy = require("clipboardy");
 const meow = require("meow");
 const LessPass = require("lesspass");
-const prompt = require('prompt');
+const read = require("read");
 const chalk = require("chalk");
 
 const helpMessage = `
@@ -82,7 +82,6 @@ function calcPassword(site, login, masterPassword, passwordProfile) {
       } else {
         console.log(generatedPassword);
         process.exit();
-        prompt.stop();
       }
     }
   );
@@ -137,14 +136,10 @@ if (cli.input.length === 3) {
   const masterPassword = cli.input[2];
   calcPassword(site, login, masterPassword, passwordProfile);
 } else {
-  prompt.start();
-  prompt.message = "";
-  prompt.delimiter = "";
-  prompt.colors = false;
-  prompt.get({description: 'master password: ', name: 'masterPassword', hidden: true}, function (err, result) {
-    if(err){
+  read({ prompt: "master password: ", silent: true }, function(er, password) {
+    if (er && er.message === "canceled") {
       process.exit();
     }
-    calcPassword(site, login, result.masterPassword, passwordProfile);
+    calcPassword(site, login, password, passwordProfile);
   });
 }

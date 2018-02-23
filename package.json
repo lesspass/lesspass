@@ -23,11 +23,11 @@
     "test": "ava"
   },
   "dependencies": {
-    "chalk": "^2.3.1",
-    "clipboardy": "^1.2.3",
+    "chalk": "2.3.1",
+    "clipboardy": "1.2.3",
     "lesspass": "6.0.0",
-    "meow": "^4.0.0",
-    "prompt": "^1.0.0"
+    "meow": "4.0.0",
+    "read": "1.0.7"
   },
   "devDependencies": {
     "ava": "^0.25.0",
