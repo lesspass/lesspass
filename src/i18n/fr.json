@@ -5,7 +5,7 @@
   "CounterFieldHelp": "Augmenter cette valeur pour changer de mot de passe sans changer de mot de passe fort.",
   "CreatePassword": "Voulez-vous en créer un ?",
   "DBNotRunning": "Votre base de données LessPass n'est pas démarrée.",
-  "DefaultOptionLocalStorage": "Pour sauvegarder les options par défaut, nous utilisons le stockage du navigateur. Chaque fois que vous ouvrez l'application, ces options sont chargées par defaut.",
+  "DefaultOptionLocalStorage": "Pour enregistrer les options par défaut, nous utilisons le stockage du navigateur. Chaque fois que vous ouvrez l'application, ces options sont chargées par defaut.",
   "Email": "Email",
   "EmailAlreadyExist": "Cet email est déjà enregistré. Vous voulez peut-être vous connecter ?",
   "EmailInvalid": "Entrez un email valide",
