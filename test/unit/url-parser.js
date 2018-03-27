@@ -1,7 +1,7 @@
 import test from "ava";
 import * as urlParser from "../../src/services/url-parser";
 
-test("getDomainName", t => {
+test("cleanUrl", t => {
   t.is("lesspass.com", urlParser.cleanUrl("https://lesspass.com/#!/"));
   t.is("lesspass.com", urlParser.cleanUrl("https://lesspass.com/api/"));
   t.is("api.lesspass.com", urlParser.cleanUrl("https://api.lesspass.com/"));
@@ -31,6 +31,30 @@ test("getDomainName", t => {
   t.is("", urlParser.cleanUrl(undefined));
   t.is("", urlParser.cleanUrl(undefined));
   t.is("", urlParser.cleanUrl("chrome://extensions/"));
+});
+
+test("getSuggestions", t => {
+  t.deepEqual(
+    ["bbc", "bbc.com", "www.bbc.com"],
+    urlParser.getSuggestions("https://www.bbc.com")
+  );
+  t.deepEqual(
+    ["example", "example.org", "www.example.org"],
+    urlParser.getSuggestions("https://www.example.org/api/?offset=100&limit=10")
+  );
+  t.deepEqual(
+    ["example", "example.org"],
+    urlParser.getSuggestions("https://example.org")
+  );
+  t.deepEqual(
+    ["example", "example.org"],
+    urlParser.getSuggestions("example.org")
+  );
+  t.deepEqual(
+    [],
+    urlParser.getSuggestions("https://192.168.1.1:10443/webapp/")
+  );
+  t.deepEqual([], urlParser.getSuggestions("example"));
 });
 
 test("getSite", t => {

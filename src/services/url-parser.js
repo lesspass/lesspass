@@ -8,6 +8,31 @@ export function cleanUrl(url) {
   return matchesDomainName && matchesDomainName[1] ? matchesDomainName[1] : "";
 }
 
+function isAnIpAddressWithPort(address) {
+  return /^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d{1,5})$/.test(address);
+}
+
+export function getSuggestions(url) {
+  const cleanedUrl = cleanUrl(url) || url;
+  const urlElements = cleanedUrl.split(".");
+  if (isAnIpAddressWithPort(cleanedUrl) || urlElements.length < 2) {
+    return [];
+  }
+  const baseName = urlElements[urlElements.length - 2];
+  const tld = urlElements[urlElements.length - 1];
+  return urlElements.reduceRight(
+    (accumulator, currentValue) => {
+      const index = urlElements.indexOf(currentValue);
+      if (index >= 0 && index < urlElements.length - 2) {
+        const lastValue = accumulator[accumulator.length - 1];
+        accumulator.push(currentValue + "." + lastValue);
+      }
+      return accumulator;
+    },
+    [baseName, `${baseName}.${tld}`]
+  );
+}
+
 export function getSite() {
   return new Promise(resolve => {
     if (
