@@ -21,8 +21,8 @@ export const loadPasswordProfile = ({ commit }, { site }) => {
 };
 
 export const getPasswordFromUrlQuery = ({ commit }, { query }) => {
-  if (Object.keys(query).length >= 9) {
-    const password = urlParser.getPasswordFromUrlQuery(query);
+  const password = urlParser.getPasswordFromUrlQuery(query);
+  if (Object.keys(password).length === 9) {
     commit(types.SET_PASSWORD, { password });
   }
 };

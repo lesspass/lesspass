@@ -96,6 +96,25 @@ test("getPasswordFromUrlQuery", t => {
   t.deepEqual(urlParser.getPasswordFromUrlQuery(query), expectedPassword);
 });
 
+test("getPasswordFromUrlQuery with base 64 encoded password profile", t => {
+  const query = {
+    passwordProfileEncoded:
+      "eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9"
+  };
+  const expectedPassword = {
+    login: "test@example.org",
+    site: "example.org",
+    uppercase: true,
+    lowercase: true,
+    numbers: true,
+    symbols: false,
+    length: 16,
+    counter: 1,
+    version: 2
+  };
+  t.deepEqual(urlParser.getPasswordFromUrlQuery(query), expectedPassword);
+});
+
 test("getPasswordFromUrlQuery booleanish", t => {
   const query = {
     uppercase: "true",
