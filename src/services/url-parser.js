@@ -1,5 +1,7 @@
 "use strict";
 
+import atob from "@oslab/atob";
+
 export function cleanUrl(url) {
   if (!url) {
     return "";
@@ -49,7 +51,7 @@ export function getSite() {
   });
 }
 
-export function getPasswordFromUrlQuery(query) {
+function passwordProfileFromRawQuery(query) {
   const password = {};
   ["uppercase", "lowercase", "numbers", "symbols"].forEach(booleanishQuery => {
     if (booleanishQuery in query) {
@@ -69,4 +71,17 @@ export function getPasswordFromUrlQuery(query) {
     }
   });
   return password;
+}
+
+function decodeBase64PasswordProfile(b64) {
+  return JSON.parse(atob(b64));
+}
+
+export function getPasswordFromUrlQuery(queryParameters) {
+  if ("passwordProfileEncoded" in queryParameters) {
+    return decodeBase64PasswordProfile(
+      queryParameters["passwordProfileEncoded"]
+    );
+  }
+  return passwordProfileFromRawQuery(queryParameters);
 }

@@ -19,7 +19,21 @@ test("passwordURL", t => {
 
   t.is(
     getters.passwordURL(state),
-    "https://lesspass.com/#/?login=test@example.org&site=example.org&uppercase=true&lowercase=true&numbers=true&symbols=false&length=16&counter=1&version=2"
+    "https://lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9"
+  );
+});
+
+test("passwordURL encode uri component", t => {
+  const state = {
+    password: {
+      login: "contact@lesspass.com"
+    },
+    baseURL: "https://lesspass.com"
+  };
+
+  t.is(
+    getters.passwordURL(state),
+    "https://lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6ImNvbnRhY3RAbGVzc3Bhc3MuY29tIn0%3D"
   );
 });
 

@@ -1,3 +1,4 @@
+import btoa from "@oslab/btoa";
 import { defaultOptions } from "./defaultPassword";
 
 export const isAuthenticated = state => state.authenticated;
@@ -5,11 +6,9 @@ export const isAuthenticated = state => state.authenticated;
 export const isGuest = state => !state.authenticated;
 
 export const passwordURL = state => {
-  return `${state.baseURL}/#/?login=${state.password.login}&site=${state
-    .password.site}&uppercase=${state.password.uppercase}&lowercase=${state
-    .password.lowercase}&numbers=${state.password.numbers}&symbols=${state
-    .password.symbols}&length=${state.password.length}&counter=${state.password
-    .counter}&version=${state.password.version}`;
+  const base64PasswordProfile = btoa(JSON.stringify(state.password));
+  const encodedPasswordProfile = encodeURIComponent(base64PasswordProfile);
+  return `${state.baseURL}/#/?passwordProfileEncoded=${encodedPasswordProfile}`;
 };
 
 export const isDefaultProfile = state => {
