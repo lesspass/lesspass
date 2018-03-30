@@ -2,6 +2,7 @@ import Password from "../api/password";
 import User from "../api/user";
 import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
+import defaultPasswordProfile from "./defaultPassword";
 
 export const refreshToken = ({ commit, state }) => {
   const token = state.token;
@@ -22,7 +23,8 @@ export const loadPasswordProfile = ({ commit }, { site }) => {
 
 export const getPasswordFromUrlQuery = ({ commit }, { query }) => {
   const password = urlParser.getPasswordFromUrlQuery(query);
-  if (Object.keys(password).length === 9) {
+  const expectedNbOfElements = Object.keys(defaultPasswordProfile).length;
+  if (Object.keys(password).length === expectedNbOfElements) {
     commit(types.SET_PASSWORD, { password });
   }
 };
