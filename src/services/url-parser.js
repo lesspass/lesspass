@@ -16,10 +16,12 @@ function isAnIpAddressWithPort(address) {
 
 export function getSuggestions(url) {
   const cleanedUrl = cleanUrl(url) || url;
-  const urlElements = cleanedUrl.split(".");
-  if (isAnIpAddressWithPort(cleanedUrl) || urlElements.length < 2) {
-    return [];
-  }
+  if (isAnIpAddressWithPort(cleanedUrl)) return [];
+  const urlElements = cleanedUrl
+    .toLowerCase()
+    .split(".")
+    .filter(element => element.length >= 2);
+  if (urlElements.length < 2) return [];
   const baseName = urlElements[urlElements.length - 2];
   const tld = urlElements[urlElements.length - 1];
   return urlElements.reduceRight(

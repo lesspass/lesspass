@@ -55,6 +55,16 @@ test("getSuggestions", t => {
     urlParser.getSuggestions("https://192.168.1.1:10443/webapp/")
   );
   t.deepEqual([], urlParser.getSuggestions("example"));
+  t.deepEqual([], urlParser.getSuggestions("example."));
+  t.deepEqual([], urlParser.getSuggestions("example.o"));
+  t.deepEqual(
+    urlParser.getSuggestions("http://example.org"),
+    urlParser.getSuggestions("https://example.org")
+  );
+  t.deepEqual(
+    ["example", "example.org"],
+    urlParser.getSuggestions("EXAMPLE.org")
+  );
 });
 
 test("getSite", t => {

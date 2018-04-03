@@ -1,31 +1,25 @@
 <style>
-  #generated-password {
-    font-family: Consolas, Menlo, Monaco, Courier New, monospace, sans-serif;
-  }
+#generated-password {
+  font-family: Consolas, Menlo, Monaco, Courier New, monospace, sans-serif;
+}
 
-  div.awesomplete {
-    display: block;
-  }
+div.awesomplete {
+  display: block;
+}
 
-  div.awesomplete > ul {
-    z-index: 11;
-  }
+div.awesomplete > ul {
+  z-index: 11;
+}
 </style>
 <template>
-  <form id="password-generator">
+  <form id="password-generator" v-on:submit.prevent="generatePassword">
     <div class="form-group">
-      <label for="site" class="sr-only">{{ $t('Site') }}</label>
-      <div class="inner-addon left-addon">
-        <i class="fa fa-globe"></i>
-        <input id="site"
-               name="site"
-               ref="site"
-               class="form-control awesomplete"
-               autocorrect="off"
-               autocapitalize="none"
-               v-bind:placeholder="$t('Site')"
-               v-model="password.site">
-      </div>
+      <input-site ref="site"
+                  v-model="password.site"
+                  v-bind:passwords="passwords"
+                  v-bind:label="$t('Site')"
+                  v-on:suggestionSelected="focusBestInputField"
+                  v-on:passwordProfileSelected="setPasswordProfile"></input-site>
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
@@ -46,16 +40,15 @@
     <div class="form-group">
       <master-password ref="masterPassword"
                        v-model="masterPassword"
-                       v-on:keyupEnter="generatePassword"
+                       v-on:generatePassword="generatePassword"
                        v-bind:label="$t('Master Password')"></master-password>
     </div>
     <div class="form-group"
          v-bind:class="{ 'mb-0': !showOptions }">
       <div v-if="!passwordGenerated">
         <button id="generatePassword__btn"
-                type="button"
-                class="btn btn-primary border-blue"
-                v-on:click="generatePassword">
+                type="submit"
+                class="btn btn-primary border-blue">
           {{ $t('Generate') }}
         </button>
         <button type="button"
@@ -111,150 +104,164 @@
   </form>
 </template>
 <script type="text/ecmascript-6">
-  import LessPass from 'lesspass';
-  import {mapGetters, mapState} from 'vuex';
-  import copy from 'copy-text-to-clipboard';
-  import RemoveAutoComplete from '../components/RemoveAutoComplete.vue';
-  import MasterPassword from '../components/MasterPassword.vue';
-  import Options from '../components/Options.vue';
-  import {showTooltip} from '../services/tooltip';
-  import message from '../services/message';
-  import Awesomplete from 'awesomplete';
-  import * as urlParser from "../services/url-parser";
+import LessPass from "lesspass";
+import { mapGetters, mapState } from "vuex";
+import copy from "copy-text-to-clipboard";
+import RemoveAutoComplete from "../components/RemoveAutoComplete.vue";
+import MasterPassword from "../components/MasterPassword.vue";
+import InputSite from "../components/InputSite.vue";
+import Options from "../components/Options.vue";
+import { showTooltip } from "../services/tooltip";
+import message from "../services/message";
+import Awesomplete from "awesomplete";
+import * as urlParser from "../services/url-parser";
 
-  export default {
-    name: 'password-generator-view',
-    components: {
-      RemoveAutoComplete,
-      MasterPassword,
-      Options
-    },
-    computed: {
-      ...mapState(['passwords', 'password']),
-      ...mapGetters(['passwordURL', 'isDefaultProfile'])
-    },
-    beforeMount() {
-      this.$store
-        .dispatch('getPasswords')
-        .then(() => {
-          urlParser.getSite().then(site => {
-            this.$store.dispatch('loadPasswordProfile', {site});
-          });
-          this.$store.dispatch('getPasswordFromUrlQuery', {query: this.$route.query});
-        });
-    },
-    mounted() {
-      setTimeout(() => {
-        this.focusBestInputField();
-      }, 500);
-    },
-    data() {
-      return {
-        showOptions: false,
-        masterPassword: '',
-        passwordGenerated: '',
-        cleanTimeout: null
-      }
-    },
-    watch: {
-      'passwords': function(passwords) {
-        var site = this.$refs.site;
-        const self = this;
-        if (site !== null && passwords.length > 0) {
-          new Awesomplete(site, {
-            list: passwords.map(password => {
-              return {label: password.site + ' ' + password.login, value: password}
-            }),
-            replace: function(password) {
-              self.$store.dispatch('savePassword', {password: password.value});
-              this.input.value = password.value.site;
-              self.focusBestInputField();
-            }
-          });
-        }
-      },
-      'password': {
-        handler: function() {
-          this.cleanErrors();
-        },
-        deep: true
-      }
-    },
-    methods: {
-      togglePasswordType(element) {
-        if (element.type === 'password') {
-          element.type = 'text';
-        } else {
-          element.type = 'password';
-        }
-      },
-      cleanErrors() {
-        clearTimeout(this.cleanTimeout);
-        this.passwordGenerated = '';
-      },
-      cleanFormInSeconds(seconds = 15) {
-        this.cleanTimeout = setTimeout(() => {
-          this.masterPassword = '';
-          this.passwordGenerated = '';
-        }, 1000 * seconds);
-      },
-      generatePassword() {
-        const site = this.password.site;
-        const login = this.password.login;
-        const masterPassword = this.masterPassword;
-        if (!site && !login || !masterPassword) {
-          message.error(this.$t('SiteLoginMasterPasswordMandatory', 'Site, login, and master password fields are mandatory.'));
-          return;
-        }
+export default {
+  name: "password-generator-view",
+  components: {
+    RemoveAutoComplete,
+    InputSite,
+    MasterPassword,
+    Options
+  },
+  computed: {
+    ...mapState(["passwords", "password"]),
+    ...mapGetters(["passwordURL", "isDefaultProfile"])
+  },
+  beforeMount() {
+    this.$store.dispatch("getPasswords").then(() => {
+      urlParser.getSite().then(site => {
+        this.$store.dispatch("loadPasswordProfile", { site });
+      });
+      this.$store.dispatch("getPasswordFromUrlQuery", {
+        query: this.$route.query
+      });
+    });
+  },
+  mounted() {
+    setTimeout(() => {
+      this.focusBestInputField();
+    }, 500);
+  },
+  data() {
+    return {
+      showOptions: false,
+      masterPassword: "",
+      passwordGenerated: "",
+      cleanTimeout: null
+    };
+  },
+  watch: {
+    password: {
+      handler: function() {
         this.cleanErrors();
-        const passwordProfile = {
-          lowercase: this.password.lowercase,
-          uppercase: this.password.uppercase,
-          numbers: this.password.numbers,
-          symbols: this.password.symbols,
-          length: this.password.length,
-          counter: this.password.counter,
-          version: this.password.version,
-        };
-        return LessPass.generatePassword(site, login, masterPassword, passwordProfile).then(passwordGenerated => {
-          this.passwordGenerated = passwordGenerated;
-          this.cleanFormInSeconds(30);
-        });
       },
-      focusBestInputField() {
-        const site = this.$refs.site;
-        const login = this.$refs.login;
-        const masterPassword = this.$refs.masterPassword;
-        if(site && !site.value){
-          site.focus()
-        }else if(login && !login.value){
-          login.focus()
-        }else if(masterPassword){
-          masterPassword.$refs.passwordField.focus()
-        }
-      },
-      copyPassword() {
-        const copied = copy(this.passwordGenerated);
-        if (copied) {
-          showTooltip(document.getElementById('copyPasswordButton'), this.$t('Copied', 'copied !'));
-        } else {
-          message.warning(this.$t('SorryCopy', 'We are sorry the copy only works on modern browsers'))
-        }
-      },
-      sharePasswordProfile() {
-        const copied = copy(this.passwordURL);
-        if (copied) {
-          const copySuccessMessage = this.$t('PasswordProfileCopied', 'Your password profile has been copied');
-          showTooltip(
-            document.getElementById('sharePasswordProfileButton'),
-            copySuccessMessage,
-            'hint--top-left'
-          );
-        }
-        else {
-          message.warning(this.$t('SorryCopy', 'We are sorry the copy only works on modern browsers'))
-        }
+      deep: true
+    }
+  },
+  methods: {
+    togglePasswordType(element) {
+      if (element.type === "password") {
+        element.type = "text";
+      } else {
+        element.type = "password";
       }
+    },
+    cleanErrors() {
+      clearTimeout(this.cleanTimeout);
+      this.passwordGenerated = "";
+    },
+    cleanFormInSeconds(seconds = 15) {
+      this.cleanTimeout = setTimeout(() => {
+        this.masterPassword = "";
+        this.passwordGenerated = "";
+      }, 1000 * seconds);
+    },
+    generatePassword() {
+      const site = this.password.site;
+      const login = this.password.login;
+      const masterPassword = this.masterPassword;
+      if ((!site && !login) || !masterPassword) {
+        message.error(
+          this.$t(
+            "SiteLoginMasterPasswordMandatory",
+            "Site, login, and master password fields are mandatory."
+          )
+        );
+        return;
+      }
+      this.cleanErrors();
+      const passwordProfile = {
+        lowercase: this.password.lowercase,
+        uppercase: this.password.uppercase,
+        numbers: this.password.numbers,
+        symbols: this.password.symbols,
+        length: this.password.length,
+        counter: this.password.counter,
+        version: this.password.version
+      };
+      return LessPass.generatePassword(
+        site,
+        login,
+        masterPassword,
+        passwordProfile
+      ).then(passwordGenerated => {
+        this.passwordGenerated = passwordGenerated;
+        this.cleanFormInSeconds(30);
+      });
+    },
+    focusBestInputField() {
+      const site = this.$refs.site.$refs.siteField;
+      const login = this.$refs.login;
+      const masterPassword = this.$refs.masterPassword;
+      if (site && !site.value) return void site.focus();
+      if (login && !login.value) return void login.focus();
+      masterPassword.$refs.passwordField.focus();
+    },
+    copyPassword() {
+      const copied = copy(this.passwordGenerated);
+      if (copied) {
+        showTooltip(
+          document.getElementById("copyPasswordButton"),
+          this.$t("Copied", "copied !")
+        );
+      } else {
+        message.warning(
+          this.$t(
+            "SorryCopy",
+            "We are sorry the copy only works on modern browsers"
+          )
+        );
+      }
+    },
+    sharePasswordProfile() {
+      const copied = copy(this.passwordURL);
+      if (copied) {
+        const copySuccessMessage = this.$t(
+          "PasswordProfileCopied",
+          "Your password profile has been copied"
+        );
+        showTooltip(
+          document.getElementById("sharePasswordProfileButton"),
+          copySuccessMessage,
+          "hint--top-left"
+        );
+      } else {
+        message.warning(
+          this.$t(
+            "SorryCopy",
+            "We are sorry the copy only works on modern browsers"
+          )
+        );
+      }
+    },
+    setPasswordProfile(passwordProfile) {
+      this.$store
+        .dispatch("savePassword", { password: passwordProfile })
+        .then(() => {
+          this.focusBestInputField();
+        });
     }
   }
+};
 </script>
