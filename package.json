@@ -6,7 +6,7 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
     "clean": "rm -rf extension/dist/ && mkdir extension/dist/ && rm -rf build && mkdir build && npm prune && npm install",
-    "version": "json -I -f extension/manifest.json -e \"this.version='`echo $npm_package_version`'\"",
+    "version": "dot-json extension/manifest.json version $npm_package_version",
     "zip:firefox": "cp build/lesspass.zip build/lesspass.firefox-v$npm_package_version.xpi",
     "zip:chrome": "cp build/lesspass.zip build/lesspass.chrome-v$npm_package_version.zip",
     "zip": "git archive -o build/lesspass.zip HEAD:extension && npm run zip:firefox && npm run zip:chrome && rm build/lesspass.zip",
@@ -22,9 +22,8 @@
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "^1.1.1",
+    "dot-json": "^1.0.4",
     "gulp": "^3.9.1",
-    "json": "^9.0.6",
-    "web-ext": "^1.9.1",
     "webext": "1.9.1-with-submit.1"
   },
   "private": true
