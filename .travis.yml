@@ -1,13 +1,11 @@
-dist: trusty
-sudo: required
 language: node_js
 node_js:
-  - 6
+  - 'node'
 env:
   - EXTENSION_ID=lcmbpoclaodbgkbjafnkbbinogcbnjih
 deploy:
   provider: script
+  skip_cleanup: true
   script: npm run release
   on:
-    branch: master
     tags: true
