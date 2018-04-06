@@ -20,7 +20,7 @@ module.exports = {
       .waitForElementVisible("#fingerprint .fa-subway")
       .waitForElementVisible("#signInButton")
       .click("#signInButton")
-      .waitForElementVisible("#site");
+      .waitForElementVisible("#siteField");
 
     browser.end();
   }
