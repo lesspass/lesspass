@@ -1,7 +1,7 @@
 {
   "name": "lesspass-webextension",
   "description": "chrome and firefox web extension for LessPass",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
