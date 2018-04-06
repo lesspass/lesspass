@@ -4,8 +4,8 @@ module.exports = {
   "Password generation key press non regression test #266": function(browser) {
     browser
       .url(browser.launch_url)
-      .waitForElementVisible("#site")
-      .setValue("#site", "lesspass.com")
+      .waitForElementVisible("#siteField")
+      .setValue("#siteField", "lesspass.com")
       .setValue("#login", "test@lesspass.com")
       .setValue("#passwordField", ["test@lesspass.com", browser.Keys.ENTER])
       .waitForElementVisible("#generated-password")
