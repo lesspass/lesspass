@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
-//@import "~bootstrap/scss/print";
+@import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
@@ -32,6 +32,7 @@
 //@import "~bootstrap/scss/popover";
 //@import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/utilities";
+//@import "~bootstrap/scss/print";
 @import '~font-awesome/css/font-awesome.css';
 @import '~balloon-css/balloon.css';
 @import '~awesomplete/awesomplete.css';
