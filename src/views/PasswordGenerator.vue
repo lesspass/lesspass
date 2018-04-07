@@ -172,12 +172,13 @@ export default {
       this.passwordGenerated = "";
       this.$refs.masterPassword.hidePassword();
     },
-    cleanFormInSeconds(seconds = 15) {
+    cleanFormIn30Seconds() {
+      const thirtySecondsInMillisecond = 30 * 1000;
       this.cleanTimeout = setTimeout(() => {
         this.masterPassword = "";
         this.passwordGenerated = "";
         this.$refs.masterPassword.hidePassword();
-      }, 1000 * seconds);
+      }, thirtySecondsInMillisecond);
     },
     generatePassword() {
       const site = this.password.site;
@@ -209,7 +210,7 @@ export default {
         passwordProfile
       ).then(passwordGenerated => {
         this.passwordGenerated = passwordGenerated;
-        this.cleanFormInSeconds(30);
+        this.cleanFormIn30Seconds();
       });
     },
     focusBestInputField() {
