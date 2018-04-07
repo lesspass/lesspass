@@ -36,10 +36,10 @@
             v-if="fingerprint && value"
             v-on:click="togglePasswordType">
         <button id="fingerprint" class="btn" type="button" tabindex="-1">
-            <small class="hint--left">
-                <i class="fa fa-fw" v-bind:class="[icon1]" v-bind:style="{ color: color1 }"></i>
-                <i class="fa fa-fw" v-bind:class="[icon2]" v-bind:style="{ color: color2 }"></i>
-                <i class="fa fa-fw" v-bind:class="[icon3]" v-bind:style="{ color: color3 }"></i>
+            <small>
+              <i class="fa fa-fw" v-bind:class="[icon1]" v-bind:style="{ color: color1 }"></i>
+              <i class="fa fa-fw" v-bind:class="[icon2]" v-bind:style="{ color: color2 }"></i>
+              <i class="fa fa-fw" v-bind:class="[icon3]" v-bind:style="{ color: color3 }"></i>
             </small>
         </button>
       </span>
@@ -49,7 +49,7 @@
             class="btn btn-link btn-sm p-0"
             v-if="showEncryptButton"
             v-on:click="encryptMasterPassword()"
-            v-bind:class="{'disabled': email === '', 'hint--top hint--medium': email !== ''}">
+            v-bind:class="{'disabled': email === ''}">
       <small>{{ EncryptButtonText }}</small>
     </button>
   </div>

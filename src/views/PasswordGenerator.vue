@@ -111,7 +111,7 @@ import RemoveAutoComplete from "../components/RemoveAutoComplete.vue";
 import MasterPassword from "../components/MasterPassword.vue";
 import InputSite from "../components/InputSite.vue";
 import Options from "../components/Options.vue";
-import { showTooltip } from "../services/tooltip";
+import { showTooltip, hideTooltip } from "../services/tooltip";
 import message from "../services/message";
 import Awesomplete from "awesomplete";
 import * as urlParser from "../services/url-parser";
@@ -223,10 +223,9 @@ export default {
     copyPassword() {
       const copied = copy(this.passwordGenerated);
       if (copied) {
-        showTooltip(
-          document.getElementById("copyPasswordButton"),
-          this.$t("Copied", "copied !")
-        );
+        const element = document.getElementById("copyPasswordButton");
+        showTooltip(element, this.$t("Copied", "copied !"));
+        setTimeout(() => hideTooltip(element), 2000);
       } else {
         message.warning(
           this.$t(
@@ -246,7 +245,7 @@ export default {
         showTooltip(
           document.getElementById("sharePasswordProfileButton"),
           copySuccessMessage,
-          "hint--top-left"
+          "left"
         );
       } else {
         message.warning(

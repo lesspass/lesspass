@@ -79,8 +79,9 @@
       </div>
       <div class="col-5 col-sm-4">
         <label for="passwordCounter"
-               class="hint--top hint--medium"
-               v-bind:aria-label="$t('CounterFieldHelp','Increment this value to change the generated password without changing your master options.')">
+               data-balloon-length="large"
+               v-bind:data-balloon="$t('CounterFieldHelp', 'Increment this value to change the generated password without changing your master password.')"
+               data-balloon-pos="up">
           {{$t('Counter')}}
         </label>
         <div class="input-group input-group-sm">

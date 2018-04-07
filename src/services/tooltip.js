@@ -1,9 +1,11 @@
-export function showTooltip(elem, msg, classes = "hint--top") {
-  var classNames = elem.className;
-  elem.setAttribute("class", `${classNames} ${classes}`);
-  elem.setAttribute("aria-label", msg);
-  setTimeout(function() {
-    elem.setAttribute("class", classNames);
-    elem.setAttribute("aria-label", "");
-  }, 2000);
+export function showTooltip(element, message, position = "right") {
+  element.setAttribute("data-balloon", message);
+  element.setAttribute("data-balloon-visible", "");
+  element.setAttribute("data-balloon-pos", position);
+}
+
+export function hideTooltip(element) {
+  element.removeAttribute("data-balloon");
+  element.removeAttribute("data-balloon-visible");
+  element.removeAttribute("data-balloon-pos");
 }
