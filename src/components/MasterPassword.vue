@@ -31,8 +31,7 @@
              v-bind:value="value"
              v-bind:placeholder="label"
              v-on:input="updateValue($event.target.value)"
-             v-on:keyup.enter="$emit('keyupEnter')"
-             v-on:blur="hidePassword($refs.passwordField)">
+             v-on:keyup.enter="$emit('keyupEnter')">
       <span class="input-group-btn"
             v-if="fingerprint && value"
             v-on:click="togglePasswordType($refs.passwordField)">
@@ -99,7 +98,7 @@
         }
       },
       hidePassword(element){
-        element.type = 'password';
+        this.$refs.passwordField.type = 'password';
       },
       getColor(color) {
         var colors = ['#000000', '#074750', '#009191', '#FF6CB6', '#FFB5DA', '#490092', '#006CDB', '#B66DFF', '#6DB5FE', '#B5DAFE', '#920000', '#924900', '#DB6D00', '#24FE23'];

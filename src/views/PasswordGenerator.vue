@@ -170,11 +170,13 @@ export default {
     cleanErrors() {
       clearTimeout(this.cleanTimeout);
       this.passwordGenerated = "";
+      this.$refs.masterPassword.hidePassword();
     },
     cleanFormInSeconds(seconds = 15) {
       this.cleanTimeout = setTimeout(() => {
         this.masterPassword = "";
         this.passwordGenerated = "";
+        this.$refs.masterPassword.hidePassword();
       }, 1000 * seconds);
     },
     generatePassword() {
