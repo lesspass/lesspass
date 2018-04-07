@@ -34,7 +34,7 @@
              v-on:keyup.enter="$emit('keyupEnter')">
       <span class="input-group-btn"
             v-if="fingerprint && value"
-            v-on:click="togglePasswordType($refs.passwordField)">
+            v-on:click="togglePasswordType">
         <button id="fingerprint" class="btn" type="button" tabindex="-1">
             <small class="hint--left">
                 <i class="fa fa-fw" v-bind:class="[icon1]" v-bind:style="{ color: color1 }"></i>
@@ -90,14 +90,15 @@
         this.$refs.passwordField.value = newPassword;
         this.$emit('input', newPassword);
       },
-      togglePasswordType(element){
+      togglePasswordType(){
+        const element = this.$refs.passwordField;
         if (element.type === 'password') {
           element.type = 'text';
         } else {
           element.type = 'password';
         }
       },
-      hidePassword(element){
+      hidePassword(){
         this.$refs.passwordField.type = 'password';
       },
       getColor(color) {
