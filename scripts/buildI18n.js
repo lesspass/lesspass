@@ -21,7 +21,7 @@ walker.on("file", (root, fileStats, next) => {
 });
 
 const I18N_DIR = "../src/i18n";
-const LANGUAGES_AVAILABLE = ["zh", "zh-CN", "fr", "es", "de", "en"];
+const LANGUAGES_AVAILABLE = ["zh", "zh-CN", "fr", "es", "de", "en", "pt"];
 walker.on("end", () => {
   LANGUAGES_AVAILABLE.forEach(lang => {
     const localeFile = path.join(I18N_DIR, `${lang}.json`);
@@ -31,13 +31,15 @@ walker.on("end", () => {
     }
 
     const localeOrdered = {};
-    Object.keys(locale).sort().forEach(function(key) {
-      if (key in existingLocale) {
-        localeOrdered[key] = existingLocale[key];
-      } else {
-        localeOrdered[key] = locale[key];
-      }
-    });
+    Object.keys(locale)
+      .sort()
+      .forEach(function(key) {
+        if (key in existingLocale) {
+          localeOrdered[key] = existingLocale[key];
+        } else {
+          localeOrdered[key] = locale[key];
+        }
+      });
     fs.writeFileSync(localeFile, JSON.stringify(localeOrdered, null, 2));
     fs.appendFileSync(localeFile, "\n");
   });

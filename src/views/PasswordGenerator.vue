@@ -12,7 +12,7 @@ div.awesomplete > ul {
 }
 </style>
 <template>
-  <form id="password-generator" v-on:submit.prevent="generatePassword">
+  <form id="password-generator" v-on:submit.prevent="generatePassword" novalidate>
     <div class="form-group">
       <input-site ref="site"
                   v-model="password.site"
@@ -192,6 +192,15 @@ export default {
           )
         );
         return;
+      }
+      const length = this.password.length;
+      if (length > 35){
+        message.warning(
+          this.$t(
+            "LengthDeprecationWarning",
+            "The maximum length of a password is 35 characters."
+          )
+        );
       }
       this.cleanErrors();
       const passwordProfile = {
