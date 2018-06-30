@@ -9,14 +9,21 @@ if [ ! -f README.md ]; then
 fi
 
 function dev {
-    echo
+    git remote add "$1_origin" "git@github.com:lesspass/$1.git"
+    git remote -v
+    git fetch "$1_origin"
+    git merge -s ours --no-commit --allow-unrelated-histories "$1_origin/master"
+    git rm --cached "$1"
+    sed -i '/$1/d' .gitmodules
+    rm -rf "$1_origin/.git"
+    git add "$1"
+    git commit -m "[Mono repo] Add submodule $1"
+    git remote rm "$1_origin"
+
 }
 
 submodules="backend cli cordova core cozy desktop frontend move nginx openssl pure render-password snap webextension"
-#submodules="cli cordova core cozy desktop frontend move pure webextension"
 for submodule in ${submodules}
 do
-    pushd ${submodule}
-    dev
-    popd
+    dev ${submodule}
 done
