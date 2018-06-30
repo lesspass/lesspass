@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="20101"
+        id="com.lesspass.android"
+        version="2.1.1"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>LessPass</name>
+  <description>
+    Stateless Password Manager
+  </description>
+  <author email="contact@lesspass.com" href="https://lesspass.com">
+    LessPass Team
+  </author>
+  <content src="index.html"/>
+  <access origin="*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-navigation href="https://*/*"/>
+  <platform name="android">
+    <preference name="android-minSdkVersion" value="21"/>
+    <allow-intent href="market:*"/>
+    <icon density="hdpi" src="www/icons/mipmap-hdpi/icon.png"/>
+    <icon density="ldpi" src="www/icons/mipmap-ldpi/icon.png"/>
+    <icon density="mdpi" src="www/icons/mipmap-mdpi/icon.png"/>
+    <icon density="xhdpi" src="www/icons/mipmap-xhdpi/icon.png"/>
+  </platform>
+  <engine name="android" spec="^6.2.3"/>
+  <plugin name="cordova-plugin-whitelist" spec="~1.3.2"/>
+</widget>

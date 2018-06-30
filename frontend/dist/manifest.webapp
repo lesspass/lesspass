@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "name": "LessPass",
+  "description": "Next-Gen Open Source Password Manager",
+  "icons": {
+    "60": "dist/firefox_app_60x60.png",
+    "128": "dist/firefox_app_128x128.png",
+    "512": "dist/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "Guillaume Vincent",
+    "url": null
+  }
+}

@@ -1,0 +1,13 @@
+dist: trusty
+sudo: required
+language: python
+python:
+    - 3.5
+addons:
+  postgresql: "9.5"
+services:
+  - postgresql
+env:
+  - DATABASE_ENGINE=django.db.backends.postgresql_psycopg2 DATABASE_NAME=postgres DATABASE_USER=postgres DATABASE_PASSWORD= DATABASE_HOST=localhost DATABASE_PORT=5432
+install: pip install -r requirements.txt
+script: python manage.py test

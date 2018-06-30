@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LessPass</title>
+  <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="dist/lesspass.min.css">
+  <link rel="manifest" href="dist/manifest.json">
+  <link rel="manifest" href="dist/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#555555">
+  <meta name="application-name" content="LessPass">
+  <link rel="apple-touch-icon" sizes="57x57" href="dist/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="dist/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="dist/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="dist/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="dist/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="dist/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="dist/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="dist/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="dist/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LessPass">
+  <link rel="icon" type="image/png" sizes="228x228" href="dist/coast-228x228.png">
+  <link rel="yandex-tableau-widget" href="dist/yandex-browser-manifest.json">
+  <meta name="msapplication-TileColor" content="#555555">
+  <meta name="msapplication-TileImage" content="dist/mstile-144x144.png">
+  <meta name="msapplication-config" content="dist/browserconfig.xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="dist/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="dist/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png">
+  <link rel="shortcut icon" href="dist/favicon.ico">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+        href="dist/apple-touch-startup-image-320x460.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+        href="dist/apple-touch-startup-image-640x920.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+        href="dist/apple-touch-startup-image-640x1096.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        href="dist/apple-touch-startup-image-750x1294.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+        href="dist/apple-touch-startup-image-1182x2208.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+        href="dist/apple-touch-startup-image-1242x2148.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+        href="dist/apple-touch-startup-image-748x1024.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+        href="dist/apple-touch-startup-image-768x1004.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+        href="dist/apple-touch-startup-image-1496x2048.png">
+  <link rel="apple-touch-startup-image"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+        href="dist/apple-touch-startup-image-1536x2008.png">
+  <style>
+    * {
+      border-radius: 0 !important;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: #fafafa;
+    }
+
+    #fold {
+      background-size: cover;
+      background: #3398eb url(dist/double-blue-cover.png) no-repeat center center;
+      min-height: 100%;
+    }
+
+    #fold a.navbar-brand {
+      color: white;
+      line-height: 60px;
+      font-size: 2.5rem;
+    }
+
+    #fold a.icon-download {
+      color: white;
+      font-size: 2.5rem;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    @media (min-width: 544px) {
+      #fold .hero {
+        padding-top: 7rem;
+      }
+    }
+
+    #features {
+      background-color: #024379;
+      color: white;
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+
+    @media (min-width: 544px) {
+      .feature p {
+        min-height: 120px;
+      }
+    }
+
+    .air {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+
+    @media (min-width: 544px) {
+      #features {
+        padding-top: 14rem;
+        padding-bottom: 7rem;
+      }
+    }
+
+    #supported-platforms .card {
+      border: none;
+      background: none;
+    }
+
+    .text-black {
+      color: #292b2c;
+    }
+  </style>
+</head>
+<body>
+<section id="fold">
+  <div class="container d-none d-md-block py-sm-3">
+    <a class="navbar-brand" href="https://lesspass.com">
+      <img src="dist/LessPass-icon-white.svg" width="60" height="60" class="d-inline-block align-top"
+           alt="LessPass">
+      LessPass
+    </a>
+    <div class="float-right">
+      <h1 class="d-inline">
+        <a class="icon-download" title="Chrome extension"
+           href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+          <i class="fa fa-chrome" aria-hidden="true"></i>
+          <span class="sr-only">Chrome extension</span>
+        </a>
+      </h1>
+      <h1 class="d-inline">
+        <a class="icon-download" title="Firefox extension"
+           href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
+          <i class="fa fa-firefox" aria-hidden="true"></i>
+          <span class="sr-only">Firefox extension</span>
+        </a>
+      </h1>
+      <h1 class="d-inline">
+        <a class="icon-download" title="Android"
+           href="https://play.google.com/store/apps/details?id=com.lesspass.android&hl=en">
+          <i class="fa fa-android" aria-hidden="true"></i>
+          <span class="sr-only">Android</span>
+        </a>
+      </h1>
+      <h1 class="d-inline">
+        <a class="icon-download" title="Github"
+           href="https://github.com/lesspass/lesspass">
+          <i class="fa fa-github" aria-hidden="true"></i>
+          <span class="sr-only">Github</span>
+        </a>
+      </h1>
+    </div>
+  </div>
+  <div class="container hero">
+    <div class="row align-items-center">
+      <div class="col-12 p-0 col-md-5">
+        <div class="lesspass--unbordered lesspass--full-width">
+          <div id="lesspass"></div>
+        </div>
+        <div class="text-white px-3 pb-3">
+          <small>
+            <i class="fa fa-shield" aria-hidden="true"></i> For more security use browser extensions
+          </small>
+        </div>
+      </div>
+      <div class="col-12 col-md-5 ml-auto text-white">
+        <h2>Stateless Password Manager</h2>
+        <p class="lead">
+          Stop wasting your time synchronizing your encrypted vault. Remember one master password to
+          access your passwords, anywhere, anytime. No sync needed.
+        </p>
+        <p>
+          <a href="https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh"
+             class="btn btn-secondary">
+            How does it work?
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="features">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-sm-6">
+        <h2>Compute your password offline</h2>
+        <p class="lead">
+          LessPass computes a unique password using a site, login and a master password.
+          You don't need to sync a password vault across every device because LessPass works offline!
+        </p>
+      </div>
+      <div class="col-12 col-sm-6">
+        <img src="dist/HowItWorks.png" class="img-fluid" alt="LessPass demo">
+      </div>
+    </div>
+    <div class="row air">
+      <div class="col-12 col-sm-4 py-5 feature">
+        <p class="lead">
+          Manage complex passwords with LessPass options (only numbers, length, etc...)
+        </p>
+        <img src="dist/options.png" class="img-fluid my-1" alt="LessPass options">
+      </div>
+      <div class="col-12 col-sm-4 py-5 feature">
+        <p class="lead">
+          Change generated password without changing your master password. Increment the counter field in your
+          options.
+        </p>
+        <img src="dist/counter.png" class="img-fluid my-1" alt="LessPass counter">
+      </div>
+      <div class="col-12 col-sm-4 py-5 feature">
+        <p class="lead">
+          Detect an error in your master password without revealing it. Memorize your fingerprint:
+          <br>
+          "<i>I like to eat in this luxury liner</i>".
+        </p>
+        <img src="dist/fingerprint.png" class="img-fluid my-1" alt="LessPass fingerprint">
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-sm-5">
+        <h2>Use LessPass Database for complex passwords</h2>
+        <p class="lead">
+          We all know sites with stupid password rules.
+          For this kind of site, we created a "connected" version to memorize the options.
+          Sign in, load or save complex password profiles on LessPass Database.
+        </p>
+      </div>
+      <div class="col-12 col-sm-7">
+        <img src="dist/LessPassDatabase.png" class="img-fluid" alt="LessPass Database">
+      </div>
+    </div>
+  </div>
+</div>
+<div style="background-color: #F9F9F9;">
+  <div class="container">
+    <div class="row air">
+      <div class="col-12 col-sm-9">
+        <h2>Can you see the source code<br>of your current password manager?</h2>
+        <p class="lead">
+          To us, a password manager is only as secure as it is transparent.
+          That's why LessPass is fully open source. Don't just take our word for it,
+          take a peek under the hood and see for yourself!
+          <a href="https://github.com/lesspass/lesspass">View on GitHub</a>
+        </p>
+        <p>
+          <a href="https://github.com/lesspass/lesspass">
+            <img src="dist/stars.png" alt="">
+          </a>
+        </p>
+      </div>
+    </div>
+    <div id="supported-platforms" class="row">
+      <div class="col-12 col-sm-12">
+        <h2>Supported Platforms</h2>
+        <div class="card-deck text-center justify-content-center">
+          <div class="card">
+            <a class="card-block text-success"
+               href="https://play.google.com/store/apps/details?id=com.lesspass.android&hl=en">
+              <div class="card-title"><i class="fa fa-fw fa-3x fa-android" aria-hidden="true"></i></div>
+              <div class="card-text">
+                Android
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="card-block"
+               href="https://chrome.google.com/webstore/detail/lesspass/lcmbpoclaodbgkbjafnkbbinogcbnjih">
+              <div class="card-title"><i class="fa fa-fw fa-3x fa-chrome" aria-hidden="true"></i></div>
+              <div class="card-text">
+                Chrome
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="card-block" href="https://github.com/lesspass/cozy#install">
+              <div class="card-title"><i class="fa fa-fw fa-3x fa-cloud text-info" aria-hidden="true"></i></div>
+              <div class="card-text">
+                Cozy Cloud
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="card-block text-warning" href="https://addons.mozilla.org/en-US/firefox/addon/lesspass/">
+              <div class="card-title"><i class="fa fa-fw fa-3x fa-firefox" aria-hidden="true"></i></div>
+              <div class="card-text">
+                Firefox
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="card-block text-black" href="https://twitter.com/snapcraftio/status/837091667693948929">
+              <div class="card-title"><i class="fa fa-fw fa-3x fa-linux" aria-hidden="true"></i></div>
+              <div class="card-text">
+                Snapcraft
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="card-block text-muted" href="https://github.com/lesspass/cli#install">
+              <div class="card-title"><i class="fa fa-fw fa-3x fa-terminal" aria-hidden="true"></i></div>
+              <div class="card-text">
+                Terminal
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <a class="card-block text-black" href="https://github.com/lesspass/lesspass/issues/">
+              <div class="card-title"><i class="fa fa-fw fa-3x fa-github" aria-hidden="true"></i></div>
+              <div class="card-text">
+                Contribute
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row air">
+      <div class="col-12 col-sm-9">
+        <h2>You also can self host your LessPass Database</h2>
+        <p class="lead">
+          Self host your LessPass Database with Docker on
+          <a href="https://github.com/lesspass/lesspass/#self-host-your-lesspass-database">
+            your server (<i class="fa fa-server" aria-hidden="true"></i>)
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="background-color: #F9F9F9;">
+  <div class="container air">
+    <div class="row">
+      <div class="col-12">
+        <hr>
+        <small>
+          Released under the <a href="https://github.com/lesspass/lesspass/blob/master/LICENSE">GPL v3
+          license</a><br>
+          Copyright &copy; 2015
+          <script>new Date().getFullYear() > 2010 && document.write("- " + new Date().getFullYear());</script>
+          <a href="https://twitter.com/guillaume20100">Guillaume Vincent</a>
+          &
+          <a href="https://twitter.com/edouard_lopez">Édouard Lopez</a>.
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="dist/lesspass.min.js"></script>
+</body>
+</html>
