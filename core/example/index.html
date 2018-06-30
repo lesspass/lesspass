@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<script src="../dist/lesspass.min.js"></script>
+<script>
+  function displayInBody(txt) {
+    document.body.innerHTML = document.body.innerHTML + txt + '<br>';
+  }
+
+  function displayErrorInBody(txt) {
+    document.body.innerHTML = document.body.innerHTML + '<span style="color:red;">' + txt + '</span><br>';
+  }
+
+  function createFingerprint() {
+    LessPass.createFingerprint('password').then(fingerprint => {
+      displayInBody("createFingerprint :");
+      displayInBody("e56a207acd1e6714735487c199c6f095844b7cc8e5971d86c003a7b6f36ef51e");
+      displayInBody(fingerprint + " (generated)")
+    });
+  }
+
+  function generatePassword() {
+    const profile = {
+      site: 'example.org',
+      login: 'contact@example.org'
+    }
+    const masterPassword = 'password';
+    LessPass.generatePassword(profile, masterPassword).then(function(generatedPassword) {
+      displayInBody("<br>generatePassword :");
+      displayInBody("WHLpUL)e00[iHR+w");
+      displayInBody(generatedPassword + " (generated)")
+    });
+  }
+
+  LessPass.isSupported().then(function(isSupported) {
+    if (isSupported) {
+      createFingerprint();
+      generatePassword();
+    }
+    else {
+      displayErrorInBody("LessPass is not supported on your browser!");
+    }
+  });
+</script>
+</body>
+</html>

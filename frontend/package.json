@@ -1,0 +1,21 @@
+{
+  "name": "lesspass-frontend",
+  "version": "1.0.2",
+  "description": "frontend for LessPass with vuejs",
+  "license": "GPL-3.0",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "repository": "lesspass/frontend",
+  "scripts": {
+    "build": "rm -rf dist && gulp && rm dist/index.html",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "lesspass-pure": "^5.1.4"
+  },
+  "devDependencies": {
+    "favicons": "^4.8.3",
+    "gulp": "^3.9.1",
+    "gulp-favicons": "^2.2.6"
+  }
+}

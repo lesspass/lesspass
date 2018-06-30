@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3039"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   width="222"
+   height="60"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/home/guillaume/workspace/lesspass/landing_page/Conversion - Welcome_files/logo.png"
+   inkscape:export-xdpi="115"
+   inkscape:export-ydpi="115">
+  <metadata
+     id="metadata3045">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3043">
+    <filter
+       id="filter5169"
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood5171"
+         flood-opacity="0.4"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite5173"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur5175"
+         stdDeviation="2"
+         result="blur" />
+      <feOffset
+         id="feOffset5177"
+         dx="4"
+         dy="4"
+         result="offset" />
+      <feComposite
+         id="feComposite5179"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <filter
+       id="filter3013"
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood3015"
+         flood-opacity="0.4"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite3017"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3019"
+         stdDeviation="1"
+         result="blur" />
+      <feOffset
+         id="feOffset3021"
+         dx="4"
+         dy="4"
+         result="offset" />
+      <feComposite
+         id="feComposite3023"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <filter
+       id="filter3097"
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood3099"
+         flood-opacity="0.4"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite3101"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3103"
+         stdDeviation="2"
+         result="blur" />
+      <feOffset
+         id="feOffset3105"
+         dx="4"
+         dy="4"
+         result="offset" />
+      <feComposite
+         id="feComposite3107"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1871"
+     inkscape:window-height="1056"
+     id="namedview3041"
+     showgrid="false"
+     inkscape:zoom="0.995"
+     inkscape:cx="192.61346"
+     inkscape:cy="0.93292599"
+     inkscape:window-x="49"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3039"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:showpageshadow="false" />
+  <g
+     id="g3359"
+     transform="translate(-3.4209716,5.800689e-8)">
+    <rect
+       inkscape:export-ydpi="115.20001"
+       inkscape:export-xdpi="115.20001"
+       inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png"
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
+       rx="8.0070972"
+       y="22.706335"
+       x="-19.720072"
+       height="40.035488"
+       width="40.035488"
+       id="rect3843"
+       style="opacity:0.9;fill:#0275d8;fill-opacity:1;stroke:none" />
+    <path
+       transform="matrix(0.33333334,0,0,0.33333334,3.7806919,-3.3467343)"
+       inkscape:export-filename="/home/guillaume/workspace/oslab/lesspass/app/assets/images/logo.png"
+       inkscape:export-ydpi="115.20001"
+       inkscape:export-xdpi="115.20001"
+       sodipodi:nodetypes="ssccccssssccssssccsssssss"
+       inkscape:connector-curvature="0"
+       id="path3056"
+       d="m 79.920829,55.040201 c -12.36404,0 -22.47187,10.13599 -22.47187,22.5 0,10.27949 6.99118,18.97952 16.45312,21.62813 l 0,45.871869 4.21875,0 7.81876,0 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.2375 c 0,-0.12594 -0.10402,-0.26004 -0.225,-0.225 l -6.21562,0 0,-3.85312 6.21562,0 c 0.12595,0 0.225,-0.0991 0.225,-0.225 l 0,-10.2375 c 0,-0.12595 -0.099,-0.225 -0.225,-0.225 l -6.21562,0 0,-20.643749 c 9.46192,-2.64861 16.453121,-11.34863 16.453121,-21.62813 0,-12.36402 -10.107881,-22.5 -22.471881,-22.5 z m 0,8.83125 c 7.59627,0 13.64063,6.07247 13.64063,13.66875 0,7.59632 -6.04436,13.64063 -13.64063,13.64063 -7.59624,0 -13.64062,-6.04431 -13.64062,-13.64063 0,-7.59628 6.04438,-13.66875 13.64062,-13.66875 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10;marker:none;filter:url(#filter3013);enable-background:accumulate" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;"
+     x="54.116642"
+     y="43.297501"
+     id="text3355"
+     sodipodi:linespacing="125%"
+     inkscape:export-filename="/home/guillaume/workspace/lesspass/landing_page/Conversion - Welcome_files/logo.png"
+     inkscape:export-xdpi="115"
+     inkscape:export-ydpi="115"><tspan
+       sodipodi:role="line"
+       id="tspan3357"
+       x="54.116642"
+       y="43.297501"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff;fill-opacity:1;">lesspass</tspan></text>
+</svg>

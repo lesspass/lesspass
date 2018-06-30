@@ -1,0 +1,10 @@
+Django==1.11
+django-cors-middleware==1.3.1
+djangorestframework==3.6.2
+djangorestframework-jwt==1.10.0
+psycopg2==2.7.1
+gunicorn==19.7.1
+djoser==0.5.4
+envparse==0.2.0
+# tests
+factory-boy==2.8.1
