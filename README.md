@@ -11,6 +11,10 @@ LessPass open source password manager (https://lesspass.com)
  * :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/lesspass-wie-funktioniert-das-9483e5fc2c09)
 
 
+## Videos
+
+ * :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=YbaRCHXk8Jo)
+
 ## Self Host your LessPass Database
 
 ### requirements 
