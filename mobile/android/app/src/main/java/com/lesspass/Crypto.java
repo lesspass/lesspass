@@ -13,11 +13,6 @@ import javax.crypto.Mac;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.spongycastle.jce.provider.BouncyCastleProvider;
-import org.spongycastle.crypto.PBEParametersGenerator;
-import org.spongycastle.crypto.generators.PKCS5S2ParametersGenerator;
-import org.spongycastle.crypto.digests.SHA256Digest;
-import org.spongycastle.crypto.params.KeyParameter;
 
 public class Crypto {
     public String pbkdf2(String secret, String salt, int iterations, int keyLength) {

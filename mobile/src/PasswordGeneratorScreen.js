@@ -8,7 +8,7 @@ import {
   Clipboard,
   Text
 } from "react-native";
-import { Paragraph, Button, IconButton } from "react-native-paper";
+import { Paragraph, Button } from "react-native-paper";
 import Switch from "./Switch";
 import renderLessPassPassword from "lesspass-render-password";
 import Slider from "react-native-slider";
@@ -22,6 +22,12 @@ export default class PasswordGeneratorScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ...this._getInitialState()
+    };
+  }
+
+  _getInitialState = () => {
+    return {
       showOptions: false,
       site: "",
       login: "",
@@ -32,11 +38,20 @@ export default class PasswordGeneratorScreen extends Component {
       symbols: true,
       length: "16",
       counter: "1",
-      generatedPassword: null,
+      password: null,
       seePassword: false,
       copied: false
     };
-  }
+  };
+
+  copyPassword = () => {
+    const { password } = this.state;
+    Clipboard.setString(password);
+    this.setState({ copied: true });
+    setTimeout(() => {
+      this.setState({ copied: false });
+    }, 3000);
+  };
 
   generatePassword() {
     const {
@@ -64,13 +79,17 @@ export default class PasswordGeneratorScreen extends Component {
         symbols
       };
       var password = renderLessPassPassword(entropy, options);
-      Clipboard.setString(password);
-      this.setState({ generatedPassword: password, copied: true });
-      setTimeout(() => {
-        this.setState({ copied: false });
-      }, 3000);
+      this.setState({ password });
     });
+    setTimeout(() => {
+      this.clear();
+    }, 30000);
   }
+
+  clear = () => {
+    this.setState({ ...this._getInitialState() });
+    Clipboard.setString("");
+  };
 
   render() {
     const {
@@ -86,7 +105,7 @@ export default class PasswordGeneratorScreen extends Component {
       counter,
       seePassword,
       copied,
-      generatedPassword
+      password
     } = this.state;
     return (
       <ScrollView style={{ flex: 1 }}>
@@ -112,6 +131,32 @@ export default class PasswordGeneratorScreen extends Component {
             masterPassword={masterPassword}
             onChangeText={masterPassword => this.setState({ masterPassword })}
           />
+          {password ? (
+            <View
+              style={{
+                width: "100%",
+                paddingTop: 10
+              }}
+            >
+              <Button
+                mode="contained"
+                onPress={() => this.copyPassword()}
+                style={{ alignSelf: "stretch" }}
+              >
+                {copied ? (
+                  "Copied"
+                ) : seePassword ? (
+                  <Text style={{ fontSize: 16, fontFamily: "monospace" }}>
+                    {password}
+                  </Text>
+                ) : (
+                  <Text style={{ fontSize: 16, fontFamily: "monospace" }}>
+                    ********************
+                  </Text>
+                )}
+              </Button>
+            </View>
+          ) : null}
           <View
             style={{
               flexDirection: "row",
@@ -120,55 +165,60 @@ export default class PasswordGeneratorScreen extends Component {
               paddingVertical: 10
             }}
           >
-            {generatedPassword ? (
-              <Button
-                icon={copied ? null : "remove-red-eye"}
-                mode="contained"
-                onPress={() => {
-                  if (!copied) {
+            {password ? (
+              <React.Fragment>
+                <Button
+                  compact
+                  icon="content-copy"
+                  mode="text"
+                  onPress={() => this.copyPassword()}
+                >
+                  Copy
+                </Button>
+                <Button
+                  compact
+                  icon="remove-red-eye"
+                  mode="text"
+                  onPress={() =>
                     this.setState(prevState => ({
                       seePassword: !prevState.seePassword
-                    }));
+                    }))
                   }
-                }}
-                style={{
-                  height: 50,
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                <Text uppercase={false}>
-                  {copied
-                    ? "Copied !"
-                    : seePassword
-                      ? generatedPassword
-                      : "****************"}
-                </Text>
-              </Button>
+                >
+                  {seePassword ? "hide" : "show"}
+                </Button>
+                <Button
+                  compact
+                  icon="refresh"
+                  mode="text"
+                  onPress={() => this.clear()}
+                >
+                  clear
+                </Button>
+              </React.Fragment>
             ) : (
               <Button
+                compact
                 mode="contained"
+                disabled={!masterPassword}
                 onPress={() => this.generatePassword()}
-                style={{
-                  height: 50,
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
               >
-                Generate password
+                Generate Password
               </Button>
             )}
-            <IconButton
+
+            <Button
+              compact
               icon="settings"
-              color={
-                showOptions ? Theme.colors.primary : Theme.colors.placeholder
-              }
+              mode="text"
               onPress={() =>
                 this.setState(prevState => ({
                   showOptions: !prevState.showOptions
                 }))
               }
-            />
+            >
+              Options
+            </Button>
           </View>
           {showOptions ? (
             <React.Fragment>

@@ -155,7 +155,6 @@ dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     compile "com.facebook.react:react-native:+"  // From node_modules
-    compile "com.madgag.spongycastle:prov:1.58.0.0"
     testCompile "junit:junit:4.12"
 }
 

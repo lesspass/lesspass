@@ -6,10 +6,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Promise;
-import org.spongycastle.crypto.PBEParametersGenerator;
-import org.spongycastle.crypto.generators.PKCS5S2ParametersGenerator;
-import org.spongycastle.crypto.digests.SHA256Digest;
-import org.spongycastle.crypto.params.KeyParameter;
+
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
