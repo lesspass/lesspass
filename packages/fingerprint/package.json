@@ -1,0 +1,28 @@
+{
+  "name": "lesspass-fingerprint",
+  "version": "1.0.0",
+  "description": "LessPass node module used to get fingerprint for 256 bytes string",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Guillaume Vincent",
+    "email": "guillaume@oslab.fr",
+    "url": "https://guillaumevincent.com"
+  },
+  "files": [
+    "src"
+  ],
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "jsnext:main": "src/index.js",
+  "browser": {
+    "./src/hmac.js": "./src/hmac.browser.js"
+  },
+  "scripts": {
+    "test": "npm run test:unit && npm run test:browser",
+    "test:unit": "mocha test --recursive",
+    "test:browser": "karma start test/karma.conf.js"
+  },
+  "dependencies": {
+    "lesspass-crypto": "^1.0.0"
+  }
+}

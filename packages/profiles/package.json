@@ -1,0 +1,19 @@
+{
+  "name": "lesspass-profiles",
+  "version": "1.0.0",
+  "description": "",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Guillaume Vincent",
+    "email": "guillaume@oslab.fr",
+    "url": "https://guillaumevincent.com"
+  },
+  "scripts": {
+    "import": "node import.js",
+    "search": "node search.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "typesense": "^0.2.0"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "lesspass-webextension",
+  "description": "LessPass web extension",
+  "version": "3.1.2",
+  "license": "GPL-3.0",
+  "private": true,
+  "author": {
+    "name": "Guillaume Vincent",
+    "email": "guillaume@oslab.fr",
+    "url": "https://guillaumevincent.com"
+  },
+  "scripts": {
+    "clean": "rm -rf extension/dist/ && mkdir extension/dist/ && rm -rf build && mkdir build && npm prune && npm install",
+    "version": "dot-json extension/manifest.json version $npm_package_version",
+    "zip:firefox": "cp build/lesspass.zip build/lesspass.firefox-v$npm_package_version.xpi",
+    "zip:chrome": "cp build/lesspass.zip build/lesspass.chrome-v$npm_package_version.zip",
+    "zip": "git archive -o build/lesspass.zip HEAD:extension && npm run zip:firefox && npm run zip:chrome && rm build/lesspass.zip",
+    "build": "npm run clean && gulp && npm run zip",
+    "release": "npm run build && npm run release-cws && npm run release-amo",
+    "release-amo": "cd extension && webext submit",
+    "release-cws": "webstore upload --source build/lesspass.chrome-v$npm_package_version.zip --auto-publish",
+    "dev": "cd extension && web-ext run",
+    "test": "echo 'no test'"
+  },
+  "dependencies": {
+    "lesspass-pure": "^5.1.4"
+  }
+}

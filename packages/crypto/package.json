@@ -1,0 +1,17 @@
+{
+  "name": "lesspass-crypto",
+  "version": "1.0.0",
+  "description": "LessPass crypto functions",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Guillaume Vincent",
+    "email": "guillaume@oslab.fr",
+    "url": "https://guillaumevincent.com"
+  },
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "module": "index.js",
+  "jsnext:main": "index.js"
+}
