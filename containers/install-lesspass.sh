@@ -45,7 +45,7 @@ EOF
 #######################
 # Docker compose file #
 #######################
-curl -s -o docker-compose.yml https://raw.githubusercontent.com/lesspass/lesspass/master/docker-compose.prod.yml
+curl -s -o docker-compose.yml https://raw.githubusercontent.com/lesspass/lesspass/master/containers/docker-compose.prod.yml
 docker-compose pull
 docker-compose down
 
