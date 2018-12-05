@@ -1,0 +1,9 @@
+dist: trusty
+language: node_js
+node_js:
+  - 10
+  - 8
+addons:
+  chrome: stable
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
