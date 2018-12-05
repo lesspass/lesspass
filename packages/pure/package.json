@@ -1,0 +1,36 @@
+{
+  "name": "lesspass-pure",
+  "version": "5.1.4",
+  "description": "LessPass web component",
+  "license": "GPL-3.0",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "build": "rm -rf dist && cross-env NODE_ENV=production webpack -p",
+    "build:i18n": "cd scripts && node buildI18n.js",
+    "dev": "webpack-dev-server --inline --hot --host 0.0.0.0",
+    "test:unit": "ava",
+    "test:e2e": "node test/e2e/runner.js"
+  },
+  "dependencies": {
+    "@oslab/atob": "0.1.0",
+    "@oslab/btoa": "0.1.0",
+    "awesomplete": "1.1.2",
+    "axios": "0.18.0",
+    "balloon-css": "0.5.0",
+    "bootstrap": "4.0.0",
+    "copy-text-to-clipboard": "1.0.4",
+    "font-awesome": "4.7.0",
+    "jwt-decode": "2.2.0",
+    "lesspass": "6.0.0",
+    "lodash.debounce": "4.0.8",
+    "lodash.uniqby": "4.7.0",
+    "vue": "2.5.16",
+    "vue-polyglot": "0.2.3",
+    "vue-router": "3.0.1",
+    "vuejs-paginate": "2.0.1",
+    "vuex": "3.0.1",
+    "vuex-persistedstate": "2.5.1",
+    "vuex-router-sync": "5.0.0"
+  }
+}
