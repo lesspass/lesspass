@@ -1,0 +1,23 @@
+version: "3"
+services:
+  profiles:
+    image: typesense/typesense:0.9.2
+    volumes:
+      - profiles:/data
+    ports:
+      - 8108:8108
+    environment:
+      API_KEY: dev-api-key
+      SEARCH_ONLY_API_KEY: dev-search-only-api-key
+    entrypoint: sh -c "/opt/typesense-server --data-dir /data --api-key=$${API_KEY} --search-only-api-key=$${SEARCH_ONLY_API_KEY}"
+  webserver:
+    build: ./webserver
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      FQDN: localhost
+      DEBUG: 1
+    volumes:
+      - ./webserver/ssl:/ssl
+      - ./webserver:/webserver

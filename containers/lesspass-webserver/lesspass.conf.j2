@@ -1,0 +1,48 @@
+ServerName {{ FQDN }}
+
+<VirtualHost *:80>
+  ServerName www.{{ FQDN }}
+  ServerAlias {{ FQDN }}
+  # Redirect permanent / https://www.{{ FQDN }}/
+  Redirect / https://www.{{ FQDN }}/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.{{ FQDN }}
+    ServerAlias {{ FQDN }}
+    
+    DocumentRoot /var/www/html
+    
+    <Directory /var/www/html/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    SSLEngine on
+    SSLCertificateFile      {{ SSL_CERTIFICATE_FILE }}
+    SSLCertificateKeyFile   {{ SSL_CERTIFICATE_KEY_FILE }}
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName profiles.{{ FQDN }}
+    ProxyPass / http://profiles:8108/
+    ProxyPassReverse / http://profiles:8108/
+    SSLEngine on
+    SSLCertificateFile      {{ SSL_CERTIFICATE_FILE }}
+    SSLCertificateKeyFile   {{ SSL_CERTIFICATE_KEY_FILE }}
+</VirtualHost>
+
+SSLProtocol             all -SSLv3 -TLSv1 -TLSv1.1
+SSLCipherSuite          ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+SSLHonorCipherOrder     on
+SSLCompression          off
+SSLSessionTickets       off
+{% if not DEBUG %}
+SSLUseStapling          on
+SSLStaplingResponderTimeout 5
+SSLStaplingReturnResponderErrors off
+SSLStaplingCache        shmcb:/var/run/ocsp(128000)
+{% endif %}
+ErrorLog /dev/stderr
+TransferLog /dev/stdout

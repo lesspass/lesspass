@@ -1,0 +1,39 @@
+{
+  "name": "lesspass-mobile",
+  "version": "1.0.0",
+  "description": "LessPass mobile application",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Guillaume Vincent",
+    "email": "guillaume@oslab.fr",
+    "url": "https://guillaumevincent.com"
+  },
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "0.18.0",
+    "debounce": "1.2.0",
+    "lesspass-fingerprint": "1.0.0",
+    "lesspass-render-password": "1.0.0",
+    "lodash": "4.17.11",
+    "memoize-one": "4.0.3",
+    "react": "16.4.1",
+    "react-native": "0.56.1",
+    "react-native-gesture-handler": "1.0.10",
+    "react-native-keychain": "3.0.0",
+    "react-native-paper": "2.0.1",
+    "react-native-touch-id": "4.1.0",
+    "react-native-vector-icons": "6.1.0",
+    "react-navigation": "3.0.2",
+    "react-navigation-material-bottom-tabs": "1.0.0",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "redux-persist": "5.10.0",
+    "redux-thunk": "2.3.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

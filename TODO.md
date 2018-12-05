@@ -1,0 +1,2 @@
+ * npm deprecate lesspass-cli "WARNING: lesspass-cli has been replace by lesspass. install it with npm install lesspass"
+ * npm deprecate lesspass-master-password "WARNING: lesspass-master-password has been replace by lesspass-fingerprint. install it with npm install lesspass-fingerprint"

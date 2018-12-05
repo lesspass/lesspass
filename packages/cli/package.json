@@ -1,0 +1,25 @@
+{
+  "name": "lesspass",
+  "version": "9.0.0",
+  "description": "LessPass cli",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Guillaume Vincent",
+    "email": "guillaume@oslab.fr",
+    "url": "https://guillaumevincent.com"
+  },
+  "files": [
+    "index.js"
+  ],
+  "bin": {
+    "lesspass": "index.js"
+  },
+  "dependencies": {
+    "chalk": "2.3.1",
+    "clipboardy": "1.2.3",
+    "lesspass-entropy": "1.0.0",
+    "lesspass-render-password": "1.0.0",
+    "meow": "5.0.0",
+    "read": "1.0.7"
+  }
+}
