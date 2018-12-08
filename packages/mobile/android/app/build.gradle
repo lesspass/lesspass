@@ -100,11 +100,11 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.lesspass"
+        applicationId "com.lesspass.android"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 30001
+        versionName "3.0.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
