@@ -2,7 +2,7 @@
   "name": "lesspass-mobile",
   "version": "3.0.2",
   "description": "LessPass mobile application",
-  "license": "GPL-3.0",
+  "license": "(MPL-2.0 OR GPL-3.0)",
   "author": {
     "name": "Guillaume Vincent",
     "email": "guillaume@oslab.fr",
