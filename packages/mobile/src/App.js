@@ -8,7 +8,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { persistor, store } from "./store";
 import AuthStack from "./auth/AuthStack";
 import AuthLoadingScreen from "./auth/AuthLoadingScreen";
-import SignOutScreen from "./auth/SignOutScreen";
+import HelpScreen from "./help/HelpScreen";
 import PasswordGeneratorScreen from "./password/PasswordGeneratorScreen";
 import SettingsScreen from "./settings/SettingsScreen";
 import Theme from "./ui/Theme";
@@ -33,6 +33,15 @@ const commonTabs = {
         <Icon size={20} name="cogs" style={{ color: tintColor }} />
       )
     }
+  },
+  Help: {
+    screen: HelpScreen,
+    navigationOptions: {
+      title: "Help",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon size={20} name="question" style={{ color: tintColor }} />
+      )
+    }
   }
 };
 
@@ -46,16 +55,7 @@ const tabOptions = {
 
 const AppNavigator = createMaterialBottomTabNavigator(
   {
-    ...commonTabs,
-    SignOut: {
-      screen: SignOutScreen,
-      navigationOptions: {
-        title: "Sign Out",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon size={20} name="sign-out" style={{ color: tintColor }} />
-        )
-      }
-    }
+    ...commonTabs
   },
   tabOptions
 );

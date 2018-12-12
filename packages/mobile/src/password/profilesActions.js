@@ -9,9 +9,9 @@ function setPasswordProfiles(profiles) {
 
 export function getPasswordProfiles() {
   return (dispatch, getState) => {
-    const { config, auth } = getState();
+    const { settings, auth } = getState();
     return axios
-      .get(`${config.lesspassDatabaseDefaultUrl}/api/passwords/`, {
+      .get(`${settings.lesspassDatabaseDefaultUrl}/api/passwords/`, {
         headers: { Authorization: `JWT ${auth.jwt}` }
       })
       .then(response => {

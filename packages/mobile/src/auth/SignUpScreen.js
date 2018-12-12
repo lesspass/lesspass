@@ -5,19 +5,23 @@ import { Text, Button, Title } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 import TextInput from "../ui/TextInput";
 import Styles from "../ui/Styles";
+import { addError } from "../errors/errorsActions";
+import { signUp } from "./authActions";
+import { isEmpty } from "lodash";
 
 export class SignUpScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: "",
-      password: ""
+      email: "",
+      password: "",
+      isLoading: false
     };
   }
 
   render() {
-    const { login, password } = this.state;
-    const { navigation } = this.props;
+    const { email, password, isLoading } = this.state;
+    const { navigation, encryptMasterPassword, addError, signUp } = this.props;
     return (
       <ScrollView style={{ flex: 1 }}>
         <KeyboardAvoidingView
@@ -28,13 +32,14 @@ export class SignUpScreen extends Component {
           <Title>Create an account</Title>
           <TextInput
             mode="outlined"
-            label="Login"
-            value={login}
-            onChangeText={login => this.setState({ login })}
+            label="Email"
+            value={email}
+            onChangeText={text => this.setState({ email: text.trim() })}
           />
           <MasterPassword
-            label="Password"
+            label={encryptMasterPassword ? "Master Password" : "Password"}
             masterPassword={password}
+            hideFingerprint={!encryptMasterPassword}
             onChangeText={password => this.setState({ password })}
           />
           <Button
@@ -42,7 +47,24 @@ export class SignUpScreen extends Component {
             icon="account-circle"
             mode="contained"
             style={Styles.loginSignInButton}
-            onPress={() => console.log("pressed")}
+            disabled={isEmpty(email) || isEmpty(password) || isLoading}
+            onPress={() => {
+              this.setState({ isLoading: true });
+              signUp(
+                {
+                  email,
+                  password
+                },
+                encryptMasterPassword
+              )
+                .then(() => navigation.navigate("App"))
+                .catch(error => {
+                  this.setState({ isLoading: false });
+                  addError(
+                    "Unable to sign up. Try in a few minutes or contact an administrator."
+                  );
+                });
+            }}
           >
             Sign Up
           </Button>
@@ -64,8 +86,19 @@ export class SignUpScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    config: state.config
+    settings: state.settings
   };
 }
 
-export default connect(mapStateToProps)(SignUpScreen);
+function mapDispatchToProps(dispatch) {
+  return {
+    addError: message => dispatch(addError(message)),
+    signUp: (credentials, encryptMasterPassword) =>
+      dispatch(signUp(credentials, encryptMasterPassword))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUpScreen);

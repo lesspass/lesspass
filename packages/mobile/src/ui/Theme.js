@@ -9,6 +9,7 @@ const Theme = {
     //primary: "#0275d8",
     primary: "#333333",
     //lightBlue: "#a8d6fe",
+    blue: "#0275d8",
     lightBlue: "#aaa",
     red: "#f32c1e",
     lightRed: "#fcc3bf",

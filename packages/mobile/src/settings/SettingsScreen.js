@@ -4,10 +4,13 @@ import { ScrollView } from "react-native";
 import { Divider, List } from "react-native-paper";
 import TouchID from "react-native-touch-id";
 import { setGenericPassword } from "react-native-keychain";
-import { setConfig } from "../config/configActions";
-import TextInputModal from "../ui/TextInputModal";
+import { setSettings } from "./settingsActions";
+import { signOut } from "../auth/authActions";
+import TextInputModal from "./TextInputModal";
 import Switch from "../ui/Switch";
 import KeepMasterPasswordOption from "./KeepMasterPasswordOption";
+import Theme from "../ui/Theme";
+import { version } from "../../package.json";
 
 export class SettingsScreen extends Component {
   constructor(props) {
@@ -25,13 +28,19 @@ export class SettingsScreen extends Component {
       .catch(error => console.log(error));
   }
 
+  _signOut = async () => {
+    const { navigation, signOut } = this.props;
+    signOut();
+    navigation.navigate("Auth");
+  };
+
   render() {
     const { fingerprintIsSupported } = this.state;
-    const { config, setConfig } = this.props;
+    const { auth, settings, setSettings } = this.props;
     const {
       keepMasterPasswordLocally,
       lesspassDatabaseDefaultUrl,
-      lesspassDatabaseEncryptMasterPassword,
+      encryptMasterPassword,
       defaultPasswordProfileLogin,
       defaultGeneratedPasswordLength,
       defaultLowercase,
@@ -39,14 +48,14 @@ export class SettingsScreen extends Component {
       defaultDigits,
       defaultSymbols,
       defaultCounter
-    } = config;
+    } = settings;
     return (
       <ScrollView style={{ flex: 1 }}>
         <List.Section title="LESSPASS DATABASE">
           <TextInputModal
             label="Default URL"
             value={lesspassDatabaseDefaultUrl}
-            onOk={value => setConfig({ lesspassDatabaseDefaultUrl: value })}
+            onOk={value => setSettings({ lesspassDatabaseDefaultUrl: value })}
             modalTitle="LessPass Database default URL"
           />
           <Divider />
@@ -55,18 +64,17 @@ export class SettingsScreen extends Component {
             description={
               "Use your master password in the sign in form but send encrypted password."
             }
-            value={lesspassDatabaseEncryptMasterPassword}
-            onChange={value =>
-              setConfig({ lesspassDatabaseEncryptMasterPassword: value })
-            }
+            value={encryptMasterPassword}
+            onChange={value => setSettings({ encryptMasterPassword: value })}
           />
           <Divider />
         </List.Section>
         <List.Section title="DEFAULT PASSWORD PROFILE">
           <TextInputModal
+            isRequired={false}
             label="Login"
             value={defaultPasswordProfileLogin}
-            onOk={value => setConfig({ defaultPasswordProfileLogin: value })}
+            onOk={value => setSettings({ defaultPasswordProfileLogin: value })}
             modalTitle="Default login"
           />
           <Divider />
@@ -75,7 +83,7 @@ export class SettingsScreen extends Component {
             value={defaultGeneratedPasswordLength}
             variant="numeric"
             onOk={value => {
-              setConfig({
+              setSettings({
                 defaultGeneratedPasswordLength: parseInt(value)
               });
             }}
@@ -87,7 +95,7 @@ export class SettingsScreen extends Component {
             value={defaultCounter}
             variant="numeric"
             onOk={value => {
-              setConfig({
+              setSettings({
                 defaultCounter: parseInt(value)
               });
             }}
@@ -98,28 +106,28 @@ export class SettingsScreen extends Component {
             label="Lowercase (a-z)"
             description={defaultLowercase ? "activated" : "deactivated"}
             value={defaultLowercase}
-            onChange={value => setConfig({ defaultLowercase: value })}
+            onChange={value => setSettings({ defaultLowercase: value })}
           />
           <Divider />
           <Switch
             label="Uppercase (A-Z)"
             description={defaultUppercase ? "activated" : "deactivated"}
             value={defaultUppercase}
-            onChange={value => setConfig({ defaultUppercase: value })}
+            onChange={value => setSettings({ defaultUppercase: value })}
           />
           <Divider />
           <Switch
             label="Numbers (0-9)"
             description={defaultDigits ? "activated" : "deactivated"}
             value={defaultDigits}
-            onChange={value => setConfig({ defaultDigits: value })}
+            onChange={value => setSettings({ defaultDigits: value })}
           />
           <Divider />
           <Switch
             label="Symbols (%!@)"
             description={defaultSymbols ? "activated" : "deactivated"}
             value={defaultSymbols}
-            onChange={value => setConfig({ defaultSymbols: value })}
+            onChange={value => setSettings({ defaultSymbols: value })}
           />
           <Divider />
         </List.Section>
@@ -139,10 +147,14 @@ export class SettingsScreen extends Component {
                     .then(() =>
                       setGenericPassword("masterPassword", masterPassword)
                     )
-                    .then(() => setConfig({ keepMasterPasswordLocally: true }))
+                    .then(() =>
+                      setSettings({ keepMasterPasswordLocally: true })
+                    )
                     .catch(error => console.log(error));
                 }}
-                onClear={() => setConfig({ keepMasterPasswordLocally: false })}
+                onClear={() =>
+                  setSettings({ keepMasterPasswordLocally: false })
+                }
                 modalTitle="Enter your master password"
                 modalDescription="Your master password will be encrypted locally on your device and accessible only with your fingerprint."
               />
@@ -150,6 +162,17 @@ export class SettingsScreen extends Component {
             <Divider />
           </React.Fragment>
         )}
+        <List.Section title="APPLICATION">
+          {auth.jwt ? (
+            <List.Item
+              theme={{ colors: { text: Theme.colors.red } }}
+              title="Sign out"
+              onPress={this._signOut}
+            />
+          ) : null}
+          <List.Item title={`LessPass version: ${version}`} />
+        </List.Section>
+        <Divider />
       </ScrollView>
     );
   }
@@ -157,15 +180,15 @@ export class SettingsScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    config: state.config
+    auth: state.auth,
+    settings: state.settings
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setConfig: config => {
-      dispatch(setConfig(config));
-    }
+    setSettings: settings => dispatch(setSettings(settings)),
+    signOut: () => dispatch(signOut())
   };
 }
 
