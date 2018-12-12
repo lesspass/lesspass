@@ -8,15 +8,15 @@ import {
   List,
   Text
 } from "react-native-paper";
-import Styles from "./Styles";
+import Styles from "../ui/Styles";
 
 export default class TextInputModal extends Component {
   constructor(props) {
     super(props);
-    const { value, variant } = props;
+    const { value, variant, isRequired = true } = props;
     this.state = {
       value,
-      isValid: this.checkInputIsValid(value, variant),
+      isValid: this.checkInputIsValid(value, variant, isRequired),
       showModal: false
     };
   }
@@ -35,14 +35,14 @@ export default class TextInputModal extends Component {
     return variants[variant];
   };
 
-  checkInputIsValid = (value, variant) => {
-    if (!value) return false;
+  checkInputIsValid = (value, variant, isRequired) => {
+    if (isRequired && !value) return false;
     let isValid = variant === "numeric" ? !isNaN(value) : true;
     return isValid;
   };
 
-  onChange = (value, variant) => {
-    const isValid = this.checkInputIsValid(value, variant);
+  onChange = (value, variant, isRequired) => {
+    const isValid = this.checkInputIsValid(value, variant, isRequired);
     this.setState({ value, isValid });
   };
 
@@ -53,7 +53,8 @@ export default class TextInputModal extends Component {
       onOk,
       modalTitle,
       modalDescription,
-      variant = "text"
+      variant = "text",
+      isRequired
     } = this.props;
     return (
       <View>
@@ -67,7 +68,9 @@ export default class TextInputModal extends Component {
                   value={variant === "numeric" ? value.toString() : value}
                   keyboardType={this.getKeyboardType(variant)}
                   secureTextEntry={variant === "password"}
-                  onChangeText={value => this.onChange(value, variant)}
+                  onChangeText={value =>
+                    this.onChange(value, variant, isRequired)
+                  }
                 />
                 {modalDescription ? <Text /> : null}
               </View>

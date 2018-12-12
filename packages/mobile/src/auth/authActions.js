@@ -10,10 +10,10 @@ export function setJWT(jwt) {
 
 function getJWT(credentials) {
   return (dispatch, getState) => {
-    const { config } = getState();
+    const { settings } = getState();
     return axios
       .post(
-        `${config.lesspassDatabaseDefaultUrl}/api/tokens/auth/`,
+        `${settings.lesspassDatabaseDefaultUrl}/api/tokens/auth/`,
         credentials
       )
       .then(response => {
@@ -54,10 +54,27 @@ export function signIn(credentials, encryptCredentials) {
   };
 }
 
-export function register(credentials) {
-  return axios
-    .post("/api/auth/register/", credentials)
-    .then(response => response.data);
+function register(credentials) {
+  return (dispatch, getState) => {
+    const { settings } = getState();
+    return axios
+      .post(
+        `${settings.lesspassDatabaseDefaultUrl}/api/auth/register/`,
+        credentials
+      )
+      .then(() => dispatch(getJWT(credentials)));
+  };
+}
+
+export function signUp(credentials, encryptCredentials) {
+  return dispatch => {
+    if (encryptCredentials) {
+      return dispatch(getEncryptedCredentials(credentials)).then(
+        encryptedCredentials => dispatch(register(encryptedCredentials))
+      );
+    }
+    return dispatch(register(credentials));
+  };
 }
 
 export function signOut() {

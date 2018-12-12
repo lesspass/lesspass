@@ -1,10 +1,39 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableWithoutFeedback } from "react-native";
 import memoize from "memoize-one";
 import { isEmpty } from "lodash";
 import TextInput from "../TextInput";
 import Theme from "../Theme";
 import { returnMatchingData } from "./filter";
+import { highlightSearch } from "./highlight";
+
+function highlight(text, i) {
+  return (
+    <Text
+      key={i}
+      style={{
+        color: Theme.colors.primary,
+        fontWeight: "bold",
+        fontSize: 16
+      }}
+    >
+      {text}
+    </Text>
+  );
+}
+function noHighlight(text, i) {
+  return (
+    <Text
+      key={i}
+      style={{
+        color: Theme.colors.primary,
+        fontSize: 16
+      }}
+    >
+      {text}
+    </Text>
+  );
+}
 
 export default class AutocompleteTextInput extends Component {
   returnMatchingData = memoize(returnMatchingData);
@@ -17,9 +46,11 @@ export default class AutocompleteTextInput extends Component {
       data,
       dataKey,
       onDataSelected,
-      showAutocomplete
+      showAutocomplete,
+      hideAutocomplete
     } = this.props;
-    const matchingData = this.returnMatchingData(value, data, dataKey);
+    const items = this.returnMatchingData(value, data, dataKey);
+    const highlightedItems = highlightSearch(items, highlight, noHighlight);
     return (
       <View>
         <TextInput
@@ -28,51 +59,84 @@ export default class AutocompleteTextInput extends Component {
           value={value}
           onChangeText={site => onChangeText(site)}
         />
-        {!isEmpty(matchingData) && showAutocomplete && (
+        {!isEmpty(highlightedItems) && showAutocomplete && (
           <View
             style={{
               position: "absolute",
-              backgroundColor: Theme.colors.background,
+              backgroundColor: "transparent",
               top: 64,
               left: 0,
               right: 0,
-              zIndex: 2,
-              borderRadius: Theme.roundness,
-              borderWidth: 1,
-              borderTopWidth: 0,
-              borderColor: Theme.colors.primary,
-              padding: 12
+              zIndex: 2
             }}
           >
-            {matchingData.map((match, i) => (
-              <TouchableOpacity
-                key={i}
-                style={{
-                  flexDirection: "row",
-                  paddingBottom: i === matchingData.length - 1 ? 0 : 12
-                }}
-                onPress={() => {
-                  this.setState({ elementSelected: true });
-                  onDataSelected(match.element);
-                }}
-              >
-                <Text
-                  style={{
-                    color: Theme.colors.primary,
-                    fontWeight: "bold",
-                    fontSize: 16
+            {highlightedItems.map((highlightedItem, i) => {
+              const isFirstElement = i === 0;
+              const isLastElement = i === highlightedItems.length - 1;
+              const borderWidth = 2;
+
+              return (
+                <TouchableWithoutFeedback
+                  key={i}
+                  onPress={() => {
+                    onDataSelected(highlightedItem.item);
                   }}
                 >
-                  {value}
-                </Text>
-                <Text style={{ color: Theme.colors.primary, fontSize: 16 }}>
-                  {match.value.substr(value.length)}
-                </Text>
-              </TouchableOpacity>
-            ))}
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      paddingLeft: 12,
+                      paddingRight: 12,
+                      paddingTop: 12,
+                      backgroundColor: Theme.colors.background,
+                      paddingBottom: isLastElement ? 12 : 0,
+                      borderWidth,
+                      borderTopWidth: 0,
+                      borderBottomWidth: isLastElement ? borderWidth : 0,
+                      borderBottomLeftRadius: isLastElement
+                        ? Theme.roundness
+                        : 0,
+                      borderBottomRightRadius: isLastElement
+                        ? Theme.roundness
+                        : 0,
+                      borderTopLeftRadius: isFirstElement ? Theme.roundness : 0,
+                      borderTopRightRadius: isFirstElement
+                        ? Theme.roundness
+                        : 0,
+                      borderColor: Theme.colors.primary,
+                      zIndex: 3
+                    }}
+                  >
+                    {highlightedItem.highlights}
+                  </View>
+                </TouchableWithoutFeedback>
+              );
+            })}
+            <TouchableWithoutFeedback onPress={() => hideAutocomplete()}>
+              <View
+                style={{
+                  height: 100,
+                  backgroundColor: "transparent"
+                }}
+              />
+            </TouchableWithoutFeedback>
           </View>
         )}
       </View>
     );
   }
 }
+
+const matches = [
+  {
+    indices: [[4, 5], [7, 8]],
+    value: "www.example.org",
+    key: "site",
+    arrayIndex: 0
+  }
+];
+const r = matches.reduce((matchAccumulator, match) => {
+  matchAccumulator;
+
+  return matchAccumulator;
+}, []);

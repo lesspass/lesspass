@@ -21,8 +21,8 @@ export class SignInScreen extends Component {
 
   render() {
     const { email, password, isLoading } = this.state;
-    const { navigation, config, addError, signIn } = this.props;
-    const { lesspassDatabaseEncryptMasterPassword } = config;
+    const { navigation, settings, addError, signIn } = this.props;
+    const { encryptMasterPassword } = settings;
     return (
       <ScrollView style={{ flex: 1 }}>
         <KeyboardAvoidingView
@@ -35,16 +35,16 @@ export class SignInScreen extends Component {
             mode="outlined"
             label="Email"
             value={email}
-            onChangeText={email => this.setState({ email })}
+            onChangeText={text => this.setState({ email: text.trim() })}
           />
           <MasterPassword
             label={
-              lesspassDatabaseEncryptMasterPassword
+              encryptMasterPassword
                 ? "Master Password"
                 : "Password"
             }
             masterPassword={password}
-            hideFingerprint={!lesspassDatabaseEncryptMasterPassword}
+            hideFingerprint={!encryptMasterPassword}
             onChangeText={password => this.setState({ password })}
           />
           <Button
@@ -60,14 +60,14 @@ export class SignInScreen extends Component {
                   email,
                   password
                 },
-                lesspassDatabaseEncryptMasterPassword
+                encryptMasterPassword
               )
                 .then(() => navigation.navigate("App"))
                 .catch(() => {
                   this.setState({ isLoading: false });
                   let errorMessage =
                     "Unable to log in with provided credentials.";
-                  if (lesspassDatabaseEncryptMasterPassword) {
+                  if (encryptMasterPassword) {
                     errorMessage +=
                       " Your master password is encrypted. Uncheck this option in your settings if you don't use it.";
                   }
@@ -95,7 +95,7 @@ export class SignInScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    config: state.config
+    settings: state.settings
   };
 }
 

@@ -5,13 +5,13 @@ import storage from "redux-persist/lib/storage";
 import stateReconciler from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 import thunk from "redux-thunk";
-import configReducer from "./config/configReducer";
+import settingsReducer from "./settings/settingsReducer";
 import authReducer from "./auth/authReducer";
 import errorsReducer from "./errors/errorsReducer";
 import profilesReducer from "./password/profilesReducer";
 
 const rootReducer = combineReducers({
-  config: configReducer,
+  settings: settingsReducer,
   auth: authReducer,
   errors: errorsReducer,
   profiles: profilesReducer
@@ -21,7 +21,7 @@ const persistConfig = {
   key: "root",
   storage,
   stateReconciler,
-  whitelist: ["config", "auth"]
+  whitelist: ["settings", "auth"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

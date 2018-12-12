@@ -23,8 +23,8 @@ export class TouchId extends Component {
   };
 
   render() {
-    const { config } = this.props;
-    const { keepMasterPasswordLocally = false } = config;
+    const { settings } = this.props;
+    const { keepMasterPasswordLocally = false } = settings;
     if (!keepMasterPasswordLocally) return null;
     return (
       <View style={Styles.fingerprint}>
@@ -39,7 +39,7 @@ export class TouchId extends Component {
 
 function mapStateToProps(state) {
   return {
-    config: state.config
+    settings: state.settings
   };
 }
 

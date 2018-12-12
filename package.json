@@ -6,6 +6,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "test:mobile": "lerna run --scope lesspass-mobile test",
     "test": "jest"
   },
   "devDependencies": {

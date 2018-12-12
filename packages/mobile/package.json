@@ -1,6 +1,6 @@
 {
   "name": "lesspass-mobile",
-  "version": "1.0.0",
+  "version": "3.0.2",
   "description": "LessPass mobile application",
   "license": "GPL-3.0",
   "author": {
@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "debounce": "1.2.0",
+    "fuse.js": "^3.3.0",
     "lesspass-fingerprint": "1.0.0",
     "lesspass-render-password": "1.0.0",
     "lodash": "4.17.11",

@@ -1,11 +1,11 @@
-import reducer from "./configReducer";
+import reducer from "./settingsReducer";
 
-describe("config reducer", () => {
+describe("settings reducer", () => {
   it("should return the initial state", () => {
     expect(reducer(undefined, {})).toEqual({
       keepMasterPasswordLocally: false,
       lesspassDatabaseDefaultUrl: "https://lesspass.com",
-      lesspassDatabaseEncryptMasterPassword: true,
+      encryptMasterPassword: true,
       defaultPasswordProfileLogin: "",
       defaultGeneratedPasswordLength: 16,
       defaultLowercase: true,
@@ -15,15 +15,15 @@ describe("config reducer", () => {
       defaultCounter: 1
     });
   });
-  it("SET_CONFIG", () => {
+  it("SET_SETTINGS", () => {
     expect(
       reducer(
         {
           keepMasterPasswordLocally: false
         },
         {
-          type: "SET_CONFIG",
-          config: {
+          type: "SET_SETTINGS",
+          settings: {
             keepMasterPasswordLocally: true
           }
         }
@@ -32,23 +32,23 @@ describe("config reducer", () => {
       keepMasterPasswordLocally: true
     });
   });
-  it("SET_CONFIG keep existing config", () => {
+  it("SET_SETTINGS keep existing settings", () => {
     expect(
       reducer(
         {
-          config1: false,
-          config2: false
+          setting1: false,
+          setting2: false
         },
         {
-          type: "SET_CONFIG",
-          config: {
-            config1: true
+          type: "SET_SETTINGS",
+          settings: {
+            setting1: true
           }
         }
       )
     ).toEqual({
-      config1: true,
-      config2: false
+      setting1: true,
+      setting2: false
     });
   });
 });

@@ -1,20 +1,13 @@
 import { isEmpty } from "lodash";
+import Fuse from "fuse.js";
 
 export function returnMatchingData(query, data, dataKey) {
   if (isEmpty(query)) return [];
-  const matchingData = [];
-  for (let i = 0; i < data.length; i += 1) {
-    const element = data[i];
-    const dataValue = data[i][dataKey];
-    if (
-      dataValue &&
-      dataValue.substr(0, query.length).toUpperCase() === query.toUpperCase()
-    ) {
-      matchingData.push({
-        value: dataValue,
-        element
-      });
-    }
-  }
-  return matchingData;
+  const options = {
+    keys: [dataKey],
+    minMatchCharLength: 2,
+    includeMatches: true
+  };
+  const fuse = new Fuse(data, options);
+  return fuse.search(query).slice(0, 3);
 }

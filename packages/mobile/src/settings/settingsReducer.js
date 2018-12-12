@@ -1,7 +1,7 @@
 const initialState = {
   keepMasterPasswordLocally: false,
   lesspassDatabaseDefaultUrl: "https://lesspass.com",
-  lesspassDatabaseEncryptMasterPassword: true,
+  encryptMasterPassword: true,
   defaultPasswordProfileLogin: "",
   defaultGeneratedPasswordLength: 16,
   defaultLowercase: true,
@@ -13,8 +13,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case "SET_CONFIG":
-      return { ...state, ...action.config };
+    case "SET_SETTINGS":
+      return { ...state, ...action.settings };
     default:
       return state;
   }
