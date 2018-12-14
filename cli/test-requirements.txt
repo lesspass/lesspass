@@ -1,0 +1,4 @@
+tox
+pytest
+flake8
+mock
