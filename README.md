@@ -16,6 +16,16 @@ LessPass open source password manager (https://lesspass.com)
  * :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=YbaRCHXk8Jo)
 
 
+## CLI
+
+Use pip to install LessPass cli:
+
+    python3 -m pip install --user lesspass
+
+Usage
+
+    lesspass --help
+
 ## License
 
 This project is licensed under the terms of the GNU GPLv3.
