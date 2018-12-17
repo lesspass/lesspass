@@ -39,7 +39,7 @@ class DefaultParameters(object):
     def is_valid(self):
         is_valid = True
         if not self.args.site and not self.args.prompt:
-            self.error_message += " * SITE is a required argument"
+            self.error_message += " * SITE is a required argument (unless in interactive mode with --prompt)"
             is_valid = False
         return is_valid
 
