@@ -33,7 +33,7 @@ Options:
   -s, --symbols        add symbols in password
   -L, --length         int (default 16)
   -C, --counter        int (default 1)
-  -p, --prompt         prompt user for [SITE] and [LOGIN] arguments
+  -p, --prompt         interactively prompt SITE and LOGIN (prevent leak to shell history)
   --no-lowercase       remove lowercase from password
   --no-uppercase       remove uppercase from password
   --no-digits          remove digits from password
