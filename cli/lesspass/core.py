@@ -26,7 +26,9 @@ def main(args=sys.argv[1:]):
         sys.exit(0)
     profile, master_password = create_profile(args)
 
-    if not profile["site"] and args.prompt:
+    if args.prompt:
+        profile["site"] = getpass.getpass("Site: ")
+        profile["login"] = getpass.getpass("Login: ")
         profile["site"] = getpass.getpass("Site: ")
 
     if not profile["login"] and args.prompt:
