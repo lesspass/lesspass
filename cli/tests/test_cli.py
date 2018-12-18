@@ -110,3 +110,9 @@ class TestParseArgs(unittest.TestCase):
 
     def test_parse_args_clipboard_backward_compatibility(self):
         self.assertTrue(parse_args(["site", "--clipboard"]).clipboard)
+
+    def test_parse_args_prompt_long(self):
+        self.assertTrue(parse_args(["--prompt"]).prompt)
+
+    def test_parse_args_prompt_short(self):
+        self.assertTrue(parse_args(["-p"]).prompt)

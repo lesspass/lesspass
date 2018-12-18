@@ -50,3 +50,10 @@ class TestValidateArgs(unittest.TestCase):
         self.assertTrue(
             "SITE is a required argument" in message
         )
+
+    def test_validate_args_site_optional_with_prompt(self):
+        error, message = validate_args(parse_args(["--prompt"]))
+        self.assertFalse(error)
+        self.assertTrue(
+            "SITE is a required argument" not in message
+        )

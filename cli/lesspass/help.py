@@ -12,8 +12,8 @@ def get_long_help():
     return """Name:
 
   LessPass - stateless password generator
-    
-Usage: 
+
+Usage:
 
   lesspass SITE [LOGIN] [MASTER_PASSWORD] [OPTIONS]
 
@@ -33,6 +33,7 @@ Options:
   -s, --symbols        add symbols in password
   -L, --length         int (default 16)
   -C, --counter        int (default 1)
+  -p, --prompt         interactively prompt SITE and LOGIN (prevent leak to shell history)
   --no-lowercase       remove lowercase from password
   --no-uppercase       remove uppercase from password
   --no-digits          remove digits from password

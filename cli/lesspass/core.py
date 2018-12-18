@@ -25,9 +25,16 @@ def main(args=sys.argv[1:]):
         print_help(help_message)
         sys.exit(0)
     profile, master_password = create_profile(args)
+
+    if args.prompt:
+        profile["site"] = getpass.getpass("Site: ")
+        profile["login"] = getpass.getpass("Login: ")
+
     if not master_password:
         master_password = getpass.getpass("Master Password: ")
+
     generated_password = generate_password(profile, master_password)
+
     if args.clipboard:
         try:
             copy(generated_password)
