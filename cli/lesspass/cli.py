@@ -21,6 +21,7 @@ def parse_args(args):
     parser.add_argument("--no-symbols", dest="ns", action="store_true")
     parser.add_argument("-L", "--length", default=16, type=int)
     parser.add_argument("-C", "--counter", default=1, type=int)
+    parser.add_argument("-p", "--prompt", dest="prompt", action="store_true")
     parser.add_argument(
         "-c", "--copy", "--clipboard", dest="clipboard", action="store_true"
     )
