@@ -58,6 +58,8 @@ export default class AutocompleteTextInput extends Component {
           label={label}
           value={value}
           onChangeText={site => onChangeText(site)}
+          onSubmitEditing={() => hideAutocomplete()}
+          autoFocus
         />
         {!isEmpty(highlightedItems) && showAutocomplete && (
           <View
