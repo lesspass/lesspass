@@ -28,7 +28,14 @@ export default class Counter extends Component {
   };
 
   render() {
-    const { label, value, onValueChange, ...props } = this.props;
+    const {
+      label,
+      value,
+      onValueChange,
+      minValue,
+      maxValue,
+      ...props
+    } = this.props;
     const { isValid } = this.state;
     const isValidBackgroundColor = isValid
       ? Theme.colors.primary
@@ -65,8 +72,10 @@ export default class Counter extends Component {
             }}
             onPress={() => {
               const newValue = value - 1;
-              this.checkOptionsAreValid(newValue);
-              this.setNewValue(newValue);
+              if (!minValue || newValue >= minValue) {
+                this.checkOptionsAreValid(newValue);
+                this.setNewValue(newValue);
+              }
             }}
           >
             <Icon
@@ -121,8 +130,10 @@ export default class Counter extends Component {
             }}
             onPress={() => {
               const newValue = value + 1;
-              this.checkOptionsAreValid(newValue);
-              this.setNewValue(newValue);
+              if (!maxValue || newValue <= maxValue) {
+                this.checkOptionsAreValid(newValue);
+                this.setNewValue(newValue);
+              }
             }}
           >
             <Icon
