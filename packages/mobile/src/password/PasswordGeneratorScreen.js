@@ -193,6 +193,8 @@ export class PasswordGeneratorScreen extends Component {
                   label="Length"
                   value={length}
                   isValueValid={isLengthValid}
+                  minValue={5}
+                  maxValue={35}
                   onValueChange={value => {
                     this.setState({
                       length: value
@@ -203,6 +205,7 @@ export class PasswordGeneratorScreen extends Component {
                   label="Counter"
                   value={counter}
                   isValueValid={isCounterValid}
+                  minValue={1}
                   onValueChange={value => {
                     this.setState({
                       counter: value
