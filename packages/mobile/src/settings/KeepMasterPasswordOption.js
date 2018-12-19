@@ -4,12 +4,11 @@ import {
   Button,
   Portal,
   Dialog,
-  TextInput,
   List,
   Text,
   Switch
 } from "react-native-paper";
-import Styles from "../ui/Styles";
+import MasterPassword from "../password/MasterPassword";
 
 export default class KeepMasterPasswordOption extends Component {
   constructor(props) {
@@ -50,13 +49,11 @@ export default class KeepMasterPasswordOption extends Component {
             <Dialog.Title>{modalTitle}</Dialog.Title>
             <Dialog.ScrollArea style={{ maxHeight: 170, paddingHorizontal: 0 }}>
               <View style={{ padding: 10 }}>
-                <TextInput
-                  style={Styles.input}
-                  value={masterPassword}
-                  secureTextEntry
-                  onChangeText={value => {
-                    this.setState({ masterPassword: value });
-                  }}
+                <MasterPassword
+                  masterPassword={masterPassword}
+                  onChangeText={value =>
+                    this.setState({ masterPassword: value })
+                  }
                 />
                 {modalDescription ? <Text>{modalDescription}</Text> : null}
               </View>
