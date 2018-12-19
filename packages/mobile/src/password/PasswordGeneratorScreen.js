@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  View,
-  ScrollView,
-  Clipboard,
-  TouchableWithoutFeedback
-} from "react-native";
+import { View, ScrollView, TouchableWithoutFeedback } from "react-native";
 import { isEqual } from "lodash";
 import { generatePassword } from "./passwordGenerator";
 import TextInput from "../ui/TextInput";
@@ -16,6 +11,7 @@ import GeneratedPassword from "./GeneratedPassword";
 import MasterPassword from "./MasterPassword";
 import AutocompleteTextInput from "../ui/autocomplete/AutocompleteTextInput";
 import { getPasswordProfiles } from "./profilesActions";
+import { signOut } from "../auth/authActions";
 import {
   isProfileValid,
   isLengthValid,
@@ -32,9 +28,12 @@ export class PasswordGeneratorScreen extends Component {
   }
 
   componentDidMount() {
-    const { auth, getPasswordProfiles } = this.props;
+    const { auth, getPasswordProfiles, signOut, navigation } = this.props;
     if (auth.jwt) {
-      getPasswordProfiles();
+      getPasswordProfiles().catch(() => {
+        signOut();
+        navigation.navigate("Auth");
+      });
     }
   }
 
@@ -237,7 +236,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getPasswordProfiles: () => dispatch(getPasswordProfiles())
+    getPasswordProfiles: () => dispatch(getPasswordProfiles()),
+    signOut: () => dispatch(signOut())
   };
 }
 
