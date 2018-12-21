@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { View, Text, TouchableNativeFeedback, Clipboard } from "react-native";
 import Theme from "../ui/Theme";
-import { saveOrUpdatePasswordProfile } from "./profilesActions";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export class GeneratedPassword extends Component {
+export default class GeneratedPassword extends Component {
   state = {
     copied: false,
     saved: false,
@@ -22,8 +20,7 @@ export class GeneratedPassword extends Component {
   };
 
   _save = () => {
-    const { profile, saveOrUpdatePasswordProfile } = this.props;
-    saveOrUpdatePasswordProfile(profile);
+    this.props.save();
     this.setState({ saved: true });
     setTimeout(() => {
       this.setState({ saved: false });
@@ -38,12 +35,7 @@ export class GeneratedPassword extends Component {
 
   render() {
     const { copied, saved, seePassword } = this.state;
-    const {
-      isAuthenticated,
-      profile,
-      password,
-      saveOrUpdatePasswordProfile
-    } = this.props;
+    const { isAuthenticated, password, save } = this.props;
     if (!password) return null;
     return (
       <React.Fragment>
@@ -197,15 +189,3 @@ export class GeneratedPassword extends Component {
     );
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    saveOrUpdatePasswordProfile: profile =>
-      dispatch(saveOrUpdatePasswordProfile(profile))
-  };
-}
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(GeneratedPassword);

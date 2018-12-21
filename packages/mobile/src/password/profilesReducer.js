@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
 
         return acc;
       }, {});
+    case "REMOVE_PASSWORD_PROFILE":
+      delete state[action.profile.id];
+      return {
+        ...state
+      };
     default:
       return state;
   }
