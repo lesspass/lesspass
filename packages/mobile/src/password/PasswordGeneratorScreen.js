@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, ScrollView, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Alert
+} from "react-native";
 import { isEqual } from "lodash";
 import { generatePassword } from "./passwordGenerator";
 import TextInput from "../ui/TextInput";
@@ -9,8 +14,12 @@ import Options from "./Options";
 import GeneratePasswordButton from "./GeneratePasswordButton";
 import GeneratedPassword from "./GeneratedPassword";
 import MasterPassword from "./MasterPassword";
-import AutocompleteTextInput from "../ui/autocomplete/AutocompleteTextInput";
-import { getPasswordProfiles } from "./profilesActions";
+import AutocompleteSite from "./site/AutocompleteSite";
+import {
+  getPasswordProfiles,
+  savePasswordProfile,
+  deletePasswordProfile
+} from "./profilesActions";
 import { signOut } from "../auth/authActions";
 import {
   isProfileValid,
@@ -131,7 +140,12 @@ export class PasswordGeneratorScreen extends Component {
       showAutocomplete,
       password
     } = this.state;
-    const { profiles, auth } = this.props;
+    const {
+      profiles,
+      auth,
+      savePasswordProfile,
+      deletePasswordProfile
+    } = this.props;
     return (
       <TouchableWithoutFeedback
         onPress={() => this.setState({ showAutocomplete: false })}
@@ -146,21 +160,43 @@ export class PasswordGeneratorScreen extends Component {
             }}
           >
             <View onStartShouldSetResponder={() => true}>
-              <AutocompleteTextInput
-                label="Site"
+              <AutocompleteSite
                 value={site}
                 showAutocomplete={showAutocomplete}
+                hideAutocomplete={() =>
+                  this.setState({ showAutocomplete: false })
+                }
                 onChangeText={site =>
                   this.setState({ site, showAutocomplete: true })
                 }
                 data={Object.values(profiles)}
                 dataKey="site"
-                onDataSelected={profile => {
+                passwordProfileSelected={profile => {
                   this.setState({ ...profile, showAutocomplete: false });
                 }}
-                hideAutocomplete={() =>
-                  this.setState({ showAutocomplete: false })
-                }
+                passwordProfileDeleted={profile => {
+                  Alert.alert(
+                    "Delete password profile",
+                    `Are you sure you want to delete password profile for ${
+                      profile.site
+                    }?`,
+                    [
+                      {
+                        text: "Oups no!",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                      },
+                      {
+                        text: "Sure",
+                        onPress: () => {
+                          deletePasswordProfile(profile);
+                          this._clear();
+                        }
+                      }
+                    ],
+                    { cancelable: false }
+                  );
+                }}
               />
               <TextInput
                 mode="outlined"
@@ -221,7 +257,12 @@ export class PasswordGeneratorScreen extends Component {
                   password={password}
                   clear={this._clear}
                   isAuthenticated={auth.jwt !== null}
-                  profile={this._getPasswordProfile()}
+                  save={() => {
+                    const profile = this._getPasswordProfile();
+                    savePasswordProfile(profile).then(response =>
+                      this.setState({ ...response.data })
+                    );
+                  }}
                 />
               ) : (
                 <GeneratePasswordButton
@@ -248,7 +289,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getPasswordProfiles: () => dispatch(getPasswordProfiles()),
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
+    savePasswordProfile: profile => dispatch(savePasswordProfile(profile)),
+    deletePasswordProfile: profile => dispatch(deletePasswordProfile(profile))
   };
 }
 

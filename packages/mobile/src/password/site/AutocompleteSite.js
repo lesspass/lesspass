@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { View, Text, TouchableWithoutFeedback } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import memoize from "memoize-one";
 import { isEmpty } from "lodash";
-import TextInput from "../TextInput";
-import Theme from "../Theme";
+import TextInput from "../../ui/TextInput";
+import Theme from "../../ui/Theme";
 import { returnMatchingData } from "./filter";
 import { highlightSearch } from "./highlight";
 
@@ -21,6 +22,7 @@ function highlight(text, i) {
     </Text>
   );
 }
+
 function noHighlight(text, i) {
   return (
     <Text
@@ -35,17 +37,17 @@ function noHighlight(text, i) {
   );
 }
 
-export default class AutocompleteTextInput extends Component {
+export default class AutocompleteSite extends Component {
   returnMatchingData = memoize(returnMatchingData);
 
   render() {
     const {
-      label,
       value,
       onChangeText,
       data,
       dataKey,
-      onDataSelected,
+      passwordProfileSelected,
+      passwordProfileDeleted,
       showAutocomplete,
       hideAutocomplete
     } = this.props;
@@ -55,7 +57,7 @@ export default class AutocompleteTextInput extends Component {
       <View>
         <TextInput
           mode="outlined"
-          label={label}
+          label="Site"
           value={value}
           onChangeText={site => onChangeText(site)}
           onSubmitEditing={() => hideAutocomplete()}
@@ -78,40 +80,47 @@ export default class AutocompleteTextInput extends Component {
               const borderWidth = 2;
 
               return (
-                <TouchableWithoutFeedback
+                <View
                   key={i}
-                  onPress={() => {
-                    onDataSelected(highlightedItem.item);
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    backgroundColor: Theme.colors.background,
+                    borderWidth,
+                    borderTopWidth: 0,
+                    borderBottomWidth: isLastElement ? borderWidth : 0,
+                    borderBottomLeftRadius: isLastElement ? Theme.roundness : 0,
+                    borderBottomRightRadius: isLastElement
+                      ? Theme.roundness
+                      : 0,
+                    borderTopLeftRadius: isFirstElement ? Theme.roundness : 0,
+                    borderTopRightRadius: isFirstElement ? Theme.roundness : 0,
+                    borderColor: Theme.colors.primary,
+                    zIndex: 3
                   }}
                 >
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      paddingLeft: 12,
-                      paddingRight: 12,
-                      paddingTop: 12,
-                      backgroundColor: Theme.colors.background,
-                      paddingBottom: isLastElement ? 12 : 0,
-                      borderWidth,
-                      borderTopWidth: 0,
-                      borderBottomWidth: isLastElement ? borderWidth : 0,
-                      borderBottomLeftRadius: isLastElement
-                        ? Theme.roundness
-                        : 0,
-                      borderBottomRightRadius: isLastElement
-                        ? Theme.roundness
-                        : 0,
-                      borderTopLeftRadius: isFirstElement ? Theme.roundness : 0,
-                      borderTopRightRadius: isFirstElement
-                        ? Theme.roundness
-                        : 0,
-                      borderColor: Theme.colors.primary,
-                      zIndex: 3
-                    }}
+                  <TouchableWithoutFeedback
+                    onPress={() =>
+                      passwordProfileSelected(highlightedItem.item)
+                    }
                   >
-                    {highlightedItem.highlights}
-                  </View>
-                </TouchableWithoutFeedback>
+                    <View style={{ flexDirection: "row", padding: 12 }}>
+                      {highlightedItem.highlights}
+                    </View>
+                  </TouchableWithoutFeedback>
+                  <TouchableWithoutFeedback
+                    onPress={() => passwordProfileDeleted(highlightedItem.item)}
+                  >
+                    <View style={{ padding: 12 }}>
+                      <Icon
+                        size={18}
+                        name="trash"
+                        style={{ color: Theme.colors.red }}
+                      />
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
               );
             })}
             <TouchableWithoutFeedback onPress={() => hideAutocomplete()}>
@@ -128,17 +137,3 @@ export default class AutocompleteTextInput extends Component {
     );
   }
 }
-
-const matches = [
-  {
-    indices: [[4, 5], [7, 8]],
-    value: "www.example.org",
-    key: "site",
-    arrayIndex: 0
-  }
-];
-const r = matches.reduce((matchAccumulator, match) => {
-  matchAccumulator;
-
-  return matchAccumulator;
-}, []);

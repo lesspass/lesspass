@@ -32,4 +32,20 @@ describe("profiles reducer", () => {
       p2: { id: "p2", numbers: false, digits: false }
     });
   });
+  it("REMOVE_PASSWORD_PROFILE", () => {
+    expect(
+      reducer(
+        {
+          p1: { id: "p1", numbers: true, digits: true },
+          p2: { id: "p2", numbers: false, digits: false }
+        },
+        {
+          type: "REMOVE_PASSWORD_PROFILE",
+          profile: { id: "p1" }
+        }
+      )
+    ).toEqual({
+      p2: { id: "p2", numbers: false, digits: false }
+    });
+  });
 });
