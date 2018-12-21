@@ -42,7 +42,7 @@ export class PasswordGeneratorScreen extends Component {
       const initialState = this._getInitialState();
       this.setState(initialState);
     }
-    const passwordProfile = this._getPasswordProfile(this.state);
+    const passwordProfile = this._getPasswordProfile();
     const previousPasswordProfile = this._getPasswordProfile(prevState);
     if (!isEqual(passwordProfile, previousPasswordProfile)) {
       clearTimeout(this.state.clearTimeout);
@@ -61,6 +61,7 @@ export class PasswordGeneratorScreen extends Component {
       defaultCounter
     } = this.props.settings;
     return {
+      id: null,
       site: "",
       login: defaultPasswordProfileLogin,
       masterPassword: "",
@@ -76,8 +77,9 @@ export class PasswordGeneratorScreen extends Component {
     };
   };
 
-  _getPasswordProfile = state => {
+  _getPasswordProfile = (state = this.state) => {
     const {
+      id,
       site,
       login,
       lowercase,
@@ -88,6 +90,7 @@ export class PasswordGeneratorScreen extends Component {
       counter
     } = state;
     return {
+      id,
       site,
       login,
       options: { length, counter, lowercase, uppercase, digits, symbols }
@@ -95,7 +98,7 @@ export class PasswordGeneratorScreen extends Component {
   };
 
   _generatePassword = async () => {
-    const passwordProfile = this._getPasswordProfile(this.state);
+    const passwordProfile = this._getPasswordProfile();
     const { masterPassword } = this.state;
     const password = await generatePassword(masterPassword, passwordProfile);
     const clearTimeout = setTimeout(() => {
@@ -105,7 +108,7 @@ export class PasswordGeneratorScreen extends Component {
   };
 
   _canGeneratePassword = () => {
-    const passwordProfile = this._getPasswordProfile(this.state);
+    const passwordProfile = this._getPasswordProfile();
     const { masterPassword } = this.state;
     return masterPassword && isProfileValid(passwordProfile);
   };
@@ -128,7 +131,7 @@ export class PasswordGeneratorScreen extends Component {
       showAutocomplete,
       password
     } = this.state;
-    const { profiles } = this.props;
+    const { profiles, auth } = this.props;
     return (
       <TouchableWithoutFeedback
         onPress={() => this.setState({ showAutocomplete: false })}
@@ -214,7 +217,12 @@ export class PasswordGeneratorScreen extends Component {
                 />
               </View>
               {password ? (
-                <GeneratedPassword password={password} clear={this._clear} />
+                <GeneratedPassword
+                  password={password}
+                  clear={this._clear}
+                  isAuthenticated={auth.jwt !== null}
+                  profile={this._getPasswordProfile()}
+                />
               ) : (
                 <GeneratePasswordButton
                   isDisabled={this._canGeneratePassword}
