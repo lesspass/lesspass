@@ -9,6 +9,15 @@ ServerName {{ FQDN }}
 
 <VirtualHost *:443>
     ServerName www.{{ FQDN }}
+    ProxyPass /api/ http://backend:8000/api/
+    ProxyPassReverse /api/ http://backend:8000/api/
+    SSLEngine on
+    SSLCertificateFile      {{ SSL_CERTIFICATE_FILE }}
+    SSLCertificateKeyFile   {{ SSL_CERTIFICATE_KEY_FILE }}
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.{{ FQDN }}
     ServerAlias {{ FQDN }}
     
     DocumentRoot /var/www/html

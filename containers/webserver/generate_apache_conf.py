@@ -11,7 +11,6 @@ if __name__ == "__main__":
         "SSL_CERTIFICATE_KEY_FILE": "/etc/httpd/ssl/private/%s.key" % fqdn,
         "DEBUG": os.environ.get("DEBUG", "0") == "1",
     }
-
     print(context)
     jinja_template = Template(open("/webserver/lesspass.conf.j2").read())
     with open("/etc/httpd/conf.d/lesspass.conf", "w") as f:
