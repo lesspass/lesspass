@@ -16,4 +16,4 @@ while timeout != 0:
     except socket.error as ex:
         timeout -= 1
         print('wait for db to start... (%s sec remaining)' % timeout)
-time.sleep(1)
+    time.sleep(1)
