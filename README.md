@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lesspass/lesspass.svg?branch=master)](https://travis-ci.org/lesspass/lesspass)
+
 # LessPass
 
 LessPass open source password manager (https://lesspass.com)
