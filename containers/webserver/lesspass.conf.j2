@@ -8,9 +8,18 @@ ServerName {{ FQDN }}
 </VirtualHost>
 
 <VirtualHost *:443>
-    ServerName www.{{ FQDN }}
+    ServerName {{ FQDN }}
     ProxyPass /api/ http://backend:8000/api/
     ProxyPassReverse /api/ http://backend:8000/api/
+    SSLEngine on
+    SSLCertificateFile      {{ SSL_CERTIFICATE_FILE }}
+    SSLCertificateKeyFile   {{ SSL_CERTIFICATE_KEY_FILE }}
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName api.{{ FQDN }}
+    ProxyPass / http://backend:8000/api/
+    ProxyPassReverse / http://backend:8000/api/
     SSLEngine on
     SSLCertificateFile      {{ SSL_CERTIFICATE_FILE }}
     SSLCertificateKeyFile   {{ SSL_CERTIFICATE_KEY_FILE }}
