@@ -3,10 +3,19 @@ matrix:
     - language: python
       python:
         - "3.4"
-        - "3.7"
-      before_script:
+      before_install:
         - cd cli
       install:
         - pip install -r requirements.txt -r test-requirements.txt
       script:
         - python -m unittest discover
+
+    - language: python
+      python:
+        - "3.4"
+      before_install:
+        - cd containers/backend
+      install:
+        - pip install -r requirements.txt
+      script:
+        - python manage.py test
