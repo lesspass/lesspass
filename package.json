@@ -5,9 +5,7 @@
     "version": "independent"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "test:mobile": "lerna run --scope lesspass-mobile test",
-    "test": "jest"
+    "postinstall": "lerna bootstrap"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",
