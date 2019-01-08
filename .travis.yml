@@ -27,3 +27,16 @@ matrix:
         - cd containers
       script:
         - ./test.sh
+
+    - language: node_js
+      node_js:
+        - "lts/*"
+      cache: yarn
+      before_install:
+        - yarn global add lerna
+      install:
+        - yarn install
+        - lerna bootstrap
+      script:
+        - yarn test
+        - yarn build
