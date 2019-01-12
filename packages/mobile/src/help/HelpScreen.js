@@ -27,9 +27,10 @@ export default class HelpScreen extends Component {
           Your master password is the only thing you should keep in your head.
           The emoticons on the right let you verify if you typed in the right
           master password. You will have to wait a second or so before it shows
-          the good emoticons. Otherwise it'd be possible for a shoulder-peeker
-          to guess the password character-by-character instead of all at once,
-          with the former being trivial and the later impossible.
+          the final emoticons (the delay is for security; if the emoticon
+          generation wouldn't be delayed, a shoulder-peeker could guess the
+          password character-by-character while you type it in based on the
+          continuously generated emoticons).
         </Paragraph>
         <Subheading>Options</Subheading>
         <Image
@@ -41,34 +42,35 @@ export default class HelpScreen extends Component {
         />
         <Paragraph style={{ marginBottom: 20 }}>
           Sometimes sites have specific password rules. For instance, some banks
-          only accept passwords made of digits. The application let you set
+          only accept passwords made of digits. LessPass lets you set
           parameters for the generated password. Use the counter if you want to
           change the generated password without changing your master password.
         </Paragraph>
         <Subheading>Sign In</Subheading>
         <Paragraph style={{ marginBottom: 10 }}>
-          LessPass by default doesn't save any data. But you can if you want use
-          LessPass in a connected mode. This mode helps you to save password
-          profile needed to regenerate some passwords. A password’s profile is
-          everything except the master password and the generated password.
-          There is no critical information (a generated password encrypted for
-          example) in the LessPass database.
+          LessPass by default doesn't save any data. But you can if you want to use
+          LessPass in a connected mode. This mode allows you to save password
+          profiles needed to regenerate passwords which are not based on LessPass'
+          default password profile (length of 16 characters, all characters allowed).
+          A password profile is everything except the master password and the generated
+          password. There is no critical information (an encrypted generated password
+          for example) stored in the LessPass database.
         </Paragraph>
         <Paragraph style={{ marginBottom: 20 }}>
-          The sign in form ask for your master password. We use your master
-          password to create a LessPass generated password using a default
-          password profile. The master password is never send on our servers. If
-          you don't want to encrypt your passord, you can disable this option in
-          the settings
+          The sign in form asks for your master password. We use your master
+          password to create a LessPass-generated password using the default
+          password profile. The master password is never sent to our servers. If
+          you don't want to encrypt your password, you can disable this option in
+          the settings.
         </Paragraph>
-        <Subheading>Self Hosted LessPass Database</Subheading>
+        <Subheading>Self-hosted LessPass Database</Subheading>
         <Paragraph style={{ marginBottom: 20 }}>
-          If you are using a self hosted LessPass database, you can update the
-          base url in the settings.
+          If you are using a self-hosted LessPass database, you can change the
+          base url in the settings to point to your own server.
         </Paragraph>
         <Subheading>Sign Out</Subheading>
         <Paragraph style={{ marginBottom: 20 }}>
-          You can sign out using the Sign Out button in the settings
+          You can sign out using the Sign Out button in the settings.
         </Paragraph>
         <Subheading>Contributing</Subheading>
         <Paragraph>You can read our contributing guide:</Paragraph>
