@@ -15,6 +15,9 @@
   "main": "src/index.js",
   "module": "src/index.js",
   "jsnext:main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "big-integer": "1.6.22"
   }

@@ -6,6 +6,10 @@ LessPass open source password manager (https://lesspass.com)
 
 [![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](#sponsors)
 
+## WIP
+
+:warning: We are reorganizing the repository. This work is not finished yet.
+
 ## How does it work?
 
  * :fr: [LessPass comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
