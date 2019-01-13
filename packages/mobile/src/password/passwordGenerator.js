@@ -8,7 +8,7 @@ export function generatePassword(masterPassword, passwordProfile) {
     site,
     login,
     masterPassword,
-    counter.toString()
+    counter.toString(16)
   ).then(entropy => {
     return renderLessPassPassword(entropy, options);
   });
