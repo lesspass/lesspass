@@ -13,5 +13,8 @@
   ],
   "main": "index.js",
   "module": "index.js",
-  "jsnext:main": "index.js"
+  "jsnext:main": "index.js",
+  "scripts": {
+    "test": "jest"
+  }
 }
