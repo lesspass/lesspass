@@ -1,11 +1,11 @@
 module.exports = function getKarmaConf(config) {
   config.set({
     basePath: "..",
-    frameworks: ["browserify", "mocha"],
+    frameworks: ["mocha"],
     files: ["src/index.js", "test/**/*.js"],
     exclude: [],
     preprocessors: {
-      "**/*.js": ["browserify"]
+      "**/*.js": ["webpack"]
     },
     reporters: ["progress"],
     port: 9876,
