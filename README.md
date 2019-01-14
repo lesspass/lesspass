@@ -35,7 +35,8 @@ Usage
 ## License
 
 This project is licensed under the terms of the GNU GPLv3.
-[LessPass mobile](https://github.com/lesspass/lesspass/tree/master/packages/mobile) is bi-licensed under both the Mozilla Public License Version 2 as well as the GNU GPLv3.
+
+[LessPass mobile](https://github.com/lesspass/lesspass/tree/master/packages/lesspass-mobile) is bi-licensed under both the Mozilla Public License Version 2 as well as the GNU GPLv3.
 
 ## Contributors :heart:
 
