@@ -2,18 +2,12 @@
   "name": "lesspass-entropy",
   "version": "1.0.0",
   "description": "LessPass module used to generate entropy for password generation",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "license": "GPL-3.0",
-  "author": {
-    "name": "Guillaume Vincent",
-    "email": "guillaume@oslab.fr",
-    "url": "https://guillaumevincent.com"
-  },
   "files": [
     "src"
   ],
   "main": "src/index.js",
-  "module": "src/index.js",
-  "jsnext:main": "src/index.js",
   "browser": {
     "./src/pbkdf2.js": "./src/pbkdf2.browser.js"
   },

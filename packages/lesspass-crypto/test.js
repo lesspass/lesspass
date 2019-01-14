@@ -1,4 +1,8 @@
-const { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } = require("./index");
+const {
+  stringToArrayBuffer,
+  arrayBufferToHex,
+  getAlgorithm
+} = require("./index");
 
 test("stringToArrayBuffer", () => {
   expect(stringToArrayBuffer("ȧ")[0]).toBe(200);
@@ -10,7 +14,7 @@ test("arrayBufferToHex", () => {
 });
 
 test("getAlgorithm", () => {
-  expect(getAlgorithm('sha-256')).toBe('SHA-256');
-  expect(getAlgorithm('sha256')).toBe('SHA-256');
-  expect(getAlgorithm('ShA-256')).toBe('SHA-256');
+  expect(getAlgorithm("sha-256")).toBe("SHA-256");
+  expect(getAlgorithm("sha256")).toBe("SHA-256");
+  expect(getAlgorithm("ShA-256")).toBe("SHA-256");
 });

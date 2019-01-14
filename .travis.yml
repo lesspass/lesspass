@@ -31,6 +31,8 @@ matrix:
     - language: node_js
       node_js:
         - "lts/*"
+      addons:
+        chrome: stable
       cache: yarn
       install:
         - yarn install
