@@ -52,3 +52,6 @@ def main(args=sys.argv[1:]):
             print("-" * 80)
     else:
         print(generated_password)
+
+if __name__ == '__main__':
+    main()
