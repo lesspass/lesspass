@@ -2,6 +2,7 @@ import getpass
 import platform
 import sys
 import traceback
+import signal
 
 from lesspass.version import __version__
 from lesspass.cli import parse_args
@@ -11,6 +12,7 @@ from lesspass.profile import create_profile
 from lesspass.password import generate_password
 from lesspass.clipboard import copy
 
+signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
 
 def main(args=sys.argv[1:]):
     args = parse_args(args)
@@ -50,3 +52,6 @@ def main(args=sys.argv[1:]):
             print("-" * 80)
     else:
         print(generated_password)
+
+if __name__ == '__main__':
+    main()

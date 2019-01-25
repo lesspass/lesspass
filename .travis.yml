@@ -8,6 +8,8 @@ matrix:
       install:
         - pip install -r requirements.txt -r test-requirements.txt
       script:
+        - python --version
+        - export PYTHONPATH='.'
         - python -m unittest discover
 
     - language: python
