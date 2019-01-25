@@ -1,7 +1,8 @@
-matrix:
+jobs:
   include:
-    - language: python
-      name: "CLI's tests"
+    - stage: test
+      language: python
+      name: "Test CLI"
       python:
         - "3.4"
       before_install:
@@ -9,12 +10,12 @@ matrix:
       install:
         - pip install -r requirements.txt -r test-requirements.txt
       script:
-        - python --version
         - export PYTHONPATH='.'
         - python -m unittest discover
 
-    - language: python
-      name: "Backend's tests"
+    - stage: test
+      language: python
+      name: "Test backend"
       python:
         - "3.4"
       before_install:
@@ -24,17 +25,9 @@ matrix:
       script:
         - python manage.py test
 
-    - language: generic
-      name: "Containers' tests"
-      services:
-        - docker
-      before_script:
-        - cd containers
-      script:
-        - ./test.sh
-
-    - language: node_js
-      name: "JS packages' tests"
+    - stage: test
+      language: node_js
+      name: "Test JavaScript packages"
       node_js:
         - "lts/*"
       addons:
@@ -48,3 +41,22 @@ matrix:
         - yarn install
       script:
         - yarn test
+
+    - stage: test
+      language: generic
+      name: "Test containers"
+      services:
+        - docker
+      before_script:
+        - cd containers
+      script:
+        - ./test.sh
+
+    - stage: deploy
+      name: "Deploy containers"
+      services:
+        - docker
+      before_script:
+        - cd containers
+      script:
+        - ./deploy.sh
