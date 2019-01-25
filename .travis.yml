@@ -1,6 +1,7 @@
 matrix:
   include:
     - language: python
+      name: "CLI's tests"
       python:
         - "3.4"
       before_install:
@@ -13,6 +14,7 @@ matrix:
         - python -m unittest discover
 
     - language: python
+      name: "Backend's tests"
       python:
         - "3.4"
       before_install:
@@ -23,6 +25,7 @@ matrix:
         - python manage.py test
 
     - language: generic
+      name: "Containers' tests"
       services:
         - docker
       before_script:
@@ -31,6 +34,7 @@ matrix:
         - ./test.sh
 
     - language: node_js
+      name: "JS packages' tests"
       node_js:
         - "lts/*"
       addons:
