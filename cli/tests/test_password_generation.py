@@ -131,6 +131,21 @@ class TestPassword(unittest.TestCase):
             set_of_characters="abcdefghijklmnopqrstuvwxyz0123456789", 
             max_length=12
         )
-        
+
         self.assertEqual(password_value, 'gsrwvjl3d0sn')
         self.assertEqual(password_entropy, 21019920789038193790619410818194537836313158091882651458040)
+
+    def test_get_one_char_per_rule_without_rules(self):
+        self.assertListEqual(
+            password._get_one_char_per_rule( entropy=21019920789038193790619410818194537836313158091882651458040, rules=[] ),
+            ['', 21019920789038193790619410818194537836313158091882651458040]
+        )
+
+    def test_get_one_char_per_rule_with_several_rules(self):
+        self.assertListEqual(
+            password._get_one_char_per_rule(
+                entropy=21019920789038193790619410818194537836313158091882651458040, 
+                rules=['lowercase', 'digits']
+            ),
+            ['a0', 80845849188608437656228503146902068601204454199548659454] 
+        )
