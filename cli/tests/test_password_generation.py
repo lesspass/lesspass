@@ -121,3 +121,16 @@ class TestPassword(unittest.TestCase):
         
     def test_get_set_of_characters_with_several_rules(self):
         self.assertEqual(password._get_set_of_characters(["lowercase", "digits"]), "abcdefghijklmnopqrstuvwxyz0123456789")
+
+    def test_consume_entropy(self):
+        entropy = b'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
+
+        password_value, password_entropy = password._consume_entropy( 
+            generated_password="", 
+            quotient=int(entropy, 16), 
+            set_of_characters="abcdefghijklmnopqrstuvwxyz0123456789", 
+            max_length=12
+        )
+        
+        self.assertEqual(password_value, 'gsrwvjl3d0sn')
+        self.assertEqual(password_entropy, 21019920789038193790619410818194537836313158091882651458040)
