@@ -158,3 +158,17 @@ class TestPassword(unittest.TestCase):
                 string='a0'
             ), 'gsrwvjl03d0asn'
         )
+
+    def test_render_password(self):
+        password_profile = { 
+            "site": "example.org",
+            "login": "contact@example.org",
+            "digits": True,
+            "lowercase": True,
+            "length": 14,
+            "counter": 1
+        }
+        master_password = 'password'
+        entropy = password._calc_entropy(password_profile, master_password)
+
+        self.assertEqual(password._render_password(entropy, password_profile), 'gsrwvjl03d0asn')
