@@ -1,6 +1,7 @@
 import unittest
 
 from lesspass.password import generate_password
+from lesspass import password
 
 
 class TestPassword(unittest.TestCase):
@@ -80,4 +81,16 @@ class TestPassword(unittest.TestCase):
         master_password = "test"
         self.assertEqual(
             generate_password(profile, master_password), "XFt0F*,r619:+}[."
+        )
+
+    def test_calc_entropy(self):
+        password_profile = {
+            "site": "example.org",
+            "login": "contact@example.org",
+            "counter": 1,
+        }
+        master_password = 'password'
+
+        self.assertEqual(
+            password._calc_entropy(password_profile, master_password), b'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
         )
