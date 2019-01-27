@@ -109,3 +109,15 @@ class TestPassword(unittest.TestCase):
         }
 
         self.assertListEqual(password._get_configured_rules(password_profile), ['uppercase', 'symbols'])
+
+    def test_get_set_of_characters_without_rule(self):
+        self.assertEqual(password._get_set_of_characters(), 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+        
+    def test_get_set_of_characters_with_single_rule(self):
+        self.assertEqual(password._get_set_of_characters(["lowercase"]), "abcdefghijklmnopqrstuvwxyz")
+        self.assertEqual(password._get_set_of_characters(["uppercase"]), "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        self.assertEqual(password._get_set_of_characters(["digits"]), "0123456789")
+        self.assertEqual(password._get_set_of_characters(["symbols"]), "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~")
+        
+    def test_get_set_of_characters_with_several_rules(self):
+        self.assertEqual(password._get_set_of_characters(["lowercase", "digits"]), "abcdefghijklmnopqrstuvwxyz0123456789")
