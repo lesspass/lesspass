@@ -149,3 +149,12 @@ class TestPassword(unittest.TestCase):
             ),
             ['a0', 80845849188608437656228503146902068601204454199548659454] 
         )
+
+    def test_insert_string_pseudo_randomly(self):
+        self.assertEqual(
+            password._insert_string_pseudo_randomly(
+                generated_password='gsrwvjl3d0sn', 
+                entropy=80845849188608437656228503146902068601204454199548659454, 
+                string='a0'
+            ), 'gsrwvjl03d0asn'
+        )
