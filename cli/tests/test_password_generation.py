@@ -94,3 +94,18 @@ class TestPassword(unittest.TestCase):
         self.assertEqual(
             password._calc_entropy(password_profile, master_password), b'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
         )
+
+    def test_get_configured_rules_empty_when_no_rules_in_profile(self):
+        password_profile = {}
+
+        self.assertListEqual(password._get_configured_rules(password_profile), [])
+
+    def test_get_configured_rules_ignore_disable_rules(self):
+        password_profile = {
+            "lowercase": False,
+            "uppercase": True,
+            "digits": False,
+            "symbols": True,
+        }
+
+        self.assertListEqual(password._get_configured_rules(password_profile), ['uppercase', 'symbols'])
