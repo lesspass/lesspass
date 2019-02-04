@@ -5,16 +5,23 @@ LABEL maintainer="LessPass <contact@lesspass.com>"
 
 ENV LANG en_US.UTF-8
 
-RUN yum -y install epel-release && \
-    yum -y install httpd openssl mod_ssl proxy_http python34 python34-pip && \
+RUN yum -y install centos-release-scl && \
+    yum -y install httpd openssl mod_ssl proxy_http rh-python36 && \
     yum clean all
+
+RUN mkdir /opt/app
+WORKDIR /opt/app
+
+RUN source scl_source enable rh-python36 && \
+    python -m venv /opt/app/venv
+
+RUN /opt/app/venv/bin/python -m pip install --upgrade pip  && \
+    /opt/app/venv/bin/python -m pip install jinja2
+
+COPY entrypoint.sh /opt/app/
 
 EXPOSE 80 443
 
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install jinja2
-
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/opt/app/entrypoint.sh"]
 
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-python3 wait_db.py
-python3 manage.py migrate
-python3 manage.py collectstatic --clear --no-input
+/opt/app/venv/bin/python wait_db.py
+/opt/app/venv/bin/python manage.py migrate
+/opt/app/venv/bin/python manage.py collectstatic --clear --no-input
 
 exec "$@"

@@ -21,7 +21,7 @@ chmod 644 /etc/httpd/ssl/${FQDN}.crt
 cp /ssl/${FQDN}.key /etc/httpd/ssl/private/
 chmod 640 /etc/httpd/ssl/private/${FQDN}.key
 
-python3 /webserver/generate_apache_conf.py
+/opt/app/venv/bin/python /webserver/generate_apache_conf.py
 
 cat /etc/httpd/conf.d/lesspass.conf
 
