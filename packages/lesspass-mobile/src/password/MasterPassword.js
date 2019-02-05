@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, NativeModules } from "react-native";
-import { TextInput } from "react-native-paper";
+import { TextInput } from "../ui/TextInput";
 import TouchId from "./TouchId";
 import Styles from "../ui/Styles";
 import Fingerprint from "./Fingerprint";
