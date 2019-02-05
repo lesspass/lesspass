@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, NativeModules } from "react-native";
-import { TextInput } from "../ui/TextInput";
+import { TextInput } from "react-native-paper"; 
 import TouchId from "./TouchId";
 import Styles from "../ui/Styles";
 import Fingerprint from "./Fingerprint";
@@ -58,6 +58,7 @@ export default class MasterPassword extends Component {
           value={masterPassword}
           secureTextEntry
           onChangeText={this.onChangeMasterPassword}
+          autoCapitalize="none"
         />
         {masterPassword && fingerprint ? (
           <Fingerprint fingerprint={fingerprint} />
