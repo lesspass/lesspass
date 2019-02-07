@@ -16,8 +16,8 @@
     "axios": "0.18.0",
     "debounce": "1.2.0",
     "fuse.js": "3.3.0",
-    "lesspass-fingerprint": "1.0.0",
-    "lesspass-render-password": "1.0.0",
+    "lesspass-fingerprint": "file:../packages/lesspass-fingerprint",
+    "lesspass-render-password": "file:../packages/lesspass-render-password",
     "lodash": "4.17.11",
     "memoize-one": "4.0.3",
     "react": "16.4.1",
@@ -33,6 +33,13 @@
     "redux": "4.0.0",
     "redux-persist": "5.10.0",
     "redux-thunk": "2.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "babel-preset-react-native": "5.0.2",
+    "jest": "23.6.0",
+    "react-test-renderer": "16.4.1"
   },
   "jest": {
     "preset": "react-native"

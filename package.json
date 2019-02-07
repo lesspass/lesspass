@@ -9,15 +9,7 @@
   "scripts": {
     "test": "yarn workspaces run test"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ],
-    "nohoist": [
-      "**/react-native",
-      "**/react-native/**"
-    ]
-  },
+  "workspaces": "packages/*",
   "devDependencies": {
     "@babel/core": "7.2.2",
     "babel-core": "7.0.0-bridge.0",
