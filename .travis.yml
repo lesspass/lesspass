@@ -43,6 +43,22 @@ jobs:
         - yarn test
 
     - stage: test
+      language: node_js
+      name: "Test mobile app"
+      node_js:
+        - "lts/*"
+      cache:
+        yarn: true
+      before_install:
+        - curl -o- -L https://yarnpkg.com/install.sh | bash
+        - export PATH=$HOME/.yarn/bin:$PATH
+        - cd mobile
+      install:
+        - yarn install
+      script:
+        - yarn test
+
+    - stage: test
       language: generic
       name: "Test containers"
       services:

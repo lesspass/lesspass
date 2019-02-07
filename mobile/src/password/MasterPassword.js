@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { View, NativeModules } from "react-native";
-import { TextInput } from "react-native-paper";
+import TextInput from "../ui/TextInput";
 import TouchId from "./TouchId";
-import Styles from "../ui/Styles";
 import Fingerprint from "./Fingerprint";
 import fingerprint from "lesspass-fingerprint";
 import { debounce } from "lodash";
@@ -52,8 +51,6 @@ export default class MasterPassword extends Component {
     return (
       <View>
         <TextInput
-          style={Styles.input}
-          mode="outlined"
           label={label}
           value={masterPassword}
           secureTextEntry
