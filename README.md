@@ -21,6 +21,9 @@ LessPass open source password manager (https://lesspass.com)
 
  * :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=YbaRCHXk8Jo)
 
+## Podcast
+
+ * :gb: [Ask Noah show interview](https://podcast.asknoahshow.com/114)
 
 ## CLI
 
