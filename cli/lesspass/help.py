@@ -31,7 +31,7 @@ Options:
   -u, --uppercase      add uppercase in password
   -d, --digits         add digits in password
   -s, --symbols        add symbols in password
-  -L, --length         int (default 16)
+  -L, --length         int (default 16, max 35)
   -C, --counter        int (default 1)
   -p, --prompt         interactively prompt SITE and LOGIN (prevent leak to shell history)
   --no-lowercase       remove lowercase from password
