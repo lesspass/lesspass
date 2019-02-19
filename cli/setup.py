@@ -1,7 +1,7 @@
 import setuptools
 
 from lesspass.version import __version__
-from lesspass.help import get_long_help
+from lesspass import description
 
 
 setuptools.setup(
@@ -11,7 +11,7 @@ setuptools.setup(
     author='Guillaume Vincent',
     author_email='contact@lesspass.com',
     description='LessPass stateless password generator',
-    long_description=get_long_help(),
+    long_description=description,
     install_requires=[],
     entry_points="""
         [console_scripts]

@@ -6,35 +6,36 @@ import signal
 
 from lesspass.version import __version__
 from lesspass.cli import parse_args
-from lesspass.help import print_help
-from lesspass.validator import validate_args
 from lesspass.profile import create_profile
 from lesspass.password import generate_password
-from lesspass.clipboard import copy
+from lesspass.clipboard import copy, get_system_copy_command
 
 signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
 
 def main(args=sys.argv[1:]):
     args = parse_args(args)
-    if args.version:
-        print(__version__)
-        sys.exit(0)
-    error, help_message = validate_args(args)
-    if args.help:
-        print_help(help_message, long=True)
-        sys.exit(0)
-    if error:
-        print_help(help_message)
-        sys.exit(0)
-    profile, master_password = create_profile(args)
+    if args.clipboard and not get_system_copy_command():
+        print("ERROR To use the option -c (--copy) you need pbcopy " +
+              "on OSX, xsel or xclip on Linux, and clip on Windows")
+        sys.exit(3)
 
     if args.prompt:
-        profile["site"] = getpass.getpass("Site: ")
-        profile["login"] = getpass.getpass("Login: ")
+        args.site = getpass.getpass("Site: ")
+        args.login = getpass.getpass("Login: ")
+    if not args.master_password:
+        args.master_password = getpass.getpass("Master Password: ")
+    
+    # if by this point we don't have SITE or the master password,
+    # we should stop.
+    if not args.site:
+        print("ERROR argument SITE is required but was not provided.")
+        sys.exit(4)
+    if not args.master_password:
+        print("ERROR argument MASTER_PASSWORD is required but " + 
+              "was not provided")
+        sys.exit(5)
 
-    if not master_password:
-        master_password = getpass.getpass("Master Password: ")
-
+    profile, master_password = create_profile(args)
     generated_password = generate_password(profile, master_password)
 
     if args.clipboard:
