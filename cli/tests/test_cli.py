@@ -6,14 +6,6 @@ from lesspass.cli import parse_args
 
 
 class TestParseArgs(unittest.TestCase):
-    def test_parse_args_version(self):
-        self.assertTrue(parse_args(["--version"]).version)
-        self.assertTrue(parse_args(["-v"]).version)
-
-    def test_parse_args_help(self):
-        self.assertTrue(parse_args(["--help"]).help)
-        self.assertTrue(parse_args(["-h"]).help)
-
     def test_parse_args_site(self):
         self.assertEqual(parse_args(["site"]).site, "site")
 
