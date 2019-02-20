@@ -1,2 +1,2 @@
 name = "lesspass"
-description = "Lesspass is a stateless password manager."
+description = "LessPass is a stateless password manager."

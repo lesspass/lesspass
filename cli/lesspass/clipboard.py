@@ -36,6 +36,7 @@ commands = {
     "xclip": ["xclip", "-selection", "clipboard"],
 }
 
+
 def copy(text):
     command = get_system_copy_command()
     if command is None:

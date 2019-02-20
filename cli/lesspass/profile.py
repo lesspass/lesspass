@@ -2,8 +2,8 @@ def create_profile(args):
     profile = {
         "lowercase": False if args.nl else True,
         "uppercase": False if args.nu else True,
-        "digits":  False if args.nd else True,
-        "symbols":  False if args.ns else True,
+        "digits": False if args.nd else True,
+        "symbols": False if args.ns else True,
         "length": args.length,
         "counter": args.counter,
         "site": args.site,
