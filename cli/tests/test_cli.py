@@ -1,5 +1,5 @@
 import unittest
-
+import tempfile
 from mock import patch
 
 from lesspass.cli import parse_args
@@ -116,3 +116,8 @@ class TestParseArgs(unittest.TestCase):
 
     def test_parse_args_prompt_short(self):
         self.assertTrue(parse_args(["-p"]).prompt)
+
+    def test_parse_args_to_profiles_long(self):
+        self.assertTrue(
+            parse_args(["--to-profiles", tempfile.mkdtemp()]).to_profiles
+        )

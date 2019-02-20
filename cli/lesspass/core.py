@@ -8,11 +8,12 @@ from lesspass.version import __version__
 from lesspass.cli import parse_args
 from lesspass.help import print_help
 from lesspass.validator import validate_args
-from lesspass.profile import create_profile
+from lesspass.profile import create_profile, save_profile
 from lesspass.password import generate_password
 from lesspass.clipboard import copy
 
 signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
+
 
 def main(args=sys.argv[1:]):
     args = parse_args(args)
@@ -52,6 +53,10 @@ def main(args=sys.argv[1:]):
             print("-" * 80)
     else:
         print(generated_password)
+
+    if args.to_profiles:
+        save_profile(profile, args.to_profiles)
+
 
 if __name__ == '__main__':
     main()

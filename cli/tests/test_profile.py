@@ -1,7 +1,11 @@
+import json
 import unittest
+from tempfile import mkdtemp
+from os import listdir
+from pathlib import Path
 
 from lesspass.cli import parse_args
-from lesspass.profile import create_profile
+from lesspass.profile import create_profile, save_profile
 
 
 class TestProfile(unittest.TestCase):
@@ -167,3 +171,12 @@ class TestProfile(unittest.TestCase):
         self.assertTrue(profile["uppercase"])
         self.assertTrue(profile["digits"])
         self.assertFalse(profile["symbols"])
+
+    def test_save_profile(self):
+        profile, master_password = create_profile(parse_args(["site", "login"]))
+        temp_dir = mkdtemp()
+        save_profile(profile, temp_dir)
+        profile_filename = f"{profile['site']}.json"
+        self.assertIn(profile_filename, listdir(temp_dir))
+        with open(Path(temp_dir) / profile_filename) as saved_profile:
+            self.assertEqual(profile, json.loads(saved_profile.read()))
