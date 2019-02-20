@@ -37,7 +37,11 @@ def parse_args(args):
     parser.add_argument(
         "-v", "--version", action="version", version=version.__version__
     )
-    parser.add_argument("site", help="site used in the password generation (required)")
+    parser.add_argument(
+        "site",
+        nargs="?",
+        help="site used in the password generation (required)"
+    )
     parser.add_argument(
         "login", nargs="?", help="login used in the password generation. Default to ''."
     )

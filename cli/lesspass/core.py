@@ -25,12 +25,12 @@ def main(args=sys.argv[1:]):
     if args.prompt:
         args.site = getpass.getpass("Site: ")
         args.login = getpass.getpass("Login: ")
-    if not args.master_password:
-        args.master_password = getpass.getpass("Master Password: ")
-
     if not args.site:
         print("ERROR argument SITE is required but was not provided.")
         sys.exit(4)
+
+    if not args.master_password:
+        args.master_password = getpass.getpass("Master Password: ")
     if not args.master_password:
         print("ERROR argument MASTER_PASSWORD is required but was not provided")
         sys.exit(5)
