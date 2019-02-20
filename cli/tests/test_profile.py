@@ -1,6 +1,6 @@
 import json
 import unittest
-from tempfile import mkdtemp
+from tempfile import TemporaryDirectory
 from os import listdir
 from pathlib import Path
 
@@ -174,9 +174,9 @@ class TestProfile(unittest.TestCase):
 
     def test_save_profile(self):
         profile, master_password = create_profile(parse_args(["site", "login"]))
-        temp_dir = mkdtemp()
-        save_profile(profile, temp_dir)
-        profile_filename = "{}.json".format(profile["site"])
-        self.assertIn(profile_filename, listdir(temp_dir))
-        with open(Path(temp_dir) / profile_filename) as saved_profile:
-            self.assertEqual(profile, json.loads(saved_profile.read()))
+        with TemporaryDirectory() as temp_dir:
+            save_profile(profile, temp_dir)
+            profile_filename = "{}.json".format(profile["site"])
+            self.assertIn(profile_filename, listdir(temp_dir))
+            with open(Path(temp_dir) / profile_filename) as saved_profile:
+                self.assertEqual(profile, json.loads(saved_profile.read()))
