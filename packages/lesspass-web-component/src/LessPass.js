@@ -62,12 +62,17 @@ const Content = styled.div`
   padding: 1em;
 `;
 
-const Footer = styled.div`
+const Footer = styled.ul`
   display: flex;
   justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 `;
 
-const FooterItem = styled.a`
+const FooterItem = styled.li``;
+
+const FooterLink = styled.a`
   padding: 0.5em;
   padding-top: 0.7em;
   width: 75px;
@@ -77,7 +82,11 @@ const FooterItem = styled.a`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: ${props => (props.active ? "#eee" : "#aaa")};
+  color: ${props => (props.active ? "#eeeeee" : "#aaaaaa")};
+  &:focus {
+    background-color: #0275d8;
+    color: #eeeeee;
+  }
 `;
 
 const FooterIcon = styled(FontAwesomeIcon)`
@@ -121,6 +130,7 @@ class Input extends Component {
   onBlur = () => {
     this.setState({ focused: false });
   };
+
   onFocus = () => {
     this.setState({ focused: true });
   };
@@ -203,6 +213,10 @@ const Button = styled.button`
   margin-top: 1em;
   margin-bottom: 2em;
   border-radius: 3px;
+
+  &:focus {
+    background-color: #0275d8;
+  }
 `;
 
 class PasswordGenerationPage extends Component {
@@ -217,36 +231,40 @@ class PasswordGenerationPage extends Component {
     return (
       <div>
         <Input
+          autoFocus
           label="Site"
           value={site}
           onChange={site => this.setState({ site })}
+          tabIndex={1}
         />
         <Input
           label="Login"
           value={login}
           onChange={login => this.setState({ login })}
+          tabIndex={2}
         />
         <Input
           label="Master Password"
           value={masterPassword}
           type="password"
           onChange={masterPassword => this.setState({ masterPassword })}
+          tabIndex={3}
         />
         <Options>
           <CheckboxWrapper>
-            <input id="lowercase" type="checkbox" checked />
+            <input id="lowercase" type="checkbox" checked tabIndex={5} />
             <label htmlFor="lowercase">a-z</label>
           </CheckboxWrapper>
           <CheckboxWrapper>
-            <input id="uppercase" type="checkbox" checked />
+            <input id="uppercase" type="checkbox" checked tabIndex={6} />
             <label htmlFor="uppercase">A-Z</label>
           </CheckboxWrapper>
           <CheckboxWrapper>
-            <input id="digits" type="checkbox" checked />
+            <input id="digits" type="checkbox" checked tabIndex={7} />
             <label htmlFor="digits">0-9</label>
           </CheckboxWrapper>
           <CheckboxWrapper>
-            <input id="symbols" type="checkbox" checked />
+            <input id="symbols" type="checkbox" checked tabIndex={8} />
             <label htmlFor="symbols">!@%</label>
           </CheckboxWrapper>
         </Options>
@@ -255,7 +273,7 @@ class PasswordGenerationPage extends Component {
             <label>Length</label>
             <Counter>
               <span>-</span>
-              <input type="number" value="16" />
+              <input type="number" value="16" tabIndex={9} />
               <span>+</span>
             </Counter>
           </CounterWrapper>
@@ -263,12 +281,12 @@ class PasswordGenerationPage extends Component {
             <label>Counter</label>
             <Counter>
               <span>-</span>
-              <input type="number" value="1" />
+              <input type="number" value="1" tabIndex={10} />
               <span>+</span>
             </Counter>
           </CounterWrapper>
         </Options>
-        <Button>GENERATE</Button>
+        <Button tabIndex={4}>GENERATE</Button>
       </div>
     );
   }
@@ -286,17 +304,23 @@ class LessPass extends Component {
           <PasswordGenerationPage />
         </Content>
         <Footer>
-          <FooterItem active>
-            <FooterIcon icon="user-secret" />
-            <FooterText>LessPass</FooterText>
+          <FooterItem>
+            <FooterLink active tabIndex={11}>
+              <FooterIcon icon="user-secret" />
+              <FooterText>LessPass</FooterText>
+            </FooterLink>
           </FooterItem>
           <FooterItem>
-            <FooterIcon icon="cogs" />
-            <FooterText>Settings</FooterText>
+            <FooterLink tabIndex={12}>
+              <FooterIcon icon="cogs" />
+              <FooterText>Settings</FooterText>
+            </FooterLink>
           </FooterItem>
           <FooterItem>
-            <FooterIcon icon="question" />
-            <FooterText>Help</FooterText>
+            <FooterLink tabIndex={13}>
+              <FooterIcon icon="question" />
+              <FooterText>Help</FooterText>
+            </FooterLink>
           </FooterItem>
         </Footer>
       </MainContent>
