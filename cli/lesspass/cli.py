@@ -7,13 +7,13 @@ class readable_dir(argparse.Action):
         prospective_dir = values
         if not os.path.isdir(prospective_dir):
             raise argparse.ArgumentTypeError(
-                f"readable_dir: `{prospective_dir}` is not a valid path"
+                "readable_dir: `{}` is not a valid path".format(prospective_dir)
             )
         if os.access(prospective_dir, os.R_OK):
             setattr(namespace, self.dest, prospective_dir)
         else:
             raise argparse.ArgumentTypeError(
-                f"readable_dir: `{prospective_dir}` is not a readable dir"
+                "readable_dir: `{}` is not a readable dir".format(prospective_dir)
             )
 
 

@@ -23,7 +23,7 @@ def create_profile(args):
 
 
 def save_profile(profile, folder):
-    profile_filepath = Path(folder) / f"{quote_plus(profile['site'])}.json"
+    profile_filepath = Path(folder) / "{}.json".format(quote_plus(profile["site"]))
     with open(profile_filepath, "w") as target:
         target.write(json.dumps(profile, indent=4))
-        print(f"Profile saved to {profile_filepath}")
+        print("Profile saved to {}".format(profile_filepath))
