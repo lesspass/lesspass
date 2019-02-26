@@ -1,20 +1,11 @@
-FROM centos:7
+FROM python:3.6
 
 LABEL name="LessPass Backend" 
 LABEL maintainer="LessPass <contact@lesspass.com>"
 
-ENV LANG en_US.UTF-8
-
-RUN yum -y install centos-release-scl && \
-    yum -y install rh-python36 && \
-    yum clean all
-
 RUN mkdir /opt/app
 WORKDIR /opt/app
-
-RUN source scl_source enable rh-python36 && \
-    python -m venv /opt/app/venv
-
+RUN python -m venv /opt/app/venv
 COPY requirements.txt /opt/app/
 RUN /opt/app/venv/bin/python -m pip install --upgrade pip  && \
     /opt/app/venv/bin/python -m pip install -r requirements.txt

@@ -17,13 +17,9 @@ services:
     ports:
       - 80:80
       - 443:443
-    environment:
-      FQDN: localhost
-      DEBUG: 1
+    env_file:
+      - .env
     volumes:
-      - ./webserver/ssl:/ssl
-      - ./webserver:/webserver
+      - ./webserver/ssl:/opt/app/ssl
 volumes:
   postgresql:
-  www:
-  profiles:
