@@ -82,3 +82,7 @@ jobs:
         - cd containers
       script:
         - ./deploy.sh
+      on:
+        tags: true
+        all_branches: true
+        condition: "$TRAVIS_TAG =~ ^containers-*$"
