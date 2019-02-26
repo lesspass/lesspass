@@ -98,6 +98,22 @@ describe("validation", () => {
             symbols: true
           }
         })
+      ).toBe(false);
+    });
+    it("with only site", () => {
+      expect(
+        isProfileValid({
+          site: "lesspass",
+          login: "",
+          options: {
+            length: 16,
+            counter: 1,
+            lowercase: true,
+            uppercase: true,
+            digits: true,
+            symbols: true
+          }
+        })
       ).toBe(true);
     });
     it("no options", () => {

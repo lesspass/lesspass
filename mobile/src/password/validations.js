@@ -22,9 +22,12 @@ export function areOptionsValid(options) {
 }
 
 export function isProfileValid(profile) {
-  const { options } = profile;
+  const { site, options } = profile;
   const { length, counter } = options;
   return (
-    isLengthValid(length) && isCounterValid(counter) && areOptionsValid(options)
+    isLengthValid(length) &&
+    isCounterValid(counter) &&
+    areOptionsValid(options) &&
+    site !== ""
   );
 }
