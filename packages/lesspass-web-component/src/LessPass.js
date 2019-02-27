@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import Logo from "./logo.png";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -32,18 +33,19 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const MainContent = styled.div`
-  background-color: #333333;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 320px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Helvetica Neue, Arial, sans-serif;
-  color: #eeeeee;
+  color: #333333;
   box-sizing: border-box;
 `;
 
 const Header = styled.div`
+  color: #eeeeee;
   background-color: #333333;
   display: flex;
   justify-content: center;
@@ -60,9 +62,12 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1em;
+  min-height: 400px;
 `;
 
 const Footer = styled.ul`
+  color: #eeeeee;
+  background-color: #333333;
   display: flex;
   justify-content: space-around;
   margin: 0;
@@ -72,7 +77,7 @@ const Footer = styled.ul`
 
 const FooterItem = styled.li``;
 
-const FooterLink = styled.a`
+const FooterLink = styled(Link)`
   padding: 0.5em;
   padding-top: 0.7em;
   width: 75px;
@@ -82,6 +87,7 @@ const FooterLink = styled.a`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
   color: ${props => (props.active ? "#eeeeee" : "#aaaaaa")};
   &:focus {
     background-color: #0275d8;
@@ -100,7 +106,6 @@ const FooterText = styled.div`
 
 const InputWrapper = styled.div`
   position: relative;
-  margin-bottom: 0.5em;
   input {
     width: 100%;
     padding: 1em 0.5em;
@@ -122,7 +127,7 @@ const InputWrapper = styled.div`
   }
 `;
 
-class Input extends Component {
+class Input extends React.Component {
   state = {
     focused: false
   };
@@ -160,7 +165,6 @@ const Options = styled.div`
   justify-content: space-between;
   align-items: center;
   color: #333;
-  padding-top: 1em;
 `;
 
 const Counter = styled.div`
@@ -210,8 +214,6 @@ const Button = styled.button`
   color: #eee;
   border: none;
   padding: 1em;
-  margin-top: 1em;
-  margin-bottom: 2em;
   border-radius: 3px;
 
   &:focus {
@@ -219,7 +221,14 @@ const Button = styled.button`
   }
 `;
 
-class PasswordGenerationPage extends Component {
+const PasswordGeneration = styled.div`
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  flex-direction: column;
+`;
+
+class PasswordGenerationPage extends React.Component {
   state = {
     site: "",
     login: "",
@@ -229,7 +238,7 @@ class PasswordGenerationPage extends Component {
   render() {
     const { site, login, masterPassword } = this.state;
     return (
-      <div>
+      <PasswordGeneration>
         <Input
           autoFocus
           label="Site"
@@ -287,43 +296,59 @@ class PasswordGenerationPage extends Component {
           </CounterWrapper>
         </Options>
         <Button tabIndex={4}>GENERATE</Button>
-      </div>
+      </PasswordGeneration>
     );
   }
 }
 
-class LessPass extends Component {
+class SettingPage extends React.Component {
+  render() {
+    return <div>SettingPage</div>;
+  }
+}
+
+class HelpPage extends React.Component {
+  render() {
+    return <div>HelpPage</div>;
+  }
+}
+
+class LessPass extends React.Component {
   render() {
     return (
-      <MainContent>
-        <GlobalStyle />
-        <Header>
-          <HeaderImg src={Logo} alt="LessPass" />
-        </Header>
-        <Content>
-          <PasswordGenerationPage />
-        </Content>
-        <Footer>
-          <FooterItem>
-            <FooterLink active tabIndex={11}>
-              <FooterIcon icon="user-secret" />
-              <FooterText>LessPass</FooterText>
-            </FooterLink>
-          </FooterItem>
-          <FooterItem>
-            <FooterLink tabIndex={12}>
-              <FooterIcon icon="cogs" />
-              <FooterText>Settings</FooterText>
-            </FooterLink>
-          </FooterItem>
-          <FooterItem>
-            <FooterLink tabIndex={13}>
-              <FooterIcon icon="question" />
-              <FooterText>Help</FooterText>
-            </FooterLink>
-          </FooterItem>
-        </Footer>
-      </MainContent>
+      <Router>
+        <MainContent>
+          <GlobalStyle />
+          <Header>
+            <HeaderImg src={Logo} alt="LessPass" />
+          </Header>
+          <Content>
+            <Route exact path="/" component={PasswordGenerationPage} />
+            <Route path="/settings" component={SettingPage} />
+            <Route path="/help" component={HelpPage} />
+          </Content>
+          <Footer>
+            <FooterItem>
+              <FooterLink active tabIndex={11} to="/">
+                <FooterIcon icon="user-secret" />
+                <FooterText>LessPass</FooterText>
+              </FooterLink>
+            </FooterItem>
+            <FooterItem>
+              <FooterLink tabIndex={12} to="settings">
+                <FooterIcon icon="cogs" />
+                <FooterText>Settings</FooterText>
+              </FooterLink>
+            </FooterItem>
+            <FooterItem>
+              <FooterLink tabIndex={13} to="help">
+                <FooterIcon icon="question" />
+                <FooterText>Help</FooterText>
+              </FooterLink>
+            </FooterItem>
+          </Footer>
+        </MainContent>
+      </Router>
     );
   }
 }
