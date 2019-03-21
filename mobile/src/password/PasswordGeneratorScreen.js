@@ -102,7 +102,13 @@ export class PasswordGeneratorScreen extends Component {
       id,
       site,
       login,
-      options: { length, counter, lowercase, uppercase, digits, symbols }
+      lowercase,
+      uppercase,
+      number: digits,
+      digits,
+      symbols,
+      length,
+      counter
     };
   };
 

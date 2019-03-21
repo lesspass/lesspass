@@ -16,18 +16,23 @@ export function isCounterValid(value) {
   return isValid;
 }
 
-export function areOptionsValid(options) {
-  const { lowercase, uppercase, digits, symbols } = options;
+export function areOptionsValid({ lowercase, uppercase, digits, symbols }) {
   return lowercase || uppercase || digits || symbols;
 }
 
-export function isProfileValid(profile) {
-  const { site, options } = profile;
-  const { length, counter } = options;
+export function isProfileValid({
+  site,
+  length,
+  counter,
+  lowercase,
+  uppercase,
+  digits,
+  symbols
+}) {
   return (
     isLengthValid(length) &&
     isCounterValid(counter) &&
-    areOptionsValid(options) &&
+    areOptionsValid({ lowercase, uppercase, digits, symbols }) &&
     site !== ""
   );
 }
