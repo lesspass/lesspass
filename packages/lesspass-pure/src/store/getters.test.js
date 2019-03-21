@@ -1,7 +1,6 @@
-import test from "ava";
-import * as getters from "../../src/store/getters";
+import * as getters from "./getters";
 
-test("passwordURL", t => {
+test("passwordURL", () => {
   const state = {
     password: {
       login: "test@example.org",
@@ -17,13 +16,12 @@ test("passwordURL", t => {
     baseURL: "https://lesspass.com"
   };
 
-  t.is(
-    getters.passwordURL(state),
+  expect(getters.passwordURL(state)).toBe(
     "https://lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9"
   );
 });
 
-test("passwordURL encode uri component", t => {
+test("passwordURL encode uri component", () => {
   const state = {
     password: {
       login: "contact@lesspass.com"
@@ -31,13 +29,12 @@ test("passwordURL encode uri component", t => {
     baseURL: "https://lesspass.com"
   };
 
-  t.is(
-    getters.passwordURL(state),
+  expect(getters.passwordURL(state)).toBe(
     "https://lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6ImNvbnRhY3RAbGVzc3Bhc3MuY29tIn0%3D"
   );
 });
 
-test("isDefaultProfile", t => {
+test("isDefaultProfile", () => {
   const state = {
     password: {
       login: "test@example.org",
@@ -62,10 +59,10 @@ test("isDefaultProfile", t => {
       version: 2
     }
   };
-  t.true(getters.isDefaultProfile(state));
+  expect(getters.isDefaultProfile(state)).toBe(true);
 });
 
-test("isDefaultProfile false", t => {
+test("isDefaultProfile false", () => {
   const state = {
     password: {
       login: "test@example.org",
@@ -90,21 +87,21 @@ test("isDefaultProfile false", t => {
       version: 2
     }
   };
-  t.false(getters.isDefaultProfile(state));
+  expect(getters.isDefaultProfile(state)).toBe(false);
 });
 
-test("isAuthenticated", t => {
+test("isAuthenticated", () => {
   const state = {
     authenticated: true
   };
-  t.true(getters.isAuthenticated(state));
-  t.false(getters.isGuest(state));
+  expect(getters.isAuthenticated(state)).toBe(true);
+  expect(getters.isGuest(state)).toBe(false);
 });
 
-test("isGuest", t => {
+test("isGuest", () => {
   const state = {
     authenticated: false
   };
-  t.false(getters.isAuthenticated(state));
-  t.true(getters.isGuest(state));
+  expect(getters.isAuthenticated(state)).toBe(false);
+  expect(getters.isGuest(state)).toBe(true);
 });
