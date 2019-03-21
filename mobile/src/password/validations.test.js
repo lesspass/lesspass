@@ -89,14 +89,12 @@ describe("validation", () => {
         isProfileValid({
           site: "",
           login: "",
-          options: {
-            length: 16,
-            counter: 1,
-            lowercase: true,
-            uppercase: true,
-            digits: true,
-            symbols: true
-          }
+          length: 16,
+          counter: 1,
+          lowercase: true,
+          uppercase: true,
+          digits: true,
+          symbols: true
         })
       ).toBe(false);
     });
@@ -105,14 +103,12 @@ describe("validation", () => {
         isProfileValid({
           site: "lesspass",
           login: "",
-          options: {
-            length: 16,
-            counter: 1,
-            lowercase: true,
-            uppercase: true,
-            digits: true,
-            symbols: true
-          }
+          length: 16,
+          counter: 1,
+          lowercase: true,
+          uppercase: true,
+          digits: true,
+          symbols: true
         })
       ).toBe(true);
     });
@@ -121,14 +117,12 @@ describe("validation", () => {
         isProfileValid({
           site: "",
           login: "",
-          options: {
-            length: 16,
-            counter: 1,
-            lowercase: false,
-            uppercase: false,
-            digits: false,
-            symbols: false
-          }
+          length: 16,
+          counter: 1,
+          lowercase: false,
+          uppercase: false,
+          digits: false,
+          symbols: false
         })
       ).toBe(false);
     });
@@ -137,14 +131,12 @@ describe("validation", () => {
         isProfileValid({
           site: "",
           login: "",
-          options: {
-            length: 40,
-            counter: 1,
-            lowercase: true,
-            uppercase: true,
-            digits: true,
-            symbols: true
-          }
+          length: 40,
+          counter: 1,
+          lowercase: true,
+          uppercase: true,
+          digits: true,
+          symbols: true
         })
       ).toBe(false);
     });
