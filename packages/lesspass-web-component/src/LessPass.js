@@ -329,7 +329,7 @@ class LessPass extends React.Component {
           </Content>
           <Footer>
             <FooterItem>
-              <FooterLink active tabIndex={11} to="/">
+              <FooterLink active="true" tabIndex={11} to="/">
                 <FooterIcon icon="user-secret" />
                 <FooterText>LessPass</FooterText>
               </FooterLink>
