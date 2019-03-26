@@ -12,20 +12,14 @@ module.exports = {
     modules: [path.resolve(__dirname, "src"), "node_modules"]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: productionMode ? "[name].[hash].css" : "[name].css",
-      chunkFilename: productionMode ? "[id].[hash].css" : "[id].css"
-    }),
+    new MiniCssExtractPlugin({ filename: "lesspass.min.css" }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      inject: "body"
-    }),
+    new HtmlWebpackPlugin({ template: "./src/index.html", inject: "body" }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new VueLoaderPlugin()
   ],
   output: {
-    filename: "[name].[chunkhash].js",
+    filename: "lesspass.min.js",
     path: path.resolve(__dirname, "dist")
   },
   module: {

@@ -1,12 +1,12 @@
 {
   "name": "lesspass-pure",
-  "version": "5.1.5",
+  "version": "5.1.6",
   "description": "LessPass web component",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
-    "build": "rm -rf dist && webpack --mode=production --config webpack.prod.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack --mode=production --config webpack.prod.js",
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "test": "npm run test:unit",

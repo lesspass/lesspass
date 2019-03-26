@@ -59,7 +59,7 @@
         <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
           <span class="input-group-btn" v-on:click="password.length=decrement(password.length, {min: 5, max: 35})">
-            <button id="decreaseLength__btn" class="btn btn-primary border-blue px-2" type="button">
+            <button id="decreaseLength__btn" class="btn btn-primary btn-sm border-blue px-2" type="button">
               <small><i class="fa fa-minus"></i></small>
             </button>
           </span>
@@ -71,7 +71,7 @@
                  v-model.number="password.length">
           <span class="input-group-btn"
                 v-on:click="password.length=increment(password.length, {min: 5, max: 35})">
-            <button id="increaseLength__btn" class="btn btn-primary border-blue px-2" type="button">
+            <button id="increaseLength__btn" class="btn btn-primary btn-sm border-blue px-2" type="button">
               <small><i class="fa fa-plus"></i></small>
             </button>
           </span>
@@ -87,7 +87,7 @@
         <div class="input-group input-group-sm">
           <span id="decreaseCounter__btn" class="input-group-btn"
                 v-on:click="password.counter=decrement(password.counter, {min: 1})">
-              <button class="btn btn-primary border-blue px-2" type="button">
+              <button class="btn btn-primary btn-sm border-blue px-2" type="button">
               <small><i class="fa fa-minus"></i></small>
             </button>
           </span>
@@ -98,7 +98,7 @@
                  v-model.number="password.counter">
           <span id="increaseCounter__btn" class="input-group-btn"
                 v-on:click="password.counter=increment(password.counter, {min: 1})">
-            <button class="btn btn-primary border-blue px-2" type="button">
+            <button class="btn btn-primary btn-sm border-blue px-2" type="button">
               <small><i class="fa fa-plus"></i></small>
             </button>
           </span>
