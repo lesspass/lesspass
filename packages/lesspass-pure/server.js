@@ -1,11 +1,8 @@
 var express = require('express');
 var app = express();
 
-app.use('/dist', express.static(__dirname + '/dist'));
+app.use('/', express.static(__dirname + '/dist'));
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
 
 var _resolve;
 var readyPromise = new Promise(resolve => {
