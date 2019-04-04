@@ -74,22 +74,6 @@ export default class HelpScreen extends Component {
         <Paragraph style={{ marginBottom: 20 }}>
           You can sign out using the Sign Out button in the settings.
         </Paragraph>
-        <Subheading>Contributing</Subheading>
-        <Paragraph>You can read our contributing guide:</Paragraph>
-        <Button
-          mode="contained"
-          onPress={() => {
-            Linking.openURL(
-              "https://github.com/lesspass/lesspass/blob/master/CONTRIBUTING.md"
-            );
-          }}
-          style={{
-            marginTop: 10,
-            marginBottom: 20
-          }}
-        >
-          How to contribute?
-        </Button>
         <Subheading>Support</Subheading>
         <Paragraph>
           Still need some help? No problem, you can send us an email at
