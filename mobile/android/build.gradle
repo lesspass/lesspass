@@ -3,14 +3,11 @@ import groovy.json.JsonSlurper
 
 buildscript {
     repositories {
+        google()
         jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.3.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,24 +17,21 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
+        google()
         jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
     }
 }
 
 ext {
-    buildToolsVersion = "26.0.3"
+    buildToolsVersion = "28.0.3"
     minSdkVersion = 16
-    compileSdkVersion = 26
-    targetSdkVersion = 26
-    supportLibVersion = "26.1.0"
+    compileSdkVersion = 28
+    targetSdkVersion = 28
+    supportLibVersion = "28.0.0"
     def npmVersion = getNpmVersionArray()
     versionMajor = npmVersion[0]
     versionMinor = npmVersion[1]
