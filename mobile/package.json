@@ -1,6 +1,6 @@
 {
   "name": "lesspass-mobile",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "description": "LessPass mobile application",
   "license": "(MPL-2.0 OR GPL-3.0)",
   "author": {
@@ -15,31 +15,32 @@
   "dependencies": {
     "axios": "0.18.0",
     "debounce": "1.2.0",
-    "fuse.js": "3.3.0",
+    "fuse.js": "^3.4.4",
     "lesspass-fingerprint": "file:../packages/lesspass-fingerprint",
     "lesspass-render-password": "file:../packages/lesspass-render-password",
-    "lodash": "4.17.11",
-    "memoize-one": "4.0.3",
-    "react": "16.4.1",
-    "react-native": "0.56.1",
-    "react-native-gesture-handler": "1.0.10",
-    "react-native-keychain": "3.0.0",
-    "react-native-paper": "2.0.1",
-    "react-native-touch-id": "4.1.0",
-    "react-native-vector-icons": "6.1.0",
-    "react-navigation": "3.0.2",
+    "lodash": "^4.17.11",
+    "memoize-one": "^5.0.4",
+    "react": "16.8.3",
+    "react-native": "0.59.4",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-native-keychain": "^3.1.1",
+    "react-native-paper": "^2.15.2",
+    "react-native-touch-id": "^4.4.1",
+    "react-native-vector-icons": "^6.4.2",
+    "react-navigation": "^3.6.1",
     "react-navigation-material-bottom-tabs": "1.0.0",
-    "react-redux": "5.0.7",
-    "redux": "4.0.0",
+    "react-redux": "^7.0.1",
+    "redux": "^4.0.1",
     "redux-persist": "5.10.0",
     "redux-thunk": "2.3.0"
   },
   "devDependencies": {
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "23.6.0",
-    "babel-preset-react-native": "5.0.2",
-    "jest": "23.6.0",
-    "react-test-renderer": "16.4.1"
+    "@babel/core": "^7.4.3",
+    "@babel/runtime": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
+    "metro-react-native-babel-preset": "^0.53.1",
+    "react-test-renderer": "16.8.3"
   },
   "jest": {
     "preset": "react-native"
