@@ -1,69 +1,78 @@
 jobs:
   include:
-    - stage: test
-      language: python
-      name: "Test CLI"
-      python:
-        - "3.4"
-      before_install:
-        - cd cli
-      install:
-        - pip install -r requirements.txt -r test-requirements.txt
-      script:
-        - export PYTHONPATH='.'
-        - python -m unittest discover
-
-    - stage: test
-      language: python
-      name: "Test backend"
-      python:
-        - "3.4"
-      before_install:
-        - cd containers/backend
-      install:
-        - pip install -r requirements.txt
-      script:
-        - python manage.py test
-
-    - stage: test
-      language: node_js
-      name: "Test JavaScript packages"
-      node_js:
-        - "lts/*"
-      addons:
-        chrome: stable
-      cache:
-        yarn: true
-      before_install:
-        - curl -o- -L https://yarnpkg.com/install.sh | bash
-        - export PATH=$HOME/.yarn/bin:$PATH
-      install:
-        - yarn install
-      script:
-        - yarn test
-
-    - stage: test
-      language: node_js
-      name: "Test mobile app"
-      node_js:
-        - "lts/*"
-      cache:
-        yarn: true
-      before_install:
-        - curl -o- -L https://yarnpkg.com/install.sh | bash
-        - export PATH=$HOME/.yarn/bin:$PATH
-        - cd mobile
-      install:
-        - yarn install
-      script:
-        - yarn test
-
-    - stage: test
-      language: generic
-      name: "Test containers"
-      services:
-        - docker
-      before_script:
-        - cd containers
-      script:
-        - ./test.sh
+  - stage: test
+    language: python
+    name: Test cli
+    python:
+    - '3.4'
+    before_install:
+    - cd cli
+    install:
+    - pip install -r requirements.txt -r test-requirements.txt
+    script:
+    - export PYTHONPATH='.'
+    - python -m unittest discover
+  - stage: test
+    language: python
+    name: Test backend
+    python:
+    - '3.4'
+    before_install:
+    - cd containers/backend
+    install:
+    - pip install -r requirements.txt
+    script:
+    - python manage.py test
+  - stage: test
+    language: node_js
+    name: Test JavaScript packages
+    node_js:
+    - lts/*
+    addons:
+      chrome: stable
+    cache:
+      yarn: true
+    before_install:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - export PATH=$HOME/.yarn/bin:$PATH
+    install:
+    - yarn install
+    script:
+    - yarn test
+  - stage: test
+    language: node_js
+    name: Test mobile app
+    node_js:
+    - lts/*
+    cache:
+      yarn: true
+    before_install:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - export PATH=$HOME/.yarn/bin:$PATH
+    - cd mobile
+    install:
+    - yarn install
+    script:
+    - yarn test
+  - stage: test
+    language: generic
+    name: Test containers
+    services:
+    - docker
+    before_script:
+    - cd containers
+    script:
+    - "./test.sh"
+  - stage: deploy
+    if: tag IS present
+    name: Deploy cli
+    before_deploy: cd cli
+    deploy:
+      provider: pypi
+      user: guillaumevincent
+      password:
+        secure: AOCdqmMdtzmxZXnnMM4ToA80y1PftTVoPsFi7D9RglfneRruRocfI+HQ1Y2m3wUkdGEKVrzkHudiOVMLpeuiMerz9JzQNX/MoujjTvq0h24pnXC+Y2JLNgqxQNuKttgBYP9yMhdgo0Si25KqRLTbmGNZLVnN1hXKV206alNmRWqsZeI/Yxje2FDgRnVTsAtXM+R2g/SvM5r/zVnFiogT/gbQ1Voz+kUo7c15o3Sp3D9+WL38P9Sk3tIVl7RA8o1yd7actDVezPhQPddSu+o+3poxUfrX9LtnibJiuWvqBRdQ2Pjwc7ZSjNJ/zPXntCu8hvdEVzCAXbVFfkhsk1xEDGrEne1hyRJuRX3F9o+SgkuKz53mSg1Wxw7tK6fmnyNG+EMU+oeIKGzNd4Ta/Dk9MzmrymeQgFsZSSFIlwi0ecJ7N+3f0UYTlMR788Q7JGXLsqHfY473rI1M5cpC24l88Pibsdjzf66sanlsZtzHN/51CZzuLLHwTt714CV2bVsffdp3UqaJ+pbhdLXYtrLColOg5Ua3el+t999pVr0r/V/gSqRKKVZqgbUwd9ajYTqYXDDt0+/+9c7ynhfH4hMLsafAZNhf74KBIbL7C30A/DfptiHlBP/5TWvOpzc+AyxWt8v1nnrEK/1vAGLGAaYkXKqmazb/9KlxkKDqDMC9ZQc=
+      on:
+        tags: true
+        all_branches: true
+        condition: "$TRAVIS_TAG =~ ^cli*$"
