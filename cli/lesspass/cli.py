@@ -1,7 +1,6 @@
 import argparse
 import os
 
-from lesspass import actions
 from lesspass import version
 from lesspass import name
 from lesspass import description
@@ -54,9 +53,7 @@ def parse_args(args):
         "-L",
         "--length",
         default=16,
-        action=actions.Range,
-        min=5,
-        max=35,
+        choices=range(5, 36),
         type=int,
         help="password length (default: 16, min:5, max: 35)",
     )
