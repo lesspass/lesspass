@@ -1,6 +1,7 @@
 import argparse
 import os
 
+from lesspass import actions
 from lesspass import version
 from lesspass import name
 from lesspass import description
@@ -38,9 +39,7 @@ def parse_args(args):
         "-v", "--version", action="version", version=version.__version__
     )
     parser.add_argument(
-        "site",
-        nargs="?",
-        help="site used in the password generation (required)"
+        "site", nargs="?", help="site used in the password generation (required)"
     )
     parser.add_argument(
         "login", nargs="?", help="login used in the password generation. Default to ''."
@@ -55,8 +54,11 @@ def parse_args(args):
         "-L",
         "--length",
         default=16,
+        action=actions.Range,
+        min=5,
+        max=35,
         type=int,
-        help="password length (default: 16, max: 35)",
+        help="password length (default: 16, min:5, max: 35)",
     )
     parser.add_argument(
         "-C", "--counter", default=1, type=int, help="password counter (default: 1)"
