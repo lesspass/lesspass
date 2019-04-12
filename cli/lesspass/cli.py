@@ -1,7 +1,6 @@
 import argparse
 import os
 
-from lesspass import actions
 from lesspass import version
 from lesspass import name
 from lesspass import description
@@ -26,6 +25,12 @@ copyright:
   Copyright © 2018 Guillaume Vincent <contact@lesspass.com>.  License GPLv3: GNU GPL version 3 <https://gnu.org/licenses/gpl.html>.
   This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law
 """
+
+def range_type(value_string):
+    value = int(value_string)
+    if value not in range(5, 35+1):
+        raise argparse.ArgumentTypeError("%s is out of range, choose in [5-35]" % value)
+    return value
 
 
 def parse_args(args):
@@ -54,11 +59,10 @@ def parse_args(args):
         "-L",
         "--length",
         default=16,
-        action=actions.Range,
-        min=5,
-        max=35,
-        type=int,
-        help="password length (default: 16, min:5, max: 35)",
+        choices=range(5, 35+1),
+        type=range_type,
+        help="password length (default: 16, min: 5, max: 35)",
+        metavar='[5-35]'
     )
     parser.add_argument(
         "-C", "--counter", default=1, type=int, help="password counter (default: 1)"
