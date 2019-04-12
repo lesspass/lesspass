@@ -55,7 +55,8 @@ def parse_args(args):
         default=16,
         choices=range(5, 36),
         type=int,
-        help="password length (default: 16, min:5, max: 35)",
+        help="password length (default: 16, min: 5, max: 35)",
+        metavar='[5-35]'
     )
     parser.add_argument(
         "-C", "--counter", default=1, type=int, help="password counter (default: 1)"
