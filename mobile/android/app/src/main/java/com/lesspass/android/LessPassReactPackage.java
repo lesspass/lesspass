@@ -1,4 +1,4 @@
-package com.lesspass;
+package com.lesspass.android;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
