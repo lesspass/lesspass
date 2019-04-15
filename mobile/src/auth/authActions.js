@@ -28,14 +28,12 @@ function getEncryptedCredentials(credentials) {
     return generatePassword(credentials.password, {
       site: "lesspass.com",
       login: credentials.email,
-      options: {
-        lowercase: true,
-        uppercase: true,
-        digits: true,
-        symbols: true,
-        length: 16,
-        counter: 1
-      }
+      lowercase: true,
+      uppercase: true,
+      digits: true,
+      symbols: true,
+      length: 16,
+      counter: 1
     }).then(encryptedPassword => ({
       email: credentials.email,
       password: encryptedPassword
