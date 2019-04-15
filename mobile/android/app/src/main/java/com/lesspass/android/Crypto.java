@@ -1,4 +1,4 @@
-package com.lesspass;
+package com.lesspass.android;
 
 import java.math.BigInteger;
 

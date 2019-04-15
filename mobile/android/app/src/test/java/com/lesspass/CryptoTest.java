@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.Map;
 import java.util.HashMap;
 
-import com.lesspass.Crypto;
+import com.lesspass.android.Crypto;
 
 public class CryptoTest {
     @Test
