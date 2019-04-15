@@ -12,9 +12,10 @@ LessPass open source password manager (https://lesspass.com)
 
 ## How does it work?
 
- * :fr: [LessPass comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
- * :gb: [LessPass How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
+ * :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
+ * :fr: [LessPass - comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
  * :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/lesspass-wie-funktioniert-das-9483e5fc2c09)
+ * :it: [LessPass - Come funziona?](https://blog.lesspass.com/lesspass-come-funziona-5d1785b4a564)
 
 
 ## Videos
