@@ -64,8 +64,11 @@ jobs:
     script:
     - "./test.sh"
   - stage: deploy
-    if: tag IS present
+    language: python
     name: Deploy cli
+    python:
+    - '3.4'
+    script: skip
     before_deploy: cd cli
     deploy:
       provider: pypi
@@ -75,4 +78,9 @@ jobs:
       on:
         tags: true
         all_branches: true
-        condition: $TRAVIS_TAG =~ ^cli*
+        condition: $TRAVIS_TAG =~ ^cli.*$
+
+stages:
+  - name: test
+  - name: deploy
+    if: tag IS present
