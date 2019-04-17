@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+set +o errexit
+
+git diff-index --quiet HEAD
+if [ $? == 1 ]
+then
+  echo >&2 "Git repository not clean. Aborting."
+  exit 1
+fi
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+function increment_version {
+    IFS='.' read -a versions <<< "${1}"
+
+    major=${versions[0]}
+	minor=${versions[1]}
+	patch=${versions[2]}
+
+	case "${2}" in
+		"major")
+			major=$((major + 1))
+			minor=0
+			patch=0
+			;;
+		"minor")
+			minor=$((minor + 1))
+			patch=0
+			;;
+		"patch")
+			patch=$((patch + 1))
+			;;
+	esac
+    
+    new_version="$major.$minor.$patch"
+    echo ${new_version}
+}
+
+function replace_versions_in_files {
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" package.json
+    sed -i "s/__version__ = \"${1}\"/__version__ = \"${2}\"/g" cli/lesspass/version.py
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" mobile/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-crypto/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-entropy/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-fingerprint/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-profiles/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-pure/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-render-password/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-web-component/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-web-extension/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-web-site/package.json
+}
+
+function tag {
+    git add .
+    git commit --message="LessPass version ${1}"
+    git tag "${1}"
+}
+
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__root="$(cd "$(dirname "${__dir}")" && pwd)"
+pushd ${__root}
+bump_type="${1:-}"
+if [ "${bump_type}" == "major" ] || [ "${bump_type}" == "minor" ] || [ "${bump_type}" == "patch" ]
+then
+    current_version=$(grep -Po '(?<="version": ")[^"]*' package.json)
+    new_version=$( increment_version ${current_version} ${bump_type} )
+    replace_versions_in_files ${current_version} ${new_version}
+    tag ${new_version}
+else
+	echo >&2 "Error: No bump type specified (major, minor, patch). Aborting."
+    exit 1
+fi
