@@ -4,7 +4,7 @@ jobs:
     language: python
     name: Test cli
     python:
-    - '3.4'
+    - '3.6'
     before_install:
     - cd cli
     install:
@@ -16,7 +16,7 @@ jobs:
     language: python
     name: Test backend
     python:
-    - '3.4'
+    - '3.6'
     before_install:
     - cd containers/backend
     install:
@@ -67,7 +67,7 @@ jobs:
     language: python
     name: Deploy cli
     python:
-    - '3.4'
+    - '3.6'
     script: skip
     before_deploy: cd cli
     deploy:
