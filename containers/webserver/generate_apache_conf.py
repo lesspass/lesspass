@@ -12,6 +12,6 @@ if __name__ == "__main__":
         "DEBUG": os.environ.get("DEBUG", "0") == "1",
     }
     print(context)
-    jinja_template = Template(open("/opt/app/lesspass.conf.j2").read())
+    jinja_template = Template(open("/app/lesspass.conf.j2").read())
     with open("/etc/httpd/conf.d/lesspass.conf", "w") as f:
         f.write(jinja_template.render(context))

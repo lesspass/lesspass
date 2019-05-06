@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   db:
     image: postgres:9.5
@@ -10,16 +11,24 @@ services:
       - '8000'
     links:
       - db
-    env_file:
-      - .env
+    environment:
+      - DATABASE_ENGINE
+      - DATABASE_HOST
+      - DATABASE_NAME
+      - DATABASE_PASSWORD
+      - DATABASE_PORT
+      - DATABASE_USER
+      - DEBUG
+      - SECRET_KEY
   webserver:
     build: ./webserver
     ports:
       - 80:80
       - 443:443
-    env_file:
-      - .env
     volumes:
-      - ./webserver/ssl:/opt/app/ssl
+      - ./webserver/ssl:/app/ssl
+    environment:
+      - FQDN
+
 volumes:
   postgresql:
