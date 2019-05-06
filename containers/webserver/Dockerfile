@@ -5,8 +5,10 @@ LABEL maintainer="LessPass <contact@lesspass.com>"
 
 RUN apt-get update && apt-get install -y \
     python3 \
-    python3-jinja2
+    python3-jinja2 \
+    openssl \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . /opt/app/
+COPY . /app
 
-ENTRYPOINT ["/opt/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
