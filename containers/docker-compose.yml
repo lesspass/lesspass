@@ -7,8 +7,6 @@ services:
       - postgresql:/var/lib/postgresql/data
   backend:
     build: ./backend
-    expose:
-      - '8000'
     links:
       - db
     environment:
@@ -20,15 +18,18 @@ services:
       - DATABASE_USER
       - DEBUG
       - SECRET_KEY
+  frontend:
+    build: ./frontend
   webserver:
     build: ./webserver
     ports:
       - 80:80
       - 443:443
     volumes:
-      - ./webserver/ssl:/app/ssl
+      - ./ssl:/app/ssl
     environment:
       - FQDN
+      - EMAIL
 
 volumes:
   postgresql:

@@ -1,5 +1,8 @@
 ServerName {{ FQDN }}
 
+TransferLog /dev/stdout
+ErrorLog /dev/stderr
+
 <VirtualHost *:80>
   ServerName www.{{ FQDN }}
   ServerAlias {{ FQDN }}
@@ -29,14 +32,8 @@ ServerName {{ FQDN }}
     ServerName www.{{ FQDN }}
     ServerAlias {{ FQDN }}
     
-    DocumentRoot /var/www/html
-    
-    <Directory /var/www/html/>
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-    </Directory>
-
+    ProxyPass / http://frontend:8080/
+    ProxyPassReverse / http://frontend:8080/
     SSLEngine on
     SSLCertificateFile      {{ SSL_CERTIFICATE_FILE }}
     SSLCertificateKeyFile   {{ SSL_CERTIFICATE_KEY_FILE }}
@@ -62,5 +59,3 @@ SSLStaplingResponderTimeout 5
 SSLStaplingReturnResponderErrors off
 SSLStaplingCache        shmcb:/var/run/ocsp(128000)
 {% endif %}
-ErrorLog /dev/stderr
-TransferLog /dev/stdout
