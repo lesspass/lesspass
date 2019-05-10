@@ -1,7 +1,8 @@
 FROM python:3.6
 
+MAINTAINER "LessPass <contact@lesspass.com>"
+
 LABEL name="LessPass Backend" 
-LABEL maintainer="LessPass <contact@lesspass.com>"
 
 RUN mkdir /app
 WORKDIR /app
@@ -11,6 +12,8 @@ RUN python -m pip install -r requirements.txt
 
 COPY . /app
 RUN python --version
+
+EXPOSE 8000
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 

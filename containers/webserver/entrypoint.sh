@@ -24,4 +24,4 @@ python /app/generate_apache_conf.py
 
 cat /etc/httpd/conf.d/lesspass.conf
 
-exec "$@"
+exec /usr/sbin/httpd -D FOREGROUND

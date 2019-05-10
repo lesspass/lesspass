@@ -1,14 +1,16 @@
-FROM httpd:2.4
+FROM centos:7
+
+MAINTAINER "LessPass <contact@lesspass.com>"
 
 LABEL name="LessPass Web Server" 
-LABEL maintainer="LessPass <contact@lesspass.com>"
 
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-jinja2 \
-    openssl \
-    && rm -rf /var/lib/apt/lists/*
+RUN yum -y --setopt=tsflags=nodocs update && \
+    yum -y --setopt=tsflags=nodocs install httpd mod_ssl openssl python python-jinja2 && \
+    yum clean all
 
-COPY . /app
+EXPOSE 80 443
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ADD . /app
+RUN chmod +x /app/entrypoint.sh
+
+CMD ["/app/entrypoint.sh"]

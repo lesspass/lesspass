@@ -1,5 +1,9 @@
 FROM node:boron-slim
 
+MAINTAINER "LessPass <contact@lesspass.com>"
+
+LABEL name="LessPass Frontend" 
+
 RUN mkdir -p /frontend
 WORKDIR /frontend
 
