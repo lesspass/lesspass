@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+VERSION="8.0.1"
+podman login --username "${DOCKER_USERNAME}" --password "${DOCKER_PASSWORD}" quai.io
+podman build --tag lesspass/webserver:${VERSION} --tag lesspass/webserver:latest ./webserver
+podman build --tag lesspass/frontend:${VERSION} --tag lesspass/frontend:latest ./frontend
+podman build --tag lesspass/backend:${VERSION} --tag lesspass/backend:latest ./backend
+podman images
+podman --version
+podman push --creds "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" lesspass/webserver:${VERSION} docker://quai.io/lesspass/webserver
+podman push --creds "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" lesspass/webserver:latest docker://quai.io/lesspass/webserver
+podman push --creds "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" lesspass/frontend:${VERSION} docker://quai.io/lesspass/frontend
+podman push --creds "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" lesspass/frontend:latest docker://quai.io/lesspass/frontend
+podman push --creds "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" lesspass/backend:${VERSION} docker://quai.io/lesspass/backend
+podman push --creds "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" lesspass/backend:latest docker://quai.io/lesspass/backend
