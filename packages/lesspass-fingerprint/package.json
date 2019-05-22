@@ -17,6 +17,6 @@
     "test:browser": "karma start test/karma.conf.js"
   },
   "dependencies": {
-    "lesspass-crypto": "file:../lesspass-crypto"
+    "lesspass-crypto": "8.0.1"
   }
 }
