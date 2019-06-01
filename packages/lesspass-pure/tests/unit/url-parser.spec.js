@@ -1,4 +1,4 @@
-import * as urlParser from "./url-parser";
+import * as urlParser from "@/services/url-parser";
 
 test("cleanUrl", () => {
   expect("lesspass.com").toBe(urlParser.cleanUrl("https://lesspass.com/#!/"));

@@ -1,4 +1,4 @@
-import * as getters from "./getters";
+import * as getters from "@/store/getters";
 
 test("passwordURL", () => {
   const state = {

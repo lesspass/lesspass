@@ -3,12 +3,12 @@ var assert = require("assert");
 module.exports = {
   "Password reset": function(browser) {
     browser
-      .url(browser.launch_url)
-      .waitForElementVisible(".fa-sign-in")
+      .url(process.env.VUE_DEV_SERVER_URL)
+      .waitForElementVisible(".fa-sign-in", 5000)
       .click(".fa-sign-in")
-      .waitForElementVisible("#login__forgot-password-btn")
+      .waitForElementVisible("#login__forgot-password-btn", 5000)
       .click("#login__forgot-password-btn")
-      .waitForElementVisible("#password-reset__reset-password-btn")
+      .waitForElementVisible("#password-reset__reset-password-btn", 5000)
       .click("#password-reset__reset-password-btn");
 
     browser.getLog(function(logs) {

@@ -1,5 +1,4 @@
 import Vue from "vue";
-import "./images/favicon.ico";
 import LessPass from "./LessPass.vue";
 import { sync } from "vuex-router-sync";
 import store from "./store";

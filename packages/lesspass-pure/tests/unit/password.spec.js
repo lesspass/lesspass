@@ -1,6 +1,6 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import Passwords from "./password";
+import Passwords from "@/api/password";
 
 const mock = new MockAdapter(axios);
 

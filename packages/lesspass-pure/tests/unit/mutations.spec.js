@@ -1,7 +1,6 @@
-import timekeeper from "timekeeper";
-import mutations from "./mutations";
-import * as types from "./mutation-types";
-import defaultPassword from "./defaultPassword";
+import mutations from "@/store//mutations";
+import * as types from "@/store//mutation-types";
+import defaultPassword from "@/store/defaultPassword";
 
 test("LOGOUT", () => {
   const LOGOUT = mutations[types.LOGOUT];
