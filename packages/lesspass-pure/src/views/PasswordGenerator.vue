@@ -240,7 +240,7 @@ export default {
         message.warning(
           this.$t(
             "SorryCopy",
-            "We are sorry the copy only works on modern browsers"
+            "Sorry, copying only works in modern browsers."
           )
         );
       }
@@ -261,7 +261,7 @@ export default {
         message.warning(
           this.$t(
             "SorryCopy",
-            "We are sorry the copy only works on modern browsers"
+            "Sorry, copying only works in modern browsers."
           )
         );
       }
