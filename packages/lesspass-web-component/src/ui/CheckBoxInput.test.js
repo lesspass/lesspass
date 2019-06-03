@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LessPass from "./LessPass";
+import CheckBoxInput from "./CheckBoxInput";
 
-it("LessPass renders without crashing", () => {
+it("CheckBoxInput renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<LessPass />, div);
+  ReactDOM.render(<CheckBoxInput />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

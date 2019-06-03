@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LessPass from "./LessPass";
+import HelpPage from "./HelpPage";
 
-it("LessPass renders without crashing", () => {
+it("HelpPage renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<LessPass />, div);
+  ReactDOM.render(<HelpPage />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
