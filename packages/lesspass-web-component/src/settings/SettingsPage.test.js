@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LessPass from "./LessPass";
+import SettingsPage from "./SettingsPage";
 
-it("LessPass renders without crashing", () => {
+it("SettingsPage renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<LessPass />, div);
+  ReactDOM.render(<SettingsPage />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
