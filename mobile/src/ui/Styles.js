@@ -22,7 +22,8 @@ export default StyleSheet.create({
     top: 0,
     bottom: 0,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    zIndex: 4
   },
   switch: {
     flexDirection: "row",
