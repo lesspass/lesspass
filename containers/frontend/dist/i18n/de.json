@@ -13,7 +13,7 @@
   "ForgotPassword": "Passwort vergessen?",
   "Generate": "Erstelle",
   "Length": "Länge",
-  "LengthDeprecationWarning": "The maximum length of a password is 35 characters.",
+  "LengthDeprecationWarning": "Die maximale Länge eines Passwortes beträgt 35 Zeichen.",
   "LessPass Database Url": "LessPass Datenbank Url",
   "Login": "Login",
   "LoginFormInvalid": "LessPass URL, email-Adresse und Passwort sind obligatorisch",
