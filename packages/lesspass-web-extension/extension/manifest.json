@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "LessPass",
   "version": "3.1.6",
-  "homepage_url": "https://github.com/lesspass/webextension",
+  "homepage_url": "https://github.com/lesspass/lesspass",
   "icons": {
     "64": "icons/logo-64.png"
   },
