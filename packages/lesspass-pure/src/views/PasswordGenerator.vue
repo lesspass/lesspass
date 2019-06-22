@@ -252,11 +252,9 @@ export default {
           "PasswordProfileCopied",
           "Your password profile has been copied"
         );
-        showTooltip(
-          document.getElementById("sharePasswordProfileButton"),
-          copySuccessMessage,
-          "left"
-        );
+        const element = document.getElementById("sharePasswordProfileButton");
+        showTooltip(element, copySuccessMessage, "left");
+        setTimeout(() => hideTooltip(element), 2000);
       } else {
         message.warning(
           this.$t(
