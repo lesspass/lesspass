@@ -11,12 +11,12 @@
     "test": "echo 0"
   },
   "dependencies": {
-    "express": "4.15.2",
-    "lesspass-pure": "5.1.4"
+    "express": "^4.17.1",
+    "lesspass-pure": "^8.0.1"
   },
   "devDependencies": {
-    "favicons": "4.8.3",
-    "gulp": "4.0.0",
-    "gulp-favicons": "2.2.6"
+    "favicons": "^5.4.1",
+    "gulp": "^4.0.2",
+    "gulp-favicons": "^2.3.1"
   }
 }
