@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-VERSION="8.1.0"
+VERSION="8.1.1"
 podman login --username "${QUAI_USERNAME}" --password "${QUAI_PASSWORD}" quai.io
 podman build --tag lesspass/webserver:${VERSION} --tag lesspass/webserver:latest ./webserver
 podman build --tag lesspass/frontend:${VERSION} --tag lesspass/frontend:latest ./frontend
