@@ -19,35 +19,35 @@ def test_get_fingerprint():
             "icon": "archive"
         },
         {
-            "color": "\x1b[1;36;47m",  # => #B5DAFE
+            "color": "\x1b[1;37;44m",  # => #B5DAFE
             "icon": "beer"
         }
     ]
     assert get_fingerprint_from_password(b'Password12345') == [
         {
-            "color": "\x1b[1;33;41m",  # => #924900
+            "color": "\x1b[1;37;41m",  # => #924900
             "icon": "ambulance"
         },
         {
-            "color": "\x1b[1;36;47m",  # => #6AB0F7
+            "color": "\x1b[1;37;44m",  # => #6DB5FE
             "icon": "bed"
         },
         {
-            "color": "\x1b[1;36;45m",  # => #FF6CB6
+            "color": "\x1b[1;37;45m",  # => #FF6CB6
             "icon": "British pound"
         }
     ]
     assert get_fingerprint_from_password(b'Ma$$W0rld!@#$%^&*()<gamma>') == [
         {
-            "color": "\x1b[1;36;47m",  # =>  #B5DAFE
+            "color": "\x1b[1;37;44m",  # =>  #B5DAFE
             "icon": "area-chart"
         },
         {
-            "color": "\x1b[1;35;44m",  # =>  #490092
+            "color": "\x1b[1;37;45m",  # =>  #490092
             "icon": "British pound"
         },
         {
-            "color": "\x1b[1;33;41m",  # =>  #924900
+            "color": "\x1b[1;37;41m",  # =>  #924900
             "icon": "British pound"
         }
     ]
