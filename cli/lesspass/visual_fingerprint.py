@@ -11,18 +11,18 @@ if os.name == "nt":
 
 basic_text_colors = [
     "\x1b[1;37;40m",  # black               #000000
-    "\x1b[1;30;46m",  # dark cyan           #074750
+    "\x1b[1;37;46m",  # dark cyan           #074750
     "\x1b[1;37;46m",  # mid cyan            #009191
-    "\x1b[1;36;45m",  # bright pink         #FF6CB6
+    "\x1b[1;37;45m",  # bright pink         #FF6CB6
     "\x1b[1;37;45m",  # cotton candy pink   #FFB5DA
-    "\x1b[1;35;44m",  # mid purple          #490092
-    "\x1b[1;30;44m",  # sky blue            #006CDB
-    "\x1b[1;35;44m",  # lavendar            #B66DFF
-    "\x1b[1;36;47m",  # baby blue           #6DB5FE
-    "\x1b[1;36;47m",  # white blue          #B5DAFE
-    "\x1b[1;30;41m",  # blood red           #920000
-    "\x1b[1;33;41m",  # burnt orange        #924900
-    "\x1b[1;31;43m",  # orange              #DB6D00
+    "\x1b[1;37;45m",  # mid purple          #490092
+    "\x1b[1;37;44m",  # sky blue            #006CDB
+    "\x1b[1;37;45m",  # lavendar            #B66DFF
+    "\x1b[1;37;44m",  # baby blue           #6DB5FE
+    "\x1b[1;37;44m",  # white blue          #B5DAFE
+    "\x1b[1;37;41m",  # blood red           #920000
+    "\x1b[1;37;41m",  # burnt orange        #924900
+    "\x1b[1;37;43m",  # orange              #DB6D00
     "\x1b[1;37;42m",  # lime green          #24FE23
 ]
 icons = [
@@ -164,7 +164,10 @@ def getpass_with_visual_fingerprint(prompt):
             password = password[:-1]
         else:
             password += c
-        sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}")
+        if len(password) != 0:
+            sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}")
+        else:
+            sys.stdout.write(f"\r{prompt}  {' '*MAX_ICON_WIDTH*3}")
     return password
 
 
