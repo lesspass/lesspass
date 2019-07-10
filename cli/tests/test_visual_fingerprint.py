@@ -11,43 +11,43 @@ def get_fingerprint_from_password(password_bytes):
 def test_get_fingerprint():
     assert get_fingerprint_from_password(b'password') == [
         {
-            "color": "\x1b[1;37;45m",  # => #FFB5DA
+            "color": "\x1b[30;45m",  # => #FFB5DA
             "icon": "flask"
         },
         {
-            "color": "\x1b[1;37;46m",  # => #009191
+            "color": "\x1b[30;46m",  # => #009191
             "icon": "archive"
         },
         {
-            "color": "\x1b[1;37;44m",  # => #B5DAFE
+            "color": "\x1b[30;44m",  # => #B5DAFE
             "icon": "beer"
         }
     ]
     assert get_fingerprint_from_password(b'Password12345') == [
         {
-            "color": "\x1b[1;37;41m",  # => #924900
+            "color": "\x1b[30;41m",  # => #924900
             "icon": "ambulance"
         },
         {
-            "color": "\x1b[1;37;44m",  # => #6DB5FE
+            "color": "\x1b[30;44m",  # => #6DB5FE
             "icon": "bed"
         },
         {
-            "color": "\x1b[1;37;45m",  # => #FF6CB6
+            "color": "\x1b[30;45m",  # => #FF6CB6
             "icon": "British pound"
         }
     ]
     assert get_fingerprint_from_password(b'Ma$$W0rld!@#$%^&*()<gamma>') == [
         {
-            "color": "\x1b[1;37;44m",  # =>  #B5DAFE
+            "color": "\x1b[30;44m",  # =>  #B5DAFE
             "icon": "area-chart"
         },
         {
-            "color": "\x1b[1;37;45m",  # =>  #490092
+            "color": "\x1b[30;45m",  # =>  #490092
             "icon": "British pound"
         },
         {
-            "color": "\x1b[1;37;41m",  # =>  #924900
+            "color": "\x1b[30;41m",  # =>  #924900
             "icon": "British pound"
         }
     ]
