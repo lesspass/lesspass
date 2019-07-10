@@ -81,6 +81,13 @@ def parse_args(args):
         action="store_true",
         help="copy to password to clipboard",
     )
+    parser.add_argument(
+        "-f",
+        "--fingerprint",
+        dest="fingerprint",
+        action="store_true",
+        help="show visual fingerprint of password as you type it"
+    )
 
     lowercase_group = parser.add_mutually_exclusive_group()
     lowercase_group.add_argument(
