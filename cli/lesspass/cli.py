@@ -86,6 +86,20 @@ def parse_args(args):
         default=None,
         help="exclude char from generated password",
     )
+    parser.add_argument(
+        "-f",
+        "--fingerprint",
+        dest="fingerprint",
+        action="store_true",
+        help="show visual fingerprint of password as you type it"
+    )
+    parser.add_argument(
+        "-f",
+        "--fingerprint",
+        dest="fingerprint",
+        action="store_true",
+        help="show visual fingerprint of password as you type it"
+    )
 
     lowercase_group = parser.add_mutually_exclusive_group()
     lowercase_group.add_argument(
