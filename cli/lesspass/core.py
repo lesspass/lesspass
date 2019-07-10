@@ -32,10 +32,10 @@ def main(args=sys.argv[1:]):
 
     if not args.master_password:
         prompt = "Master Password: "
-        if not args.fingerprint:
-            args.master_password = getpass.getpass(prompt)
-        else:
+        if args.fingerprint:
             args.master_password = getpass_with_visual_fingerprint(prompt)
+        else:
+            args.master_password = getpass.getpass(prompt)
     if not args.master_password:
         print("ERROR argument MASTER_PASSWORD is required but was not provided")
         sys.exit(5)
