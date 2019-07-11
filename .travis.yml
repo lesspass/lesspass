@@ -167,7 +167,9 @@ jobs:
       - sudo curl https://raw.githubusercontent.com/projectatomic/registries/master/registries.fedora -o /etc/containers/registries.conf
       - cd containers
     deploy:
-      - ./deploy
+      provider: script
+      script: bash ./deploy
+
 stages:
   - name: test
   - name: deploy
