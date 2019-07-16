@@ -26,7 +26,15 @@
   "jest": {
     "testPathIgnorePatterns": [
       "cypress"
-    ]
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "../../node_modules/babel-jest"
+    }
   },
   "dependencies": {
     "@oslab/atob": "0.1.0",
