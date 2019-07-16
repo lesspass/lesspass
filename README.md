@@ -20,7 +20,7 @@ LessPass open source password manager (https://lesspass.com)
 
 ## Videos
 
- * :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=YbaRCHXk8Jo)
+ * :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=ha9jJJAjHq4)
 
 ## Podcast
 
