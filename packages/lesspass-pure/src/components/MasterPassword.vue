@@ -73,7 +73,7 @@
     },
     data(){
       return {
-        fingerprint: '',
+        fingerprint: null,
         icon1: '',
         icon2: '',
         icon3: '',
@@ -113,19 +113,16 @@
       },
       setFingerprint(password){
         LessPass.createFingerprint(password).then(fingerprint => {
+          this.icon1 = fingerprint[0].icon;
+          this.color1 = fingerprint[0].color;
+
+          this.icon2 = fingerprint[1].icon;
+          this.color2 = fingerprint[1].color;
+
+          this.icon3 = fingerprint[2].icon;
+          this.color3 = fingerprint[2].color;
+
           this.fingerprint = fingerprint;
-
-          const hash1 = fingerprint.substring(0, 6);
-          this.icon1 = this.getIcon(hash1);
-          this.color1 = this.getColor(hash1);
-
-          const hash2 = fingerprint.substring(6, 12);
-          this.icon2 = this.getIcon(hash2);
-          this.color2 = this.getColor(hash2);
-
-          const hash3 = fingerprint.substring(12, 18);
-          this.icon3 = this.getIcon(hash3);
-          this.color3 = this.getColor(hash3);
         });
       },
       showRealFingerprint: debounce(function(password) {

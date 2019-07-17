@@ -3,7 +3,7 @@ import { View, NativeModules } from "react-native";
 import TextInput from "../ui/TextInput";
 import TouchId from "./TouchId";
 import Fingerprint from "./Fingerprint";
-import fingerprint from "lesspass-fingerprint";
+import { createFingerprint } from "lesspass-fingerprint";
 import { debounce } from "lodash";
 
 export default class MasterPassword extends Component {
@@ -19,7 +19,7 @@ export default class MasterPassword extends Component {
     for (let i = 64; i > 0; i -= 1) {
       hmacSha256 += poolOfChars[Math.floor(Math.random() * poolOfChars.length)];
     }
-    this.setState({ fingerprint: fingerprint(hmacSha256) });
+    this.setState({ fingerprint: createFingerprint(hmacSha256) });
   };
 
   calcFingerprint = masterPassword => {
@@ -27,7 +27,7 @@ export default class MasterPassword extends Component {
       NativeModules.LessPass.createFingerprint(masterPassword).then(
         hmacSha256 => {
           this.setState({
-            fingerprint: fingerprint(hmacSha256)
+            fingerprint: createFingerprint(hmacSha256)
           });
         }
       );

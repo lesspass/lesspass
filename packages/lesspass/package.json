@@ -1,0 +1,19 @@
+{
+  "name": "lesspass",
+  "version": "8.1.1",
+  "description": "LessPass core module",
+  "license": "GPL-3.0",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "lesspass-entropy": "^8.1.1",
+    "lesspass-fingerprint": "^8.1.1",
+    "lesspass-render-password": "^8.1.1"
+  }
+}

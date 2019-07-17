@@ -1,5 +1,5 @@
 const assert = require("assert");
-const renderPassword = require("../src/index");
+const { renderPassword } = require("../src/index");
 
 test("render password use remainder of long division between entropy and set of chars length as an index", () => {
   const options = {

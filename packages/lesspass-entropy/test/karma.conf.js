@@ -1,19 +1,17 @@
-module.exports = function getKarmaConf(config) {
+module.exports = config => {
   config.set({
     basePath: "..",
     frameworks: ["mocha"],
     files: ["src/index.js", "test/**/*.js"],
-    exclude: [],
     preprocessors: {
-      "**/*.js": ["webpack"]
+      "src/index.js": ["webpack"],
+      "test/**/*.js": ["webpack"]
     },
-    reporters: ["progress"],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: false,
+    webpack: {},
+    webpackMiddleware: {
+      stats: "errors-only"
+    },
     browsers: ["ChromeHeadless"],
-    singleRun: true,
-    concurrency: Infinity
+    singleRun: true
   });
 };
