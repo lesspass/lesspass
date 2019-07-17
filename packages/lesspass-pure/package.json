@@ -5,13 +5,15 @@
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
-    "start": "NODE_ENV=production node server.js",
+    "start": "http-server dist -p 8080",
     "build": "rm -rf dist && NODE_ENV=production webpack --mode=production --config webpack.prod.js",
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "test": "npm run test:unit",
+    "nightwatch": "^1.1.13",
+    "cypress:run": "cypress run",
+    "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest",
-    "test:e2e": "node test/e2e/runner.js"
+    "test:e2e": "npm run build && start-server-and-test start http://localhost:8080 cypress:run"
   },
   "babel": {
     "presets": [
@@ -21,17 +23,22 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "cypress"
+    ]
+  },
   "dependencies": {
     "@oslab/atob": "0.1.0",
     "@oslab/btoa": "0.1.0",
     "awesomplete": "^1.1.4",
-    "axios": "0.18.0",
-    "balloon-css": "0.5.0",
+    "axios": "^0.19.0",
+    "balloon-css": "^1.0.2",
     "bootstrap": "^4.3.1",
     "copy-text-to-clipboard": "^2.0.0",
     "font-awesome": "4.7.0",
     "jwt-decode": "2.2.0",
-    "lesspass": "6.0.0",
+    "lesspass": "^8.1.1",
     "lodash.debounce": "4.0.8",
     "lodash.uniqby": "4.7.0",
     "vue": "^2.6.10",
@@ -41,51 +48,5 @@
     "vuex": "^3.1.0",
     "vuex-persistedstate": "^2.5.4",
     "vuex-router-sync": "5.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-transform-object-assign": "^7.0.0",
-    "@babel/plugin-transform-react-jsx": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "@babel/register": "^7.4.0",
-    "axios-mock-adapter": "^1.16.0",
-    "babel-loader": "^8.0.5",
-    "chromedriver": "^2.46.0",
-    "clean-webpack-plugin": "^2.0.1",
-    "copy-webpack-plugin": "^5.0.1",
-    "cross-env": "^5.2.0",
-    "css-loader": "^2.1.1",
-    "express": "^4.16.4",
-    "file-loader": "^3.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "nightwatch": "^1.0.19",
-    "nock": "^10.0.6",
-    "node-sass": "^4.11.0",
-    "postcss-loader": "^3.0.0",
-    "prettier": "^1.16.4",
-    "raw-loader": "^2.0.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "timekeeper": "^2.2.0",
-    "url-loader": "^1.1.2",
-    "vue-loader": "^15.7.0",
-    "vue-polyglot-utils": "0.1.1",
-    "vue-template-compiler": "^2.6.10",
-    "walk": "^2.3.14",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1",
-    "webpack-merge": "^4.2.1"
-  },
-  "ava": {
-    "require": [
-      "@babel/register"
-    ],
-    "babel": "inherit",
-    "files": [
-      "test/unit/**/*.js"
-    ]
   }
 }

@@ -1,0 +1,37 @@
+<button id="copyButton" onclick="Run()">Generate</button>
+<script>
+  function GetButton() {
+    return document.getElementById("copyButton");
+  }
+  function UpdateButtonText(text) {
+    GetButton().innerText = text;
+  }
+  function DisableButton() {
+    GetButton().disabled = true;
+  }
+  function GeneratePassword() {
+    UpdateButtonText("Generating");
+    setTimeout(() => UpdateButtonText("Generating."), 1000);
+    setTimeout(() => UpdateButtonText("Generating.."), 2000);
+    setTimeout(() => UpdateButtonText("Generating..."), 3000);
+    return new Promise(resolve => {
+      setTimeout(resolve, 4000, 'm<=u6T8`hM"nxwuY');
+    });
+  }
+  function CopyToClipboard(password) {
+    return navigator.clipboard.writeText(password).then(() => {
+      UpdateButtonText("Copied in clipboard!");
+      DisableButton();
+    });
+  }
+  function Run() {
+    GeneratePassword().then(password => {
+      CopyToClipboard(password).catch(error => {
+        UpdateButtonText("Click to copy!");
+        GetButton().onclick = () => CopyToClipboard(password);
+      });
+    });
+  }
+</script>
+
+

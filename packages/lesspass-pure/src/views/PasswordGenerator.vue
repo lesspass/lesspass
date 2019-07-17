@@ -223,12 +223,17 @@ export default {
       });
     },
     focusBestInputField() {
-      const site = this.$refs.site.$refs.siteField;
-      const login = this.$refs.login;
-      const masterPassword = this.$refs.masterPassword;
-      if (site && !site.value) return void site.focus();
-      if (login && !login.value) return void login.focus();
-      masterPassword.$refs.passwordField.focus();
+      try {
+        const site = this.$refs.site.$refs.siteField;
+        const login = this.$refs.login;
+        const masterPassword = this.$refs.masterPassword;
+        if (site && !site.value) return void site.focus();
+        if (login && !login.value) return void login.focus();
+        masterPassword.$refs.passwordField.focus();
+      }
+      catch(err) {
+        console.error("Can't focus password field")
+      }
     },
     copyPassword() {
       const copied = copy(this.passwordGenerated);

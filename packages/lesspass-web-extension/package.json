@@ -12,18 +12,12 @@
     "zip": "cd extension && git archive -o ../build/lesspass.zip HEAD && cd .. && npm run zip:firefox && npm run zip:chrome && rm build/lesspass.zip",
     "build": "npm run clean && gulp",
     "release": "npm run zip && npm run build && npm run release-cws && npm run release-amo",
-    "release-amo": "cd extension && webext submit",
+    "release-amo": "cd extension && web-ext-submit",
     "release-cws": "webstore upload --source build/lesspass.chrome-v$npm_package_version.zip --auto-publish",
     "dev": "cd extension && web-ext run",
     "test": "echo 0"
   },
   "dependencies": {
-    "lesspass-pure": "5.1.8"
-  },
-  "devDependencies": {
-    "chrome-webstore-upload-cli": "^1.2.0",
-    "dot-json": "^1.1.0",
-    "gulp": "^4.0.0",
-    "webext": "1.9.1-with-submit.1"
+    "lesspass-pure": "^8.1.1"
   }
 }

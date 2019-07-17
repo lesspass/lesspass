@@ -43,12 +43,17 @@ function replace_versions_in_files {
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" package.json
     sed -i "s/__version__ = \"${1}\"/__version__ = \"${2}\"/g" cli/lesspass/version.py
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" mobile/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass/package.json
+    sed -i "s/\"lesspass-entropy\": \"${1}\"/\"lesspass-entropy\": \"${2}\"/g" packages/lesspass/package.json
+    sed -i "s/\"lesspass-fingerprint\": \"${1}\"/\"lesspass-fingerprint\": \"${2}\"/g" packages/lesspass/package.json
+    sed -i "s/\"lesspass-render-password\": \"${1}\"/\"lesspass-render-password\": \"${2}\"/g" packages/lesspass/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-crypto/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-entropy/package.json
     sed -i "s/\"lesspass-crypto\": \"${1}\"/\"lesspass-crypto\": \"${2}\"/g" packages/lesspass-entropy/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-fingerprint/package.json
     sed -i "s/\"lesspass-crypto\": \"${1}\"/\"lesspass-crypto\": \"${2}\"/g" packages/lesspass-fingerprint/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-pure/package.json
+    sed -i "s/\"lesspass\": \"${1}\"/\"lesspass\": \"${2}\"/g" packages/lesspass-pure/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-render-password/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-web-component/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-web-extension/package.json
