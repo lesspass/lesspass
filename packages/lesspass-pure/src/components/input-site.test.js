@@ -1,7 +1,8 @@
 import {mount} from '@vue/test-utils'
 import InputSite from './InputSite.vue'
+
 jest.mock('../services/url-parser');
-import { getSuggestions } from '../services/url-parser';
+import {getSuggestions} from '../services/url-parser';
 
 
 const createWrapper = data => mount({
@@ -32,19 +33,30 @@ describe('InputSite', () => {
   describe('autocomplete', function () {
     describe('search', () => {
       it('filters according to site name', () => {
-        const wrapper = createWrapper({passwords: [{site: "lesspass", login: "xavier"}]});
+        const wrapper = createWrapper({
+          passwords: [{site: "lesspass", login: "xavier"},
+            {site: "wrongsite", login: "xavier"}]
+        });
         inputField(wrapper).setValue("le");
         let options = optionsFor(wrapper);
         expect(options.length).toBe(1);
-        expect(options.at(0).text()).toContain("lesspass")
+        expect(options.at(0).text()).toBe("lesspass xavier")
+      });
+      it(`shows options that are contained in the user's value`, () => {
+        const wrapper = createWrapper({passwords: [{site: "lesspass", login: "xavier"}]});
+        inputField(wrapper).setValue("www.lesspass.com");
+        let options = optionsFor(wrapper);
+        expect(options.length).toBe(1);
+        expect(options.at(0).text()).toBe("lesspass xavier")
       });
       it('filters using suggestion', () => {
-        getSuggestions.mockImplementation(() => ["lesspass"]);
+        getSuggestions.mockImplementation(() => []);
         const wrapper = createWrapper();
-        inputField(wrapper).setValue("le");
+        getSuggestions.mockImplementation(() => ["lesspass"]);
+        inputField(wrapper).setValue("lesspass.com");
         let options = optionsFor(wrapper);
         expect(options.length).toBe(1);
-        expect(options.at(0).text()).toContain("lesspass")
+        expect(options.at(0).text()).toBe("lesspass")
       });
       it('shows site and login in the list', () => {
         const wrapper = createWrapper({passwords: [{site: "lesspass", login: "xavier"}]});
@@ -74,21 +86,42 @@ describe('InputSite', () => {
     });
     describe('completion', () => {
 
-      let wrapper;
-      beforeEach(() => {
-        wrapper = createWrapper({passwords: [{site: "lesspass", login: "xavier"}]});
-        inputField(wrapper).setValue("le");
-        const options = optionsFor(wrapper);
-        options.at(0).trigger('click');
+      describe('when selecting password', () => {
+        let wrapper;
+        beforeEach(() => {
+          wrapper = createWrapper({passwords: [{site: "lesspass", login: "xavier"}]});
+          inputField(wrapper).setValue("le");
+          const options = optionsFor(wrapper);
+          options.at(0).trigger('click');
+        });
+        it('completes field', () => {
+          expect(inputField(wrapper).element.value).toBe("lesspass");
+        });
+        it('emits a "passwordProfileSelected" with the value', () => {
+          const emitted = wrapper.find(InputSite).emitted();
+          const profileSelected = emitted['passwordProfileSelected'];
+          expect(profileSelected.length).toBe(1);
+          expect(profileSelected[0]).toEqual([{site: "lesspass", login: "xavier"}]);
+        });
       });
-      it('completes field when selected', () => {
-        expect(inputField(wrapper).element.value).toBe("lesspass");
-      });
-      it('emits a "passwordProfileSelected" with the value when saved password is selected', () => {
-        const emitted = wrapper.find(InputSite).emitted();
-        const profileSelected = emitted['passwordProfileSelected'];
-        expect(profileSelected.length).toBe(1);
-        expect(profileSelected[0]).toEqual([{site: "lesspass", login: "xavier"}]);
+      describe('when selecting suggestion', () => {
+        let wrapper;
+        beforeEach(() => {
+          getSuggestions.mockImplementation(() => ["lesspass"]);
+          wrapper = createWrapper();
+          inputField(wrapper).setValue("le");
+          const options = optionsFor(wrapper);
+          options.at(0).trigger('click');
+        });
+        it('completes field', () => {
+          expect(inputField(wrapper).element.value).toBe("lesspass");
+        });
+        it('emits a "suggestionSelected" with no value', () => {
+          const emitted = wrapper.find(InputSite).emitted();
+          const profileSelected = emitted['suggestionSelected'];
+          expect(profileSelected.length).toBe(1);
+          expect(profileSelected[0]).toEqual([]);
+        });
       });
     });
   });
