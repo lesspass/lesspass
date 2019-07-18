@@ -56,15 +56,20 @@ export default {
   watch: {
     site: function(newValue, oldValue) {
       const suggestions = getSuggestions(newValue).map(suggestion => {
-        return { label: suggestion, value: null };
+        return { label: suggestion, value: {site: suggestion, login: ''} };
       });
       const passwordProfiles = this.passwords.map(password => {
         return { label: password.site, value: password };
       });
       this.awesomplete.list = passwordProfiles.concat(suggestions);
+      this.awesomplete.item = (element, input) => {
+        let item = Awesomplete.ITEM(element.value.site, input);
+        item.innerHTML += ` ${element.value.login}`;
+        return item;
+      };
       this.awesomplete.filter = function(site, input) {
         const inputLowercase = input.toLowerCase();
-        const siteLowercase = site.trim().toLowerCase();
+        const siteLowercase = site.label.trim().toLowerCase();
         return (
           siteLowercase.indexOf(inputLowercase) !== -1 ||
           inputLowercase.indexOf(siteLowercase) !== -1
