@@ -11,7 +11,7 @@
     <label for="siteField" class="sr-only">{{ label }}</label>
     <div class="inner-addon left-addon">
       <i class="fa fa-globe"></i>
-      <input 
+      <input
         id="siteField"
         name="siteField"
         ref="siteField"
@@ -61,10 +61,7 @@ export default {
       const passwordProfiles = this.passwords.map(password => {
         return { label: password.site, value: password };
       });
-      this.awesomplete.list = uniqBy(
-        passwordProfiles.concat(suggestions),
-        "label"
-      );
+      this.awesomplete.list = passwordProfiles.concat(suggestions);
       this.awesomplete.filter = function(site, input) {
         const inputLowercase = input.toLowerCase();
         const siteLowercase = site.trim().toLowerCase();
