@@ -18,7 +18,7 @@ div.awesomplete > ul {
                   v-model="password.site"
                   v-bind:passwords="passwords"
                   v-bind:label="$t('Site')"
-                  v-on:suggestionSelected="focusBestInputField"
+                  v-on:suggestionSelected="setSite"
                   v-on:passwordProfileSelected="setPasswordProfile"></input-site>
     </div>
     <remove-auto-complete></remove-auto-complete>
@@ -268,6 +268,9 @@ export default {
           )
         );
       }
+    },
+    setSite(site){
+      this.password.site = site
     },
     setPasswordProfile(passwordProfile) {
       this.$store

@@ -54,7 +54,7 @@
       this.awesomplete.replace = password => {
         this.$refs.siteField.value = password.label;
         if (password.value.suggestion) {
-          this.$emit("suggestionSelected");
+          this.$emit("suggestionSelected", password.value.site);
         } else {
           this.$emit("passwordProfileSelected", password.value);
         }
