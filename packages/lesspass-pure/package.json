@@ -45,7 +45,7 @@
     "copy-text-to-clipboard": "^2.0.0",
     "font-awesome": "4.7.0",
     "jwt-decode": "2.2.0",
-    "lesspass": "^8.1.1",
+    "lesspass": "8.1.1",
     "lodash.debounce": "4.0.8",
     "lodash.uniqby": "4.7.0",
     "vue": "^2.6.10",
