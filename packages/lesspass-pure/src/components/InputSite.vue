@@ -1,10 +1,10 @@
 <style>
-.awesomplete mark {
-  background-color: transparent !important;
-  padding: 0;
-  margin: 0;
-  color: inherit;
-}
+  .awesomplete mark {
+    background-color: transparent !important;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+  }
 </style>
 <template>
   <div class="inputSite">
@@ -24,70 +24,60 @@
   </div>
 </template>
 <script>
-import debounce from "lodash.debounce";
-import uniqBy from "lodash.uniqby";
-import { mapGetters, mapState } from "vuex";
-import Awesomplete from "awesomplete";
-import { getSuggestions } from "../services/url-parser";
+  import Awesomplete from "awesomplete";
+  import {getSuggestions} from "../services/url-parser";
 
-export default {
-  name: "inputSite",
-  props: {
-    value: String,
-    label: String,
-    passwords: {
-      type: Array,
-      default: () => []
-    }
-  },
-  mounted() {
-    this.awesomplete = new Awesomplete(this.$refs.siteField);
-  },
-  computed: {
-    site: {
-      get: function() {
-        return this.value;
-      },
-      set: function(newValue) {
-        this.$emit("input", newValue);
+  export default {
+    name: "inputSite",
+    props: {
+      value: String,
+      label: String,
+      passwords: {
+        type: Array,
+        default: () => []
       }
-    }
-  },
-  watch: {
-    site: function(newValue, oldValue) {
-      const suggestions = getSuggestions(newValue).map(suggestion => {
-        return { label: suggestion, value: {site: suggestion, login: ''} };
-      });
-      const passwordProfiles = this.passwords.map(password => {
-        return { label: password.site, value: password };
-      });
-      this.awesomplete.list = passwordProfiles.concat(suggestions);
+    },
+    mounted() {
+      this.awesomplete = new Awesomplete(this.$refs.siteField);
       this.awesomplete.item = (element, input) => {
         let item = Awesomplete.ITEM(element.value.site, input);
         item.innerHTML += ` ${element.value.login}`;
         return item;
       };
-      this.awesomplete.filter = function(site, input) {
-        const inputLowercase = input.toLowerCase();
-        const siteLowercase = site.label.trim().toLowerCase();
-        return (
-          siteLowercase.indexOf(inputLowercase) !== -1 ||
-          inputLowercase.indexOf(siteLowercase) !== -1
-        );
+      this.awesomplete.filter = (site, input) => {
+        return Awesomplete.FILTER_CONTAINS(site, input) ||
+          Awesomplete.FILTER_CONTAINS(input, site);
       };
-      const vm = this;
-      this.awesomplete.replace = function(password) {
-        this.input.value = password.label;
-        if (password.value) {
-          vm.$emit("passwordProfileSelected", password.value);
+      this.awesomplete.data = data => {
+        return {label: data.site, value: data}
+      };
+      this.awesomplete.replace = password => {
+        this.$refs.siteField.value = password.label;
+        if (password.value.suggestion) {
+          this.$emit("suggestionSelected");
         } else {
-          vm.$emit("suggestionSelected");
+          this.$emit("passwordProfileSelected", password.value);
         }
       };
-
-      this.awesomplete.evaluate();
-    }
-  },
-  methods: {}
-};
+    },
+    computed: {
+      site: {
+        get: function () {
+          return this.value;
+        },
+        set: function (newValue) {
+          this.$emit("input", newValue);
+        }
+      }
+    },
+    watch: {
+      site: function (newValue, _) {
+        const suggestions = getSuggestions(newValue).map(suggestion => {
+          return {site: suggestion, suggestion: true, login: ''}
+        });
+        this.awesomplete.list = this.passwords.concat(suggestions);
+      }
+    },
+    methods: {}
+  };
 </script>
