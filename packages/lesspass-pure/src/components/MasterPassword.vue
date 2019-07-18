@@ -112,9 +112,7 @@
         return icons[index];
       },
       setFingerprint(password){
-        console.log(LessPass)
         LessPass.createFingerprint(password).then(fingerprint => {
-          console.log(fingerprint[0])
           this.icon1 = fingerprint[0].icon;
           this.color1 = fingerprint[0].color;
 

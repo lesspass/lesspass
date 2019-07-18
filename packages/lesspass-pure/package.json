@@ -10,6 +10,7 @@
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
     "test": "npm run test:unit",
     "test:unit": "jest",
     "test:e2e": "npm run build && start-server-and-test start http://localhost:8080 cypress:run"

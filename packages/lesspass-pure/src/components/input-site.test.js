@@ -116,11 +116,11 @@ describe('InputSite', () => {
         it('completes field', () => {
           expect(inputField(wrapper).element.value).toBe("lesspass");
         });
-        it('emits a "suggestionSelected" with no value', () => {
+        it('emits a "suggestionSelected" with site value', () => {
           const emitted = wrapper.find(InputSite).emitted();
           const profileSelected = emitted['suggestionSelected'];
           expect(profileSelected.length).toBe(1);
-          expect(profileSelected[0]).toEqual([]);
+          expect(profileSelected[0]).toEqual(["lesspass"]);
         });
       });
     });
