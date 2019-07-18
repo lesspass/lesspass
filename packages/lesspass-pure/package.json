@@ -9,9 +9,8 @@
     "build": "rm -rf dist && NODE_ENV=production webpack --mode=production --config webpack.prod.js",
     "build:i18n": "cd scripts && node buildI18n.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "nightwatch": "^1.1.13",
     "cypress:run": "cypress run",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "npm run test:unit",
     "test:unit": "jest",
     "test:e2e": "npm run build && start-server-and-test start http://localhost:8080 cypress:run"
   },
