@@ -169,8 +169,8 @@ jobs:
           tags: true
           branch: master
     - stage: deploy
-      name: Deploy containers
       language: generic
+      name: Deploy containers
       dist: xenial
       sudo: required
       script: skip
@@ -184,7 +184,22 @@ jobs:
       deploy:
         provider: script
         script: bash ./deploy
-
+    - stage: deploy
+      language: node_js
+      name: Deploy web extensions
+      node_js:
+        - lts/*
+      cache:
+        yarn: true
+      before_install:
+        - curl -o- -L https://yarnpkg.com/install.sh | bash
+        - export PATH=$HOME/.yarn/bin:$PATH
+      install:
+        - yarn install
+      script:
+        - ./bin/build_web_extensions
+        - git diff-index --quiet HEAD
+        - yarn workspace lesspass-web-extension run release
 stages:
   - name: test
   - name: deploy
