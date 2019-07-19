@@ -1,6 +1,6 @@
 {
   "name": "lesspass-entropy",
-  "version": "8.1.1",
+  "version": "9.0.0",
   "description": "LessPass module used to generate entropy for password generation",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "license": "GPL-3.0",
@@ -17,6 +17,6 @@
     "test:browser": "karma start test/karma.conf.js"
   },
   "dependencies": {
-    "lesspass-crypto": "8.1.1"
+    "lesspass-crypto": "9.0.0"
   }
 }
