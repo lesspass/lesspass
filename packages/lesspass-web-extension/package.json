@@ -1,7 +1,7 @@
 {
   "name": "lesspass-web-extension",
   "description": "LessPass web extension",
-  "version": "8.1.1",
+  "version": "9.0.0",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
@@ -12,6 +12,6 @@
     "test": "echo 0"
   },
   "dependencies": {
-    "lesspass-pure": "8.1.1"
+    "lesspass-pure": "9.0.0"
   }
 }
