@@ -9,7 +9,7 @@ describe("Connected Mode", function() {
     cy.get("#fingerprint .fa-btc").should("be.visible");
     cy.get("#fingerprint .fa-subway").should("be.visible");
     cy.get("#signInButton").click();
-    cy.get("#siteField").type("lesspass.com");
+    cy.get("#siteField").type("lesspass.com").blur();
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.get("#generatePassword__btn").click();
