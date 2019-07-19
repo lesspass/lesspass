@@ -5,7 +5,7 @@
 The web extension is just a wrapper around lesspass-pure on npm
 
 node --version: v10.15.0
-npm --version: v6.4.1
+yarn --version: v1.16.0
 
 ## Rebuild the web extension with sources
 

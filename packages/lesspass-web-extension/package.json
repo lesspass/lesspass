@@ -5,11 +5,12 @@
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
-    "release": "npm run release-cws && npm run release-amo",
-    "release-amo": "cd extension && web-ext-submit",
-    "release-cws": "webstore upload --source build/lesspass.chrome-v$npm_package_version.zip --auto-publish",
     "start": "cd extension && web-ext run",
-    "test": "echo 0"
+    "test": "echo 0",
+    "build": "cd ../.. && ./bin/build_web_extensions && cd packages/lesspass-web-extension",
+    "release": "npm run release:cws && npm run release:amo",
+    "release:amo": "cd extension && web-ext-submit",
+    "release:cws": "cd extension && webstore upload --auto-publish"
   },
   "dependencies": {
     "lesspass-pure": "9.0.0"
