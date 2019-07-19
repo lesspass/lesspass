@@ -5,19 +5,13 @@
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
-    "clean": "rm -rf extension/dist/ && mkdir extension/dist/ && rm -rf build && mkdir build",
-    "version": "dot-json extension/manifest.json version $npm_package_version",
-    "zip:firefox": "cp build/lesspass.zip build/lesspass.firefox-v$npm_package_version.xpi",
-    "zip:chrome": "cp build/lesspass.zip build/lesspass.chrome-v$npm_package_version.zip",
-    "zip": "cd extension && git archive -o ../build/lesspass.zip HEAD && cd .. && npm run zip:firefox && npm run zip:chrome && rm build/lesspass.zip",
-    "build": "npm run clean && gulp",
-    "release": "npm run zip && npm run build && npm run release-cws && npm run release-amo",
+    "release": "npm run release-cws && npm run release-amo",
     "release-amo": "cd extension && web-ext-submit",
     "release-cws": "webstore upload --source build/lesspass.chrome-v$npm_package_version.zip --auto-publish",
-    "dev": "cd extension && web-ext run",
+    "start": "cd extension && web-ext run",
     "test": "echo 0"
   },
   "dependencies": {
-    "lesspass-pure": "^8.1.1"
+    "lesspass-pure": "8.1.1"
   }
 }

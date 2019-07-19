@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+VERSION=$(grep -Po '(?<="version": ")[^"]*' package.json)
+yarn install
+yarn workspace lesspass-pure run build
+rm -rf packages/lesspass-web-extension/extension/dist
+mkdir packages/lesspass-web-extension/extension/dist
+rm -rf packages/lesspass-web-extension/build
+mkdir packages/lesspass-web-extension/build
+cp -r packages/lesspass-pure/dist/. packages/lesspass-web-extension/extension/dist/
+cd packages/lesspass-web-extension/extension/
+zip --recurse-paths ../build/lesspass.zip ./*
+cd ..
+cp build/lesspass.zip build/lesspass.firefox-v${VERSION}.xpi
+cp build/lesspass.zip build/lesspass.chrome-v${VERSION}.zip
+rm build/lesspass.zip
