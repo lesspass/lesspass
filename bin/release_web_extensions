@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+set +o errexit
+
+function check_branch_is_master {
+    BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2)
+    if [ $BRANCH_NAME != "master" ]
+    then
+        echo >&2 "Current branch is not master. Aborting."
+        exit 1
+    fi
+}
+
+function check_tag_is_present {
+    git describe --exact-match --tags
+    if [ $? != 0 ]
+    then
+        echo >&2 "Current revision is not tagged. Aborting."
+        exit 1
+    fi
+}
+
+function check_repository_is_clean {
+    git diff-index --quiet HEAD
+    if [ $? == 1 ]
+    then
+        echo >&2 "Git repository not clean. Aborting."
+        exit 1
+    fi
+}
+
+function check_lesspass_pure_built_files_are_updated {
+    yarn workspace lesspass-pure run build
+    check_repository_is_clean
+}
+
+function check_lesspass_pure_built_files_are_updated {
+    yarn workspace lesspass-web-extension run build
+    check_repository_is_clean
+}
+
+check_branch_is_master
+check_tag_is_present
+check_lesspass_web_extension_built_files_are_updated
+check_lesspass_pure_built_files_are_updated
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+yarn workspace lesspass-web-extension run release
+VERSION=$(grep -Po '(?<="version": ")[^"]*' package.json)
+echo "See the new release on https://github.com/lesspass/lesspass/releases/tag/${VERSION}"
