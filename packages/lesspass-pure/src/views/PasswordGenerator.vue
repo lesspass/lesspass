@@ -157,6 +157,10 @@ export default {
         this.cleanErrors();
       },
       deep: true
+    },
+    masterPassword: function (newMasterPassword, oldMasterPassword) {
+      this.masterPassword = newMasterPassword;
+      this.cleanErrors();
     }
   },
   methods: {
