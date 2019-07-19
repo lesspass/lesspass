@@ -56,6 +56,8 @@ function replace_versions_in_files {
     sed -i "s/\"lesspass\": \"${1}\"/\"lesspass\": \"${2}\"/g" packages/lesspass-pure/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-render-password/package.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-web-extension/package.json
+    sed -i "s/\"lesspass-pure\": \"${1}\"/\"lesspass-pure\": \"${2}\"/g" packages/lesspass-web-extension/package.json
+    sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" packages/lesspass-web-extension/extension/manifest.json
     sed -i "s/\"version\": \"${1}\"/\"version\": \"${2}\"/g" containers/frontend/package.json
     sed -i "s/VERSION=\"${1}\"/VERSION=\"${2}\"/g" containers/deploy
 }
