@@ -15,6 +15,30 @@ We welcome any type of contribution, not only code. You can help with
 
 Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
+## Development
+
+### Tools
+
+You'll need
+ * nodejs
+ * yarn
+
+### Folder architecture
+
+Here a some folders that worth noticing :
+ * `package` contains the code for the web version and the browser extension. Development is done with `javascript` and `Vue`.
+   * `lesspass-pure` contains the core of `lesspass`. Running `yarn dev` in this folder will run a `lesspass` instance locally.
+   * `lesspass-web-extension` contains the code specific for the web extension.
+   * `lesspass-render-password` contains the algorithm to generate passwords
+ * `cli` contains the command line version. Development is done with `python`.
+ * `mobile` contains the `android` and `ios` version. Development is done with `javascript` and `react native`.
+
+### Commands
+
+To install dependencies, please run `yarn install`
+
+To run tests, you can run `yarn test` in the root directory or any sub-folder describe above.
+
 ## Submitting code
 
 Any code change should be submitted as a pull request. The description should explain what the code does and give steps to execute it. The pull request should also contain tests.
