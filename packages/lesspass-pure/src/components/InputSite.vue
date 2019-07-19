@@ -59,6 +59,10 @@
           this.$emit("passwordProfileSelected", password.value);
         }
       };
+      this.awesomplete.sort = (a,b) => {
+        return a.value.site.localeCompare(b.value.site) ||
+          a.value.login.localeCompare(b.value.login);
+      }
     },
     computed: {
       site: {
