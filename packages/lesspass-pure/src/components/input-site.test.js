@@ -71,17 +71,22 @@ describe('InputSite', () => {
         let options = optionsFor(wrapper);
         expect(options.length).toBe(0);
       });
-      it(`prints all options`, () => {
+      it(`prints options sorted by site then login`, () => {
         const wrapper = createWrapper({
           passwords: [
+            {site: "lesspass", login: "guillaume"},
+            {site: "passless", login: "xavier"},
+            {site: "passless", login: "guillaume"},
             {site: "lesspass", login: "xavier"},
-            {site: "lesspass", login: "guillaume"}]
+          ]
         });
         inputField(wrapper).setValue("le");
         let options = optionsFor(wrapper);
-        expect(options.length).toBe(2);
-        expect(options.at(0).text()).toContain("lesspass");
-        expect(options.at(1).text()).toContain("lesspass");
+        expect(options.length).toBe(4);
+        expect(options.at(0).text()).toBe("lesspass guillaume");
+        expect(options.at(1).text()).toBe("lesspass xavier");
+        expect(options.at(2).text()).toBe("passless guillaume");
+        expect(options.at(3).text()).toBe("passless xavier");
       });
     });
     describe('completion', () => {
