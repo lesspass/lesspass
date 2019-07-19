@@ -112,7 +112,7 @@ describe("Password Generation", function() {
       .type("{enter}");
     cy.get("#generated-password").should("have.value", "hjV@\\5ULp3bIs,6B");
   });
-  it.only("should keep site field in sync nrt_441", function() {
+  it("should keep site field in sync nrt_441", function() {
     cy.visit("/");
     cy.get("#login").type("user");
     cy.get("#passwordField").type("password");
@@ -126,5 +126,18 @@ describe("Password Generation", function() {
       .type("{enter}");
     cy.get("#generatePassword__btn").click();
     cy.get("#generated-password").should("have.value", "ZT^IK2e!t@k$9`*)");
+  });
+  it("should clear password generated when master password change", function() {
+    cy.visit("/");
+    cy.get("#siteField").type("example.org");
+    cy.get("#login").type("user");
+    cy.get("#passwordField").type("password");
+    cy.get("#generatePassword__btn").should("be.visible");
+    cy.get("#generatePassword__btn").click();
+    cy.get("#copyPasswordButton").should("be.visible");
+    cy.get("#generatePassword__btn").should("not.be.visible");
+    cy.get("#passwordField").type("password");
+    cy.get("#copyPasswordButton").should("not.be.visible");
+    cy.get("#generatePassword__btn").should("be.visible");
   });
 });
