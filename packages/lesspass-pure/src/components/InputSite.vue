@@ -38,7 +38,9 @@
       }
     },
     mounted() {
-      this.awesomplete = new Awesomplete(this.$refs.siteField);
+      this.awesomplete = new Awesomplete(this.$refs.siteField,{
+        minChars: 0,
+      });
       this.awesomplete.item = (element, input) => {
         let item = Awesomplete.ITEM(element.value.site, input);
         item.innerHTML += ` ${element.value.login}`;
@@ -80,6 +82,8 @@
           return {site: suggestion, suggestion: true, login: ''}
         });
         this.awesomplete.list = this.passwords.concat(suggestions);
+        this.awesomplete.evaluate();
+        this.awesomplete.open();
       }
     },
     methods: {}

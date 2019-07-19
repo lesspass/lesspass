@@ -19,7 +19,7 @@ describe("Password Generation", function() {
     }
 
     cy.visit("/");
-    cy.get("#siteField").type("lesspass.com");
+    cy.get("#siteField").type("lesspass.com").blur();
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.wait(500);
@@ -105,7 +105,7 @@ describe("Password Generation", function() {
   });
   it("should generate password when hit enter nrt_266", function() {
     cy.visit("/");
-    cy.get("#siteField").type("lesspass.com");
+    cy.get("#siteField").type("lesspass.com").blur();
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField")
       .type("test@lesspass.com")
@@ -129,7 +129,7 @@ describe("Password Generation", function() {
   });
   it("should clear password generated when master password change", function() {
     cy.visit("/");
-    cy.get("#siteField").type("example.org");
+    cy.get("#siteField").type("example.org").blur();
     cy.get("#login").type("user");
     cy.get("#passwordField").type("password");
     cy.get("#generatePassword__btn").should("be.visible");
