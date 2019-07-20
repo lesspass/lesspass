@@ -34,7 +34,7 @@ function check_lesspass_pure_built_files_are_updated {
     check_repository_is_clean
 }
 
-function check_lesspass_pure_built_files_are_updated {
+function check_lesspass_web_extension_built_files_are_updated {
     yarn workspace lesspass-web-extension run build
     check_repository_is_clean
 }
