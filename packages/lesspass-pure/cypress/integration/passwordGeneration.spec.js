@@ -112,21 +112,6 @@ describe("Password Generation", function() {
       .type("{enter}");
     cy.get("#generated-password").should("have.value", "hjV@\\5ULp3bIs,6B");
   });
-  it("should keep site field in sync nrt_441", function() {
-    cy.visit("/");
-    cy.get("#login").type("user");
-    cy.get("#passwordField").type("password");
-    cy.get("#siteField")
-      .type("subdomain.domain.com")
-      .type("{home}")
-      .type("{rightarrow}")
-      .type("{backspace}")
-      .type("{downarrow}")
-      .type("{downarrow}")
-      .type("{enter}");
-    cy.get("#generatePassword__btn").click();
-    cy.get("#generated-password").should("have.value", "ZT^IK2e!t@k$9`*)");
-  });
   it("should clear password generated when master password change", function() {
     cy.visit("/");
     cy.get("#siteField").type("example.org").blur();

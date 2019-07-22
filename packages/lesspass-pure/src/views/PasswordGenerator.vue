@@ -131,7 +131,7 @@ export default {
   beforeMount() {
     this.$store.dispatch("getPasswords").then(() => {
       urlParser.getSite().then(site => {
-        this.$store.dispatch("loadPasswordProfile", { site });
+        this.$store.dispatch("addSuggestions", { site });
       });
       this.$store.dispatch("getPasswordFromUrlQuery", {
         query: this.$route.query
@@ -235,11 +235,10 @@ export default {
         if (siteField.value && login.value){
           return void masterPassword.$refs.passwordField.focus();
         }
-        if (siteField.value && !login.value){
-          return void siteField.select();
-        }else{
-          return void siteField.focus();
+        if (siteField.value){
+          return void login.focus();
         }
+        return void siteField.focus();
       }
     },
     copyPassword() {

@@ -17,8 +17,8 @@ export const saveDefaultOptions = ({ commit }, payload) => {
   commit(types.SET_DEFAULT_OPTIONS, payload);
 };
 
-export const loadPasswordProfile = ({ commit }, { site }) => {
-  commit(types.LOAD_PASSWORD_PROFILE, { site });
+export const addSuggestions = ({ commit }, { site }) => {
+  commit(types.ADD_SUGGESTIONS, { site });
 };
 
 export const getPasswordFromUrlQuery = ({ commit }, { query }) => {

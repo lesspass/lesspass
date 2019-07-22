@@ -129,9 +129,9 @@ test("SET_BASE_URL", () => {
   expect(state.baseURL).toBe(baseURL);
 });
 
-test("LOAD_PASSWORD_PROFILE", () => {
+test("ADD_SUGGESTIONS create 2 suggestions", () => {
   const state = {
-    password: {
+    defaultPassword: {
       login: "",
       site: "",
       uppercase: true,
@@ -179,7 +179,17 @@ test("LOAD_PASSWORD_PROFILE", () => {
         length: 12,
         version: 1
       }
-    ],
+    ]
+  };
+  const ADD_SUGGESTIONS = mutations[types.ADD_SUGGESTIONS];
+  ADD_SUGGESTIONS(state, { site: "www.example.org" });
+  expect(state.passwords.length).toEqual(5);
+  expect(state.passwords[0].site).toEqual("example");
+  expect(state.passwords[1].site).toEqual("example.org");
+});
+
+test("ADD_SUGGESTIONS no passwords", () => {
+  const state = {
     defaultPassword: {
       login: "",
       site: "",
@@ -191,132 +201,14 @@ test("LOAD_PASSWORD_PROFILE", () => {
       counter: 1,
       version: 2
     },
-    lastUse: null
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "www.example.org" });
-  expect(state.password).toEqual(state.passwords[1]);
-});
-
-test("LOAD_PASSWORD_PROFILE do nothing if id not empty", () => {
-  const state = {
-    password: {
-      id: "1",
-      site: "example.org"
-    },
     passwords: []
   };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "lesspass.com" });
-  expect(state.password.site).toBe("example.org");
-});
-
-test("LOAD_PASSWORD_PROFILE with passwords", () => {
-  const state = {
-    password: {
-      site: ""
-    },
-    passwords: [
-      { id: "1", site: "www.example.org" },
-      { id: "2", site: "www.google.com" }
-    ]
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "www.google.com" });
-  expect(state.password.id).toBe("2");
-  expect(state.password.site).toBe("www.google.com");
-});
-
-test("LOAD_PASSWORD_PROFILE with no site keep password profile", () => {
-  const state = {
-    password: {
-      id: "1",
-      site: "example.org",
-      login: "contact@example.org",
-      length: 8,
-      version: 2
-    },
-    passwords: []
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "" });
-  expect(state.password.id).toBe("1");
-  expect(state.password.site).toBe("example.org");
-  expect(state.password.login).toBe("contact@example.org");
-  expect(state.password.length).toBe(8);
-  expect(state.password.version).toBe(2);
-});
-
-test("LOAD_PASSWORD_PROFILE no passwords", () => {
-  const state = {
-    password: {
-      site: ""
-    },
-    passwords: []
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "account.google.com" });
-  expect(state.password.site).toBe("account.google.com");
-});
-
-test("LOAD_PASSWORD_PROFILE multiple accounts matching criteria", () => {
-  const state = {
-    password: {
-      site: ""
-    },
-    passwords: [
-      { id: "1", site: "www.example.org" },
-      { id: "2", site: "www.google.com" },
-      { id: "3", site: "account.google.com" }
-    ]
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "www.google.com" });
-  expect(state.password.id).toBe("2");
-  expect(state.password.site).toBe("www.google.com");
-});
-
-test("LOAD_PASSWORD_PROFILE multiple accounts matching criteria order doesn't matter", () => {
-  const state = {
-    password: {
-      site: ""
-    },
-    passwords: [
-      { id: "1", site: "www.example.org" },
-      { id: "2", site: "account.google.com" },
-      { id: "3", site: "www.google.com" }
-    ]
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "www.google.com" });
-  expect(state.password.id).toBe("3");
-  expect(state.password.site).toBe("www.google.com");
-});
-
-test("LOAD_PASSWORD_PROFILE ends matching criteria nrt #285", () => {
-  const state = {
-    password: {
-      site: ""
-    },
-    passwords: [{ id: "1", site: "account.google.com" }]
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "www.google.com" });
-  expect(state.password.id).toBe("1");
-  expect(state.password.site).toBe("account.google.com");
-});
-
-test("LOAD_PASSWORD_PROFILE without www", () => {
-  const state = {
-    password: {
-      site: ""
-    },
-    passwords: [{ id: "1", site: "reddit.com" }]
-  };
-  const LOAD_PASSWORD_PROFILE = mutations[types.LOAD_PASSWORD_PROFILE];
-  LOAD_PASSWORD_PROFILE(state, { site: "www.reddit.com" });
-  expect(state.password.id).toBe("1");
-  expect(state.password.site).toBe("reddit.com");
+  const ADD_SUGGESTIONS = mutations[types.ADD_SUGGESTIONS];
+  ADD_SUGGESTIONS(state, { site: "www.example.org" });
+  expect(state.passwords.length).toBe(3);
+  expect(state.passwords[0].site).toEqual("example");
+  expect(state.passwords[1].site).toEqual("example.org");
+  expect(state.passwords[2].site).toEqual("www.example.org");
 });
 
 test("SET_SITE default state", () => {
