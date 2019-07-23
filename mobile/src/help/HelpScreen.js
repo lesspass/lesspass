@@ -14,7 +14,7 @@ export default class HelpScreen extends Component {
         }}
       >
         <Title style={{ marginBottom: 10 }}>LessPass</Title>
-        <Subheading>How does it works?</Subheading>
+        <Subheading>How does it work?</Subheading>
         <Paragraph style={{ marginBottom: 20 }}>
           LessPass is a password manager that doesn't store any data. It computes
           a unique password using a site, login and a master password. You don't
@@ -77,7 +77,7 @@ export default class HelpScreen extends Component {
         <Subheading>Support</Subheading>
         <Paragraph>
           Still need some help? No problem, you can send us an email at
-          contact@lesspass.com. You can write your email in english or french.
+          contact@lesspass.com. You can write your email in English or French.
         </Paragraph>
         <Button
           mode="contained"
