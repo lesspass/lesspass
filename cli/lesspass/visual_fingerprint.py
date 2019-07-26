@@ -5,6 +5,7 @@ import os
 import random
 import tty
 import termios
+import threading
 
 if os.name == "nt":
     import msvcrt
@@ -145,26 +146,29 @@ def getchar():
 
 
 def getpass_with_visual_fingerprint(prompt):
+    global semaphore
+    global stdout_lock
+
     sys.stdout.write(prompt)
     sys.stdout.flush()
     password = ""
+    delayed_write = None
     while True:
         c = getchar()
+        if delayed_write:
+            delayed_write.cancel()
         if c == "\r":
-            sys.stdout.write(f"\r{prompt}{get_mnemonic(password)}")
-            c = getchar()
-            if c == "\r":
-                sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}\n")
-                break
-            elif c == "\x7f":  # backspace
-                password = password[:-1]
-            else:
-                password = ""
+            sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}\n")
+            break
         elif c == "\x7f":  # backspace
             password = password[:-1]
         else:
             password += c
         if len(password) != 0:
+            delayed_write = threading.Timer(
+                0.5, lambda: sys.stdout.write(f"\r{prompt}{get_mnemonic(password)}")
+            )
+            delayed_write.start()
             sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}")
         else:
             sys.stdout.write(f"\r{prompt}  {' '*MAX_ICON_WIDTH*3}")
