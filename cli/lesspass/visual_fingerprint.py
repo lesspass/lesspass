@@ -74,6 +74,53 @@ icons = [
     "gamepad",
     "graduation-cap",
 ]
+icons_unicode = {
+    "hashtag": "\u0023",
+    "heart": "\u2665",
+    "hotel": "\u1F3E8",
+    "university": "\u1F3DB",
+    "plug": "\u1F50C",
+    "ambulance": "\u1F691",
+    "bus": "\u1F68C",
+    "car": "\u1F697",
+    "plane": "\u2708",
+    "rocket": "\u1F680",
+    "ship": "\u1F6A2",
+    "subway": "\u1F687",
+    "truck": "\u26DF",
+    "japanese yen": "\u00A5",
+    "euro": "\u20AC",
+    "bitcoin": "\u20BF",
+    "U.S. dollar": "\u0024",
+    "British pound": "\u00A3",
+    "archive": "\u1F5C3",
+    "area-chart": "\u1F4C8",
+    "bed": "\u1F6CF",
+    "beer": "\u1F37A",
+    "bell": "\u1F514",
+    "binoculars": "\u0000",  # TODO
+    "birthday-cake": "\u1F382",
+    "bomb": "\u1F4A3",
+    "briefcase": "\u1F4BC",
+    "bug": "\u1F41B",
+    "camera": "\u1F4F7",
+    "cart-plus": "\u0000",  # TODO
+    "certificate": "\u0000",  # TODO
+    "coffee": "\u0000",  # TODO
+    "cloud": "\u2601",
+    "comment": "\u1F5E9",
+    "cube": "\u0000",  # TODO
+    "cutlery": "\u0000",  # TODO
+    "database": "\u0000",  # TODO
+    "diamond": "\u25C6",
+    "exclamation-circle": "\u2757",  # "Heavy" exclamation mark substituted
+    "eye": "\u1F441",
+    "flag": "\u2691",
+    "flask": "\u0000",  # TODO
+    "futbol": "\u26BD",
+    "gamepad": "\u1F3AE",
+    "graduation-cap": "\u1F393",
+}
 MAX_ICON_WIDTH = max([len(icon) for icon in icons])
 
 
