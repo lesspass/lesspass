@@ -10,7 +10,29 @@ import threading
 if os.name == "nt":
     import msvcrt
 
-basic_text_colors = [
+
+def user_has_unifont():
+    # TODO: actual implementation of this
+    return False
+
+
+unicode_colors = [
+    "\x1b[31;40m",  # black               #000000
+    "\x1b[36;40m",  # dark cyan           #074750
+    "\x1b[36;40m",  # mid cyan            #009191
+    "\x1b[35;40m",  # bright pink         #FF6CB6
+    "\x1b[35;40m",  # cotton candy pink   #FFB5DA
+    "\x1b[35;40m",  # mid purple          #490092
+    "\x1b[34;40m",  # sky blue            #006CDB
+    "\x1b[35;40m",  # lavendar            #B66DFF
+    "\x1b[34;40m",  # baby blue           #6DB5FE
+    "\x1b[34;40m",  # white blue          #B5DAFE
+    "\x1b[31;40m",  # blood red           #920000
+    "\x1b[31;40m",  # burnt orange        #924900
+    "\x1b[33;40m",  # orange              #DB6D00
+    "\x1b[32;40m",  # lime green          #24FE23
+]
+fallback_colors = [
     "\x1b[37;40m",  # black               #000000
     "\x1b[30;46m",  # dark cyan           #074750
     "\x1b[30;46m",  # mid cyan            #009191
@@ -98,25 +120,25 @@ icons_unicode = {
     "bed": "\u1F6CF",
     "beer": "\u1F37A",
     "bell": "\u1F514",
-    "binoculars": "\u0000",  # TODO
+    "binoculars": "\u1F52D",  # NOTE: "Telescope" substituted
     "birthday-cake": "\u1F382",
     "bomb": "\u1F4A3",
     "briefcase": "\u1F4BC",
     "bug": "\u1F41B",
     "camera": "\u1F4F7",
-    "cart-plus": "\u0000",  # TODO
-    "certificate": "\u0000",  # TODO
-    "coffee": "\u0000",  # TODO
+    "cart-plus": "\u1F6D2",  # NOTE: "Shopping Trolley" substituted
+    "certificate": "\u1F7D3",  # NOTE: "Heavy Tweleve Pointed Black Star" substituted
+    "coffee": "\u2615",
     "cloud": "\u2601",
     "comment": "\u1F5E9",
-    "cube": "\u0000",  # TODO
-    "cutlery": "\u0000",  # TODO
-    "database": "\u0000",  # TODO
+    "cube": "\u1F4E6",  # NOTE: "Package" subtituted
+    "cutlery": "\u1F374",
+    "database": "\u26C1",
     "diamond": "\u25C6",
-    "exclamation-circle": "\u2757",  # "Heavy" exclamation mark substituted
+    "exclamation-circle": "\u2757",  # NOTE: "Heavy Exclamation Mark" substituted
     "eye": "\u1F441",
     "flag": "\u2691",
-    "flask": "\u0000",  # TODO
+    "flask": "\u1F376",  # NOTE: "Sake Bottle and Cup" subtituted
     "futbol": "\u26BD",
     "gamepad": "\u1F3AE",
     "graduation-cap": "\u1F393",
@@ -130,11 +152,14 @@ def get_list_entry(hash_slice, lookup_list):
 
 
 def get_color(hash_slice):
-    return get_list_entry(hash_slice, basic_text_colors)
+    return get_list_entry(
+        hash_slice, unicode_colors if user_has_unifont() else fallback_colors
+    )
 
 
 def get_icon(hash_slice):
-    return get_list_entry(hash_slice, icons)
+    icon_name = get_list_entry(hash_slice, icons)
+    return icons_unicode[icon_name] if user_has_unifont() else icon_name
 
 
 def get_fingerprint(hmac_sha256):
@@ -152,7 +177,11 @@ def get_hmac_sha256(password_bytes):
 
 def get_fixed_width_text(fingerprint_entry):
     color, icon = fingerprint_entry["color"], fingerprint_entry["icon"]
-    return f"{color}{icon}{' '*(MAX_ICON_WIDTH-len(icon))}\x1b[0m"
+    if user_has_unifont():
+        text = f"[{color}{icon}{' '*(2-len(icon))}\x1b[0m]"
+    else:
+        text = f"{color}{icon}{' '*(MAX_ICON_WIDTH-len(icon))}\x1b[0m"
+    return text
 
 
 def get_mnemonic(password):
@@ -205,7 +234,7 @@ def getpass_with_visual_fingerprint(prompt):
         if delayed_write:
             delayed_write.cancel()
         if c == "\r":
-            sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}\n")
+            sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}{' '*3}\n")
             break
         elif c == "\x7f":  # backspace
             password = password[:-1]
@@ -213,12 +242,13 @@ def getpass_with_visual_fingerprint(prompt):
             password += c
         if len(password) != 0:
             delayed_write = threading.Timer(
-                0.5, lambda: sys.stdout.write(f"\r{prompt}{get_mnemonic(password)}")
+                0.5,
+                lambda: sys.stdout.write(f"\r{prompt}{get_mnemonic(password)}{' '*3}"),
             )
             delayed_write.start()
-            sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}")
+            sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}{' '*3}")
         else:
-            sys.stdout.write(f"\r{prompt}  {' '*MAX_ICON_WIDTH*3}")
+            sys.stdout.write(f"\r{prompt}{' '*((MAX_ICON_WIDTH*3)+3)}")
     return password
 
 
