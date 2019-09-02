@@ -10,7 +10,8 @@
   },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "jetify"
   },
   "dependencies": {
     "axios": "0.19.0",
@@ -18,20 +19,20 @@
     "fuse.js": "^3.4.4",
     "lesspass-fingerprint": "latest",
     "lesspass-render-password": "latest",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "memoize-one": "^5.0.4",
     "react": "^16.8.6",
-    "react-native": "^0.60.3",
+    "react-native": "^0.60.5",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-keychain": "^3.1.1",
     "react-native-paper": "^2.15.2",
     "react-native-touch-id": "^4.4.1",
     "react-native-vector-icons": "^6.4.2",
-    "react-navigation": "^3.6.1",
-    "react-navigation-material-bottom-tabs": "1.0.0",
+    "react-navigation": "^4.0.0",
+    "react-navigation-material-bottom-tabs": "^1.1.1",
     "react-redux": "^7.0.1",
     "redux": "^4.0.1",
-    "redux-persist": "5.10.0",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "2.3.0"
   },
   "devDependencies": {
@@ -39,7 +40,8 @@
     "@babel/runtime": "^7.4.3",
     "babel-jest": "^24.7.1",
     "jest": "^24.7.1",
-    "metro-react-native-babel-preset": "^0.55.0",
+    "jetifier": "^1.6.4",
+    "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "^16.8.6"
   },
   "jest": {
