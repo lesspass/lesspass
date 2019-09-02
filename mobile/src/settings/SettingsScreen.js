@@ -10,7 +10,7 @@ import TextInputModal from "./TextInputModal";
 import Switch from "../ui/Switch";
 import KeepMasterPasswordOption from "./KeepMasterPasswordOption";
 import Theme from "../ui/Theme";
-import { version } from "../../package.json";
+import { version } from "../version.json";
 
 export class SettingsScreen extends Component {
   constructor(props) {
