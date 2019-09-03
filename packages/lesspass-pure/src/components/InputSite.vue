@@ -13,6 +13,7 @@
       <i class="fa fa-globe"></i>
       <input
         id="siteField"
+        type="text"
         name="siteField"
         ref="siteField"
         class="form-control awesomplete"

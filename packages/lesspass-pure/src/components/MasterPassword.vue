@@ -27,7 +27,7 @@
              type="password"
              class="form-control"
              autocorrect="off"
-             autocapitalize="off"
+             autocapitalize="none"
              v-bind:value="value"
              v-bind:placeholder="label"
              v-on:input="updateValue($event.target.value)"

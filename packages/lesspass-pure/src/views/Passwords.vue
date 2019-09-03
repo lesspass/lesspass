@@ -18,7 +18,7 @@
         <div class="col">
           <div class="inner-addon left-addon">
             <i class="fa fa-search"></i>
-            <input class="form-control" name="search" :placeholder="$t('Search')" v-model="searchQuery">
+            <input class="form-control" type="text" name="search" :placeholder="$t('Search')" v-model="searchQuery">
           </div>
         </div>
       </div>
