@@ -13,6 +13,7 @@
       <div class="inner-addon left-addon">
         <i class="fa fa-globe"></i>
         <input id="baseURL"
+               type="text"
                class="form-control"
                autocapitalize="none"
                v-bind:placeholder="$t('LessPass Database Url')"
