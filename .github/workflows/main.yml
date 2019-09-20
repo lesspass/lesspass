@@ -3,13 +3,29 @@ name: ci
 on: [push, pull_request]
 
 jobs:
-  build:
-
+  test-javascript-packages:
+    name: test javascript packages
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v1
-    - name: test javascript packages
-      run: |
-        yarn install
-        yarn test
+      - uses: actions/checkout@v1
+      - name: test javascript packages
+        run: |
+          yarn install
+          yarn test
+
+  test-python-cli:
+    name: test python cli
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+      - name: test python cli
+        run: |
+          cd cli
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r test-requirements.txt
+          export PYTHONPATH='.'
+          python -m unittest discover
