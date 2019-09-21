@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   test-javascript-packages:
-    name: test javascript packages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -13,8 +12,17 @@ jobs:
           yarn install
           yarn test
 
+  test-mobile-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: test mobile app
+        run: |
+          cd mobile
+          yarn install
+          yarn test
+
   test-python-cli:
-    name: test python cli
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -29,3 +37,17 @@ jobs:
           python -m pip install -r test-requirements.txt
           export PYTHONPATH='.'
           python -m unittest discover
+
+  test-python-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+      - name: test python backend
+        run: |
+          cd containers/backend
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python manage.py test
