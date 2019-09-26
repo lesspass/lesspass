@@ -2,11 +2,11 @@ const { src, dest, parallel } = require("gulp");
 const favicons = require("gulp-favicons");
 
 function js() {
-  return src(["node_modules/lesspass-pure/dist/**/*"]).pipe(dest("dist/"));
+  return src(["node_modules/lesspass-pure/dist/**/*"]).pipe(dest("build/"));
 }
 
 function images() {
-  return src(["images/**/*"]).pipe(dest("dist/"));
+  return src(["images/**/*"]).pipe(dest("build/"));
 }
 
 function favicon() {
@@ -17,7 +17,7 @@ function favicon() {
         appDescription: "Next-Gen Open Source Password Manager",
         developerName: "Guillaume Vincent",
         background: "#555555",
-        path: "dist/",
+        path: "/",
         url: "https://lesspass.com/",
         display: "standalone",
         orientation: "portrait",
@@ -30,7 +30,7 @@ function favicon() {
         replace: true
       })
     )
-    .pipe(dest("dist/"));
+    .pipe(dest("build/"));
 }
 
 exports.js = js;
