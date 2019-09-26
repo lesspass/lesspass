@@ -6,7 +6,7 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "repository": "lesspass/frontend",
   "scripts": {
-    "build": "rm -rf dist && gulp && rm dist/index.html",
+    "build": "rm -rf build && gulp && cp index.html build/index.html",
     "start": "NODE_ENV=production node server.js",
     "test": "echo 0"
   },
