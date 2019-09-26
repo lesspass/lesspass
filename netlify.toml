@@ -1,2 +1,4 @@
 [build]
-  base = "packages/lesspass-site"
+  base = "packages/lesspass-site/"
+  publish = "packages/lesspass-site/build/"
+  command = "yarn build"
