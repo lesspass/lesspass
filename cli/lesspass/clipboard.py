@@ -26,7 +26,7 @@ def get_system_copy_command():
 
 
 def _popen(args, **kwargs):
-    return subprocess.Popen(args, stdin=subprocess.PIPE, encoding="utf8")
+    return subprocess.Popen(args, stdin=subprocess.PIPE)
 
 
 commands = {

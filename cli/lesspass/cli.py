@@ -79,7 +79,7 @@ def parse_args(args):
         "--copy",
         dest="clipboard",
         action="store_true",
-        help="copy to password to clipboard",
+        help="copy the password to clipboard",
     )
 
     lowercase_group = parser.add_mutually_exclusive_group()

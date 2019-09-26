@@ -24,11 +24,15 @@ jobs:
 
   test-python-cli:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 3
+      matrix:
+        python-version: [3.5, 3.6, 3.7]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v1
         with:
-          python-version: '3.x'
+          python-version: ${{ matrix.python-version }}
       - name: test python cli
         run: |
           cd cli
@@ -44,7 +48,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v1
         with:
-          python-version: '3.x'
+          python-version: "3.6"
       - name: test python backend
         run: |
           cd containers/backend
