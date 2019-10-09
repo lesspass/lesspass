@@ -14,5 +14,10 @@
   },
   "dependencies": {
     "lesspass-pure": "9.0.0"
+  },
+  "devDependencies": {
+    "vue-loader": "^15.7.1",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }
