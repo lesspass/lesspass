@@ -7,6 +7,8 @@
   "scripts": {
     "start": "cd extension && web-ext run",
     "test": "echo 0",
+    "prebuild": "webpack --mode='development'",
+    "dev": "webpack --mode='development' --watch",
     "build": "cd ../.. && ./bin/build_web_extensions && cd packages/lesspass-web-extension",
     "release": "npm run release:cws && npm run release:amo",
     "release:amo": "cd extension && web-ext-submit",
@@ -15,9 +17,12 @@
   "dependencies": {
     "lesspass-pure": "9.0.0"
   },
-  "devDependencies": {
-    "vue-loader": "^15.7.1",
-    "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9"
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
   }
 }
