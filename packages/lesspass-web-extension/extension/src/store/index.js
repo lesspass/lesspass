@@ -17,5 +17,10 @@ export default new Vuex.Store({
       key: "lesspass",
       paths: ["defaultPassword"]
     })
-  ]
+  ],
+  mutations: {
+    updateDefaultLogin(state, login) {
+      state.defaultPassword.login = login;
+    }
+  }
 });

@@ -4,39 +4,9 @@
     <meta charset="utf-8" />
     <title>LessPass</title>
     <link rel="stylesheet" href="dist/lesspass.min.css" />
-    <link rel="stylesheet" href="dist/options.min.scss" />
-    <style>
-      .full-width {
-        width: 100%;
-      }
-    </style>
   </head>
   <body>
-    <div id="lesspass-options">
-      <form id="lesspass-options-form" novalidate>
-        <div class="form-group row full-width">
-          <label for="login" class="col-sm-2 col-form-label">Default login</label>
-          <div class="col-sm-10">
-            <input
-              id="login"
-              type="text"
-              name="login"
-              ref="login"
-              class="form-control"
-              autocomplete="off"
-              autocorrect="off"
-              autocapitalize="none"
-              v-model="defaultPassword.login"
-              aria-describedby="defaultLoginDescription"
-            />
-          </div>
-          <small id="defaultLoginDescription" class="form-text text-muted">
-            You can define a default login that will be used to autofill the
-            login field when generating your password.
-          </small>
-        </div>
-      </form>
-    </div>
-    <script src="dist/options.min.js"></script>
+    <div id="lesspass-options"></div>
+    <script src="dist/options.js"></script>
   </body>
 </html>
