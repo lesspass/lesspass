@@ -81,7 +81,7 @@ Thank you to all the people who have already contributed to LessPass!
 
 ### Backers
 
-Thank you to all our backers! [[Become a backer on Open Collective](https://opencollective.com/lesspass#backer)
+Thank you to all our backers! [Become a backer on Open Collective](https://opencollective.com/lesspass#backer).
 
 <a href="https://opencollective.com/lesspass#backers" target="_blank">![Backers list](https://opencollective.com/lesspass/backers.svg?width=890)</a>
 
