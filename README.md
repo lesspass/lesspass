@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/lesspass/lesspass.svg?branch=master)](https://travis-ci.org/lesspass/lesspass)
+[![Build Status](https://travis-ci.org/lesspass/lesspass.svg?branch=master)](https://travis-ci.org/lesspass/lesspass) [![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](CONTRIBUTING.md#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](CONTRIBUTING.md#sponsors)
 
 # LessPass
 
-LessPass open source password manager (https://lesspass.com)
+LessPass is an open-source password manager. Generate complex, secure passwords for any website or service, without saving them!
 
-[![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](#sponsors)
+Visit our website at https://lesspass.com
 
 ## WIP
 
@@ -28,11 +28,11 @@ LessPass open source password manager (https://lesspass.com)
 
 ## CLI
 
-Use pip to install LessPass cli:
+Use `pip` to install LessPass CLI:
 
     python3 -m pip install --user lesspass
 
-Usage
+Usage:
 
     lesspass --help
 
@@ -40,9 +40,9 @@ Usage
 
 This project is licensed under the terms of the GNU GPLv3.
 
-[LessPass mobile](https://github.com/lesspass/lesspass/tree/master/packages/lesspass-mobile) is bi-licensed under both the Mozilla Public License Version 2 as well as the GNU GPLv3.
+[LessPass mobile](https://github.com/lesspass/lesspass/tree/master/mobile) is bi-licensed under both the Mozilla Public License Version 2 as well as the GNU GPLv3.
 
 ## Contributors :heart:
 
-This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
-<a href="https://github.com/lesspass/lesspass/graphs/contributors"><img src="https://opencollective.com/lesspass/contributors.svg?width=890" /></a>
+This project exists thanks to all of the people who contribute. [You can help too! There are many ways to help make LessPass better.](CONTRIBUTING.md)
+[![Contributors list](https://opencollective.com/lesspass/contributors.svg?width=890)](https://github.com/lesspass/lesspass/graphs/contributors)
