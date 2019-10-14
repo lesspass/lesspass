@@ -1,12 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
-import defaultPassword from "../../../../lesspass-pure/src/store/defaultPassword";
 
 Vue.use(Vuex);
 
 const state = {
-  defaultPassword: defaultPassword,
+  defaultPassword: {
+    login: ""
+  },
 };
 
 export default new Vuex.Store({
