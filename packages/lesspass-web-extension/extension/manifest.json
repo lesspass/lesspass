@@ -30,10 +30,5 @@
       "id": "contact@lesspass.com",
       "strict_min_version": "57.0"
     }
-  },
-  "options_ui": {
-    "page": "options.html",
-    "browser_style": true,
-    "chrome_style": true
   }
 }
