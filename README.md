@@ -46,3 +46,9 @@ This project is licensed under the terms of the GNU GPLv3.
 
 This project exists thanks to all of the people who contribute. [You can help too! There are many ways to help make LessPass better.](CONTRIBUTING.md)
 [![Contributors list](https://opencollective.com/lesspass/contributors.svg?width=890)](https://github.com/lesspass/lesspass/graphs/contributors)
+
+## Backers :heart:
+
+Thank you to all our backers! [Become a backer on Open Collective](https://opencollective.com/lesspass#backer).
+
+<a href="https://opencollective.com/lesspass#backers" target="_blank">![Backers list](https://opencollective.com/lesspass/backers.svg?width=890)</a>
