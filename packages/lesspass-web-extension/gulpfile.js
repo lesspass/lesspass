@@ -1,11 +1,4 @@
 const { src, dest, parallel } = require("gulp");
-const webpack = require('webpack-stream');
-
-gulp.task('options', function() {
-  return gulp.src('extension/src/main.js')
-    .pipe(webpack('./webpack.config.js'))
-    .pipe(gulp.dest('dist/'));
-});
 
 function js() {
   return src([

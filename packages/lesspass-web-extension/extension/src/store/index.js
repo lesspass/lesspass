@@ -6,7 +6,6 @@ import defaultPassword from "../../../../lesspass-pure/src/store/defaultPassword
 Vue.use(Vuex);
 
 const state = {
-  message: "",
   defaultPassword: defaultPassword,
 };
 

@@ -130,9 +130,9 @@ export default {
       password: state => ({
         ...state.password,
         login: state.password.login || state.defaultPassword.login
-      })
+      }),
+      passwords: state => state.passwords
     }),
-    ...mapState(["passwords"]),
     ...mapGetters(["passwordURL", "isDefaultProfile"])
   },
   beforeMount() {
