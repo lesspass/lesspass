@@ -8,4 +8,5 @@ yarn install
 yarn workspace lesspass-pure run build
 rm -rf packages/lesspass-web-extension/extension/dist
 mkdir packages/lesspass-web-extension/extension/dist
+yarn workspace lesspass-web-extension run build:scripts
 cp -r packages/lesspass-pure/dist/. packages/lesspass-web-extension/extension/dist/

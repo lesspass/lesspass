@@ -7,8 +7,7 @@
   "scripts": {
     "start": "cd extension && web-ext run",
     "test": "echo 0",
-    "prebuild": "webpack --mode='production'",
-    "dev": "webpack --mode='development'",
+    "build:scripts": "webpack",
     "build": "cd ../.. && ./bin/build_web_extensions && cd packages/lesspass-web-extension",
     "release": "npm run release:cws && npm run release:amo",
     "release:amo": "cd extension && web-ext-submit",

@@ -16,6 +16,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin()
   ],
+  mode: productionMode ? "production" : "development",
   module: {
     rules: [
       {
