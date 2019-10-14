@@ -16,8 +16,7 @@
     }
   },
   "permissions": [
-    "activeTab",
-    "storage"
+    "activeTab"
   ],
   "browser_action": {
     "browser_style": false,
