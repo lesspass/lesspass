@@ -32,6 +32,9 @@
           <router-link class="white-link pl-3" :to="{ name: 'passwords'}" v-if="isAuthenticated">
             <i class="fa  fa-lg fa-key"></i>
           </router-link>
+          <router-link class="white-link pl-3" :to="{ name: 'options'}" v-if="false">
+            <i class="fa fa-lg fa-cog"></i>
+          </router-link>
           <button class="white-link btn btn-link p-0 m-0 pl-3" type="button" v-if="isAuthenticated"
                   v-on:click="logout">
             <i class="fa fa-lg fa-sign-out"></i>
