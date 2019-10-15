@@ -1,28 +1,28 @@
-name: ci
+name: test
 
 on: [push, pull_request]
 
 jobs:
-  test-javascript-packages:
+  test-packages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: test javascript packages
+      - name: test packages
         run: |
           yarn install
           yarn test
 
-  test-mobile-app:
+  test-mobile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: test mobile app
+      - name: test mobile
         run: |
           cd mobile
           yarn install
           yarn test
 
-  test-python-cli:
+  test-cli:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 3
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
-      - name: test python cli
+      - name: test cli
         run: |
           cd cli
           python -m pip install --upgrade pip
@@ -42,16 +42,25 @@ jobs:
           export PYTHONPATH='.'
           python -m unittest discover
 
-  test-python-backend:
+  test-backend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v1
         with:
           python-version: "3.6"
-      - name: test python backend
+      - name: test backend
         run: |
           cd containers/backend
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           python manage.py test
+
+  test-containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: test containers
+        run: |
+          cd containers
+          ./test
