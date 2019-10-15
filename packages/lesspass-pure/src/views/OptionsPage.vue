@@ -1,7 +1,7 @@
 <template>
   <form id="lesspass-options-form" novalidate v-on:submit.prevent="saveOptions">
         <div class="form-group row full-width">
-          <label for="login" class="col-sm-2 col-form-label">Default login</label>
+          <label for="login" class="col-sm-2 col-form-label">{{$t('Default login')}}</label>
           <div class="col-sm-10">
             <input
               id="login"
@@ -18,7 +18,7 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">{{$t('Save')}}</button>
           </div>
         </div>
       </form>
