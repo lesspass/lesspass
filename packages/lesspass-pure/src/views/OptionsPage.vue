@@ -1,9 +1,3 @@
-<style>
-  .full-width {
-    width: 100%;
-  }
-</style>
-
 <template>
   <form id="lesspass-options-form" novalidate v-on:submit.prevent="saveOptions">
         <div class="form-group row full-width">
@@ -32,12 +26,13 @@
 
 <script>
   import { mapState } from "vuex";
+  import { SET_DEFAULT_OPTIONS } from "../store/mutation-types";
 
   export default {
     computed: mapState(["defaultPassword"]),
     methods: {
       saveOptions() {
-        this.$store.commit("updateDefaultLogin", this.defaultPassword.login);
+        this.$store.commit(SET_DEFAULT_OPTIONS, this.defaultPassword);
       }
     }
   }
