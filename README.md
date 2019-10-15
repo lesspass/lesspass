@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/lesspass/lesspass.svg?branch=master)](https://travis-ci.org/lesspass/lesspass) [![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](CONTRIBUTING.md#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](CONTRIBUTING.md#sponsors)
+[![Actions Status](https://github.com/lesspass/lesspass/workflows/ci/badge.svg)](https://github.com/lesspass/lesspass/actions) [![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](CONTRIBUTING.md#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](CONTRIBUTING.md#sponsors)
 
 # LessPass
 
