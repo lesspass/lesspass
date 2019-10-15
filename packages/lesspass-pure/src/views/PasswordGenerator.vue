@@ -126,13 +126,7 @@ export default {
     Options
   },
   computed: {
-    ...mapState({
-      password: state => ({
-        ...state.password,
-        login: state.password.login || state.defaultPassword.login
-      }),
-      passwords: state => state.passwords
-    }),
+    ...mapState(["password", "passwords"]),
     ...mapGetters(["passwordURL", "isDefaultProfile"])
   },
   beforeMount() {

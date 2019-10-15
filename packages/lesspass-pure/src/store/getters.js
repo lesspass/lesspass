@@ -1,5 +1,4 @@
 import btoa from "@oslab/btoa";
-import { defaultOptions } from "./defaultPassword";
 
 export const isAuthenticated = state => state.authenticated;
 
@@ -12,11 +11,10 @@ export const passwordURL = state => {
 };
 
 export const isDefaultProfile = state => {
-  let defaultProfile = true;
-  for (let key in defaultOptions) {
-    if (defaultOptions[key] !== state.password[key]) {
-      defaultProfile = false;
+  for (let key in state.defaultPassword) {
+    if (state.defaultPassword[key] !== state.password[key]) {
+      return false;
     }
   }
-  return defaultProfile;
+  return true;
 };
