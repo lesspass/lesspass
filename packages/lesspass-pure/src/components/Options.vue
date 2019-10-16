@@ -15,7 +15,7 @@
       <div class="col-12">
         <div class="row">
           <div class="col">
-            <label for="types">{{ $t('Advanced options') }}</label>
+            <label for="types">{{ title }}</label>
           </div>
         </div>
         <div id="types" class="row">
@@ -115,8 +115,15 @@
 
   export default {
     name: 'options',
-    computed: {
-      ...mapState(['password']),
+    props: {
+      password: {
+        type: Object,
+        required: true
+      },
+      title: {
+        type: String,
+        required: true
+      }
     },
     methods: {
       decrement,

@@ -101,7 +101,7 @@ div.awesomplete > ul {
         </div>
       </div>
     </div>
-    <options v-if="showOptions || !isDefaultProfile"></options>
+    <options v-if="showOptions || !isDefaultProfile" v-bind:title="$('Advanced options')" v-bind:password="password"></options>
   </form>
 </template>
 <script type="text/ecmascript-6">
