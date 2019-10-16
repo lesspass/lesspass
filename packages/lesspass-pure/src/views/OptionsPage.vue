@@ -1,7 +1,7 @@
 <template>
   <form id="lesspass-options-form" novalidate v-on:submit.prevent="saveOptions">
         <div class="form-group">
-          <label for="login" class="sr-only">{{$t('Default login')}}</label>
+          <label for="login" class="sr-only">{{ $t('Default login') }}</label>
           <div class="inner-addon left-addon">
             <i class="fa fa-user"></i>
             <input
@@ -20,7 +20,7 @@
         </div>
         <options v-bind:title="$t('Default password options')" v-bind:password="defaultPassword" />
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">{{$t('Save')}}</button>
+          <button type="submit" class="btn btn-primary">{{ $t('Save') }}</button>
         </div>
       </form>
 </template>

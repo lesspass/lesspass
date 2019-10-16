@@ -54,7 +54,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group row mb-0">
+    <div v-bind:class="['form-group', 'row', { 'mb-0': noMargin }]">
       <div class="col-5 col-sm-4">
         <label for="passwordLength">{{ $t('Length') }}</label>
         <div class="input-group input-group-sm">
@@ -123,7 +123,8 @@
       title: {
         type: String,
         required: true
-      }
+      },
+      noMargin: Boolean
     },
     methods: {
       decrement,
