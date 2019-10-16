@@ -45,7 +45,7 @@ div.awesomplete > ul {
                        v-bind:label="$t('Master Password')"></master-password>
     </div>
     <div class="form-group"
-         v-bind:class="{ 'mb-0': !showOptions }">
+         v-bind:class="{ 'mb-0': !showOptions && isDefaultProfile }">
       <div v-if="!passwordGenerated">
         <button id="generatePassword__btn"
                 type="submit"
