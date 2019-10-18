@@ -127,18 +127,18 @@ export default {
   },
   computed: {
     ...mapState({
-      password: state => ({
-        ...state.password,
-        login: state.password.login || state.defaultPassword.login
-      }),
-      passwords: state => state.passwords
+      password: state => {
+        state.password.login == state.password.login || state.defaultPassword.login
+        return state.password
+      },
+      passwords: state => state.passwords,
     }),
     ...mapGetters(["passwordURL", "isDefaultProfile"])
   },
   beforeMount() {
     this.$store.dispatch("getPasswords").then(() => {
       urlParser.getSite().then(site => {
-        this.$store.dispatch("addSuggestions", { site });
+        this.$store.dispatch("loadPasswordProfile", { site });
       });
       this.$store.dispatch("getPasswordFromUrlQuery", {
         query: this.$route.query
@@ -234,18 +234,16 @@ export default {
       });
     },
     focusBestInputField() {
-      const site = this.$refs.site;
-      const login = this.$refs.login;
-      const masterPassword = this.$refs.masterPassword;
-      if (site && login && masterPassword){
-        const siteField = site.$refs.siteField;
-        if (siteField.value && login.value){
-          return void masterPassword.$refs.passwordField.focus();
-        }
-        if (siteField.value){
-          return void login.focus();
-        }
-        return void siteField.focus();
+      try {
+        const site = this.$refs.site.$refs.siteField;
+        const login = this.$refs.login;
+        const masterPassword = this.$refs.masterPassword;
+        if (site && !site.value) return void site.focus();
+        if (login && !login.value) return void login.focus();
+        masterPassword.$refs.passwordField.focus();
+      }
+      catch(err) {
+        console.error("Can't focus password field")
       }
     },
     copyPassword() {

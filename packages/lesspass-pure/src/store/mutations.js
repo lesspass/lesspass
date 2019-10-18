@@ -1,5 +1,4 @@
 import * as types from "./mutation-types";
-import { getSuggestions } from "../services/url-parser";
 
 export default {
   [types.LOGIN](state) {
@@ -39,19 +38,22 @@ export default {
   [types.SET_SITE](state, { site }) {
     state.password.site = site;
   },
-  [types.ADD_SUGGESTIONS](state, { site }) {
-    if (!site) return;
+  [types.LOAD_PASSWORD_PROFILE](state, { site }) {
+    if (!site || typeof state.password.id !== "undefined") {
+      return;
+    }
+    state.password = Object.assign({}, state.password, { site });
     const passwords = state.passwords || [];
-    const passwordsSites = passwords.map(p => p.site);
-    const suggestions = getSuggestions(site)
-      .filter(suggestion => passwordsSites.indexOf(suggestion) !== 1)
-      .map(suggestion => {
-        return {
-          ...state.defaultPassword,
-          site: suggestion
-        };
-      });
-    state.passwords = suggestions.concat(state.passwords || []);
+    const siteWithoutWWW = site.replace(/^www./g, "");
+    for (let i = 0; i < passwords.length; i++) {
+      const password = passwords[i];
+      if (site.endsWith(password.site)) {
+        state.password = { ...password };
+        break;
+      } else if (password.site.endsWith(siteWithoutWWW)) {
+        state.password = { ...password };
+      }
+    }
   },
   [types.SET_MESSAGE](state, { message }) {
     state.message = message;
