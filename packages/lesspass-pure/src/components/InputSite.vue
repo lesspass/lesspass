@@ -39,12 +39,7 @@
       }
     },
     mounted() {
-      const siteField = this.$refs.siteField;
-      this.awesomplete = new Awesomplete(siteField,{
-        minChars: 0,
-        maxItems: 5
-      });
-      this.awesomplete.list = this.passwords;
+      this.awesomplete = new Awesomplete(this.$refs.siteField);
       this.awesomplete.item = (element, input) => {
         let item = Awesomplete.ITEM(element.value.site, input);
         item.innerHTML += ` ${element.value.login}`;
@@ -57,10 +52,13 @@
       this.awesomplete.data = data => {
         return {label: data.site, value: data}
       };
-      this.awesomplete.replace = suggestion => {
-        siteField.value = suggestion.label;
-        const passwordProfile = suggestion.value;
-        this.$emit("passwordProfileSelected", suggestion.value);
+      this.awesomplete.replace = password => {
+        this.$refs.siteField.value = password.label;
+        if (password.value.suggestion) {
+          this.$emit("suggestionSelected", password.value.site);
+        } else {
+          this.$emit("passwordProfileSelected", password.value);
+        }
       };
       this.awesomplete.sort = (a,b) => {
         return a.value.site.localeCompare(b.value.site) ||
@@ -75,14 +73,14 @@
         set: function (newValue) {
           this.$emit("input", newValue);
         }
-      },
-      suggestions: function () {
-        return this.passwords
       }
     },
     watch: {
-      suggestions: function (newValue, _) {
-        this.awesomplete.list = newValue;
+      site: function (newValue, _) {
+        const suggestions = getSuggestions(newValue).map(suggestion => {
+          return {site: suggestion, suggestion: true, login: ''}
+        });
+        this.awesomplete.list = this.passwords.concat(suggestions);
       }
     },
     methods: {}
