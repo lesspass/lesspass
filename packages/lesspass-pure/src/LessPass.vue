@@ -21,6 +21,7 @@
     created(){
       this.$store.dispatch('cleanMessage');
       this.$store.dispatch('refreshToken');
+      this.$store.dispatch('resetPassword');
     }
   }
 </script>
