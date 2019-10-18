@@ -1,9 +1,11 @@
 name: deploy
 
 on:
-  push: 
-    branches: 
-      - refs/tags/*
+  push:
+    branches:    
+      - master
+    tags:
+      - '*'
 
 jobs:
   deploy-containers:
