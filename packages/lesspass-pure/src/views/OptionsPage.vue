@@ -1,5 +1,5 @@
 <template>
-  <form id="lesspass-options-form" novalidate v-on:submit.prevent="saveOptions">
+  <form id="lesspass-options-form" novalidate v-on:submit.prevent="saveAndExit">
     <div class="form-group">
       <label for="login" class="sr-only">{{ $t('Default login') }}</label>
       <div class="inner-addon left-addon">
@@ -33,8 +33,10 @@
   export default {
     computed: mapState(["defaultPassword"]),
     methods: {
-      saveOptions() {
-        this.$store.commit(SET_DEFAULT_OPTIONS, this.defaultPassword);
+      saveAndExit() {
+        this.$store.dispatch('saveDefaultOptions', this.defaultPassword)
+          .then(this.$store.dispatch('resetPassword'))
+          .then(() => this.$router.push({name: 'home'}));
       }
     }
   }
