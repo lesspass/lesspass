@@ -45,7 +45,7 @@ div.awesomplete > ul {
                        v-bind:label="$t('Master Password')"></master-password>
     </div>
     <div class="form-group"
-         v-bind:class="{ 'mb-0': !showOptions && isDefaultProfile }">
+         v-bind:class="{ 'mb-0': !isOptionsPaneDisplayed() }">
       <div v-if="!passwordGenerated">
         <button id="generatePassword__btn"
                 type="submit"
@@ -101,7 +101,7 @@ div.awesomplete > ul {
         </div>
       </div>
     </div>
-    <options v-if="showOptions || !isDefaultProfile" v-bind:title="$t('Advanced options')" v-bind:password="password" no-margin></options>
+    <options v-if="isOptionsPaneDisplayed()" v-bind:title="$t('Advanced options')" v-bind:password="password" no-margin></options>
   </form>
 </template>
 <script type="text/ecmascript-6">
@@ -165,6 +165,9 @@ export default {
     }
   },
   methods: {
+    isOptionsPaneDisplayed() {
+      return this.showOptions || !this.isDefaultProfile;
+    },
     togglePasswordType(element) {
       if (element.type === "password") {
         element.type = "text";
