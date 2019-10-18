@@ -11,7 +11,7 @@
     "dev": "webpack-dev-server --config webpack.dev.js",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
-    "test": "npm run test:unit",
+    "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest",
     "test:e2e": "start-server-and-test dev http://localhost:8000 cypress:run"
   },
