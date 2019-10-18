@@ -1,6 +1,6 @@
 {
   "name": "lesspass-pure",
-  "version": "9.0.0",
+  "version": "9.0.2",
   "description": "LessPass web component",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
@@ -11,7 +11,7 @@
     "dev": "webpack-dev-server --config webpack.dev.js",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
-    "test": "npm run test:unit",
+    "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest",
     "test:e2e": "start-server-and-test dev http://localhost:8000 cypress:run"
   },
@@ -46,7 +46,7 @@
     "copy-text-to-clipboard": "^2.0.0",
     "font-awesome": "4.7.0",
     "jwt-decode": "2.2.0",
-    "lesspass": "9.0.0",
+    "lesspass": "9.0.2",
     "lodash.debounce": "4.0.8",
     "lodash.uniqby": "4.7.0",
     "vue": "^2.6.10",

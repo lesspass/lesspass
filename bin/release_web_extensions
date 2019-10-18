@@ -21,7 +21,9 @@ function check_tag_is_present {
 }
 
 function check_repository_is_clean {
-    git diff-index --quiet HEAD
+    git remote update
+    git status
+    git diff-index --quiet HEAD --;
     if [ $? == 1 ]
     then
         echo >&2 "Git repository not clean. Aborting."
@@ -29,20 +31,19 @@ function check_repository_is_clean {
     fi
 }
 
-function check_lesspass_pure_built_files_are_updated {
-    yarn workspace lesspass-pure run build
-    check_repository_is_clean
-}
-
-function check_lesspass_web_extension_built_files_are_updated {
-    yarn workspace lesspass-web-extension run build
-    check_repository_is_clean
+function check_env_variables_setted {
+    if [ -z "$EXTENSION_ID" ] || [ -z "$CLIENT_ID" ] || [ -z "$CLIENT_SECRET" ] || [ -z "$REFRESH_TOKEN" ] || [ -z "$WEB_EXT_API_KEY" ] || [ -z "$WEB_EXT_API_SECRET" ]; then
+        echo "Need to set EXTENSION_ID, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, WEB_EXT_API_KEY and WEB_EXT_API_SECRET env variables to release web extensions"
+        exit 1
+    fi
 }
 
 check_branch_is_master
 check_tag_is_present
-check_lesspass_web_extension_built_files_are_updated
-check_lesspass_pure_built_files_are_updated
+check_env_variables_setted
+yarn workspace lesspass-web-extension run build
+yarn workspace lesspass-pure run build
+check_repository_is_clean
 
 set -o errexit
 set -o pipefail

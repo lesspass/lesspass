@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-VERSION="9.0.0"
-podman login --username "${QUAI_USERNAME}" --password "${QUAI_PASSWORD}" quai.io
-podman build --tag lesspass/webserver:${VERSION} --tag lesspass/webserver:latest ./webserver
-podman build --tag lesspass/frontend:${VERSION} --tag lesspass/frontend:latest ./frontend
-podman build --tag lesspass/backend:${VERSION} --tag lesspass/backend:latest ./backend
-podman images
-podman --version
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/webserver:${VERSION} docker://quai.io/lesspass/webserver
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/webserver:latest docker://quai.io/lesspass/webserver
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/frontend:${VERSION} docker://quai.io/lesspass/frontend
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/frontend:latest docker://quai.io/lesspass/frontend
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/backend:${VERSION} docker://quai.io/lesspass/backend
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/backend:latest docker://quai.io/lesspass/backend
+build_and_push () {
+    PROJECT=$1
+    docker build --tag lesspass/${PROJECT} ./${PROJECT}
+    docker tag lesspass/${PROJECT} quay.io/lesspass/${PROJECT}
+    docker push quay.io/lesspass/${PROJECT}
+}
+
+docker login --username="${QUAY_USERNAME}" --password="${QUAY_PASSWORD}" quay.io
+build_and_push webserver
+build_and_push backend
+build_and_push frontend
