@@ -1,6 +1,6 @@
 {
   "name": "lesspass-pure",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "LessPass web component",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
@@ -46,7 +46,7 @@
     "copy-text-to-clipboard": "^2.0.0",
     "font-awesome": "4.7.0",
     "jwt-decode": "2.2.0",
-    "lesspass": "9.0.1",
+    "lesspass": "9.0.2",
     "lodash.debounce": "4.0.8",
     "lodash.uniqby": "4.7.0",
     "vue": "^2.6.10",
