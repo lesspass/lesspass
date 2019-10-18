@@ -19,7 +19,7 @@ describe("Password Generation", function() {
     }
 
     cy.visit("/");
-    cy.get("#siteField").type("lesspass.com").blur();
+    cy.get("#siteField").type("lesspass.com");
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.wait(500);
@@ -105,16 +105,31 @@ describe("Password Generation", function() {
   });
   it("should generate password when hit enter nrt_266", function() {
     cy.visit("/");
-    cy.get("#siteField").type("lesspass.com").blur();
+    cy.get("#siteField").type("lesspass.com");
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField")
       .type("test@lesspass.com")
       .type("{enter}");
     cy.get("#generated-password").should("have.value", "hjV@\\5ULp3bIs,6B");
   });
+  it("should keep site field in sync nrt_441", function() {
+    cy.visit("/");
+    cy.get("#login").type("user");
+    cy.get("#passwordField").type("password");
+    cy.get("#siteField")
+      .type("subdomain.domain.com")
+      .type("{home}")
+      .type("{rightarrow}")
+      .type("{backspace}")
+      .type("{downarrow}")
+      .type("{downarrow}")
+      .type("{enter}");
+    cy.get("#generatePassword__btn").click();
+    cy.get("#generated-password").should("have.value", "ZT^IK2e!t@k$9`*)");
+  });
   it("should clear password generated when master password change", function() {
     cy.visit("/");
-    cy.get("#siteField").type("example.org").blur();
+    cy.get("#siteField").type("example.org");
     cy.get("#login").type("user");
     cy.get("#passwordField").type("password");
     cy.get("#generatePassword__btn").should("be.visible");
