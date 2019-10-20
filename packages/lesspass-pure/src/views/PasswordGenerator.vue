@@ -34,6 +34,7 @@ div.awesomplete > ul {
           name="login"
           ref="login"
           class="form-control"
+          tabindex="0"
           autocomplete="off"
           autocorrect="off"
           autocapitalize="none"
@@ -50,75 +51,59 @@ div.awesomplete > ul {
         v-bind:label="$t('Master Password')"
       ></master-password>
     </div>
-    <div class="form-group" v-bind:class="{ 'mb-0': !showOptions }">
-      <div v-if="!passwordGenerated">
-        <button
-          id="generatePassword__btn"
-          type="submit"
-          class="btn btn-primary border-blue"
-        >{{ $t('Generate') }}</button>
-        <button
-          type="button"
-          class="btn btn-secondary pull-right showOptions__btn"
-          v-show="!passwordGenerated"
-          v-on:click="showOptions =! showOptions"
-        >
-          <i class="fa fa-sliders"></i>
-        </button>
-      </div>
-      <div class="btn-group" v-show="passwordGenerated">
-        <div class="input-group">
-          <span class="input-group-btn">
-            <button
-              id="copyPasswordButton"
-              class="btn btn-primary border-blue"
-              type="button"
-              v-on:click="copyPassword()"
-            >
-              <i class="fa fa-clipboard"></i>
-            </button>
-          </span>
-          <input
-            id="generated-password"
-            type="password"
-            class="form-control"
-            tabindex="-1"
-            ref="passwordGenerated"
-            v-bind:value="passwordGenerated"
-          />
-          <span class="input-group-btn">
-            <button
-              id="revealGeneratedPassword"
-              type="button"
-              class="btn btn-secondary"
-              v-on:click="togglePasswordType($refs.passwordGenerated)"
-            >
-              <i class="fa fa-eye"></i>
-            </button>
-          </span>
-          <span class="input-group-btn">
-            <button
-              id="sharePasswordProfileButton"
-              type="button"
-              class="btn btn-secondary"
-              v-on:click="sharePasswordProfile()"
-            >
-              <i class="fa fa-share-alt pointer"></i>
-            </button>
-          </span>
-          <span class="input-group-btn">
-            <button
-              type="button"
-              class="btn btn-secondary showOptions__btn"
-              v-on:click="showOptions =! showOptions"
-            >
-              <i class="fa fa-sliders"></i>
-            </button>
-          </span>
-        </div>
+    <options v-bind:options="password"></options>
+    <div class="form-group mt-4 mb-0">
+      <button
+        id="generatePassword__btn"
+        type="submit"
+        tabindex="0"
+        class="btn btn-primary btn-block"
+        v-if="!passwordGenerated"
+      >{{ $t('Generate') }}</button>
+      <div class="input-group" v-show="passwordGenerated">
+        <span class="input-group-btn">
+          <button
+            id="copyPasswordButton"
+            class="btn btn-primary"
+            tabindex="0"
+            type="button"
+            v-on:click="copyPassword()"
+          >
+            <i class="fa fa-clipboard"></i>
+          </button>
+        </span>
+        <input
+          id="generated-password"
+          type="password"
+          class="form-control"
+          tabindex="-1"
+          ref="passwordGenerated"
+          v-bind:value="passwordGenerated"
+        />
+        <span class="input-group-btn">
+          <button
+            id="revealGeneratedPassword"
+            type="button"
+            class="btn btn-secondary"
+            tabindex="0"
+            v-on:click="togglePasswordType($refs.passwordGenerated)"
+          >
+            <i class="fa fa-eye"></i>
+          </button>
+        </span>
+        <span class="input-group-btn">
+          <button
+            id="sharePasswordProfileButton"
+            type="button"
+            class="btn btn-secondary"
+            tabindex="0"
+            v-on:click="sharePasswordProfile()"
+          >
+            <i class="fa fa-share-alt pointer"></i>
+          </button>
+        </span>
       </div>
     </div>
-    <options v-if="showOptions || !isDefaultProfile"></options>
   </form>
 </template>
 <script type="text/ecmascript-6">
@@ -143,7 +128,7 @@ export default {
   },
   computed: {
     ...mapState(["password", "passwords"]),
-    ...mapGetters(["passwordURL", "isDefaultProfile"])
+    ...mapGetters(["passwordURL"])
   },
   beforeMount() {
     this.$store.dispatch("getPasswords").then(() => {
@@ -162,7 +147,6 @@ export default {
   },
   data() {
     return {
-      showOptions: false,
       masterPassword: "",
       passwordGenerated: "",
       cleanTimeout: null

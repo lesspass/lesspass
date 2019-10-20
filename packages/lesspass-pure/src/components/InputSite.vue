@@ -17,6 +17,7 @@
         name="siteField"
         ref="siteField"
         class="form-control awesomplete"
+        tabindex="0"
         autocorrect="off"
         autocapitalize="none"
         v-bind:placeholder="label"
