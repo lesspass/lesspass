@@ -10,12 +10,3 @@ export const passwordURL = state => {
   const encodedPasswordProfile = encodeURIComponent(base64PasswordProfile);
   return `${state.baseURL}/#/?passwordProfileEncoded=${encodedPasswordProfile}`;
 };
-
-export const isDefaultProfile = state => {
-  for (let key in defaultOptions) {
-    if (state.defaultPassword[key] !== state.password[key]) {
-      return false;
-    }
-  }
-  return true;
-};

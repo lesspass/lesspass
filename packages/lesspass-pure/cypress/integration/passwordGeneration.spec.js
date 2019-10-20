@@ -1,9 +1,6 @@
 describe("Password Generation", function() {
   it("can't decrease counter under 0", function() {
     cy.visit("/");
-    cy.get(".showOptions__btn")
-      .first()
-      .click();
     cy.get("#decreaseCounter__btn").click();
     cy.get("#decreaseCounter__btn").click();
     cy.get("#passwordCounter").should("have.value", "1");
@@ -28,9 +25,6 @@ describe("Password Generation", function() {
     cy.get("#fingerprint .fa-plane").should("be.visible");
     cy.get("#generatePassword__btn").click();
     cy.get("#generated-password").should("have.value", "hjV@\\5ULp3bIs,6B");
-    cy.get(".showOptions__btn")
-      .first()
-      .click();
     cy.get("#decreaseLength__btn").click();
     cy.get("#passwordLength").should("have.value", "15");
     cy.get("#increaseLength__btn").click();
@@ -75,9 +69,6 @@ describe("Password Generation", function() {
   });
   it("should have a min length of 5 and max length of 35", function() {
     cy.visit("/");
-    cy.get(".showOptions__btn")
-      .first()
-      .click();
     cy.get("#passwordLength")
       .clear()
       .type("35");
@@ -94,9 +85,6 @@ describe("Password Generation", function() {
     cy.get("#siteField").type("site");
     cy.get("#login").type("login");
     cy.get("#passwordField").type("test");
-    cy.get(".showOptions__btn")
-      .first()
-      .click();
     cy.get("#passwordCounter")
       .clear()
       .type("10");
@@ -139,5 +127,16 @@ describe("Password Generation", function() {
     cy.get("#passwordField").type("password");
     cy.get("#copyPasswordButton").should("not.be.visible");
     cy.get("#generatePassword__btn").should("be.visible");
+  });
+  it("should generate password with 2 tabs and enter", function() {
+    cy.visit("/");
+    cy.get("#siteField")
+      .type("lesspass.com")
+      .tab()
+      .type("test@lesspass.com")
+      .tab()
+      .type("test@lesspass.com")
+      .type("{enter}");
+    cy.get("#generated-password").should("have.value", "hjV@\\5ULp3bIs,6B");
   });
 });

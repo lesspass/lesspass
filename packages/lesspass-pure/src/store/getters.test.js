@@ -34,62 +34,6 @@ test("passwordURL encode uri component", () => {
   );
 });
 
-test("isDefaultProfile", () => {
-  const state = {
-    password: {
-      login: "test@example.org",
-      site: "example.org",
-      uppercase: true,
-      lowercase: true,
-      numbers: true,
-      symbols: true,
-      length: 16,
-      counter: 1,
-      version: 2
-    },
-    defaultPassword: {
-      login: "",
-      site: "",
-      uppercase: true,
-      lowercase: true,
-      numbers: true,
-      symbols: true,
-      length: 16,
-      counter: 1,
-      version: 2
-    }
-  };
-  expect(getters.isDefaultProfile(state)).toBe(true);
-});
-
-test("isDefaultProfile false", () => {
-  const state = {
-    password: {
-      login: "test@example.org",
-      site: "example.org",
-      uppercase: true,
-      lowercase: true,
-      numbers: true,
-      symbols: false,
-      length: 32,
-      counter: 1,
-      version: 1
-    },
-    defaultPassword: {
-      login: "",
-      site: "",
-      uppercase: true,
-      lowercase: true,
-      numbers: true,
-      symbols: true,
-      length: 16,
-      counter: 1,
-      version: 2
-    }
-  };
-  expect(getters.isDefaultProfile(state)).toBe(false);
-});
-
 test("isAuthenticated", () => {
   const state = {
     authenticated: true

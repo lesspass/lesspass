@@ -58,10 +58,6 @@ button,
 .right-addon input {
   padding-right: 30px;
 }
-
-.border-blue {
-  border-color: #007bff !important;
-}
 </style>
 <template>
   <div id="lesspass" class="card">

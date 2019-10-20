@@ -25,6 +25,7 @@
         ref="passwordField"
         type="password"
         class="form-control"
+        tabindex="0"
         autocorrect="off"
         autocapitalize="none"
         v-bind:value="value"
