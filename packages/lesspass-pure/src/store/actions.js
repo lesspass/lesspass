@@ -33,7 +33,7 @@ export const savePassword = ({ commit }, payload) => {
   commit(types.SET_PASSWORD, payload);
 };
 
-export const resetPassword = ({ commit, state }) => {
+export const resetPassword = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 

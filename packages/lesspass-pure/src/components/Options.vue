@@ -109,7 +109,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import message from '../services/message';
   import {increment, decrement} from "../services/form-validator";
   import { mapState} from 'vuex';
 

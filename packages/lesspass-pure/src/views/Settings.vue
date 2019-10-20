@@ -24,7 +24,6 @@
 
 <script>
   import { mapState } from "vuex";
-  import { SET_DEFAULT_OPTIONS } from "../store/mutation-types";
 
   export default {
     computed: mapState(["defaultPassword"]),

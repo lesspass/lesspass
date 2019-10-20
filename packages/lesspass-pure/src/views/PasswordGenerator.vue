@@ -14,87 +14,104 @@ div.awesomplete > ul {
 <template>
   <form id="password-generator" v-on:submit.prevent="generatePassword" novalidate>
     <div class="form-group">
-      <input-site ref="site"
-                  v-model="password.site"
-                  v-bind:passwords="passwords"
-                  v-bind:label="$t('Site')"
-                  v-on:suggestionSelected="setSite"
-                  v-on:passwordProfileSelected="setPasswordProfile"></input-site>
+      <input-site
+        ref="site"
+        v-model="password.site"
+        v-bind:passwords="passwords"
+        v-bind:label="$t('Site')"
+        v-on:suggestionSelected="setSite"
+        v-on:passwordProfileSelected="setPasswordProfile"
+      ></input-site>
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
       <label for="login" class="sr-only">{{ $t('Login') }}</label>
       <div class="inner-addon left-addon">
         <i class="fa fa-user"></i>
-        <input id="login"
-               type="text"
-               name="login"
-               ref="login"
-               class="form-control"
-               autocomplete="off"
-               autocorrect="off"
-               autocapitalize="none"
-               v-bind:placeholder="$t('Login')"
-               v-model="password.login">
+        <input
+          id="login"
+          type="text"
+          name="login"
+          ref="login"
+          class="form-control"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="none"
+          v-bind:placeholder="$t('Login')"
+          v-model="password.login"
+        />
       </div>
     </div>
     <div class="form-group">
-      <master-password ref="masterPassword"
-                       v-model="masterPassword"
-                       v-on:generatePassword="generatePassword"
-                       v-bind:label="$t('Master Password')"></master-password>
+      <master-password
+        ref="masterPassword"
+        v-model="masterPassword"
+        v-on:generatePassword="generatePassword"
+        v-bind:label="$t('Master Password')"
+      ></master-password>
     </div>
-    <div class="form-group"
-         v-bind:class="{ 'mb-0': !showOptions }">
+    <div class="form-group" v-bind:class="{ 'mb-0': !showOptions }">
       <div v-if="!passwordGenerated">
-        <button id="generatePassword__btn"
-                type="submit"
-                class="btn btn-primary border-blue">
-          {{ $t('Generate') }}
-        </button>
-        <button type="button"
-                class="btn btn-secondary pull-right showOptions__btn"
-                v-show="!passwordGenerated"
-                v-on:click="showOptions =! showOptions">
+        <button
+          id="generatePassword__btn"
+          type="submit"
+          class="btn btn-primary border-blue"
+        >{{ $t('Generate') }}</button>
+        <button
+          type="button"
+          class="btn btn-secondary pull-right showOptions__btn"
+          v-show="!passwordGenerated"
+          v-on:click="showOptions =! showOptions"
+        >
           <i class="fa fa-sliders"></i>
         </button>
       </div>
       <div class="btn-group" v-show="passwordGenerated">
         <div class="input-group">
           <span class="input-group-btn">
-            <button id="copyPasswordButton"
-                    class="btn btn-primary border-blue"
-                    type="button"
-                    v-on:click="copyPassword()">
+            <button
+              id="copyPasswordButton"
+              class="btn btn-primary border-blue"
+              type="button"
+              v-on:click="copyPassword()"
+            >
               <i class="fa fa-clipboard"></i>
             </button>
           </span>
-          <input id="generated-password"
-                 type="password"
-                 class="form-control"
-                 tabindex="-1"
-                 ref="passwordGenerated"
-                 v-bind:value="passwordGenerated">
+          <input
+            id="generated-password"
+            type="password"
+            class="form-control"
+            tabindex="-1"
+            ref="passwordGenerated"
+            v-bind:value="passwordGenerated"
+          />
           <span class="input-group-btn">
-            <button id="revealGeneratedPassword"
-                    type="button"
-                    class="btn btn-secondary"
-                    v-on:click="togglePasswordType($refs.passwordGenerated)">
+            <button
+              id="revealGeneratedPassword"
+              type="button"
+              class="btn btn-secondary"
+              v-on:click="togglePasswordType($refs.passwordGenerated)"
+            >
               <i class="fa fa-eye"></i>
             </button>
           </span>
           <span class="input-group-btn">
-            <button id="sharePasswordProfileButton"
-                    type="button"
-                    class="btn btn-secondary"
-                    v-on:click="sharePasswordProfile()">
+            <button
+              id="sharePasswordProfileButton"
+              type="button"
+              class="btn btn-secondary"
+              v-on:click="sharePasswordProfile()"
+            >
               <i class="fa fa-share-alt pointer"></i>
             </button>
           </span>
           <span class="input-group-btn">
-            <button type="button"
-                    class="btn btn-secondary showOptions__btn"
-                    v-on:click="showOptions =! showOptions">
+            <button
+              type="button"
+              class="btn btn-secondary showOptions__btn"
+              v-on:click="showOptions =! showOptions"
+            >
               <i class="fa fa-sliders"></i>
             </button>
           </span>
@@ -114,7 +131,6 @@ import InputSite from "../components/InputSite.vue";
 import Options from "../components/Options.vue";
 import { showTooltip, hideTooltip } from "../services/tooltip";
 import message from "../services/message";
-import Awesomplete from "awesomplete";
 import * as urlParser from "../services/url-parser";
 
 export default {
@@ -159,7 +175,7 @@ export default {
       },
       deep: true
     },
-    masterPassword: function (newMasterPassword, oldMasterPassword) {
+    masterPassword: function(newMasterPassword) {
       this.masterPassword = newMasterPassword;
       this.cleanErrors();
     }
@@ -199,7 +215,7 @@ export default {
         return;
       }
       const length = this.password.length;
-      if (length > 35){
+      if (length > 35) {
         message.warning(
           this.$t(
             "LengthDeprecationWarning",
@@ -235,9 +251,8 @@ export default {
         if (site && !site.value) return void site.focus();
         if (login && !login.value) return void login.focus();
         masterPassword.$refs.passwordField.focus();
-      }
-      catch(err) {
-        console.error("Can't focus password field")
+      } catch (err) {
+        console.error("Can't focus password field");
       }
     },
     copyPassword() {
@@ -248,10 +263,7 @@ export default {
         setTimeout(() => hideTooltip(element), 2000);
       } else {
         message.warning(
-          this.$t(
-            "SorryCopy",
-            "Sorry, copying only works in modern browsers."
-          )
+          this.$t("SorryCopy", "Sorry, copying only works in modern browsers.")
         );
       }
     },
@@ -267,15 +279,12 @@ export default {
         setTimeout(() => hideTooltip(element), 2000);
       } else {
         message.warning(
-          this.$t(
-            "SorryCopy",
-            "Sorry, copying only works in modern browsers."
-          )
+          this.$t("SorryCopy", "Sorry, copying only works in modern browsers.")
         );
       }
     },
-    setSite(site){
-      this.password.site = site
+    setSite(site) {
+      this.password.site = site;
     },
     setPasswordProfile(passwordProfile) {
       this.$store

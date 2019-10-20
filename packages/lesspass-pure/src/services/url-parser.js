@@ -6,7 +6,7 @@ export function cleanUrl(url) {
   if (!url) {
     return "";
   }
-  var matchesDomainName = url.match(/^(?:https?\:\/\/)([^\/?#]+)(?:[\/?#]|$)/i);
+  var matchesDomainName = url.match(/^(?:https?:\/\/)([^/?#]+)(?:[/?#]|$)/i);
   return matchesDomainName && matchesDomainName[1] ? matchesDomainName[1] : "";
 }
 
