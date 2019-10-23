@@ -9,40 +9,44 @@
     "url": "https://guillaumevincent.com"
   },
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
     "test": "jest",
-    "postinstall": "jetify"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "axios": "0.19.0",
-    "debounce": "1.2.0",
-    "fuse.js": "^3.4.4",
+    "@react-native-community/async-storage": "^1.6.2",
+    "axios": "^0.19.0",
+    "fuse.js": "^3.4.5",
     "lesspass-fingerprint": "latest",
     "lesspass-render-password": "latest",
     "lodash": "^4.17.15",
-    "memoize-one": "^5.0.4",
-    "react": "^16.8.6",
-    "react-native": "^0.60.5",
-    "react-native-gesture-handler": "^1.1.0",
-    "react-native-keychain": "^3.1.1",
-    "react-native-paper": "^2.15.2",
+    "memoize-one": "^5.1.1",
+    "react": "16.9.0",
+    "react-native": "0.61.2",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-keychain": "^4.0.1",
+    "react-native-paper": "^3.0.0",
     "react-native-touch-id": "^4.4.1",
-    "react-native-vector-icons": "^6.4.2",
-    "react-navigation": "^4.0.0",
-    "react-navigation-material-bottom-tabs": "^1.1.1",
-    "react-redux": "^7.0.1",
-    "redux": "^4.0.1",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.10",
+    "react-navigation-material-bottom-tabs": "^2.1.3",
+    "react-navigation-stack": "^1.10.2",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "2.3.0"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/runtime": "^7.4.3",
-    "babel-jest": "^24.7.1",
-    "jest": "^24.7.1",
-    "jetifier": "^1.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/runtime": "^7.6.3",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "16.9.0"
   },
   "jest": {
     "preset": "react-native"

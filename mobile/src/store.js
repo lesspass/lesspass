@@ -1,7 +1,7 @@
 import React from "react";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import AsyncStorage from "@react-native-community/async-storage";
 import stateReconciler from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 import thunk from "redux-thunk";
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: AsyncStorage,
   stateReconciler,
   whitelist: ["settings", "auth"]
 };

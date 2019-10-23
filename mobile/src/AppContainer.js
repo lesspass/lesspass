@@ -1,19 +1,13 @@
-import React, { Component } from "react";
-import { Provider } from "react-redux";
-import { Provider as PaperProvider } from "react-native-paper";
+import React from "react";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { PersistGate } from "redux-persist/lib/integration/react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { persistor, store } from "./store";
 import AuthStack from "./auth/AuthStack";
 import AuthLoadingScreen from "./auth/AuthLoadingScreen";
 import HelpScreen from "./help/HelpScreen";
 import PasswordGeneratorScreen from "./password/PasswordGeneratorScreen";
 import SettingsScreen from "./settings/SettingsScreen";
 import Theme from "./ui/Theme";
-import Header from "./header/Header";
-import Errors from "./errors/Errors";
 
 const commonTabs = {
   PasswordGenerator: {
@@ -89,20 +83,4 @@ const AppContainer = createAppContainer(
   )
 );
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <PaperProvider theme={Theme}>
-            <Header />
-            <Errors />
-            <AppContainer />
-          </PaperProvider>
-        </PersistGate>
-      </Provider>
-    );
-  }
-}
-
-export default App;
+export default AppContainer;
