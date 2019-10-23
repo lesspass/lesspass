@@ -8,7 +8,6 @@ on:
 jobs:
   deploy-containers:
     runs-on: ubuntu-latest
-    needs: test-containers
     steps:
       - uses: actions/checkout@v1
       - name: deploy containers
@@ -21,7 +20,6 @@ jobs:
 
   deploy-packages:
     runs-on: ubuntu-latest
-    needs: test-packages
     steps:
       - uses: actions/checkout@v1
       - name: deploy packages
@@ -33,7 +31,6 @@ jobs:
 
   deploy-cli:
     runs-on: ubuntu-latest
-    needs: test-cli
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python
