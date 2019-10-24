@@ -1,6 +1,6 @@
 {
   "name": "lesspass-site",
-  "version": "9.0.2",
+  "version": "9.1.0",
   "description": "LessPass web site",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
