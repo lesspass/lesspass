@@ -21,7 +21,7 @@
         </div>
       </div>
       <options v-bind:options="defaultPassword"></options>
-      <button type="submit" class="btn btn-primary btn-block mt-4">{{$t('Save')}}</button>
+      <button type="submit" id="btn-submit-settings" class="btn btn-primary btn-block mt-4">{{$t('Save')}}</button>
     </form>
   </div>
 </template>
