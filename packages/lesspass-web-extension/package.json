@@ -7,7 +7,6 @@
   "scripts": {
     "start": "cd extension && web-ext run",
     "test": "echo 0",
-    "build": "cd ../.. && ./bin/build_web_extensions && cd packages/lesspass-web-extension",
     "release": "npm run release:cws && npm run release:amo",
     "release:amo": "cd extension && web-ext-submit",
     "release:cws": "cd extension && webstore upload --auto-publish"
