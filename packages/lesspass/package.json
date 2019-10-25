@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "description": "LessPass core module",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
@@ -12,8 +12,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "lesspass-entropy": "9.1.0",
-    "lesspass-fingerprint": "9.1.0",
-    "lesspass-render-password": "9.1.0"
+    "lesspass-entropy": "9.1.1",
+    "lesspass-fingerprint": "9.1.1",
+    "lesspass-render-password": "9.1.1"
   }
 }
