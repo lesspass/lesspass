@@ -16,6 +16,7 @@ set -o pipefail
 set -o nounset
 
 function release_web_extensions {
+    yarn install
     yarn workspace lesspass-web-extension run release
     VERSION=$(grep -Po '(?<="version": ")[^"]*' package.json)
     echo "Download sources on https://github.com/lesspass/lesspass/releases/tag/${VERSION}"
