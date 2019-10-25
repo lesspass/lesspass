@@ -19,10 +19,15 @@ function check_repository_is_clean {
     git remote update
     git add .
     git status
-    git diff-index --quiet HEAD --;
+    git diff-index --quiet HEAD
     if [ $? == 1 ]
     then
         print_error "Git repository not clean. Aborting."
+        exit 1
+    fi
+    if [ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]
+    then
+        print_error "Git branch diverged. Aborting."
         exit 1
     fi
 }
@@ -116,7 +121,7 @@ function build_web_extensions {
 
 function build_mobile_app {
     pushd mobile/android/
-    ./gradlew assembleRelease
+    ./gradlew bundleRelease
     popd
 }
 
