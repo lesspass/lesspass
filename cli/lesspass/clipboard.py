@@ -46,4 +46,4 @@ def copy(text):
         p = _popen(args)
     else:
         p = _popen(args, close_fds=True)
-    p.communicate(input=text)
+    p.communicate(input=text.encode('ascii'))
