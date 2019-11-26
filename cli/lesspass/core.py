@@ -17,8 +17,8 @@ def main(args=sys.argv[1:]):
     args = parse_args(args)
     if args.clipboard and not get_system_copy_command():
         print(
-            "ERROR To use the option -c (--copy) you need pbcopy "
-            + "on OSX, xsel or xclip on Linux, and clip on Windows"
+            "ERROR To use the option -c (--copy) you need pbcopy on OSX, "
+            + "xsel, xclip, or wl-clipboard on Linux, and clip on Windows"
         )
         sys.exit(3)
 
