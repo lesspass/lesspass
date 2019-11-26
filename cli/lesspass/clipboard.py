@@ -20,7 +20,7 @@ def get_system_copy_command():
     if platform.system() == "Darwin" and _copy_available("pbcopy"):
         return "pbcopy"
 
-    for command in ["xsel", "xclip"]:
+    for command in ["xsel", "xclip", "wl-copy"]:
         if _copy_available(command):
             return command
 
@@ -32,6 +32,7 @@ def _popen(args, **kwargs):
 commands = {
     "clip": ["clip"],
     "pbcopy": ["pbcopy"],
+    "wl-copy": ["wl-copy"],
     "xsel": ["xsel", "--clipboard", "--input"],
     "xclip": ["xclip", "-selection", "clipboard"],
 }
