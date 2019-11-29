@@ -4,3 +4,5 @@ __pycache__/
 # javascript
 node_modules
 package-lock.json
+default.nix
+.envrc
