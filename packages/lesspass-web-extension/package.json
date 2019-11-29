@@ -1,7 +1,7 @@
 {
   "name": "lesspass-web-extension",
   "description": "LessPass web extension",
-  "version": "9.1.3",
+  "version": "9.1.4",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "scripts": {
@@ -12,6 +12,6 @@
     "release:cws": "cd extension && webstore upload --auto-publish"
   },
   "dependencies": {
-    "lesspass-pure": "9.1.3"
+    "lesspass-pure": "9.1.4"
   }
 }

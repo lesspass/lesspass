@@ -1,6 +1,6 @@
 {
   "name": "lesspass-fingerprint",
-  "version": "9.1.3",
+  "version": "9.1.4",
   "description": "LessPass node module used to get fingerprint for 256 bytes string",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
@@ -17,6 +17,6 @@
     "test:browser": "karma start test/karma.conf.js"
   },
   "dependencies": {
-    "lesspass-crypto": "9.1.3"
+    "lesspass-crypto": "9.1.4"
   }
 }
