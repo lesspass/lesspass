@@ -1,3 +1,4 @@
+import os
 import platform
 import subprocess
 import uuid
@@ -20,7 +21,10 @@ def get_system_copy_command():
     if platform.system() == "Darwin" and _copy_available("pbcopy"):
         return "pbcopy"
 
-    for command in ["xsel", "xclip", "wl-copy"]:
+    if os.getenv("WAYLAND_DISPLAY") is not None and _copy_available("wl-copy"):
+        return "wl-copy"
+
+    for command in ["xsel", "xclip"]:
         if _copy_available(command):
             return command
 
