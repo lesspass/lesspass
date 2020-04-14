@@ -8,6 +8,7 @@ import TextInput from "../ui/TextInput";
 import Styles from "../ui/Styles";
 import { addError } from "../errors/errorsActions";
 import { signIn } from "./authActions";
+import routes from "../routes";
 
 export class SignInScreen extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export class SignInScreen extends Component {
     this.state = {
       email: "",
       password: "",
-      isLoading: false
+      isLoading: false,
     };
   }
 
@@ -35,17 +36,13 @@ export class SignInScreen extends Component {
             mode="outlined"
             label="Email"
             value={email}
-            onChangeText={text => this.setState({ email: text.trim() })}
+            onChangeText={(text) => this.setState({ email: text.trim() })}
           />
           <MasterPassword
-            label={
-              encryptMasterPassword
-                ? "Master Password"
-                : "Password"
-            }
+            label={encryptMasterPassword ? "Master Password" : "Password"}
             masterPassword={password}
             hideFingerprint={!encryptMasterPassword}
-            onChangeText={password => this.setState({ password })}
+            onChangeText={(password) => this.setState({ password })}
           />
           <Button
             compact
@@ -58,11 +55,11 @@ export class SignInScreen extends Component {
               signIn(
                 {
                   email,
-                  password
+                  password,
                 },
                 encryptMasterPassword
               )
-                .then(() => navigation.navigate("App"))
+                .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
                 .catch(() => {
                   this.setState({ isLoading: false });
                   let errorMessage =
@@ -83,7 +80,7 @@ export class SignInScreen extends Component {
             icon="account-circle"
             mode="outlined"
             style={Styles.loginSignUpButton}
-            onPress={() => navigation.navigate("SignUp")}
+            onPress={() => navigation.navigate(routes.SIGN_UP)}
           >
             Sign Up
           </Button>
@@ -95,19 +92,16 @@ export class SignInScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    settings: state.settings
+    settings: state.settings,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addError: message => dispatch(addError(message)),
+    addError: (message) => dispatch(addError(message)),
     signIn: (credentials, encryptMasterPassword) =>
-      dispatch(signIn(credentials, encryptMasterPassword))
+      dispatch(signIn(credentials, encryptMasterPassword)),
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignInScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen);

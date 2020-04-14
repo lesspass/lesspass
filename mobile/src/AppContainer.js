@@ -1,86 +1,69 @@
-import React from "react";
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import * as React from "react";
+import { useSelector } from "react-redux";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import AuthStack from "./auth/AuthStack";
-import AuthLoadingScreen from "./auth/AuthLoadingScreen";
-import HelpScreen from "./help/HelpScreen";
+import Theme from "./ui/Theme";
+import LoadingScreen from "./ui/LoadingScreen";
 import PasswordGeneratorScreen from "./password/PasswordGeneratorScreen";
 import SettingsScreen from "./settings/SettingsScreen";
-import Theme from "./ui/Theme";
+import HelpScreen from "./help/HelpScreen";
+import AuthStackScreen from "./auth/AuthStackScreen";
+import SignOutScreen from "./auth/SignOutScreen";
+import routes from "./routes";
 
-const commonTabs = {
-  PasswordGenerator: {
-    screen: PasswordGeneratorScreen,
-    navigationOptions: {
-      title: "LessPass",
-      tabBarIcon: ({ tintColor }) => (
-        <Icon size={20} name="user-secret" style={{ color: tintColor }} />
-      )
-    }
-  },
-  Settings: {
-    screen: SettingsScreen,
-    navigationOptions: {
-      title: "Settings",
-      tabBarIcon: ({ tintColor }) => (
-        <Icon size={20} name="cogs" style={{ color: tintColor }} />
-      )
-    }
-  },
-  Help: {
-    screen: HelpScreen,
-    navigationOptions: {
-      title: "Help",
-      tabBarIcon: ({ tintColor }) => (
-        <Icon size={20} name="question" style={{ color: tintColor }} />
-      )
-    }
+const Tab = createBottomTabNavigator();
+
+function App() {
+  const auth = useSelector((state) => state.auth);
+
+  if (auth.isLoading) {
+    return <LoadingScreen />;
   }
-};
 
-const tabOptions = {
-  initialRouteName: "PasswordGenerator",
-  activeTintColor: Theme.colors.white,
-  inactiveTintColor: Theme.colors.lightBlue,
-  barStyle: { backgroundColor: Theme.colors.primary },
-  labeled: true
-};
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
+            if (route.name === routes.PASSWORD_GENERATOR) {
+              iconName = "user-secret";
+            } else if (route.name === routes.SETTINGS) {
+              iconName = "cogs";
+            } else if (route.name === routes.HELP) {
+              iconName = "question";
+            } else if (route.name === routes.AUTH_STACK) {
+              iconName = "user";
+            } else if (route.name === routes.SIGN_OUT) {
+              iconName = "user";
+            }
+            return (
+              <Icon size={size} name={iconName} style={{ color: color }} />
+            );
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: Theme.colors.white,
+          activeBackgroundColor: Theme.colors.primary,
+          inactiveTintColor: Theme.colors.lightBlue,
+          inactiveBackgroundColor: Theme.colors.primary,
+        }}
+      >
+        <Tab.Screen
+          name={routes.PASSWORD_GENERATOR}
+          component={PasswordGeneratorScreen}
+        />
+        <Tab.Screen name={routes.SETTINGS} component={SettingsScreen} />
+        <Tab.Screen name={routes.HELP} component={HelpScreen} />
+        {auth.jwt == null ? (
+          <Tab.Screen name={routes.AUTH_STACK} component={AuthStackScreen} />
+        ) : (
+          <Tab.Screen name={routes.SIGN_OUT} component={SignOutScreen} />
+        )}
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
 
-const AppNavigator = createMaterialBottomTabNavigator(
-  {
-    ...commonTabs
-  },
-  tabOptions
-);
-
-const AuthNavigator = createMaterialBottomTabNavigator(
-  {
-    ...commonTabs,
-    SignIn: {
-      screen: AuthStack,
-      navigationOptions: {
-        title: "Sign In",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon size={20} name="user" style={{ color: tintColor }} />
-        )
-      }
-    }
-  },
-  tabOptions
-);
-
-const AppContainer = createAppContainer(
-  createSwitchNavigator(
-    {
-      AuthLoading: AuthLoadingScreen,
-      App: AppNavigator,
-      Auth: AuthNavigator
-    },
-    {
-      initialRouteName: "AuthLoading"
-    }
-  )
-);
-
-export default AppContainer;
+export default App;

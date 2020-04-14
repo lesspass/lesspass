@@ -8,6 +8,7 @@ import Styles from "../ui/Styles";
 import { addError } from "../errors/errorsActions";
 import { signUp } from "./authActions";
 import { isEmpty } from "lodash";
+import routes from "../routes";
 
 export class SignUpScreen extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ export class SignUpScreen extends Component {
                 },
                 encryptMasterPassword
               )
-                .then(() => navigation.navigate("App"))
+                .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
                 .catch(error => {
                   this.setState({ isLoading: false });
                   addError(
@@ -74,7 +75,7 @@ export class SignUpScreen extends Component {
             icon="account-circle"
             mode="outlined"
             style={Styles.loginSignUpButton}
-            onPress={() => navigation.navigate("SignIn")}
+            onPress={() => navigation.navigate(routes.SIGN_IN)}
           >
             Sign In
           </Button>

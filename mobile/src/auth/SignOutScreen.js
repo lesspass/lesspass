@@ -1,36 +1,36 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { View, Text } from "react-native";
+import React from "react";
+import { ScrollView } from "react-native";
+import { useDispatch } from "react-redux";
 import { signOut } from "./authActions";
+import Styles from "../ui/Styles";
+import { Title, Button } from "react-native-paper";
+import routes from "../routes";
 
-class SignOutScreen extends Component {
-  constructor(props) {
-    super(props);
-    this._signOut();
-  }
+const SignOutScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  return (
+    <ScrollView
+      style={{
+        flex: 1,
+        paddingTop: 20,
+        paddingHorizontal: 10,
+      }}
+    >
+      <Title style={{ marginBottom: 10 }}>Sign Out</Title>
+      <Button
+        compact
+        icon="account-circle"
+        mode="outlined"
+        style={Styles.loginSignUpButton}
+        onPress={() => {
+          dispatch(signOut());
+          navigation.navigate(routes.PASSWORD_GENERATOR);
+        }}
+      >
+        Sign out
+      </Button>
+    </ScrollView>
+  );
+};
 
-  _signOut = async () => {
-    const { navigation, signOut } = this.props;
-    signOut();
-    navigation.navigate("Auth");
-  };
-
-  render() {
-    return (
-      <View>
-        <Text>Signing out</Text>
-      </View>
-    );
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    signOut: () => dispatch(signOut())
-  };
-}
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignOutScreen);
+export default SignOutScreen;
