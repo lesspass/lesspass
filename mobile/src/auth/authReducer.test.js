@@ -3,36 +3,38 @@ import reducer from "./authReducer";
 describe("auth reducer", () => {
   it("should return the initial state", () => {
     expect(reducer(undefined, {})).toEqual({
-      jwt: null
+      jwt: null,
+      isLoading: false,
     });
   });
   it("SET_JWT", () => {
     expect(
       reducer(
         {
-          jwt: null
+          jwt: null,
         },
         {
           type: "SET_JWT",
-          jwt: "jwt"
+          jwt: "jwt",
         }
       )
     ).toEqual({
-      jwt: "jwt"
+      jwt: "jwt",
     });
   });
   it("CLEAR_JWT", () => {
     expect(
       reducer(
         {
-          jwt: "jwt"
+          jwt: "jwt",
         },
         {
-          type: "CLEAR_JWT"
+          type: "CLEAR_JWT",
         }
       )
     ).toEqual({
-      jwt: null
+      jwt: null,
+      isLoading: false,
     });
   });
 });

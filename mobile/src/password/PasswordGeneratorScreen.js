@@ -37,11 +37,10 @@ export class PasswordGeneratorScreen extends Component {
   }
 
   componentDidMount() {
-    const { auth, getPasswordProfiles, signOut, navigation } = this.props;
+    const { auth, getPasswordProfiles, signOut } = this.props;
     if (auth.jwt) {
       getPasswordProfiles().catch(() => {
         signOut();
-        navigation.navigate("Auth");
       });
     }
   }

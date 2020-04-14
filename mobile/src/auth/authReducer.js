@@ -1,8 +1,9 @@
 const initialState = {
-  jwt: null
+  jwt: null,
+  isLoading: false,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case "SET_JWT":
       return { ...state, jwt: action.jwt };
