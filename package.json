@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "9.1.5",
+  "version": "9.1.6",
   "description": "LessPass mono repo",
   "repository": "https://github.com/lesspass/lesspass",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
