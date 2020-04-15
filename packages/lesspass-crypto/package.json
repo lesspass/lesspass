@@ -1,6 +1,6 @@
 {
   "name": "lesspass-crypto",
-  "version": "9.1.5",
+  "version": "9.1.6",
   "description": "LessPass cryptographic functions",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
