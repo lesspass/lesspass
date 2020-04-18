@@ -71,7 +71,7 @@ export default class AutocompleteSite extends Component {
               top: 64,
               left: 0,
               right: 0,
-              zIndex: 2
+              zIndex: 5
             }}
           >
             {highlightedItems.map((highlightedItem, i) => {
