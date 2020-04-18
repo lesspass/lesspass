@@ -157,6 +157,7 @@ export class PasswordGeneratorScreen extends Component {
       >
         <View style={{ flex: 1 }}>
           <ScrollView
+            keyboardShouldPersistTaps="always"
             style={{
               flex: 1,
               padding: 12,
