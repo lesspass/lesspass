@@ -24,7 +24,7 @@ def get_system_copy_command():
     if os.getenv("WAYLAND_DISPLAY") is not None and _copy_available("wl-copy"):
         return "wl-copy"
 
-    for command in ["xsel", "xclip"]:
+    for command in ["xsel", "xclip", "termux-clipboard-set"]:
         if _copy_available(command):
             return command
 
@@ -39,6 +39,7 @@ commands = {
     "wl-copy": ["wl-copy"],
     "xsel": ["xsel", "--clipboard", "--input"],
     "xclip": ["xclip", "-selection", "clipboard"],
+    "termux-clipboard-set": ["termux-clipboard-set"],
 }
 
 
