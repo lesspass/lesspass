@@ -3,7 +3,7 @@ import { generatePassword } from "../password/passwordGenerator";
 
 export function setJWT(jwt) {
   return {
-    type: "SET_JWT",
+    type: "LOG_IN",
     jwt
   };
 }
@@ -77,6 +77,6 @@ export function signUp(credentials, encryptCredentials) {
 
 export function signOut() {
   return {
-    type: "CLEAR_JWT"
+    type: "LOG_OUT"
   };
 }

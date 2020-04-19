@@ -4,17 +4,16 @@ describe("auth reducer", () => {
   it("should return the initial state", () => {
     expect(reducer(undefined, {})).toEqual({
       jwt: null,
-      isLoading: false,
     });
   });
-  it("SET_JWT", () => {
+  it("LOG_IN", () => {
     expect(
       reducer(
         {
           jwt: null,
         },
         {
-          type: "SET_JWT",
+          type: "LOG_IN",
           jwt: "jwt",
         }
       )
@@ -22,19 +21,18 @@ describe("auth reducer", () => {
       jwt: "jwt",
     });
   });
-  it("CLEAR_JWT", () => {
+  it("LOG_OUT", () => {
     expect(
       reducer(
         {
           jwt: "jwt",
         },
         {
-          type: "CLEAR_JWT",
+          type: "LOG_OUT",
         }
       )
     ).toEqual({
       jwt: null,
-      isLoading: false,
     });
   });
 });
