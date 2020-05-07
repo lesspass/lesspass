@@ -1,0 +1,29 @@
+name: deploy-packages
+
+on:
+  push:
+    paths:
+    - 'packages/**'
+
+jobs:
+  test-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test packages
+        run: |
+          yarn install
+          yarn test
+
+  deploy-packages:
+    runs-on: ubuntu-latest
+    needs: test-packages
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy packages
+        run: |
+          cd packages
+          ./deploy
+        continue-on-error: true
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -21,7 +21,7 @@ function push_packages_on_npm {
     projects="lesspass lesspass-crypto lesspass-entropy lesspass-fingerprint lesspass-pure lesspass-render-password"
     for project in ${projects}
     do
-        pushd packages/${project}
+        pushd ${project}
         yarn publish --non-interactive
         popd
     done
