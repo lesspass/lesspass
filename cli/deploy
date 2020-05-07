@@ -16,12 +16,10 @@ set -o pipefail
 set -o nounset
 
 function push_cli_on_pypi {
-    pushd cli
     python -m pip install --upgrade pip
     pip install setuptools wheel twine
     python setup.py sdist bdist_wheel
     twine upload dist/*
-    popd
 }
 
 push_cli_on_pypi

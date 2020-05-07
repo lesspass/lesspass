@@ -1,0 +1,35 @@
+name: deploy-cli
+
+on:
+  push:
+    paths:
+      - 'cli/lesspass/version.py'
+
+jobs:
+  test-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.6'
+      - name: test cli
+        run: |
+          cd cli
+          ./test
+  deploy-cli:
+    runs-on: ubuntu-latest
+    needs: test-cli
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.6'
+      - name: deploy cli
+        run: |
+          cd cli
+          ./deploy
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+

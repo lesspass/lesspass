@@ -9,7 +9,7 @@ jobs:
   deploy-containers:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: deploy containers
         run: |
           ./bin/deploy_containers
@@ -20,32 +20,17 @@ jobs:
   deploy-node-modules:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: deploy node modules
         run: |
           ./bin/deploy_node_modules
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  deploy-cli:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.x'
-      - name: deploy cli
-        run: |
-          ./bin/deploy_cli
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-
   deploy-web-extensions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: deploy web extensions
         run: |
           ./bin/deploy_web_extensions
