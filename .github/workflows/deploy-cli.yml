@@ -3,7 +3,7 @@ name: deploy-cli
 on:
   push:
     paths:
-      - 'cli/lesspass/version.py'
+      - "cli/lesspass/version.py"
 
 jobs:
   test-cli:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
         with:
-          python-version: '3.6'
+          python-version: "3.6"
       - name: test cli
         run: |
           cd cli
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
         with:
-          python-version: '3.6'
+          python-version: "3.6"
       - name: deploy cli
         run: |
           cd cli
@@ -32,4 +32,3 @@ jobs:
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-

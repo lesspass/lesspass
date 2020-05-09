@@ -3,7 +3,7 @@ name: deploy-packages
 on:
   push:
     paths:
-    - 'packages/**'
+      - "packages/**"
 
 jobs:
   test-packages:

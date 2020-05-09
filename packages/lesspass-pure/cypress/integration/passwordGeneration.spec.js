@@ -130,6 +130,7 @@ describe("Password Generation", function() {
   });
   it("should generate password with 2 tabs and enter", function() {
     cy.visit("/");
+    cy.wait(500);
     cy.get("#siteField")
       .type("lesspass.com")
       .tab()

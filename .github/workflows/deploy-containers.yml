@@ -3,7 +3,7 @@ name: deploy-containers
 on:
   push:
     paths:
-    - 'containers/**'
+      - "containers/**"
 
 jobs:
   test-containers:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: test containers
         run: |
-          cd container
+          cd containers
           ./test
 
   deploy-containers:

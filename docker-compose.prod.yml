@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 services:
   db:
     restart: always
@@ -6,14 +6,14 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: 'postgres'
-      POSTGRES_USER: 'postgres'
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
   backend:
     restart: always
     image: lesspass/backend:latest
     expose:
-      - '8000'
+      - "8000"
     volumes:
       - www:/backend/www
     links:
@@ -21,11 +21,11 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_ENGINE: 'django.db.backends.postgresql'
-      DATABASE_NAME: 'postgres'
-      DATABASE_USER: 'postgres'
-      DATABASE_HOST: 'db'
-      DATABASE_PORT: '5432'
+      DATABASE_ENGINE: "django.db.backends.postgresql"
+      DATABASE_NAME: "postgres"
+      DATABASE_USER: "postgres"
+      DATABASE_HOST: "db"
+      DATABASE_PORT: "5432"
   frontend:
     restart: always
     image: lesspass/frontend:latest
@@ -33,8 +33,8 @@ services:
     restart: always
     image: lesspass/nginx:letsencrypt
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     volumes_from:
       - backend
     volumes:
