@@ -2,7 +2,7 @@ version: "3"
 services:
   db:
     restart: always
-    image: postgres:9.5
+    image: postgres:10
     volumes:
       - postgresql:/var/lib/postgresql/data
     environment:
@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD
   backend:
     restart: always
-    image: quay.io/lesspass/lesspass-backend:latest
+    image: quay.io/lesspass/backend:latest
     links:
       - db
     environment:
@@ -35,10 +35,10 @@ services:
       - www:/app/www
   frontend:
     restart: always
-    image: quay.io/lesspass/lesspass-frontend:latest
+    image: quay.io/lesspass/frontend:latest
   webserver:
     restart: always
-    image: quay.io/lesspass/lesspass-webserver:latest
+    image: quay.io/lesspass/webserver:latest
     ports:
       - 80:80
       - 443:443

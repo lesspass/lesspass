@@ -2,29 +2,30 @@
 
 # LessPass
 
-LessPass is an open-source password manager. Generate complex, secure passwords for any website or service, without saving them!
+LessPass is a stateless password manager.
 
-Visit our website at https://lesspass.com
+Stop wasting your time synchronizing your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed. Try the demo at [www.lesspass.com](https://www.lesspass.com).
 
-## WIP
+## Affiliate link
 
-:warning: We are reorganizing the repository. This work is not finished yet.
+LessPass servers are hosted on Vultr. Create an account on Vultr and receive \$100 to test their platform.
+
+[![Vultr Banner](https://www.vultr.com/media/banners/banner_728x90.png)](https://www.vultr.com/?ref=6830452)
 
 ## How does it work?
 
- * :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
- * :fr: [LessPass - comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
- * :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/lesspass-wie-funktioniert-das-9483e5fc2c09)
- * :it: [LessPass - Come funziona?](https://blog.lesspass.com/lesspass-come-funziona-5d1785b4a564)
-
+- :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
+- :fr: [LessPass - comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
+- :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/lesspass-wie-funktioniert-das-9483e5fc2c09)
+- :it: [LessPass - Come funziona?](https://blog.lesspass.com/lesspass-come-funziona-5d1785b4a564)
 
 ## Videos
 
- * :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=ha9jJJAjHq4)
+- :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=ha9jJJAjHq4)
 
 ## Podcast
 
- * :gb: [Ask Noah show interview](https://podcast.asknoahshow.com/114)
+- :gb: [Ask Noah show interview](https://podcast.asknoahshow.com/114)
 
 ## CLI
 
