@@ -7,13 +7,7 @@ function check_env_variables_are_setted {
     fi
 }
 
-set +o errexit
-
 check_env_variables_are_setted
-
-set -o errexit
-set -o pipefail
-set -o nounset
 
 function push_packages_on_npm {
     touch ~/.npmrc
