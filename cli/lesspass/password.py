@@ -19,7 +19,6 @@
 
 
 import hashlib
-import binascii
 
 CHARACTER_SUBSETS = {
     "lowercase": "abcdefghijklmnopqrstuvwxyz",
@@ -35,11 +34,10 @@ def _calc_entropy(password_profile, master_password):
         + password_profile["login"]
         + hex(password_profile["counter"])[2:]
     )
-    return binascii.hexlify(
-        hashlib.pbkdf2_hmac(
-            "sha256", master_password.encode("utf-8"), salt.encode("utf-8"), 100000, 32
-        )
-    )
+    hex_entropy = hashlib.pbkdf2_hmac(
+        "sha256", master_password.encode("utf-8"), salt.encode("utf-8"), 100000, 32
+    ).hex()
+    return int(hex_entropy, 16)
 
 
 def _get_set_of_characters(rules=None):
@@ -93,7 +91,7 @@ def _render_password(entropy, password_profile):
     rules = _get_configured_rules(password_profile)
     set_of_characters = _get_set_of_characters(rules)
     password, password_entropy = _consume_entropy(
-        "", int(entropy, 16), set_of_characters, password_profile["length"] - len(rules)
+        "", entropy, set_of_characters, password_profile["length"] - len(rules)
     )
     characters_to_add, character_entropy = _get_one_char_per_rule(
         password_entropy, rules

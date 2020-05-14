@@ -83,6 +83,22 @@ class TestPassword(unittest.TestCase):
             generate_password(profile, master_password), "XFt0F*,r619:+}[."
         )
 
+    def test_generate_password_unicode(self):
+        profile = {
+            "site": "♥ LessPass ♥",
+            "login": "test@example.org",
+            "lowercase": True,
+            "uppercase": True,
+            "digits": True,
+            "symbols": True,
+            "length": 16,
+            "counter": 1,
+        }
+        master_password = "password"
+        self.assertEqual(
+            generate_password(profile, master_password), "BH$>U5Lj7v9A1wB/"
+        )
+
     def test_calc_entropy(self):
         password_profile = {
             "site": "example.org",
@@ -93,7 +109,7 @@ class TestPassword(unittest.TestCase):
 
         self.assertEqual(
             password._calc_entropy(password_profile, master_password),
-            b"dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e",
+            99600400399777174105034830393873797761817714609490038944205586760025858632478,
         )
 
     def test_get_configured_rules_empty_when_no_rules_in_profile(self):
@@ -197,4 +213,3 @@ class TestPassword(unittest.TestCase):
         self.assertEqual(
             password._render_password(entropy, password_profile), "gsrwvjl03d0asn"
         )
-
