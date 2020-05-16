@@ -7,8 +7,6 @@ services:
     restart: "no"
     build:
       context: ./frontend
-      args:
-        - REACT_APP_BACKEND_HOST=${REACT_APP_BACKEND_HOST}
   webserver:
     restart: "no"
     build: ./webserver
