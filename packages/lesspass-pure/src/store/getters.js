@@ -1,5 +1,4 @@
 import btoa from "@oslab/btoa";
-import { defaultOptions } from "./defaultPassword";
 
 export const isAuthenticated = state => state.authenticated;
 
