@@ -37,6 +37,10 @@ Usage:
 
     lesspass --help
 
+## Special Thank you
+
+Based on an original idea from [masterpassword app](https://masterpassword.app/) :heart:
+
 ## License
 
 This project is licensed under the terms of the GNU GPLv3.
