@@ -1,6 +1,6 @@
 {
   "name": "lesspass",
-  "version": "9.1.9",
+  "version": "9.2.0",
   "description": "LessPass core module",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
