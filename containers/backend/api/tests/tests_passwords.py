@@ -4,13 +4,13 @@ from api import models
 from api.tests import factories
 
 
-class LogoutApiTestCase(APITestCase):
+class LogoutPasswordsTestCase(APITestCase):
     def test_get_passwords_401(self):
         response = self.client.get('/api/passwords/')
         self.assertEqual(401, response.status_code)
 
 
-class LoginApiTestCase(APITestCase):
+class LoginPasswordsTestCase(APITestCase):
     def setUp(self):
         self.user = factories.UserFactory()
         self.client = APIClient()
