@@ -95,12 +95,3 @@ target 'LessPass' do
     flipper_post_install(installer)
   end
 end
-
-target 'LessPass-tvOS' do
-  # Pods for LessPass-tvOS
-
-  target 'LessPass-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end
