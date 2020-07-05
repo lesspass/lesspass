@@ -15,7 +15,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "postinstall": "node ./scripts/postInstall.js"
+    "postinstall": "pod-install",
+    "clean": "react-native-clean-project"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.9.0",
@@ -46,14 +47,16 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/runtime": "^7.9.2",
-    "@react-native-community/eslint-config": "^1.0.0",
-    "babel-jest": "^25.3.0",
-    "eslint": "^6.8.0",
-    "jest": "^25.3.0",
-    "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1"
+    "@babel/core": "^7.10.4",
+    "@babel/runtime": "^7.10.4",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.1.0",
+    "eslint": "^7.4.0",
+    "jest": "^26.1.0",
+    "metro-react-native-babel-preset": "^0.60.0",
+    "pod-install": "^0.1.8",
+    "react-native-clean-project": "^3.3.0",
+    "react-test-renderer": "16.11.0"
   },
   "jest": {
     "preset": "react-native"
