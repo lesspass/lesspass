@@ -72,34 +72,4 @@ If you have any questions, create an [issue](issue). Protip: do a quick search f
 
 You can also reach the core contributors at contact@lesspass.com
 
-## Credits
-
-### Contributors
-
-Thank you to all the people who have already contributed to LessPass!
-[![Contributors list](https://opencollective.com/lesspass/contributors.svg?width=890)](https://github.com/lesspass/lesspass/graphs/contributors)
-
-### Backers
-
-Thank you to all our backers! [Become a backer on Open Collective](https://opencollective.com/lesspass#backer).
-
-<a href="https://opencollective.com/lesspass#backers" target="_blank">![Backers list](https://opencollective.com/lesspass/backers.svg?width=890)</a>
-
-### Sponsors
-
-Thank you to all our sponsors!
-
-<a href="https://opencollective.com/lesspass/sponsor/0/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/1/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/2/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/3/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/4/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/5/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/6/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/7/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/8/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/lesspass/sponsor/9/website" target="_blank"><img src="https://opencollective.com/lesspass/sponsor/9/avatar.svg"></a>
-
-Are you a member of a company or organization that might be willing to sponsor LessPass? Please ask them to consider supporting this open source project by [becoming a sponsor](https://opencollective.com/lesspass#sponsor)!
-
 <!-- This `CONTRIBUTING.md` is based on @nayafia's template https://github.com/nayafia/contributing-template -->
