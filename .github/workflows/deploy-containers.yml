@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "containers/**"
+      - "packages/lesspass-site/**"
 
 jobs:
   test-containers:
