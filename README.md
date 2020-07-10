@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lesspass/lesspass/workflows/test/badge.svg)](https://github.com/lesspass/lesspass/actions) [![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](CONTRIBUTING.md#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](CONTRIBUTING.md#sponsors)
+[![Actions Status](https://github.com/lesspass/lesspass/workflows/test/badge.svg)](https://github.com/lesspass/lesspass/actions)
 
 # LessPass
 
@@ -47,13 +47,25 @@ This project is licensed under the terms of the GNU GPLv3.
 
 [LessPass mobile](https://github.com/lesspass/lesspass/tree/master/mobile) is bi-licensed under both the Mozilla Public License Version 2 as well as the GNU GPLv3.
 
-## Contributors :heart:
+## Contributors
 
-This project exists thanks to all of the people who contribute. [You can help too! There are many ways to help make LessPass better.](CONTRIBUTING.md)
+This project exists thanks to all of the people who contribute.
+
+[You can help too! There are many ways to help make LessPass better.](CONTRIBUTING.md)
+
 [![Contributors list](https://opencollective.com/lesspass/contributors.svg?width=890)](https://github.com/lesspass/lesspass/graphs/contributors)
 
-## Backers :heart:
+## Backers
 
-Thank you to all our backers! [Become a backer on Open Collective](https://opencollective.com/lesspass#backer).
+Thank you to all our backers!
+
+[Become a backer on Open Collective](https://opencollective.com/lesspass#backer).
 
 <a href="https://opencollective.com/lesspass#backers" target="_blank">![Backers list](https://opencollective.com/lesspass/backers.svg?width=890)</a>
+
+
+## Sponsors
+
+There is no sponsor for now
+
+Are you a member of a company or organization that might be willing to sponsor LessPass? Please ask them to consider supporting this open source project by [becoming a sponsor](https://opencollective.com/lesspass#sponsor)!
