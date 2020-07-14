@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_DB
       - POSTGRES_USER
-      - POSTGRES_PASSWORD
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
   backend:
     restart: always
     image: quay.io/lesspass/backend:latest
@@ -32,7 +32,7 @@ services:
       - EMAIL_PORT
       - EMAIL_USE_TLS
     volumes:
-      - www:/app/www
+      - www:/opt/backend/www
   frontend:
     restart: always
     image: quay.io/lesspass/frontend:latest
