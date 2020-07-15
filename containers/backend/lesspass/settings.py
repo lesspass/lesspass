@@ -150,6 +150,8 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
+SITE_NAME = "LessPass"
+DOMAIN = env("FRONTEND_HOST", default="www.lesspass.com")
 
 class DisableMigrations(object):
     def __contains__(self, item):
