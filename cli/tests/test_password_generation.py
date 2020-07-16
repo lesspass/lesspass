@@ -154,6 +154,12 @@ class TestPassword(unittest.TestCase):
             "abcdefghijklmnopqrstuvwxyz0123456789",
         )
 
+    def test_get_set_of_characters_with_several_rules_and_exclude(self):
+        self.assertEqual(
+            password._get_set_of_characters(["lowercase", "digits"], 'iy4!'),
+            "abcdefghjklmnopqrstuvwxz012356789",
+        )
+
     def test_consume_entropy(self):
         entropy = b"dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e"
 

@@ -8,6 +8,7 @@ def create_profile(args):
         "counter": args.counter,
         "site": args.site,
         "login": args.login or "",
+        "exclude": args.exclude or "",
     }
     if args.l or args.u or args.d or args.s:
         profile["lowercase"] = args.l
