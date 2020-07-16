@@ -20,6 +20,8 @@
 
 import hashlib
 
+from lesspass import exceptions
+
 CHARACTER_SUBSETS = {
     "lowercase": "abcdefghijklmnopqrstuvwxyz",
     "uppercase": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -40,7 +42,14 @@ def _calc_entropy(password_profile, master_password):
     return int(hex_entropy, 16)
 
 
-def _get_set_of_characters(rules=None):
+def _remove_excluded_chars(string, exclude):
+    new_string = "".join(c for c in string if c not in exclude)
+    if len(new_string) == 0:
+        raise exceptions.ExcludeAllCharsAvailable
+    return new_string
+
+
+def _get_set_of_characters(rules=None, exclude=""):
     if rules is None:
         return (
             CHARACTER_SUBSETS["lowercase"]
@@ -48,10 +57,10 @@ def _get_set_of_characters(rules=None):
             + CHARACTER_SUBSETS["digits"]
             + CHARACTER_SUBSETS["symbols"]
         )
-    set_of_chars = ""
+    pool_of_chars = ""
     for rule in rules:
-        set_of_chars += CHARACTER_SUBSETS[rule]
-    return set_of_chars
+        pool_of_chars += CHARACTER_SUBSETS[rule]
+    return _remove_excluded_chars(pool_of_chars, exclude)
 
 
 def _consume_entropy(generated_password, quotient, set_of_characters, max_length):
@@ -72,10 +81,11 @@ def _insert_string_pseudo_randomly(generated_password, entropy, string):
     return generated_password
 
 
-def _get_one_char_per_rule(entropy, rules):
+def _get_one_char_per_rule(entropy, rules, exclude=""):
     one_char_per_rules = ""
     for rule in rules:
-        value, entropy = _consume_entropy("", entropy, CHARACTER_SUBSETS[rule], 1)
+        available_chars = _remove_excluded_chars(CHARACTER_SUBSETS[rule], exclude)
+        value, entropy = _consume_entropy("", entropy, available_chars, 1)
         one_char_per_rules += value
     return [one_char_per_rules, entropy]
 
@@ -89,12 +99,15 @@ def _get_configured_rules(password_profile):
 
 def _render_password(entropy, password_profile):
     rules = _get_configured_rules(password_profile)
-    set_of_characters = _get_set_of_characters(rules)
+    excluded_chars = (
+        password_profile["exclude"] if "exclude" in password_profile else ""
+    )
+    set_of_characters = _get_set_of_characters(rules, excluded_chars)
     password, password_entropy = _consume_entropy(
         "", entropy, set_of_characters, password_profile["length"] - len(rules)
     )
     characters_to_add, character_entropy = _get_one_char_per_rule(
-        password_entropy, rules
+        password_entropy, rules, excluded_chars
     )
     return _insert_string_pseudo_randomly(
         password, character_entropy, characters_to_add

@@ -81,6 +81,11 @@ def parse_args(args):
         action="store_true",
         help="copy the password to clipboard",
     )
+    parser.add_argument(
+        "--exclude",
+        default=None,
+        help="exclude char from generated password",
+    )
 
     lowercase_group = parser.add_mutually_exclusive_group()
     lowercase_group.add_argument(

@@ -105,3 +105,12 @@ class TestParseArgs(unittest.TestCase):
 
     def test_parse_args_prompt_short(self):
         self.assertTrue(parse_args(["-p"]).prompt)
+
+    def test_parse_args_exclude_default(self):
+        self.assertEqual(parse_args(["site"]).exclude, None)
+
+    def test_parse_args_exclude(self):
+        self.assertEqual(parse_args(["site", "--exclude", "!@$*+-"]).exclude, "!@$*+-")
+
+    def test_parse_args_exclude_single_and_double_quote(self):
+        self.assertEqual(parse_args(["site", "--exclude", "\"'"]).exclude, "\"'")
