@@ -29,7 +29,7 @@
     "fuse.js": "^3.4.5",
     "lesspass-fingerprint": "^9.1.4",
     "lesspass-render-password": "^9.1.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "memoize-one": "^5.1.1",
     "react": "16.11.0",
     "react-native": "0.62.2",
