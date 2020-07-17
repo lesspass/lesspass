@@ -1,0 +1,29 @@
+name: deploy-lesspass-entropy-package
+
+on:
+  push:
+    paths:
+      - "packages/lesspass-entropy/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test lesspass-entropy package
+        run: |
+          yarn install
+          yarn workspace lesspass-entropy run test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy lesspass-entropy package
+        run: |
+          cd packages
+          ./deploy lesspass-entropy
+        continue-on-error: true
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
