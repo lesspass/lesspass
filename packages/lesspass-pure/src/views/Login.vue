@@ -107,7 +107,8 @@ export default {
         const baseURL = this.baseURL;
         User.login({ email: this.email, password: this.password }, { baseURL })
           .then(response => {
-            this.$store.dispatch("login", { token: response.token, baseURL });
+            this.$store.dispatch("login", response.data);
+            this.$store.dispatch("setBaseURL", { baseURL });
             this.$router.push({ name: "home" });
           })
           .catch(err => {

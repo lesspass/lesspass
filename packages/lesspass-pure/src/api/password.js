@@ -4,7 +4,7 @@ export default {
   addAuthorizationHeader(config) {
     return {
       ...config,
-      headers: { Authorization: `JWT ${config.token}` }
+      headers: { Authorization: `Bearer ${config.access_token}` }
     };
   },
   all(config) {

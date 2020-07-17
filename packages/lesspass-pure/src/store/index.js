@@ -15,7 +15,8 @@ const state = {
   message: "",
   defaultPassword: defaultPassword,
   showOptions: false,
-  token: null,
+  access_token: null,
+  refresh_token: null,
   baseURL: "https://lesspass.com"
 };
 
@@ -27,7 +28,7 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState({
       key: "lesspass",
-      paths: ["token", "baseURL", "authenticated", "defaultPassword"]
+      paths: ["access_token", "refresh_token", "baseURL", "authenticated", "defaultPassword"]
     })
   ]
 });
