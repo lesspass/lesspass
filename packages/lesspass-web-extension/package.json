@@ -7,7 +7,7 @@
   "scripts": {
     "start": "cd extension && web-ext run",
     "test": "echo 0",
-    "release": "npm run release:cws && npm run release:amo",
+    "release": "npm run release:amo && npm run release:cws",
     "release:amo": "cd extension && web-ext-submit",
     "release:cws": "cd extension && webstore upload --auto-publish"
   },
