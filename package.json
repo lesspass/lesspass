@@ -60,7 +60,7 @@
     "vue-polyglot-utils": "^0.1.1",
     "vue-template-compiler": "^2.6.10",
     "walk": "^2.3.14",
-    "web-ext": "^3.2.0",
+    "web-ext": "^4.3.0",
     "web-ext-submit": "^3.1.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6",
