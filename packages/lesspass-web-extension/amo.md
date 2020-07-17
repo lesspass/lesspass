@@ -2,19 +2,24 @@
 
 ## Verify the web extension
 
-The web extension is just a wrapper around lesspass-pure on npm
+The web extension is just a wrapper around lesspass-pure on npm.
+Source file correspond to the zip downloaded on http://github.com/lesspass/lesspass/archive/${sha256}.zip.
+{sha256} is the git sha256 use when build was done.
 
-node --version: v10.15.0
-yarn --version: v1.16.0
+## requirements
 
-## Rebuild the web extension with sources
+To rebuild the web extension, you need node, yarn and md5sum to check the md5 sum of the files
 
-untar src and install dependencies
+Tested with:
 
-    yarn install
-    ./bin/build_web_extensions
-    cd packages/lesspass-web-extension/build
-    find . -type f -exec md5sum {} \;
+ * node version 12.16.3
+ * yarn version 1.22.4
+ * md5sum (GNU coreutils) version 8.32
+
+## unzip source {sha256}.zip
+
+    unzip {sha256}.zip -d /tmp
+    cd /tmp/lesspass-{sha256}
 
 ## Reproduce lesspass.min.js and dist folder with sources
 
