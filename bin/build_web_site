@@ -97,7 +97,7 @@ function build {
 function commit_and_push {
     git add .
     git commit --message="Auto build for lesspass-site"
-    #git push
+    git push
 }
 
 current_version=$( grep -Po '(?<="version": ")[^"]*' packages/lesspass-site/package.json )
