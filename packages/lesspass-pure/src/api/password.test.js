@@ -4,7 +4,7 @@ import Passwords from "./password";
 
 const mock = new MockAdapter(axios);
 
-const config = { baseURL: "https://lesspass.com", token: "abc" };
+const config = { baseURL: "https://lesspass.com", access_token: "abc" };
 
 test("Passwords.create", () => {
   const password = { login: "text@example.org" };

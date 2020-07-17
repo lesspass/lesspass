@@ -43,12 +43,14 @@ test("LOGIN", () => {
   expect(state.authenticated).toBe(true);
 });
 
-test("SET_TOKEN", () => {
-  const token = "123456";
-  const SET_TOKEN = mutations[types.SET_TOKEN];
+test("SET_TOKENS", () => {
+  const access_token = "123456";
+  const refresh_token = "7890"
+  const SET_TOKENS = mutations[types.SET_TOKENS];
   const state = { token: null };
-  SET_TOKEN(state, { token });
-  expect(state.token).toBe(token);
+  SET_TOKENS(state, { access_token, refresh_token });
+  expect(state.access_token).toBe(access_token);
+  expect(state.refresh_token).toBe(refresh_token);
 });
 
 test("SET_PASSWORD", () => {

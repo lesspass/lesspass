@@ -4,8 +4,9 @@ export default {
   [types.LOGIN](state) {
     state.authenticated = true;
   },
-  [types.SET_TOKEN](state, { token }) {
-    state.token = token;
+  [types.SET_TOKENS](state, { refresh_token, access_token }) {
+    state.refresh_token = refresh_token;
+    state.access_token = access_token
   },
   [types.LOGOUT](state) {
     state.authenticated = false;

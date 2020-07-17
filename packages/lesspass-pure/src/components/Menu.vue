@@ -59,11 +59,11 @@
     methods: {
       fullReload() {
         this.$store.dispatch('resetPassword');
-        this.$router.push({name: 'home'});
+        this.$router.push({name: 'home'}).catch(e => {});
       },
       logout() {
         this.$store.dispatch('logout');
-        this.$router.push({name: 'home'});
+        this.$router.push({name: 'home'}).catch(e => {});
       },
       saveOrUpdatePassword() {
         this.$store.dispatch('saveOrUpdatePassword');

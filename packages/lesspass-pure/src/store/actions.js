@@ -1,17 +1,7 @@
 import Password from "../api/password";
-import User from "../api/user";
 import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
 import defaultPasswordProfile from "./defaultPassword";
-
-export const refreshToken = ({ commit, state }) => {
-  const token = state.token;
-  if (token) {
-    User.requestNewToken({ token }, { baseURL: state.baseURL })
-      .then(newToken => commit(types.SET_TOKEN, { token: newToken }))
-      .catch(() => commit(types.LOGOUT));
-  }
-};
 
 export const saveDefaultOptions = ({ commit }, payload) => {
   commit(types.SET_DEFAULT_OPTIONS, payload);
@@ -37,9 +27,12 @@ export const resetPassword = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 
-export const login = ({ commit }, payload) => {
-  commit(types.SET_BASE_URL, payload);
-  commit(types.SET_TOKEN, payload);
+export const setBaseURL = ({ commit }, { baseURL }) => {
+  commit(types.SET_BASE_URL, { baseURL });
+};
+
+export const login = ({ commit }, { access, refresh }) => {
+  commit(types.SET_TOKENS, { access_token: access, refresh_token: refresh });
   commit(types.LOGIN);
 };
 
