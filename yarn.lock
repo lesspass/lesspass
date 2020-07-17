@@ -1285,12 +1285,12 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@oslab/atob@0.1.0", "@oslab/atob@^0.1.0":
+"@oslab/atob@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@oslab/atob/-/atob-0.1.0.tgz#469d32266bfbf83496e5ef0c5ac8fbe90716c30c"
   integrity sha512-WCyYRySdkc2OWNdsx5s7wPzUFdbOe0ivSWtkDbQE/klj4gCCcVPyjsFB9V9rarTAP9zc1pxC2Y3ACOGudqKw3g==
 
-"@oslab/btoa@0.1.0", "@oslab/btoa@^0.1.0":
+"@oslab/btoa@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@oslab/btoa/-/btoa-0.1.0.tgz#b38e9cf1120dc9cf91fc5400654fec419864aee8"
   integrity sha512-6f5wwOkOuka5brUjKi5NUENvBp0LesYNNhBBugbVxZcqAgLTzea+6L1dl3ZKIhDE0fi86AuqWDtkb93+fLlSsg==
@@ -2622,7 +2622,7 @@ autoprefixer@^9.5.1:
     postcss "^7.0.18"
     postcss-value-parser "^4.0.2"
 
-awesomplete@^1.1.4, awesomplete@^1.1.5:
+awesomplete@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/awesomplete/-/awesomplete-1.1.5.tgz#1b2b5dd106d3955595619c03da472a1dc0faf0af"
   integrity sha512-UFw1mPW8NaSECDSTC36HbAOTpF9JK2wBUJcNn4MSvlNtK7SZ9N72gB+ajHtA6D1abYXRcszZnBA4nHBwvFwzHw==
@@ -2840,7 +2840,7 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
-balloon-css@^1.0.2, balloon-css@^1.0.3:
+balloon-css@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/balloon-css/-/balloon-css-1.0.3.tgz#496ccb131b642e89cd8cfc4378c68dc6d0a5e2c2"
   integrity sha512-683Qvn+KaHpEOdyB1PZgyOLf3IXL5HFxUfpbayIGRevmjiyoOTAhPcK2+zpWfZ1sKf83pl7mQdQI9ddkKA1f8A==
@@ -4164,7 +4164,7 @@ copy-props@^2.0.1:
     each-props "^1.3.0"
     is-plain-object "^2.0.1"
 
-copy-text-to-clipboard@^2.0.0, copy-text-to-clipboard@^2.1.1:
+copy-text-to-clipboard@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/copy-text-to-clipboard/-/copy-text-to-clipboard-2.1.1.tgz#5340e8620976d2dd9de0ff11493d13a80d600fd2"
   integrity sha512-oSuMj4ArDGSLcLPsDhzWOhalzOVV0ErCHNfZNNr+spC+iWJ6PVSLzPPrJw/rcdFZyOhugn8iw6O0nrpY/ZrEMg==
@@ -6338,7 +6338,7 @@ follow-redirects@^1.0.0:
   dependencies:
     debug "^3.0.0"
 
-font-awesome@4.7.0, font-awesome@^4.7.0:
+font-awesome@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
   integrity sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=
@@ -8793,7 +8793,7 @@ jws@^3.1.4:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
 
-jwt-decode@2.2.0, jwt-decode@^2.2.0:
+jwt-decode@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-2.2.0.tgz#7d86bd56679f58ce6a84704a657dd392bba81a79"
   integrity sha1-fYa9VmefWM5qhHBKZX3TkruoGnk=
@@ -8972,25 +8972,6 @@ left-pad@^1.3.0:
   resolved "https://registry.yarnpkg.com/left-pad/-/left-pad-1.3.0.tgz#5b8a3a7765dfe001261dde915589e782f8c94d1e"
   integrity sha512-XI5MPzVNApjAyhQzphX8BkmKsKUxD4LdyK24iZeQGinBN9yTQT3bFlCBy/aVx2HrNcqQGsdot8ghrjyrvMCoEA==
 
-lesspass-crypto@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/lesspass-crypto/-/lesspass-crypto-9.0.0.tgz#11bd5a4c22d67b139412af7760647b280d5225fd"
-  integrity sha512-c2oEEOSx2+w+aGGoCsEVNK+yDw6yVLy2uEFExlMK2ANPzP2VDNtXl7JZizuEeVsGS9MO8A67dSYm/EWLtDsZ5A==
-
-lesspass-entropy@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/lesspass-entropy/-/lesspass-entropy-9.0.0.tgz#58201ad4242643c0b0097466202b6fd731d8310e"
-  integrity sha512-apX/BL3vdr9VvRm5lIVn8Pl17IIAnzuoAbFAN3Sf7jWiK7jCfbLMvN+yjtv2/Vnxqop4NX42oMq9fynMb1/cKw==
-  dependencies:
-    lesspass-crypto "9.0.0"
-
-lesspass-fingerprint@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/lesspass-fingerprint/-/lesspass-fingerprint-9.0.0.tgz#ffaf20dda04eb9c6b9f98e2110852d827618a34a"
-  integrity sha512-pguc6+hF8iXCTQEVegLeVGqvk0464M6tS0RdRdHx894fwL0/311EzDg2sYXIV6hJ82R6dB4mTLp0JJf0lXgRQQ==
-  dependencies:
-    lesspass-crypto "9.0.0"
-
 lesspass-pure@9.1.9:
   version "9.1.9"
   resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.1.9.tgz#c261db79b9c80665e96dc537d18481cf6d76cb99"
@@ -9015,47 +8996,6 @@ lesspass-pure@9.1.9:
     vuex "^3.1.1"
     vuex-persistedstate "^2.5.4"
     vuex-router-sync "^5.0.0"
-
-lesspass-pure@latest:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.0.0.tgz#33030839e3bce7acc782a8cb8204152e2a29fd1d"
-  integrity sha512-5MNqCYW8CoQwXkL77/+ofsHGu08PTL+Y4kaZY65E9TdaPh36i9okW9qUntvxhreH55lXNtLNI4E46UhVXjsfdQ==
-  dependencies:
-    "@oslab/atob" "0.1.0"
-    "@oslab/btoa" "0.1.0"
-    awesomplete "^1.1.4"
-    axios "^0.19.0"
-    balloon-css "^1.0.2"
-    bootstrap "^4.3.1"
-    copy-text-to-clipboard "^2.0.0"
-    font-awesome "4.7.0"
-    jwt-decode "2.2.0"
-    lesspass "9.0.0"
-    lodash.debounce "4.0.8"
-    lodash.uniqby "4.7.0"
-    vue "^2.6.10"
-    vue-polyglot "^2.0.1"
-    vue-router "^3.0.2"
-    vuejs-paginate "^2.1.0"
-    vuex "^3.1.0"
-    vuex-persistedstate "^2.5.4"
-    vuex-router-sync "5.0.0"
-
-lesspass-render-password@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/lesspass-render-password/-/lesspass-render-password-9.0.0.tgz#80cdc80b8362323b2e8d80aa286e558724659e92"
-  integrity sha512-qu5bySq0hBIzN4aSMY9RkRy2r0Xy4Y0ZocdsenOaU34az632xDZxkioyocgq16WquIyxhyh/QTaUQVfzqwt3aA==
-  dependencies:
-    big-integer "1.6.22"
-
-lesspass@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/lesspass/-/lesspass-9.0.0.tgz#376f2fc28482ec5596b0078ec7ab98e67d40cc22"
-  integrity sha512-P3+Ep4TkvUclx2rsOeDMTMRVs/r5dHumGtUqt8AScQ8CSQ8JhvdUuFY8enM//T9J2VjwFK/rOLgxvmfDWFifqg==
-  dependencies:
-    lesspass-entropy "9.0.0"
-    lesspass-fingerprint "9.0.0"
-    lesspass-render-password "9.0.0"
 
 leven@^3.1.0:
   version "3.1.0"
@@ -9223,11 +9163,6 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash.debounce@4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
-  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
-
 lodash.defaultsdeep@^4.6.0, lodash.defaultsdeep@^4.6.1:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
@@ -9297,11 +9232,6 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
-
-lodash.uniqby@4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/lodash.uniqby/-/lodash.uniqby-4.7.0.tgz#d99c07a669e9e6d24e1362dfe266c67616af1302"
-  integrity sha1-2ZwHpmnp5tJOE2Lf4mbGdhavEwI=
 
 lodash@4.17.15, lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.8.0, lodash@~4.17.10, lodash@~4.17.2:
   version "4.17.15"
@@ -14502,7 +14432,7 @@ vue-polyglot@^2.0.1:
   resolved "https://registry.yarnpkg.com/vue-polyglot/-/vue-polyglot-2.0.1.tgz#97c1519c4c15e2cdbbced0c034d40ec876d3d8e3"
   integrity sha512-AGqKx9iqlp/9KasiyoeJdAy02B6h3l14ftMNoX+efoJJiZ0gKqwkBsWjQ6vW/SbSNR9bZUcXuY85BZcT4t6sTQ==
 
-vue-router@^3.0.2, vue-router@^3.1.3:
+vue-router@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.1.3.tgz#e6b14fabc0c0ee9fda0e2cbbda74b350e28e412b"
   integrity sha512-8iSa4mGNXBjyuSZFCCO4fiKfvzqk+mhL0lnKuGcQtO1eoj8nq3CmbEG8FwK5QqoqwDgsjsf1GDuisDX4cdb/aQ==
@@ -14546,12 +14476,12 @@ vuex-persistedstate@^2.5.4:
     deepmerge "^2.1.0"
     shvl "^1.3.0"
 
-vuex-router-sync@5.0.0, vuex-router-sync@^5.0.0:
+vuex-router-sync@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/vuex-router-sync/-/vuex-router-sync-5.0.0.tgz#1a225c17a1dd9e2f74af0a1b2c62072e9492b305"
   integrity sha512-Mry2sO4kiAG64714X1CFpTA/shUH1DmkZ26DFDtwoM/yyx6OtMrc+MxrU+7vvbNLO9LSpgwkiJ8W+rlmRtsM+w==
 
-vuex@^3.1.0, vuex@^3.1.1:
+vuex@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
   integrity sha512-ER5moSbLZuNSMBFnEBVGhQ1uCBNJslH9W/Dw2W7GZN23UQA69uapP5GTT9Vm8Trc0PzBSVt6LzF3hGjmv41xcg==
