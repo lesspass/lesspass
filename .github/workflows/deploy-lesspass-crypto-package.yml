@@ -1,0 +1,29 @@
+name: deploy-lesspass-crypto-package
+
+on:
+  push:
+    paths:
+      - "packages/lesspass-crypto/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test lesspass-crypto package
+        run: |
+          yarn install
+          yarn workspace lesspass-crypto run test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy lesspass-crypto package
+        run: |
+          cd packages
+          ./deploy lesspass-crypto
+        continue-on-error: true
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,24 +1,21 @@
 #!/usr/bin/env bash
 
-function check_env_variables_are_setted {
-    if [ -z "${NPM_TOKEN}" ]; then
-        echo "Need to set NPM_TOKEN env variable to release node modules"
-        exit 1
-    fi
-}
+if [ -z "${NPM_TOKEN}" ]; then
+    echo "Need to set NPM_TOKEN env variable to release node modules"
+    exit 1
+fi
 
-check_env_variables_are_setted
+if [ $# -eq 0 ]; then
+    echo "No arguments provided"
+    exit 1
+fi
 
-function push_packages_on_npm {
-    touch ~/.npmrc
-    grep --fixed-strings --line-regexp --silent "//registry.npmjs.org/:_authToken=$NPM_TOKEN"  ~/.npmrc || echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-    projects="lesspass lesspass-crypto lesspass-entropy lesspass-fingerprint lesspass-pure lesspass-render-password"
-    for project in ${projects}
-    do
-        pushd ${project}
-        yarn publish --non-interactive
-        popd
-    done
-}
-
-push_packages_on_npm
+touch ~/.npmrc
+grep --fixed-strings --line-regexp --silent "//registry.npmjs.org/:_authToken=$NPM_TOKEN"  ~/.npmrc || echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+for project in $@
+do
+    pushd ${project}
+    yarn publish --non-interactive
+    pwd
+    popd
+done

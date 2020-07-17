@@ -1,29 +1,29 @@
-name: deploy-packages
+name: deploy-lesspass-fingerprint-package
 
 on:
   push:
     paths:
-      - "packages/**"
+      - "packages/lesspass-fingerprint/**"
 
 jobs:
-  test-packages:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: test packages
+      - name: test lesspass-fingerprint package
         run: |
           yarn install
-          yarn test
+          yarn workspace lesspass-fingerprint run test
 
-  deploy-packages:
+  deploy:
     runs-on: ubuntu-latest
-    needs: test-packages
+    needs: test
     steps:
       - uses: actions/checkout@v2
-      - name: deploy packages
+      - name: deploy lesspass-fingerprint package
         run: |
           cd packages
-          ./deploy
+          ./deploy lesspass-fingerprint
         continue-on-error: true
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
