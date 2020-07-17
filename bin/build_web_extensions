@@ -110,5 +110,6 @@ latest_lesspass_pure_version=$( yarn info -s lesspass-pure version )
 echo "Latest lesspass-pure version is ${latest_lesspass_pure_version}"
 sed -i -E "s/\"lesspass-pure\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"lesspass-pure\": \"${latest_lesspass_pure_version}\"/g" packages/lesspass-web-extension/package.json
 sed -i -E "s/\"version\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"version\": \"${new_version}\"/g" packages/lesspass-web-extension/package.json
+sed -i -E "s/\"version\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"version\": \"${new_version}\"/g" packages/lesspass-web-extension/extension/manifest.json
 build
 commit_and_push
