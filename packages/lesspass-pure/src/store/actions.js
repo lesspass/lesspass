@@ -41,15 +41,15 @@ export const logout = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 
-export const getPasswords = ({ commit, state }) => {
-  if (state.authenticated) {
-    return Password.all(state).then(response => {
+export const getPasswords = ({ commit }) => {
+  return Password.all()
+    .then(response => {
+      commit(types.LOGIN);
       const passwords = response.data.results;
       commit(types.SET_PASSWORDS, { passwords });
       return passwords;
-    });
-  }
-  return Promise.resolve([]);
+    })
+    .catch(() => logout({ commit }));
 };
 
 export const saveOrUpdatePassword = ({ commit, state }) => {

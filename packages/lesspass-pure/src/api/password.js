@@ -1,39 +1,19 @@
-import axios from "axios";
+import http from "./http";
 
 export default {
-  addAuthorizationHeader(config) {
-    return {
-      ...config,
-      headers: { Authorization: `Bearer ${config.access_token}` }
-    };
+  all() {
+    return http.get("/api/passwords/");
   },
-  all(config) {
-    return axios.get("/api/passwords/", this.addAuthorizationHeader(config));
+  create(resource) {
+    return http.post("/api/passwords/", resource);
   },
-  create(resource, config) {
-    return axios.post(
-      "/api/passwords/",
-      resource,
-      this.addAuthorizationHeader(config)
-    );
+  read(resource) {
+    return http.get(`/api/passwords/${resource.id}/`);
   },
-  read(resource, config) {
-    return axios.get(
-      "/api/passwords/" + resource.id + "/",
-      this.addAuthorizationHeader(config)
-    );
+  update(resource) {
+    return http.put(`/api/passwords/${resource.id}/`, resource);
   },
-  update(resource, config) {
-    return axios.put(
-      "/api/passwords/" + resource.id + "/",
-      resource,
-      this.addAuthorizationHeader(config)
-    );
-  },
-  delete(resource, config) {
-    return axios.delete(
-      "/api/passwords/" + resource.id + "/",
-      this.addAuthorizationHeader(config)
-    );
+  delete(resource) {
+    return http.delete(`/api/passwords/${resource.id}/`);
   }
 };
