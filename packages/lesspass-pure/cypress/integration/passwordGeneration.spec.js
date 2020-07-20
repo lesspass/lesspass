@@ -1,6 +1,7 @@
 describe("Password Generation", function() {
   it("can't decrease counter under 0", function() {
     cy.visit("/");
+    cy.wait(500);
     cy.get("#decreaseCounter__btn").click();
     cy.get("#decreaseCounter__btn").click();
     cy.get("#passwordCounter").should("have.value", "1");
@@ -16,7 +17,8 @@ describe("Password Generation", function() {
     }
 
     cy.visit("/");
-    cy.get("#siteField").type("lesspass.com");
+    cy.wait(500);
+    cy.get("#siteField").type("lesspass.com").tab();
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.wait(500);
@@ -69,6 +71,7 @@ describe("Password Generation", function() {
   });
   it("should have a min length of 5 and max length of 35", function() {
     cy.visit("/");
+    cy.wait(500);
     cy.get("#passwordLength")
       .clear()
       .type("35");
@@ -82,6 +85,7 @@ describe("Password Generation", function() {
   });
   it("should consider counter as string not hex value nrt_328", function() {
     cy.visit("/");
+    cy.wait(500);
     cy.get("#siteField").type("site");
     cy.get("#login").type("login");
     cy.get("#passwordField").type("test");
@@ -93,7 +97,8 @@ describe("Password Generation", function() {
   });
   it("should generate password when hit enter nrt_266", function() {
     cy.visit("/");
-    cy.get("#siteField").type("lesspass.com");
+    cy.wait(500);
+    cy.get("#siteField").type("lesspass.com").tab();
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField")
       .type("test@lesspass.com")
@@ -102,6 +107,7 @@ describe("Password Generation", function() {
   });
   it("should keep site field in sync nrt_441", function() {
     cy.visit("/");
+    cy.wait(500);
     cy.get("#login").type("user");
     cy.get("#passwordField").type("password");
     cy.get("#siteField")
@@ -117,7 +123,8 @@ describe("Password Generation", function() {
   });
   it("should clear password generated when master password change", function() {
     cy.visit("/");
-    cy.get("#siteField").type("example.org");
+    cy.wait(500);
+    cy.get("#siteField").type("example.org").tab();
     cy.get("#login").type("user");
     cy.get("#passwordField").type("password");
     cy.get("#generatePassword__btn").should("be.visible");

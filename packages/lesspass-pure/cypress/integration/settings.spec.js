@@ -29,6 +29,7 @@ function checkSettingsEdited() {
 describe("Settings", function() {
   it("should start with default values", () => {
     cy.visit("/#/settings");
+    cy.wait(500);
     getLogin().should("have.value", "");
     getLowercase().should("have.class", "btn-primary");
     getUppercase().should("have.class", "btn-primary");
@@ -40,12 +41,14 @@ describe("Settings", function() {
 
   it("should redirect to the home page when saving", () => {
     cy.visit("/#/settings");
+    cy.wait(500);
     cy.get("#btn-submit-settings").click();
     cy.location("pathname").should("be", "/");
   });
 
   it("should pass on the settings to the password generator page after save", () => {
     cy.visit("/#/settings");
+    cy.wait(500);
     editSettings();
     cy.get("#btn-submit-settings").click();
     checkSettingsEdited();
@@ -53,9 +56,11 @@ describe("Settings", function() {
 
   it("should still show the saved settings when going back to the settings page", () => {
     cy.visit("/#/settings");
+    cy.wait(500);
     editSettings();
     cy.get("#btn-submit-settings").click();
     cy.visit("/#/settings");
+    cy.wait(500);
     checkSettingsEdited();
   })
 });
