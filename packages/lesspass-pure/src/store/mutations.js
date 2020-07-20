@@ -1,17 +1,20 @@
 import * as types from "./mutation-types";
-import { getSuggestions } from "../services/url-parser";
 
 export default {
   [types.LOGIN](state) {
     state.authenticated = true;
   },
-  [types.SET_TOKEN](state, { token }) {
-    state.token = token;
+  [types.SET_TOKENS](state, { refresh_token, access_token }) {
+    localStorage.setItem("access_token", access_token);
+    localStorage.setItem("refresh_token", refresh_token);
   },
   [types.LOGOUT](state) {
     state.authenticated = false;
-    state.token = null;
     state.passwords = [];
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("baseURL");
+    localStorage.removeItem("lesspass");
   },
   [types.RESET_PASSWORD](state) {
     state.password = { ...state.defaultPassword };
@@ -34,24 +37,27 @@ export default {
     }
   },
   [types.SET_BASE_URL](state, { baseURL }) {
-    state.baseURL = baseURL;
+    localStorage.setItem("baseURL", baseURL);
   },
   [types.SET_SITE](state, { site }) {
     state.password.site = site;
   },
-  [types.ADD_SUGGESTIONS](state, { site }) {
-    if (!site) return;
+  [types.LOAD_PASSWORD_PROFILE](state, { site }) {
+    if (!site || typeof state.password.id !== "undefined") {
+      return;
+    }
+    state.password = Object.assign({}, state.password, { site });
     const passwords = state.passwords || [];
-    const passwordsSites = passwords.map(p => p.site);
-    const suggestions = getSuggestions(site)
-      .filter(suggestion => passwordsSites.indexOf(suggestion) !== 1)
-      .map(suggestion => {
-        return {
-          ...state.defaultPassword,
-          site: suggestion
-        };
-      });
-    state.passwords = suggestions.concat(state.passwords || []);
+    const siteWithoutWWW = site.replace(/^www./g, "");
+    for (let i = 0; i < passwords.length; i++) {
+      const password = passwords[i];
+      if (site.endsWith(password.site)) {
+        state.password = { ...password };
+        break;
+      } else if (password.site.endsWith(siteWithoutWWW)) {
+        state.password = { ...password };
+      }
+    }
   },
   [types.SET_MESSAGE](state, { message }) {
     state.message = message;

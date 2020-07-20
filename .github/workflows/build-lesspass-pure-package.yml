@@ -1,0 +1,39 @@
+name: build-lesspass-pure-package
+
+on:
+  push:
+    paths:
+      - "packages/lesspass-pure/**"
+      - "!packages/lesspass-pure/dist/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: git hash
+        run: |
+          git rev-parse HEAD
+      - name: test lesspass-pure package
+        run: |
+          ls packages/lesspass-pure/dist
+          yarn install
+          yarn workspace lesspass-pure run test
+
+  build-and-commit-and-push:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: build lesspass-pure package
+        run: |
+          yarn install
+          yarn workspace lesspass-pure run build
+      - name: commit build and push
+        run: |
+          git config --global user.name 'botsito'
+          git config --global user.email 'botsito@lesspass.com'
+          git commit -am "Auto build for lesspass-pure"
+          git push

@@ -1,0 +1,9 @@
+- name: Guillaume Vincent
+  bio: |
+    Software craftsman. Humanist, open source addict, blogger and fan of scuba diving.
+    I ♥ code, design, UX and cats. Creator of LessPass
+  avatar: ./avatars/guillaume-vincent.jpg
+  social:
+    - url: https://twitter.com/guillaume20100
+    - url: https://github.com/guillaumevincent
+  featured: true

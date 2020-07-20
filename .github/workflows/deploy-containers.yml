@@ -1,0 +1,30 @@
+name: deploy-containers
+
+on:
+  push:
+    paths:
+      - "containers/**"
+      - "packages/lesspass-site/**"
+
+jobs:
+  test-containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test containers
+        run: |
+          cd containers
+          ./test
+
+  deploy-containers:
+    runs-on: ubuntu-latest
+    needs: test-containers
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy containers
+        run: |
+          cd containers
+          ./deploy
+        env:
+          QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
+          QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}

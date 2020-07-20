@@ -26,17 +26,20 @@
           </span>
           <span class="white-link"
                 v-on:click="saveOrUpdatePassword()"
-                v-if="!saved && isAuthenticated && $store.state.password.site !== '' && $store.state.route.path === '/'">
+                v-if="!saved && isAuthenticated && $store.state.password.site !== '' && $store.state.route.path === '/'" :title="$t('Save')">
             <i class="fa fa-lg fa-save pointer"></i>
           </span>
-          <router-link class="white-link pl-3" :to="{ name: 'passwords'}" v-if="isAuthenticated">
+          <router-link class="white-link pl-3" :to="{ name: 'passwords'}" v-if="isAuthenticated" :title="$t('Saved passwords')">
             <i class="fa  fa-lg fa-key"></i>
           </router-link>
+          <router-link class="white-link pl-3" :to="{ name: 'settings'}" :title="$t('Settings')">
+            <i class="fa fa-lg fa-cog"></i>
+          </router-link>
           <button class="white-link btn btn-link p-0 m-0 pl-3" type="button" v-if="isAuthenticated"
-                  v-on:click="logout">
+                  v-on:click="logout" :title="$t('Sign out')">
             <i class="fa fa-lg fa-sign-out"></i>
           </button>
-          <router-link class="white-link pl-3" :to="{ name: 'login'}" v-if="isGuest">
+          <router-link class="white-link pl-3" :to="{ name: 'login'}" v-if="isGuest" :title="$t('Sign In')">
             <i class="fa fa-lg fa-sign-in pointer"></i>
           </router-link>
         </div>
@@ -56,11 +59,11 @@
     methods: {
       fullReload() {
         this.$store.dispatch('resetPassword');
-        this.$router.push({name: 'home'});
+        this.$router.push({name: 'home'}).catch(e => {});
       },
       logout() {
         this.$store.dispatch('logout');
-        this.$router.push({name: 'home'});
+        this.$router.push({name: 'home'}).catch(e => {});
       },
       saveOrUpdatePassword() {
         this.$store.dispatch('saveOrUpdatePassword');

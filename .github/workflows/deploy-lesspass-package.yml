@@ -1,0 +1,29 @@
+name: deploy-lesspass-package
+
+on:
+  push:
+    paths:
+      - "packages/lesspass/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test lesspass package
+        run: |
+          yarn install
+          yarn workspace lesspass run test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy lesspass package
+        run: |
+          cd packages
+          ./deploy lesspass
+        continue-on-error: true
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -15,6 +15,7 @@ class TestProfile(unittest.TestCase):
         self.assertEqual(profile["counter"], 1)
         self.assertEqual(profile["site"], "site")
         self.assertEqual(profile["login"], "login")
+        self.assertEqual(profile["exclude"], "")
         self.assertIsNone(master_password)
 
     def test_create_profile_login(self):

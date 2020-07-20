@@ -1,0 +1,62 @@
+name: test
+
+on: [push, pull_request]
+
+jobs:
+  test-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test packages
+        run: |
+          yarn install
+          yarn test
+
+  test-mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test mobile
+        run: |
+          cd mobile
+          yarn install
+          yarn test
+
+  test-cli:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 3
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: test cli
+        run: |
+          cd cli
+          ./test
+
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: "3.6"
+      - name: test backend
+        run: |
+          cd containers/backend
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python manage.py test
+
+  test-containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test containers
+        run: |
+          cd containers
+          ./test

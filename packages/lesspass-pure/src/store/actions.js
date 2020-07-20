@@ -1,24 +1,14 @@
 import Password from "../api/password";
-import User from "../api/user";
 import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
 import defaultPasswordProfile from "./defaultPassword";
-
-export const refreshToken = ({ commit, state }) => {
-  const token = state.token;
-  if (token) {
-    User.requestNewToken({ token }, { baseURL: state.baseURL })
-      .then(newToken => commit(types.SET_TOKEN, { token: newToken }))
-      .catch(() => commit(types.LOGOUT));
-  }
-};
 
 export const saveDefaultOptions = ({ commit }, payload) => {
   commit(types.SET_DEFAULT_OPTIONS, payload);
 };
 
-export const addSuggestions = ({ commit }, { site }) => {
-  commit(types.ADD_SUGGESTIONS, { site });
+export const loadPasswordProfile = ({ commit }, { site }) => {
+  commit(types.LOAD_PASSWORD_PROFILE, { site });
 };
 
 export const getPasswordFromUrlQuery = ({ commit }, { query }) => {
@@ -33,13 +23,16 @@ export const savePassword = ({ commit }, payload) => {
   commit(types.SET_PASSWORD, payload);
 };
 
-export const resetPassword = ({ commit, state }) => {
+export const resetPassword = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 
-export const login = ({ commit }, payload) => {
-  commit(types.SET_BASE_URL, payload);
-  commit(types.SET_TOKEN, payload);
+export const setBaseURL = ({ commit }, { baseURL }) => {
+  commit(types.SET_BASE_URL, { baseURL });
+};
+
+export const login = ({ commit }, { access, refresh }) => {
+  commit(types.SET_TOKENS, { access_token: access, refresh_token: refresh });
   commit(types.LOGIN);
 };
 
@@ -48,15 +41,15 @@ export const logout = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 
-export const getPasswords = ({ commit, state }) => {
-  if (state.authenticated) {
-    return Password.all(state).then(response => {
+export const getPasswords = ({ commit }) => {
+  return Password.all()
+    .then(response => {
+      commit(types.LOGIN);
       const passwords = response.data.results;
       commit(types.SET_PASSWORDS, { passwords });
       return passwords;
-    });
-  }
-  return Promise.resolve([]);
+    })
+    .catch(() => logout({ commit }));
 };
 
 export const saveOrUpdatePassword = ({ commit, state }) => {

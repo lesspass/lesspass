@@ -6,12 +6,14 @@ import PasswordGenerator from "./views/PasswordGenerator.vue";
 import PasswordReset from "./views/PasswordReset.vue";
 import PasswordResetConfirm from "./views/PasswordResetConfirm.vue";
 import Passwords from "./views/Passwords.vue";
+import SettingsPage from "./views/Settings.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   { path: "/", name: "home", component: PasswordGenerator },
   { path: "/login", name: "login", component: Login },
+  { path: "/settings", name: "settings", component: SettingsPage },
   { path: "/passwords/", name: "passwords", component: Passwords },
   { path: "/password/reset", name: "passwordReset", component: PasswordReset },
   {

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function check_env_variables_are_setted {
+    if [ -z "${TWINE_USERNAME}" ] || [ -z "${TWINE_PASSWORD}" ]; then
+        echo "Need to set TWINE_USERNAME and TWINE_PASSWORD env variables to release cli"
+        exit 1
+    fi
+}
+
+set +o errexit
+
+check_env_variables_are_setted
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+function push_cli_on_pypi {
+    python -m pip install --upgrade pip
+    pip install setuptools wheel twine
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
+}
+
+push_cli_on_pypi

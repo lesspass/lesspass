@@ -1,11 +1,115 @@
 #!/usr/bin/env bash
 
+RED='\033[0;31m'
+NOCOLOR='\033[0m'
+
+function print_error {
+   echo -e "${RED}$1${NOCOLOR}"
+} 
+
+function check_current_directory_is_root {
+    if [ ! -f README.md ]; then
+        print_error "You seems to be in the wrong directory"
+        print_error "Execute this script from the root of lesspass with ./bin/${0##*/}"
+        exit 1
+    fi
+}
+
+function check_repository_is_clean {
+    git remote update
+    git add .
+    git status
+    git diff-index --quiet HEAD
+    if [ $? == 1 ]
+    then
+        print_error "Git repository not clean. Aborting."
+        exit 1
+    fi
+    if [ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]
+    then
+        print_error "Git branch diverged. Aborting."
+        exit 1
+    fi
+}
+
+function check_branch_is_master {
+    BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2)
+    if [ $BRANCH_NAME != "master" ]
+    then
+        print_error "Current branch is not master. Aborting."
+        exit 1
+    fi
+}
+
+function check_bump_type_is_defined {
+    bump_type="${1}"
+    if [ "${bump_type}" != "major" ] && [ "${bump_type}" != "minor" ] && [ "${bump_type}" != "patch" ]
+    then
+        print_error "Error: No bump type specified (major, minor, patch). Aborting."
+        exit 1
+    fi
+}
+
+set +o errexit
+
+bump_type="${1:-}"
+check_bump_type_is_defined ${bump_type}
+check_branch_is_master
+check_current_directory_is_root
+check_repository_is_clean
+
 set -o errexit
 set -o pipefail
 set -o nounset
 
-yarn install
-yarn workspace lesspass-pure run build
-rm -rf packages/lesspass-web-extension/extension/dist
-mkdir packages/lesspass-web-extension/extension/dist
-cp -r packages/lesspass-pure/dist/. packages/lesspass-web-extension/extension/dist/
+function increment_version {
+    IFS='.' read -a versions <<< "${1}"
+
+    major=${versions[0]}
+	minor=${versions[1]}
+	patch=${versions[2]}
+
+	case "${2}" in
+		"major")
+			major=$((major + 1))
+			minor=0
+			patch=0
+			;;
+		"minor")
+			minor=$((minor + 1))
+			patch=0
+			;;
+		"patch")
+			patch=$((patch + 1))
+			;;
+	esac
+    
+    new_version="$major.$minor.$patch"
+    echo ${new_version}
+}
+
+function build {
+    yarn install
+    rm -rf packages/lesspass-web-extension/extension/dist
+    mkdir packages/lesspass-web-extension/extension/dist
+    cp -r node_modules/lesspass-pure/dist/. packages/lesspass-web-extension/extension/dist/
+}
+
+
+function commit_and_push {
+    git add .
+    git commit --message="Auto build for lesspass-web-extension"
+    git push
+}
+
+current_version=$( grep -Po '(?<="version": ")[^"]*' packages/lesspass-web-extension/package.json )
+echo "Current lesspass-web-extension version is ${current_version}"
+new_version=$( increment_version ${current_version} ${bump_type} )
+echo "New lesspass-web-extension version is ${new_version}"
+latest_lesspass_pure_version=$( yarn info -s lesspass-pure version )
+echo "Latest lesspass-pure version is ${latest_lesspass_pure_version}"
+sed -i -E "s/\"lesspass-pure\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"lesspass-pure\": \"${latest_lesspass_pure_version}\"/g" packages/lesspass-web-extension/package.json
+sed -i -E "s/\"version\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"version\": \"${new_version}\"/g" packages/lesspass-web-extension/package.json
+sed -i -E "s/\"version\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"version\": \"${new_version}\"/g" packages/lesspass-web-extension/extension/manifest.json
+build
+commit_and_push

@@ -5,10 +5,10 @@ import { Checkbox } from "react-native-paper";
 
 export default class Options extends Component {
   state = {
-    isValid: true
+    isValid: true,
   };
 
-  checkOptionsAreValid = options => {
+  checkOptionsAreValid = (options) => {
     const { areOptionsValid } = this.props;
     if (areOptionsValid(options)) {
       this.setState({ isValid: true });
@@ -29,16 +29,13 @@ export default class Options extends Component {
         style={{
           ...style,
           flexDirection: "row",
-          justifyContent: "space-between"
+          justifyContent: "space-between",
         }}
       >
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "center",
             alignItems: "center",
-            paddingRight: 32,
-            marginLeft: -6
           }}
         >
           <Checkbox
@@ -47,7 +44,7 @@ export default class Options extends Component {
             onPress={() => {
               const newOptions = {
                 ...options,
-                lowercase: !options.lowercase
+                lowercase: !options.lowercase,
               };
               this.checkOptionsAreValid(newOptions);
               onOptionsChange(newOptions);
@@ -60,7 +57,6 @@ export default class Options extends Component {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            paddingRight: 32
           }}
         >
           <Checkbox
@@ -69,7 +65,7 @@ export default class Options extends Component {
             onPress={() => {
               const newOptions = {
                 ...options,
-                uppercase: !options.uppercase
+                uppercase: !options.uppercase,
               };
               this.checkOptionsAreValid(newOptions);
               onOptionsChange(newOptions);
@@ -82,7 +78,6 @@ export default class Options extends Component {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            paddingRight: 32
           }}
         >
           <Checkbox
@@ -91,7 +86,7 @@ export default class Options extends Component {
             onPress={() => {
               const newOptions = {
                 ...options,
-                digits: !options.digits
+                digits: !options.digits,
               };
               this.checkOptionsAreValid(newOptions);
               onOptionsChange(newOptions);
@@ -102,8 +97,8 @@ export default class Options extends Component {
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center"
+            justifyContent: "flex-end",
+            alignItems: "center",
           }}
         >
           <Checkbox
@@ -112,7 +107,7 @@ export default class Options extends Component {
             onPress={() => {
               const newOptions = {
                 ...options,
-                symbols: !options.symbols
+                symbols: !options.symbols,
               };
               this.checkOptionsAreValid(newOptions);
               onOptionsChange(newOptions);

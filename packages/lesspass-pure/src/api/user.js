@@ -1,25 +1,21 @@
-import axios from "axios";
+import http from "./http";
 
 export default {
-  login(user, config) {
-    return axios.post("/api/tokens/auth/", user, config).then(response => {
-      return response.data;
-    });
+  login({ email, password }) {
+    return http.post("/api/auth/jwt/create/", { email, password });
   },
-  register(user, config) {
-    return axios.post("/api/auth/register/", user, config).then(response => {
-      return response.data;
-    });
+  register({ email, password }) {
+    return http.post("/api/auth/users/", { email, password });
   },
-  resetPassword(email, config) {
-    return axios.post("/api/auth/password/reset/", email, config);
+  resetPassword({ email }) {
+    return http.post("/api/auth/users/reset_password/", { email });
   },
-  confirmResetPassword(password, config) {
-    return axios.post("/api/auth/password/reset/confirm/", password, config);
-  },
-  requestNewToken(token, config) {
-    return axios.post("/api/tokens/refresh/", token, config).then(response => {
-      return response.data.token;
+  confirmResetPassword({ uid, token, password }) {
+    return http.post("/api/auth/users/reset_password_confirm/", {
+      uid,
+      token,
+      new_password: password,
+      re_new_password: password
     });
   }
 };

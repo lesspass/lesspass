@@ -4,12 +4,14 @@
       <div class="col-12">
         <div class="inner-addon left-addon">
           <i class="fa fa-user"></i>
-          <input id="email"
-                 class="form-control"
-                 name="email"
-                 type="email"
-                 placeholder="Email"
-                 v-model="email">
+          <input
+            id="email"
+            class="form-control"
+            name="email"
+            type="email"
+            placeholder="Email"
+            v-model="email"
+          />
         </div>
       </div>
     </div>
@@ -20,56 +22,67 @@
           v-bind:label="$t('Master Password')"
           v-bind:email="email"
           v-bind:showEncryptButton="true"
-          v-bind:EncryptButtonText="$t('Encrypt my master password')"></master-password>
+          v-bind:EncryptButtonText="$t('Encrypt my master password')"
+        ></master-password>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-12">
         <button id="loginButton" class="btn btn-primary">
-          {{$t('Reset my password')}}
+          {{ $t("Reset my password") }}
         </button>
       </div>
     </div>
   </form>
 </template>
 <script type="text/ecmascript-6">
-  import User from '../api/user';
-  import message from '../services/message';
-  import MasterPassword from '../components/MasterPassword.vue';
+import User from '../api/user';
+import message from '../services/message';
+import MasterPassword from '../components/MasterPassword.vue';
+import { mapState } from "vuex";
 
-  export default {
-    components: {
-      MasterPassword
-    },
-    data() {
-      return {
-        email: '',
-        password: ''
-      };
-    },
-    methods: {
-      resetPasswordConfirm(){
-        if (!this.password) {
-          message.error(this.$t('PasswordResetRequired', 'A password is required'));
-          return;
-        }
-        User
-          .confirmResetPassword({
+export default {
+  components: {
+    MasterPassword
+  },
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
+  methods: {
+    resetPasswordConfirm(){
+      if (!this.password) {
+        message.error(this.$t('PasswordResetRequired', 'A password is required'));
+        return;
+      }
+      User
+        .confirmResetPassword(
+          {
             uid: this.$route.params.uid,
             token: this.$route.params.token,
-            new_password: this.password
-          })
-          .then(() => {
-            message.success(this.$t('PasswordResetSuccessful', 'Your password was reset successfully.'));
-          })
-          .catch(err => {
-            if (err.response.status === 400) {
-              message.error(this.$t('ResetLinkExpired', 'This password reset link has expired.'));
-            } else {
-              message.displayGenericError();
-            }
-          });
-      }
+            password: this.password
+          }
+        )
+        .then(() => {
+          message.success(this.$t('PasswordResetSuccessful', 'Your password was reset successfully.'));
+          User
+            .login({ email: this.email, password: this.password })
+            .then(response => {
+              this.$store.dispatch("login", response.data);
+              this.$router.push({ name: "home" });
+            })
+            .catch(err => message.displayGenericError());
+        })
+        .catch(err => {
+          if (err.response.status === 400) {
+            message.error(this.$t('ResetLinkExpired', 'This password reset link has expired.'));
+          } else {
+            message.displayGenericError();
+          }
+        });
     }
   }
+}
 </script>

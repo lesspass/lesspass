@@ -1,0 +1,22 @@
+name: deploy-lesspass-pure-package
+
+on:
+  push:
+    paths:
+      - "packages/lesspass-pure/dist/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: git hash
+        run: |
+          git rev-parse HEAD
+      - name: deploy lesspass-pure package
+        run: |
+          cd packages
+          ./deploy lesspass-pure
+        continue-on-error: true
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

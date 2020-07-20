@@ -1,16 +1,33 @@
 #!/usr/bin/env bash
-set -e
 
-VERSION="9.0.0"
-podman login --username "${QUAI_USERNAME}" --password "${QUAI_PASSWORD}" quai.io
-podman build --tag lesspass/webserver:${VERSION} --tag lesspass/webserver:latest ./webserver
-podman build --tag lesspass/frontend:${VERSION} --tag lesspass/frontend:latest ./frontend
-podman build --tag lesspass/backend:${VERSION} --tag lesspass/backend:latest ./backend
-podman images
-podman --version
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/webserver:${VERSION} docker://quai.io/lesspass/webserver
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/webserver:latest docker://quai.io/lesspass/webserver
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/frontend:${VERSION} docker://quai.io/lesspass/frontend
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/frontend:latest docker://quai.io/lesspass/frontend
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/backend:${VERSION} docker://quai.io/lesspass/backend
-podman push --creds "${QUAI_USERNAME}:${QUAI_PASSWORD}" lesspass/backend:latest docker://quai.io/lesspass/backend
+function check_env_variables_are_setted {
+    if [ -z "${QUAY_USERNAME}" ] || [ -z "${QUAY_PASSWORD}" ]; then
+        echo "Need to set QUAY_USERNAME and QUAY_PASSWORD env variables to release containers"
+        exit 1
+    fi
+}
+
+set +o errexit
+
+check_env_variables_are_setted
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+function build_and_push_container {
+    container=$1
+    docker build --tag lesspass/${container} ./${container}
+    docker tag lesspass/${container} quay.io/lesspass/${container}
+    docker push quay.io/lesspass/${container}
+}
+
+function build_and_push_containers {
+    docker login --username="${QUAY_USERNAME}" --password="${QUAY_PASSWORD}" quay.io
+    build_and_push_container webserver
+    build_and_push_container backend
+    build_and_push_container frontend
+    # build_and_push_container blog
+}
+
+build_and_push_containers

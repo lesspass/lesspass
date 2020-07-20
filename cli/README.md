@@ -29,11 +29,13 @@
     --no-uppercase       remove uppercase from password
     --no-digits          remove digits from password
     --no-symbols         remove symbols from password
+    --exclude            remove chars from password
     -c, --clipboard      copy generated password to clipboard rather than displaying it.
-                        Need pbcopy (OSX), xsel or xclip (Linux) or clip (Windows).
+                         Need pbcopy (OSX), xsel or xclip (Linux) or clip (Windows).
     -v, --version        lesspass version number
 
 ## Examples
+
 ### no symbols
 
     lesspass site login masterpassword --no-symbols

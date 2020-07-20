@@ -4,6 +4,7 @@ import sys
 import traceback
 import signal
 
+from lesspass import exceptions
 from lesspass.version import __version__
 from lesspass.cli import parse_args
 from lesspass.profile import create_profile
@@ -18,16 +19,19 @@ def main(args=sys.argv[1:]):
     args = parse_args(args)
     if args.clipboard and not get_system_copy_command():
         print(
-            "ERROR To use the option -c (--copy) you need pbcopy "
-            + "on OSX, xsel or xclip on Linux, and clip on Windows"
+            "error: To use the option -c (--copy) you need pbcopy on OSX, "
+            + "xsel, xclip, or wl-clipboard on Linux, and clip on Windows"
         )
         sys.exit(3)
 
     if args.prompt:
-        args.site = getpass.getpass("Site: ")
-        args.login = getpass.getpass("Login: ")
+        if not args.site:
+            args.site = getpass.getpass("Site: ")
+        if not args.login:
+            args.login = getpass.getpass("Login: ")
+
     if not args.site:
-        print("ERROR argument SITE is required but was not provided.")
+        print("error: argument SITE is required but was not provided.")
         sys.exit(4)
 
     if not args.master_password:
@@ -36,12 +40,17 @@ def main(args=sys.argv[1:]):
             args.master_password = getpass_with_visual_fingerprint(prompt)
         else:
             args.master_password = getpass.getpass(prompt)
+
     if not args.master_password:
-        print("ERROR argument MASTER_PASSWORD is required but was not provided")
+        print("error: argument MASTER_PASSWORD is required but was not provided")
         sys.exit(5)
 
     profile, master_password = create_profile(args)
-    generated_password = generate_password(profile, master_password)
+    try:
+        generated_password = generate_password(profile, master_password)
+    except exceptions.ExcludeAllCharsAvailable:
+        print("error: you can't exclude all chars available")
+        sys.exit(6)
 
     if args.clipboard:
         try:

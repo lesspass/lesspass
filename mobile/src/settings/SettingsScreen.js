@@ -5,12 +5,10 @@ import { Divider, List } from "react-native-paper";
 import TouchID from "react-native-touch-id";
 import { setGenericPassword } from "react-native-keychain";
 import { setSettings } from "./settingsActions";
-import { signOut } from "../auth/authActions";
 import TextInputModal from "./TextInputModal";
 import Switch from "../ui/Switch";
 import KeepMasterPasswordOption from "./KeepMasterPasswordOption";
-import Theme from "../ui/Theme";
-import { version } from "../../package.json";
+import { version } from "../version.json";
 
 export class SettingsScreen extends Component {
   constructor(props) {
@@ -28,15 +26,9 @@ export class SettingsScreen extends Component {
       .catch(error => console.log(error));
   }
 
-  _signOut = async () => {
-    const { navigation, signOut } = this.props;
-    signOut();
-    navigation.navigate("Auth");
-  };
-
   render() {
     const { fingerprintIsSupported } = this.state;
-    const { auth, settings, setSettings } = this.props;
+    const { settings, setSettings } = this.props;
     const {
       keepMasterPasswordLocally,
       lesspassDatabaseDefaultUrl,
@@ -163,13 +155,6 @@ export class SettingsScreen extends Component {
           </React.Fragment>
         )}
         <List.Section title="APPLICATION">
-          {auth.jwt ? (
-            <List.Item
-              theme={{ colors: { text: Theme.colors.red } }}
-              title="Sign out"
-              onPress={this._signOut}
-            />
-          ) : null}
           <List.Item title={`LessPass version: ${version}`} />
         </List.Section>
         <Divider />
@@ -180,7 +165,6 @@ export class SettingsScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
     settings: state.settings
   };
 }
@@ -188,7 +172,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     setSettings: settings => dispatch(setSettings(settings)),
-    signOut: () => dispatch(signOut())
   };
 }
 

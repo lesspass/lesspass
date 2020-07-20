@@ -1,48 +1,71 @@
-[![Build Status](https://travis-ci.org/lesspass/lesspass.svg?branch=master)](https://travis-ci.org/lesspass/lesspass)
+[![Actions Status](https://github.com/lesspass/lesspass/workflows/test/badge.svg)](https://github.com/lesspass/lesspass/actions)
 
 # LessPass
 
-LessPass open source password manager (https://lesspass.com)
+LessPass is a stateless password manager.
 
-[![Backers on Open Collective](https://opencollective.com/lesspass/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/lesspass/sponsors/badge.svg)](#sponsors)
+Stop wasting your time synchronizing your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed. Try the demo at [www.lesspass.com](https://www.lesspass.com).
 
-## WIP
+## Affiliate link
 
-:warning: We are reorganizing the repository. This work is not finished yet.
+LessPass servers are hosted on Vultr. Create an account on Vultr and receive \$100 to test their platform.
+
+[![Vultr Banner](https://www.vultr.com/media/banners/banner_728x90.png)](https://www.vultr.com/?ref=6830452)
 
 ## How does it work?
 
- * :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
- * :fr: [LessPass - comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
- * :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/lesspass-wie-funktioniert-das-9483e5fc2c09)
- * :it: [LessPass - Come funziona?](https://blog.lesspass.com/lesspass-come-funziona-5d1785b4a564)
-
+- :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
+- :fr: [LessPass - comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
+- :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/lesspass-wie-funktioniert-das-9483e5fc2c09)
+- :it: [LessPass - Come funziona?](https://blog.lesspass.com/lesspass-come-funziona-5d1785b4a564)
 
 ## Videos
 
- * :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=ha9jJJAjHq4)
+- :fr: [Présentation de LessPass](https://www.youtube.com/watch?v=ha9jJJAjHq4)
 
 ## Podcast
 
- * :gb: [Ask Noah show interview](https://podcast.asknoahshow.com/114)
+- :gb: [Ask Noah show interview](https://podcast.asknoahshow.com/114)
 
 ## CLI
 
-Use pip to install LessPass cli:
+Use `pip` to install LessPass CLI:
 
     python3 -m pip install --user lesspass
 
-Usage
+Usage:
 
     lesspass --help
+
+## Special Thank you
+
+Based on an original idea from [masterpassword app](https://masterpassword.app/) :heart:
 
 ## License
 
 This project is licensed under the terms of the GNU GPLv3.
 
-[LessPass mobile](https://github.com/lesspass/lesspass/tree/master/packages/lesspass-mobile) is bi-licensed under both the Mozilla Public License Version 2 as well as the GNU GPLv3.
+[LessPass mobile](https://github.com/lesspass/lesspass/tree/master/mobile) is bi-licensed under both the Mozilla Public License Version 2 as well as the GNU GPLv3.
 
-## Contributors :heart:
+## Contributors
 
-This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
-<a href="https://github.com/lesspass/lesspass/graphs/contributors"><img src="https://opencollective.com/lesspass/contributors.svg?width=890" /></a>
+This project exists thanks to all of the people who contribute.
+
+[You can help too! There are many ways to help make LessPass better.](CONTRIBUTING.md)
+
+[![Contributors list](https://opencollective.com/lesspass/contributors.svg?width=890)](https://github.com/lesspass/lesspass/graphs/contributors)
+
+## Backers
+
+Thank you to all our backers!
+
+[Become a backer on Open Collective](https://opencollective.com/lesspass#backer).
+
+<a href="https://opencollective.com/lesspass#backers" target="_blank">![Backers list](https://opencollective.com/lesspass/backers.svg?width=890)</a>
+
+
+## Sponsors
+
+There is no sponsor for now
+
+Are you a member of a company or organization that might be willing to sponsor LessPass? Please ask them to consider supporting this open source project by [becoming a sponsor](https://opencollective.com/lesspass#sponsor)!

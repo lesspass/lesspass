@@ -1,15 +1,17 @@
-import rest_framework_jwt.views
-from django.conf.urls import url, include
+import rest_framework_simplejwt.views
+import djoser.views
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from api import views
 
 router = DefaultRouter()
-router.register(r'passwords', views.PasswordViewSet, base_name='passwords')
+router.register(r"passwords", views.PasswordViewSet, basename="passwords")
+router.register(r"auth/register", djoser.views.UserViewSet, basename="auth_register")
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
-    url(r'^tokens/auth/', rest_framework_jwt.views.obtain_jwt_token),
-    url(r'^tokens/refresh/', rest_framework_jwt.views.refresh_jwt_token),
-    url(r'^auth/', include('djoser.urls')),
+    path("", include(router.urls)),
+    path("tokens/auth/", views.BackwardCompatibleTokenObtainPairView.as_view()),
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.jwt")),
 ]

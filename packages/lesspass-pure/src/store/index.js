@@ -9,14 +9,12 @@ import defaultPassword from "./defaultPassword";
 Vue.use(Vuex);
 
 const state = {
-  authenticated: false,
+  authenticated: localStorage.getItem("access_token") !== null,
   password: Object.assign({}, defaultPassword),
   passwords: [],
   message: "",
   defaultPassword: defaultPassword,
-  showOptions: false,
-  token: null,
-  baseURL: "https://lesspass.com"
+  showOptions: false
 };
 
 export default new Vuex.Store({
@@ -27,7 +25,7 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState({
       key: "lesspass",
-      paths: ["token", "baseURL", "authenticated", "defaultPassword"]
+      paths: ["defaultPassword"]
     })
   ]
 });

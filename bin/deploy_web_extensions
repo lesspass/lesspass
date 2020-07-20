@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+function check_env_variables_are_setted {
+    if [ -z "${EXTENSION_ID}" ] || [ -z "${CLIENT_ID}" ] || [ -z "${CLIENT_SECRET}" ] || [ -z "${REFRESH_TOKEN}" ] || [ -z "${WEB_EXT_API_KEY}" ] || [ -z "${WEB_EXT_API_SECRET}" ]; then
+        echo "Need to set EXTENSION_ID, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, WEB_EXT_API_KEY and WEB_EXT_API_SECRET env variables to release web extensions"
+        exit 1
+    fi
+}
+
+set +o errexit
+
+check_env_variables_are_setted
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+function release_web_extensions {
+    yarn install
+    yarn workspace lesspass-web-extension run release
+    commit=$( git rev-parse HEAD )
+    wget http://github.com/lesspass/lesspass/archive/${commit}.zip
+    echo "Sources saved in ${commit}.zip"
+    echo "Upload them on https://addons.mozilla.org/en-US/developers/"
+}
+
+release_web_extensions

@@ -1,35 +1,59 @@
 version: "3"
-
 services:
   db:
+    restart: always
     image: postgres:9.5
     volumes:
       - postgresql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
   backend:
-    build: ./backend
+    restart: always
+    image: quay.io/lesspass/backend:latest
     links:
       - db
     environment:
       - DATABASE_ENGINE
       - DATABASE_HOST
       - DATABASE_NAME
+      - DATABASE_USER
       - DATABASE_PASSWORD
       - DATABASE_PORT
-      - DATABASE_USER
       - DEBUG
       - SECRET_KEY
+      - FRONTEND_HOST
+      - EMAIL_BACKEND
+      - DEFAULT_FROM_EMAIL
+      - EMAIL_HOST
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
+      - EMAIL_PORT
+      - EMAIL_USE_TLS
+    volumes:
+      - www:/opt/backend/www
   frontend:
-    build: ./frontend
+    restart: always
+    image: quay.io/lesspass/frontend:latest
   webserver:
-    build: ./webserver
+    restart: always
+    image: quay.io/lesspass/webserver:latest
     ports:
       - 80:80
       - 443:443
-    volumes:
-      - ./ssl:/app/ssl
+    links:
+      - backend
+      - frontend
     environment:
       - FQDN
       - EMAIL
-
+      - CRT_PATH
+      - KEY_PATH
+    volumes:
+      - ${PWD}/${CRT_PATH}:/usr/local/apache2/conf/${CRT_PATH}:Z
+      - ${PWD}/${KEY_PATH}:/usr/local/apache2/conf/${KEY_PATH}:Z
+      - www:/var/www/html/
 volumes:
   postgresql:
+  www:

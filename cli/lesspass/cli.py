@@ -79,7 +79,12 @@ def parse_args(args):
         "--copy",
         dest="clipboard",
         action="store_true",
-        help="copy to password to clipboard",
+        help="copy the password to clipboard",
+    )
+    parser.add_argument(
+        "--exclude",
+        default=None,
+        help="exclude char from generated password",
     )
     parser.add_argument(
         "-f",

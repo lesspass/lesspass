@@ -1,0 +1,12 @@
+version: "3"
+services:
+  backend:
+    restart: "no"
+    build: ./backend
+  frontend:
+    restart: "no"
+    build:
+      context: ./frontend
+  webserver:
+    restart: "no"
+    build: ./webserver
