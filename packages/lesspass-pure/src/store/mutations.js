@@ -5,13 +5,16 @@ export default {
     state.authenticated = true;
   },
   [types.SET_TOKENS](state, { refresh_token, access_token }) {
-    state.refresh_token = refresh_token;
-    state.access_token = access_token
+    localStorage.setItem("access_token", access_token);
+    localStorage.setItem("refresh_token", refresh_token);
   },
   [types.LOGOUT](state) {
     state.authenticated = false;
-    state.token = null;
     state.passwords = [];
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("baseURL");
+    localStorage.removeItem("lesspass");
   },
   [types.RESET_PASSWORD](state) {
     state.password = { ...state.defaultPassword };
@@ -34,7 +37,7 @@ export default {
     }
   },
   [types.SET_BASE_URL](state, { baseURL }) {
-    state.baseURL = baseURL;
+    localStorage.setItem("baseURL", baseURL);
   },
   [types.SET_SITE](state, { site }) {
     state.password.site = site;

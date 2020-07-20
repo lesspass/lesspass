@@ -1,4 +1,3 @@
-import timekeeper from "timekeeper";
 import mutations from "./mutations";
 import * as types from "./mutation-types";
 import defaultPassword from "./defaultPassword";
@@ -25,13 +24,11 @@ test("RESET_PASSWORD set default password", () => {
 test("LOGOUT clean user personal info", () => {
   const LOGOUT = mutations[types.LOGOUT];
   const state = {
-    token: "123456",
     password: { counter: 2 },
     passwords: [{ id: "1", site: "test@example.org" }],
     defaultPassword: { counter: 1 }
   };
   LOGOUT(state);
-  expect(state.token === null).toBe(true);
   expect(state.passwords.length).toBe(0);
   expect(state.password.counter).toBe(2);
 });
@@ -41,16 +38,6 @@ test("LOGIN", () => {
   const state = { authenticated: false };
   LOGIN(state);
   expect(state.authenticated).toBe(true);
-});
-
-test("SET_TOKENS", () => {
-  const access_token = "123456";
-  const refresh_token = "7890"
-  const SET_TOKENS = mutations[types.SET_TOKENS];
-  const state = { token: null };
-  SET_TOKENS(state, { access_token, refresh_token });
-  expect(state.access_token).toBe(access_token);
-  expect(state.refresh_token).toBe(refresh_token);
 });
 
 test("SET_PASSWORD", () => {
@@ -119,16 +106,6 @@ test("DELETE_PASSWORD replace state.password with state.defaultPassword", () => 
   };
   DELETE_PASSWORD(state, { id: "1" });
   expect(state.password.length).toBe(16);
-});
-
-test("SET_BASE_URL", () => {
-  const SET_BASE_URL = mutations[types.SET_BASE_URL];
-  const state = {
-    baseURL: "https://lesspass.com"
-  };
-  const baseURL = "https://example.org";
-  SET_BASE_URL(state, { baseURL: baseURL });
-  expect(state.baseURL).toBe(baseURL);
 });
 
 test("LOAD_PASSWORD_PROFILE", () => {

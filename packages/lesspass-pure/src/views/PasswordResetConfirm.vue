@@ -51,9 +51,6 @@ export default {
       password: ''
     };
   },
-  computed: mapState([
-    'baseURL'
-  ]),
   methods: {
     resetPasswordConfirm(){
       if (!this.password) {
@@ -66,15 +63,12 @@ export default {
             uid: this.$route.params.uid,
             token: this.$route.params.token,
             password: this.password
-          },
-          {
-            baseURL: this.baseURL
           }
         )
         .then(() => {
           message.success(this.$t('PasswordResetSuccessful', 'Your password was reset successfully.'));
           User
-            .login({ email: this.email, password: this.password }, {  baseURL: this.baseURL })
+            .login({ email: this.email, password: this.password })
             .then(response => {
               this.$store.dispatch("login", response.data);
               this.$router.push({ name: "home" });

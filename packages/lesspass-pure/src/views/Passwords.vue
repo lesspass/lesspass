@@ -33,24 +33,31 @@
       <div v-if="passwords.length === 0">
         <div class="row">
           <div class="col">
-            {{$t('NoPassword', "You don't have any password profile saved in your database.")}}
-            <router-link
-              :to="{ name: 'home'}"
-            >{{$t('CreatePassword', 'Would you like to create one?')}}</router-link>
+            {{
+              $t(
+                "NoPassword",
+                "You don't have any password profile saved in your database."
+              )
+            }}
+            <router-link :to="{ name: 'home' }">{{
+              $t("CreatePassword", "Would you like to create one?")
+            }}</router-link>
           </div>
         </div>
       </div>
       <div v-if="filteredPasswords.length === 0 && passwords.length > 0">
         <div class="row">
           <div class="col">
-            {{$t('NoMatchFor', 'Oops! There are no matches for')}} "{{searchQuery}}".
-            {{$t('UpdateYourSearch', 'Please try broadening your search.')}}
+            {{ $t("NoMatchFor", "Oops! There are no matches for") }} "{{
+              searchQuery
+            }}".
+            {{ $t("UpdateYourSearch", "Please try broadening your search.") }}
           </div>
         </div>
       </div>
       <password-profile
         v-bind:password="password"
-        v-on:deleted="pagination.currentPage=1"
+        v-on:deleted="pagination.currentPage = 1"
         v-for="password in filteredPasswords"
         :key="password.id"
       ></password-profile>
@@ -112,6 +119,9 @@ export default {
         this.pagination.currentPage * this.pagination.perPage
       );
     }
+  },
+  beforeMount() {
+    this.$store.dispatch("getPasswords");
   },
   methods: {
     setCurrentPage(page) {
