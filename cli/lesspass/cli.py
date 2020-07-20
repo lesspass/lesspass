@@ -26,9 +26,10 @@ copyright:
   This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law
 """
 
+
 def range_type(value_string):
     value = int(value_string)
-    if value not in range(5, 35+1):
+    if value not in range(5, 35 + 1):
         raise argparse.ArgumentTypeError("%s is out of range, choose in [5-35]" % value)
     return value
 
@@ -59,10 +60,10 @@ def parse_args(args):
         "-L",
         "--length",
         default=16,
-        choices=range(5, 35+1),
+        choices=range(5, 35 + 1),
         type=range_type,
         help="password length (default: 16, min: 5, max: 35)",
-        metavar='[5-35]'
+        metavar="[5-35]",
     )
     parser.add_argument(
         "-C", "--counter", default=1, type=int, help="password counter (default: 1)"
@@ -82,16 +83,13 @@ def parse_args(args):
         help="copy the password to clipboard",
     )
     parser.add_argument(
-        "--exclude",
-        default=None,
-        help="exclude char from generated password",
+        "--exclude", default=None, help="exclude char from generated password",
     )
     parser.add_argument(
-        "-f",
-        "--fingerprint",
-        dest="fingerprint",
+        "--no-fingerprint",
+        dest="no_fingerprint",
         action="store_true",
-        help="show visual fingerprint of password as you type it"
+        help="hide visual fingerprint of the master password when you type",
     )
     parser.add_argument(
         "-f",

@@ -10,7 +10,7 @@ from lesspass.cli import parse_args
 from lesspass.profile import create_profile
 from lesspass.password import generate_password
 from lesspass.clipboard import copy, get_system_copy_command
-from lesspass.visual_fingerprint import getpass_with_visual_fingerprint
+from lesspass.fingerprint import getpass_with_fingerprint
 
 signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
 
@@ -36,10 +36,10 @@ def main(args=sys.argv[1:]):
 
     if not args.master_password:
         prompt = "Master Password: "
-        if args.fingerprint:
-            args.master_password = getpass_with_visual_fingerprint(prompt)
-        else:
+        if args.no_fingerprint:
             args.master_password = getpass.getpass(prompt)
+        else:
+            args.master_password = getpass_with_fingerprint(prompt)
 
     if not args.master_password:
         print("error: argument MASTER_PASSWORD is required but was not provided")

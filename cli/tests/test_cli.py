@@ -114,3 +114,7 @@ class TestParseArgs(unittest.TestCase):
 
     def test_parse_args_exclude_single_and_double_quote(self):
         self.assertEqual(parse_args(["site", "--exclude", "\"'"]).exclude, "\"'")
+
+    def test_parse_no_fingerprint(self):
+        self.assertTrue(parse_args(["site", "--no-fingerprint"]).no_fingerprint)
+        self.assertFalse(parse_args(["site"]).no_fingerprint)
