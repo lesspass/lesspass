@@ -28,12 +28,12 @@ describe("Connected Mode", function() {
     cy.get("#email").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.get("#encryptMasterPassword__btn").click();
-    cy.wait(500);
+    cy.wait(1000);
     cy.get("#signInButton").click();
     cy.get("#siteField").should("be.visible");
     cy.get(".fa-key").should("be.visible");
     cy.get(".fa-sign-out").click();
-    cy.wait(500);
+    cy.wait(5000);
     cy.get(".fa-key").should("not.be.visible");
   });
   it("reset password page", function() {
