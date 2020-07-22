@@ -17,11 +17,12 @@ export default {
       new_password: password,
       re_new_password: password
     });
-  }
-  changePassword({ password }) {
-    return http.post("/api/auth/users/changePassword/", {
-      new_password: password,
-      re_new_password: password
+  },
+  changePassword({ current_password, new_password }) {
+    return http.post("/api/auth/users/set_password/", {
+      current_password: current_password,
+      new_password: new_password,
+      re_new_password: new_password
     });
   }
 };
