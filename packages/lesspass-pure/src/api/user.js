@@ -18,4 +18,10 @@ export default {
       re_new_password: password
     });
   }
+  changePassword({ password }) {
+    return http.post("/api/auth/users/changePassword/", {
+      new_password: password,
+      re_new_password: password
+    });
+  }
 };

@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Login from "./views/Login.vue";
+import PasswordChange from "./views/PasswordChange.vue";
 import PasswordGenerator from "./views/PasswordGenerator.vue";
 import PasswordReset from "./views/PasswordReset.vue";
 import PasswordResetConfirm from "./views/PasswordResetConfirm.vue";
@@ -15,6 +16,7 @@ const routes = [
   { path: "/login", name: "login", component: Login },
   { path: "/settings", name: "settings", component: SettingsPage },
   { path: "/passwords/", name: "passwords", component: Passwords },
+  { path: "/password/change", name: "changePassword", component: PasswordChange },
   { path: "/password/reset", name: "passwordReset", component: PasswordReset },
   {
     path: "/password/reset/confirm/:uid/:token",
