@@ -2,9 +2,9 @@ const walk = require("walk");
 const fs = require("fs");
 const path = require("path");
 const parser = require("vue-polyglot-utils");
+const { languagesAvailable } = require("./index");
 
-const SOURCES_DIR = "../src";
-const walker = walk.walk(SOURCES_DIR, {
+const walker = walk.walk(path.resolve(__dirname, ".."), {
   followLinks: false,
   filters: ["i18n"]
 });
@@ -20,11 +20,9 @@ walker.on("file", (root, fileStats, next) => {
   });
 });
 
-const I18N_DIR = "../src/i18n";
-const LANGUAGES_AVAILABLE = ["zh", "zh-CN", "fr", "es", "de", "en", "pt", "pl", "ru"];
 walker.on("end", () => {
-  LANGUAGES_AVAILABLE.forEach(lang => {
-    const localeFile = path.join(I18N_DIR, `${lang}.json`);
+  languagesAvailable.forEach(lang => {
+    const localeFile = path.resolve(__dirname, `${lang}.json`);
     let existingLocale = {};
     if (fs.existsSync(localeFile)) {
       existingLocale = require(localeFile);

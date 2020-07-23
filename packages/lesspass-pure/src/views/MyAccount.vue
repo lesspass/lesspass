@@ -1,6 +1,6 @@
 <template>
   <div>
-    <legend>{{ $t("Change password form") }}</legend>
+    <legend>{{ $t("Change my password") }}</legend>
     <form v-on:submit.prevent="changePassword">
       <div class="form-group row">
         <div class="col-12">

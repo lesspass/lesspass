@@ -7,7 +7,8 @@
   "scripts": {
     "start": "vue-cli-service serve --port 8000",
     "build": "vue-cli-service build",
-    "build:i18n": "cd scripts && node buildI18n.js",
+    "i18n:build": "node src/i18n/build.js",
+    "i18n:translate": "node src/i18n/translate.js",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
     "test": "npm run test:unit && npm run test:e2e",
@@ -52,5 +53,8 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "devDependencies": {
+    "@google-cloud/translate": "^6.0.2"
+  }
 }
