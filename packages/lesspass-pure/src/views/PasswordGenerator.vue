@@ -104,16 +104,6 @@ div.awesomplete > ul {
         </span>
       </div>
     </div>
-    <div class="form-group mb-0" v-if="isAuthenticated">
-      <button
-        id="login__forgot-password-btn"
-        type="button"
-        class="btn btn-link btn-sm p-0"
-        v-on:click="$router.push({ name: 'changePassword' })"
-      >
-        <small>{{ $t("Change your password", "Change your password") }}</small>
-      </button>
-    </div>
   </form>
 </template>
 <script type="text/ecmascript-6">
@@ -138,7 +128,7 @@ export default {
   },
   computed: {
     ...mapState(["password", "passwords"]),
-    ...mapGetters(["passwordURL", "isAuthenticated"]),
+    ...mapGetters(["passwordURL"]),
   },
   beforeMount() {
     this.$store.dispatch("getPasswords").then(() => {
