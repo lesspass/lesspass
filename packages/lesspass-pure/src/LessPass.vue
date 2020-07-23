@@ -5,6 +5,8 @@
 
 .lesspass--full-width #lesspass {
   max-width: none !important;
+  max-height: 480px;
+  overflow: auto;
 }
 
 #lesspass {
@@ -84,4 +86,3 @@ export default {
   }
 };
 </script>
-

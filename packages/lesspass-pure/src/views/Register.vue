@@ -40,18 +40,13 @@
       ></master-password>
     </div>
     <div class="form-group">
-      <button id="signInButton" class="btn btn-primary btn-block">
-        {{ $t("Sign In") }}
-      </button>
-    </div>
-    <div class="form-group">
       <button
-        id="login__forgot-password-btn"
+        id="registerButton"
+        class="btn btn-primary btn-block"
         type="button"
-        class="btn btn-link btn-sm p-0"
-        v-on:click="$router.push({ name: 'passwordReset' })"
+        v-on:click="register"
       >
-        <small>{{ $t("ForgotPassword", "Forgot your password?") }}</small>
+        {{ $t("Register") }}
       </button>
     </div>
     <div class="form-group mb-0">
@@ -59,13 +54,10 @@
         id="login__no-account-btn"
         type="button"
         class="btn btn-light btn-block"
-        v-on:click="$router.push({ name: 'register' })"
+        v-on:click="$router.push({ name: 'login' })"
       >
         <small>{{
-          $t(
-            "NewToLessPassCreateAnAccount",
-            "New to LessPass? Create an account"
-          )
+          $t("SignInInstead", "Already have an account? Sign In instead")
         }}</small>
       </button>
     </div>
@@ -101,28 +93,59 @@ export default {
       }
       return true;
     },
-    signIn() {
+    register() {
       if (this.formIsValid()) {
         const baseURL = this.baseURL;
         this.$store.dispatch("setBaseURL", { baseURL });
-        User.login({ email: this.email, password: this.password })
-          .then(response => {
-            this.$store.dispatch("login", response.data);
-            this.$store.dispatch("cleanMessage");
-            this.$router.push({ name: "home" });
+        User.register(
+          { email: this.email, password: this.password },
+        )
+          .then(() => {
+            message.success(
+             this.$t(
+                "WelcomeRegister",
+                "Welcome {email}, thank you for signing up.",
+                { email: this.email }
+              )
+            );
+            User
+            .login({ email: this.email, password: this.password })
+            .then(response => {
+              this.$store.dispatch("login", response.data);
+              this.$router.push({ name: "home" });
+            })
+            .catch(err => message.displayGenericError());
           })
           .catch(err => {
-            if (err.response === undefined && baseURL !== defaultbaseURL) {
-              message.error(
-                this.$t("DBNotRunning", "Your LessPass Database is not running")
-              );
-            } else if (err.response && err.response.status === 401) {
-              message.error(
-                this.$t(
-                  "LoginIncorrectError",
-                  "The email and password you entered did not match our records. Please double-check and try again."
-                )
-              );
+            if ( err.response === undefined && baseURL !== defaultbaseURL) {
+              message.error(this.$t("DBNotRunning", "Your LessPass Database is not running"));
+            }else if (
+              err.response && err.response.data &&
+              typeof err.response.data.email !== "undefined"
+            ) {
+              if (err.response.data.email[0].indexOf("already exists") !== -1) {
+                message.error(
+                  this.$t(
+                    "EmailAlreadyExist",
+                    "This email is already registered. Want to login or recover your password?"
+                  )
+                );
+              }
+              if (err.response.data.email[0].indexOf("valid email") !== -1) {
+                message.error(
+                  this.$t("EmailInvalid", "Please enter a valid email")
+                );
+              }
+            } else if (
+              err.response && err.response.data &&
+              typeof err.response.data.password !== "undefined"
+            ) {
+              if (err.response.data.password[0].indexOf("too short") !== -1) {
+                message.error(this.$t("PasswordTooShort", "This password is too short. It must contain at least 8 characters."));
+              }
+              if (err.response.data.password[0].indexOf("too common") !== -1) {
+                message.error(this.$t("PasswordTooCommon", "This password is too common."));
+              }
             } else {
               message.displayGenericError();
             }

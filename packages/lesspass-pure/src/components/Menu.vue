@@ -35,10 +35,9 @@
           <router-link class="white-link pl-3" :to="{ name: 'settings'}" :title="$t('Settings')">
             <i class="fa fa-lg fa-cog"></i>
           </router-link>
-          <button class="white-link btn btn-link p-0 m-0 pl-3" type="button" v-if="isAuthenticated"
-                  v-on:click="logout" :title="$t('Sign out')">
-            <i class="fa fa-lg fa-sign-out"></i>
-          </button>
+          <router-link class="white-link pl-3" :to="{ name: 'myaccount'}" v-if="isAuthenticated" :title="$t('My Account')">
+            <i class="fa fa-lg fa-user pointer"></i>
+          </router-link>
           <router-link class="white-link pl-3" :to="{ name: 'login'}" v-if="isGuest" :title="$t('Sign In')">
             <i class="fa fa-lg fa-sign-in pointer"></i>
           </router-link>
@@ -59,10 +58,6 @@
     methods: {
       fullReload() {
         this.$store.dispatch('resetPassword');
-        this.$router.push({name: 'home'}).catch(e => {});
-      },
-      logout() {
-        this.$store.dispatch('logout');
         this.$router.push({name: 'home'}).catch(e => {});
       },
       saveOrUpdatePassword() {
