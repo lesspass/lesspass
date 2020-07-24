@@ -25,6 +25,7 @@
     -L, --length         int (default 16, max 35)
     -C, --counter        int (default 1)
     -p, --prompt         interactively prompt SITE and LOGIN (prevent leak to shell history)
+    --no-fingerprint     hide visual fingerprint of the master password when you type
     --no-lowercase       remove lowercase from password
     --no-uppercase       remove uppercase from password
     --no-digits          remove digits from password
