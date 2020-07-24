@@ -14,13 +14,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		13EF7EECED43D2982CA46AC9 /* libPods-LessPass-LessPassTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE194EF41CD9D16C23CCB /* libPods-LessPass-LessPassTests.a */; };
 		174B492696BD1BFEB8CB792A /* libPods-LessPass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3178A2A0D39C6D11D24D04D5 /* libPods-LessPass.a */; };
-		2C1B778695DD45E13073C699 /* libPods-LessPass-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E2B4784AC524647656A329E /* libPods-LessPass-tvOS.a */; };
+		2135E9CC48DB47BCB711C12B /* Hack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A7E546E77E74EF3A37A6A77 /* Hack.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* LessPassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LessPassTests.m */; };
-		88B90D1D80A02D5089F827F2 /* libPods-LessPass-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39900D9E8621363EA84F648B /* libPods-LessPass-tvOSTests.a */; };
-		2135E9CC48DB47BCB711C12B /* Hack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A7E546E77E74EF3A37A6A77 /* Hack.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,23 +50,17 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LessPass/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LessPass/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LessPass/main.m; sourceTree = "<group>"; };
+		2A7E546E77E74EF3A37A6A77 /* Hack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Hack.ttf; path = ../assets/fonts/Hack.ttf; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* LessPass-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LessPass-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* LessPass-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LessPass-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3178A2A0D39C6D11D24D04D5 /* libPods-LessPass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		39900D9E8621363EA84F648B /* libPods-LessPass-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C8F0D3121CE8996894A7CC /* Pods-LessPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.release.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.release.xcconfig"; sourceTree = "<group>"; };
 		5968C1F79B18BEE09EA7A8EF /* Pods-LessPass-LessPassTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass-LessPassTests.debug.xcconfig"; path = "Target Support Files/Pods-LessPass-LessPassTests/Pods-LessPass-LessPassTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6E2B4784AC524647656A329E /* libPods-LessPass-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		732DAC9D38E5682E3CF6EDE8 /* Pods-LessPass-LessPassTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass-LessPassTests.release.xcconfig"; path = "Target Support Files/Pods-LessPass-LessPassTests/Pods-LessPass-LessPassTests.release.xcconfig"; sourceTree = "<group>"; };
-		73534FCBDAA5432A32C6AC0B /* Pods-LessPass-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-LessPass-tvOS/Pods-LessPass-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		866EE194EF41CD9D16C23CCB /* libPods-LessPass-LessPassTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass-LessPassTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6984C891609B4D58F471312 /* Pods-LessPass-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass-tvOS.release.xcconfig"; path = "Target Support Files/Pods-LessPass-tvOS/Pods-LessPass-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		D670C6542E5D6B7509E0F675 /* Pods-LessPass-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-LessPass-tvOSTests/Pods-LessPass-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F91388109829B5726913CF33 /* Pods-LessPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.debug.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.debug.xcconfig"; sourceTree = "<group>"; };
-		FCB0DE1D8662E60C58813567 /* Pods-LessPass-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-LessPass-tvOSTests/Pods-LessPass-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		2A7E546E77E74EF3A37A6A77 /* Hack.ttf */ = {isa = PBXFileReference; name = "Hack.ttf"; path = "../assets/fonts/Hack.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C1B778695DD45E13073C699 /* libPods-LessPass-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88B90D1D80A02D5089F827F2 /* libPods-LessPass-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,8 +144,6 @@
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				3178A2A0D39C6D11D24D04D5 /* libPods-LessPass.a */,
 				866EE194EF41CD9D16C23CCB /* libPods-LessPass-LessPassTests.a */,
-				6E2B4784AC524647656A329E /* libPods-LessPass-tvOS.a */,
-				39900D9E8621363EA84F648B /* libPods-LessPass-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,10 +189,6 @@
 				57C8F0D3121CE8996894A7CC /* Pods-LessPass.release.xcconfig */,
 				5968C1F79B18BEE09EA7A8EF /* Pods-LessPass-LessPassTests.debug.xcconfig */,
 				732DAC9D38E5682E3CF6EDE8 /* Pods-LessPass-LessPassTests.release.xcconfig */,
-				73534FCBDAA5432A32C6AC0B /* Pods-LessPass-tvOS.debug.xcconfig */,
-				C6984C891609B4D58F471312 /* Pods-LessPass-tvOS.release.xcconfig */,
-				D670C6542E5D6B7509E0F675 /* Pods-LessPass-tvOSTests.debug.xcconfig */,
-				FCB0DE1D8662E60C58813567 /* Pods-LessPass-tvOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -258,7 +242,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LessPass-tvOS" */;
 			buildPhases = (
-				F96741AF9C37E55BC65F94A4 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -278,7 +261,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LessPass-tvOSTests" */;
 			buildPhases = (
-				48E32A90A4A3298C5586420C /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -452,28 +434,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		48E32A90A4A3298C5586420C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LessPass-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4B8CFEB4D4B5003B0054A7A8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -560,28 +520,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-LessPass-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F96741AF9C37E55BC65F94A4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LessPass-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -784,7 +722,6 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73534FCBDAA5432A32C6AC0B /* Pods-LessPass-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -812,7 +749,6 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6984C891609B4D58F471312 /* Pods-LessPass-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -840,7 +776,6 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D670C6542E5D6B7509E0F675 /* Pods-LessPass-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -867,7 +802,6 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCB0DE1D8662E60C58813567 /* Pods-LessPass-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

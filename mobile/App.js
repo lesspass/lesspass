@@ -8,18 +8,21 @@ import Theme from "./src/ui/Theme";
 import Header from "./src/header/Header";
 import Errors from "./src/errors/Errors";
 import AppContainer from "./src/AppContainer";
+import { SafeAreaView } from "react-native";
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <PaperProvider theme={Theme}>
-          <Header />
-          <Errors />
-          <AppContainer />
-        </PaperProvider>
-      </PersistGate>
-    </Provider>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#333333' }}>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <PaperProvider theme={Theme}>
+            <Header />
+            <Errors />
+            <AppContainer />
+          </PaperProvider>
+        </PersistGate>
+      </Provider>
+    </SafeAreaView>
   );
 };
 
