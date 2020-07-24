@@ -53,7 +53,7 @@ export default class GeneratedPassword extends Component {
                 color: Theme.colors.white,
                 textAlign: "center",
                 fontSize: 16,
-                fontFamily: "monospace"
+                fontFamily: "Hack"
               }}
             >
               {saved && "SAVED"}

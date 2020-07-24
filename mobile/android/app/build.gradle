@@ -79,7 +79,8 @@ import com.android.build.OutputFile
 
 project.ext.vectoricons = [
     iconFontNames: [
-        "FontAwesome.ttf"
+        "MaterialCommunityIcons.ttf",
+        "FontAwesome.ttf",
     ]
 ]
 
