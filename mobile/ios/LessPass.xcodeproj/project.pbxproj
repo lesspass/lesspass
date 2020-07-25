@@ -19,6 +19,8 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* LessPassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LessPassTests.m */; };
+		F08AE89A24CCC1AC00473F32 /* LessPassModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08AE89924CCC1AC00473F32 /* LessPassModule.swift */; };
+		F08AE89C24CCC24600473F32 /* LessPassModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F08AE89B24CCC24600473F32 /* LessPassModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +52,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LessPass/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LessPass/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LessPass/main.m; sourceTree = "<group>"; };
-		2A7E546E77E74EF3A37A6A77 /* Hack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Hack.ttf; path = ../assets/fonts/Hack.ttf; sourceTree = "<group>"; };
+		2A7E546E77E74EF3A37A6A77 /* Hack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Hack.ttf; path = ../assets/fonts/Hack.ttf; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* LessPass-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LessPass-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* LessPass-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LessPass-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3178A2A0D39C6D11D24D04D5 /* libPods-LessPass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +62,9 @@
 		866EE194EF41CD9D16C23CCB /* libPods-LessPass-LessPassTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass-LessPassTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F08AE89824CCC1AB00473F32 /* LessPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LessPass-Bridging-Header.h"; sourceTree = "<group>"; };
+		F08AE89924CCC1AC00473F32 /* LessPassModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessPassModule.swift; sourceTree = "<group>"; };
+		F08AE89B24CCC24600473F32 /* LessPassModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessPassModule.m; sourceTree = "<group>"; };
 		F91388109829B5726913CF33 /* Pods-LessPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.debug.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +125,6 @@
 				2A7E546E77E74EF3A37A6A77 /* Hack.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* LessPass */ = {
@@ -133,6 +137,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				F08AE89924CCC1AC00473F32 /* LessPassModule.swift */,
+				F08AE89824CCC1AB00473F32 /* LessPass-Bridging-Header.h */,
+				F08AE89B24CCC24600473F32 /* LessPassModule.m */,
 			);
 			name = LessPass;
 			sourceTree = "<group>";
@@ -190,7 +197,6 @@
 				5968C1F79B18BEE09EA7A8EF /* Pods-LessPass-LessPassTests.debug.xcconfig */,
 				732DAC9D38E5682E3CF6EDE8 /* Pods-LessPass-LessPassTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -288,7 +294,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1160;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -580,7 +586,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				F08AE89A24CCC1AC00473F32 /* LessPassModule.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				F08AE89C24CCC24600473F32 /* LessPassModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5968C1F79B18BEE09EA7A8EF /* Pods-LessPass-LessPassTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -656,6 +665,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 732DAC9D38E5682E3CF6EDE8 /* Pods-LessPass-LessPassTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = LessPassTests/Info.plist;
@@ -693,6 +703,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = LessPass;
+				SWIFT_OBJC_BRIDGING_HEADER = "LessPass-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -715,6 +726,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = LessPass;
+				SWIFT_OBJC_BRIDGING_HEADER = "LessPass-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
