@@ -29,6 +29,7 @@ class LessPassUser(AbstractBaseUser):
     email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    has_password_profile_encrypted = models.BooleanField(default=False)
 
     objects = LesspassUserManager()
 
@@ -91,7 +92,7 @@ class Password(DateMixin):
 
 class EncryptedPasswordProfile(DateMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.ForeignKey(LessPassUser, on_delete=models.CASCADE, related_name='passwords')
+    user = models.ForeignKey(LessPassUser, on_delete=models.CASCADE, related_name='encrypted_password_profile')
     version = models.TextField()
 
     def __str__(self):
