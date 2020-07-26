@@ -93,7 +93,7 @@ class Password(DateMixin):
 class EncryptedPasswordProfile(DateMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(LessPassUser, on_delete=models.CASCADE, related_name='encrypted_password_profile')
-    version = models.TextField()
+    password_profile = models.TextField()
 
     def __str__(self):
         return str(self.id)

@@ -27,6 +27,18 @@ class PasswordSerializer(serializers.ModelSerializer):
         return models.Password.objects.create(user=user, **validated_data)
 
 
+class EncryptedPasswordProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.EncryptedPasswordProfile
+        fields = (
+            "id",
+            "password_profile"
+            "created",
+            "modified",
+        )
+        read_only_fields = ("created", "modified")
+
+
 class BackwardCompatibleTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
