@@ -41,14 +41,14 @@
       </div>
       <div class="form-group row">
         <div class="col-12">
-          <button id="loginButton" class="btn btn-primary btn-block">
+          <button id="changeMyPasswordButton" class="btn btn-primary btn-block">
             {{ $t("Change my password") }}
           </button>
         </div>
       </div>
     </form>
     <hr />
-    <button class="btn btn-success btn-block" type="button" v-on:click="logout">
+    <button id="signOutButton" class="btn btn-success btn-block" type="button" v-on:click="logout">
       {{ $t("Sign out") }}
     </button>
   </div>

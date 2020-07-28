@@ -28,7 +28,7 @@
     </div>
     <div class="form-group row">
       <div class="col-12">
-        <button id="loginButton" class="btn btn-primary btn-block">
+        <button id="resetMyPasswordButton" class="btn btn-primary btn-block">
           {{ $t("Reset my password") }}
         </button>
       </div>
