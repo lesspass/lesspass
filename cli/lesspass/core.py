@@ -56,7 +56,7 @@ def main(args=sys.argv[1:]):
         try:
             copy(generated_password)
             print("Copied to clipboard")
-        except Exception as e:
+        except Exception:
             print("Copy failed, we are sorry")
             print("Can you send us an email at contact@lesspass.com\n")
             print("-" * 80)
