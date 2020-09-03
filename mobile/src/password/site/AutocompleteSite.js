@@ -54,7 +54,7 @@ export default class AutocompleteSite extends Component {
     const items = this.returnMatchingData(value, data, dataKey);
     const highlightedItems = highlightSearch(items, highlight, noHighlight);
     return (
-      <View>
+      <View style={{zIndex: 5}}>
         <TextInput
           mode="outlined"
           label="Site"
