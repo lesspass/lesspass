@@ -702,12 +702,13 @@
 				);
 				INFOPLIST_FILE = LessPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lesspass.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lesspass.ios;
 				PRODUCT_NAME = LessPass;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LessPass-Bridging-Header.h";
@@ -729,14 +730,15 @@
 				DEVELOPMENT_TEAM = 5Y4MF2AT83;
 				INFOPLIST_FILE = LessPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lesspass.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lesspass.ios;
 				PRODUCT_NAME = LessPass;
-				PROVISIONING_PROFILE_SPECIFIER = "LessPass AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "LessPass Distribution Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "LessPass-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
