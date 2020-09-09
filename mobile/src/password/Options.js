@@ -38,7 +38,7 @@ export default class Options extends Component {
             alignItems: "center",
           }}
         >
-          <Checkbox
+          <Checkbox.Android
             status={options.lowercase ? "checked" : "unchecked"}
             uncheckedColor={isValidBackgroundColor}
             onPress={() => {
@@ -59,7 +59,7 @@ export default class Options extends Component {
             alignItems: "center",
           }}
         >
-          <Checkbox
+          <Checkbox.Android
             status={options.uppercase ? "checked" : "unchecked"}
             uncheckedColor={isValidBackgroundColor}
             onPress={() => {
@@ -80,7 +80,7 @@ export default class Options extends Component {
             alignItems: "center",
           }}
         >
-          <Checkbox
+          <Checkbox.Android
             status={options.digits ? "checked" : "unchecked"}
             uncheckedColor={isValidBackgroundColor}
             onPress={() => {
@@ -101,7 +101,7 @@ export default class Options extends Component {
             alignItems: "center",
           }}
         >
-          <Checkbox
+          <Checkbox.Android
             status={options.symbols ? "checked" : "unchecked"}
             uncheckedColor={isValidBackgroundColor}
             onPress={() => {
