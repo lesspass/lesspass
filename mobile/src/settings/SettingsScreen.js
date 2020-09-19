@@ -19,7 +19,10 @@ export class SettingsScreen extends Component {
   }
 
   componentDidMount() {
-    TouchID.isSupported()
+    TouchID
+      .isSupported({
+        passcodeFallback: false
+      })
       .then(() => {
         this.setState({ fingerprintIsSupported: true });
       })

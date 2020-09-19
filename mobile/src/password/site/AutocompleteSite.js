@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, Text, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Platform,
+  StyleSheet
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import memoize from "memoize-one";
 import { isEmpty } from "lodash";
@@ -37,6 +43,17 @@ function noHighlight(text, i) {
   );
 }
 
+const style = StyleSheet.create({
+  container: {
+    ...Platform.select({
+      ios: {
+        zIndex: 5
+      },
+      android: {}
+    })
+  }
+});
+
 export default class AutocompleteSite extends Component {
   returnMatchingData = memoize(returnMatchingData);
 
@@ -54,7 +71,7 @@ export default class AutocompleteSite extends Component {
     const items = this.returnMatchingData(value, data, dataKey);
     const highlightedItems = highlightSearch(items, highlight, noHighlight);
     return (
-      <View>
+      <View style={[style.container]}>
         <TextInput
           mode="outlined"
           label="Site"

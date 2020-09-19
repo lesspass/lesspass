@@ -27,7 +27,6 @@ function build_and_push_containers {
     build_and_push_container webserver
     build_and_push_container backend
     build_and_push_container frontend
-    # build_and_push_container blog
 }
 
 build_and_push_containers
