@@ -12,7 +12,8 @@ def get_secret_key(secret_key):
     if not secret_key:
         return "".join(
             [
-                random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$^&*(-_=+)")
+                random.choice(
+                    "abcdefghijklmnopqrstuvwxyz0123456789!@#$^&*(-_=+)")
                 for i in range(50)
             ]
         )
@@ -92,9 +93,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 LANGUAGE_CODE = "en-us"
@@ -118,7 +119,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "www", "media")
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "handlers": {"console": {"class": "logging.StreamHandler",}},
+    "handlers": {"console": {"class": "logging.StreamHandler", }},
     "root": {
         "handlers": ["console"],
         "level": env("DJANGO_LOG_LEVEL", default="DEBUG"),
@@ -201,4 +202,3 @@ EMAIL_PORT = env.int("EMAIL_PORT", default=25)
 EMAIL_SUBJECT_PREFIX = os.getenv("EMAIL_SUBJECT_PREFIX", "[LessPass] ")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=False)
 EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
-
