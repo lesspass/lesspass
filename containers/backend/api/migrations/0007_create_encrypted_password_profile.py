@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             field=models.BooleanField(default=False),
         ),
         migrations.CreateModel(
-            name='EncryptedPasswordProfile',
+            name='EncryptedPasswordProfiles',
             fields=[
                 ('created', models.DateTimeField(auto_now_add=True, verbose_name='created')),
                 ('modified', models.DateTimeField(auto_now=True, verbose_name='modified')),

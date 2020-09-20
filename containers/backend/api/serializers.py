@@ -27,9 +27,9 @@ class PasswordSerializer(serializers.ModelSerializer):
         return models.Password.objects.create(user=user, **validated_data)
 
 
-class EncryptedPasswordProfileSerializer(serializers.ModelSerializer):
+class EncryptedPasswordProfilesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.EncryptedPasswordProfile
+        model = models.EncryptedPasswordProfiles
         fields = (
             "id",
             "password_profile"

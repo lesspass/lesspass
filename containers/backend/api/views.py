@@ -21,8 +21,8 @@ class PasswordViewSet(viewsets.ModelViewSet):
         return models.Password.objects.filter(user=self.request.user)
 
 
-class EncryptedPasswordProfileViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.EncryptedPasswordProfileSerializer
+class EncryptedPasswordProfilesViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.EncryptedPasswordProfilesSerializer
     permission_classes = (
         permissions.IsAuthenticated,
         IsOwner,
