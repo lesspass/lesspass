@@ -1,5 +1,6 @@
 import os
 import platform
+import shutil
 import subprocess
 import uuid
 
@@ -11,7 +12,7 @@ def _call(args):
 def _copy_available(command):
     if platform.system() == "Windows":
         return _call(["where", command]) == 0
-    return _call(["which", command]) == 0
+    return shutil.which(command) is not None
 
 
 def get_system_copy_command():
