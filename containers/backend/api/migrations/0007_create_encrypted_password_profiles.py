@@ -20,16 +20,12 @@ def generate_password_profiles_encryption_key():
 
 
 def populate_with_default_key(apps, schema_editor):
-    User = apps.get_model("lesspass", "User")
+    User = apps.get_model("api", "lesspassuser")
     db_alias = schema_editor.connection.alias
-    total = User.objects.using(db_alias).count()
-    objs = [{'default_encryption_key': generate_password_profiles_encryption_key()}
-            for i in range(total)]
+    users = User.objects.using(db_alias).all()
+    for user in users:
+        user.default_encryption_key = generate_password_profiles_encryption_key()
     User.objects.using(db_alias).bulk_update(objs, ['default_encryption_key'])
-
-
-def reverse_action(apps, schema_editor):
-    pass
 
 
 class Migration(migrations.Migration):
@@ -47,7 +43,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='lesspassuser',
             name='default_encryption_key',
-            field=models.TextField(),
+            field=models.TextField(null=True),
         ),
         migrations.CreateModel(
             name='EncryptedPasswordProfiles',
@@ -66,5 +62,6 @@ class Migration(migrations.Migration):
                 'abstract': False,
             },
         ),
-        migrations.RunPython(populate_with_default_key, reverse_action),
+        migrations.RunPython(populate_with_default_key,
+                             migrations.RunPython.noop),
     ]

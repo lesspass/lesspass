@@ -31,7 +31,7 @@ class LessPassUser(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     has_password_profile_encrypted = models.BooleanField(default=False)
-    default_encryption_key = models.TextField()
+    default_encryption_key = models.TextField(null=True)
 
     objects = LesspassUserManager()
 
