@@ -28,6 +28,10 @@ def populate_with_default_key(apps, schema_editor):
     User.objects.using(db_alias).bulk_update(objs, ['default_encryption_key'])
 
 
+def reverse_action(apps, schema_editor):
+    pass
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -62,5 +66,5 @@ class Migration(migrations.Migration):
                 'abstract': False,
             },
         ),
-        migrations.RunPython(populate_with_default_key),
+        migrations.RunPython(populate_with_default_key, reverse_action),
     ]
