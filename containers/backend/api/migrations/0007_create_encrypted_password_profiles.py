@@ -2,10 +2,10 @@
 import uuid
 import binascii
 import bcrypt
+import hashlib
 
 from django.conf import settings
 from django.db import migrations, models
-from backports.pbkdf2 import pbkdf2_hmac
 import django.db.models.deletion
 
 
@@ -14,7 +14,8 @@ def generate_password_profiles_encryption_key():
     passwd = bcrypt.gensalt()
     iterations = 50000
     derived_key_len = 32
-    key = pbkdf2_hmac("sha256", passwd, salt, iterations, derived_key_len)
+    key = hashlib.pbkdf2_hmac("sha256", passwd, salt,
+                              iterations, derived_key_len)
     return binascii.hexlify(key)
 
 
@@ -39,6 +40,11 @@ class Migration(migrations.Migration):
             name='has_password_profile_encrypted',
             field=models.BooleanField(default=False),
         ),
+        migrations.AddField(
+            model_name='lesspassuser',
+            name='default_encryption_key',
+            field=models.TextField(),
+        ),
         migrations.CreateModel(
             name='EncryptedPasswordProfiles',
             fields=[
@@ -56,5 +62,5 @@ class Migration(migrations.Migration):
                 'abstract': False,
             },
         ),
-        migrations.RunPython(generate_encryption_key),
+        migrations.RunPython(populate_with_default_key),
     ]

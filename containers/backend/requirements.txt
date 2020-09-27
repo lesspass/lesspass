@@ -5,6 +5,7 @@ djangorestframework-simplejwt==4.4.0
 psycopg2-binary==2.8.5
 gunicorn==20.0.4
 djoser==2.0.3
+bcrypt==3.2.0
 envparse==0.2.0
 # tests
 factory-boy==2.12.0
