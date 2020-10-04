@@ -31,12 +31,12 @@ class LessPassUser(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     has_password_profile_encrypted = models.BooleanField(default=False)
-    user_key = models.TextField(null=True)
+    encrypted_key = models.TextField(null=True)
 
     objects = LesspassUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['email', 'user_key']
+    REQUIRED_FIELDS = ['email', 'encrypted_key']
 
     def get_full_name(self):
         return self.email

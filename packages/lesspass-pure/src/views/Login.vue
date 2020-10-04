@@ -112,12 +112,18 @@ export default {
         User.login({ email: this.email, password: this.password })
           .then(response => {
             User.getLoggedUserInformation().then(response => {
-              if (response.data.user_key === null) {
-                LessPassEntropy.generateUserKey().then(random_key => {
-                  const key = LessPassCrypto.encryptKey(
-                    random_key,
+              if (response.data.encrypted_key === null) {
+                LessPassEntropy.generateUserKey().then(key => {
+                  Password.all().then(passwords => {
+                    console.log(passwords);
+                  });
+                  const encrypted_key = LessPassCrypto.encryptKey(
+                    key,
                     this.password
                   );
+                  User.patch({ encryptedKey }).then(response => {
+                    console.log(response);
+                  });
                 });
               }
             });

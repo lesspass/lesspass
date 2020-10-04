@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='lesspassuser',
-            name='user_key',
+            name='encryted_key',
             field=models.TextField(null=True),
         ),
         migrations.CreateModel(

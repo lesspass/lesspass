@@ -7,6 +7,9 @@ export default {
   getLoggedUserInformation() {
     return http.get('/api/auth/users/me');
   },
+  patch({ encryptedKey }) {
+    return http.patch('/api/auth/users/me', { encryptedKey });
+  },
   register({ email, password }) {
     return http.post("/api/auth/users/", { email, password });
   },
