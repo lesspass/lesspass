@@ -21,10 +21,24 @@ def generate_password_profiles_encryption_key():
 
 def populate_with_default_key(apps, schema_editor):
     User = apps.get_model("api", "lesspassuser")
+    Password = apps.get_model("api", "lesspasspassword")
     db_alias = schema_editor.connection.alias
     users = User.objects.using(db_alias).all()
     for user in users:
         user.default_encryption_key = generate_password_profiles_encryption_key()
+        user_passwords = Password.objects.using(db_alias).filter(user=user)
+        user_passwords_dict = [{
+            'login': user_password.login,
+            'site': user_password.sitqe,
+            'lowercase': user_password.lowercase,
+            'uppercase': user_password.uppercase,
+            'symbols': user_password.symbols,
+            'numbers': user_password.numbers,
+            'length': user_password.length,
+            'counter': user_password.counter,
+            'version': user_password.version,
+        } for user_password in user_passwords]
+        print(user_passwords_dict)
     User.objects.using(db_alias).bulk_update(objs, ['default_encryption_key'])
 
 
