@@ -76,6 +76,10 @@ import User from "../api/user";
 import { defaultbaseURL } from "../api/default";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
+import LessPassVue from "lesspass-pure/src/LessPass.vue";
+import LessPassEntropy from "lesspass-entropy";
+import LessPassCrypto from "lesspass-crypto";
+import { random } from "lodash";
 
 export default {
   data() {
@@ -107,6 +111,16 @@ export default {
         this.$store.dispatch("setBaseURL", { baseURL });
         User.login({ email: this.email, password: this.password })
           .then(response => {
+            User.getLoggedUserInformation().then(response => {
+              if (response.data.user_key === null) {
+                LessPassEntropy.generateUserKey().then(random_key => {
+                  const key = LessPassCrypto.encryptKey(
+                    random_key,
+                    this.password
+                  );
+                });
+              }
+            });
             this.$store.dispatch("login", response.data);
             this.$store.dispatch("cleanMessage");
             this.$router.push({ name: "home" });

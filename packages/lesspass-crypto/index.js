@@ -1,3 +1,5 @@
+const crypto = require("crypto");
+
 function stringToArrayBuffer(string) {
   const base64String = unescape(encodeURIComponent(string));
   const charList = base64String.split("");
@@ -17,7 +19,7 @@ function arrayBufferToHex(arrayBuffer) {
   return str;
 }
 
-function getAlgorithm(algorithm){
+function getAlgorithm(algorithm) {
   const algorithms = {
     sha1: "SHA-1",
     "sha-1": "SHA-1",
@@ -29,8 +31,17 @@ function getAlgorithm(algorithm){
   return algorithms[algorithm.toLowerCase()]
 }
 
+function encryptKey(key, password) {
+  console.log(key, password);
+  var cipher = crypto.createCipher('aes-128-cbc', password);
+  var new_key = cipher.update(key, 'utf8', 'hex')
+  new_key += cipher.final('hex');
+  return new_key;
+}
+
 module.exports = {
   stringToArrayBuffer,
   arrayBufferToHex,
-  getAlgorithm
+  getAlgorithm,
+  encryptKey
 };
