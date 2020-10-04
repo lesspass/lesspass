@@ -21,7 +21,7 @@ def generate_password_profiles_encryption_key():
 
 def populate_with_default_key(apps, schema_editor):
     User = apps.get_model("api", "lesspassuser")
-    Password = apps.get_model("api", "lesspasspassword")
+    Password = apps.get_model("api", "password")
     db_alias = schema_editor.connection.alias
     users = User.objects.using(db_alias).all()
     for user in users:
