@@ -3,43 +3,11 @@ import uuid
 import binascii
 import bcrypt
 import hashlib
+import json
 
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-
-
-def generate_password_profiles_encryption_key():
-    salt = bcrypt.gensalt()
-    passwd = bcrypt.gensalt()
-    iterations = 50000
-    derived_key_len = 32
-    key = hashlib.pbkdf2_hmac("sha256", passwd, salt,
-                              iterations, derived_key_len)
-    return binascii.hexlify(key)
-
-
-def populate_with_default_key(apps, schema_editor):
-    User = apps.get_model("api", "lesspassuser")
-    Password = apps.get_model("api", "password")
-    db_alias = schema_editor.connection.alias
-    users = User.objects.using(db_alias).all()
-    for user in users:
-        user.default_encryption_key = generate_password_profiles_encryption_key()
-        user_passwords = Password.objects.using(db_alias).filter(user=user)
-        user_passwords_dict = [{
-            'login': user_password.login,
-            'site': user_password.sitqe,
-            'lowercase': user_password.lowercase,
-            'uppercase': user_password.uppercase,
-            'symbols': user_password.symbols,
-            'numbers': user_password.numbers,
-            'length': user_password.length,
-            'counter': user_password.counter,
-            'version': user_password.version,
-        } for user_password in user_passwords]
-        print(user_passwords_dict)
-    User.objects.using(db_alias).bulk_update(objs, ['default_encryption_key'])
 
 
 class Migration(migrations.Migration):
@@ -56,7 +24,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='lesspassuser',
-            name='default_encryption_key',
+            name='encryption_key',
             field=models.TextField(null=True),
         ),
         migrations.CreateModel(
@@ -76,6 +44,4 @@ class Migration(migrations.Migration):
                 'abstract': False,
             },
         ),
-        migrations.RunPython(populate_with_default_key,
-                             migrations.RunPython.noop),
     ]
