@@ -3,12 +3,13 @@ import hashlib
 import sys
 import os
 import random
-import tty
-import termios
 import threading
 
 if os.name == "nt":
     import msvcrt
+else:
+    import tty
+    import termios
 
 
 icon_names = [
