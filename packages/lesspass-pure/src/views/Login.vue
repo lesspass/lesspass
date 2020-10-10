@@ -114,17 +114,27 @@ export default {
             User.getLoggedUserInformation().then(response => {
               if (response.data.encrypted_key === null) {
                 LessPassEntropy.generateUserKey().then(key => {
-                  Password.all().then(passwords => {
-                    console.log(passwords);
-                  });
                   const encrypted_key = LessPassCrypto.encryptKey(
                     key,
                     this.password
                   );
-                  User.patch({ encryptedKey }).then(response => {
-                    console.log(response);
+                  Password.all().then(passwords => {
+                    allPasswords = passwords.map(password => {
+                      return {
+                        login: password.login,
+                        site: password.site,
+                        lowercase: password.lowercase,
+                        uppercase: password.uppercase,
+                        symbols: password.symbols,
+                        numbers: password.numbers,
+                        length: password.length
+                      };
+                    });
+                    console.log(allPasswords);
                   });
                 });
+              } else {
+                console.log("user has encrypted key");
               }
             });
             this.$store.dispatch("login", response.data);

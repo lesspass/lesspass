@@ -32,7 +32,6 @@ function getAlgorithm(algorithm) {
 }
 
 function encryptKey(key, password) {
-  console.log(key, password);
   var cipher = crypto.createCipher('aes-128-cbc', password);
   var new_key = cipher.update(key, 'utf8', 'hex')
   new_key += cipher.final('hex');
