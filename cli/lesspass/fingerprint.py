@@ -105,7 +105,7 @@ def getchar():
     # jasonrdsouza & mvaganov https://gist.github.com/jasonrdsouza/1901709
     ch = ""
     if os.name == "nt":  # Windows
-        ch = msvcrt.getch().decode('utf-8')
+        ch = msvcrt.getwch()
     else:
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
