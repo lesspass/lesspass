@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                                         editable=False, primary_key=True, serialize=False)),
                 ('password_profile', models.TextField()),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                           related_name='encrypted_password_profile', to=settings.AUTH_USER_MODEL)),
+                                           related_name='encrypted_password_profiles', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'abstract': False,

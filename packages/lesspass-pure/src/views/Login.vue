@@ -73,6 +73,8 @@
 </template>
 <script type="text/ecmascript-6">
 import User from "../api/user";
+import Password from "../api/password";
+import Profile from "../api/profile";
 import { defaultbaseURL } from "../api/default";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
@@ -114,23 +116,33 @@ export default {
             User.getLoggedUserInformation().then(response => {
               if (response.data.encrypted_key === null) {
                 LessPassEntropy.generateUserKey().then(key => {
-                  const encrypted_key = LessPassCrypto.encryptKey(
+                  const encrypted_key = LessPassCrypto.encrypt(
                     key,
                     this.password
                   );
                   Password.all().then(passwords => {
-                    allPasswords = passwords.map(password => {
-                      return {
-                        login: password.login,
-                        site: password.site,
-                        lowercase: password.lowercase,
-                        uppercase: password.uppercase,
-                        symbols: password.symbols,
-                        numbers: password.numbers,
-                        length: password.length
-                      };
+                    const allPasswords = passwords.data.results.map(
+                      password => {
+                        return {
+                          login: password.login,
+                          site: password.site,
+                          lowercase: password.lowercase,
+                          uppercase: password.uppercase,
+                          symbols: password.symbols,
+                          numbers: password.numbers,
+                          length: password.length
+                        };
+                      }
+                    );
+                    const data = JSON.stringify(allPasswords);
+                    const encryptedPasswordProfiles = LessPassCrypto.encrypt(
+                      data,
+                      key
+                    );
+                    Profile.create({
+                      password_profile: encryptedPasswordProfiles
                     });
-                    console.log(allPasswords);
+                    // User.patch({ encrypted_key });
                   });
                 });
               } else {

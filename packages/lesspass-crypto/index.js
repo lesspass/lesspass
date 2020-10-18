@@ -31,16 +31,16 @@ function getAlgorithm(algorithm) {
   return algorithms[algorithm.toLowerCase()]
 }
 
-function encryptKey(key, password) {
+function encrypt(data, password) {
   var cipher = crypto.createCipher('aes-128-cbc', password);
-  var new_key = cipher.update(key, 'utf8', 'hex')
-  new_key += cipher.final('hex');
-  return new_key;
+  var new_data = cipher.update(data, 'utf8', 'hex')
+  new_data += cipher.final('hex');
+  return new_data;
 }
 
 module.exports = {
   stringToArrayBuffer,
   arrayBufferToHex,
   getAlgorithm,
-  encryptKey
+  encrypt
 };

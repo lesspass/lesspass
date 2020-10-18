@@ -7,8 +7,10 @@ from api import views
 
 router = DefaultRouter()
 router.register(r"passwords", views.PasswordViewSet, basename="passwords")
-router.register(r"encrypted_password_profile", views.EncryptedPasswordProfilesViewSet, basename="encrypted_password_profile")
-router.register(r"auth/register", djoser.views.UserViewSet, basename="auth_register")
+router.register(r"encrypted_password_profiles",
+                views.EncryptedPasswordProfilesViewSet, basename="encrypted_password_profiles")
+router.register(r"auth/register", djoser.views.UserViewSet,
+                basename="auth_register")
 
 urlpatterns = [
     path("", include(router.urls)),

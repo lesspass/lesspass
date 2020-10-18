@@ -32,11 +32,15 @@ class EncryptedPasswordProfilesSerializer(serializers.ModelSerializer):
         model = models.EncryptedPasswordProfiles
         fields = (
             "id",
-            "password_profile"
+            "password_profile",
             "created",
             "modified",
         )
         read_only_fields = ("created", "modified")
+
+    def create(self, validated_data):
+        user = self.context["request"].user
+        return models.EncryptedPasswordProfiles.objects.create(user=user, **validated_data)
 
 
 class BackwardCompatibleTokenObtainPairSerializer(TokenObtainPairSerializer):
