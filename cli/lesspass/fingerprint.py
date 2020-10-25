@@ -3,12 +3,13 @@ import hashlib
 import sys
 import os
 import random
-import tty
-import termios
 import threading
 
 if os.name == "nt":
     import msvcrt
+else:
+    import tty
+    import termios
 
 
 icon_names = [
@@ -104,7 +105,7 @@ def getchar():
     # jasonrdsouza & mvaganov https://gist.github.com/jasonrdsouza/1901709
     ch = ""
     if os.name == "nt":  # Windows
-        ch = msvcrt.getch()
+        ch = msvcrt.getwch()
     else:
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
