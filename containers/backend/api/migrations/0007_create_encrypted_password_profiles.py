@@ -19,12 +19,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='lesspassuser',
-            name='has_password_profile_encrypted',
-            field=models.BooleanField(default=False),
-        ),
-        migrations.AddField(
-            model_name='lesspassuser',
-            name='encryted_key',
+            name='key',
             field=models.TextField(null=True),
         ),
         migrations.CreateModel(

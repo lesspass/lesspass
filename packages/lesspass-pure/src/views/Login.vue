@@ -114,9 +114,9 @@ export default {
         User.login({ email: this.email, password: this.password })
           .then(response => {
             User.getLoggedUserInformation().then(response => {
-              if (response.data.encrypted_key === null) {
+              if (response.data.key === null) {
                 LessPassEntropy.generateUserKey().then(key => {
-                  const encrypted_key = LessPassCrypto.encrypt(
+                  const encryptedKey = LessPassCrypto.encrypt(
                     key,
                     this.password
                   );
@@ -137,16 +137,24 @@ export default {
                     const data = JSON.stringify(allPasswords);
                     const encryptedPasswordProfiles = LessPassCrypto.encrypt(
                       data,
-                      key
+                      encryptedKey
                     );
                     Profile.create({
                       password_profile: encryptedPasswordProfiles
+                    }).then(() => {
+                      User.patch({ key });
+                      this.$store.dispatch("getPasswords", {
+                        key: key,
+                        password: this.password
+                      });
                     });
-                    User.patch({ encrypted_key });
                   });
                 });
               } else {
-                console.log("user has encrypted key");
+                this.$store.dispatch("getPasswords", {
+                  key: response.data.key,
+                  password: this.password
+                });
               }
             });
             this.$store.dispatch("login", response.data);

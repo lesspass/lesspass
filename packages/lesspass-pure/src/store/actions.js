@@ -1,5 +1,6 @@
 import Password from "../api/password";
 import Profile from "../api/profile";
+import LessPassCrypto from "lesspass-crypto";
 import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
 import defaultPasswordProfile from "./defaultPassword";
@@ -42,22 +43,22 @@ export const logout = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 
-export const getPasswords = ({ commit }) => {
-  Profile.all().then(response => {
-    let encryptedProfiles = response.data.results;
-    if (encryptedProfiles.length > 0) {
-      encryptedProfiles = encryptedProfiles[0];
-      console.log(encryptedProfiles.password_profile);
-    }
-  });
-  return Password.all()
-    .then(response => {
+export const getPasswords = ({ commit }, { key, password }) => {
+  return Profile.all().then(response => {
+    if (response.data.results.length > 0) {
+      const encryptedPasswordProfiles = response.data.results[0].password_profile;
+      const encryptedKey = LessPassCrypto.encrypt(
+        key,
+        password
+      );
+      const passwords = JSON.parse(
+        LessPassCrypto.decrypt(encryptedPasswordProfiles, encryptedKey)
+      );
       commit(types.LOGIN);
-      const passwords = response.data.results;
       commit(types.SET_PASSWORDS, { passwords });
-      return passwords;
-    })
-    .catch(() => logout({ commit }));
+      return
+    }
+  }).catch(() => logout({ commit }));;
 };
 
 export const saveOrUpdatePassword = ({ commit, state }) => {
