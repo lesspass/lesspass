@@ -29,7 +29,7 @@ class EncryptedPasswordProfilesViewSet(viewsets.ModelViewSet):
     )
 
     def get_queryset(self):
-        return models.EncryptedPasswordProfile.objects.filter(user=self.request.user)
+        return models.EncryptedPasswordProfiles.objects.filter(user=self.request.user)
 
 
 class BackwardCompatibleTokenObtainPairView(TokenObtainPairView):

@@ -142,7 +142,7 @@ export default {
                     Profile.create({
                       password_profile: encryptedPasswordProfiles
                     });
-                    // User.patch({ encrypted_key });
+                    User.patch({ encrypted_key });
                   });
                 });
               } else {

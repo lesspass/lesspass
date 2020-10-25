@@ -1,4 +1,5 @@
 import Password from "../api/password";
+import Profile from "../api/profile";
 import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
 import defaultPasswordProfile from "./defaultPassword";
@@ -42,6 +43,13 @@ export const logout = ({ commit }) => {
 };
 
 export const getPasswords = ({ commit }) => {
+  Profile.all().then(response => {
+    let encryptedProfiles = response.data.results;
+    if (encryptedProfiles.length > 0) {
+      encryptedProfiles = encryptedProfiles[0];
+      console.log(encryptedProfiles.password_profile);
+    }
+  });
   return Password.all()
     .then(response => {
       commit(types.LOGIN);

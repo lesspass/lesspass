@@ -1,6 +1,9 @@
 import http from "./http";
 
 export default {
+  all() {
+    return http.get("/api/encrypted_password_profiles/");
+  },
   create(resource) {
     return http.post("/api/encrypted_password_profiles/", resource);
   },
