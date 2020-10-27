@@ -14,10 +14,10 @@ LessPass servers are hosted on Vultr. Create an account on Vultr and receive \$1
 
 ## How does it work?
 
-- :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
-- :fr: [LessPass - comment ça marche?](https://blog.lesspass.com/lesspass-comment-%C3%A7a-marche-9f1201fffda5#.yjmd1bcad)
-- :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/lesspass-wie-funktioniert-das-9483e5fc2c09)
-- :it: [LessPass - Come funziona?](https://blog.lesspass.com/lesspass-come-funziona-5d1785b4a564)
+- :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/2016-10-19/how-does-it-work)
+- :fr: [LessPass - comment ça marche?](https://blog.lesspass.com/2016-07-08/comment-ca-marche)
+- :de: [LessPass - Wie funktioniert das?](https://blog.lesspass.com/2017-07-18/wie-funktioniert-das)
+- :it: [LessPass - Come funziona?](https://blog.lesspass.com/2019-04-04/come-funziona)
 
 ## Videos
 
