@@ -28,14 +28,6 @@ export default {
   [types.SET_PASSWORDS](state, { passwords }) {
     state.passwords = passwords;
   },
-  [types.DELETE_PASSWORD](state, { id }) {
-    state.passwords = state.passwords.filter(password => {
-      return password.id !== id;
-    });
-    if (state.password && state.password.id === id) {
-      state.password = Object.assign({}, state.defaultPassword);
-    }
-  },
   [types.SET_BASE_URL](state, { baseURL }) {
     localStorage.setItem("baseURL", baseURL);
   },
@@ -64,5 +56,12 @@ export default {
   },
   [types.CLEAN_MESSAGE](state) {
     state.message = { text: "", status: "success" };
+  },
+  [types.SET_ENCRYPTED_PASSWORD_PROFILES_ID](state, { id }) {
+    state.encryptedPasswordProfilesId = id;
+  },
+  [types.SET_ENCRYPTED_KEY](state, { encryptedKey }) {
+    state.encryptedKey = encryptedKey;
+    console.log('state encrypted key', state.encryptedKey)
   }
 };

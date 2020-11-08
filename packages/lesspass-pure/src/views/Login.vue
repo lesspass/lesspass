@@ -130,7 +130,8 @@ export default {
                           uppercase: password.uppercase,
                           symbols: password.symbols,
                           numbers: password.numbers,
-                          length: password.length
+                          length: password.length,
+                          counter: password.counter
                         };
                       }
                     );
@@ -144,16 +145,18 @@ export default {
                     }).then(() => {
                       User.patch({ key });
                       this.$store.dispatch("getPasswords", {
-                        key: key,
-                        password: this.password
+                        encryptedKey
                       });
                     });
                   });
                 });
               } else {
+                const encryptedKey = LessPassCrypto.encrypt(
+                  response.data.key,
+                  this.password
+                );
                 this.$store.dispatch("getPasswords", {
-                  key: response.data.key,
-                  password: this.password
+                  encryptedKey
                 });
               }
             });
