@@ -43,4 +43,3 @@ public class Crypto {
         return String.format("%0" + (bytes.length << 1) + "x", bi);
     }
 }
-
