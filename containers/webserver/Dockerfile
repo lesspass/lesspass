@@ -2,7 +2,7 @@ FROM httpd:2.4
 LABEL maintainer="LessPass <contact@lesspass.com>"
 LABEL name="LessPass Web Server" 
 
-RUN sed -i 's/ServerTokens Full/ServerTokens Prod/g' /usr/local/apache2/conf/extra/httpd-default.conf
+COPY ./httpd-default.conf /usr/local/apache2/conf/extra/httpd-default.conf
 COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
 COPY ./httpd-ssl.conf /usr/local/apache2/conf/extra/httpd-ssl.conf
 COPY entrypoint.sh /entrypoint.sh
