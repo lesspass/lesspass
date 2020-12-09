@@ -201,4 +201,3 @@ EMAIL_PORT = env.int("EMAIL_PORT", default=25)
 EMAIL_SUBJECT_PREFIX = os.getenv("EMAIL_SUBJECT_PREFIX", "[LessPass] ")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=False)
 EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
-
