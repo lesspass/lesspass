@@ -5,7 +5,7 @@ NOCOLOR='\033[0m'
 
 function print_error {
    echo -e "${RED}$1${NOCOLOR}"
-} 
+}
 
 function check_current_directory_is_root {
     if [ ! -f README.md ]; then
@@ -83,7 +83,7 @@ function increment_version {
 			patch=$((patch + 1))
 			;;
 	esac
-    
+
     new_version="$major.$minor.$patch"
     echo ${new_version}
 }

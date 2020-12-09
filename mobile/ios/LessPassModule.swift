@@ -78,9 +78,9 @@ extension Data {
 }
 
 func pbkdf2(hash: CCPBKDFAlgorithm, password: String, salt: String, keyByteCount: Int, rounds: Int) -> String? {
- 
+
       guard let passwordData = password.data(using: .utf8), let saltData = salt.data(using: .utf8) else { return nil }
-  
+
     var derivedKeyData = Data(repeating: 0, count: keyByteCount)
     let derivedCount = derivedKeyData.count
     let derivationStatus: Int32 = derivedKeyData.withUnsafeMutableBytes { derivedKeyBytes in
@@ -111,7 +111,7 @@ class LessPassModule: NSObject {
                          rejecter reject:RCTPromiseRejectBlock) -> Void {
     resolve("".hmac(algorithm: HMACAlgorithm.SHA256, key: masterPassword))
   }
-  
+
   @objc(calcEntropy:withLogin:withMasterPassword:withCounter:resolver:rejecter:)
   func calcEntropy(_ site: String,
                    withLogin login: String,
@@ -123,7 +123,7 @@ class LessPassModule: NSObject {
     let r = pbkdf2(hash: CCPBKDFAlgorithm(kCCPRFHmacAlgSHA256), password: masterPassword, salt: salt, keyByteCount: 32, rounds: 100000)
     resolve(r)
   }
-  
+
   @objc
   static func requiresMainQueueSetup() -> Bool {
     return false

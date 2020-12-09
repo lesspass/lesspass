@@ -19,7 +19,7 @@ class TestFunctional(unittest.TestCase):
 
     def test_length_range_type(self):
         self.assertEqual(range_type('5'), 5)
-        self.assertEqual(range_type('35'), 35) 
+        self.assertEqual(range_type('35'), 35)
         with self.assertRaises(argparse.ArgumentTypeError):
             range_type('2')
 

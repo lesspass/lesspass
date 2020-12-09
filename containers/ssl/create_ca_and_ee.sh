@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This script will create a custom Certificate Authority (CA) and End Entity (EE) certificates.
-# 
+#
 # for local development this should be fine and you can ignore certificate trust errors related to
 # an untrusted root. For public facing access, you can submit the generated lesspass.csr to a trusted
 # ca so that they can provide you with a trusted certificate to replace this development certificate.

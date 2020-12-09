@@ -15,9 +15,9 @@ public class Crypto {
             byte[] secretData = secret.getBytes();
             byte[] saltData = salt.getBytes();
             gen.init(secretData, saltData, iterations);
-            byte[] derivedKey = ((KeyParameter)gen.generateDerivedParameters(keyLength * 8)).getKey();    
+            byte[] derivedKey = ((KeyParameter)gen.generateDerivedParameters(keyLength * 8)).getKey();
             return toHex(derivedKey);
-        } 
+        }
         catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -32,7 +32,7 @@ public class Crypto {
             byte[] result = new byte[hmac.getMacSize()];
             hmac.doFinal(result, 0);
             return toHex(result);
-        } 
+        }
         catch (Exception e){
             throw new RuntimeException(e);
         }
