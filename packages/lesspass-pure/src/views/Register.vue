@@ -102,7 +102,7 @@ export default {
         )
           .then(() => {
             message.success(
-             this.$t(
+              this.$t(
                 "WelcomeRegister",
                 "Welcome {email}, thank you for signing up.",
                 { email: this.email }
