@@ -22,27 +22,28 @@ Working on your first Pull Request? You can learn how using this *free* series, 
 
 Before diving in to the code, you'll need these tools installed in your environment:
 
- * [NodeJS](https://nodejs.org/)
- * [Yarn](https://yarnpkg.com/)
+* [NodeJS](https://nodejs.org/)
+* [Yarn](https://yarnpkg.com/)
 
 The mobile apps need:
 
- * [Gradle](https://developer.android.com/studio/build/) for Android
- * [Xcode](https://developer.apple.com/xcode/) for iOS
+* [Gradle](https://developer.android.com/studio/build/) for Android
+* [Xcode](https://developer.apple.com/xcode/) for iOS
 
 If you are working on the CLI, you will need:
 
- * [Python 3](https://www.python.org/)
+* [Python 3](https://www.python.org/)
 
 ### Folder architecture
 
-Here a some folders that worth noticing :
- * `package` contains the code for the web version and the browser extension. Development is done with `javascript` and `Vue`.
-   * `lesspass-pure` contains the core of `lesspass`. Running `yarn dev` in this folder will run a `lesspass` instance locally.
-   * `lesspass-web-extension` contains the code specific for the web extension.
-   * `lesspass-render-password` contains the algorithm to generate passwords.
- * `cli` contains the command line version. Development is done with `python`.
- * `mobile` contains the `android` and `ios` version. Development is done with `javascript` and `react native`.
+Here are some folders that worth noticing:
+
+* `package` contains the code for the web version and the browser extension. Development is done with `javascript` and `Vue`.
+  * `lesspass-pure` contains the core of `lesspass`. Running `yarn dev` in this folder will run a `lesspass` instance locally.
+  * `lesspass-web-extension` contains the code specific for the web extension.
+  * `lesspass-render-password` contains the algorithm to generate passwords.
+* `cli` contains the command line version. Development is done with `python`.
+* `mobile` contains the `android` and `ios` version. Development is done with `javascript` and `react native`.
 
 ### Commands
 
