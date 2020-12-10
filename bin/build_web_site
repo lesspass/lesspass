@@ -4,7 +4,7 @@ RED='\033[0;31m'
 NOCOLOR='\033[0m'
 
 function print_error {
-   echo -e "${RED}$1${NOCOLOR}"
+    echo -e "${RED}$1${NOCOLOR}"
 }
 
 function check_current_directory_is_root {
@@ -66,23 +66,23 @@ function increment_version {
     IFS='.' read -a versions <<< "${1}"
 
     major=${versions[0]}
-	minor=${versions[1]}
-	patch=${versions[2]}
+    minor=${versions[1]}
+    patch=${versions[2]}
 
-	case "${2}" in
-		"major")
-			major=$((major + 1))
-			minor=0
-			patch=0
-			;;
-		"minor")
-			minor=$((minor + 1))
-			patch=0
-			;;
-		"patch")
-			patch=$((patch + 1))
-			;;
-	esac
+    case "${2}" in
+        "major")
+            major=$((major + 1))
+            minor=0
+            patch=0
+            ;;
+        "minor")
+            minor=$((minor + 1))
+            patch=0
+            ;;
+        "patch")
+            patch=$((patch + 1))
+            ;;
+    esac
 
     new_version="$major.$minor.$patch"
     echo ${new_version}
