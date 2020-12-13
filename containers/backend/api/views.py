@@ -21,6 +21,17 @@ class PasswordViewSet(viewsets.ModelViewSet):
         return models.Password.objects.filter(user=self.request.user)
 
 
+class EncryptedPasswordProfilesViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.EncryptedPasswordProfilesSerializer
+    permission_classes = (
+        permissions.IsAuthenticated,
+        IsOwner,
+    )
+
+    def get_queryset(self):
+        return models.EncryptedPasswordProfiles.objects.filter(user=self.request.user)
+
+
 class BackwardCompatibleTokenObtainPairView(TokenObtainPairView):
     serializer_class = serializers.BackwardCompatibleTokenObtainPairSerializer
 

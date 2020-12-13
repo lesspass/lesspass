@@ -26,13 +26,16 @@ class LesspassUserManager(BaseUserManager):
 
 
 class LessPassUser(AbstractBaseUser):
-    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    email = models.EmailField(
+        verbose_name='email address', max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    key = models.TextField(null=True)
 
     objects = LesspassUserManager()
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['key']
 
     def get_full_name(self):
         return self.email
@@ -71,7 +74,8 @@ class DateMixin(models.Model):
 
 class Password(DateMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.ForeignKey(LessPassUser, on_delete=models.CASCADE, related_name='passwords')
+    user = models.ForeignKey(
+        LessPassUser, on_delete=models.CASCADE, related_name='passwords')
     login = models.CharField(max_length=255, null=True, blank=True)
     site = models.CharField(max_length=255, null=True, blank=True)
 
@@ -84,6 +88,17 @@ class Password(DateMixin):
     counter = models.IntegerField(default=1)
 
     version = models.IntegerField(default=2)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class EncryptedPasswordProfiles(DateMixin):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(
+        LessPassUser, on_delete=models.CASCADE,
+        related_name='encrypted_password_profiles')
+    password_profile = models.TextField()
 
     def __str__(self):
         return str(self.id)

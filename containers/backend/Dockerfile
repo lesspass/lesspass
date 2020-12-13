@@ -1,6 +1,6 @@
 FROM python:3.6
 LABEL maintainer="LessPass <contact@lesspass.com>"
-LABEL name="LessPass Backend"
+LABEL name="LessPass Backend" 
 RUN mkdir /opt/backend
 WORKDIR /opt/backend
 COPY requirements.txt /opt/backend
