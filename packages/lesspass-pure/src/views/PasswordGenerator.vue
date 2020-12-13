@@ -12,7 +12,11 @@ div.awesomplete > ul {
 }
 </style>
 <template>
-  <form id="password-generator" v-on:submit.prevent="generatePassword" novalidate>
+  <form
+    id="password-generator"
+    v-on:submit.prevent="generatePassword"
+    novalidate
+  >
     <div class="form-group">
       <input-site
         ref="site"
@@ -25,7 +29,7 @@ div.awesomplete > ul {
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
-      <label for="login" class="sr-only">{{ $t('Login') }}</label>
+      <label for="login" class="sr-only">{{ $t("Login") }}</label>
       <div class="inner-addon left-addon">
         <i class="fa fa-user"></i>
         <input
@@ -59,7 +63,9 @@ div.awesomplete > ul {
         tabindex="0"
         class="btn btn-primary btn-block"
         v-if="!passwordGenerated"
-      >{{ $t('Generate') }}</button>
+      >
+        {{ $t("Generate") }}
+      </button>
       <div class="input-group" v-show="passwordGenerated">
         <span class="input-group-btn">
           <button
@@ -128,16 +134,14 @@ export default {
   },
   computed: {
     ...mapState(["password", "passwords"]),
-    ...mapGetters(["passwordURL"]),
+    ...mapGetters(["passwordURL"])
   },
   beforeMount() {
-    this.$store.dispatch("getPasswords").then(() => {
-      urlParser.getSite().then(site => {
-        this.$store.dispatch("loadPasswordProfile", { site });
-      });
-      this.$store.dispatch("getPasswordFromUrlQuery", {
-        query: this.$route.query
-      });
+    urlParser.getSite().then(site => {
+      this.$store.dispatch("loadPasswordProfile", { site });
+    });
+    this.$store.dispatch("getPasswordFromUrlQuery", {
+      query: this.$route.query
     });
   },
   mounted() {

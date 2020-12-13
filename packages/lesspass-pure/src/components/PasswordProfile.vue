@@ -24,9 +24,9 @@
     <div class="passwordProfile__info" v-on:click="setPassword()">
       <avatar v-bind:name="password.site"></avatar>
       <div class="passwordProfile__meta">
-        <b>{{password.site}}</b>
+        <b>{{ password.site }}</b>
         <br />
-        {{password.login}}
+        {{ password.login }}
       </div>
     </div>
     <div class="passwordProfile__actions">
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     deletePassword() {
-      this.$store.dispatch("deletePassword", { id: this.password.id });
+      this.$store.dispatch("deletePassword", { password: this.password });
     },
     setPassword() {
       this.$store.dispatch("savePassword", { password: this.password });
@@ -62,3 +62,4 @@ export default {
   }
 };
 </script>
+

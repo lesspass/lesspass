@@ -1,6 +1,6 @@
 FROM node:lts AS builder
 LABEL maintainer="LessPass <contact@lesspass.com>"
-LABEL name="LessPass Frontend"
+LABEL name="LessPass Frontend" 
 WORKDIR /opt/frontend
 COPY package.json yarn.lock ./
 RUN yarn install
