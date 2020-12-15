@@ -7,7 +7,7 @@ on:
 
 jobs:
   test-cli:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
@@ -18,7 +18,7 @@ jobs:
           cd cli
           ./test
   deploy-cli:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: test-cli
     steps:
       - uses: actions/checkout@v2

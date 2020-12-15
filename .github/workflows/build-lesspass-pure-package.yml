@@ -8,9 +8,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
       - name: git hash
         run: |
           git rev-parse HEAD
@@ -21,12 +24,15 @@ jobs:
           yarn workspace lesspass-pure run test
 
   build-and-commit-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: test
     steps:
       - uses: actions/checkout@v2
         with:
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
       - name: build lesspass-pure package
         run: |
           yarn install
