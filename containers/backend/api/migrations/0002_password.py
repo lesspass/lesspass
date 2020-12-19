@@ -11,28 +11,49 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0001_initial'),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Password',
+            name="Password",
             fields=[
-                ('created', models.DateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', models.DateTimeField(auto_now=True, verbose_name='modified')),
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('login', models.CharField(blank=True, max_length=255, null=True)),
-                ('site', models.CharField(blank=True, max_length=255, null=True)),
-                ('lowercase', models.BooleanField(default=True)),
-                ('uppercase', models.BooleanField(default=True)),
-                ('symbols', models.BooleanField(default=True)),
-                ('numbers', models.BooleanField(default=True)),
-                ('counter', models.IntegerField(default=1)),
-                ('length', models.IntegerField(default=12)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='passwords', to=settings.AUTH_USER_MODEL)),
+                (
+                    "created",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created"),
+                ),
+                (
+                    "modified",
+                    models.DateTimeField(auto_now=True, verbose_name="modified"),
+                ),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("login", models.CharField(blank=True, max_length=255, null=True)),
+                ("site", models.CharField(blank=True, max_length=255, null=True)),
+                ("lowercase", models.BooleanField(default=True)),
+                ("uppercase", models.BooleanField(default=True)),
+                ("symbols", models.BooleanField(default=True)),
+                ("numbers", models.BooleanField(default=True)),
+                ("counter", models.IntegerField(default=1)),
+                ("length", models.IntegerField(default=12)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="passwords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

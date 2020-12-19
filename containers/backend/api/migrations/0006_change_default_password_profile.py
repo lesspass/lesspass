@@ -8,18 +8,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0005_password_version'),
+        ("api", "0005_password_version"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='password',
-            name='length',
+            model_name="password",
+            name="length",
             field=models.IntegerField(default=16),
         ),
         migrations.AlterField(
-            model_name='password',
-            name='version',
+            model_name="password",
+            name="version",
             field=models.IntegerField(default=2),
         ),
     ]

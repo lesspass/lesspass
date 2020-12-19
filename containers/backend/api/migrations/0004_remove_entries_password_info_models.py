@@ -8,22 +8,22 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0003_mv_entries_to_password'),
+        ("api", "0003_mv_entries_to_password"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='entry',
-            name='password',
+            model_name="entry",
+            name="password",
         ),
         migrations.RemoveField(
-            model_name='entry',
-            name='user',
+            model_name="entry",
+            name="user",
         ),
         migrations.DeleteModel(
-            name='Entry',
+            name="Entry",
         ),
         migrations.DeleteModel(
-            name='PasswordInfo',
+            name="PasswordInfo",
         ),
     ]

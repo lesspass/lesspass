@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0006_change_default_password_profile'),
+        ("api", "0006_change_default_password_profile"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='lesspassuser',
-            name='key',
+            model_name="lesspassuser",
+            name="key",
             field=models.TextField(null=True),
         ),
     ]

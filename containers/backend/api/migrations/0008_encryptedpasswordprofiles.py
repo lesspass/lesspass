@@ -9,21 +9,42 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0007_lesspassuser_key'),
+        ("api", "0007_lesspassuser_key"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='EncryptedPasswordProfile',
+            name="EncryptedPasswordProfile",
             fields=[
-                ('created', models.DateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', models.DateTimeField(auto_now=True, verbose_name='modified')),
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('password_profile', models.TextField()),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='encrypted_password_profiles', to=settings.AUTH_USER_MODEL)),
+                (
+                    "created",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created"),
+                ),
+                (
+                    "modified",
+                    models.DateTimeField(auto_now=True, verbose_name="modified"),
+                ),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("password_profile", models.TextField()),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="encrypted_password_profiles",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

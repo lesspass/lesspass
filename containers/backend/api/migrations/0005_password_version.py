@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0004_remove_entries_password_info_models'),
+        ("api", "0004_remove_entries_password_info_models"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='password',
-            name='version',
+            model_name="password",
+            name="version",
             field=models.IntegerField(default=1),
         ),
     ]

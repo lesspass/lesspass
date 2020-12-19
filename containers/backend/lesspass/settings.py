@@ -92,9 +92,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
 
 LANGUAGE_CODE = "en-us"
@@ -118,7 +124,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "www", "media")
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "handlers": {"console": {"class": "logging.StreamHandler",}},
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        }
+    },
     "root": {
         "handlers": ["console"],
         "level": env("DJANGO_LOG_LEVEL", default="DEBUG"),
@@ -128,10 +138,13 @@ LOGGING = {
 AUTH_USER_MODEL = "api.LessPassUser"
 
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('Bearer', 'JWT',),
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=15),
-    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=7),
-    'ROTATE_REFRESH_TOKENS': True,
+    "AUTH_HEADER_TYPES": (
+        "Bearer",
+        "JWT",
+    ),
+    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
 }
 
 REST_FRAMEWORK = {
