@@ -15,8 +15,9 @@ jobs:
           node-version: "12"
       - name: test lesspass-crypto package
         run: |
+          cd packages/lesspass-crypto
           yarn install
-          yarn workspace lesspass-crypto run test
+          yarn test
 
   deploy:
     runs-on: ubuntu-18.04

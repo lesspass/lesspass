@@ -16,8 +16,9 @@ set -o pipefail
 set -o nounset
 
 function release_web_extensions {
+    cd packages/lesspass-web-extension
     yarn install
-    yarn workspace lesspass-web-extension run release
+    yarn run release
     commit=$( git rev-parse HEAD )
     wget http://github.com/lesspass/lesspass/archive/${commit}.zip
     echo "Sources saved in ${commit}.zip"

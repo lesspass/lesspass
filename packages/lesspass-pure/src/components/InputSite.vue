@@ -86,6 +86,7 @@ export default {
       const suggestions = getSuggestions(newValue).map(suggestion => {
         return { site: suggestion, suggestion: true, login: "" };
       });
+      console.log(this.passwords)
       this.awesomplete.list = this.passwords.concat(suggestions);
     }
   },

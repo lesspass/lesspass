@@ -15,8 +15,9 @@ jobs:
           node-version: "12"
       - name: test lesspass-fingerprint package
         run: |
+          cd packages/lesspass-fingerprint
           yarn install
-          yarn workspace lesspass-fingerprint run test
+          yarn test
 
   deploy:
     runs-on: ubuntu-18.04

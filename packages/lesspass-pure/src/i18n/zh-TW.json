@@ -51,7 +51,6 @@
   "Site": "網站位址",
   "SiteLoginMasterPasswordMandatory": "網站位址、登入帳號、主密碼皆為必填欄位。",
   "SorryCopy": "很抱歉，複製功能僅適用於現代瀏覽器",
-  "Update password": "更新密碼",
   "UpdateYourSearch": "請試著放寬您的搜尋條件。",
   "WelcomeRegister": "歡迎 {email}，謝謝您的註冊。",
   "resetPasswordSuccess": "如果郵件位址 {email} 已和 LessPass 帳號連動，您很快能收到 LessPass 的信件，當中提供如何重置密碼的說明。"

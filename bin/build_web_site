@@ -89,8 +89,10 @@ function increment_version {
 }
 
 function build {
+    cd packages/lesspass-site
     yarn install
-    yarn workspace lesspass-site run build
+    yarn run build
+    cd ../../
 }
 
 

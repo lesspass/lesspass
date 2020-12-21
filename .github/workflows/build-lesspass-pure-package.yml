@@ -19,9 +19,9 @@ jobs:
           git rev-parse HEAD
       - name: test lesspass-pure package
         run: |
-          ls packages/lesspass-pure/dist
+          cd packages/lesspass-pure
           yarn install
-          yarn workspace lesspass-pure run test
+          yarn test
 
   build-and-commit-and-push:
     runs-on: ubuntu-18.04
@@ -35,8 +35,9 @@ jobs:
           node-version: "12"
       - name: build lesspass-pure package
         run: |
+          cd packages/lesspass-pure
           yarn install
-          yarn workspace lesspass-pure run build
+          yarn build
       - name: commit build and push
         run: |
           git config --global user.name 'botsito'

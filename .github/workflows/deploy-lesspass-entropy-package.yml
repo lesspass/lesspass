@@ -15,8 +15,9 @@ jobs:
           node-version: "12"
       - name: test lesspass-entropy package
         run: |
+          cd packages/lesspass-entropy
           yarn install
-          yarn workspace lesspass-entropy run test
+          yarn test
 
   deploy:
     runs-on: ubuntu-18.04

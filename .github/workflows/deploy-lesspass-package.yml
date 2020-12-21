@@ -15,8 +15,9 @@ jobs:
           node-version: "12"
       - name: test lesspass package
         run: |
+          cd packages/lesspass
           yarn install
-          yarn workspace lesspass run test
+          yarn test
 
   deploy:
     runs-on: ubuntu-18.04
