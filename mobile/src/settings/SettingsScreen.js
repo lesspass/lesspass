@@ -22,15 +22,8 @@ export class SettingsScreen extends Component {
     TouchID.isSupported({
       passcodeFallback: false,
     })
-      .then((biometryType) => {
-        if (biometryType === "None") {
-          throw {
-            name: "RCTTouchIDNotSupported",
-            message: "Device does not support Touch ID.",
-          };
-        } else {
-          this.setState({ fingerprintIsSupported: true });
-        }
+      .then(() => {
+        this.setState({ fingerprintIsSupported: true });
       })
       .catch((error) => console.log(error));
   }
