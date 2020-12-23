@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { View, Text, TouchableNativeFeedback, Clipboard } from "react-native";
+import { View, Text, TouchableNativeFeedback } from "react-native";
+import Clipboard from "@react-native-community/clipboard";
 import Theme from "../ui/Theme";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -61,8 +62,8 @@ export default class GeneratedPassword extends Component {
               {saved || copied
                 ? null
                 : seePassword
-                ? password
-                : "*".repeat(password.length)}
+                  ? password
+                  : "*".repeat(password.length)}
             </Text>
           </View>
         </TouchableNativeFeedback>

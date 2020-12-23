@@ -8,11 +8,6 @@ target 'LessPass' do
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'LessPassTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
   use_native_modules!
 
   # Enables Flipper.
