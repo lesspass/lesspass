@@ -73,9 +73,15 @@
 </template>
 <script type="text/ecmascript-6">
 import User from "../api/user";
+import Password from "../api/password";
+import Profile from "../api/profile";
 import { defaultbaseURL } from "../api/default";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
+import LessPassVue from "lesspass-pure/src/LessPass.vue";
+import LessPassEntropy from "lesspass-entropy";
+import LessPassCrypto from "lesspass-crypto";
+import { random } from "lodash";
 
 export default {
   data() {
@@ -107,6 +113,53 @@ export default {
         this.$store.dispatch("setBaseURL", { baseURL });
         User.login({ email: this.email, password: this.password })
           .then(response => {
+            User.getLoggedUserInformation().then(response => {
+              if (response.data.key === null) {
+                LessPassEntropy.generateUserKey().then(key => {
+                  const encryptedKey = LessPassCrypto.encrypt(
+                    key,
+                    this.password
+                  );
+                  Password.all().then(passwords => {
+                    const allPasswords = passwords.data.results.map(
+                      password => {
+                        return {
+                          login: password.login,
+                          site: password.site,
+                          lowercase: password.lowercase,
+                          uppercase: password.uppercase,
+                          symbols: password.symbols,
+                          numbers: password.numbers,
+                          length: password.length,
+                          counter: password.counter
+                        };
+                      }
+                    );
+                    const data = JSON.stringify(allPasswords);
+                    const encryptedPasswordProfiles = LessPassCrypto.encrypt(
+                      data,
+                      encryptedKey
+                    );
+                    Profile.create({
+                      password_profile: encryptedPasswordProfiles
+                    }).then(() => {
+                      User.patch({ key });
+                      this.$store.dispatch("getPasswords", {
+                        encryptedKey
+                      });
+                    });
+                  });
+                });
+              } else {
+                const encryptedKey = LessPassCrypto.encrypt(
+                  response.data.key,
+                  this.password
+                );
+                this.$store.dispatch("getPasswords", {
+                  encryptedKey
+                });
+              }
+            });
             this.$store.dispatch("login", response.data);
             this.$store.dispatch("cleanMessage");
             this.$router.push({ name: "home" });

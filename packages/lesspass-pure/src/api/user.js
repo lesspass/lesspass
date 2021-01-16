@@ -4,6 +4,12 @@ export default {
   login({ email, password }) {
     return http.post("/api/auth/jwt/create/", { email, password });
   },
+  getLoggedUserInformation() {
+    return http.get('/api/auth/users/me');
+  },
+  patch({ key }) {
+    return http.patch('/api/auth/users/me', { key });
+  },
   register({ email, password }) {
     return http.post("/api/auth/users/", { email, password });
   },
