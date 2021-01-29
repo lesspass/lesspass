@@ -33,7 +33,7 @@
     "@oslab/atob": "^0.1.0",
     "@oslab/btoa": "^0.1.0",
     "awesomplete": "^1.1.5",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "balloon-css": "^1.0.3",
     "bootstrap": "^4.3.1",
     "copy-text-to-clipboard": "^2.1.1",
