@@ -1,4 +1,7 @@
 import Password from "../api/password";
+import Profile from "../api/profile";
+import User from "../api/user";
+import LessPassCrypto from "lesspass-crypto";
 import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
 import defaultPasswordProfile from "./defaultPassword";
@@ -41,38 +44,64 @@ export const logout = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 
-export const getPasswords = ({ commit }) => {
-  return Password.all()
-    .then(response => {
+export const getPasswords = ({ commit }, { encryptedKey }) => {
+  commit(types.SET_ENCRYPTED_KEY, { encryptedKey });
+  return Profile.all().then(response => {
+    if (response.data.results.length > 0) {
+      const encryptedPasswordProfiles = response.data.results[0];
+      const passwords = JSON.parse(
+        LessPassCrypto.decrypt(encryptedPasswordProfiles.password_profile, encryptedKey)
+      );
       commit(types.LOGIN);
-      const passwords = response.data.results;
       commit(types.SET_PASSWORDS, { passwords });
-      return passwords;
-    })
-    .catch(() => logout({ commit }));
+      commit(types.SET_ENCRYPTED_PASSWORD_PROFILES_ID, { id: encryptedPasswordProfiles.id });
+      return
+    }
+  }).catch(() => logout({ commit }));;
 };
+
 
 export const saveOrUpdatePassword = ({ commit, state }) => {
   const site = state.password.site;
   const login = state.password.login;
-  const existingPassword = state.passwords.find(password => {
-    return password.site === site && password.login === login;
+  let passwords = state.passwords.filter(password => {
+    return password.site !== site && password.login !== login;
   });
-  if (existingPassword) {
-    const newPassword = Object.assign({}, existingPassword, state.password);
-    Password.update(newPassword, state).then(() => {
-      getPasswords({ commit, state });
-    });
-  } else {
-    Password.create(state.password, state).then(() => {
-      getPasswords({ commit, state });
-    });
-  }
+  passwords.push(state.password);
+  const encryptedKey = state.encryptedKey;
+  const data = JSON.stringify(passwords);
+  const encryptedPasswordProfiles = LessPassCrypto.encrypt(
+    data,
+    encryptedKey
+  );
+  Profile.update({
+    id: state.encryptedPasswordProfilesId,
+    password_profile: encryptedPasswordProfiles
+  }).then(() => {
+    getPasswords({ commit, state }, { encryptedKey });
+  });
 };
 
-export const deletePassword = ({ commit, state }, payload) => {
-  Password.delete(payload, state).then(() => {
-    commit(types.DELETE_PASSWORD, payload);
+export const deletePassword = ({ commit, state }, { password }) => {
+  const site = password.site;
+  const login = password.login;
+  let passwords = state.passwords.filter(password => {
+    return password.site !== site && password.login !== login;
+  });
+  if (state.password && state.password.site === site && state.password.login == login) {
+    state.password = Object.assign({}, state.defaultPassword);
+  }
+  const encryptedKey = state.encryptedKey;
+  const data = JSON.stringify(passwords);
+  const encryptedPasswordProfiles = LessPassCrypto.encrypt(
+    data,
+    encryptedKey
+  );
+  Profile.update({
+    id: state.encryptedPasswordProfilesId,
+    password_profile: encryptedPasswordProfiles
+  }).then(() => {
+    getPasswords({ commit, state }, { encryptedKey });
   });
 };
 

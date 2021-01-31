@@ -1,4 +1,5 @@
 const pbkdf2 = require("./pbkdf2");
+const crypto = require("crypto");
 
 function calcEntropy(profile, masterPassword) {
   const { site, login, options, crypto } = profile;
@@ -8,6 +9,22 @@ function calcEntropy(profile, masterPassword) {
   const defaultCrypto = { iterations: 100000, keylen: 32, digest: "sha256" };
   const { iterations, keylen, digest } = crypto || defaultCrypto;
   return pbkdf2(masterPassword, salt, iterations, keylen, digest);
+}
+
+function generateUserKey() {
+  const { iterations, keylen, digest } = {
+    iterations: 100000,
+    keylen: 32,
+    digest: "sha256"
+  };
+  random_key = pbkdf2(
+    crypto.randomBytes(16),
+    crypto.randomBytes(16),
+    iterations,
+    keylen,
+    digest
+  );
+  return random_key;
 }
 
 function isSupported() {
@@ -48,5 +65,6 @@ function isSupported() {
 
 module.exports = {
   isSupported,
-  calcEntropy
+  calcEntropy,
+  generateUserKey
 };

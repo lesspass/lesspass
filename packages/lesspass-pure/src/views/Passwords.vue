@@ -112,16 +112,15 @@ export default {
         var siteMatch = password.site.match(new RegExp(this.searchQuery, "i"));
         return loginMatch || siteMatch;
       });
-      this.pagination.pageCount = Math.ceil(passwords.length / this.pagination.perPage);
+      this.pagination.pageCount = Math.ceil(
+        passwords.length / this.pagination.perPage
+      );
       return passwords.slice(
         this.pagination.currentPage * this.pagination.perPage -
           this.pagination.perPage,
         this.pagination.currentPage * this.pagination.perPage
       );
     }
-  },
-  beforeMount() {
-    this.$store.dispatch("getPasswords");
   },
   methods: {
     setCurrentPage(page) {
