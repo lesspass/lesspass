@@ -22,17 +22,17 @@ function isSupported() {
           digits: true,
           symbols: true,
           length: 16,
-          counter: 1
+          counter: 1,
         },
         crypto: {
           method: "pbkdf2",
           iterations: 1,
           keylen: 32,
-          digest: "sha256"
-        }
+          digest: "sha256",
+        },
       },
       "tHis is a g00d! password"
-    ).then(entropy => {
+    ).then((entropy) => {
       if (
         entropy ===
         "e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da"
@@ -48,5 +48,5 @@ function isSupported() {
 
 module.exports = {
   isSupported,
-  calcEntropy
+  calcEntropy,
 };

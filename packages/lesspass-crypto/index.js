@@ -17,20 +17,20 @@ function arrayBufferToHex(arrayBuffer) {
   return str;
 }
 
-function getAlgorithm(algorithm){
+function getAlgorithm(algorithm) {
   const algorithms = {
     sha1: "SHA-1",
     "sha-1": "SHA-1",
     sha256: "SHA-256",
     "sha-256": "SHA-256",
     sha512: "SHA-512",
-    "sha-512": "SHA-512"
+    "sha-512": "SHA-512",
   };
-  return algorithms[algorithm.toLowerCase()]
+  return algorithms[algorithm.toLowerCase()];
 }
 
 module.exports = {
   stringToArrayBuffer,
   arrayBufferToHex,
-  getAlgorithm
+  getAlgorithm,
 };

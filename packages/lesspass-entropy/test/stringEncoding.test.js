@@ -1,7 +1,7 @@
 const assert = require("assert");
 const {
   stringToArrayBuffer,
-  arrayBufferToHex
+  arrayBufferToHex,
 } = require("../src/stringEncoding");
 
 describe("stringEncoding", () => {

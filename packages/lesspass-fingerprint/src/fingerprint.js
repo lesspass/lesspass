@@ -13,7 +13,7 @@ function getColor(color) {
     "#920000",
     "#924900",
     "#DB6D00",
-    "#24FE23"
+    "#24FE23",
   ];
   const index = parseInt(color, 16) % colors.length;
   return colors[index];
@@ -66,30 +66,30 @@ function getIcon(hash) {
     "fa-flask",
     "fa-futbol-o",
     "fa-gamepad",
-    "fa-graduation-cap"
+    "fa-graduation-cap",
   ];
   const index = parseInt(hash, 16) % icons.length;
   return icons[index];
 }
 
-module.exports = function(hmacSHA256) {
+module.exports = function (hmacSHA256) {
   const fingerprint = [];
   const hash1 = hmacSHA256.substring(0, 6);
   fingerprint.push({
     color: getColor(hash1),
-    icon: getIcon(hash1)
+    icon: getIcon(hash1),
   });
 
   const hash2 = hmacSHA256.substring(6, 12);
   fingerprint.push({
     color: getColor(hash2),
-    icon: getIcon(hash2)
+    icon: getIcon(hash2),
   });
 
   const hash3 = hmacSHA256.substring(12, 18);
   fingerprint.push({
     color: getColor(hash3),
-    icon: getIcon(hash3)
+    icon: getIcon(hash3),
   });
 
   return fingerprint;

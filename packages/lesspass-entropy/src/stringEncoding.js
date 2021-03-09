@@ -19,5 +19,5 @@ function arrayBufferToHex(arrayBuffer) {
 
 module.exports = {
   stringToArrayBuffer,
-  arrayBufferToHex
+  arrayBufferToHex,
 };

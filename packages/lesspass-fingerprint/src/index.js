@@ -3,5 +3,5 @@ const createHmac = require("./hmac");
 
 module.exports = {
   createFingerprint,
-  createHmac
+  createHmac,
 };

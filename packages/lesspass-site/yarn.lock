@@ -2339,7 +2339,7 @@ lesspass-fingerprint@9.1.9:
   dependencies:
     lesspass-crypto "9.1.9"
 
-lesspass-pure@9.2.0:
+lesspass-pure@latest:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.2.0.tgz#80b4fdf401b3218b9c1f1b252c66c5e3d96941ec"
   integrity sha512-4PsmTSOxG5F2z9tP6u5CxHAps/9yHCkkZ2MAEjE0qaEYUePrD+YJtjrzPspks92pSpahjLGAmBtffDCzV11iVQ==

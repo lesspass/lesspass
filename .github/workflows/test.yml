@@ -3,17 +3,65 @@ name: test
 on: [push, pull_request]
 
 jobs:
-  test-packages:
+  test-lesspass-crypto:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: "12"
-      - name: test packages
-        run: |
+      - run: |
+          cd packages/lesspass-crypto
           yarn install
           yarn test
+
+  test-lesspass-entropy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - run: |
+          cd packages/lesspass-entropy
+          yarn install
+          yarn test
+
+  test-lesspass-fingerprint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - run: |
+          cd packages/lesspass-fingerprint
+          yarn install
+          yarn test
+
+  test-lesspass-render-password:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - run: |
+          cd packages/lesspass-render-password
+          yarn install
+          yarn test
+
+  test-lesspass-site:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - run: |
+          cd packages/lesspass-site
+          yarn install
+          yarn build
 
   test-mobile:
     runs-on: ubuntu-18.04

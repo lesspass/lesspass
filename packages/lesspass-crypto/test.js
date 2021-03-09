@@ -1,7 +1,7 @@
 const {
   stringToArrayBuffer,
   arrayBufferToHex,
-  getAlgorithm
+  getAlgorithm,
 } = require("./index");
 
 test("stringToArrayBuffer", () => {

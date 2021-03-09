@@ -1,4 +1,8 @@
-const { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } = require("lesspass-crypto");
+const {
+  stringToArrayBuffer,
+  arrayBufferToHex,
+  getAlgorithm,
+} = require("lesspass-crypto");
 
 module.exports = function hmac(digest, string, salt) {
   return window.crypto.subtle
@@ -7,14 +11,14 @@ module.exports = function hmac(digest, string, salt) {
       stringToArrayBuffer(string),
       {
         name: "HMAC",
-        hash: { name: getAlgorithm(digest) }
+        hash: { name: getAlgorithm(digest) },
       },
       true,
       ["sign", "verify"]
     )
-    .then(key =>
+    .then((key) =>
       window.crypto.subtle
         .sign({ name: "HMAC" }, key, stringToArrayBuffer(salt || ""))
-        .then(signature => arrayBufferToHex(signature))
+        .then((signature) => arrayBufferToHex(signature))
     );
 };
