@@ -25,7 +25,7 @@ div.awesomplete > ul {
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
-      <label for="login" class="sr-only">{{ $t('Login') }}</label>
+      <label for="login" class="sr-only">{{ $t('Username') }}</label>
       <div class="inner-addon left-addon">
         <i class="fa fa-user"></i>
         <input
@@ -38,7 +38,7 @@ div.awesomplete > ul {
           autocomplete="off"
           autocorrect="off"
           autocapitalize="none"
-          v-bind:placeholder="$t('Login')"
+          v-bind:placeholder="$t('Username')"
           v-model="password.login"
         />
       </div>

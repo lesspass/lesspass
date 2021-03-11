@@ -21,7 +21,7 @@ walker.on("file", (root, fileStats, next) => {
 });
 
 walker.on("end", () => {
-  languagesAvailable.forEach(lang => {
+  ["en", ...languagesAvailable].forEach(lang => {
     const localeFile = path.resolve(__dirname, `${lang}.json`);
     let existingLocale = {};
     if (fs.existsSync(localeFile)) {

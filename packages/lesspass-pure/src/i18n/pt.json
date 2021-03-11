@@ -18,7 +18,6 @@
   "Length": "Comprimento",
   "LengthDeprecationWarning": "O comprimento máximo de uma senha é de 35 caracteres.",
   "LessPass Database Url": "URL do banco de dados LessPass",
-  "Login": "Entrar",
   "LoginFormInvalid": "URL, email, e senha do LessPass são obrigatórios",
   "LoginIncorrectError": "O email e senha que você digitou não estão de acordo com os nossos registros. Por favor verifique seus dados e tente novamente.",
   "Master Password": "Senha mestre",
@@ -52,6 +51,7 @@
   "SiteLoginMasterPasswordMandatory": "Campos de site e credenciais de autenticação são obrigatórios.",
   "SorryCopy": "Infelizmente a cópia somente funciona em navegadores modernos",
   "UpdateYourSearch": "Por favor tente ampliar sua busca.",
+  "Username": "Nome de usuário",
   "WelcomeRegister": "Bem vindo {email}, obrigado por se registrar.",
   "resetPasswordSuccess": "Se o seu endereço de email {email} estiver associado com uma conta LessPass, você receberá logo um email do LessPass com instruções de como resetar a sua senha."
 }

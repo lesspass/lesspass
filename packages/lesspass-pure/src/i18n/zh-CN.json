@@ -18,7 +18,6 @@
   "Length": "长度",
   "LengthDeprecationWarning": "密码的最大长度是35个字符。",
   "LessPass Database Url": "LessPass 数据库网址",
-  "Login": "登录名",
   "LoginFormInvalid": "LessPass 网址、电子邮件地址以及密码均为必填信息。",
   "LoginIncorrectError": "我们没找到符合您输入的电子邮件地址及密码的记录。请核验后再试。",
   "Master Password": "主密码",
@@ -52,6 +51,7 @@
   "SiteLoginMasterPasswordMandatory": "网站名、登录名以及主密码均为必填信息。",
   "SorryCopy": "很抱歉，但复制功能仅适用于现代浏览器",
   "UpdateYourSearch": "请尝试放宽您的搜索条件。",
+  "Username": "用户名",
   "WelcomeRegister": "你好 {email}，欢迎您的注册。",
   "resetPasswordSuccess": "如果电子邮件地址 {email} 与一个 LessPass 账户相关联，您将很快收到 LessPass 的电子邮件，里面提供有重置密码的操作说明。"
 }

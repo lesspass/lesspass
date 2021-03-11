@@ -18,7 +18,6 @@
   "Length": "Longueur",
   "LengthDeprecationWarning": "La longueur maximale d'un mot de passe est de 35 caractères.",
   "LessPass Database Url": "URL de la base de données LessPass",
-  "Login": "S'identifier",
   "LoginFormInvalid": "L'URL LessPass, l'email et le mot de passe sont obligatoires.",
   "LoginIncorrectError": "L'email et le mot de passe ne sont pas dans notre base de données. Vérifiez une nouvelle fois et réessayez.",
   "Master Password": "Mot de passe fort",
@@ -52,6 +51,7 @@
   "SiteLoginMasterPasswordMandatory": "Les champs site, login et mot de passe fort sont obligatoires.",
   "SorryCopy": "Nous sommes désolés, la copie ne fonctionne que sur les navigateurs modernes",
   "UpdateYourSearch": "Merci de modifier votre recherche.",
+  "Username": "Nom d'utilisateur",
   "WelcomeRegister": "Bienvenue {email}, merci de vous être enregistré.",
   "resetPasswordSuccess": "Si l'adresse email {email} est associée avec un compte LessPass, vous allez recevoir un email de la part de LessPass avec les instructions pour changer votre mot de passe."
 }

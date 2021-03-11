@@ -18,7 +18,6 @@
   "Length": "Długość",
   "LengthDeprecationWarning": "Maksymalna długość hasła wynosi 35 znaków.",
   "LessPass Database Url": "Link do bazy profili LessPass",
-  "Login": "Zaloguj sie",
   "LoginFormInvalid": "Link do bazy LessPass, adres i hasło są wymagane",
   "LoginIncorrectError": "Podany adres i hasło nie pasują do zapisanych danych. Sprawdź je dokładnie i spróbuj ponownie.",
   "Master Password": "Hasło główne",
@@ -52,6 +51,7 @@
   "SiteLoginMasterPasswordMandatory": "Nazwa serwisu, adres i hasło są wymagane.",
   "SorryCopy": "Niestety, kopiowanie działa tylko w nowszych przeglądarkach",
   "UpdateYourSearch": "Spróbuj bardziej ogólnego zapytania.",
+  "Username": "Nazwa Użytkownika",
   "WelcomeRegister": "Witaj, {email}, dziękujemy za rejestrację.",
   "resetPasswordSuccess": "Jeśli adres {email} jest skojarzony z kontem LessPass, wkrótce otrzymasz wiadomość od LessPass zawierającą instrukcje resetowania hasła."
 }

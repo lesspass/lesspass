@@ -18,7 +18,6 @@
   "Length": "Length",
   "LengthDeprecationWarning": "The maximum length of a password is 35 characters.",
   "LessPass Database Url": "LessPass Database Url",
-  "Login": "Login",
   "LoginFormInvalid": "LessPass URL, email, and password are mandatory",
   "LoginIncorrectError": "The email and password you entered did not match our records. Please double-check and try again.",
   "Master Password": "Master Password",
@@ -51,8 +50,8 @@
   "Site": "Site",
   "SiteLoginMasterPasswordMandatory": "Site, login, and master password fields are mandatory.",
   "SorryCopy": "Sorry, copying only works in modern browsers.",
-  "Update password": "Update password",
   "UpdateYourSearch": "Please try broadening your search.",
+  "Username": "Username",
   "WelcomeRegister": "Welcome, {email}. Thank you for signing up!",
   "resetPasswordSuccess": "If the email address {email} is associated with a LessPass account, you will receive an email from LessPass with instructions on how to reset your password."
 }

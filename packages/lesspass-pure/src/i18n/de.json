@@ -18,7 +18,6 @@
   "Length": "Länge",
   "LengthDeprecationWarning": "Die maximale Länge eines Passwortes beträgt 35 Zeichen.",
   "LessPass Database Url": "LessPass Datenbank Url",
-  "Login": "Anmeldung",
   "LoginFormInvalid": "LessPass URL, email-Adresse und Passwort sind obligatorisch",
   "LoginIncorrectError": "Die email-Adresse und das Passwort, die Sie eingegeben haben, entsprechen nicht unseren Daten. Bitte überprüfen Sie sie und versuchen es nochmal.",
   "Master Password": "Masterpasswort",
@@ -52,6 +51,7 @@
   "SiteLoginMasterPasswordMandatory": "Die Felder für Seite, Anmeldename und Masterpasswort sind obligatorisch.",
   "SorryCopy": "Es tut uns leid, dass die Kopie nur auf modernen Browsern funktioniert",
   "UpdateYourSearch": "Bitte erweitern Sie Ihre Suche.",
+  "Username": "Nutzername",
   "WelcomeRegister": "Willkommen {email}, danke für die Anmeldung.",
   "resetPasswordSuccess": "Wenn die E-Mail-Adresse {email} mit einem LessPass-Konto verknüpft ist, erhalten Sie in Kürze eine E-Mail von LessPass mit Anweisungen zum Zurücksetzen Ihres Passworts."
 }

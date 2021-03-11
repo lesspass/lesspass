@@ -3,7 +3,7 @@
     <h5>{{$t('Options by default')}}</h5>
     <form id="lesspass-options-form" novalidate v-on:submit.prevent="saveAndExit">
       <div class="form-group">
-        <label for="login">{{ $t('Login') }}</label>
+        <label for="login">{{ $t('Username') }}</label>
         <div class="inner-addon left-addon">
           <i class="fa fa-user"></i>
           <input
@@ -15,7 +15,7 @@
             autocomplete="off"
             autocorrect="off"
             autocapitalize="none"
-            v-bind:placeholder="$t('Login')"
+            v-bind:placeholder="$t('Username')"
             v-model="defaultPassword.login"
           />
         </div>
