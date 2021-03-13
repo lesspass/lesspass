@@ -1,1 +1,1 @@
-export const defaultbaseURL = "https://lesspass.com";
+export const defaultbaseURL = "https://www.lesspass.com";

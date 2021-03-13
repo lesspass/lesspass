@@ -1,10 +1,10 @@
 import * as urlParser from "./url-parser";
 
 test("cleanUrl", () => {
-  expect("lesspass.com").toBe(urlParser.cleanUrl("https://lesspass.com/#!/"));
-  expect("lesspass.com").toBe(urlParser.cleanUrl("https://lesspass.com/api/"));
+  expect("lesspass.com").toBe(urlParser.cleanUrl("https://www.lesspass.com/#!/"));
+  expect("lesspass.com").toBe(urlParser.cleanUrl("https://www.lesspass.com/api/"));
   expect("api.lesspass.com").toBe(urlParser.cleanUrl("https://api.lesspass.com/"));
-  expect("lesspass.com").toBe(urlParser.cleanUrl("http://lesspass.com"));
+  expect("lesspass.com").toBe(urlParser.cleanUrl("http://www.lesspass.com"));
   expect("stackoverflow.com").toBe(urlParser.cleanUrl(
     "http://stackoverflow.com/questions/3689423/google-chrome-plugin-how-to-get-domain-from-url-tab-url"
   ));
