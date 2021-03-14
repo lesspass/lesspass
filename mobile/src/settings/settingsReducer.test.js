@@ -4,7 +4,7 @@ describe("settings reducer", () => {
   it("should return the initial state", () => {
     expect(reducer(undefined, {})).toEqual({
       keepMasterPasswordLocally: false,
-      lesspassDatabaseDefaultUrl: "https://www.lesspass.com",
+      lesspassDatabaseDefaultUrl: "https://api.lesspass.com",
       encryptMasterPassword: true,
       defaultPasswordProfileLogin: "",
       defaultGeneratedPasswordLength: 16,
