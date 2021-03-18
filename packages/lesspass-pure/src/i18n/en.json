@@ -52,7 +52,7 @@
   "SiteLoginMasterPasswordMandatory": "Site, login, and master password fields are mandatory.",
   "SorryCopy": "Sorry, copying only works in modern browsers.",
   "UpdateYourSearch": "Please try broadening your search.",
-  "Username": "Username",
+  "Use plain password": "Use plain password (not recommended)",
   "WelcomeRegister": "Welcome, {email}. Thank you for signing up!",
   "resetPasswordSuccess": "If the email address {email} is associated with a LessPass account, you will receive an email from LessPass with instructions on how to reset your password."
 }

@@ -37,6 +37,7 @@
         v-bind:email="email"
         v-bind:showEncryptButton="true"
         v-bind:EncryptButtonText="$t('Encrypt my master password')"
+        v-bind:PlainCheckboxText="$t('Use plain password')"
       ></master-password>
     </div>
     <div class="form-group">
@@ -77,6 +78,18 @@ import { defaultbaseURL } from "../api/default";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
 
+import LessPass from "lesspass";
+import defaultPasswordProfile from "../store/defaultPassword";
+function encryptPass(email, password) {
+  return LessPass.generatePassword(
+    "lesspass.com",
+    email,
+    password,
+    defaultPasswordProfile
+  );
+  return res;
+}
+
 export default {
   data() {
     return {
@@ -105,27 +118,31 @@ export default {
       if (this.formIsValid()) {
         const baseURL = this.baseURL;
         this.$store.dispatch("setBaseURL", { baseURL });
-        User.login({ email: this.email, password: this.password })
-          .then(response => {
-            this.$store.dispatch("login", response.data);
-            this.$store.dispatch("cleanMessage");
-            this.$router.push({ name: "home" });
-          })
-          .catch(err => {
-            if (err.response === undefined && baseURL !== defaultbaseURL) {
-              message.error(
-                this.$t("DBNotRunning", "Your LessPass Database is not running")
-              );
-            } else if (err.response && err.response.status === 401) {
-              message.error(
-                this.$t(
-                  "LoginIncorrectError",
-                  "The email and password you entered did not match our records. Please double-check and try again."
-                )
-              );
-            } else {
-              message.displayGenericError();
-            }
+        let pass = encryptPass(this.email, this.password)
+          .then(pass => {
+            pass = document.getElementById("flexSwitchCheckChecked").checked ? this.password : pass;
+            User.login({ email: this.email, password: pass })
+              .then(response => {
+                this.$store.dispatch("login", response.data);
+                this.$store.dispatch("cleanMessage");
+                this.$router.push({ name: "home" });
+              })
+              .catch(err => {
+                if (err.response === undefined && baseURL !== defaultbaseURL) {
+                  message.error(
+                    this.$t("DBNotRunning", "Your LessPass Database is not running")
+                  );
+                } else if (err.response && err.response.status === 401) {
+                  message.error(
+                    this.$t(
+                      "LoginIncorrectError",
+                      "The email and password you entered did not match our records. Please double-check and try again."
+                    )
+                  );
+                } else {
+                  message.displayGenericError();
+                }
+              });
           });
       }
     }

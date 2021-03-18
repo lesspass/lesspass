@@ -43,16 +43,14 @@
         </button>
       </span>
     </div>
-    <button
-      id="encryptMasterPassword__btn"
-      type="button"
-      class="btn btn-link btn-sm p-0"
-      v-if="showEncryptButton"
-      v-on:click="encryptMasterPassword()"
-      v-bind:class="{'disabled': email === ''}"
-    >
-      <small>{{ EncryptButtonText }}</small>
-    </button>
+    <small>
+      <div class="form-check form-switch"
+           v-if="showEncryptButton">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+               v-bind:disabled="email === ''">
+        <label class="form-check-label" for="flexSwitchCheckChecked">{{ PlainCheckboxText }}</label>
+      </div>
+    </small>
   </div>
 </template>
 <script>
@@ -70,7 +68,8 @@ export default {
       type: Boolean,
       default: false
     },
-    EncryptButtonText: String
+    EncryptButtonText: String,
+    PlainCheckboxText: String
   },
   data() {
     return {
