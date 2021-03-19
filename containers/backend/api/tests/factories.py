@@ -1,9 +1,10 @@
 import factory
+from factory.django import DjangoModelFactory
 
 from api import models
 
 
-class UserFactory(factory.DjangoModelFactory):
+class UserFactory(DjangoModelFactory):
     class Meta:
         model = models.LessPassUser
 
@@ -16,7 +17,7 @@ class AdminFactory(UserFactory):
     is_admin = True
 
 
-class PasswordFactory(factory.DjangoModelFactory):
+class PasswordFactory(DjangoModelFactory):
     class Meta:
         model = models.Password
 
@@ -25,7 +26,7 @@ class PasswordFactory(factory.DjangoModelFactory):
     site = "lesspass.com"
 
 
-class EncryptedPasswordProfileFactory(factory.DjangoModelFactory):
+class EncryptedPasswordProfileFactory(DjangoModelFactory):
     class Meta:
         model = models.EncryptedPasswordProfile
 
