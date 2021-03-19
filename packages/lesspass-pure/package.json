@@ -11,7 +11,7 @@
     "i18n:translate": "node src/i18n/translate.js",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
-    "test": "npm run test:unit",
+    "test": "npm run test:unit && npm run test:e2e",
     "test:watch": "jest --watch",
     "test:unit": "jest",
     "test:e2e": "start-server-and-test start http://localhost:8000 cypress:run"
