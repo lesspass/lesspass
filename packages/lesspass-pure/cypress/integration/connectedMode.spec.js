@@ -17,10 +17,12 @@ describe("Connected Mode", function() {
     cy.get("#generatePassword__btn").click();
     cy.get("#generated-password").should("have.value", "hjV@\\5ULp3bIs,6B");
     cy.get(".fa-save").should("be.visible");
-    cy.get(".fa-user").first().click();
+    cy.get(".fa-user")
+      .first()
+      .click();
     cy.get("#signOutButton").should("be.visible");
     cy.get("#signOutButton").click();
-    cy.get(".fa-save").should("not.be.visible");
+    cy.get(".fa-save").should('not.exist');
   });
   it("can log in and log out", function() {
     cy.visit("/");
@@ -34,9 +36,11 @@ describe("Connected Mode", function() {
     cy.get("#signInButton").click();
     cy.get("#siteField").should("be.visible");
     cy.get(".fa-key").should("be.visible");
-    cy.get(".fa-user").first().click();
+    cy.get(".fa-user")
+      .first()
+      .click();
     cy.get("#signOutButton").click();
-    cy.get(".fa-key").should("not.be.visible");
+    cy.get(".fa-key").should('not.exist');
   });
   it("reset password page", function() {
     cy.visit("/");
@@ -61,7 +65,9 @@ describe("Connected Mode", function() {
       .click();
     cy.get("#siteField").should("have.value", "example.org");
     cy.get("#login").should("have.value", "contact@example.org");
-    cy.get(".fa-user").first().click();
+    cy.get(".fa-user")
+      .first()
+      .click();
     cy.get("#signOutButton").click();
   });
 });

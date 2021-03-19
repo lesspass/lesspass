@@ -15,56 +15,72 @@
       <div class="col-12">
         <div class="row">
           <div class="col">
-            <label for="types">{{ $t('Options') }}</label>
+            <label for="types">{{ $t("Options") }}</label>
           </div>
         </div>
         <div id="types" class="row">
           <div class="col-3">
-            <button
-              id="lowercase__btn"
-              type="button"
-              class="btn btn-block btn-sm px-0"
-              tabindex="1"
-              v-bind:class="{'btn-primary':options.lowercase===true, 'btn-secondary':options.lowercase===false}"
-              v-on:click="options.lowercase=!options.lowercase"
-            >a-z</button>
+            <div class="form-check">
+              <input
+                id="lowercase__btn"
+                type="checkbox"
+                tabindex="1"
+                class="form-check-input"
+                v-model="options.lowercase"
+              />
+              <label class="form-check-label" for="lowercase__btn">
+                a-z
+              </label>
+            </div>
           </div>
           <div class="col-3">
-            <button
-              id="uppercase__btn"
-              type="button"
-              class="btn btn-block btn-sm px-0"
-              tabindex="1"
-              v-bind:class="{'btn-primary':options.uppercase===true, 'btn-secondary':options.uppercase===false}"
-              v-on:click="options.uppercase=!options.uppercase"
-            >A-Z</button>
+            <div class="form-check">
+              <input
+                id="uppercase__btn"
+                type="checkbox"
+                tabindex="1"
+                class="form-check-input"
+                v-model="options.uppercase"
+              />
+              <label class="form-check-label" for="uppercase__btn">
+                A-Z
+              </label>
+            </div>
           </div>
           <div class="col-3">
-            <button
-              id="numbers__btn"
-              type="button"
-              class="btn btn-block btn-sm px-0"
-              tabindex="1"
-              v-bind:class="{'btn-primary':options.numbers===true,'btn-secondary':options.numbers===false}"
-              v-on:click="options.numbers=!options.numbers"
-            >0-9</button>
+            <div class="form-check">
+              <input
+                id="numbers__btn"
+                type="checkbox"
+                tabindex="1"
+                class="form-check-input"
+                v-model="options.numbers"
+              />
+              <label class="form-check-label" for="numbers__btn">
+                0-9
+              </label>
+            </div>
           </div>
           <div class="col-3">
-            <button
-              id="symbols__btn"
-              type="button"
-              class="btn btn-block btn-sm px-0"
-              tabindex="1"
-              v-bind:class="{'btn-primary':options.symbols===true,'btn-secondary':options.symbols===false}"
-              v-on:click="options.symbols=!options.symbols"
-            >%!@</button>
+            <div class="form-check">
+              <input
+                id="symbols__btn"
+                type="checkbox"
+                tabindex="1"
+                class="form-check-input"
+                v-model="options.symbols"
+              />
+              <label class="form-check-label" for="symbols__btn">
+                %!@
+              </label>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="form-group row mb-0">
       <div class="col-5 col-sm-4">
-        <label for="passwordLength">{{ $t('Length') }}</label>
+        <label for="passwordLength">{{ $t("Length") }}</label>
         <div class="input-group input-group-sm">
           <span class="input-group-btn">
             <button
@@ -72,7 +88,9 @@
               class="btn btn-primary btn-sm px-2"
               tabindex="1"
               type="button"
-              v-on:click="options.length=decrement(options.length, {min: 5, max: 35})"
+              v-on:click="
+                options.length = decrement(options.length, { min: 5, max: 35 })
+              "
             >
               <small>
                 <i class="fa fa-minus"></i>
@@ -94,7 +112,9 @@
               class="btn btn-primary btn-sm px-2"
               tabindex="1"
               type="button"
-              v-on:click="options.length=increment(options.length, {min: 5, max: 35})"
+              v-on:click="
+                options.length = increment(options.length, { min: 5, max: 35 })
+              "
             >
               <small>
                 <i class="fa fa-plus"></i>
@@ -107,9 +127,15 @@
         <label
           for="passwordCounter"
           data-balloon-length="large"
-          v-bind:data-balloon="$t('CounterFieldHelp', 'Increment this value to change the generated password without changing your master options.')"
+          v-bind:data-balloon="
+            $t(
+              'CounterFieldHelp',
+              'Increment this value to change the generated password without changing your master options.'
+            )
+          "
           data-balloon-pos="up"
-        >{{$t('Counter')}}</label>
+          >{{ $t("Counter") }}</label
+        >
         <div class="input-group input-group-sm">
           <span class="input-group-btn">
             <button
@@ -117,7 +143,9 @@
               class="btn btn-primary btn-sm px-2"
               tabindex="1"
               type="button"
-              v-on:click="options.counter=decrement(options.counter, {min: 1})"
+              v-on:click="
+                options.counter = decrement(options.counter, { min: 1 })
+              "
             >
               <small>
                 <i class="fa fa-minus"></i>
@@ -138,7 +166,9 @@
               class="btn btn-primary btn-sm px-2"
               tabindex="1"
               type="button"
-              v-on:click="options.counter=increment(options.counter, {min: 1})"
+              v-on:click="
+                options.counter = increment(options.counter, { min: 1 })
+              "
             >
               <small>
                 <i class="fa fa-plus"></i>

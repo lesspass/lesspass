@@ -12,7 +12,11 @@ div.awesomplete > ul {
 }
 </style>
 <template>
-  <form id="password-generator" v-on:submit.prevent="generatePassword" novalidate>
+  <form
+    id="password-generator"
+    v-on:submit.prevent="generatePassword"
+    novalidate
+  >
     <div class="form-group">
       <input-site
         ref="site"
@@ -25,7 +29,7 @@ div.awesomplete > ul {
     </div>
     <remove-auto-complete></remove-auto-complete>
     <div class="form-group">
-      <label for="login" class="sr-only">{{ $t('Username') }}</label>
+      <label for="login" class="sr-only">{{ $t("Username") }}</label>
       <div class="inner-addon left-addon">
         <i class="fa fa-user"></i>
         <input
@@ -59,7 +63,9 @@ div.awesomplete > ul {
         tabindex="0"
         class="btn btn-primary btn-block"
         v-if="!passwordGenerated"
-      >{{ $t('Generate') }}</button>
+      >
+        {{ $t("Generate") }}
+      </button>
       <div class="input-group" v-show="passwordGenerated">
         <span class="input-group-btn">
           <button
@@ -198,6 +204,19 @@ export default {
         );
         return;
       }
+      const lowercase = this.password.lowercase;
+      const uppercase = this.password.uppercase;
+      const numbers = this.password.numbers;
+      const symbols = this.password.symbols;
+      if (!lowercase && !uppercase && !numbers && !symbols) {
+        message.error(
+          this.$t(
+            "AtLeastOneOptionShouldBeSelected",
+            "You must select at least one option among lowercase, uppercase, numbers or symbols."
+          )
+        );
+        return;
+      }
       const length = this.password.length;
       if (length > 35) {
         message.warning(
@@ -209,10 +228,10 @@ export default {
       }
       this.cleanErrors();
       const passwordProfile = {
-        lowercase: this.password.lowercase,
-        uppercase: this.password.uppercase,
-        numbers: this.password.numbers,
-        symbols: this.password.symbols,
+        lowercase,
+        uppercase,
+        numbers,
+        symbols,
         length: this.password.length,
         counter: this.password.counter,
         version: this.password.version

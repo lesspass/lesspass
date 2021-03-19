@@ -18,7 +18,9 @@ describe("Password Generation", function() {
 
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField").type("lesspass.com").tab();
+    cy.get("#siteField")
+      .type("lesspass.com")
+      .tab();
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.wait(500);
@@ -98,7 +100,9 @@ describe("Password Generation", function() {
   it("should generate password when hit enter nrt_266", function() {
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField").type("lesspass.com").tab();
+    cy.get("#siteField")
+      .type("lesspass.com")
+      .tab();
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField")
       .type("test@lesspass.com")
@@ -124,13 +128,15 @@ describe("Password Generation", function() {
   it("should clear password generated when master password change", function() {
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField").type("example.org").tab();
+    cy.get("#siteField")
+      .type("example.org")
+      .tab();
     cy.get("#login").type("user");
     cy.get("#passwordField").type("password");
     cy.get("#generatePassword__btn").should("be.visible");
     cy.get("#generatePassword__btn").click();
     cy.get("#copyPasswordButton").should("be.visible");
-    cy.get("#generatePassword__btn").should("not.be.visible");
+    cy.get("#generatePassword__btn").should("not.exist");
     cy.get("#passwordField").type("password");
     cy.get("#copyPasswordButton").should("not.be.visible");
     cy.get("#generatePassword__btn").should("be.visible");

@@ -6,7 +6,6 @@ describe("LessPass", function() {
   it("should focus site field", function() {
     cy.visit("/");
     cy.wait(500);
-    cy.focused()
-    .should('have.id', 'siteField')
+    cy.focused().should("have.id", "siteField");
   });
 });

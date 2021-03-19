@@ -7,21 +7,35 @@ const getLength = () => cy.get("#options #passwordLength");
 const getCounter = () => cy.get("#options #passwordCounter");
 
 function editSettings() {
-  getLogin().clear().type("New login");
-  getLowercase().click().should("have.class", "btn-secondary");
-  getUppercase().click().should("have.class", "btn-secondary");
-  getNumbers().click().should("have.class", "btn-secondary");
-  getSymbols().click().should("have.class", "btn-secondary");
-  getLength().clear().type("5");
-  getCounter().clear().type("2");
+  getLogin()
+    .clear()
+    .type("New login");
+  getLowercase()
+    .click()
+    .should("not.be.checked");
+  getUppercase()
+    .click()
+    .should("not.be.checked");
+  getNumbers()
+    .click()
+    .should("not.be.checked");
+  getSymbols()
+    .click()
+    .should("not.be.checked");
+  getLength()
+    .clear()
+    .type("5");
+  getCounter()
+    .clear()
+    .type("2");
 }
 
 function checkSettingsEdited() {
   getLogin().should("have.value", "New login");
-  getLowercase().should("have.class", "btn-secondary");
-  getUppercase().should("have.class", "btn-secondary");
-  getNumbers().should("have.class", "btn-secondary");
-  getSymbols().should("have.class", "btn-secondary");
+  getLowercase().should("not.be.checked");
+  getUppercase().should("not.be.checked");
+  getNumbers().should("not.be.checked");
+  getSymbols().should("not.be.checked");
   getLength().should("have.value", "5");
   getCounter().should("have.value", "2");
 }
@@ -31,10 +45,10 @@ describe("Settings", function() {
     cy.visit("/#/settings");
     cy.wait(500);
     getLogin().should("have.value", "");
-    getLowercase().should("have.class", "btn-primary");
-    getUppercase().should("have.class", "btn-primary");
-    getNumbers().should("have.class", "btn-primary");
-    getSymbols().should("have.class", "btn-primary");
+    getLowercase().should("be.checked");
+    getUppercase().should("be.checked");
+    getNumbers().should("be.checked");
+    getSymbols().should("be.checked");
     getLength().should("have.value", "16");
     getCounter().should("have.value", "1");
   });
@@ -43,7 +57,9 @@ describe("Settings", function() {
     cy.visit("/#/settings");
     cy.wait(500);
     cy.get("#btn-submit-settings").click();
-    cy.location("pathname").should("be", "/");
+    cy.location().should(location => {
+      expect(location.pathname).to.eq("/");
+    });
   });
 
   it("should pass on the settings to the password generator page after save", () => {
@@ -62,5 +78,5 @@ describe("Settings", function() {
     cy.visit("/#/settings");
     cy.wait(500);
     checkSettingsEdited();
-  })
+  });
 });
