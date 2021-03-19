@@ -9,6 +9,7 @@
     "build": "vue-cli-service build",
     "i18n:build": "node src/i18n/build.js",
     "i18n:translate": "node src/i18n/translate.js",
+    "prettier": "prettier --write src/",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
     "test": "npm run test:unit && npm run test:e2e",

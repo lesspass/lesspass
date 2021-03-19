@@ -1,4 +1,5 @@
 {
+  "AtLeastOneOptionShouldBeSelected": "Você deve selecionar pelo menos uma opção entre letras minúsculas, maiúsculas, números ou símbolos.",
   "Change my password": "Mudar minha senha",
   "ChangePasswordError": "Não podemos alterar sua senha com as informações fornecidas.",
   "ChangePasswordSuccessful": "Sua senha foi alterada com sucesso.",

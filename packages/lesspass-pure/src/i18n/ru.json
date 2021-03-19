@@ -1,4 +1,5 @@
 {
+  "AtLeastOneOptionShouldBeSelected": "Вы должны выбрать хотя бы один вариант из строчных, прописных, цифр или символов.",
   "Change my password": "Изменить свой пароль",
   "ChangePasswordError": "Мы не можем изменить ваш пароль с предоставленной информацией.",
   "ChangePasswordSuccessful": "ваш пароль был успешно изменен.",

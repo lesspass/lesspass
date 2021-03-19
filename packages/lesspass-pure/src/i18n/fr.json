@@ -1,4 +1,5 @@
 {
+  "AtLeastOneOptionShouldBeSelected": "Vous devez sélectionner au moins une option parmi les minuscules, les majuscules, les nombres ou les symboles.",
   "Change my password": "Changer mon mot de passe",
   "ChangePasswordError": "Nous ne pouvons pas modifier votre mot de passe avec les informations fournies.",
   "ChangePasswordSuccessful": "Votre mot de passe à été changé avec succès.",
@@ -8,7 +9,7 @@
   "CreatePassword": "Voulez-vous en créer un ?",
   "Current Master Password": "Mot de passe principal actuel",
   "DBNotRunning": "Votre base de données LessPass n'est pas démarrée.",
-  "Email": "Email",
+  "Email": "E-mail",
   "EmailAlreadyExist": "Cet email est déjà enregistré. Vous voulez peut-être vous connecter ?",
   "EmailInvalid": "Entrez un email valide",
   "EmailRequiredError": "Nous avons besoin d'un email pour trouver votre compte.",
@@ -47,7 +48,7 @@
   "Sign In": "Se connecter",
   "Sign out": "Se déconnecter",
   "SignInInstead": "Vous avez déjà un compte? Connectez-vous à la place",
-  "Site": "Site",
+  "Site": "Placer",
   "SiteLoginMasterPasswordMandatory": "Les champs site, login et mot de passe fort sont obligatoires.",
   "SorryCopy": "Nous sommes désolés, la copie ne fonctionne que sur les navigateurs modernes",
   "UpdateYourSearch": "Merci de modifier votre recherche.",

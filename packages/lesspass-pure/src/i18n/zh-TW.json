@@ -1,4 +1,5 @@
 {
+  "AtLeastOneOptionShouldBeSelected": "您必須在小寫，大寫，數字或符號中至少選擇一個選項。",
   "Change my password": "修改我的密碼",
   "ChangePasswordError": "我們無法以提供的訊息更改您的密碼。",
   "ChangePasswordSuccessful": "您的密碼已成功更改。",
