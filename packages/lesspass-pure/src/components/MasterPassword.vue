@@ -64,11 +64,10 @@
         <input
           class="form-check-input"
           type="checkbox"
-          id="flexSwitchCheckChecked"
-          v-bind:disabled="email === ''"
+          id="checkPlainPassword"
         />
-        <label class="form-check-label" for="flexSwitchCheckChecked">{{
-          PlainCheckboxText
+        <label class="form-check-label" for="checkPlainPassword">{{
+          $t("Use plain password")
         }}</label>
       </div>
     </small>
@@ -89,8 +88,7 @@ export default {
       type: Boolean,
       default: false
     },
-    EncryptButtonText: String,
-    PlainCheckboxText: String
+    EncryptButtonText: String
   },
   data() {
     return {

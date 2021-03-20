@@ -37,7 +37,6 @@
         v-bind:email="email"
         v-bind:showEncryptButton="true"
         v-bind:EncryptButtonText="$t('Encrypt my master password')"
-        v-bind:PlainCheckboxText="$t('Use plain password')"
       ></master-password>
     </div>
     <div class="form-group">
@@ -77,10 +76,10 @@ import User from "../api/user";
 import { defaultbaseURL } from "../api/default";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
-
 import LessPass from "lesspass";
 import defaultPasswordProfile from "../store/defaultPassword";
-function encryptPass(email, password) {
+
+function encryptPassword(email, password) {
   return LessPass.generatePassword(
     "lesspass.com",
     email,
@@ -118,9 +117,9 @@ export default {
       if (this.formIsValid()) {
         const baseURL = this.baseURL;
         this.$store.dispatch("setBaseURL", { baseURL });
-        let pass = encryptPass(this.email, this.password)
-          .then(pass => {
-            pass = document.getElementById("flexSwitchCheckChecked").checked ? this.password : pass;
+        encryptPassword(this.email, this.password)
+          .then(encryptedPassword => {
+            let pass = document.getElementById("checkPlainPassword").checked ? this.password : encryptedPassword;
             User.login({ email: this.email, password: pass })
               .then(response => {
                 this.$store.dispatch("login", response.data);
