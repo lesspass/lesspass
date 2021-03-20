@@ -12,7 +12,7 @@ The terms used in this Privacy Policy have the same meanings as in our Terms and
 
 ## Information Collection and Use
 
-For a better experience, while using our Service, I may require you to create an account on https://lesspass.com. The account creation required an email and a password. The information that I request will be retained by us and used as described in this privacy policy.
+For a better experience, while using our Service, I may require you to create an account on https://www.lesspass.com. The account creation required an email and a password. The information that I request will be retained by us and used as described in this privacy policy.
 
 The account creation is not mandatory to use our Service.
 

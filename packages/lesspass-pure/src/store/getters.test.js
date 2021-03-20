@@ -13,11 +13,11 @@ test("passwordURL", () => {
       counter: 1,
       version: 2
     },
-    baseURL: "https://lesspass.com"
+    baseURL: "https://www.lesspass.com"
   };
 
   expect(getters.passwordURL(state)).toBe(
-    "https://lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9"
+    "https://www.lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9"
   );
 });
 
@@ -26,11 +26,11 @@ test("passwordURL encode uri component", () => {
     password: {
       login: "contact@lesspass.com"
     },
-    baseURL: "https://lesspass.com"
+    baseURL: "https://www.lesspass.com"
   };
 
   expect(getters.passwordURL(state)).toBe(
-    "https://lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6ImNvbnRhY3RAbGVzc3Bhc3MuY29tIn0%3D"
+    "https://www.lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6ImNvbnRhY3RAbGVzc3Bhc3MuY29tIn0%3D"
   );
 });
 
