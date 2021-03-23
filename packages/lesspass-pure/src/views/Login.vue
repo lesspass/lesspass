@@ -116,10 +116,11 @@ export default {
     signIn() {
       if (this.formIsValid()) {
         const baseURL = this.baseURL;
+        let checkPlainPassword = this.$children[0].checkPlainPassword
         this.$store.dispatch("setBaseURL", { baseURL });
         encryptPassword(this.email, this.password)
           .then(encryptedPassword => {
-            let pass = document.getElementById("checkPlainPassword").checked ? this.password : encryptedPassword;
+            let pass = checkPlainPassword ? this.password : encryptedPassword;
             User.login({ email: this.email, password: pass })
               .then(response => {
                 this.$store.dispatch("login", response.data);

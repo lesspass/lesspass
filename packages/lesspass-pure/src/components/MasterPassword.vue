@@ -65,6 +65,7 @@
           class="form-check-input"
           type="checkbox"
           id="checkPlainPassword"
+          v-model="checkPlainPassword"
         />
         <label class="form-check-label" for="checkPlainPassword">{{
           $t("Use plain password")
@@ -98,7 +99,8 @@ export default {
       icon3: "",
       color1: "",
       color2: "",
-      color3: ""
+      color3: "",
+      checkPlainPassword: false
     };
   },
   methods: {
