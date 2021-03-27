@@ -5,10 +5,9 @@ describe("Connected Mode", function() {
     cy.get(".fa-sign-in").click();
     cy.get("#email").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
-    cy.get("#encryptMasterPassword__btn").click();
-    cy.get("#fingerprint .fa-university").should("be.visible");
-    cy.get("#fingerprint .fa-btc").should("be.visible");
+    cy.get("#fingerprint .fa-cutlery").should("be.visible");
     cy.get("#fingerprint .fa-subway").should("be.visible");
+    cy.get("#fingerprint .fa-plane").should("be.visible");
     cy.get("#signInButton").click();
     cy.wait(500);
     cy.get("#siteField").type("lesspass.com");
@@ -22,7 +21,7 @@ describe("Connected Mode", function() {
       .click();
     cy.get("#signOutButton").should("be.visible");
     cy.get("#signOutButton").click();
-    cy.get(".fa-save").should('not.exist');
+    cy.get(".fa-save").should("not.exist");
   });
   it("can log in and log out", function() {
     cy.visit("/");
@@ -31,7 +30,6 @@ describe("Connected Mode", function() {
     cy.get("#baseURL").should("have.value", "https://lesspass.com");
     cy.get("#email").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
-    cy.get("#encryptMasterPassword__btn").click();
     cy.wait(1000);
     cy.get("#signInButton").click();
     cy.get("#siteField").should("be.visible");
@@ -40,7 +38,7 @@ describe("Connected Mode", function() {
       .first()
       .click();
     cy.get("#signOutButton").click();
-    cy.get(".fa-key").should('not.exist');
+    cy.get(".fa-key").should("not.exist");
   });
   it("reset password page", function() {
     cy.visit("/");
@@ -56,7 +54,6 @@ describe("Connected Mode", function() {
     cy.get("#baseURL").should("have.value", "https://lesspass.com");
     cy.get("#email").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
-    cy.get("#encryptMasterPassword__btn").click();
     cy.wait(500);
     cy.get("#signInButton").click();
     cy.get(".fa-key").click();

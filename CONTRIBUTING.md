@@ -39,7 +39,7 @@ If you are working on the CLI, you will need:
 Here are some folders that worth noticing:
 
 * `package` contains the code for the web version and the browser extension. Development is done with `javascript` and `Vue`.
-  * `lesspass-pure` contains the core of `lesspass`. Running `yarn dev` in this folder will run a `lesspass` instance locally.
+  * `lesspass-pure` contains the core of `lesspass`. Running `yarn start` in this folder will run a `lesspass` instance locally.
   * `lesspass-web-extension` contains the code specific for the web extension.
   * `lesspass-render-password` contains the algorithm to generate passwords.
 * `cli` contains the command line version. Development is done with `python`.

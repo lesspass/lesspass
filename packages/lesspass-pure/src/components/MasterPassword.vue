@@ -33,26 +33,45 @@
         v-on:input="updateValue($event.target.value)"
         v-on:keyup.enter="$emit('keyupEnter')"
       />
-      <span class="input-group-btn" v-if="fingerprint && value" v-on:click="togglePasswordType">
+      <span
+        class="input-group-btn"
+        v-if="fingerprint && value"
+        v-on:click="togglePasswordType"
+      >
         <button id="fingerprint" class="btn" type="button" tabindex="-1">
           <small>
-            <i class="fa fa-fw" v-bind:class="[icon1]" v-bind:style="{ color: color1 }"></i>
-            <i class="fa fa-fw" v-bind:class="[icon2]" v-bind:style="{ color: color2 }"></i>
-            <i class="fa fa-fw" v-bind:class="[icon3]" v-bind:style="{ color: color3 }"></i>
+            <i
+              class="fa fa-fw"
+              v-bind:class="[icon1]"
+              v-bind:style="{ color: color1 }"
+            ></i>
+            <i
+              class="fa fa-fw"
+              v-bind:class="[icon2]"
+              v-bind:style="{ color: color2 }"
+            ></i>
+            <i
+              class="fa fa-fw"
+              v-bind:class="[icon3]"
+              v-bind:style="{ color: color3 }"
+            ></i>
           </small>
         </button>
       </span>
     </div>
-    <button
-      id="encryptMasterPassword__btn"
-      type="button"
-      class="btn btn-link btn-sm p-0"
-      v-if="showEncryptButton"
-      v-on:click="encryptMasterPassword()"
-      v-bind:class="{'disabled': email === ''}"
-    >
-      <small>{{ EncryptButtonText }}</small>
-    </button>
+    <small>
+      <div class="form-check form-switch" v-if="showEncryptButton">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="checkPlainPassword"
+          v-model="checkPlainPassword"
+        />
+        <label class="form-check-label" for="checkPlainPassword">{{
+          $t("Use plain password")
+        }}</label>
+      </div>
+    </small>
   </div>
 </template>
 <script>
@@ -80,7 +99,8 @@ export default {
       icon3: "",
       color1: "",
       color2: "",
-      color3: ""
+      color3: "",
+      checkPlainPassword: false
     };
   },
   methods: {
