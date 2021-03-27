@@ -22,6 +22,8 @@
   "LoginFormInvalid": "LessPass URL, email, and password are mandatory",
   "LoginIncorrectError": "The email and password you entered did not match our records. Please double-check and try again.",
   "Master Password": "Master Password",
+  "MasterPasswordsEqualsNoNeedToChange": "Old master password and new master password are the same. No need to change it!",
+  "MasterPasswordsRequired": "Old master password and new master password are required.",
   "My Account": "My Account",
   "New Master Password": "New Master Password",
   "NewToLessPassCreateAnAccount": "New to LessPass? Create an account",
@@ -31,7 +33,6 @@
   "Options": "Options",
   "Options by default": "Options by default",
   "PasswordProfileCopied": "Your password profile has been copied",
-  "PasswordRequired": "A password is required",
   "PasswordResetRequired": "A password is required",
   "PasswordResetSuccessful": "Your password was reset successfully.",
   "PasswordTooCommon": "This password is too common.",
@@ -53,7 +54,6 @@
   "SorryCopy": "Sorry, copying only works in modern browsers.",
   "UpdateYourSearch": "Please try broadening your search.",
   "Username": "Username",
-  "Use plain password": "Use plain password (not recommended)",
   "WelcomeRegister": "Welcome, {email}. Thank you for signing up!",
   "resetPasswordSuccess": "If the email address {email} is associated with a LessPass account, you will receive an email from LessPass with instructions on how to reset your password."
 }
