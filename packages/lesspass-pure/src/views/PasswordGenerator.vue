@@ -51,7 +51,6 @@ div.awesomplete > ul {
       <master-password
         ref="masterPassword"
         v-model="masterPassword"
-        v-on:generatePassword="generatePassword"
         v-bind:label="$t('Master Password')"
       ></master-password>
     </div>
@@ -112,7 +111,7 @@ div.awesomplete > ul {
     </div>
   </form>
 </template>
-<script type="text/ecmascript-6">
+<script>
 import LessPass from "lesspass";
 import { mapGetters, mapState } from "vuex";
 import copy from "copy-text-to-clipboard";
@@ -134,7 +133,7 @@ export default {
   },
   computed: {
     ...mapState(["password", "passwords"]),
-    ...mapGetters(["passwordURL"]),
+    ...mapGetters(["passwordURL"])
   },
   beforeMount() {
     this.$store.dispatch("getPasswords").then(() => {
@@ -181,14 +180,14 @@ export default {
     cleanErrors() {
       clearTimeout(this.cleanTimeout);
       this.passwordGenerated = "";
-      this.$refs.masterPassword.hidePassword();
+      this.$refs.masterPassword.hide();
     },
     cleanFormIn30Seconds() {
       const thirtySecondsInMillisecond = 30 * 1000;
       this.cleanTimeout = setTimeout(() => {
         this.masterPassword = "";
         this.passwordGenerated = "";
-        this.$refs.masterPassword.hidePassword();
+        this.$refs.masterPassword.hide();
       }, thirtySecondsInMillisecond);
     },
     generatePassword() {

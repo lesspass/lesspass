@@ -20,9 +20,6 @@
         <master-password
           v-model="password"
           v-bind:label="$t('Master Password')"
-          v-bind:email="email"
-          v-bind:showEncryptButton="true"
-          v-bind:EncryptButtonText="$t('Encrypt my master password')"
         ></master-password>
       </div>
     </div>
@@ -35,11 +32,11 @@
     </div>
   </form>
 </template>
-<script type="text/ecmascript-6">
-import User from '../api/user';
-import message from '../services/message';
-import MasterPassword from '../components/MasterPassword.vue';
-import { mapState } from "vuex";
+<script>
+import User from "../api/user";
+import message from "../services/message";
+import MasterPassword from "../components/MasterPassword.vue";
+import { encryptPassword } from "../services/encryption";
 
 export default {
   components: {
@@ -47,42 +44,53 @@ export default {
   },
   data() {
     return {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
   },
   methods: {
-    resetPasswordConfirm(){
+    resetPasswordConfirm() {
       if (!this.password) {
-        message.error(this.$t('PasswordResetRequired', 'A password is required'));
+        message.error(
+          this.$t("PasswordResetRequired", "A password is required")
+        );
         return;
       }
-      User
-        .confirmResetPassword(
-          {
-            uid: this.$route.params.uid,
-            token: this.$route.params.token,
-            password: this.password
-          }
-        )
-        .then(() => {
-          message.success(this.$t('PasswordResetSuccessful', 'Your password was reset successfully.'));
-          User
-            .login({ email: this.email, password: this.password })
-            .then(response => {
-              this.$store.dispatch("login", response.data);
-              this.$router.push({ name: "home" });
-            })
-            .catch(err => message.displayGenericError());
+
+      encryptPassword(this.email, this.password).then(encryptedPassword => {
+        User.confirmResetPassword({
+          uid: this.$route.params.uid,
+          token: this.$route.params.token,
+          password: encryptedPassword
         })
-        .catch(err => {
-          if (err.response.status === 400) {
-            message.error(this.$t('ResetLinkExpired', 'This password reset link has expired.'));
-          } else {
-            message.displayGenericError();
-          }
-        });
+          .then(() => {
+            message.success(
+              this.$t(
+                "PasswordResetSuccessful",
+                "Your password was reset successfully."
+              )
+            );
+            User.login({ email: this.email, password: encryptedPassword })
+              .then(response => {
+                this.$store.dispatch("login", response.data);
+                this.$router.push({ name: "home" });
+              })
+              .catch(err => message.displayGenericError());
+          })
+          .catch(err => {
+            if (err.response.status === 400) {
+              message.error(
+                this.$t(
+                  "ResetLinkExpired",
+                  "This password reset link has expired."
+                )
+              );
+            } else {
+              message.displayGenericError();
+            }
+          });
+      });
     }
   }
-}
+};
 </script>

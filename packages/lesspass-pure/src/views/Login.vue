@@ -13,31 +13,39 @@
         />
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-12">
-        <div class="inner-addon left-addon">
-          <i class="fa fa-user"></i>
-          <input
-            id="email"
-            class="form-control"
-            name="username"
-            type="email"
-            autocapitalize="none"
-            v-bind:placeholder="$t('Email')"
-            required
-            v-model="email"
-          />
-        </div>
+    <div class="form-group">
+      <div class="inner-addon left-addon">
+        <i class="fa fa-user"></i>
+        <input
+          id="email"
+          class="form-control"
+          name="username"
+          type="email"
+          autocapitalize="none"
+          v-bind:placeholder="$t('Email')"
+          required
+          v-model="email"
+        />
       </div>
     </div>
-    <div class="form-group mb-2">
+    <div class="form-group mb-1">
       <master-password
         v-model="password"
         v-bind:label="$t('Master Password')"
-        v-bind:email="email"
-        v-bind:showEncryptButton="true"
-        v-bind:EncryptButtonText="$t('Encrypt my master password')"
       ></master-password>
+    </div>
+    <div class="form-check form-switch mb-3">
+      <input
+        id="encryptMasterPassword"
+        class="form-check-input"
+        type="checkbox"
+        v-model="encryptMasterPassword"
+      />
+      <label class="form-check-label" for="encryptMasterPassword">
+        <small>
+          {{ $t("Encrypt my master password") }}
+        </small>
+      </label>
     </div>
     <div class="form-group">
       <button id="signInButton" class="btn btn-primary btn-block">
@@ -71,29 +79,19 @@
     </div>
   </form>
 </template>
-<script type="text/ecmascript-6">
+<script>
 import User from "../api/user";
 import { defaultbaseURL } from "../api/default";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
-import LessPass from "lesspass";
-import defaultPasswordProfile from "../store/defaultPassword";
-
-function encryptPassword(email, password) {
-  return LessPass.generatePassword(
-    "lesspass.com",
-    email,
-    password,
-    defaultPasswordProfile
-  );
-  return res;
-}
+import { encryptPassword } from "../services/encryption";
 
 export default {
   data() {
     return {
       email: "",
       password: "",
+      encryptMasterPassword: true,
       baseURL: localStorage.getItem("baseURL") || defaultbaseURL
     };
   },
@@ -116,34 +114,37 @@ export default {
     signIn() {
       if (this.formIsValid()) {
         const baseURL = this.baseURL;
-        let checkPlainPassword = this.$children[0].checkPlainPassword
         this.$store.dispatch("setBaseURL", { baseURL });
-        encryptPassword(this.email, this.password)
-          .then(encryptedPassword => {
-            let pass = checkPlainPassword ? this.password : encryptedPassword;
-            User.login({ email: this.email, password: pass })
-              .then(response => {
-                this.$store.dispatch("login", response.data);
-                this.$store.dispatch("cleanMessage");
-                this.$router.push({ name: "home" });
-              })
-              .catch(err => {
-                if (err.response === undefined && baseURL !== defaultbaseURL) {
-                  message.error(
-                    this.$t("DBNotRunning", "Your LessPass Database is not running")
-                  );
-                } else if (err.response && err.response.status === 401) {
-                  message.error(
-                    this.$t(
-                      "LoginIncorrectError",
-                      "The email and password you entered did not match our records. Please double-check and try again."
-                    )
-                  );
-                } else {
-                  message.displayGenericError();
-                }
-              });
-          });
+        encryptPassword(this.email, this.password).then(encryptedPassword => {
+          const password = this.encryptMasterPassword
+            ? encryptedPassword
+            : this.password;
+          User.login({ email: this.email, password })
+            .then(response => {
+              this.$store.dispatch("login", response.data);
+              this.$store.dispatch("cleanMessage");
+              this.$router.push({ name: "home" });
+            })
+            .catch(err => {
+              if (err.response === undefined && baseURL !== defaultbaseURL) {
+                message.error(
+                  this.$t(
+                    "DBNotRunning",
+                    "Your LessPass Database is not running"
+                  )
+                );
+              } else if (err.response && err.response.status === 401) {
+                message.error(
+                  this.$t(
+                    "LoginIncorrectError",
+                    "The email and password you entered did not match our records. Please double-check and try again."
+                  )
+                );
+              } else {
+                message.displayGenericError();
+              }
+            });
+        });
       }
     }
   }

@@ -181,7 +181,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 import { increment, decrement } from "../services/form-validator";
 
 export default {

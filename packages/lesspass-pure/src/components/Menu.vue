@@ -46,7 +46,7 @@
     </div>
   </div>
 </template>
-<script type="text/ecmascript-6">
+<script>
   import {mapGetters} from 'vuex';
 
   export default {

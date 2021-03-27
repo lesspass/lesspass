@@ -30,13 +30,10 @@
         </div>
       </div>
     </div>
-    <div class="form-group mb-2">
+    <div class="form-group">
       <master-password
         v-model="password"
         v-bind:label="$t('Master Password')"
-        v-bind:email="email"
-        v-bind:showEncryptButton="true"
-        v-bind:EncryptButtonText="$t('Encrypt my master password')"
       ></master-password>
     </div>
     <div class="form-group">
@@ -63,11 +60,12 @@
     </div>
   </form>
 </template>
-<script type="text/ecmascript-6">
+<script>
 import User from "../api/user";
 import { defaultbaseURL } from "../api/default";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
+import { encryptPassword } from "../services/encryption";
 
 export default {
   data() {
@@ -97,59 +95,80 @@ export default {
       if (this.formIsValid()) {
         const baseURL = this.baseURL;
         this.$store.dispatch("setBaseURL", { baseURL });
-        User.register(
-          { email: this.email, password: this.password },
-        )
-          .then(() => {
-            message.success(
-              this.$t(
-                "WelcomeRegister",
-                "Welcome {email}, thank you for signing up.",
-                { email: this.email }
-              )
-            );
-            User
-            .login({ email: this.email, password: this.password })
-            .then(response => {
-              this.$store.dispatch("login", response.data);
-              this.$router.push({ name: "home" });
+
+        encryptPassword(this.email, this.password).then(encryptedPassword => {
+          User.register({ email: this.email, password: encryptedPassword })
+            .then(() => {
+              message.success(
+                this.$t(
+                  "WelcomeRegister",
+                  "Welcome {email}, thank you for signing up.",
+                  { email: this.email }
+                )
+              );
+              return User.login({
+                email: this.email,
+                password: encryptedPassword
+              })
+                .then(response => {
+                  this.$store.dispatch("login", response.data);
+                  this.$router.push({ name: "home" });
+                })
+                .catch(() => message.displayGenericError());
             })
-            .catch(err => message.displayGenericError());
-          })
-          .catch(err => {
-            if ( err.response === undefined && baseURL !== defaultbaseURL) {
-              message.error(this.$t("DBNotRunning", "Your LessPass Database is not running"));
-            }else if (
-              err.response && err.response.data &&
-              typeof err.response.data.email !== "undefined"
-            ) {
-              if (err.response.data.email[0].indexOf("already exists") !== -1) {
+            .catch(err => {
+              if (err.response === undefined && baseURL !== defaultbaseURL) {
                 message.error(
                   this.$t(
-                    "EmailAlreadyExist",
-                    "This email is already registered. Want to login or recover your password?"
+                    "DBNotRunning",
+                    "Your LessPass Database is not running"
                   )
                 );
+              } else if (
+                err.response &&
+                err.response.data &&
+                typeof err.response.data.email !== "undefined"
+              ) {
+                if (
+                  err.response.data.email[0].indexOf("already exists") !== -1
+                ) {
+                  message.error(
+                    this.$t(
+                      "EmailAlreadyExist",
+                      "This email is already registered. Want to login or recover your password?"
+                    )
+                  );
+                }
+                if (err.response.data.email[0].indexOf("valid email") !== -1) {
+                  message.error(
+                    this.$t("EmailInvalid", "Please enter a valid email")
+                  );
+                }
+              } else if (
+                err.response &&
+                err.response.data &&
+                typeof err.response.data.password !== "undefined"
+              ) {
+                if (err.response.data.password[0].indexOf("too short") !== -1) {
+                  message.error(
+                    this.$t(
+                      "PasswordTooShort",
+                      "This password is too short. It must contain at least 8 characters."
+                    )
+                  );
+                }
+                if (
+                  err.response.data.password[0].indexOf("too common") !== -1
+                ) {
+                  message.error(
+                    this.$t("PasswordTooCommon", "This password is too common.")
+                  );
+                }
+              } else {
+                message.displayGenericError();
               }
-              if (err.response.data.email[0].indexOf("valid email") !== -1) {
-                message.error(
-                  this.$t("EmailInvalid", "Please enter a valid email")
-                );
-              }
-            } else if (
-              err.response && err.response.data &&
-              typeof err.response.data.password !== "undefined"
-            ) {
-              if (err.response.data.password[0].indexOf("too short") !== -1) {
-                message.error(this.$t("PasswordTooShort", "This password is too short. It must contain at least 8 characters."));
-              }
-              if (err.response.data.password[0].indexOf("too common") !== -1) {
-                message.error(this.$t("PasswordTooCommon", "This password is too common."));
-              }
-            } else {
-              message.displayGenericError();
-            }
-          });
+            });
+        });
       }
     }
   }

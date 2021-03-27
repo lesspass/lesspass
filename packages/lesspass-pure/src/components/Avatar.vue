@@ -14,7 +14,7 @@
 <template>
   <div v-bind:style="avatarStyle" class="passwordProfile__avatar">{{firstLetter}}</div>
 </template>
-<script type="text/ecmascript-6">
+<script>
 export default {
   name: "avatar",
   props: {

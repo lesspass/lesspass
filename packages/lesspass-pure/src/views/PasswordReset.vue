@@ -34,30 +34,29 @@
     </div>
   </form>
 </template>
-<script type="text/ecmascript-6">
-import User from '../api/user';
-import {mapState} from 'vuex';
-import message from '../services/message';
+<script>
+import User from "../api/user";
+import message from "../services/message";
 
 export default {
   data() {
     return {
-      email: '',
+      email: ""
     };
   },
   methods: {
     resetPassword() {
       if (!this.email) {
-        message.error(this.$t('EmailRequiredError', 'We need an email to find your account.'));
+        message.error(this.$t("EmailRequiredError", "Email is required"));
         return;
       }
 
-      User.resetPassword({email: this.email})
+      User.resetPassword({ email: this.email })
         .then(() => {
           const successMessage = this.$t(
-            'resetPasswordSuccess',
-            'If the email address {email} is associated with a LessPass account, you will shortly receive an email from LessPass with instructions on how to reset your password.',
-            {email: this.email}
+            "resetPasswordSuccess",
+            "If the email address {email} is associated with a LessPass account, you will shortly receive an email from LessPass with instructions on how to reset your password.",
+            { email: this.email }
           );
           message.success(successMessage);
         })
@@ -66,5 +65,5 @@ export default {
         });
     }
   }
-}
+};
 </script>

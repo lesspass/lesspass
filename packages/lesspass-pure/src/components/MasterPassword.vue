@@ -23,7 +23,7 @@
         id="passwordField"
         name="passwordField"
         ref="passwordField"
-        type="password"
+        v-bind:type="passwordType"
         class="form-control"
         tabindex="0"
         autocorrect="off"
@@ -59,48 +59,28 @@
         </button>
       </span>
     </div>
-    <small>
-      <div class="form-check form-switch" v-if="showEncryptButton">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="checkPlainPassword"
-          v-model="checkPlainPassword"
-        />
-        <label class="form-check-label" for="checkPlainPassword">{{
-          $t("Use plain password")
-        }}</label>
-      </div>
-    </small>
   </div>
 </template>
 <script>
 import LessPass from "lesspass";
 import { debounce } from "lodash";
-import defaultPasswordProfile from "../store/defaultPassword";
 
 export default {
   name: "masterPassword",
   props: {
     value: String,
-    label: String,
-    email: String,
-    showEncryptButton: {
-      type: Boolean,
-      default: false
-    },
-    EncryptButtonText: String
+    label: String
   },
   data() {
     return {
+      passwordType: "password",
       fingerprint: null,
       icon1: "",
       icon2: "",
       icon3: "",
       color1: "",
       color2: "",
-      color3: "",
-      checkPlainPassword: false
+      color3: ""
     };
   },
   methods: {
@@ -114,15 +94,15 @@ export default {
       this.$emit("input", newPassword);
     },
     togglePasswordType() {
-      const element = this.$refs.passwordField;
-      if (element.type === "password") {
-        element.type = "text";
+      if (this.passwordType === "password") {
+        this.passwordType = "text";
       } else {
-        element.type = "password";
+        this.passwordType = "password";
       }
     },
-    hidePassword() {
-      this.$refs.passwordField.type = "password";
+    hide() {
+      this.passwordType = "password";
+      this.fingerprint = null;
     },
     getColor(color) {
       var colors = [
@@ -212,18 +192,7 @@ export default {
     },
     showRealFingerprint: debounce(function(password) {
       this.setFingerprint(password);
-    }, 500),
-    encryptMasterPassword() {
-      const password = this.$refs.passwordField.value;
-      return LessPass.generatePassword(
-        "lesspass.com",
-        this.email,
-        password,
-        defaultPasswordProfile
-      ).then(generatedPassword => {
-        this.updateValue(generatedPassword);
-      });
-    }
+    }, 500)
   }
 };
 </script>

@@ -81,7 +81,7 @@
     </div>
   </div>
 </template>
-<script type="text/ecmascript-6">
+<script>
 import PasswordProfile from "../components/PasswordProfile.vue";
 import { mapState } from "vuex";
 import Paginate from "vuejs-paginate";
