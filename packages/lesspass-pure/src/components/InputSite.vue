@@ -82,7 +82,7 @@ export default {
     }
   },
   watch: {
-    site: function (newValue) {
+    site: function(newValue) {
       const suggestions = getSuggestions(newValue).map(suggestion => {
         return { site: suggestion, suggestion: true, login: "" };
       });

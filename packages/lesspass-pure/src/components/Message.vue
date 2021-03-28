@@ -34,11 +34,15 @@
       <div v-if="message.text">
         <div
           class="card-header text-white"
-          v-bind:class="{ 'bg-warning': message.status==='warning', 'bg-danger': message.status==='error', 'bg-success': message.status==='success' }"
+          v-bind:class="{
+            'bg-warning': message.status === 'warning',
+            'bg-danger': message.status === 'error',
+            'bg-success': message.status === 'success'
+          }"
         >
           <div class="row">
             <div class="col-12">
-              <small>{{message.text}}</small>
+              <small>{{ message.text }}</small>
               <span class="close-notification" v-on:click="hideMessage">
                 <i class="fa fa-close"></i>
               </span>

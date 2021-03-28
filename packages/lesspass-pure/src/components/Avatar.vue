@@ -12,7 +12,9 @@
 }
 </style>
 <template>
-  <div v-bind:style="avatarStyle" class="passwordProfile__avatar">{{firstLetter}}</div>
+  <div v-bind:style="avatarStyle" class="passwordProfile__avatar">
+    {{ firstLetter }}
+  </div>
 </template>
 <script>
 export default {

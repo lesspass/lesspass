@@ -75,7 +75,7 @@ export default {
       this.$router.push({ name: "home" }).catch(() => {});
     },
     changePassword: async function() {
-       if (!this.email) {
+      if (!this.email) {
         message.error(this.$t("EmailRequiredError", "Email is required"));
         return;
       }

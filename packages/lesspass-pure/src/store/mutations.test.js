@@ -90,7 +90,10 @@ test("SET_PASSWORDS", () => {
 test("DELETE_PASSWORD", () => {
   const DELETE_PASSWORD = mutations[types.DELETE_PASSWORD];
   const state = {
-    passwords: [{ id: "1", site: "site1" }, { id: "2", site: "site2" }]
+    passwords: [
+      { id: "1", site: "site1" },
+      { id: "2", site: "site2" }
+    ]
   };
   expect(state.passwords.length).toBe(2);
   DELETE_PASSWORD(state, { id: "1" });
@@ -100,7 +103,10 @@ test("DELETE_PASSWORD", () => {
 test("DELETE_PASSWORD replace state.password with state.defaultPassword", () => {
   const DELETE_PASSWORD = mutations[types.DELETE_PASSWORD];
   const state = {
-    passwords: [{ id: "1", length: 30 }, { id: "2", length: 16 }],
+    passwords: [
+      { id: "1", length: 30 },
+      { id: "2", length: 16 }
+    ],
     password: { id: "1", length: 30 },
     defaultPassword: { length: 16 }
   };

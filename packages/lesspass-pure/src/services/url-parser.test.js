@@ -3,36 +3,60 @@ import * as urlParser from "./url-parser";
 test("cleanUrl", () => {
   expect("lesspass.com").toBe(urlParser.cleanUrl("https://lesspass.com/#!/"));
   expect("lesspass.com").toBe(urlParser.cleanUrl("https://lesspass.com/api/"));
-  expect("api.lesspass.com").toBe(urlParser.cleanUrl("https://api.lesspass.com/"));
+  expect("api.lesspass.com").toBe(
+    urlParser.cleanUrl("https://api.lesspass.com/")
+  );
   expect("lesspass.com").toBe(urlParser.cleanUrl("http://lesspass.com"));
-  expect("stackoverflow.com").toBe(urlParser.cleanUrl(
-    "http://stackoverflow.com/questions/3689423/google-chrome-plugin-how-to-get-domain-from-url-tab-url"
-  ));
-  expect("v4-alpha.getbootstrap.com").toBe(urlParser.cleanUrl("http://v4-alpha.getbootstrap.com/components/buttons/"));
-  expect("accounts.google.com").toBe(urlParser.cleanUrl(
-    "https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier"
-  ));
-  expect("www.netflix.com").toBe(urlParser.cleanUrl("https://www.netflix.com/browse"));
+  expect("stackoverflow.com").toBe(
+    urlParser.cleanUrl(
+      "http://stackoverflow.com/questions/3689423/google-chrome-plugin-how-to-get-domain-from-url-tab-url"
+    )
+  );
+  expect("v4-alpha.getbootstrap.com").toBe(
+    urlParser.cleanUrl("http://v4-alpha.getbootstrap.com/components/buttons/")
+  );
+  expect("accounts.google.com").toBe(
+    urlParser.cleanUrl(
+      "https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier"
+    )
+  );
+  expect("www.netflix.com").toBe(
+    urlParser.cleanUrl("https://www.netflix.com/browse")
+  );
   expect("www.bbc.co.uk").toBe(urlParser.cleanUrl("https://www.bbc.co.uk"));
-  expect("192.168.1.1:10443").toBe(urlParser.cleanUrl("https://192.168.1.1:10443/webapp/"));
+  expect("192.168.1.1:10443").toBe(
+    urlParser.cleanUrl("https://192.168.1.1:10443/webapp/")
+  );
   expect("").toBe(urlParser.cleanUrl(undefined));
   expect("").toBe(urlParser.cleanUrl(undefined));
   expect("").toBe(urlParser.cleanUrl("chrome://extensions/"));
 });
 
 test("getSuggestions", () => {
-  expect(["bbc", "bbc.com", "www.bbc.com"]).toEqual(urlParser.getSuggestions("https://www.bbc.com"));
+  expect(["bbc", "bbc.com", "www.bbc.com"]).toEqual(
+    urlParser.getSuggestions("https://www.bbc.com")
+  );
   expect(["example", "example.org", "www.example.org"]).toEqual(
     urlParser.getSuggestions("https://www.example.org/api/?offset=100&limit=10")
   );
-  expect(["example", "example.org"]).toEqual(urlParser.getSuggestions("https://example.org"));
-  expect(["example", "example.org"]).toEqual(urlParser.getSuggestions("example.org"));
-  expect([]).toEqual(urlParser.getSuggestions("https://192.168.1.1:10443/webapp/"));
+  expect(["example", "example.org"]).toEqual(
+    urlParser.getSuggestions("https://example.org")
+  );
+  expect(["example", "example.org"]).toEqual(
+    urlParser.getSuggestions("example.org")
+  );
+  expect([]).toEqual(
+    urlParser.getSuggestions("https://192.168.1.1:10443/webapp/")
+  );
   expect([]).toEqual(urlParser.getSuggestions("example"));
   expect([]).toEqual(urlParser.getSuggestions("example."));
   expect([]).toEqual(urlParser.getSuggestions("example.o"));
-  expect(urlParser.getSuggestions("http://example.org")).toEqual(urlParser.getSuggestions("https://example.org"));
-  expect(["example", "example.org"]).toEqual(urlParser.getSuggestions("EXAMPLE.org"));
+  expect(urlParser.getSuggestions("http://example.org")).toEqual(
+    urlParser.getSuggestions("https://example.org")
+  );
+  expect(["example", "example.org"]).toEqual(
+    urlParser.getSuggestions("EXAMPLE.org")
+  );
 });
 
 test("getSite", () => {

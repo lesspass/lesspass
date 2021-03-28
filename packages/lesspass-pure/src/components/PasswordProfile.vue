@@ -24,9 +24,9 @@
     <div class="passwordProfile__info" v-on:click="setPassword()">
       <avatar v-bind:name="password.site"></avatar>
       <div class="passwordProfile__meta">
-        <b>{{password.site}}</b>
+        <b>{{ password.site }}</b>
         <br />
-        {{password.login}}
+        {{ password.login }}
       </div>
     </div>
     <div class="passwordProfile__actions">
