@@ -89,10 +89,12 @@ function increment_version {
 }
 
 function build {
+    pushd packages/lesspass-web-extension/
     yarn install
-    rm -rf packages/lesspass-web-extension/extension/dist
-    mkdir packages/lesspass-web-extension/extension/dist
-    cp -r node_modules/lesspass-pure/dist/. packages/lesspass-web-extension/extension/dist/
+    rm -rf ./extension/dist
+    mkdir ./extension/dist
+    popd
+    cp -r packages/lesspass-pure/dist/. packages/lesspass-web-extension/extension/dist/
 }
 
 
