@@ -12,8 +12,8 @@ To rebuild the web extension, you need node, yarn and md5sum to check the md5 su
 
 Tested with:
 
- * node version 12.16.3
- * yarn version 1.22.4
+ * node version 14.16.0
+ * yarn version 1.22.5
  * md5sum (GNU coreutils) version 8.32
 
 ## unzip source {sha256}.zip
