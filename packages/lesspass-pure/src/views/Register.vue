@@ -1,8 +1,8 @@
 <template>
   <form v-on:submit.prevent="signIn">
-    <div class="form-group">
-      <div class="inner-addon left-addon">
-        <i class="fa fa-globe"></i>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-globe"></i></span>
         <input
           id="baseURL"
           type="text"
@@ -13,44 +13,42 @@
         />
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-12">
-        <div class="inner-addon left-addon">
-          <i class="fa fa-user"></i>
-          <input
-            id="email"
-            class="form-control"
-            name="username"
-            type="email"
-            autocapitalize="none"
-            v-bind:placeholder="$t('Email')"
-            required
-            v-model="email"
-          />
-        </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
+        <input
+          id="email"
+          class="form-control"
+          name="username"
+          type="email"
+          autocapitalize="none"
+          v-bind:placeholder="$t('Email')"
+          required
+          v-model="email"
+        />
       </div>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
       <master-password
         v-model="password"
         v-bind:label="$t('Master Password')"
       ></master-password>
     </div>
-    <div class="form-group">
+    <div class="mb-3 d-grid">
       <button
         id="registerButton"
-        class="btn btn-primary btn-block"
+        class="btn btn-primary"
         type="button"
         v-on:click="register"
       >
         {{ $t("Register") }}
       </button>
     </div>
-    <div class="form-group mb-0">
+    <div class="mb-0 d-grid">
       <button
         id="login__no-account-btn"
         type="button"
-        class="btn btn-light btn-block"
+        class="btn btn-outline-dark"
         v-on:click="$router.push({ name: 'login' })"
       >
         <small>{{

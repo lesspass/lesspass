@@ -25,25 +25,9 @@
             >LessPass</span
           >
         </div>
-        <div class="col-8 text-right">
-          <span v-if="saved && isAuthenticated">
-            <small><i class="fa fa-lg fa-check pl-3"></i> saved</small>
-          </span>
-          <span
-            class="white-link"
-            v-on:click="saveOrUpdatePassword()"
-            v-if="
-              !saved &&
-                isAuthenticated &&
-                $store.state.password.site !== '' &&
-                $store.state.route.path === '/'
-            "
-            :title="$t('Save')"
-          >
-            <i class="fa fa-lg fa-save pointer"></i>
-          </span>
+        <div class="col-8 text-end">
           <router-link
-            class="white-link pl-3"
+            class="white-link ps-3"
             :to="{ name: 'passwords' }"
             v-if="isAuthenticated"
             :title="$t('Saved passwords')"
@@ -51,14 +35,14 @@
             <i class="fa  fa-lg fa-key"></i>
           </router-link>
           <router-link
-            class="white-link pl-3"
+            class="white-link ps-3"
             :to="{ name: 'settings' }"
             :title="$t('Settings')"
           >
             <i class="fa fa-lg fa-cog"></i>
           </router-link>
           <router-link
-            class="white-link pl-3"
+            class="white-link ps-3"
             :to="{ name: 'myaccount' }"
             v-if="isAuthenticated"
             :title="$t('My Account')"
@@ -66,7 +50,7 @@
             <i class="fa fa-lg fa-user pointer"></i>
           </router-link>
           <router-link
-            class="white-link pl-3"
+            class="white-link ps-3"
             :to="{ name: 'login' }"
             v-if="isGuest"
             :title="$t('Sign In')"
@@ -82,22 +66,10 @@
 import { mapGetters } from "vuex";
 
 export default {
-  data() {
-    return {
-      saved: false
-    };
-  },
   methods: {
     fullReload() {
       this.$store.dispatch("resetPassword");
       this.$router.push({ name: "home" }).catch(e => {});
-    },
-    saveOrUpdatePassword() {
-      this.$store.dispatch("saveOrUpdatePassword");
-      this.saved = true;
-      setTimeout(() => {
-        this.saved = false;
-      }, 3000);
     }
   },
   computed: {

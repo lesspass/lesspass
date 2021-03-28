@@ -2,14 +2,6 @@
 #generated-password {
   font-family: Consolas, Menlo, Monaco, Courier New, monospace, sans-serif;
 }
-
-div.awesomplete {
-  display: block;
-}
-
-div.awesomplete > ul {
-  z-index: 11;
-}
 </style>
 <template>
   <form
@@ -17,21 +9,29 @@ div.awesomplete > ul {
     v-on:submit.prevent="generatePassword"
     novalidate
   >
-    <div class="form-group">
-      <input-site
-        ref="site"
-        v-model="password.site"
-        v-bind:passwords="passwords"
-        v-bind:label="$t('Site')"
-        v-on:suggestionSelected="setSite"
-        v-on:passwordProfileSelected="setPasswordProfile"
-      ></input-site>
+    <div class="mb-3">
+      <label for="site" class="sr-only">{{ $t("Site") }}</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-globe"></i></span>
+        <input
+          id="site"
+          type="text"
+          name="site"
+          ref="site"
+          class="form-control"
+          tabindex="0"
+          autocorrect="off"
+          autocapitalize="none"
+          v-bind:placeholder="$t('Site')"
+          v-model="password.site"
+        />
+      </div>
     </div>
     <remove-auto-complete></remove-auto-complete>
-    <div class="form-group">
+    <div class="mb-3">
       <label for="login" class="sr-only">{{ $t("Username") }}</label>
-      <div class="inner-addon left-addon">
-        <i class="fa fa-user"></i>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
         <input
           id="login"
           type="text"
@@ -47,67 +47,63 @@ div.awesomplete > ul {
         />
       </div>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
       <master-password
         ref="masterPassword"
         v-model="masterPassword"
         v-bind:label="$t('Master Password')"
       ></master-password>
     </div>
-    <options v-bind:options="password"></options>
-    <div class="form-group mt-4 mb-0">
+    <div class="mb-4">
+      <options v-bind:options="password"></options>
+    </div>
+    <div class="mb-0 d-grid">
       <button
         id="generatePassword__btn"
         type="submit"
         tabindex="0"
-        class="btn btn-primary btn-block"
+        class="btn btn-primary"
         v-if="!passwordGenerated"
       >
         {{ $t("Generate") }}
       </button>
-      <div class="input-group" v-show="passwordGenerated">
-        <span class="input-group-btn">
-          <button
-            id="copyPasswordButton"
-            class="btn btn-primary"
-            tabindex="0"
-            type="button"
-            v-on:click="copyPassword()"
-          >
-            <i class="fa fa-clipboard"></i>
-          </button>
-        </span>
-        <input
-          id="generated-password"
-          type="password"
-          class="form-control"
-          tabindex="-1"
-          ref="passwordGenerated"
-          v-bind:value="passwordGenerated"
-        />
-        <span class="input-group-btn">
-          <button
-            id="revealGeneratedPassword"
-            type="button"
-            class="btn btn-secondary"
-            tabindex="0"
-            v-on:click="togglePasswordType($refs.passwordGenerated)"
-          >
-            <i class="fa fa-eye"></i>
-          </button>
-        </span>
-        <span class="input-group-btn">
-          <button
-            id="sharePasswordProfileButton"
-            type="button"
-            class="btn btn-secondary"
-            tabindex="0"
-            v-on:click="sharePasswordProfile()"
-          >
-            <i class="fa fa-share-alt pointer"></i>
-          </button>
-        </span>
-      </div>
+    </div>
+    <div class="input-group" v-show="passwordGenerated">
+      <button
+        id="copyPasswordButton"
+        class="btn btn-primary"
+        tabindex="0"
+        type="button"
+        v-on:click="copyPassword()"
+      >
+        <i class="fa fa-clipboard"></i>
+      </button>
+      <input
+        id="generated-password"
+        type="password"
+        class="form-control"
+        tabindex="-1"
+        ref="passwordGenerated"
+        v-bind:value="passwordGenerated"
+      />
+      <button
+        id="revealGeneratedPassword"
+        type="button"
+        class="btn btn-secondary"
+        tabindex="0"
+        v-on:click="togglePasswordType($refs.passwordGenerated)"
+      >
+        <i class="fa fa-eye"></i>
+      </button>
+      <button
+        id="sharePasswordProfileButton"
+        type="button"
+        class="btn btn-secondary"
+        tabindex="0"
+        v-on:click="sharePasswordProfile()"
+      >
+        <i class="fa fa-share-alt"></i>
+      </button>
     </div>
   </form>
 </template>
@@ -117,7 +113,6 @@ import { mapGetters, mapState } from "vuex";
 import copy from "copy-text-to-clipboard";
 import RemoveAutoComplete from "../components/RemoveAutoComplete.vue";
 import MasterPassword from "../components/MasterPassword.vue";
-import InputSite from "../components/InputSite.vue";
 import Options from "../components/Options.vue";
 import { showTooltip, hideTooltip } from "../services/tooltip";
 import message from "../services/message";
@@ -127,7 +122,6 @@ export default {
   name: "password-generator-view",
   components: {
     RemoveAutoComplete,
-    InputSite,
     MasterPassword,
     Options
   },
@@ -245,7 +239,7 @@ export default {
     },
     focusBestInputField() {
       try {
-        const site = this.$refs.site.$refs.siteField;
+        const site = this.$refs.site;
         const login = this.$refs.login;
         const masterPassword = this.$refs.masterPassword;
         if (site && !site.value) return void site.focus();
@@ -285,13 +279,6 @@ export default {
     },
     setSite(site) {
       this.password.site = site;
-    },
-    setPasswordProfile(passwordProfile) {
-      this.$store
-        .dispatch("savePassword", { password: passwordProfile })
-        .then(() => {
-          this.focusBestInputField();
-        });
     }
   }
 };

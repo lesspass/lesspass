@@ -16,8 +16,8 @@
     <div id="passwords__search" class="pb-3">
       <div class="row">
         <div class="col">
-          <div class="inner-addon left-addon">
-            <i class="fa fa-search"></i>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
             <input
               class="form-control"
               type="text"

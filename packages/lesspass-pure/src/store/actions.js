@@ -49,22 +49,16 @@ export const getPasswords = ({ commit }) => {
   });
 };
 
-export const saveOrUpdatePassword = ({ commit, state }) => {
-  const site = state.password.site;
-  const login = state.password.login;
-  const existingPassword = state.passwords.find(password => {
-    return password.site === site && password.login === login;
-  });
-  if (existingPassword) {
-    const newPassword = Object.assign({}, existingPassword, state.password);
-    Password.update(newPassword, state).then(() => {
-      getPasswords({ commit, state });
-    });
-  } else {
-    Password.create(state.password, state).then(() => {
-      getPasswords({ commit, state });
-    });
-  }
+export const createPassword = ({ commit, state }) => {
+  return Password.create(state.password, state).then(() =>
+    getPasswords({ commit, state })
+  );
+};
+
+export const updatePassword = ({ commit, state }) => {
+  return Password.update(state.password, state).then(() =>
+    getPasswords({ commit, state })
+  );
 };
 
 export const deletePassword = ({ commit, state }, payload) => {

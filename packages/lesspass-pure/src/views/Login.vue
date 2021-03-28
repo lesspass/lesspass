@@ -1,8 +1,8 @@
 <template>
   <form v-on:submit.prevent="signIn">
-    <div class="form-group">
-      <div class="inner-addon left-addon">
-        <i class="fa fa-globe"></i>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-globe"></i></span>
         <input
           id="baseURL"
           type="text"
@@ -13,9 +13,9 @@
         />
       </div>
     </div>
-    <div class="form-group">
-      <div class="inner-addon left-addon">
-        <i class="fa fa-user"></i>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
         <input
           id="email"
           class="form-control"
@@ -28,13 +28,13 @@
         />
       </div>
     </div>
-    <div class="form-group mb-1">
+    <div class="mb-1">
       <master-password
         v-model="password"
         v-bind:label="$t('Master Password')"
       ></master-password>
     </div>
-    <div class="form-check form-switch mb-3">
+    <div class="form-check mb-3">
       <input
         id="encryptMasterPassword"
         class="form-check-input"
@@ -47,26 +47,26 @@
         </small>
       </label>
     </div>
-    <div class="form-group">
-      <button id="signInButton" class="btn btn-primary btn-block">
+    <div class="mb-3 d-grid">
+      <button id="signInButton" class="btn btn-primary">
         {{ $t("Sign In") }}
       </button>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
       <button
         id="login__forgot-password-btn"
         type="button"
-        class="btn btn-link btn-sm p-0"
+        class="btn btn-link p-0"
         v-on:click="$router.push({ name: 'passwordReset' })"
       >
         <small>{{ $t("ForgotPassword", "Forgot your password?") }}</small>
       </button>
     </div>
-    <div class="form-group mb-0">
+    <div class="mb-0 d-grid">
       <button
         id="login__no-account-btn"
         type="button"
-        class="btn btn-light btn-block"
+        class="btn btn-outline-dark"
         v-on:click="$router.push({ name: 'register' })"
       >
         <small>{{

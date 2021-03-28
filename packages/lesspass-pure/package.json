@@ -33,10 +33,9 @@
   "dependencies": {
     "@oslab/atob": "^0.1.0",
     "@oslab/btoa": "^0.1.0",
-    "awesomplete": "^1.1.5",
     "axios": "^0.21.1",
     "balloon-css": "^1.0.3",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.0.0-beta3",
     "copy-text-to-clipboard": "^3.0.1",
     "core-js": "^3.9.1",
     "font-awesome": "^4.7.0",

@@ -14,7 +14,7 @@
 
 #message {
   position: absolute;
-  top: 49px;
+  top: 41px;
   left: 0;
   right: 0;
   z-index: 20;
@@ -23,8 +23,8 @@
 .close-notification {
   float: right;
   position: absolute;
-  top: 0;
-  right: 1em;
+  top: 10px;
+  right: 16px;
   cursor: pointer;
 }
 </style>

@@ -1,34 +1,28 @@
 <template>
   <form v-on:submit.prevent="resetPasswordConfirm">
-    <div class="form-group row">
-      <div class="col-12">
-        <div class="inner-addon left-addon">
-          <i class="fa fa-user"></i>
-          <input
-            id="email"
-            class="form-control"
-            name="email"
-            type="email"
-            placeholder="Email"
-            v-model="email"
-          />
-        </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
+        <input
+          id="email"
+          class="form-control"
+          name="email"
+          type="email"
+          placeholder="Email"
+          v-model="email"
+        />
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-12">
-        <master-password
-          v-model="password"
-          v-bind:label="$t('Master Password')"
-        ></master-password>
-      </div>
+    <div class="mb-3">
+      <master-password
+        v-model="password"
+        v-bind:label="$t('Master Password')"
+      ></master-password>
     </div>
-    <div class="form-group row">
-      <div class="col-12">
-        <button id="resetMyPasswordButton" class="btn btn-primary btn-block">
-          {{ $t("Reset my password") }}
-        </button>
-      </div>
+    <div class="mb-3 d-grid">
+      <button id="resetMyPasswordButton" class="btn btn-primary">
+        {{ $t("Reset my password") }}
+      </button>
     </div>
   </form>
 </template>

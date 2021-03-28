@@ -10,7 +10,7 @@ describe("Connected Mode", function() {
     cy.get("#fingerprint .fa-plane").should("be.visible");
     cy.get("#signInButton").click();
     cy.wait(500);
-    cy.get("#siteField").type("lesspass.com");
+    cy.get("#site").type("lesspass.com");
     cy.get("#login").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.get("#generatePassword__btn").click();
@@ -32,7 +32,7 @@ describe("Connected Mode", function() {
     cy.get("#passwordField").type("test@lesspass.com");
     cy.wait(1000);
     cy.get("#signInButton").click();
-    cy.get("#siteField").should("be.visible");
+    cy.get("#site").should("be.visible");
     cy.get(".fa-key").should("be.visible");
     cy.get(".fa-user")
       .first()
@@ -60,7 +60,7 @@ describe("Connected Mode", function() {
     cy.get(".passwordProfile__meta")
       .first()
       .click();
-    cy.get("#siteField").should("have.value", "example.org");
+    cy.get("#site").should("have.value", "example.org");
     cy.get("#login").should("have.value", "contact@example.org");
     cy.get(".fa-user")
       .first()
