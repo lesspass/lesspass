@@ -9,12 +9,11 @@ import defaultPassword from "./defaultPassword";
 Vue.use(Vuex);
 
 const state = {
-  authenticated: localStorage.getItem("access_token") !== null,
+  isAuthenticated: false,
   password: Object.assign({}, defaultPassword),
   passwords: [],
   message: "",
-  defaultPassword: defaultPassword,
-  showOptions: false
+  defaultPassword
 };
 
 export default new Vuex.Store({

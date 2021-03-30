@@ -2,14 +2,14 @@ import * as types from "./mutation-types";
 
 export default {
   [types.LOGIN](state) {
-    state.authenticated = true;
+    state.isAuthenticated = true;
   },
   [types.SET_TOKENS](state, { refresh_token, access_token }) {
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("refresh_token", refresh_token);
   },
   [types.LOGOUT](state) {
-    state.authenticated = false;
+    state.isAuthenticated = false;
     state.passwords = [];
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");

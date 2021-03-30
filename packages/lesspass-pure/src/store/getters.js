@@ -1,8 +1,8 @@
 import btoa from "@oslab/btoa";
 
-export const isAuthenticated = state => state.authenticated;
+export const isAuthenticated = state => state.isAuthenticated;
 
-export const isGuest = state => !state.authenticated;
+export const isGuest = state => !state.isAuthenticated;
 
 export const passwordURL = state => {
   const base64PasswordProfile = btoa(JSON.stringify(state.password));

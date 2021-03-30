@@ -1,4 +1,6 @@
-export const defaultOptions = {
+export default {
+  login: "",
+  site: "",
   uppercase: true,
   lowercase: true,
   numbers: true,
@@ -6,10 +8,4 @@ export const defaultOptions = {
   length: 16,
   counter: 1,
   version: 2
-};
-
-export default {
-  login: "",
-  site: "",
-  ...defaultOptions
 };

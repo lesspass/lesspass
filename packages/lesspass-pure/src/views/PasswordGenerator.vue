@@ -136,13 +136,11 @@ export default {
     ...mapGetters(["passwordURL"])
   },
   beforeMount() {
-    this.$store.dispatch("getPasswords").then(() => {
-      urlParser.getSite().then(site => {
-        this.$store.dispatch("loadPasswordProfile", { site });
-      });
-      this.$store.dispatch("getPasswordFromUrlQuery", {
-        query: this.$route.query
-      });
+    urlParser.getSite().then(site => {
+      this.$store.dispatch("loadPasswordProfile", { site });
+    });
+    this.$store.dispatch("getPasswordFromUrlQuery", {
+      query: this.$route.query
     });
   },
   mounted() {

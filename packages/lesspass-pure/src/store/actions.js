@@ -42,14 +42,11 @@ export const logout = ({ commit }) => {
 };
 
 export const getPasswords = ({ commit }) => {
-  return Password.all()
-    .then(response => {
-      commit(types.LOGIN);
-      const passwords = response.data.results;
-      commit(types.SET_PASSWORDS, { passwords });
-      return passwords;
-    })
-    .catch(() => logout({ commit }));
+  return Password.all().then(response => {
+    const passwords = response.data.results;
+    commit(types.SET_PASSWORDS, { passwords });
+    return passwords;
+  });
 };
 
 export const saveOrUpdatePassword = ({ commit, state }) => {

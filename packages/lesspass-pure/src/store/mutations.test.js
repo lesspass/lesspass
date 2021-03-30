@@ -5,10 +5,10 @@ import defaultPassword from "./defaultPassword";
 test("LOGOUT", () => {
   const LOGOUT = mutations[types.LOGOUT];
   const state = {
-    authenticated: true
+    isAuthenticated: true
   };
   LOGOUT(state);
-  expect(state.authenticated).toBe(false);
+  expect(state.isAuthenticated).toBe(false);
 });
 
 test("RESET_PASSWORD set default password", () => {
@@ -35,9 +35,9 @@ test("LOGOUT clean user personal info", () => {
 
 test("LOGIN", () => {
   const LOGIN = mutations[types.LOGIN];
-  const state = { authenticated: false };
+  const state = { isAuthenticated: false };
   LOGIN(state);
-  expect(state.authenticated).toBe(true);
+  expect(state.isAuthenticated).toBe(true);
 });
 
 test("SET_PASSWORD", () => {

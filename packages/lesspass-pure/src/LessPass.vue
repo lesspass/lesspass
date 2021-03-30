@@ -60,17 +60,37 @@ button,
 .right-addon input {
   padding-right: 30px;
 }
+
+#loading__view {
+  position: relative;
+  height: 358px;
+}
+
+.loading__icon {
+  width: 64px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 </style>
 <template>
   <div id="lesspass" class="card">
     <lesspass-menu></lesspass-menu>
     <lesspass-message></lesspass-message>
     <div class="lesspass__inner-box card-body">
-      <router-view></router-view>
+      <div id="loading__view" v-if="isLoading">
+        <img src="./images/loading.svg" alt="loading" class="loading__icon" />
+      </div>
+      <router-view v-else></router-view>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+import { getBaseURL } from "./api/baseURL";
 import Menu from "./components/Menu.vue";
 import Message from "./components/Message.vue";
 
@@ -80,9 +100,25 @@ export default {
     "lesspass-menu": Menu,
     "lesspass-message": Message
   },
+  data: () => ({
+    isLoading: false
+  }),
   created() {
     this.$store.dispatch("cleanMessage");
     this.$store.dispatch("resetPassword");
+    const refresh = localStorage.getItem("refresh_token");
+    if (refresh) {
+      this.isLoading = true;
+      axios
+        .post("/api/auth/jwt/refresh/", { refresh }, { baseURL: getBaseURL() })
+        .then(response => {
+          this.$store.dispatch("login", response.data);
+          return this.$store.dispatch("getPasswords");
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    }
   }
 };
 </script>

@@ -36,7 +36,7 @@ test("passwordURL encode uri component", () => {
 
 test("isAuthenticated", () => {
   const state = {
-    authenticated: true
+    isAuthenticated: true
   };
   expect(getters.isAuthenticated(state)).toBe(true);
   expect(getters.isGuest(state)).toBe(false);
@@ -44,7 +44,7 @@ test("isAuthenticated", () => {
 
 test("isGuest", () => {
   const state = {
-    authenticated: false
+    isAuthenticated: false
   };
   expect(getters.isAuthenticated(state)).toBe(false);
   expect(getters.isGuest(state)).toBe(true);

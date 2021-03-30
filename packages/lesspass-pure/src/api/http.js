@@ -1,8 +1,8 @@
 import axios from "axios";
-import { defaultbaseURL } from "./default";
+import { getBaseURL } from "./baseURL";
 
 axios.interceptors.request.use(config => {
-  const baseURL = localStorage.getItem("baseURL") || defaultbaseURL;
+  const baseURL = getBaseURL();
   config.baseURL = baseURL;
   const access_token = localStorage.getItem("access_token");
   if (access_token) {
@@ -26,7 +26,7 @@ axios.interceptors.response.use(
         reject(error);
       });
     }
-    const baseURL = localStorage.getItem("baseURL");
+    const baseURL = getBaseURL()
     return axios
       .post("/api/auth/jwt/refresh/", { refresh }, { baseURL })
       .then(response => {

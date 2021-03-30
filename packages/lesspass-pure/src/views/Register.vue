@@ -62,7 +62,7 @@
 </template>
 <script>
 import User from "../api/user";
-import { defaultbaseURL } from "../api/default";
+import { getBaseURL, defaultBaseURL } from "../api/baseURL";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
 import { encryptPassword } from "../services/encryption";
@@ -72,7 +72,7 @@ export default {
     return {
       email: "",
       password: "",
-      baseURL: localStorage.getItem("baseURL") || defaultbaseURL
+      baseURL: getBaseURL()
     };
   },
   components: {
@@ -117,7 +117,7 @@ export default {
                 .catch(() => message.displayGenericError());
             })
             .catch(err => {
-              if (err.response === undefined && baseURL !== defaultbaseURL) {
+              if (err.response === undefined && baseURL !== defaultBaseURL) {
                 message.error(
                   this.$t(
                     "DBNotRunning",
