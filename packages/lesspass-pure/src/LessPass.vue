@@ -12,6 +12,7 @@
 #lesspass {
   color: #464646;
   max-width: 420px;
+  position: relative;
 }
 
 .lesspass__inner-box {
@@ -24,41 +25,9 @@
   }
 }
 
-#lesspass,
-#lesspass * {
-  border-radius: 0 !important;
-}
-
 button,
 .pointer {
   cursor: pointer;
-}
-
-.inner-addon i {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.inner-addon {
-  position: relative;
-}
-
-.left-addon i {
-  left: 0;
-}
-
-.right-addon i {
-  right: 0;
-}
-
-.left-addon input {
-  padding-left: 30px;
-}
-
-.right-addon input {
-  padding-right: 30px;
 }
 
 #loading__view {
@@ -177,7 +146,6 @@ export default {
   }),
   created() {
     this.$store.dispatch("cleanMessage");
-    this.$store.dispatch("resetPassword");
     const refresh = localStorage.getItem("refresh_token");
     if (refresh) {
       this.isLoading = true;

@@ -16,9 +16,9 @@
 </style>
 <template>
   <div class="masterPassword">
-    <div class="input-group inner-addon left-addon">
-      <label for="passwordField" class="sr-only">{{ label }}</label>
-      <i class="fa fa-lock"></i>
+    <label for="passwordField" class="sr-only">{{ label }}</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="fa fa-lock"></i></span>
       <input
         id="passwordField"
         name="passwordField"
@@ -33,31 +33,32 @@
         v-on:input="updateValue($event.target.value)"
         v-on:keyup.enter="$emit('keyupEnter')"
       />
-      <span
-        class="input-group-btn"
+      <button
+        id="fingerprint"
+        class="btn"
+        type="button"
+        tabindex="-1"
         v-if="fingerprint && value"
         v-on:click="togglePasswordType"
       >
-        <button id="fingerprint" class="btn" type="button" tabindex="-1">
-          <small>
-            <i
-              class="fa fa-fw"
-              v-bind:class="[icon1]"
-              v-bind:style="{ color: color1 }"
-            ></i>
-            <i
-              class="fa fa-fw"
-              v-bind:class="[icon2]"
-              v-bind:style="{ color: color2 }"
-            ></i>
-            <i
-              class="fa fa-fw"
-              v-bind:class="[icon3]"
-              v-bind:style="{ color: color3 }"
-            ></i>
-          </small>
-        </button>
-      </span>
+        <small>
+          <i
+            class="fa fa-fw"
+            v-bind:class="[icon1]"
+            v-bind:style="{ color: color1 }"
+          ></i>
+          <i
+            class="fa fa-fw"
+            v-bind:class="[icon2]"
+            v-bind:style="{ color: color2 }"
+          ></i>
+          <i
+            class="fa fa-fw"
+            v-bind:class="[icon3]"
+            v-bind:style="{ color: color3 }"
+          ></i>
+        </small>
+      </button>
     </div>
   </div>
 </template>

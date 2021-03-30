@@ -8,7 +8,6 @@ import router from "./router";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 import "balloon-css/balloon.css";
-import "awesomplete/awesomplete.css";
 
 import { languagesAvailable, locales } from "./i18n";
 

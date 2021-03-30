@@ -1,55 +1,51 @@
 <template>
   <div>
-    <h5>{{ $t("Change my password") }}</h5>
+    <div class="mb-3">
+      <h5>{{ $t("Change my password") }}</h5>
+    </div>
     <form v-on:submit.prevent="changePassword">
-      <div class="form-group row">
-        <div class="col-12">
-          <div class="inner-addon left-addon">
-            <i class="fa fa-user"></i>
-            <input
-              id="email"
-              class="form-control"
-              name="email"
-              type="email"
-              placeholder="Email"
-              v-model="email"
-            />
-          </div>
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+          <input
+            id="email"
+            class="form-control"
+            name="email"
+            type="email"
+            placeholder="Email"
+            v-model="email"
+          />
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-12">
-          <master-password
-            v-model="current_password"
-            v-bind:label="$t('Current Master Password')"
-          ></master-password>
-        </div>
+      <div class="mb-3">
+        <master-password
+          v-model="current_password"
+          v-bind:label="$t('Current Master Password')"
+        ></master-password>
       </div>
-      <div class="form-group row">
-        <div class="col-12">
-          <master-password
-            v-model="new_password"
-            v-bind:label="$t('New Master Password')"
-          ></master-password>
-        </div>
+      <div class="mb-3">
+        <master-password
+          v-model="new_password"
+          v-bind:label="$t('New Master Password')"
+        ></master-password>
       </div>
-      <div class="form-group row">
-        <div class="col-12">
-          <button id="changeMyPasswordButton" class="btn btn-primary btn-block">
-            {{ $t("Change my password") }}
-          </button>
-        </div>
+      <div class="mb-3">
+        <button id="changeMyPasswordButton" class="btn btn-primary">
+          {{ $t("Change my password") }}
+        </button>
       </div>
     </form>
     <hr />
-    <button
-      id="signOutButton"
-      class="btn btn-success btn-block"
-      type="button"
-      v-on:click="logout"
-    >
-      {{ $t("Sign out") }}
-    </button>
+    <div>
+      <button
+        id="signOutButton"
+        class="btn btn-success"
+        type="button"
+        v-on:click="logout"
+      >
+        {{ $t("Sign out") }}
+      </button>
+    </div>
   </div>
 </template>
 <script>

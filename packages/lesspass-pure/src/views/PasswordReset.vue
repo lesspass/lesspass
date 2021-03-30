@@ -1,36 +1,32 @@
 <template>
   <form v-on:submit.prevent="resetPassword">
-    <div class="form-group row">
-      <div class="col-12">
-        <label for="email">{{ $t("Email") }}</label>
-        <div class="inner-addon left-addon">
-          <i class="fa fa-user"></i>
-          <input
-            id="email"
-            class="form-control"
-            name="email"
-            type="email"
-            v-bind:placeholder="$t('Email')"
-            v-model="email"
-          />
-        </div>
-        <small id="emailHelp" class="form-text text-muted">{{
-          $t(
-            "ResetPasswordHelpText",
-            "Enter your user account's verified email address and we will send you a password reset link."
-          )
-        }}</small>
+    <div class="mb-3">
+      <label for="email">{{ $t("Email") }}</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
+        <input
+          id="email"
+          class="form-control"
+          name="email"
+          type="email"
+          v-bind:placeholder="$t('Email')"
+          v-model="email"
+        />
       </div>
+      <small id="emailHelp" class="form-text text-muted">{{
+        $t(
+          "ResetPasswordHelpText",
+          "Enter your user account's verified email address and we will send you a password reset link."
+        )
+      }}</small>
     </div>
-    <div class="form-group row">
-      <div class="col-12">
-        <button
-          id="password-reset__reset-password-btn"
-          class="btn btn-primary btn-block"
-        >
-          {{ $t("Reset my password") }}
-        </button>
-      </div>
+    <div class="mb-3 d-grid">
+      <button
+        id="password-reset__reset-password-btn"
+        class="btn btn-primary"
+      >
+        {{ $t("Reset my password") }}
+      </button>
     </div>
   </form>
 </template>

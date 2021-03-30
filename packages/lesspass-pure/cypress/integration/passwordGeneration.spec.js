@@ -18,7 +18,7 @@ describe("Password Generation", function() {
 
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField")
+    cy.get("#site")
       .type("lesspass.com")
       .tab();
     cy.get("#login").type("test@lesspass.com");
@@ -88,7 +88,7 @@ describe("Password Generation", function() {
   it("should consider counter as string not hex value nrt_328", function() {
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField").type("site");
+    cy.get("#site").type("site");
     cy.get("#login").type("login");
     cy.get("#passwordField").type("test");
     cy.get("#passwordCounter")
@@ -100,7 +100,7 @@ describe("Password Generation", function() {
   it("should generate password when hit enter nrt_266", function() {
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField")
+    cy.get("#site")
       .type("lesspass.com")
       .tab();
     cy.get("#login").type("test@lesspass.com");
@@ -109,26 +109,10 @@ describe("Password Generation", function() {
       .type("{enter}");
     cy.get("#generated-password").should("have.value", "hjV@\\5ULp3bIs,6B");
   });
-  it("should keep site field in sync nrt_441", function() {
-    cy.visit("/");
-    cy.wait(500);
-    cy.get("#login").type("user");
-    cy.get("#passwordField").type("password");
-    cy.get("#siteField")
-      .type("subdomain.domain.com")
-      .type("{home}")
-      .type("{rightarrow}")
-      .type("{backspace}")
-      .type("{downarrow}")
-      .type("{downarrow}")
-      .type("{enter}");
-    cy.get("#generatePassword__btn").click();
-    cy.get("#generated-password").should("have.value", "ZT^IK2e!t@k$9`*)");
-  });
   it("should clear password generated when master password change", function() {
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField")
+    cy.get("#site")
       .type("example.org")
       .tab();
     cy.get("#login").type("user");
@@ -144,7 +128,7 @@ describe("Password Generation", function() {
   it("should generate password with 2 tabs and enter", function() {
     cy.visit("/");
     cy.wait(500);
-    cy.get("#siteField")
+    cy.get("#site")
       .type("lesspass.com")
       .tab()
       .type("test@lesspass.com")
