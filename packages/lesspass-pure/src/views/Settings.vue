@@ -37,10 +37,10 @@
         <div class="inner-addon left-addon">
           <i class="fa fa-user"></i>
           <input
-            id="login"
+            id="lesspass_database"
             type="text"
-            name="login"
-            ref="login"
+            name="lesspass_database"
+            ref="lesspass_database"
             class="form-control"
             autocomplete="off"
             autocorrect="off"
