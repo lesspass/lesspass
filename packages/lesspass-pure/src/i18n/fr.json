@@ -30,6 +30,7 @@
   "MasterPasswordsRequired": "Un ancien mot de passe principal et un nouveau mot de passe principal sont requis.",
   "My Account": "Mon compte",
   "New Master Password": "Nouveau mot de passe principal",
+  "New20210331": "J'ai repris le développement sur LessPass, pour corriger des bugs et améliorer l'interface. J'ai simplifié la page de connexion pour corriger le problème avec l'url de connexion pour la version auto hébergée. Le mot de passe maitre est chiffré par default avant d'être envoyé coté serveur. Il est toujours possible de décocher cette option mais que pour les connexions.",
   "NewToLessPass": "Nouveau sur LessPass? Créer un compte",
   "Next": "Suivant",
   "NoMatchFor": "Oups ! il n'y a aucun resultat pour",
@@ -56,6 +57,9 @@
   "SorryCopy": "Nous sommes désolés, la copie ne fonctionne que sur les navigateurs modernes",
   "UpdateYourSearch": "Merci de modifier votre recherche.",
   "Username": "Nom d'utilisateur",
+  "WantToHelp": "Voulez-vous m'aider? N'hésitez pas à contribuer à LessPass",
   "WelcomeRegister": "Bienvenue {email}, merci de vous être enregistré.",
+  "What is new ?": "Ce qui est nouveau ?",
+  "What is new?": "Ce qui est nouveau?",
   "resetPasswordSuccess": "Si l'adresse email {email} est associée avec un compte LessPass, vous allez recevoir un email de la part de LessPass avec les instructions pour changer votre mot de passe."
 }

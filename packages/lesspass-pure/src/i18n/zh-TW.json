@@ -30,6 +30,7 @@
   "MasterPasswordsRequired": "需要舊的主密碼和新的主密碼。",
   "My Account": "我的帳戶",
   "New Master Password": "新的主密碼",
+  "New20210331": "我接手了LessPass上的開發工作，以修復錯誤並改善界面。我簡化了登錄頁面，以更正自託管版本的登錄URL的問題。默認情況下，主密碼在發送到服務器端之前已加密。始終可以取消選中此選項，但僅對於連接即可。",
   "NewToLessPass": "LessPass的新手？現在加入",
   "Next": "下一頁",
   "NoMatchFor": "喔不！沒有找到跟下列條件相似的結果：",
@@ -56,6 +57,9 @@
   "SorryCopy": "很抱歉，複製功能僅適用於現代瀏覽器",
   "UpdateYourSearch": "請試著放寬您的搜尋條件。",
   "Username": "用戶名",
+  "WantToHelp": "你想幫我嗎？請隨時為LessPass貢獻力量",
   "WelcomeRegister": "歡迎 {email}，謝謝您的註冊。",
+  "What is new ?": "有什麼新東西？",
+  "What is new?": "有什麼新東西？",
   "resetPasswordSuccess": "如果郵件位址 {email} 已和 LessPass 帳號連動，您很快能收到 LessPass 的信件，當中提供如何重置密碼的說明。"
 }

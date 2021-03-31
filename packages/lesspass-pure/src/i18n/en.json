@@ -30,6 +30,7 @@
   "MasterPasswordsRequired": "Old master password and new master password are required.",
   "My Account": "My Account",
   "New Master Password": "New Master Password",
+  "New20210331": "I took over the development on LessPass, to fix bugs and improve the interface. I simplified the login page to correct the problem with the login url for the self-hosted version. The master password is encrypted by default before being sent to the server side. It is always possible to uncheck this option but only for connections.",
   "NewToLessPass": "New to LessPass? Join now",
   "Next": "Next",
   "NoMatchFor": "Oops! There are no matches for",
@@ -56,6 +57,9 @@
   "SorryCopy": "Sorry, copying only works in modern browsers.",
   "UpdateYourSearch": "Please try broadening your search.",
   "Username": "Username",
+  "WantToHelp": "Do you want to help me? Please feel free to contribute to LessPass",
   "WelcomeRegister": "Welcome, {email}. Thank you for signing up!",
+  "What is new ?": "What is new ?",
+  "What is new?": "What is new?",
   "resetPasswordSuccess": "If the email address {email} is associated with a LessPass account, you will receive an email from LessPass with instructions on how to reset your password."
 }

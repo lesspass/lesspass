@@ -9,6 +9,7 @@ import PasswordReset from "./views/PasswordReset.vue";
 import PasswordResetConfirm from "./views/PasswordResetConfirm.vue";
 import Passwords from "./views/Passwords.vue";
 import SettingsPage from "./views/Settings.vue";
+import WhatsNewPage from "./views/WhatsNew.vue";
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,7 @@ const routes = [
   { path: "/login", name: "login", component: Login },
   { path: "/register", name: "register", component: Register },
   { path: "/myaccount", name: "myaccount", component: MyAccount },
+  { path: "/whatsnew", name: "whatsnew", component: WhatsNewPage },
   { path: "/settings", name: "settings", component: SettingsPage },
   { path: "/passwords/", name: "passwords", component: Passwords },
   { path: "/password/reset", name: "passwordReset", component: PasswordReset },

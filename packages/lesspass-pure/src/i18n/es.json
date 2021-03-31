@@ -30,6 +30,7 @@
   "MasterPasswordsRequired": "Se requieren una contraseña maestra anterior y una contraseña maestra nueva.",
   "My Account": "Mi cuenta",
   "New Master Password": "Nueva contraseña maestra",
+  "New20210331": "Me hice cargo del desarrollo de LessPass, para corregir errores y mejorar la interfaz. Simplifiqué la página de inicio de sesión para corregir el problema con la URL de inicio de sesión para la versión autohospedada. La contraseña maestra se cifra de forma predeterminada antes de enviarse al servidor. Siempre es posible desmarcar esta opción, pero solo para conexiones.",
   "NewToLessPass": "¿Nuevo en LessPass? Únete ahora",
   "Next": "Después",
   "NoMatchFor": "¡Vaya! No ha resultados para",
@@ -56,6 +57,9 @@
   "SorryCopy": "Lamentamos que la copia sólo funcione en navegadores modernos",
   "UpdateYourSearch": "Trate de ampliar su búsqueda.",
   "Username": "Nombre de usuario",
+  "WantToHelp": "¿Quieres ayudarme? No dude en contribuir a LessPass",
   "WelcomeRegister": "Bienvenido o bienvenida {email}, gracias por registrarse.",
+  "What is new ?": "Qué es nuevo ?",
+  "What is new?": "¿Qué es nuevo?",
   "resetPasswordSuccess": "Si la dirección de correo electrónico {email} está asociada a una cuenta LessPass, recibirá un correo electrónico de LessPass con instrucciones sobre cómo restablecer su contraseña."
 }

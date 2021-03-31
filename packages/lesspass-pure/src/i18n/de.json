@@ -20,8 +20,8 @@
   "It is not recommended to change the default url.": "Es wird nicht empfohlen, die Standard-URL zu ändern.",
   "Length": "Länge",
   "LengthDeprecationWarning": "Die maximale Länge eines Passwortes beträgt 35 Zeichen.",
-  "LessPass Database": "LessPass Database",
-  "LessPass Database Url": "LessPass Database Url",
+  "LessPass Database": "LessPass-Datenbank",
+  "LessPass Database Url": "LessPass-Datenbank-URL",
   "Login": "Anmeldung",
   "LoginFormInvalid": "Email und Passwort sind obligatorisch",
   "LoginIncorrectError": "Die email-Adresse und das Passwort, die Sie eingegeben haben, entsprechen nicht unseren Daten. Bitte überprüfen Sie sie und versuchen es nochmal.",
@@ -30,6 +30,7 @@
   "MasterPasswordsRequired": "Altes Hauptkennwort und neues Hauptkennwort sind erforderlich.",
   "My Account": "Mein Konto",
   "New Master Password": "Neues Master-Passwort",
+  "New20210331": "Ich habe die Entwicklung auf LessPass übernommen, um Fehler zu beheben und die Benutzeroberfläche zu verbessern. Ich habe die Anmeldeseite vereinfacht, um das Problem mit der Anmelde-URL für die selbst gehostete Version zu beheben. Das Hauptkennwort wird standardmäßig verschlüsselt, bevor es an die Serverseite gesendet wird. Es ist immer möglich, diese Option zu deaktivieren, jedoch nur für Verbindungen.",
   "NewToLessPass": "Neu bei LessPass? Jetzt beitreten",
   "Next": "Nächste",
   "NoMatchFor": "Ups! Dafür gibt es keine Übereinstimmung",
@@ -56,6 +57,9 @@
   "SorryCopy": "Es tut uns leid, dass die Kopie nur auf modernen Browsern funktioniert",
   "UpdateYourSearch": "Bitte erweitern Sie Ihre Suche.",
   "Username": "Nutzername",
+  "WantToHelp": "Willst du mir helfen? Bitte zögern Sie nicht, zu LessPass beizutragen",
   "WelcomeRegister": "Willkommen {email}, danke für die Anmeldung.",
+  "What is new ?": "Was ist neu ?",
+  "What is new?": "Was ist neu?",
   "resetPasswordSuccess": "Wenn die E-Mail-Adresse {email} mit einem LessPass-Konto verknüpft ist, erhalten Sie in Kürze eine E-Mail von LessPass mit Anweisungen zum Zurücksetzen Ihres Passworts."
 }

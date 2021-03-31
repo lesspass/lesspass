@@ -30,6 +30,7 @@
   "MasterPasswordsRequired": "Wymagane jest stare hasło główne i nowe hasło główne.",
   "My Account": "Moje konto",
   "New Master Password": "Nowe hasło główne",
+  "New20210331": "Przejąłem prace nad LessPass, aby naprawić błędy i ulepszyć interfejs. Uprościłem stronę logowania, aby rozwiązać problem z adresem URL logowania do wersji hostowanej na własnym serwerze. Hasło główne jest domyślnie szyfrowane przed wysłaniem na serwer. Zawsze można odznaczyć tę opcję, ale tylko dla połączeń.",
   "NewToLessPass": "Nowy w LessPass? Dołącz teraz",
   "Next": "Następna",
   "NoMatchFor": "Niestety, nie znaleziono",
@@ -56,6 +57,9 @@
   "SorryCopy": "Niestety, kopiowanie działa tylko w nowszych przeglądarkach",
   "UpdateYourSearch": "Spróbuj bardziej ogólnego zapytania.",
   "Username": "Nazwa Użytkownika",
+  "WantToHelp": "Chcesz mi pomóc? Zachęcamy do współtworzenia LessPass",
   "WelcomeRegister": "Witaj, {email}, dziękujemy za rejestrację.",
+  "What is new ?": "Co nowego ?",
+  "What is new?": "Co nowego?",
   "resetPasswordSuccess": "Jeśli adres {email} jest skojarzony z kontem LessPass, wkrótce otrzymasz wiadomość od LessPass zawierającą instrukcje resetowania hasła."
 }
