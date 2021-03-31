@@ -91,7 +91,7 @@ function increment_version {
 function build {
     pushd packages/lesspass-web-extension/
     yarn install
-    yarn upgrade --latest
+    yarn upgrade --latest lesspass-pure
     yarn build
     popd
 }
