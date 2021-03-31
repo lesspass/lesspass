@@ -97,10 +97,9 @@ function build {
 }
 
 
-function commit_and_push {
+function commit {
     git add .
     git commit --message="Auto build for lesspass-web-extension"
-    git push
 }
 
 current_version=$( grep -Po '(?<="version": ")[^"]*' packages/lesspass-web-extension/package.json )
@@ -113,4 +112,4 @@ sed -i -E "s/\"lesspass-pure\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"lesspass-pure
 sed -i -E "s/\"version\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"version\": \"${new_version}\"/g" packages/lesspass-web-extension/package.json
 sed -i -E "s/\"version\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"version\": \"${new_version}\"/g" packages/lesspass-web-extension/extension/manifest.json
 build
-commit_and_push
+commit
