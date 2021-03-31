@@ -1,6 +1,6 @@
 <style>
 #passwords__list {
-  min-height: 11rem;
+  min-height: 250px;
 }
 
 #passwords__pagination .pagination {
@@ -13,20 +13,16 @@
 </style>
 <template>
   <div id="passwords">
-    <div id="passwords__search" class="pb-3">
-      <div class="row">
-        <div class="col">
-          <div class="inner-addon left-addon">
-            <i class="fa fa-search"></i>
-            <input
-              class="form-control"
-              type="text"
-              name="search"
-              :placeholder="$t('Search')"
-              v-model="searchQuery"
-            />
-          </div>
-        </div>
+    <div id="passwords__search" class="mb-4">
+      <div class="inner-addon left-addon">
+        <i class="fa fa-search"></i>
+        <input
+          class="form-control"
+          type="text"
+          name="search"
+          :placeholder="$t('Search')"
+          v-model="searchQuery"
+        />
       </div>
     </div>
     <div id="passwords__list">
@@ -93,7 +89,7 @@ export default {
       searchQuery: "",
       pagination: {
         pageCount: 1,
-        perPage: 4,
+        perPage: 5,
         currentPage: 1
       }
     };

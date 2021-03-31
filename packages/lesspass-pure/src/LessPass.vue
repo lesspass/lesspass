@@ -4,17 +4,19 @@
 }
 
 .lesspass--full-width #lesspass {
-  max-width: none !important;
-  overflow: auto;
+  width: 100%;
 }
 
 #lesspass {
   color: #464646;
-  max-width: 420px;
+  width: 420px;
+  max-width: 100%;
 }
 
 .lesspass__inner-box {
-  min-height: 240px;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 @media (max-width: 419px) {

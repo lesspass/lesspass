@@ -72,7 +72,7 @@
           </small>
         </label>
       </div>
-      <div>
+      <div class="mb-3">
         <button
           type="submit"
           id="btn-submit-settings"
