@@ -1,5 +1,8 @@
 <template>
   <form v-on:submit.prevent="signIn">
+    <div class="mb-3">
+      <h5>{{ $t("Sign In") }}</h5>
+    </div>
     <div class="form-group">
       <div class="inner-addon left-addon">
         <i class="fa fa-user"></i>

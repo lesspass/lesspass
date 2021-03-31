@@ -1,5 +1,8 @@
 <template>
   <form v-on:submit.prevent="signIn">
+    <div class="mb-3">
+      <h5>{{ $t("Register") }}</h5>
+    </div>
     <div class="form-group row">
       <div class="col-12">
         <div class="inner-addon left-addon">

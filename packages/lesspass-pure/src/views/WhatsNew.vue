@@ -12,6 +12,7 @@
         )
       }}
     </p>
+    <p>Guillaume</p>
     <a href="https://github.com/lesspass/lesspass/blob/master/CONTRIBUTING.md">
       {{
         $t(

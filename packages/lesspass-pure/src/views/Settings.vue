@@ -26,7 +26,7 @@
           />
         </div>
       </div>
-      <div class="mb-5">
+      <div class="mb-4">
         <options v-bind:options="defaultPassword"></options>
       </div>
       <div class="mb-3">
@@ -72,7 +72,7 @@
           </small>
         </label>
       </div>
-      <div class="mt-4 mb-3">
+      <div>
         <button
           type="submit"
           id="btn-submit-settings"
