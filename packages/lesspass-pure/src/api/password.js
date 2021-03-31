@@ -2,18 +2,18 @@ import http from "./http";
 
 export default {
   all() {
-    return http.get("/api/passwords/");
+    return http.get("/passwords/");
   },
   create(resource) {
-    return http.post("/api/passwords/", resource);
+    return http.post("/passwords/", resource);
   },
   read(resource) {
-    return http.get(`/api/passwords/${resource.id}/`);
+    return http.get(`/passwords/${resource.id}/`);
   },
   update(resource) {
-    return http.put(`/api/passwords/${resource.id}/`, resource);
+    return http.put(`/passwords/${resource.id}/`, resource);
   },
   delete(resource) {
-    return http.delete(`/api/passwords/${resource.id}/`);
+    return http.delete(`/passwords/${resource.id}/`);
   }
 };

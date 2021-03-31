@@ -5,6 +5,8 @@ import * as getters from "./getters";
 import mutations from "./mutations";
 import createPersistedState from "vuex-persistedstate";
 import defaultPassword from "./defaultPassword";
+import { defaultBaseURL } from "../api/baseURL";
+import { key } from "../services/localStore";
 
 Vue.use(Vuex);
 
@@ -13,7 +15,11 @@ const state = {
   password: Object.assign({}, defaultPassword),
   passwords: [],
   message: "",
-  defaultPassword
+  defaultPassword,
+  settings: {
+    baseURL: defaultBaseURL,
+    encryptMasterPassword: true
+  }
 };
 
 export default new Vuex.Store({
@@ -23,8 +29,8 @@ export default new Vuex.Store({
   mutations,
   plugins: [
     createPersistedState({
-      key: "lesspass",
-      paths: ["defaultPassword"]
+      key,
+      paths: ["defaultPassword", "settings"]
     })
   ]
 });

@@ -5,7 +5,6 @@
 
 .lesspass--full-width #lesspass {
   max-width: none !important;
-  max-height: 480px;
   overflow: auto;
 }
 
@@ -161,8 +160,7 @@ button,
   </div>
 </template>
 <script>
-import axios from "axios";
-import { getBaseURL } from "./api/baseURL";
+import http from "./api/http";
 import Menu from "./components/Menu.vue";
 import Message from "./components/Message.vue";
 
@@ -181,11 +179,10 @@ export default {
     const refresh = localStorage.getItem("refresh_token");
     if (refresh) {
       this.isLoading = true;
-      axios
-        .post("/api/auth/jwt/refresh/", { refresh }, { baseURL: getBaseURL() })
+      http
+        .post("/auth/jwt/refresh/", { refresh })
         .then(response => {
-          this.$store.dispatch("login", response.data);
-          return this.$store.dispatch("getPasswords");
+          return this.$store.dispatch("login", response.data);
         })
         .finally(() => {
           this.isLoading = false;

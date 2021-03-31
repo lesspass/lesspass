@@ -7,5 +7,5 @@ export const isGuest = state => !state.isAuthenticated;
 export const passwordURL = state => {
   const base64PasswordProfile = btoa(JSON.stringify(state.password));
   const encodedPasswordProfile = encodeURIComponent(base64PasswordProfile);
-  return `${state.baseURL}/#/?passwordProfileEncoded=${encodedPasswordProfile}`;
+  return `${state.settings.baseURL}/#/?passwordProfileEncoded=${encodedPasswordProfile}`;
 };

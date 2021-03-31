@@ -13,8 +13,6 @@ export default {
     state.passwords = [];
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
-    localStorage.removeItem("baseURL");
-    localStorage.removeItem("lesspass");
   },
   [types.RESET_PASSWORD](state) {
     state.password = { ...state.defaultPassword };
@@ -35,9 +33,6 @@ export default {
     if (state.password && state.password.id === id) {
       state.password = Object.assign({}, state.defaultPassword);
     }
-  },
-  [types.SET_BASE_URL](state, { baseURL }) {
-    localStorage.setItem("baseURL", baseURL);
   },
   [types.SET_SITE](state, { site }) {
     state.password.site = site;

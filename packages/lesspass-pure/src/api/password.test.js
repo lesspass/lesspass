@@ -15,7 +15,7 @@ test("Passwords.create", () => {
 });
 
 test("Passwords.all", () => {
-  mock.onGet("https://lesspass.com/api/passwords/").reply(200, {});
+  mock.onGet("https://api.lesspass.com/passwords/").reply(200, {});
   return Passwords.all().then(response => {
     expect(response.status).toBe(200);
   });
@@ -24,7 +24,7 @@ test("Passwords.all", () => {
 test("Passwords.get", () => {
   mock
     .onGet(
-      "https://lesspass.com/api/passwords/c8e4f983-8ffe-b705-4064-d3b7aa4a4782/"
+      "https://api.lesspass.com/passwords/c8e4f983-8ffe-b705-4064-d3b7aa4a4782/"
     )
     .reply(200, {});
   return Passwords.read({ id: "c8e4f983-8ffe-b705-4064-d3b7aa4a4782" }).then(
@@ -41,7 +41,7 @@ test("Passwords.update", () => {
   };
   mock
     .onPut(
-      "https://lesspass.com/api/passwords/c8e4f983-4064-8ffe-b705-d3b7aa4a4782/",
+      "https://api.lesspass.com/passwords/c8e4f983-4064-8ffe-b705-d3b7aa4a4782/",
       password
     )
     .reply(200, {});
@@ -53,7 +53,7 @@ test("Passwords.update", () => {
 test("Passwords.delete", () => {
   mock
     .onDelete(
-      "https://lesspass.com/api/passwords/c8e4f983-8ffe-4064-b705-d3b7aa4a4782/"
+      "https://api.lesspass.com/passwords/c8e4f983-8ffe-4064-b705-d3b7aa4a4782/"
     )
     .reply(204);
   return Passwords.delete({ id: "c8e4f983-8ffe-4064-b705-d3b7aa4a4782" }).then(

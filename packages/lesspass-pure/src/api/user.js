@@ -2,16 +2,16 @@ import http from "./http";
 
 export default {
   login({ email, password }) {
-    return http.post("/api/auth/jwt/create/", { email, password });
+    return http.post("/auth/jwt/create/", { email, password });
   },
   register({ email, password }) {
-    return http.post("/api/auth/users/", { email, password });
+    return http.post("/auth/users/", { email, password });
   },
   resetPassword({ email }) {
-    return http.post("/api/auth/users/reset_password/", { email });
+    return http.post("/auth/users/reset_password/", { email });
   },
   confirmResetPassword({ uid, token, password }) {
-    return http.post("/api/auth/users/reset_password_confirm/", {
+    return http.post("/auth/users/reset_password_confirm/", {
       uid,
       token,
       new_password: password,
@@ -19,7 +19,7 @@ export default {
     });
   },
   changePassword({ current_password, new_password }) {
-    return http.post("/api/auth/users/set_password/", {
+    return http.post("/auth/users/set_password/", {
       current_password: current_password,
       new_password: new_password,
       re_new_password: new_password

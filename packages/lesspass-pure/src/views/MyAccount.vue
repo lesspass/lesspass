@@ -118,7 +118,7 @@ export default {
               this.$store.dispatch("login", response.data);
               this.$router.push({ name: "home" });
             })
-            .catch(err => message.displayGenericError());
+            .catch(() => message.displayGenericError());
         })
         .catch(err => {
           message.error(

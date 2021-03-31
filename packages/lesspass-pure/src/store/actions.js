@@ -3,10 +3,6 @@ import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
 import defaultPasswordProfile from "./defaultPassword";
 
-export const saveDefaultOptions = ({ commit }, payload) => {
-  commit(types.SET_DEFAULT_OPTIONS, payload);
-};
-
 export const loadPasswordProfile = ({ commit }, { site }) => {
   commit(types.LOAD_PASSWORD_PROFILE, { site });
 };
@@ -27,13 +23,11 @@ export const resetPassword = ({ commit }) => {
   commit(types.RESET_PASSWORD);
 };
 
-export const setBaseURL = ({ commit }, { baseURL }) => {
-  commit(types.SET_BASE_URL, { baseURL });
-};
-
 export const login = ({ commit }, { access, refresh }) => {
   commit(types.SET_TOKENS, { access_token: access, refresh_token: refresh });
   commit(types.LOGIN);
+  cleanMessage({ commit });
+  getPasswords({ commit });
 };
 
 export const logout = ({ commit }) => {
@@ -58,11 +52,11 @@ export const saveOrUpdatePassword = ({ commit, state }) => {
   if (existingPassword) {
     const newPassword = Object.assign({}, existingPassword, state.password);
     Password.update(newPassword, state).then(() => {
-      getPasswords({ commit, state });
+      getPasswords({ commit });
     });
   } else {
     Password.create(state.password, state).then(() => {
-      getPasswords({ commit, state });
+      getPasswords({ commit });
     });
   }
 };

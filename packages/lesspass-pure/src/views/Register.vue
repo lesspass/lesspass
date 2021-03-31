@@ -1,18 +1,5 @@
 <template>
   <form v-on:submit.prevent="signIn">
-    <div class="form-group">
-      <div class="inner-addon left-addon">
-        <i class="fa fa-globe"></i>
-        <input
-          id="baseURL"
-          type="text"
-          class="form-control"
-          autocapitalize="none"
-          v-bind:placeholder="$t('LessPass Database Url')"
-          v-model="baseURL"
-        />
-      </div>
-    </div>
     <div class="form-group row">
       <div class="col-12">
         <div class="inner-addon left-addon">
@@ -50,19 +37,16 @@
       <button
         id="login__no-account-btn"
         type="button"
-        class="btn btn-light btn-block"
+        class="btn btn-outline-dark btn-block"
         v-on:click="$router.push({ name: 'login' })"
       >
-        <small>{{
-          $t("SignInInstead", "Already have an account? Sign In instead")
-        }}</small>
+        {{ $t("AlreadyOnLessPass", "Already on LessPass? Sign In") }}
       </button>
     </div>
   </form>
 </template>
 <script>
 import User from "../api/user";
-import { getBaseURL, defaultBaseURL } from "../api/baseURL";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
 import { encryptPassword } from "../services/encryption";
@@ -71,8 +55,7 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
-      baseURL: getBaseURL()
+      password: ""
     };
   },
   components: {
@@ -80,12 +63,9 @@ export default {
   },
   methods: {
     formIsValid() {
-      if (!this.email || !this.password || !this.baseURL) {
+      if (!this.email || !this.password) {
         message.error(
-          this.$t(
-            "LoginFormInvalid",
-            "LessPass URL, email, and password are mandatory"
-          )
+          this.$t("LoginFormInvalid", "Email and password are mandatory")
         );
         return false;
       }
@@ -93,9 +73,6 @@ export default {
     },
     register() {
       if (this.formIsValid()) {
-        const baseURL = this.baseURL;
-        this.$store.dispatch("setBaseURL", { baseURL });
-
         encryptPassword(this.email, this.password).then(encryptedPassword => {
           User.register({ email: this.email, password: encryptedPassword })
             .then(() => {
@@ -117,14 +94,7 @@ export default {
                 .catch(() => message.displayGenericError());
             })
             .catch(err => {
-              if (err.response === undefined && baseURL !== defaultBaseURL) {
-                message.error(
-                  this.$t(
-                    "DBNotRunning",
-                    "Your LessPass Database is not running"
-                  )
-                );
-              } else if (
+              if (
                 err.response &&
                 err.response.data &&
                 typeof err.response.data.email !== "undefined"

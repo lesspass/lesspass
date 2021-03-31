@@ -10757,10 +10757,10 @@ vuejs-paginate@^2.1.0:
   resolved "https://registry.yarnpkg.com/vuejs-paginate/-/vuejs-paginate-2.1.0.tgz#93e1ad1539b713a688c7a2d3080bda60fcc6c77d"
   integrity sha512-gnwyXlmCiDOu9MLWxN5UJ4PGijKGNOMpHG8ujsrynCzTJljn/rp7Jq0WiDGDAMi5/u0AHuYIHhced+tUW4jblA==
 
-vuex-persistedstate@^4.0.0-beta.3:
-  version "4.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/vuex-persistedstate/-/vuex-persistedstate-4.0.0-beta.3.tgz#89dd712de72d28e85cc95467d066002c1405f277"
-  integrity sha512-T4IRD27qoUWh+8qr6T6zVp15xO7x/nPgnU13OD0C2uUwA7U9PhGozrj6lvVmMYDyRgc36J0msMXn3GvwHjkIhA==
+vuex-persistedstate@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/vuex-persistedstate/-/vuex-persistedstate-3.2.0.tgz#41d3ea304404769ac653ec020de80c95ce16243d"
+  integrity sha512-1Q4zV9cNaJtl59jN6rXbndemEtXKywZr0OFZnqgpYdwvdyy+64KNsEltKldQW+i03st5LuDwHsdOEevXIZUgdg==
   dependencies:
     deepmerge "^4.2.2"
     shvl "^2.0.2"

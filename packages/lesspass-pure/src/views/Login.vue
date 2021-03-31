@@ -2,19 +2,6 @@
   <form v-on:submit.prevent="signIn">
     <div class="form-group">
       <div class="inner-addon left-addon">
-        <i class="fa fa-globe"></i>
-        <input
-          id="baseURL"
-          type="text"
-          class="form-control"
-          autocapitalize="none"
-          v-bind:placeholder="$t('LessPass Database Url')"
-          v-model="baseURL"
-        />
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="inner-addon left-addon">
         <i class="fa fa-user"></i>
         <input
           id="email"
@@ -34,25 +21,7 @@
         v-bind:label="$t('Master Password')"
       ></master-password>
     </div>
-    <div class="form-check form-switch mb-3">
-      <input
-        id="encryptMasterPassword"
-        class="form-check-input"
-        type="checkbox"
-        v-model="encryptMasterPassword"
-      />
-      <label class="form-check-label" for="encryptMasterPassword">
-        <small>
-          {{ $t("Encrypt my master password") }}
-        </small>
-      </label>
-    </div>
-    <div class="form-group">
-      <button id="signInButton" class="btn btn-primary btn-block">
-        {{ $t("Sign In") }}
-      </button>
-    </div>
-    <div class="form-group">
+    <div class="form-group text-right">
       <button
         id="login__forgot-password-btn"
         type="button"
@@ -62,50 +31,46 @@
         <small>{{ $t("ForgotPassword", "Forgot your password?") }}</small>
       </button>
     </div>
+    <div class="form-group">
+      <button id="signInButton" class="btn btn-primary btn-block">
+        {{ $t("Sign In") }}
+      </button>
+    </div>
     <div class="form-group mb-0">
       <button
         id="login__no-account-btn"
         type="button"
-        class="btn btn-light btn-block"
+        class="btn btn-outline-dark btn-block"
         v-on:click="$router.push({ name: 'register' })"
       >
-        <small>{{
-          $t(
-            "NewToLessPassCreateAnAccount",
-            "New to LessPass? Create an account"
-          )
-        }}</small>
+        {{ $t("NewToLessPass", "New to LessPass? Join now") }}
       </button>
     </div>
   </form>
 </template>
 <script>
 import User from "../api/user";
-import { getBaseURL, defaultBaseURL } from "../api/baseURL";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
 import { encryptPassword } from "../services/encryption";
+import { mapState } from "vuex";
 
 export default {
   data() {
     return {
       email: "",
-      password: "",
-      encryptMasterPassword: true,
-      baseURL: getBaseURL()
+      password: ""
     };
   },
+  computed: mapState(["settings"]),
   components: {
     MasterPassword
   },
   methods: {
     formIsValid() {
-      if (!this.email || !this.password || !this.baseURL) {
+      if (!this.email || !this.password) {
         message.error(
-          this.$t(
-            "LoginFormInvalid",
-            "LessPass URL, email, and password are mandatory"
-          )
+          this.$t("LoginFormInvalid", "Email and password are mandatory")
         );
         return false;
       }
@@ -113,27 +78,17 @@ export default {
     },
     signIn() {
       if (this.formIsValid()) {
-        const baseURL = this.baseURL;
-        this.$store.dispatch("setBaseURL", { baseURL });
         encryptPassword(this.email, this.password).then(encryptedPassword => {
-          const password = this.encryptMasterPassword
+          const password = this.settings.encryptMasterPassword
             ? encryptedPassword
             : this.password;
           User.login({ email: this.email, password })
             .then(response => {
               this.$store.dispatch("login", response.data);
-              this.$store.dispatch("cleanMessage");
               this.$router.push({ name: "home" });
             })
             .catch(err => {
-              if (err.response === undefined && baseURL !== defaultBaseURL) {
-                message.error(
-                  this.$t(
-                    "DBNotRunning",
-                    "Your LessPass Database is not running"
-                  )
-                );
-              } else if (err.response && err.response.status === 401) {
+              if (err.response && err.response.status === 401) {
                 message.error(
                   this.$t(
                     "LoginIncorrectError",
