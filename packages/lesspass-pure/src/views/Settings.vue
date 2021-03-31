@@ -1,7 +1,7 @@
 <template>
   <div>
     <form
-      id="lesspass-options-form"
+      id="settings-form"
       novalidate
       v-on:submit.prevent="saveAndExit"
     >
@@ -37,10 +37,10 @@
         <div class="inner-addon left-addon">
           <i class="fa fa-user"></i>
           <input
-            id="lesspass_database"
+            id="baseURL"
             type="text"
-            name="lesspass_database"
-            ref="lesspass_database"
+            name="baseURL"
+            ref="baseURL"
             class="form-control"
             autocomplete="off"
             autocorrect="off"

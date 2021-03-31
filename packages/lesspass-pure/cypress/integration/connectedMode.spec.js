@@ -27,7 +27,6 @@ describe("Connected Mode", function() {
     cy.visit("/");
     cy.wait(500);
     cy.get(".fa-sign-in").click();
-    cy.get("#baseURL").should("have.value", "https://lesspass.com");
     cy.get("#email").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.wait(1000);
@@ -51,7 +50,6 @@ describe("Connected Mode", function() {
     cy.visit("/");
     cy.wait(500);
     cy.get(".fa-sign-in").click();
-    cy.get("#baseURL").should("have.value", "https://lesspass.com");
     cy.get("#email").type("test@lesspass.com");
     cy.get("#passwordField").type("test@lesspass.com");
     cy.wait(500);
