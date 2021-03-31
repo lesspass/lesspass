@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h5>{{ $t("Change my password") }}</h5>
+    <div class="mb-3">
+      <h5>{{ $t("Change my password") }}</h5>
+    </div>
     <form v-on:submit.prevent="changePassword">
       <div class="form-group row">
         <div class="col-12">
