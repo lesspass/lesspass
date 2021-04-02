@@ -10,6 +10,7 @@
   "CreatePassword": "Gostaria de criar um?",
   "Current Master Password": "Senha mestra atual",
   "Default password profile": "Perfil de senha padrão",
+  "DontUseItYet": "Compatibilidade com versões anteriores não garantida. Não use ainda!",
   "Email": "O email",
   "EmailAlreadyExist": "Este email já foi registrado. Gostaria de entrar ou recuperar sua senha?",
   "EmailInvalid": "Por favor entre um email válido",
@@ -62,5 +63,6 @@
   "What is new ?": "O que há de novo?",
   "What is new?": "O que há de novo?",
   "noAutoFillSite": "Pare de preencher o campo do site automaticamente",
+  "removeSiteSubdomain": "Remover subdomínio do site",
   "resetPasswordSuccess": "Se o seu endereço de email {email} estiver associado com uma conta LessPass, você receberá logo um email do LessPass com instruções de como resetar a sua senha."
 }

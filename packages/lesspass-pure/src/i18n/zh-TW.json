@@ -10,6 +10,7 @@
   "CreatePassword": "您要產生一組密碼嗎？",
   "Current Master Password": "當前的主密碼",
   "Default password profile": "默認密碼配置文件",
+  "DontUseItYet": "向後兼容性不能保證。暫時不要使用它！",
   "Email": "郵件位址",
   "EmailAlreadyExist": "這個郵件位址已被註冊。想要登入或取回您的密碼嗎？",
   "EmailInvalid": "請輸入一個有效的郵件位址",
@@ -62,5 +63,6 @@
   "What is new ?": "有什麼新東西？",
   "What is new?": "有什麼新東西？",
   "noAutoFillSite": "停止自動填寫站點字段",
+  "removeSiteSubdomain": "從網站刪除子域",
   "resetPasswordSuccess": "如果郵件位址 {email} 已和 LessPass 帳號連動，您很快能收到 LessPass 的信件，當中提供如何重置密碼的說明。"
 }
