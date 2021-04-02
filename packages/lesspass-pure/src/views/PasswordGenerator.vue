@@ -137,7 +137,7 @@ export default {
   },
   beforeMount() {
     urlParser.getSite().then(site => {
-      this.$store.dispatch("loadPasswordProfile", { site });
+      this.$store.dispatch("setSite", { site })
     });
     this.$store.dispatch("getPasswordFromUrlQuery", {
       query: this.$route.query

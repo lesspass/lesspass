@@ -3,8 +3,8 @@ import * as urlParser from "../services/url-parser";
 import * as types from "./mutation-types";
 import defaultPasswordProfile from "./defaultPassword";
 
-export const loadPasswordProfile = ({ commit }, { site }) => {
-  commit(types.LOAD_PASSWORD_PROFILE, { site });
+export const setSite = ({ commit }, { site }) => {
+  commit(types.SET_SITE, { site });
 };
 
 export const getPasswordFromUrlQuery = ({ commit }, { query }) => {

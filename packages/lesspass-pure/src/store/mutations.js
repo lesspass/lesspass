@@ -1,5 +1,21 @@
 import * as types from "./mutation-types";
 
+function loadPasswordProfileMatchingSite(passwordProfiles, site) {
+  let bestMatch = undefined;
+  const siteWithoutWWW = site.replace(/^www./g, "");
+  for (let i = 0; i < passwordProfiles.length; i++) {
+    const password = passwordProfiles[i];
+    if (site.endsWith(password.site)) {
+      return password;
+    } else if (password.site.endsWith(siteWithoutWWW)) {
+      bestMatch = password;
+    }
+  }
+  if (bestMatch) {
+    return bestMatch;
+  }
+}
+
 export default {
   [types.LOGIN](state) {
     state.isAuthenticated = true;
@@ -24,6 +40,17 @@ export default {
     state.defaultPassword = Object.assign({}, state.defaultPassword, options);
   },
   [types.SET_PASSWORDS](state, { passwords }) {
+    if (state?.password?.site && !state.password.id) {
+      const matchingPasswordProfile = loadPasswordProfileMatchingSite(
+        passwords,
+        state.password.site
+      );
+      if (matchingPasswordProfile) {
+        state.password = {
+          ...matchingPasswordProfile
+        };
+      }
+    }
     state.passwords = passwords;
   },
   [types.DELETE_PASSWORD](state, { id }) {
@@ -35,23 +62,8 @@ export default {
     }
   },
   [types.SET_SITE](state, { site }) {
-    state.password.site = site;
-  },
-  [types.LOAD_PASSWORD_PROFILE](state, { site }) {
-    if (!site || typeof state.password.id !== "undefined") {
-      return;
-    }
-    state.password = Object.assign({}, state.password, { site });
-    const passwords = state.passwords || [];
-    const siteWithoutWWW = site.replace(/^www./g, "");
-    for (let i = 0; i < passwords.length; i++) {
-      const password = passwords[i];
-      if (site.endsWith(password.site)) {
-        state.password = { ...password };
-        break;
-      } else if (password.site.endsWith(siteWithoutWWW)) {
-        state.password = { ...password };
-      }
+    if (site && !state?.password?.id) {
+      state.password.site = site;
     }
   },
   [types.SET_MESSAGE](state, { message }) {
