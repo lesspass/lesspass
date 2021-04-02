@@ -48,7 +48,7 @@
             </small>
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check" v-if="!settings.noAutoFillSite">
           <input
             id="removeSiteSubdomain"
             class="form-check-input"
@@ -61,7 +61,7 @@
             </small>
           </label>
         </div>
-        <small class="form-text text-danger">
+        <small class="form-text text-danger" v-if="!settings.noAutoFillSite">
           {{
             $t(
               "DontUseItYet",
