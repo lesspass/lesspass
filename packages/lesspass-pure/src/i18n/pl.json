@@ -20,7 +20,6 @@
   "It is not recommended to change the default url.": "Nie zaleca się zmiany domyślnego adresu URL.",
   "Length": "Długość",
   "LengthDeprecationWarning": "Maksymalna długość hasła wynosi 35 znaków.",
-  "LessPass Database": "Baza danych LessPass",
   "LessPass Database Url": "Link do bazy profili LessPass",
   "Login": "Zaloguj sie",
   "LoginFormInvalid": "Email i hasło są obowiązkowe",
@@ -36,6 +35,7 @@
   "NoMatchFor": "Niestety, nie znaleziono",
   "NoPassword": "Nie masz żadnego profilu hasła w naszej bazie.",
   "Options": "Opcje",
+  "Other options": "Inne opcje",
   "PasswordProfileCopied": "Profil twojego hasła został skopiowany",
   "PasswordResetRequired": "Hasło jest wymagane",
   "PasswordResetSuccessful": "Twoje hasło zostało zresetowane.",
@@ -61,5 +61,6 @@
   "WelcomeRegister": "Witaj, {email}, dziękujemy za rejestrację.",
   "What is new ?": "Co nowego ?",
   "What is new?": "Co nowego?",
+  "noAutoFillSite": "Przestań automatycznie wypełniać pole witryny",
   "resetPasswordSuccess": "Jeśli adres {email} jest skojarzony z kontem LessPass, wkrótce otrzymasz wiadomość od LessPass zawierającą instrukcje resetowania hasła."
 }

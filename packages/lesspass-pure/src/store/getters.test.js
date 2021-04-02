@@ -53,3 +53,20 @@ test("isGuest", () => {
   expect(getters.isAuthenticated(state)).toBe(false);
   expect(getters.isGuest(state)).toBe(true);
 });
+
+test("shouldAutoFillSite", () => {
+  expect(
+    getters.shouldAutoFillSite({
+      settings: {
+        noAutoFillSite: true
+      }
+    })
+  ).toBe(false);
+  expect(
+    getters.shouldAutoFillSite({
+      settings: {
+        noAutoFillSite: false
+      }
+    })
+  ).toBe(true);
+});

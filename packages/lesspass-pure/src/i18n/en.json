@@ -20,7 +20,6 @@
   "It is not recommended to change the default url.": "It is not recommended to change the default url.",
   "Length": "Length",
   "LengthDeprecationWarning": "The maximum length of a password is 35 characters.",
-  "LessPass Database": "LessPass Database",
   "LessPass Database Url": "LessPass Database Url",
   "Login": "Login",
   "LoginFormInvalid": "Email and password are mandatory",
@@ -36,6 +35,7 @@
   "NoMatchFor": "Oops! There are no matches for",
   "NoPassword": "You don't have any password profile saved in your database.",
   "Options": "Options",
+  "Other options": "Other options",
   "PasswordProfileCopied": "Your password profile has been copied",
   "PasswordResetRequired": "A password is required",
   "PasswordResetSuccessful": "Your password was reset successfully.",
@@ -61,5 +61,6 @@
   "WelcomeRegister": "Welcome, {email}. Thank you for signing up!",
   "What is new ?": "What is new ?",
   "What is new?": "What is new?",
+  "noAutoFillSite": "Stop filling in the site field automatically",
   "resetPasswordSuccess": "If the email address {email} is associated with a LessPass account, you will receive an email from LessPass with instructions on how to reset your password."
 }

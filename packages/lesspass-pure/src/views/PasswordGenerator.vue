@@ -133,12 +133,14 @@ export default {
   },
   computed: {
     ...mapState(["password", "passwords"]),
-    ...mapGetters(["passwordURL"])
+    ...mapGetters(["passwordURL", "shouldAutoFillSite"])
   },
   beforeMount() {
-    urlParser.getSite().then(site => {
-      this.$store.dispatch("setSite", { site })
-    });
+    if (this.shouldAutoFillSite) {
+      urlParser.getSite().then(site => {
+        this.$store.dispatch("setSite", { site });
+      });
+    }
     this.$store.dispatch("getPasswordFromUrlQuery", {
       query: this.$route.query
     });

@@ -20,7 +20,6 @@
   "It is not recommended to change the default url.": "Не рекомендуется изменять URL-адрес по умолчанию.",
   "Length": "Длина",
   "LengthDeprecationWarning": "Максимальная длина пароля 35 символов.",
-  "LessPass Database": "База данных LessPass",
   "LessPass Database Url": "URL-адрес базы данных LessPass",
   "Login": "Авторизоваться",
   "LoginFormInvalid": "Электронная почта и пароль обязательны",
@@ -36,6 +35,7 @@
   "NoMatchFor": "Упс! Нет совпадений",
   "NoPassword": "У вас нет пароля профиля сохранённого в вашей базе данных.",
   "Options": "Опции",
+  "Other options": "Другие опции",
   "PasswordProfileCopied": "Ваш профиль пароля был скопирован",
   "PasswordResetRequired": "Требуется пароль",
   "PasswordResetSuccessful": "Ваш пароль был успешно сброшен.",
@@ -61,5 +61,6 @@
   "WelcomeRegister": "Добро пожаловать, {email}. Спасибо за регистрацию!",
   "What is new ?": "Что нового ?",
   "What is new?": "Что нового?",
+  "noAutoFillSite": "Прекратить автоматическое заполнение поля сайта",
   "resetPasswordSuccess": "Если адрес электронной почты {email} связан с учетной записью LessPass, вы получите электронное письмо от LessPass с инструкциями по восстановлению пароля."
 }

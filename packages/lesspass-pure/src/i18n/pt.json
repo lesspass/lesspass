@@ -20,7 +20,6 @@
   "It is not recommended to change the default url.": "Não é recomendado alterar o url padrão.",
   "Length": "Comprimento",
   "LengthDeprecationWarning": "O comprimento máximo de uma senha é de 35 caracteres.",
-  "LessPass Database": "Banco de dados LessPass",
   "LessPass Database Url": "URL do banco de dados LessPass",
   "Login": "Conecte-se",
   "LoginFormInvalid": "Email e senha são obrigatórios",
@@ -36,6 +35,7 @@
   "NoMatchFor": "Opa! Não há resultados para",
   "NoPassword": "Você não tem nenhum perfil de senha salvo no seu banco de dados.",
   "Options": "Opções",
+  "Other options": "Outras opções",
   "PasswordProfileCopied": "Seu perfil de senha foi copiado",
   "PasswordResetRequired": "Uma senha é necessária",
   "PasswordResetSuccessful": "Sua senha foi resetada com sucesso.",
@@ -61,5 +61,6 @@
   "WelcomeRegister": "Bem vindo {email}, obrigado por se registrar.",
   "What is new ?": "O que há de novo?",
   "What is new?": "O que há de novo?",
+  "noAutoFillSite": "Pare de preencher o campo do site automaticamente",
   "resetPasswordSuccess": "Se o seu endereço de email {email} estiver associado com uma conta LessPass, você receberá logo um email do LessPass com instruções de como resetar a sua senha."
 }

@@ -18,7 +18,8 @@ const state = {
   defaultPassword,
   settings: {
     baseURL: defaultBaseURL,
-    encryptMasterPassword: true
+    encryptMasterPassword: true,
+    noAutoFillSite: false
   }
 };
 

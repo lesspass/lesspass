@@ -1,10 +1,6 @@
 <template>
   <div>
-    <form
-      id="settings-form"
-      novalidate
-      v-on:submit.prevent="saveAndExit"
-    >
+    <form id="settings-form" novalidate v-on:submit.prevent="saveAndExit">
       <div class="mb-3">
         <h5>{{ $t("Default password profile") }}</h5>
       </div>
@@ -30,7 +26,26 @@
         <options v-bind:options="defaultPassword"></options>
       </div>
       <div class="mb-3">
-        <h5>{{ $t("LessPass Database") }}</h5>
+        <h5>{{ $t("Other options") }}</h5>
+      </div>
+      <label for="noAutoFillSite">{{ $t("Site") }}</label>
+      <div class="form-check mb-3">
+        <input
+          id="noAutoFillSite"
+          class="form-check-input"
+          type="checkbox"
+          v-model="settings.noAutoFillSite"
+        />
+        <label class="form-check-label" for="noAutoFillSite">
+          <small>
+            {{
+              $t(
+                "noAutoFillSite",
+                "Stop filling in the site field automatically"
+              )
+            }}
+          </small>
+        </label>
       </div>
       <div class="form-group has-validation">
         <label for="login">{{ $t("LessPass Database Url") }}</label>
@@ -73,11 +88,7 @@
         </label>
       </div>
       <div class="mb-3">
-        <button
-          type="submit"
-          id="btn-submit-settings"
-          class="btn btn-primary"
-        >
+        <button type="submit" id="btn-submit-settings" class="btn btn-primary">
           {{ $t("Save") }}
         </button>
       </div>

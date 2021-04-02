@@ -20,7 +20,6 @@
   "It is not recommended to change the default url.": "No se recomienda cambiar la URL predeterminada.",
   "Length": "Tamaño",
   "LengthDeprecationWarning": "La longitud máxima de una contraseña es de 35 caracteres.",
-  "LessPass Database": "Base de datos LessPass",
   "LessPass Database Url": "URL de la base de datos LessPass",
   "Login": "Acceso",
   "LoginFormInvalid": "El correo electrónico y la contraseña son obligatorios",
@@ -36,6 +35,7 @@
   "NoMatchFor": "¡Vaya! No ha resultados para",
   "NoPassword": "No tiene ningún perfil de contraseñas guardado en su base de datos.",
   "Options": "Opciones",
+  "Other options": "Otras opciones",
   "PasswordProfileCopied": "Se ha copiado su perfil de contraseña",
   "PasswordResetRequired": "Se requiere una contraseña",
   "PasswordResetSuccessful": "Su contraseña ha sido reestablecida con éxito.",
@@ -61,5 +61,6 @@
   "WelcomeRegister": "Bienvenido o bienvenida {email}, gracias por registrarse.",
   "What is new ?": "Qué es nuevo ?",
   "What is new?": "¿Qué es nuevo?",
+  "noAutoFillSite": "Deje de completar el campo del sitio automáticamente",
   "resetPasswordSuccess": "Si la dirección de correo electrónico {email} está asociada a una cuenta LessPass, recibirá un correo electrónico de LessPass con instrucciones sobre cómo restablecer su contraseña."
 }

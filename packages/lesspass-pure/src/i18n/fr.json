@@ -20,7 +20,6 @@
   "It is not recommended to change the default url.": "Il n'est pas recommandé de modifier l'URL par défaut.",
   "Length": "Longueur",
   "LengthDeprecationWarning": "La longueur maximale d'un mot de passe est de 35 caractères.",
-  "LessPass Database": "Base de données LessPass",
   "LessPass Database Url": "URL de la base de données LessPass",
   "Login": "Connexion",
   "LoginFormInvalid": "L'email et le mot de passe sont obligatoires",
@@ -36,6 +35,7 @@
   "NoMatchFor": "Oups ! il n'y a aucun resultat pour",
   "NoPassword": "Vous n'avez aucun mot de passe enregistré.",
   "Options": "Options",
+  "Other options": "Autres options",
   "PasswordProfileCopied": "Votre profil de mot de passe a été copié",
   "PasswordResetRequired": "Un mot de passe est requis",
   "PasswordResetSuccessful": "Votre mot de passe a été changé avec succès",
@@ -61,5 +61,6 @@
   "WelcomeRegister": "Bienvenue {email}, merci de vous être enregistré.",
   "What is new ?": "Ce qui est nouveau ?",
   "What is new?": "Ce qui est nouveau?",
+  "noAutoFillSite": "Arrêtez de remplir automatiquement le champ site",
   "resetPasswordSuccess": "Si l'adresse email {email} est associée avec un compte LessPass, vous allez recevoir un email de la part de LessPass avec les instructions pour changer votre mot de passe."
 }
