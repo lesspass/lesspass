@@ -121,7 +121,7 @@ import InputSite from "../components/InputSite.vue";
 import Options from "../components/Options.vue";
 import { showTooltip, hideTooltip } from "../services/tooltip";
 import message from "../services/message";
-import * as urlParser from "../services/url-parser";
+import { getSite, cleanUrl, removeSiteSubdomain } from "../services/url-parser";
 
 export default {
   name: "password-generator-view",
@@ -133,12 +133,19 @@ export default {
   },
   computed: {
     ...mapState(["password", "passwords"]),
-    ...mapGetters(["passwordURL", "shouldAutoFillSite"])
+    ...mapGetters([
+      "passwordURL",
+      "shouldAutoFillSite",
+      "shouldRemoveSubdomain"
+    ])
   },
   beforeMount() {
     if (this.shouldAutoFillSite) {
-      urlParser.getSite().then(site => {
-        this.$store.dispatch("setSite", { site });
+      getSite().then(site => {
+        const cleanedSite = this.shouldRemoveSubdomain
+          ? removeSiteSubdomain(site)
+          : cleanUrl(site);
+        this.$store.dispatch("setSite", { site: cleanedSite });
       });
     }
     this.$store.dispatch("getPasswordFromUrlQuery", {

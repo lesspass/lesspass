@@ -70,3 +70,20 @@ test("shouldAutoFillSite", () => {
     })
   ).toBe(true);
 });
+
+test("shouldRemoveSubdomain", () => {
+  expect(
+    getters.shouldRemoveSubdomain({
+      settings: {
+        removeSiteSubdomain: true
+      }
+    })
+  ).toBe(true);
+  expect(
+    getters.shouldRemoveSubdomain({
+      settings: {
+        removeSiteSubdomain: false
+      }
+    })
+  ).toBe(false);
+});

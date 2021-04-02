@@ -28,26 +28,49 @@
       <div class="mb-3">
         <h5>{{ $t("Other options") }}</h5>
       </div>
-      <label for="noAutoFillSite">{{ $t("Site") }}</label>
-      <div class="form-check mb-3">
-        <input
-          id="noAutoFillSite"
-          class="form-check-input"
-          type="checkbox"
-          v-model="settings.noAutoFillSite"
-        />
-        <label class="form-check-label" for="noAutoFillSite">
-          <small>
-            {{
-              $t(
-                "noAutoFillSite",
-                "Stop filling in the site field automatically"
-              )
-            }}
-          </small>
-        </label>
+      <div class="mb-4">
+        <label for="noAutoFillSite">{{ $t("Site") }}</label>
+        <div class="form-check mb-3">
+          <input
+            id="noAutoFillSite"
+            class="form-check-input"
+            type="checkbox"
+            v-model="settings.noAutoFillSite"
+          />
+          <label class="form-check-label" for="noAutoFillSite">
+            <small>
+              {{
+                $t(
+                  "noAutoFillSite",
+                  "Stop filling in the site field automatically"
+                )
+              }}
+            </small>
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            id="removeSiteSubdomain"
+            class="form-check-input"
+            type="checkbox"
+            v-model="settings.removeSiteSubdomain"
+          />
+          <label class="form-check-label" for="removeSiteSubdomain">
+            <small>
+              {{ $t("removeSiteSubdomain", "Remove subdomain from site") }}
+            </small>
+          </label>
+        </div>
+        <small class="form-text text-danger">
+          {{
+            $t(
+              "DontUseItYet",
+              "Backward compatibility not guaranteed. Dont use it yet!"
+            )
+          }}
+        </small>
       </div>
-      <div class="form-group has-validation">
+      <div class="form-group">
         <label for="login">{{ $t("LessPass Database Url") }}</label>
         <div class="inner-addon left-addon">
           <i class="fa fa-user"></i>
@@ -66,7 +89,7 @@
         </div>
         <div
           v-if="settings.baseURL !== defaultBaseURL"
-          class="text-warning mt-1"
+          class="text-danger mt-1"
         >
           <small>
             {{ $t("It is not recommended to change the default url.") }}

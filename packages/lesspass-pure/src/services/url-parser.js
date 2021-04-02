@@ -1,6 +1,7 @@
 "use strict";
 
 import atob from "@oslab/atob";
+import mostUsedTlds from "./mostUsedTlds.json";
 
 export function cleanUrl(url) {
   if (!url) {
@@ -8,6 +9,29 @@ export function cleanUrl(url) {
   }
   var matchesDomainName = url.match(/^(?:https?:\/\/)([^/?#]+)(?:[/?#]|$)/i);
   return matchesDomainName && matchesDomainName[1] ? matchesDomainName[1] : "";
+}
+
+export function removeSiteSubdomain(url) {
+  let hostname = "";
+  try {
+    hostname = new URL(url).hostname;
+  } catch (error) {
+    return "";
+  }
+  for (let i = 0; i < mostUsedTlds.length; i++) {
+    const tld = mostUsedTlds[i];
+    const tldWithDot = `.${tld}`;
+    if (hostname.endsWith(tldWithDot)) {
+      const domain = hostname
+        .replace(tldWithDot, "")
+        .split(".")
+        .pop();
+      if (domain) {
+        return domain + tldWithDot;
+      }
+    }
+  }
+  return hostname;
 }
 
 function isAnIpAddressWithPort(address) {
@@ -45,7 +69,7 @@ export function getSite() {
       typeof chrome.tabs.query !== "undefined"
     ) {
       chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-        resolve(cleanUrl(tabs[0].url));
+        resolve(tabs[0].url);
       });
     } else {
       resolve("");

@@ -1,35 +1,78 @@
 import * as urlParser from "./url-parser";
 
 test("cleanUrl", () => {
-  expect("lesspass.com").toBe(urlParser.cleanUrl("https://lesspass.com/#!/"));
-  expect("lesspass.com").toBe(urlParser.cleanUrl("https://lesspass.com/api/"));
-  expect("api.lesspass.com").toBe(
-    urlParser.cleanUrl("https://api.lesspass.com/")
+  expect(urlParser.cleanUrl("https://lesspass.com/#!/")).toBe("lesspass.com");
+  expect(urlParser.cleanUrl("https://lesspass.com/api/")).toBe("lesspass.com");
+  expect(urlParser.cleanUrl("https://api.lesspass.com/")).toBe(
+    "api.lesspass.com"
   );
-  expect("lesspass.com").toBe(urlParser.cleanUrl("http://lesspass.com"));
-  expect("stackoverflow.com").toBe(
+  expect(urlParser.cleanUrl("http://lesspass.com")).toBe("lesspass.com");
+  expect(
     urlParser.cleanUrl(
       "http://stackoverflow.com/questions/3689423/google-chrome-plugin-how-to-get-domain-from-url-tab-url"
     )
-  );
-  expect("v4-alpha.getbootstrap.com").toBe(
+  ).toBe("stackoverflow.com");
+  expect(
     urlParser.cleanUrl("http://v4-alpha.getbootstrap.com/components/buttons/")
-  );
-  expect("accounts.google.com").toBe(
+  ).toBe("v4-alpha.getbootstrap.com");
+  expect(
     urlParser.cleanUrl(
       "https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier"
     )
+  ).toBe("accounts.google.com");
+  expect(urlParser.cleanUrl("https://www.netflix.com/browse")).toBe(
+    "www.netflix.com"
   );
-  expect("www.netflix.com").toBe(
-    urlParser.cleanUrl("https://www.netflix.com/browse")
+  expect(urlParser.cleanUrl("https://www.bbc.co.uk")).toBe("www.bbc.co.uk");
+  expect(urlParser.cleanUrl("https://192.168.1.1:10443/webapp/")).toBe(
+    "192.168.1.1:10443"
   );
-  expect("www.bbc.co.uk").toBe(urlParser.cleanUrl("https://www.bbc.co.uk"));
-  expect("192.168.1.1:10443").toBe(
-    urlParser.cleanUrl("https://192.168.1.1:10443/webapp/")
+  expect(urlParser.cleanUrl(undefined)).toBe("");
+  expect(urlParser.cleanUrl("chrome://extensions/")).toBe("");
+});
+
+test("cleanUrl beta", () => {
+  expect(urlParser.removeSiteSubdomain("co.uk")).toBe("");
+  expect(urlParser.removeSiteSubdomain("https://lesspass.com/#!/")).toBe(
+    "lesspass.com"
   );
-  expect("").toBe(urlParser.cleanUrl(undefined));
-  expect("").toBe(urlParser.cleanUrl(undefined));
-  expect("").toBe(urlParser.cleanUrl("chrome://extensions/"));
+  expect(urlParser.removeSiteSubdomain("https://lesspass.com/api/")).toBe(
+    "lesspass.com"
+  );
+  expect(urlParser.removeSiteSubdomain("https://api.lesspass.com/")).toBe(
+    "lesspass.com"
+  );
+  expect(urlParser.removeSiteSubdomain("http://lesspass.com")).toBe("lesspass.com");
+  expect(urlParser.removeSiteSubdomain("http://www.lesspass.com")).toBe(
+    "lesspass.com"
+  );
+  expect(
+    urlParser.removeSiteSubdomain(
+      "http://stackoverflow.com/questions/3689423/google-chrome-plugin-how-to-get-domain-from-url-tab-url"
+    )
+  ).toBe("stackoverflow.com");
+  expect(
+    urlParser.removeSiteSubdomain(
+      "http://v4-alpha.getbootstrap.com/components/buttons/"
+    )
+  ).toBe("getbootstrap.com");
+  expect(
+    urlParser.removeSiteSubdomain(
+      "https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier"
+    )
+  ).toBe("google.com");
+  expect(urlParser.removeSiteSubdomain("https://mail.google.com/mail/u/0/")).toBe(
+    "google.com"
+  );
+  expect(urlParser.removeSiteSubdomain("https://www.netflix.com/browse")).toBe(
+    "netflix.com"
+  );
+  expect(urlParser.removeSiteSubdomain("https://www.bbc.co.uk")).toBe("bbc.co.uk");
+  expect(urlParser.removeSiteSubdomain("https://192.168.1.1:10443/webapp/")).toBe(
+    "192.168.1.1"
+  );
+  expect(urlParser.removeSiteSubdomain(undefined)).toBe("");
+  expect(urlParser.removeSiteSubdomain("chrome://extensions/")).toBe("extensions");
 });
 
 test("getSuggestions", () => {
@@ -68,7 +111,7 @@ test("getSite", () => {
     }
   };
   return urlParser.getSite().then(site => {
-    expect(site).toBe("example.org");
+    expect(site).toBe("https://example.org");
   });
 });
 

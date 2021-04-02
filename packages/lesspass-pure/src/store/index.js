@@ -19,7 +19,8 @@ const state = {
   settings: {
     baseURL: defaultBaseURL,
     encryptMasterPassword: true,
-    noAutoFillSite: false
+    noAutoFillSite: false,
+    removeSiteSubdomain: false
   }
 };
 
