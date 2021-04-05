@@ -17,7 +17,7 @@
   "EmailRequiredError": "我们需要一个电子邮件地址来找到您的账户。",
   "Encrypt my master password": "加密我的主密码",
   "ForgotPassword": "忘记了您的密码？",
-  "Generate": "生成",
+  "Generate & Copy": "生成并复制",
   "It is not recommended to change the default url.": "不建议更改默认URL。",
   "Length": "长度",
   "LengthDeprecationWarning": "密码的最大长度是35个字符。",

@@ -63,7 +63,7 @@ div.awesomplete > ul {
         class="btn btn-primary btn-block"
         v-if="!passwordGenerated"
       >
-        {{ $t("Generate") }}
+        {{ $t("Generate & Copy") }}
       </button>
       <div class="input-group" v-show="passwordGenerated">
         <span class="input-group-btn">
@@ -249,6 +249,7 @@ export default {
         passwordProfile
       ).then(passwordGenerated => {
         this.passwordGenerated = passwordGenerated;
+        this.copyPassword();
         this.cleanFormIn30Seconds();
       });
     },

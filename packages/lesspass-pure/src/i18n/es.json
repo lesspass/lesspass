@@ -17,7 +17,7 @@
   "EmailRequiredError": "Necesitamos un correo electrónico para encontrar su cuenta.",
   "Encrypt my master password": "Cifrar mi contraseña maestra",
   "ForgotPassword": "¿Olvidó su contraseña?",
-  "Generate": "Generar",
+  "Generate & Copy": "Generar y copiar",
   "It is not recommended to change the default url.": "No se recomienda cambiar la URL predeterminada.",
   "Length": "Tamaño",
   "LengthDeprecationWarning": "La longitud máxima de una contraseña es de 35 caracteres.",

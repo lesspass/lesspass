@@ -17,7 +17,7 @@
   "EmailRequiredError": "Нам нужен email чтобы найти ваш аккаунт.",
   "Encrypt my master password": "Зашифровать мой мастер-пароль",
   "ForgotPassword": "Забыли свой пароль?",
-  "Generate": "Сгенерировать",
+  "Generate & Copy": "Создать и скопировать",
   "It is not recommended to change the default url.": "Не рекомендуется изменять URL-адрес по умолчанию.",
   "Length": "Длина",
   "LengthDeprecationWarning": "Максимальная длина пароля 35 символов.",

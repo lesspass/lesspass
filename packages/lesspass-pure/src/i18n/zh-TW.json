@@ -17,7 +17,7 @@
   "EmailRequiredError": "我們需要郵件位址來找到您的帳號。",
   "Encrypt my master password": "加密我的主密碼",
   "ForgotPassword": "忘記您的登入密碼了嗎？",
-  "Generate": "產生密碼",
+  "Generate & Copy": "生成並複制",
   "It is not recommended to change the default url.": "不建議更改默認URL。",
   "Length": "長度",
   "LengthDeprecationWarning": "密碼的最大長度是 35 個字元。",

@@ -17,7 +17,7 @@
   "EmailRequiredError": "Nós precisamos de um email para encontrar a sua conta.",
   "Encrypt my master password": "Criptografar minha senha mestre",
   "ForgotPassword": "Esqueceu sua senha?",
-  "Generate": "Gerar",
+  "Generate & Copy": "Gerar e Copiar",
   "It is not recommended to change the default url.": "Não é recomendado alterar o url padrão.",
   "Length": "Comprimento",
   "LengthDeprecationWarning": "O comprimento máximo de uma senha é de 35 caracteres.",

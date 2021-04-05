@@ -17,7 +17,7 @@
   "EmailRequiredError": "Potrzebujemy adresu aby zidentyfikować twoje konto.",
   "Encrypt my master password": "Zaszyfruj hasło główne",
   "ForgotPassword": "Nie pamiętasz hasła?",
-  "Generate": "Wygeneruj",
+  "Generate & Copy": "Generuj i kopiuj",
   "It is not recommended to change the default url.": "Nie zaleca się zmiany domyślnego adresu URL.",
   "Length": "Długość",
   "LengthDeprecationWarning": "Maksymalna długość hasła wynosi 35 znaków.",

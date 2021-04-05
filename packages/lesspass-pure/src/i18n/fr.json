@@ -17,7 +17,7 @@
   "EmailRequiredError": "Nous avons besoin d'un email pour trouver votre compte.",
   "Encrypt my master password": "Chiffrer mon mot de passe principal",
   "ForgotPassword": "Mot de passe oublié ?",
-  "Generate": "Générer",
+  "Generate & Copy": "Générer et copier",
   "It is not recommended to change the default url.": "Il n'est pas recommandé de modifier l'URL par défaut.",
   "Length": "Longueur",
   "LengthDeprecationWarning": "La longueur maximale d'un mot de passe est de 35 caractères.",
