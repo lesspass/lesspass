@@ -114,7 +114,6 @@ div.awesomplete > ul {
 <script>
 import LessPass from "lesspass";
 import { mapGetters, mapState } from "vuex";
-import copy from "copy-text-to-clipboard";
 import RemoveAutoComplete from "../components/RemoveAutoComplete.vue";
 import MasterPassword from "../components/MasterPassword.vue";
 import InputSite from "../components/InputSite.vue";
@@ -195,6 +194,7 @@ export default {
         this.masterPassword = "";
         this.passwordGenerated = "";
         this.$refs.masterPassword.hide();
+        navigator.clipboard.writeText("").catch(console.error);
       }, thirtySecondsInMillisecond);
     },
     generatePassword() {
@@ -266,16 +266,21 @@ export default {
       }
     },
     copyPassword() {
-      const copied = copy(this.passwordGenerated);
-      if (copied) {
-        const element = document.getElementById("copyPasswordButton");
-        showTooltip(element, this.$t("Copied", "copied !"));
-        setTimeout(() => hideTooltip(element), 2000);
-      } else {
-        message.warning(
-          this.$t("SorryCopy", "Sorry, copying only works in modern browsers.")
+      navigator.clipboard
+        .writeText(this.passwordGenerated)
+        .then(() => {
+          const element = document.getElementById("copyPasswordButton");
+          showTooltip(element, this.$t("Copied", "copied !"));
+          setTimeout(() => hideTooltip(element), 2000);
+        })
+        .catch(() =>
+          message.warning(
+            this.$t(
+              "SorryCopy",
+              "Sorry, copying only works in modern browsers."
+            )
+          )
         );
-      }
     },
     sharePasswordProfile() {
       const copied = copy(this.passwordURL);
