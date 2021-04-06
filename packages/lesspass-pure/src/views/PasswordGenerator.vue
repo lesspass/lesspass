@@ -194,7 +194,6 @@ export default {
         this.masterPassword = "";
         this.passwordGenerated = "";
         this.$refs.masterPassword.hide();
-        navigator.clipboard.writeText("").catch(console.error);
       }, thirtySecondsInMillisecond);
     },
     generatePassword() {

@@ -16,8 +16,7 @@
     }
   },
   "permissions": [
-    "activeTab",
-    "clipboardWrite"
+    "activeTab"
   ],
   "browser_action": {
     "browser_style": false,
