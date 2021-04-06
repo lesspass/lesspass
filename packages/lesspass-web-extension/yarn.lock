@@ -1065,11 +1065,6 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-text-to-clipboard@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/copy-text-to-clipboard/-/copy-text-to-clipboard-3.0.1.tgz#8cbf8f90e0a47f12e4a24743736265d157bce69c"
-  integrity sha512-rvVsHrpFcL4F2P8ihsoLdFHmd404+CMg71S756oRSeQgqk51U3kicGdnvfkrxva0xXH92SjGS62B0XIJsbh+9Q==
-
 core-js@3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
@@ -2799,10 +2794,10 @@ lesspass-fingerprint@9.1.9:
   dependencies:
     lesspass-crypto "9.1.9"
 
-lesspass-pure@9.4.6:
-  version "9.4.6"
-  resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.4.6.tgz#5682786f94741c860d0275593dcf2f9830f8b25e"
-  integrity sha512-qE1v357ehmURAjgzh+n/4mB9EpCQemvX2lXM707ZpKubRrPWZul1TTlhnd1x5mV9Cm3MfnpcWDsOEq+F8jNtlA==
+lesspass-pure@9.5.1:
+  version "9.5.1"
+  resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.5.1.tgz#3e8c85461051c3ab085748874d284487f80e199f"
+  integrity sha512-BnQsVgevjIzbe9K6B4j7bopslNRy/h44inmpoCAUhCB6nPcajMpM+2zS1m3YBd77kV8DPWuOX9TlMtYXpn+DtA==
   dependencies:
     "@oslab/atob" "^0.1.0"
     "@oslab/btoa" "^0.1.0"
@@ -2810,7 +2805,6 @@ lesspass-pure@9.4.6:
     axios "^0.21.1"
     balloon-css "^1.0.3"
     bootstrap "^4.6.0"
-    copy-text-to-clipboard "^3.0.1"
     core-js "^3.9.1"
     font-awesome "^4.7.0"
     jwt-decode "^3.1.2"
