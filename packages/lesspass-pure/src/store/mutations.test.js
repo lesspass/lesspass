@@ -275,7 +275,7 @@ test("SET_SITE default state", () => {
 test("SET_SITE ignore empty", () => {
   const state = {
     password: {
-      "site": "www.example.org"
+      site: "www.example.org"
     },
     passwords: [],
     defaultPassword
@@ -288,8 +288,8 @@ test("SET_SITE ignore empty", () => {
 test("SET_SITE ignore if id set", () => {
   const state = {
     password: {
-      "id": "1",
-      "site": "www.example.org"
+      id: "1",
+      site: "www.example.org"
     },
     passwords: [],
     defaultPassword

@@ -1,1 +1,1 @@
-export const key = "lesspass-v2"
+export const key = "lesspass-v2";

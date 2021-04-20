@@ -42,7 +42,9 @@ test("cleanUrl beta", () => {
   expect(urlParser.removeSiteSubdomain("https://api.lesspass.com/")).toBe(
     "lesspass.com"
   );
-  expect(urlParser.removeSiteSubdomain("http://lesspass.com")).toBe("lesspass.com");
+  expect(urlParser.removeSiteSubdomain("http://lesspass.com")).toBe(
+    "lesspass.com"
+  );
   expect(urlParser.removeSiteSubdomain("http://www.lesspass.com")).toBe(
     "lesspass.com"
   );
@@ -61,18 +63,22 @@ test("cleanUrl beta", () => {
       "https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier"
     )
   ).toBe("google.com");
-  expect(urlParser.removeSiteSubdomain("https://mail.google.com/mail/u/0/")).toBe(
-    "google.com"
-  );
+  expect(
+    urlParser.removeSiteSubdomain("https://mail.google.com/mail/u/0/")
+  ).toBe("google.com");
   expect(urlParser.removeSiteSubdomain("https://www.netflix.com/browse")).toBe(
     "netflix.com"
   );
-  expect(urlParser.removeSiteSubdomain("https://www.bbc.co.uk")).toBe("bbc.co.uk");
-  expect(urlParser.removeSiteSubdomain("https://192.168.1.1:10443/webapp/")).toBe(
-    "192.168.1.1"
+  expect(urlParser.removeSiteSubdomain("https://www.bbc.co.uk")).toBe(
+    "bbc.co.uk"
   );
+  expect(
+    urlParser.removeSiteSubdomain("https://192.168.1.1:10443/webapp/")
+  ).toBe("192.168.1.1");
   expect(urlParser.removeSiteSubdomain(undefined)).toBe("");
-  expect(urlParser.removeSiteSubdomain("chrome://extensions/")).toBe("extensions");
+  expect(urlParser.removeSiteSubdomain("chrome://extensions/")).toBe(
+    "extensions"
+  );
 });
 
 test("getSuggestions", () => {

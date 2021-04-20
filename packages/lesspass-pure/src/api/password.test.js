@@ -6,7 +6,9 @@ const mock = new MockAdapter(axios);
 
 test("Passwords.create", () => {
   const password = { login: "text@example.org" };
-  mock.onPost("https://api.lesspass.com/passwords/", password).reply(201, { ...password, id: "1" });
+  mock
+    .onPost("https://api.lesspass.com/passwords/", password)
+    .reply(201, { ...password, id: "1" });
   return Passwords.create(password).then(response => {
     const passwordCreated = response.data;
     expect(passwordCreated.id).toBe("1");

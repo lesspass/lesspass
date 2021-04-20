@@ -12,4 +12,5 @@ export const passwordURL = state => {
 
 export const shouldAutoFillSite = state => !state.settings.noAutoFillSite;
 
-export const shouldRemoveSubdomain = state => state.settings.removeSiteSubdomain;
+export const shouldRemoveSubdomain = state =>
+  state.settings.removeSiteSubdomain;
