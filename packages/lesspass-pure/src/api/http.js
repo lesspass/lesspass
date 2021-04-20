@@ -19,16 +19,16 @@ axios.interceptors.response.use(
     const refresh = localStorage.getItem("refresh_token");
     if (
       (error.response && error.response.status !== 401) ||
-      (error.config && error.config.url.includes("/api/auth/jwt/")) ||
+      (error.config && error.config.url.includes("/auth/jwt/")) ||
       refresh === null
     ) {
       return new Promise((resolve, reject) => {
         reject(error);
       });
     }
-    const baseURL = getBaseURL()
+    const baseURL = getBaseURL();
     return axios
-      .post("/api/auth/jwt/refresh/", { refresh }, { baseURL })
+      .post("/auth/jwt/refresh/", { refresh }, { baseURL })
       .then(response => {
         const access_token = response.data.access;
         localStorage.setItem("access_token", access_token);
