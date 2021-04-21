@@ -2794,10 +2794,10 @@ lesspass-fingerprint@9.1.9:
   dependencies:
     lesspass-crypto "9.1.9"
 
-lesspass-pure@9.5.1:
-  version "9.5.1"
-  resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.5.1.tgz#3e8c85461051c3ab085748874d284487f80e199f"
-  integrity sha512-BnQsVgevjIzbe9K6B4j7bopslNRy/h44inmpoCAUhCB6nPcajMpM+2zS1m3YBd77kV8DPWuOX9TlMtYXpn+DtA==
+lesspass-pure@9.5.2:
+  version "9.5.2"
+  resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.5.2.tgz#089433b1baf64bec3b68a8cfc97f83150d77ade1"
+  integrity sha512-3/ovP/vpVLIpLt8fC/gdT8MF2rM4/VIC2pDK3du+YrUZwsuktHobIxxI3dCMUkYJpS+KmtwySCpnc+uut9DcmA==
   dependencies:
     "@oslab/atob" "^0.1.0"
     "@oslab/btoa" "^0.1.0"
