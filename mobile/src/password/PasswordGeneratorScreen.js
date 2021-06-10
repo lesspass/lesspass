@@ -172,7 +172,7 @@ export class PasswordGeneratorScreen extends Component {
                   [
                     {
                       text: "Oups no!",
-                      onPress: () => console.log("Cancel Pressed"),
+                      onPress: console.log,
                       style: "cancel",
                     },
                     {
@@ -245,7 +245,7 @@ export class PasswordGeneratorScreen extends Component {
               <GeneratedPassword
                 password={password}
                 clear={this._clear}
-                isAuthenticated={auth.jwt !== null}
+                isAuthenticated={auth.isAuthenticated}
                 save={() => {
                   const profile = this._getPasswordProfile();
                   savePasswordProfile(profile).then((response) =>

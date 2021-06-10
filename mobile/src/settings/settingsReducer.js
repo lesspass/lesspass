@@ -1,6 +1,6 @@
 const initialState = {
   keepMasterPasswordLocally: false,
-  lesspassDatabaseDefaultUrl: "https://lesspass.com",
+  baseURL: "https://api.lesspass.com",
   encryptMasterPassword: true,
   defaultPasswordProfileLogin: "",
   defaultGeneratedPasswordLength: 16,

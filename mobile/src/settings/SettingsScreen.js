@@ -25,7 +25,7 @@ export class SettingsScreen extends Component {
       .then(() => {
         this.setState({ fingerprintIsSupported: true });
       })
-      .catch((error) => console.log(error));
+      .catch(console.log);
   }
 
   render() {
@@ -33,7 +33,7 @@ export class SettingsScreen extends Component {
     const { settings, setSettings } = this.props;
     const {
       keepMasterPasswordLocally,
-      lesspassDatabaseDefaultUrl,
+      baseURL,
       encryptMasterPassword,
       defaultPasswordProfileLogin,
       defaultGeneratedPasswordLength,
@@ -48,8 +48,8 @@ export class SettingsScreen extends Component {
         <List.Section title="LESSPASS DATABASE">
           <TextInputModal
             label="Default URL"
-            value={lesspassDatabaseDefaultUrl}
-            onOk={(value) => setSettings({ lesspassDatabaseDefaultUrl: value })}
+            value={baseURL}
+            onOk={(value) => setSettings({ baseURL: value })}
             modalTitle="LessPass Database default URL"
           />
           <Divider />
@@ -146,7 +146,7 @@ export class SettingsScreen extends Component {
                     .then(() =>
                       setSettings({ keepMasterPasswordLocally: true })
                     )
-                    .catch((error) => console.log(error));
+                    .catch(console.log);
                 }}
                 onClear={() =>
                   setSettings({ keepMasterPasswordLocally: false })

@@ -4,14 +4,14 @@ import { addError } from "../errors/errorsActions";
 function setPasswordProfiles(profiles) {
   return {
     type: "SET_PASSWORD_PROFILES",
-    profiles
+    profiles,
   };
 }
 
 function removePasswordProfile(profile) {
   return {
     type: "REMOVE_PASSWORD_PROFILE",
-    profile
+    profile,
   };
 }
 
@@ -19,10 +19,10 @@ export function getPasswordProfiles() {
   return (dispatch, getState) => {
     const { settings, auth } = getState();
     return axios
-      .get(`${settings.lesspassDatabaseDefaultUrl}/api/passwords/`, {
-        headers: { Authorization: `JWT ${auth.jwt}` }
+      .get(`${settings.baseURL}/passwords/`, {
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
       })
-      .then(response => {
+      .then((response) => {
         dispatch(setPasswordProfiles(response.data.results));
         return response;
       });
@@ -33,10 +33,10 @@ export function savePasswordProfile(profile) {
   return (dispatch, getState) => {
     const { settings, auth } = getState();
     return axios
-      .post(`${settings.lesspassDatabaseDefaultUrl}/api/passwords/`, profile, {
-        headers: { Authorization: `JWT ${auth.jwt}` }
+      .post(`${settings.baseURL}/passwords/`, profile, {
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
       })
-      .then(response => {
+      .then((response) => {
         dispatch(setPasswordProfiles([response.data]));
         return response;
       })
@@ -54,12 +54,9 @@ export function deletePasswordProfile(profile) {
   return (dispatch, getState) => {
     const { settings, auth } = getState();
     return axios
-      .delete(
-        `${settings.lesspassDatabaseDefaultUrl}/api/passwords/${profile.id}/`,
-        {
-          headers: { Authorization: `JWT ${auth.jwt}` }
-        }
-      )
+      .delete(`${settings.baseURL}/passwords/${profile.id}/`, {
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
+      })
       .then(() => dispatch(removePasswordProfile(profile)))
       .catch(() =>
         dispatch(

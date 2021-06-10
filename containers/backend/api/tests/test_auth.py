@@ -1,4 +1,4 @@
-from rest_framework.test import APITestCase, APIClient
+from rest_framework.test import APITestCase
 
 from api import models
 from api.tests import factories
@@ -28,7 +28,7 @@ class OldRegisterTestCase(APITestCase):
 
 class OldLoginTestCase(APITestCase):
     def test_login(self):
-        user = factories.UserFactory(
+        factories.UserFactory(
             email="contact@example.org", password="correct horse battery staple"
         )
         data = {
@@ -40,7 +40,7 @@ class OldLoginTestCase(APITestCase):
         self.assertIsNotNone(request.data["token"])
 
     def test_login_bad_password(self):
-        user = factories.UserFactory(
+        factories.UserFactory(
             email="contact@example.org", password="correct horse battery staple"
         )
         data = {
@@ -83,3 +83,37 @@ class OldLoginTestCase(APITestCase):
         request = self.client.get("/api/passwords/", **headers)
         self.assertEqual(request.status_code, 200)
         self.assertEqual(request.data["results"][0]["login"], password.login)
+
+
+class LogInTestCase(APITestCase):
+    def setUp(self):
+        factories.UserFactory(
+            email="test@example.org",
+            password="test@example.org",
+        )
+
+    def test_login(self):
+        data = {
+            "email": "test@example.org",
+            "password": "test@example.org",
+        }
+        request = self.client.post("/api/auth/jwt/create/", data)
+        self.assertEqual(request.status_code, 200)
+        payload = request.json()
+        self.assertTrue("access" in payload)
+        self.assertTrue("refresh" in payload)
+
+    def test_refresh_token(self):
+        data = {
+            "email": "test@example.org",
+            "password": "test@example.org",
+        }
+        request = self.client.post("/api/auth/jwt/create/", data)
+        self.assertEqual(request.status_code, 200)
+        payload = request.json()
+        refresh_token = payload["refresh"]
+        request = self.client.post("/api/auth/jwt/refresh/", {"refresh": refresh_token})
+        self.assertEqual(request.status_code, 200)
+        payload = request.json()
+        self.assertTrue("access" in payload)
+        self.assertTrue("refresh" in payload)

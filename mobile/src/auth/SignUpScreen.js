@@ -16,13 +16,15 @@ export class SignUpScreen extends Component {
     this.state = {
       email: "",
       password: "",
-      isLoading: false
+      isLoading: false,
     };
   }
 
   render() {
     const { email, password, isLoading } = this.state;
-    const { navigation, encryptMasterPassword, addError, signUp } = this.props;
+    const { navigation, settings, addError, signUp } = this.props;
+    const { encryptMasterPassword } = settings;
+
     return (
       <ScrollView style={{ flex: 1 }}>
         <KeyboardAvoidingView
@@ -35,13 +37,13 @@ export class SignUpScreen extends Component {
             mode="outlined"
             label="Email"
             value={email}
-            onChangeText={text => this.setState({ email: text.trim() })}
+            onChangeText={(text) => this.setState({ email: text.trim() })}
           />
           <MasterPassword
             label={encryptMasterPassword ? "Master Password" : "Password"}
             masterPassword={password}
             hideFingerprint={!encryptMasterPassword}
-            onChangeText={password => this.setState({ password })}
+            onChangeText={(password) => this.setState({ password })}
           />
           <Button
             compact
@@ -54,12 +56,12 @@ export class SignUpScreen extends Component {
               signUp(
                 {
                   email,
-                  password
+                  password,
                 },
                 encryptMasterPassword
               )
                 .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
-                .catch(error => {
+                .catch(() => {
                   this.setState({ isLoading: false });
                   addError(
                     "Unable to sign up. Try in a few minutes or contact an administrator."
@@ -87,19 +89,16 @@ export class SignUpScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    settings: state.settings
+    settings: state.settings,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addError: message => dispatch(addError(message)),
+    addError: (message) => dispatch(addError(message)),
     signUp: (credentials, encryptMasterPassword) =>
-      dispatch(signUp(credentials, encryptMasterPassword))
+      dispatch(signUp(credentials, encryptMasterPassword)),
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignUpScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpScreen);

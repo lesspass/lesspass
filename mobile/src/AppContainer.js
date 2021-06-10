@@ -11,19 +11,20 @@ import AuthStackScreen from "./auth/AuthStackScreen";
 import SignOutScreen from "./auth/SignOutScreen";
 import routes from "./routes";
 import { getPasswordProfiles } from "./password/profilesActions";
-import { signOut } from "./auth/authActions";
+import { refreshTokens, signOut } from "./auth/authActions";
 
 const Tab = createBottomTabNavigator();
 
 function App() {
-  const jwt = useSelector((state) => state.auth.jwt);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
   React.useEffect(() => {
-    if (jwt) {
-      dispatch(getPasswordProfiles()).catch(() => dispatch(signOut()));
+    if (isAuthenticated) {
+      dispatch(refreshTokens())
+        .then(() => dispatch(getPasswordProfiles()))
+        .catch(() => dispatch(signOut()));
     }
-  }, [jwt, dispatch]);
+  }, [isAuthenticated, dispatch]);
 
   return (
     <NavigationContainer>
@@ -60,10 +61,10 @@ function App() {
         />
         <Tab.Screen name={routes.SETTINGS} component={SettingsScreen} />
         <Tab.Screen name={routes.HELP} component={HelpScreen} />
-        {jwt == null ? (
-          <Tab.Screen name={routes.AUTH_STACK} component={AuthStackScreen} />
-        ) : (
+        {isAuthenticated ? (
           <Tab.Screen name={routes.SIGN_OUT} component={SignOutScreen} />
+        ) : (
+          <Tab.Screen name={routes.AUTH_STACK} component={AuthStackScreen} />
         )}
       </Tab.Navigator>
     </NavigationContainer>

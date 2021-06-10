@@ -11,15 +11,13 @@ export class TouchId extends Component {
     const { onChangeText } = this.props;
     TouchID.authenticate()
       .then(() => {
-        return getGenericPassword().then(credentials => {
+        return getGenericPassword().then((credentials) => {
           if (credentials) {
             onChangeText(credentials.password);
           }
         });
       })
-      .catch(error =>
-        console.log("TouchId getMasterPasswordSavedLocally error", error)
-      );
+      .catch(console.log);
   };
 
   render() {
@@ -39,7 +37,7 @@ export class TouchId extends Component {
 
 function mapStateToProps(state) {
   return {
-    settings: state.settings
+    settings: state.settings,
   };
 }
 

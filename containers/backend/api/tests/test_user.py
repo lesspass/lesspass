@@ -23,3 +23,25 @@ class UserTestCase(APITestCase):
         request = self.client.patch("/api/auth/users/me/", {"key": "def"})
         self.assertEqual(request.status_code, 200)
         self.assertEqual("def", models.LessPassUser.objects.first().key)
+
+
+class RegisterTestCase(APITestCase):
+    def test_register(self):
+        self.assertEqual(0, models.LessPassUser.objects.all().count())
+        data = {
+            "email": "contact@example.org",
+            "password": "correct horse battery staple",
+        }
+        request = self.client.post("/api/auth/users/", data)
+        self.assertEqual(request.status_code, 201)
+        self.assertEqual(1, models.LessPassUser.objects.all().count())
+
+    def test_register_404_weak_password(self):
+        self.assertEqual(0, models.LessPassUser.objects.all().count())
+        data = {
+            "email": "contact@example.org",
+            "password": "password",
+        }
+        request = self.client.post("/api/auth/users/", data)
+        self.assertEqual(request.status_code, 400)
+        self.assertEqual(0, models.LessPassUser.objects.all().count())
