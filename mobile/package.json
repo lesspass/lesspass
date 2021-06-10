@@ -14,7 +14,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint .",
     "postinstall": "pod-install",
-    "clean": "react-native-clean-project"
+    "clean": "react-native-clean-project",
+    "prettier": "prettier --write src"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
@@ -30,6 +31,7 @@
     "lesspass-render-password": "latest",
     "lodash": "^4.17.21",
     "memoize-one": "^5.2.1",
+    "prettier": "^2.3.1",
     "react": "17.0.2",
     "react-native": "0.64.1",
     "react-native-gesture-handler": "^1.10.3",

@@ -2,7 +2,7 @@ import {
   isProfileValid,
   isLengthValid,
   isCounterValid,
-  areOptionsValid
+  areOptionsValid,
 } from "./validations";
 
 describe("validation", () => {
@@ -68,7 +68,7 @@ describe("validation", () => {
           lowercase: true,
           uppercase: false,
           digits: false,
-          symbols: false
+          symbols: false,
         })
       ).toBe(true);
     });
@@ -78,7 +78,7 @@ describe("validation", () => {
           lowercase: false,
           uppercase: false,
           digits: false,
-          symbols: false
+          symbols: false,
         })
       ).toBe(false);
     });
@@ -94,7 +94,7 @@ describe("validation", () => {
           lowercase: true,
           uppercase: true,
           digits: true,
-          symbols: true
+          symbols: true,
         })
       ).toBe(false);
     });
@@ -108,7 +108,7 @@ describe("validation", () => {
           lowercase: true,
           uppercase: true,
           digits: true,
-          symbols: true
+          symbols: true,
         })
       ).toBe(true);
     });
@@ -122,7 +122,7 @@ describe("validation", () => {
           lowercase: false,
           uppercase: false,
           digits: false,
-          symbols: false
+          symbols: false,
         })
       ).toBe(false);
     });
@@ -136,7 +136,7 @@ describe("validation", () => {
           lowercase: true,
           uppercase: true,
           digits: true,
-          symbols: true
+          symbols: true,
         })
       ).toBe(false);
     });

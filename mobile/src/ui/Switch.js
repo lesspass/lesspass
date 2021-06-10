@@ -9,10 +9,7 @@ export default class LessPassSwitch extends Component {
         title={label}
         description={description}
         right={() => (
-          <Switch
-            value={value}
-            onValueChange={value => onChange(value)}
-          />
+          <Switch value={value} onValueChange={(value) => onChange(value)} />
         )}
       />
     );

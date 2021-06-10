@@ -17,10 +17,10 @@ export class Errors extends Component {
           right: 0,
           top: 0,
           zIndex: 2,
-          elevation: 6
+          elevation: 6,
         }}
       >
-        {Object.values(errors).map(error => (
+        {Object.values(errors).map((error) => (
           <View
             key={error.id}
             style={{
@@ -31,7 +31,7 @@ export class Errors extends Component {
               alignItems: "center",
               flexDirection: "row",
               padding: 10,
-              paddingVertical: 20
+              paddingVertical: 20,
             }}
           >
             <View
@@ -39,7 +39,7 @@ export class Errors extends Component {
                 width: 85,
                 alignItems: "center",
                 justifyContent: "center",
-                height: "100%"
+                height: "100%",
               }}
             >
               <Icon size={22} name="warning" style={{ color: "#cc0000" }} />
@@ -47,7 +47,7 @@ export class Errors extends Component {
             <View
               style={{
                 flex: 1,
-                backgroundColor: "#ffffff"
+                backgroundColor: "#ffffff",
               }}
             >
               <Text style={{ color: "#cc0000", fontSize: 16 }}>
@@ -59,7 +59,7 @@ export class Errors extends Component {
                 width: 70,
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "#ffffff"
+                backgroundColor: "#ffffff",
               }}
             >
               <Button onPress={() => deleteError(error)}>
@@ -79,19 +79,16 @@ export class Errors extends Component {
 
 function mapStateToProps(state) {
   return {
-    errors: state.errors
+    errors: state.errors,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    deleteError: error => {
+    deleteError: (error) => {
       dispatch(deleteError(error));
-    }
+    },
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Errors);
+export default connect(mapStateToProps, mapDispatchToProps)(Errors);

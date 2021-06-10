@@ -6,7 +6,7 @@ import {
   Dialog,
   TextInput,
   List,
-  Text
+  Text,
 } from "react-native-paper";
 import Styles from "../ui/Styles";
 
@@ -17,7 +17,7 @@ export default class TextInputModal extends Component {
     this.state = {
       value,
       isValid: this.checkInputIsValid(value, variant, isRequired),
-      showModal: false
+      showModal: false,
     };
   }
 
@@ -26,11 +26,11 @@ export default class TextInputModal extends Component {
     this.setState({ showModal: false, value });
   };
 
-  getKeyboardType = variant => {
+  getKeyboardType = (variant) => {
     const variants = {
       text: "default",
       email: "email-address",
-      numeric: "numeric"
+      numeric: "numeric",
     };
     return variants[variant];
   };
@@ -54,7 +54,7 @@ export default class TextInputModal extends Component {
       modalTitle,
       modalDescription,
       variant = "text",
-      isRequired
+      isRequired,
     } = this.props;
     return (
       <View>
@@ -68,7 +68,7 @@ export default class TextInputModal extends Component {
                   value={variant === "numeric" ? value.toString() : value}
                   keyboardType={this.getKeyboardType(variant)}
                   secureTextEntry={variant === "password"}
-                  onChangeText={value =>
+                  onChangeText={(value) =>
                     this.onChange(value, variant, isRequired)
                   }
                 />

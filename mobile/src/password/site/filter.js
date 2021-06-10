@@ -6,7 +6,7 @@ export function returnMatchingData(query, data, dataKey) {
   const options = {
     keys: [dataKey],
     minMatchCharLength: 2,
-    includeMatches: true
+    includeMatches: true,
   };
   const fuse = new Fuse(data, options);
   return fuse.search(query).slice(0, 3);

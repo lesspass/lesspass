@@ -42,9 +42,9 @@ function getEncryptedCredentials(credentials) {
 export function signIn(credentials, encryptMasterPassword) {
   return (dispatch) => {
     if (encryptMasterPassword) {
-      return dispatch(
-        getEncryptedCredentials(credentials)
-      ).then((encryptedCredentials) => dispatch(getJWT(encryptedCredentials)));
+      return dispatch(getEncryptedCredentials(credentials)).then(
+        (encryptedCredentials) => dispatch(getJWT(encryptedCredentials))
+      );
     }
     return dispatch(getJWT(credentials));
   };

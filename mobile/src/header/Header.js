@@ -12,7 +12,7 @@ export default class Header extends Component {
             width: 180,
             height: 39,
             resizeMode: "contain",
-            alignSelf: "center"
+            alignSelf: "center",
           }}
           source={require("./logo.png")}
         />

@@ -10,7 +10,7 @@ export function generatePassword(masterPassword, passwordProfile) {
     lowercase,
     uppercase,
     digits,
-    symbols
+    symbols,
   } = passwordProfile;
   const options = { length, counter, lowercase, uppercase, digits, symbols };
   return NativeModules.LessPass.calcEntropy(
@@ -18,7 +18,7 @@ export function generatePassword(masterPassword, passwordProfile) {
     login,
     masterPassword,
     counter.toString(16)
-  ).then(entropy => {
+  ).then((entropy) => {
     return renderPassword(entropy, options);
   });
 }

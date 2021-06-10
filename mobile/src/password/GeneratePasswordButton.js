@@ -3,13 +3,13 @@ import {
   View,
   Text,
   TouchableNativeFeedback,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import Theme from "../ui/Theme";
 
 export default class PasswordGeneratorScreen extends Component {
   state = {
-    isGenerating: false
+    isGenerating: false,
   };
   render() {
     const { isGenerating } = this.state;
@@ -31,14 +31,14 @@ export default class PasswordGeneratorScreen extends Component {
                 ? Theme.colors.primary
                 : Theme.colors.disabled,
             borderRadius: Theme.roundness,
-            padding: 14
+            padding: 14,
           }}
         >
           <Text
             style={{
               color: Theme.colors.white,
               textAlign: "center",
-              fontSize: 16
+              fontSize: 16,
             }}
           >
             GENERATE

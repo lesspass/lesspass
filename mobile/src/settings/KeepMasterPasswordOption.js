@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import {
-  Button,
-  Portal,
-  Dialog,
-  List,
-  Text,
-  Switch
-} from "react-native-paper";
+import { Button, Portal, Dialog, List, Text, Switch } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 
 export default class KeepMasterPasswordOption extends Component {
@@ -15,7 +8,7 @@ export default class KeepMasterPasswordOption extends Component {
     super(props);
     this.state = {
       showModal: false,
-      masterPassword: ""
+      masterPassword: "",
     };
   }
 
@@ -23,7 +16,7 @@ export default class KeepMasterPasswordOption extends Component {
     this.setState({ showModal: false });
   };
 
-  _showModal = value => {
+  _showModal = (value) => {
     const { onClear } = this.props;
     if (value) {
       onClear();
@@ -34,14 +27,8 @@ export default class KeepMasterPasswordOption extends Component {
 
   render() {
     const { showModal, masterPassword } = this.state;
-    const {
-      label,
-      description,
-      onOk,
-      modalTitle,
-      modalDescription,
-      value
-    } = this.props;
+    const { label, description, onOk, modalTitle, modalDescription, value } =
+      this.props;
     return (
       <View>
         <Portal>
@@ -51,7 +38,7 @@ export default class KeepMasterPasswordOption extends Component {
               <View style={{ padding: 10 }}>
                 <MasterPassword
                   masterPassword={masterPassword}
-                  onChangeText={value =>
+                  onChangeText={(value) =>
                     this.setState({ masterPassword: value })
                   }
                 />

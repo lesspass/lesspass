@@ -6,10 +6,10 @@ import { isNaN } from "lodash";
 
 export default class Counter extends Component {
   state = {
-    isValid: true
+    isValid: true,
   };
 
-  checkOptionsAreValid = value => {
+  checkOptionsAreValid = (value) => {
     const { isValueValid } = this.props;
     if (isValueValid(value)) {
       this.setState({ isValid: true });
@@ -18,7 +18,7 @@ export default class Counter extends Component {
     }
   };
 
-  setNewValue = value => {
+  setNewValue = (value) => {
     const { onValueChange } = this.props;
     if (isNaN(value)) {
       onValueChange("");
@@ -28,14 +28,8 @@ export default class Counter extends Component {
   };
 
   render() {
-    const {
-      label,
-      value,
-      onValueChange,
-      minValue,
-      maxValue,
-      ...props
-    } = this.props;
+    const { label, value, onValueChange, minValue, maxValue, ...props } =
+      this.props;
     const { isValid } = this.state;
     const isValidBackgroundColor = isValid
       ? Theme.colors.primary
@@ -45,7 +39,7 @@ export default class Counter extends Component {
         <Text
           style={{
             marginBottom: 6,
-            color: isValid ? Theme.colors.black : Theme.colors.red
+            color: isValid ? Theme.colors.black : Theme.colors.red,
           }}
         >
           {label}
@@ -54,7 +48,7 @@ export default class Counter extends Component {
           style={{
             flexDirection: "row",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <TouchableOpacity
@@ -68,7 +62,7 @@ export default class Counter extends Component {
               borderColor: isValidBackgroundColor,
               backgroundColor: isValidBackgroundColor,
               paddingVertical: 6,
-              paddingHorizontal: 16
+              paddingHorizontal: 16,
             }}
             onPress={() => {
               const newValue = value - 1;
@@ -82,7 +76,7 @@ export default class Counter extends Component {
               size={12}
               name="minus"
               style={{
-                color: Theme.colors.white
+                color: Theme.colors.white,
               }}
             />
           </TouchableOpacity>
@@ -95,7 +89,7 @@ export default class Counter extends Component {
               backgroundColor: Theme.colors.white,
               borderTopWidth: 1,
               borderBottomWidth: 1,
-              borderColor: isValidBackgroundColor
+              borderColor: isValidBackgroundColor,
             }}
           >
             <TextInput
@@ -105,9 +99,9 @@ export default class Counter extends Component {
               style={{
                 paddingVertical: 0,
                 color: isValid ? Theme.colors.primary : Theme.colors.red,
-                textAlign: "center"
+                textAlign: "center",
               }}
-              onChangeText={text => {
+              onChangeText={(text) => {
                 try {
                   const newValue = parseInt(text);
                   this.checkOptionsAreValid(newValue);
@@ -126,7 +120,7 @@ export default class Counter extends Component {
               borderWidth: 1,
               borderColor: isValidBackgroundColor,
               backgroundColor: isValidBackgroundColor,
-              paddingHorizontal: 16
+              paddingHorizontal: 16,
             }}
             onPress={() => {
               const newValue = value + 1;
@@ -140,7 +134,7 @@ export default class Counter extends Component {
               size={12}
               name="plus"
               style={{
-                color: Theme.colors.white
+                color: Theme.colors.white,
               }}
             />
           </TouchableOpacity>

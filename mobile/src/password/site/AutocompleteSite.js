@@ -4,7 +4,7 @@ import {
   Text,
   TouchableWithoutFeedback,
   Platform,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import memoize from "memoize-one";
@@ -21,7 +21,7 @@ function highlight(text, i) {
       style={{
         color: Theme.colors.primary,
         fontWeight: "bold",
-        fontSize: 16
+        fontSize: 16,
       }}
     >
       {text}
@@ -35,7 +35,7 @@ function noHighlight(text, i) {
       key={i}
       style={{
         color: Theme.colors.primary,
-        fontSize: 16
+        fontSize: 16,
       }}
     >
       {text}
@@ -47,11 +47,11 @@ const style = StyleSheet.create({
   container: {
     ...Platform.select({
       ios: {
-        zIndex: 5
+        zIndex: 5,
       },
-      android: {}
-    })
-  }
+      android: {},
+    }),
+  },
 });
 
 export default class AutocompleteSite extends Component {
@@ -66,7 +66,7 @@ export default class AutocompleteSite extends Component {
       passwordProfileSelected,
       passwordProfileDeleted,
       showAutocomplete,
-      hideAutocomplete
+      hideAutocomplete,
     } = this.props;
     const items = this.returnMatchingData(value, data, dataKey);
     const highlightedItems = highlightSearch(items, highlight, noHighlight);
@@ -76,7 +76,7 @@ export default class AutocompleteSite extends Component {
           mode="outlined"
           label="Site"
           value={value}
-          onChangeText={site => onChangeText(site)}
+          onChangeText={(site) => onChangeText(site)}
           onSubmitEditing={() => hideAutocomplete()}
           autoFocus
         />
@@ -88,7 +88,7 @@ export default class AutocompleteSite extends Component {
               top: 64,
               left: 0,
               right: 0,
-              zIndex: 5
+              zIndex: 5,
             }}
           >
             {highlightedItems.map((highlightedItem, i) => {
@@ -114,7 +114,7 @@ export default class AutocompleteSite extends Component {
                     borderTopLeftRadius: isFirstElement ? Theme.roundness : 0,
                     borderTopRightRadius: isFirstElement ? Theme.roundness : 0,
                     borderColor: Theme.colors.primary,
-                    zIndex: 3
+                    zIndex: 3,
                   }}
                 >
                   <TouchableWithoutFeedback
@@ -144,7 +144,7 @@ export default class AutocompleteSite extends Component {
               <View
                 style={{
                   height: 100,
-                  backgroundColor: "transparent"
+                  backgroundColor: "transparent",
                 }}
               />
             </TouchableWithoutFeedback>

@@ -10,12 +10,12 @@ describe("profiles reducer", () => {
         {},
         {
           type: "SET_PASSWORD_PROFILES",
-          profiles: [{ id: "p1" }, { id: "p2" }]
+          profiles: [{ id: "p1" }, { id: "p2" }],
         }
       )
     ).toEqual({
       p1: { id: "p1" },
-      p2: { id: "p2" }
+      p2: { id: "p2" },
     });
   });
   it("SET_PASSWORD_PROFILES numbers become digits", () => {
@@ -24,12 +24,15 @@ describe("profiles reducer", () => {
         {},
         {
           type: "SET_PASSWORD_PROFILES",
-          profiles: [{ id: "p1", numbers: true }, { id: "p2", numbers: false }]
+          profiles: [
+            { id: "p1", numbers: true },
+            { id: "p2", numbers: false },
+          ],
         }
       )
     ).toEqual({
       p1: { id: "p1", numbers: true, digits: true },
-      p2: { id: "p2", numbers: false, digits: false }
+      p2: { id: "p2", numbers: false, digits: false },
     });
   });
   it("REMOVE_PASSWORD_PROFILE", () => {
@@ -37,15 +40,15 @@ describe("profiles reducer", () => {
       reducer(
         {
           p1: { id: "p1", numbers: true, digits: true },
-          p2: { id: "p2", numbers: false, digits: false }
+          p2: { id: "p2", numbers: false, digits: false },
         },
         {
           type: "REMOVE_PASSWORD_PROFILE",
-          profile: { id: "p1" }
+          profile: { id: "p1" },
         }
       )
     ).toEqual({
-      p2: { id: "p2", numbers: false, digits: false }
+      p2: { id: "p2", numbers: false, digits: false },
     });
   });
 });

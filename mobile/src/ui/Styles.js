@@ -7,14 +7,14 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     paddingTop: 15,
     marginBottom: 20,
-    flex: 1
+    flex: 1,
   },
   input: {
-    marginBottom: 5
+    marginBottom: 5,
   },
   header: {
     backgroundColor: Theme.colors.primary,
-    paddingVertical: 16
+    paddingVertical: 16,
   },
   fingerprint: {
     position: "absolute",
@@ -23,18 +23,18 @@ export default StyleSheet.create({
     bottom: 0,
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 4
+    zIndex: 4,
   },
   switch: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 8,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   sliderTrack: {
     height: 2,
-    borderRadius: 1
+    borderRadius: 1,
   },
   sliderTitleContainer: {
     flexDirection: "row",
@@ -42,29 +42,29 @@ export default StyleSheet.create({
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 20,
-    paddingTop: 8
+    paddingTop: 8,
   },
   sliderValue: {
     textAlign: "right",
     color: Theme.colors.text,
-    paddingVertical: 1
+    paddingVertical: 1,
   },
   slider: {
     marginHorizontal: 10,
-    marginVertical: -8
+    marginVertical: -8,
   },
   loginSignInButton: {
     marginTop: 10,
-    marginBottom: 30
+    marginBottom: 30,
   },
   loginSignUpButton: {
-    marginTop: 10
+    marginTop: 10,
   },
   forgotPasswordLink: {
-    color: Theme.colors.link
+    color: Theme.colors.link,
   },
   snackbar: {
     backgroundColor: Theme.colors.red,
-    marginBottom: 60
-  }
+    marginBottom: 60,
+  },
 });

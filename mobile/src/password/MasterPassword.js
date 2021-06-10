@@ -22,19 +22,19 @@ export default class MasterPassword extends Component {
     this.setState({ fingerprint: createFingerprint(hmacSha256) });
   };
 
-  calcFingerprint = masterPassword => {
+  calcFingerprint = (masterPassword) => {
     if (masterPassword) {
       NativeModules.LessPass.createFingerprint(masterPassword).then(
-        hmacSha256 => {
+        (hmacSha256) => {
           this.setState({
-            fingerprint: createFingerprint(hmacSha256)
+            fingerprint: createFingerprint(hmacSha256),
           });
         }
       );
     }
   };
 
-  onChangeMasterPassword = masterPassword => {
+  onChangeMasterPassword = (masterPassword) => {
     const { onChangeText } = this.props;
     onChangeText(masterPassword);
     this.calcFakedFingerprint();
@@ -45,7 +45,7 @@ export default class MasterPassword extends Component {
     const {
       masterPassword,
       hideFingerprint,
-      label = "Master Password"
+      label = "Master Password",
     } = this.props;
     const { fingerprint } = this.state;
     return (

@@ -131,12 +131,8 @@ export class PasswordGeneratorScreen extends Component {
       showAutocomplete,
       password,
     } = this.state;
-    const {
-      profiles,
-      auth,
-      savePasswordProfile,
-      deletePasswordProfile,
-    } = this.props;
+    const { profiles, auth, savePasswordProfile, deletePasswordProfile } =
+      this.props;
     return (
       <TouchableWithoutFeedback
         onPress={() => this.setState({ showAutocomplete: false })}

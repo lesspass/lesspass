@@ -12,24 +12,24 @@ describe("settings reducer", () => {
       defaultUppercase: true,
       defaultDigits: true,
       defaultSymbols: true,
-      defaultCounter: 1
+      defaultCounter: 1,
     });
   });
   it("SET_SETTINGS", () => {
     expect(
       reducer(
         {
-          keepMasterPasswordLocally: false
+          keepMasterPasswordLocally: false,
         },
         {
           type: "SET_SETTINGS",
           settings: {
-            keepMasterPasswordLocally: true
-          }
+            keepMasterPasswordLocally: true,
+          },
         }
       )
     ).toEqual({
-      keepMasterPasswordLocally: true
+      keepMasterPasswordLocally: true,
     });
   });
   it("SET_SETTINGS keep existing settings", () => {
@@ -37,18 +37,18 @@ describe("settings reducer", () => {
       reducer(
         {
           setting1: false,
-          setting2: false
+          setting2: false,
         },
         {
           type: "SET_SETTINGS",
           settings: {
-            setting1: true
-          }
+            setting1: true,
+          },
         }
       )
     ).toEqual({
       setting1: true,
-      setting2: false
+      setting2: false,
     });
   });
 });

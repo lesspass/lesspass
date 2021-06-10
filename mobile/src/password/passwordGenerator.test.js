@@ -8,7 +8,7 @@ describe("generatePassword", () => {
         .fn()
         .mockResolvedValue(
           "03948309b088a53cdea276fa32a05988e9a6f2b57ef80aec664f668789b37711"
-        )
+        ),
     };
   });
 
@@ -21,10 +21,10 @@ describe("generatePassword", () => {
       lowercase: true,
       uppercase: true,
       digits: true,
-      symbols: true
+      symbols: true,
     };
     return generatePassword("password", passwordProfile).then(
-      generatedPassword => {
+      (generatedPassword) => {
         expect(generatedPassword).toBe("\\g-A1-.OHEwrXjT#");
       }
     );
@@ -38,7 +38,7 @@ describe("generatePassword should not care about the extra number field used for
         .fn()
         .mockResolvedValue(
           "03948309b088a53cdea276fa32a05988e9a6f2b57ef80aec664f668789b37711"
-        )
+        ),
     };
   });
 
@@ -52,10 +52,10 @@ describe("generatePassword should not care about the extra number field used for
       uppercase: true,
       digits: true,
       number: true,
-      symbols: true
+      symbols: true,
     };
     return generatePassword("password", passwordProfile).then(
-      generatedPassword => {
+      (generatedPassword) => {
         expect(generatedPassword).toBe("\\g-A1-.OHEwrXjT#");
       }
     );

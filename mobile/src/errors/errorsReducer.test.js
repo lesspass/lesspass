@@ -11,8 +11,8 @@ describe("error reducer", () => {
         type: "ADD_ERROR",
         error: {
           id: Date.now().toString(),
-          message: "an error message"
-        }
+          message: "an error message",
+        },
       }
     );
     const errorIds = Object.keys(state);
@@ -25,14 +25,14 @@ describe("error reducer", () => {
         {
           e1: {
             id: "e1",
-            message: "an error message"
-          }
+            message: "an error message",
+          },
         },
         {
           type: "DELETE_ERROR",
           error: {
-            id: "e1"
-          }
+            id: "e1",
+          },
         }
       )
     ).toEqual({});

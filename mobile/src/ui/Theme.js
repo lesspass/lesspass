@@ -17,8 +17,8 @@ const Theme = {
     brown: "#A28A7D",
     orange: "#CF9E38",
     purple: "#312430",
-    link: "#2b72bb"
-  }
+    link: "#2b72bb",
+  },
 };
 
 export default Theme;

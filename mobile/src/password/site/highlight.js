@@ -2,7 +2,7 @@ function highlightMatch(match, highlight, noHightlight) {
   let index = 0;
   let regionIndex = 0;
   let regions = [];
-  match.indices.map(indice => {
+  match.indices.map((indice) => {
     const firstRegion = match.value.substring(regionIndex, indice[0]);
     if (firstRegion) {
       regions.push(noHightlight(firstRegion, index));
@@ -22,12 +22,12 @@ function highlightMatch(match, highlight, noHightlight) {
 
 export function highlightSearch(data, highlight, noHightlight) {
   const result = [];
-  data.map(d => {
+  data.map((d) => {
     const matches = d.matches;
     if (matches.length > 0) {
       result.push({
         item: d.item,
-        highlights: highlightMatch(matches[0], highlight, noHightlight)
+        highlights: highlightMatch(matches[0], highlight, noHightlight),
       });
     }
   });

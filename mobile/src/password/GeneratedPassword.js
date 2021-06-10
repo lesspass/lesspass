@@ -8,7 +8,7 @@ export default class GeneratedPassword extends Component {
   state = {
     copied: false,
     saved: false,
-    seePassword: false
+    seePassword: false,
   };
 
   _copyPassword = () => {
@@ -46,7 +46,7 @@ export default class GeneratedPassword extends Component {
               backgroundColor: Theme.colors.primary,
               borderRadius: Theme.roundness,
               marginTop: 5,
-              padding: 14
+              padding: 14,
             }}
           >
             <Text
@@ -54,7 +54,7 @@ export default class GeneratedPassword extends Component {
                 color: Theme.colors.white,
                 textAlign: "center",
                 fontSize: 16,
-                fontFamily: "Hack"
+                fontFamily: "Hack",
               }}
             >
               {saved && "SAVED"}
@@ -62,15 +62,15 @@ export default class GeneratedPassword extends Component {
               {saved || copied
                 ? null
                 : seePassword
-                  ? password
-                  : "*".repeat(password.length)}
+                ? password
+                : "*".repeat(password.length)}
             </Text>
           </View>
         </TouchableNativeFeedback>
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
           }}
         >
           <TouchableNativeFeedback onPress={() => this._copyPassword()}>
@@ -80,7 +80,7 @@ export default class GeneratedPassword extends Component {
                 marginTop: 5,
                 padding: 14,
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               <Icon
@@ -92,7 +92,7 @@ export default class GeneratedPassword extends Component {
                 style={{
                   color: Theme.colors.primary,
                   textAlign: "center",
-                  fontSize: 16
+                  fontSize: 16,
                 }}
               >
                 copy
@@ -101,8 +101,8 @@ export default class GeneratedPassword extends Component {
           </TouchableNativeFeedback>
           <TouchableNativeFeedback
             onPress={() =>
-              this.setState(prevState => ({
-                seePassword: !prevState.seePassword
+              this.setState((prevState) => ({
+                seePassword: !prevState.seePassword,
               }))
             }
           >
@@ -112,7 +112,7 @@ export default class GeneratedPassword extends Component {
                 marginTop: 5,
                 padding: 14,
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               <Icon
@@ -124,7 +124,7 @@ export default class GeneratedPassword extends Component {
                 style={{
                   color: Theme.colors.primary,
                   textAlign: "center",
-                  fontSize: 16
+                  fontSize: 16,
                 }}
               >
                 {seePassword ? "hide" : "show"}
@@ -138,7 +138,7 @@ export default class GeneratedPassword extends Component {
                 marginTop: 5,
                 padding: 14,
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               <Icon
@@ -150,7 +150,7 @@ export default class GeneratedPassword extends Component {
                 style={{
                   color: Theme.colors.primary,
                   textAlign: "center",
-                  fontSize: 16
+                  fontSize: 16,
                 }}
               >
                 clear
@@ -165,7 +165,7 @@ export default class GeneratedPassword extends Component {
                   marginTop: 5,
                   padding: 14,
                   flexDirection: "row",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
               >
                 <Icon
@@ -177,7 +177,7 @@ export default class GeneratedPassword extends Component {
                   style={{
                     color: Theme.colors.primary,
                     textAlign: "center",
-                    fontSize: 16
+                    fontSize: 16,
                   }}
                 >
                   save

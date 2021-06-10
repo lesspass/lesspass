@@ -8,10 +8,10 @@ const initialState = {
   defaultUppercase: true,
   defaultDigits: true,
   defaultSymbols: true,
-  defaultCounter: 1
+  defaultCounter: 1,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case "SET_SETTINGS":
       return { ...state, ...action.settings };

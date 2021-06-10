@@ -14,14 +14,14 @@ const rootReducer = combineReducers({
   settings: settingsReducer,
   auth: authReducer,
   errors: errorsReducer,
-  profiles: profilesReducer
+  profiles: profilesReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
   stateReconciler,
-  whitelist: ["settings", "auth"]
+  whitelist: ["settings", "auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

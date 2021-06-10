@@ -12,7 +12,7 @@ export default class Fingerprint extends Component {
           right: 10,
           top: 24,
           bottom: 0,
-          flexDirection: "row"
+          flexDirection: "row",
         }}
       >
         <Icon

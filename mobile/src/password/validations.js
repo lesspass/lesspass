@@ -27,7 +27,7 @@ export function isProfileValid({
   lowercase,
   uppercase,
   digits,
-  symbols
+  symbols,
 }) {
   return (
     isLengthValid(length) &&
