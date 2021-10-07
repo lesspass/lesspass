@@ -6,13 +6,25 @@ on:
       - "packages/lesspass-pure/dist/**"
 
 jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+      - name: test lesspass-pure package
+        run: |
+          yarn install
+          yarn workspace lesspass-pure run test
+
   deploy:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
       - name: git hash
         run: |
           git rev-parse HEAD

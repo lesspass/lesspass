@@ -12,12 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
       - name: test lesspass-crypto package
         run: |
-          cd packages/lesspass-crypto
           yarn install
-          yarn test
+          yarn workspace lesspass-crypto run test
 
   deploy:
     runs-on: ubuntu-18.04
@@ -26,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
       - name: deploy lesspass-crypto package
         run: |
           cd packages

@@ -1,4 +1,4 @@
-import formValidator from "./form-validator";
+import formValidator from "@/services/form-validator";
 
 test("formValidator.increment()", () => {
   expect(formValidator.increment(1, { min: 0, max: 10 })).toBe(2);

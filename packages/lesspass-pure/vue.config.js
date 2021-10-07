@@ -11,5 +11,6 @@ module.exports = {
     optimization: {
       splitChunks: false
     }
-  }
+  },
+  chainWebpack: config => config.resolve.symlinks(false)
 };

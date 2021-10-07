@@ -97,7 +97,7 @@ export default {
   methods: {
     fullReload() {
       this.$store.dispatch("resetPassword");
-      this.$router.push({ name: "home" }).catch(e => {});
+      this.$router.push({ name: "home" }).catch(console.error);
     },
     saveOrUpdatePassword() {
       this.$store.dispatch("saveOrUpdatePassword");

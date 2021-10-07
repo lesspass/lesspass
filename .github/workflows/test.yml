@@ -3,65 +3,16 @@ name: test
 on: [push, pull_request]
 
 jobs:
-  test-lesspass-crypto:
+  test-packages:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
       - run: |
-          cd packages/lesspass-crypto
           yarn install
-          yarn test
-
-  test-lesspass-entropy:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "12"
-      - run: |
-          cd packages/lesspass-entropy
-          yarn install
-          yarn test
-
-  test-lesspass-fingerprint:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "12"
-      - run: |
-          cd packages/lesspass-fingerprint
-          yarn install
-          yarn test
-
-  test-lesspass-render-password:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "12"
-      - run: |
-          cd packages/lesspass-render-password
-          yarn install
-          yarn test
-
-  test-lesspass-site:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "12"
-      - run: |
-          cd packages/lesspass-site
-          yarn install
-          yarn build
+          yarn workspaces run test
 
   test-mobile:
     runs-on: ubuntu-18.04
@@ -69,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
       - name: test mobile
         run: |
           cd mobile

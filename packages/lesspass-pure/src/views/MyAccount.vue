@@ -122,7 +122,7 @@ export default {
             })
             .catch(() => message.displayGenericError());
         })
-        .catch(err => {
+        .catch(() => {
           message.error(
             this.$t(
               "ChangePasswordError",

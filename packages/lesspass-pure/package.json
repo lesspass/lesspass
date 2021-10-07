@@ -10,25 +10,41 @@
     "i18n:build": "node src/i18n/build.js",
     "i18n:translate": "node src/i18n/translate.js",
     "prettier": "prettier --write 'src/**/*'",
-    "cypress:run": "cypress run",
-    "cypress:open": "cypress open",
     "test": "npm run test:unit && npm run test:e2e",
     "test:watch": "jest --watch",
-    "test:unit": "jest",
-    "test:e2e": "start-server-and-test start http://localhost:8000 cypress:run"
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e --headless",
+    "lint": "vue-cli-service lint"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "cypress"
+    "preset": "@vue/cli-plugin-unit-jest"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "browser": true,
+      "webextensions": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
     ],
-    "moduleFileExtensions": [
-      "js",
-      "vue"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "vue-jest",
-      "^.+\\.js$": "babel-jest"
-    }
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "dependencies": {
     "@oslab/atob": "^0.1.0",
@@ -40,7 +56,7 @@
     "core-js": "^3.9.1",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^3.1.2",
-    "lesspass": "^9.0.0",
+    "lesspass": "9.2.0",
     "lodash": "^4.17.21",
     "vue": "^2.6.12",
     "vue-polyglot": "^2.0.1",
@@ -51,26 +67,22 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@google-cloud/translate": "^6.1.0",
-    "@vue/cli-plugin-babel": "^4.5.11",
-    "@vue/cli-service": "^4.5.11",
-    "@vue/test-utils": "^1.1.3",
-    "axios-mock-adapter": "^1.19.0",
-    "babel-core": "7.0.0-bridge.0",
-    "cypress": "^6.8.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/test-utils": "^1.0.3",
+    "axios-mock-adapter": "^1.20.0",
+    "babel-eslint": "^10.1.0",
     "cypress-plugin-tab": "^1.0.5",
-    "jest": "^26.6.3",
-    "jquery": "^3.6.0",
-    "popper.js": "^1.16.1",
-    "start-server-and-test": "^1.12.1",
-    "vue-jest": "^3.0.7",
-    "vue-polyglot-utils": "^0.1.1",
-    "vue-template-compiler": "^2.6.12",
-    "walk": "^2.3.14"
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not dead"
   ]
 }

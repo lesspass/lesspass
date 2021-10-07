@@ -1,8 +1,8 @@
 import { mount } from "@vue/test-utils";
-import InputSite from "./InputSite.vue";
+import InputSite from "@/components/InputSite.vue";
 
-jest.mock("../services/url-parser");
-import { getSuggestions } from "../services/url-parser";
+jest.mock("@/services/url-parser");
+import { getSuggestions } from "@/services/url-parser";
 
 const createWrapper = data =>
   mount({

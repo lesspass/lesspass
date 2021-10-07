@@ -13,15 +13,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
       - name: git hash
         run: |
           git rev-parse HEAD
       - name: test lesspass-pure package
         run: |
-          cd packages/lesspass-pure
           yarn install
-          yarn test
+          yarn workspace lesspass-pure run test
 
   build-and-commit-and-push:
     runs-on: ubuntu-18.04
@@ -32,7 +31,7 @@ jobs:
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "14"
       - name: build lesspass-pure package
         run: |
           cd packages/lesspass-pure

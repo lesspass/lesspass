@@ -282,20 +282,25 @@ export default {
         );
     },
     sharePasswordProfile() {
-      const copied = copy(this.passwordURL);
-      if (copied) {
-        const copySuccessMessage = this.$t(
-          "PasswordProfileCopied",
-          "Your password profile has been copied"
+      navigator.clipboard
+        .writeText(this.passwordURL)
+        .then(() => {
+          const copySuccessMessage = this.$t(
+            "PasswordProfileCopied",
+            "Your password profile has been copied"
+          );
+          const element = document.getElementById("sharePasswordProfileButton");
+          showTooltip(element, copySuccessMessage, "left");
+          setTimeout(() => hideTooltip(element), 2000);
+        })
+        .catch(() =>
+          message.warning(
+            this.$t(
+              "SorryCopy",
+              "Sorry, copying only works in modern browsers."
+            )
+          )
         );
-        const element = document.getElementById("sharePasswordProfileButton");
-        showTooltip(element, copySuccessMessage, "left");
-        setTimeout(() => hideTooltip(element), 2000);
-      } else {
-        message.warning(
-          this.$t("SorryCopy", "Sorry, copying only works in modern browsers.")
-        );
-      }
     },
     setSite(site) {
       this.password.site = site;

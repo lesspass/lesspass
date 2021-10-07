@@ -108,14 +108,21 @@ export default {
         var siteMatch = password.site.match(new RegExp(this.searchQuery, "i"));
         return loginMatch || siteMatch;
       });
-      this.pagination.pageCount = Math.ceil(
-        passwords.length / this.pagination.perPage
-      );
       return passwords.slice(
         this.pagination.currentPage * this.pagination.perPage -
           this.pagination.perPage,
         this.pagination.currentPage * this.pagination.perPage
       );
+    }
+  },
+  watch: {
+    filteredPasswords: {
+      deep: true,
+      handler: function(newVal) {
+        this.pagination.pageCount = Math.ceil(
+          newVal.length / this.pagination.perPage
+        );
+      }
     }
   },
   beforeMount() {
