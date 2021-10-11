@@ -10,14 +10,15 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		174B492696BD1BFEB8CB792A /* libPods-LessPass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3178A2A0D39C6D11D24D04D5 /* libPods-LessPass.a */; };
 		2135E9CC48DB47BCB711C12B /* Hack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A7E546E77E74EF3A37A6A77 /* Hack.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		F08AE89A24CCC1AC00473F32 /* LessPassModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08AE89924CCC1AC00473F32 /* LessPassModule.swift */; };
 		F08AE89C24CCC24600473F32 /* LessPassModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F08AE89B24CCC24600473F32 /* LessPassModule.m */; };
+		F469205BC7F04E6E826112BF /* libPods-LessPass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C3CEA04B154D4EA5B5FE2D /* libPods-LessPass.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0033D790DF6D0BD054D0FE0B /* Pods-LessPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.release.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.release.xcconfig"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* LessPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LessPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = LessPass/AppDelegate.h; sourceTree = "<group>"; };
@@ -26,16 +27,14 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LessPass/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LessPass/main.m; sourceTree = "<group>"; };
 		2A7E546E77E74EF3A37A6A77 /* Hack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Hack.ttf; path = ../assets/fonts/Hack.ttf; sourceTree = "<group>"; };
-		3178A2A0D39C6D11D24D04D5 /* libPods-LessPass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		57C8F0D3121CE8996894A7CC /* Pods-LessPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.release.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LessPass/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		866EE194EF41CD9D16C23CCB /* libPods-LessPass-LessPassTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass-LessPassTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87960872BEE8F60939847679 /* Pods-LessPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.debug.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.debug.xcconfig"; sourceTree = "<group>"; };
+		A7C3CEA04B154D4EA5B5FE2D /* libPods-LessPass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F08AE89824CCC1AB00473F32 /* LessPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LessPass-Bridging-Header.h"; sourceTree = "<group>"; };
 		F08AE89924CCC1AC00473F32 /* LessPassModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessPassModule.swift; sourceTree = "<group>"; };
 		F08AE89B24CCC24600473F32 /* LessPassModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessPassModule.m; sourceTree = "<group>"; };
-		F91388109829B5726913CF33 /* Pods-LessPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.debug.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				174B492696BD1BFEB8CB792A /* libPods-LessPass.a in Frameworks */,
+				F469205BC7F04E6E826112BF /* libPods-LessPass.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,8 +79,7 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				3178A2A0D39C6D11D24D04D5 /* libPods-LessPass.a */,
-				866EE194EF41CD9D16C23CCB /* libPods-LessPass-LessPassTests.a */,
+				A7C3CEA04B154D4EA5B5FE2D /* libPods-LessPass.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,8 +117,8 @@
 		D727F9DEC1CEF1C5FAE9CF83 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F91388109829B5726913CF33 /* Pods-LessPass.debug.xcconfig */,
-				57C8F0D3121CE8996894A7CC /* Pods-LessPass.release.xcconfig */,
+				87960872BEE8F60939847679 /* Pods-LessPass.debug.xcconfig */,
+				0033D790DF6D0BD054D0FE0B /* Pods-LessPass.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -132,13 +130,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LessPass" */;
 			buildPhases = (
-				8D6350D0545B945D512573BC /* [CP] Check Pods Manifest.lock */,
+				8446EE65DD72C14B0E665F02 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				13762CCC098D37EF290B7420 /* [CP] Copy Pods Resources */,
+				87F65528C05E5E581ABE0A81 /* [CP] Embed Pods Frameworks */,
+				352DA40C15F903EA6E9A3A11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,7 +209,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		13762CCC098D37EF290B7420 /* [CP] Copy Pods Resources */ = {
+		352DA40C15F903EA6E9A3A11 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,7 +259,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LessPass/Pods-LessPass-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D6350D0545B945D512573BC /* [CP] Check Pods Manifest.lock */ = {
+		8446EE65DD72C14B0E665F02 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -280,6 +279,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87F65528C05E5E581ABE0A81 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LessPass/Pods-LessPass-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LessPass/Pods-LessPass-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -320,7 +339,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F91388109829B5726913CF33 /* Pods-LessPass.debug.xcconfig */;
+			baseConfigurationReference = 87960872BEE8F60939847679 /* Pods-LessPass.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -355,7 +374,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57C8F0D3121CE8996894A7CC /* Pods-LessPass.release.xcconfig */;
+			baseConfigurationReference = 0033D790DF6D0BD054D0FE0B /* Pods-LessPass.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -414,6 +433,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -475,6 +495,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

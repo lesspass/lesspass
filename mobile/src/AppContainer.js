@@ -30,6 +30,10 @@ function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
+          tabBarActiveTintColor: Theme.colors.white,
+          tabBarActiveBackgroundColor: Theme.colors.primary,
+          tabBarInactiveTintColor: Theme.colors.lightBlue,
+          tabBarInactiveBackgroundColor: Theme.colors.primary,
           tabBarIcon: ({ color, size }) => {
             let iconName;
             if (route.name === routes.PASSWORD_GENERATOR) {
@@ -40,6 +44,8 @@ function App() {
               iconName = "question";
             } else if (route.name === routes.AUTH_STACK) {
               iconName = "user";
+            } else if (route.name === routes.SIGN_IN) {
+              iconName = "user";
             } else if (route.name === routes.SIGN_OUT) {
               iconName = "user";
             }
@@ -48,12 +54,6 @@ function App() {
             );
           },
         })}
-        tabBarOptions={{
-          activeTintColor: Theme.colors.white,
-          activeBackgroundColor: Theme.colors.primary,
-          inactiveTintColor: Theme.colors.lightBlue,
-          inactiveBackgroundColor: Theme.colors.primary,
-        }}
       >
         <Tab.Screen
           name={routes.PASSWORD_GENERATOR}
@@ -64,7 +64,11 @@ function App() {
         {isAuthenticated ? (
           <Tab.Screen name={routes.SIGN_OUT} component={SignOutScreen} />
         ) : (
-          <Tab.Screen name={routes.AUTH_STACK} component={AuthStackScreen} />
+          <Tab.Screen
+            name={routes.AUTH_STACK}
+            component={AuthStackScreen}
+            options={{ title: "Sign In", headerShown: false }}
+          />
         )}
       </Tab.Navigator>
     </NavigationContainer>
