@@ -1,10 +1,10 @@
-Django==3.1.8
+Django==3.2.8
 django-cors-middleware==1.5.0
-djangorestframework==3.12.2
-djangorestframework-simplejwt==4.6.0
+djangorestframework==3.12.4
+djangorestframework-simplejwt==4.8.0
 djoser==2.1.0
 envparse==0.2.0
-gunicorn==20.0.4
-psycopg2-binary==2.8.6
+gunicorn==20.1.0
+psycopg2-binary==2.9.1
 # tests
 factory-boy==3.2.0
