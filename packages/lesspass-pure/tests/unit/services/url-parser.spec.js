@@ -3,6 +3,12 @@ import * as urlParser from "@/services/url-parser";
 test("cleanUrl", () => {
   expect(urlParser.cleanUrl("https://lesspass.com/#!/")).toBe("lesspass.com");
   expect(urlParser.cleanUrl("https://lesspass.com/api/")).toBe("lesspass.com");
+  expect(urlParser.cleanUrl("https://www.lesspass.com/#!/")).toBe(
+    "www.lesspass.com"
+  );
+  expect(urlParser.cleanUrl("https://www.lesspass.com/api/")).toBe(
+    "www.lesspass.com"
+  );
   expect(urlParser.cleanUrl("https://api.lesspass.com/")).toBe(
     "api.lesspass.com"
   );
@@ -113,10 +119,10 @@ test("getSite", () => {
     tabs: {
       query(a, callback) {
         callback([{ url: "https://example.org" }]);
-      }
-    }
+      },
+    },
   };
-  return urlParser.getSite().then(site => {
+  return urlParser.getSite().then((site) => {
     expect(site).toBe("https://example.org");
   });
 });
@@ -131,7 +137,7 @@ test("getPasswordFromUrlQuery", () => {
     symbols: "false",
     length: "16",
     counter: "1",
-    version: "2"
+    version: "2",
   };
   const expectedPassword = {
     login: "test@example.org",
@@ -142,7 +148,7 @@ test("getPasswordFromUrlQuery", () => {
     symbols: false,
     length: 16,
     counter: 1,
-    version: 2
+    version: 2,
   };
   expect(urlParser.getPasswordFromUrlQuery(query)).toEqual(expectedPassword);
 });
@@ -150,7 +156,7 @@ test("getPasswordFromUrlQuery", () => {
 test("getPasswordFromUrlQuery with base 64 encoded password profile", () => {
   const query = {
     passwordProfileEncoded:
-      "eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9"
+      "eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9",
   };
   const expectedPassword = {
     login: "test@example.org",
@@ -161,7 +167,7 @@ test("getPasswordFromUrlQuery with base 64 encoded password profile", () => {
     symbols: false,
     length: 16,
     counter: 1,
-    version: 2
+    version: 2,
   };
   expect(urlParser.getPasswordFromUrlQuery(query)).toEqual(expectedPassword);
 });
@@ -171,13 +177,13 @@ test("getPasswordFromUrlQuery booleanish", () => {
     uppercase: "true",
     lowercase: "TrUe",
     numbers: "1",
-    symbols: "0"
+    symbols: "0",
   };
   const expectedPassword = {
     uppercase: true,
     lowercase: true,
     numbers: true,
-    symbols: false
+    symbols: false,
   };
   expect(urlParser.getPasswordFromUrlQuery(query)).toEqual(expectedPassword);
 });
