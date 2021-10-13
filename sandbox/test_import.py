@@ -1,86 +1,98 @@
-import unittest
 from secrets import token_hex
 from lesspass import password
-
-
-def get_pool_of_char(password_profile):
-    return "abcdefghijklmnopqrstuvwxyz"
-
-
-def get_rules(password_profile):
-    return ["lowercase"]
-
-
-def get_rule_len(rule):
-    return 26
 
 
 def generate_random_entropy():
     return int(token_hex(32), 16)
 
 
-def _rev_pseudo_insert_chars_to_add(entropy, old_password):
-    rules = get_rules(old_password)
-    chars_to_add = []
-    for rule in rules:
-        position = 0
-        chars_to_add.append((old_password[0], rule,))
-        old_password = old_password[1:]
-        entropy = (entropy + 0) * len(old_password)
-    return chars_to_add, old_password, entropy
+CHARACTER_SUBSETS = {
+    "lowercase": "abcdefghijklmnopqrstuvwxyz",
+    "uppercase": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "digits": "0123456789",
+    "symbols": "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~",
+}
 
 
-def _rev_chars_to_add(chars_to_add, entropy, pool_of_char):
-    for char, rule in chars_to_add:
-        entropy = entropy * get_rule_len(rule) + pool_of_char.find(char)
-    return entropy
+def reverse_entropy(entropy, remainder, modulo):
+    return entropy - modulo - remainder
 
 
-def _rev_consume_entropy(old_password, entropy, pool_of_char):
-    while len(old_password) != 0:
-        last_char = old_password[-1]
-        old_password = old_password[:-1]
-        entropy = entropy * len(pool_of_char) + pool_of_char.find(last_char)
-    return entropy
+def remove_at(i, s):
+    return s[:i] + s[i + 1 :]
 
 
-def reverse_entropy(old_password, password_profile):
-    entropy = generate_random_entropy()
-    e1 = entropy
-    rules = get_rules(old_password)
-    one_char_per_rule = []
-    for rule in rules:
-        position = 0
-        one_char_per_rule.append((old_password[0], rule,))
-        old_password = old_password[1:]
-        entropy = (entropy + 0) * len(old_password)
-
-    pool_of_char = get_pool_of_char(old_password)
-    for char, rule in one_char_per_rule:
-        entropy = entropy * get_rule_len(rule) + pool_of_char.find(char)
-
-    while old_password != "":
-        last_char = old_password[-1]
-        old_password = old_password[:-1]
-        entropy = entropy * len(pool_of_char) + pool_of_char.find(last_char)
-
-    return entropy
+def get_rule_len(rule):
+    if rule == "lowercase":
+        return 26
+    if rule == "digits":
+        return 10
 
 
-class TestImportPOC(unittest.TestCase):
-    def test_can_reverse_entropy(self):
-        password_profile = {
-            "site": "lesspass.com",
-            "login": "contact@lesspass.com",
+rules = [
+    "lowercase",
+    "digits",
+]
+old_password = "bar4"
+chars_remaining = "%s" % old_password
+one_char_per_rule = []
+for rule in reversed(rules):
+    for i, c in enumerate(old_password):
+        print(f"char {c} index {i}")
+        rule_pool = CHARACTER_SUBSETS[rule]
+        if c in rule_pool:
+            print(f"{c} in {rule_pool}")
+            char_per_rule = (c, rule, i)
+            print(char_per_rule)
+            one_char_per_rule.append(char_per_rule)
+            chars_remaining = remove_at(i, chars_remaining)
+            break
+        else:
+            print(f"{c} not in {rule_pool}. skipping")
+            pass
+    print("-------")
+
+
+print("chars to insert:", one_char_per_rule)
+
+entropy = 654762009171870546215294809657
+j = 7
+print(f"e{j}:", entropy)
+j -= 1
+for i, rule in enumerate(one_char_per_rule):
+    print(f"e * ({len(old_password) - i - 1}) + {rule[2]}")
+    entropy = entropy * (len(old_password) - i - 1) + rule[2]
+    print(f"e{j}:", entropy)
+    j -= 1
+
+for i, rule in enumerate(one_char_per_rule):
+    _pool_of_char = CHARACTER_SUBSETS[rule[1]]
+    print("len _pool_of_char:", len(_pool_of_char))
+    position = _pool_of_char.find(rule[0])
+    print("position:", position)
+    entropy = entropy * len(_pool_of_char) + position
+    print(f"e{j}:", entropy)
+    j -= 1
+
+pool_of_char = CHARACTER_SUBSETS["lowercase"] + CHARACTER_SUBSETS["digits"]
+# print(chars_remaining)
+while chars_remaining != "":
+    last_char = chars_remaining[-1]
+    chars_remaining = chars_remaining[:-1]
+    entropy = entropy * len(pool_of_char) + pool_of_char.find(last_char)
+    print(f"e{j}:", entropy)
+    j -= 1
+print(entropy)
+print("x" * 100)
+print(
+    password._render_password(
+        entropy,
+        {
             "lowercase": True,
             "uppercase": False,
-            "digits": False,
+            "digits": True,
             "symbols": False,
-            "length": 11,
-            "counter": 1,
-        }
-        master_password = "password"
-        entropy = password._calc_entropy(password_profile, master_password)
-        old_entropy = reverse_entropy("oldpassword", password_profile)
-        oldpassword = password._render_password(old_entropy, password_profile)
-        self.assertEqual(oldpassword, "oldpassword")
+            "length": 5,
+        },
+    )
+)
