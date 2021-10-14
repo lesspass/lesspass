@@ -22,7 +22,17 @@ function App() {
     if (isAuthenticated) {
       dispatch(refreshTokens())
         .then(() => dispatch(getPasswordProfiles()))
-        .catch(() => dispatch(signOut()));
+        .catch((error) => {
+          if (error.response) {
+            if (error.response.status === 401) {
+              dispatch(signOut());
+            }
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        });
     }
   }, [isAuthenticated, dispatch]);
 

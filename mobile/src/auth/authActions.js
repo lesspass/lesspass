@@ -16,8 +16,7 @@ function getJWT(credentials) {
       .then((response) => {
         dispatch(setJWT(response.data));
         return response;
-      })
-      .catch(console.error);
+      });
   };
 }
 
