@@ -4,6 +4,9 @@ import Theme from "./Theme";
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  innerContainer: {
     paddingHorizontal: 15,
     paddingTop: 15,
     marginBottom: 20,

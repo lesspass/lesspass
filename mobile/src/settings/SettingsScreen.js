@@ -9,6 +9,7 @@ import TextInputModal from "./TextInputModal";
 import Switch from "../ui/Switch";
 import KeepMasterPasswordOption from "./KeepMasterPasswordOption";
 import { version } from "../version.json";
+import Styles from "../ui/Styles";
 
 export class SettingsScreen extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ export class SettingsScreen extends Component {
       defaultCounter,
     } = settings;
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={Styles.container}>
         <List.Section title="LESSPASS DATABASE">
           <TextInputModal
             label="Default URL"

@@ -62,9 +62,7 @@ export function signUp(credentials, encryptMasterPassword) {
   return (dispatch) => {
     if (encryptMasterPassword) {
       return dispatch(getEncryptedCredentials(credentials)).then(
-        (encryptedCredentials) => {
-          dispatch(register(encryptedCredentials));
-        }
+        (encryptedCredentials) => dispatch(register(encryptedCredentials))
       );
     }
     return dispatch(register(credentials));

@@ -1,18 +1,13 @@
 import React, { Component } from "react";
 import { ScrollView, Image, Linking } from "react-native";
 import { Title, Subheading, Paragraph, Button } from "react-native-paper";
+import Styles from "../ui/Styles";
 import Theme from "../ui/Theme";
 
 export default class HelpScreen extends Component {
   render() {
     return (
-      <ScrollView
-        style={{
-          flex: 1,
-          paddingTop: 20,
-          paddingHorizontal: 10,
-        }}
-      >
+      <ScrollView style={Styles.innerContainer}>
         <Title style={{ marginBottom: 10 }}>LessPass</Title>
         <Subheading>How does it work?</Subheading>
         <Paragraph style={{ marginBottom: 20 }}>

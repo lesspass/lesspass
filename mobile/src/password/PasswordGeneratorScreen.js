@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   View,
-  ScrollView,
   TouchableWithoutFeedback,
   Alert,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
 } from "react-native";
 import { isEqual } from "lodash";
 import { generatePassword } from "./passwordGenerator";
 import TextInput from "../ui/TextInput";
+import Styles from "../ui/Styles";
 import Counter from "./Counter";
 import Options from "./Options";
 import GeneratePasswordButton from "./GeneratePasswordButton";
@@ -134,19 +137,17 @@ export class PasswordGeneratorScreen extends Component {
     const { profiles, auth, savePasswordProfile, deletePasswordProfile } =
       this.props;
     return (
-      <TouchableWithoutFeedback
-        onPress={() => this.setState({ showAutocomplete: false })}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={Styles.container}
       >
-        <View style={{ flex: 1 }}>
-          <ScrollView
-            keyboardShouldPersistTaps="always"
-            style={{
-              flex: 1,
-              padding: 12,
-              zIndex: 1,
-              backgroundColor: "transparent",
-            }}
-          >
+        <TouchableWithoutFeedback
+          onPress={() => {
+            this.setState({ showAutocomplete: false });
+            Keyboard.dismiss();
+          }}
+        >
+          <View style={Styles.innerContainer}>
             <AutocompleteSite
               value={site}
               showAutocomplete={showAutocomplete}
@@ -255,9 +256,9 @@ export class PasswordGeneratorScreen extends Component {
                 onPress={() => this._generatePassword()}
               />
             )}
-          </ScrollView>
-        </View>
-      </TouchableWithoutFeedback>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     );
   }
 }

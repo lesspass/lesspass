@@ -9,13 +9,7 @@ import routes from "../routes";
 const SignOutScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
-    <ScrollView
-      style={{
-        flex: 1,
-        paddingTop: 20,
-        paddingHorizontal: 10,
-      }}
-    >
+    <ScrollView style={Styles.innerContainer}>
       <Title style={{ marginBottom: 10 }}>Sign Out</Title>
       <Button
         compact

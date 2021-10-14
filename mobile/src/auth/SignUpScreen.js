@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { KeyboardAvoidingView, ScrollView } from "react-native";
+import {
+  KeyboardAvoidingView,
+  View,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { Text, Button, Title } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 import TextInput from "../ui/TextInput";
@@ -26,63 +32,64 @@ export class SignUpScreen extends Component {
     const { encryptMasterPassword } = settings;
 
     return (
-      <ScrollView style={{ flex: 1 }}>
-        <KeyboardAvoidingView
-          style={Styles.container}
-          behavior="padding"
-          enabled
-        >
-          <Title>Create an account</Title>
-          <TextInput
-            mode="outlined"
-            label="Email"
-            value={email}
-            onChangeText={(text) => this.setState({ email: text.trim() })}
-          />
-          <MasterPassword
-            label={encryptMasterPassword ? "Master Password" : "Password"}
-            masterPassword={password}
-            hideFingerprint={!encryptMasterPassword}
-            onChangeText={(password) => this.setState({ password })}
-          />
-          <Button
-            compact
-            icon="account-circle"
-            mode="contained"
-            style={Styles.loginSignInButton}
-            disabled={isEmpty(email) || isEmpty(password) || isLoading}
-            onPress={() => {
-              this.setState({ isLoading: true });
-              signUp(
-                {
-                  email,
-                  password,
-                },
-                encryptMasterPassword
-              )
-                .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
-                .catch(() => {
-                  this.setState({ isLoading: false });
-                  addError(
-                    "Unable to sign up. Try in a few minutes or contact an administrator."
-                  );
-                });
-            }}
-          >
-            Sign Up
-          </Button>
-          <Text>Already have an account?</Text>
-          <Button
-            compact
-            icon="account-circle"
-            mode="outlined"
-            style={Styles.loginSignUpButton}
-            onPress={() => navigation.navigate(routes.SIGN_IN)}
-          >
-            Sign In
-          </Button>
-        </KeyboardAvoidingView>
-      </ScrollView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={Styles.container}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={Styles.innerContainer}>
+            <Title>Create an account</Title>
+            <TextInput
+              mode="outlined"
+              label="Email"
+              value={email}
+              onChangeText={(text) => this.setState({ email: text.trim() })}
+            />
+            <MasterPassword
+              label={encryptMasterPassword ? "Master Password" : "Password"}
+              masterPassword={password}
+              hideFingerprint={!encryptMasterPassword}
+              onChangeText={(password) => this.setState({ password })}
+            />
+            <Button
+              compact
+              icon="account-circle"
+              mode="contained"
+              style={Styles.loginSignInButton}
+              disabled={isEmpty(email) || isEmpty(password) || isLoading}
+              onPress={() => {
+                this.setState({ isLoading: true });
+                signUp(
+                  {
+                    email,
+                    password,
+                  },
+                  encryptMasterPassword
+                )
+                  .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
+                  .catch(() => {
+                    this.setState({ isLoading: false });
+                    addError(
+                      "Unable to sign up. Try in a few minutes or contact an administrator."
+                    );
+                  });
+              }}
+            >
+              Sign Up
+            </Button>
+            <Text>Already have an account?</Text>
+            <Button
+              compact
+              icon="account-circle"
+              mode="outlined"
+              style={Styles.loginSignUpButton}
+              onPress={() => navigation.navigate(routes.SIGN_IN)}
+            >
+              Sign In
+            </Button>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     );
   }
 }
