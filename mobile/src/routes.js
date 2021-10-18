@@ -1,5 +1,6 @@
 const routes = {
   PASSWORD_GENERATOR: "LessPass",
+  PASSWORD_PROFILES: "Passwords profiles",
   SETTINGS: "Settings",
   HELP: "Help",
   AUTH_STACK: "Auth",

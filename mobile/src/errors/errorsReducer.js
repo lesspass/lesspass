@@ -12,6 +12,8 @@ export default function (state = initialState, action) {
     case "DELETE_ERROR":
       delete state[action.error.id];
       return { ...state };
+    case "LOG_IN":
+      return { ...initialState };
     default:
       return state;
   }

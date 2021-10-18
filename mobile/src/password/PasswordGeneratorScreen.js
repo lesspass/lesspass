@@ -1,285 +1,193 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
 import {
   View,
   TouchableWithoutFeedback,
-  Alert,
   KeyboardAvoidingView,
   Platform,
   Keyboard,
 } from "react-native";
-import { isEqual } from "lodash";
 import { generatePassword } from "./passwordGenerator";
 import TextInput from "../ui/TextInput";
+import { useDispatch, useSelector } from "react-redux";
 import Styles from "../ui/Styles";
 import Counter from "./Counter";
 import Options from "./Options";
 import GeneratePasswordButton from "./GeneratePasswordButton";
 import GeneratedPassword from "./GeneratedPassword";
 import MasterPassword from "./MasterPassword";
-import AutocompleteSite from "./site/AutocompleteSite";
-import { savePasswordProfile, deletePasswordProfile } from "./profilesActions";
+import { savePasswordProfile, updatePasswordProfile } from "./profilesActions";
 import {
   isProfileValid,
   isLengthValid,
   isCounterValid,
   areOptionsValid,
 } from "./validations";
+import { cleanPasswordProfile } from "../profiles/profileActions";
 
-export class PasswordGeneratorScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...this._getInitialState(),
-    };
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (!isEqual(this.props.settings, prevProps.settings)) {
-      const initialState = this._getInitialState();
-      this.setState(initialState);
-    }
-    const passwordProfile = this._getPasswordProfile();
-    const previousPasswordProfile = this._getPasswordProfile(prevState);
-    if (!isEqual(passwordProfile, previousPasswordProfile)) {
-      clearTimeout(this.state.clearTimeout);
-      this.setState({ password: null, clearTimeout: null });
-    }
-  }
-
-  _getInitialState = () => {
-    const {
-      defaultPasswordProfileLogin,
-      defaultGeneratedPasswordLength,
-      defaultLowercase,
-      defaultUppercase,
-      defaultDigits,
-      defaultSymbols,
-      defaultCounter,
-    } = this.props.settings;
-    return {
-      id: null,
-      site: "",
-      login: defaultPasswordProfileLogin,
-      masterPassword: "",
-      lowercase: defaultLowercase,
-      uppercase: defaultUppercase,
-      digits: defaultDigits,
-      symbols: defaultSymbols,
-      length: defaultGeneratedPasswordLength,
-      counter: defaultCounter,
-      password: null,
-      showAutocomplete: true,
-      clearTimeout: null,
-    };
+function _getInitialState(settings) {
+  return {
+    id: null,
+    site: "",
+    login: settings.defaultPasswordProfileLogin,
+    masterPassword: "",
+    lowercase: settings.defaultLowercase,
+    uppercase: settings.defaultUppercase,
+    digits: settings.defaultDigits,
+    symbols: settings.defaultSymbols,
+    length: settings.defaultGeneratedPasswordLength,
+    counter: settings.defaultCounter,
+    password: null,
   };
-
-  _getPasswordProfile = (state = this.state) => {
-    const {
-      id,
-      site,
-      login,
-      lowercase,
-      uppercase,
-      digits,
-      symbols,
-      length,
-      counter,
-    } = state;
-    return {
-      id,
-      site,
-      login,
-      lowercase,
-      uppercase,
-      number: digits,
-      digits,
-      symbols,
-      length,
-      counter,
-    };
+}
+function _getPasswordProfile(state) {
+  return {
+    id: state.id,
+    site: state.site,
+    login: state.login,
+    lowercase: state.lowercase,
+    uppercase: state.uppercase,
+    number: state.digits,
+    digits: state.digits,
+    symbols: state.symbols,
+    length: state.length,
+    counter: state.counter,
   };
+}
 
-  _generatePassword = async () => {
-    const passwordProfile = this._getPasswordProfile();
-    const { masterPassword } = this.state;
-    const password = await generatePassword(masterPassword, passwordProfile);
-    const clearTimeout = setTimeout(() => {
-      this._clear();
+export default function PasswordGeneratorScreen() {
+  const profile = useSelector((state) => state.profile);
+  const settings = useSelector((state) => state.settings);
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const [state, setState] = useState(() => _getInitialState(settings));
+
+  useEffect(() => {
+    const newState = _getInitialState(settings);
+    if (profile === null) {
+      setState({ ...newState });
+    } else {
+      setState({ ...newState, ...profile });
+    }
+  }, [settings, profile]);
+
+  useEffect(() => {
+    const passwordTimer = setTimeout(() => {
+      if (state.password !== null) {
+        setState({ ..._getInitialState(settings) });
+      }
     }, 60 * 1000);
-    this.setState({ password, clearTimeout });
-  };
+    return () => {
+      clearTimeout(passwordTimer);
+    };
+  }, [state.password]);
 
-  _canGeneratePassword = () => {
-    const passwordProfile = this._getPasswordProfile();
-    const { masterPassword } = this.state;
-    return masterPassword && isProfileValid(passwordProfile);
-  };
-
-  _clear = () => {
-    this.setState({ ...this._getInitialState() });
-  };
-
-  render() {
-    const {
-      site,
-      login,
-      masterPassword,
-      lowercase,
-      uppercase,
-      digits,
-      symbols,
-      length,
-      counter,
-      showAutocomplete,
-      password,
-    } = this.state;
-    const { profiles, auth, savePasswordProfile, deletePasswordProfile } =
-      this.props;
-    return (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={Styles.container}
-      >
-        <TouchableWithoutFeedback
-          onPress={() => {
-            this.setState({ showAutocomplete: false });
-            Keyboard.dismiss();
-          }}
-        >
-          <View style={Styles.innerContainer}>
-            <AutocompleteSite
-              value={site}
-              showAutocomplete={showAutocomplete}
-              hideAutocomplete={() =>
-                this.setState({ showAutocomplete: false })
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={Styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={Styles.innerContainer}>
+          <TextInput
+            mode="outlined"
+            label="Site"
+            value={state.site}
+            onChangeText={(site) => setState((state) => ({ ...state, site }))}
+          />
+          <TextInput
+            mode="outlined"
+            label="Login"
+            value={state.login}
+            onChangeText={(login) => setState((state) => ({ ...state, login }))}
+          />
+          <MasterPassword
+            masterPassword={state.masterPassword}
+            onChangeText={(masterPassword) =>
+              setState((state) => ({ ...state, masterPassword }))
+            }
+          />
+          <Options
+            options={{
+              lowercase: state.lowercase,
+              uppercase: state.uppercase,
+              digits: state.digits,
+              symbols: state.symbols,
+            }}
+            areOptionsValid={areOptionsValid}
+            onOptionsChange={(options) => {
+              setState((state) => ({ ...state, ...options }));
+            }}
+            style={{
+              marginTop: 10,
+            }}
+          />
+          <View
+            style={{
+              marginTop: 10,
+              marginBottom: 30,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <Counter
+              label="Length"
+              value={state.length}
+              isValueValid={isLengthValid}
+              minValue={5}
+              maxValue={35}
+              onValueChange={(length) =>
+                setState((state) => ({ ...state, length }))
               }
-              onChangeText={(site) =>
-                this.setState({ site, showAutocomplete: true })
+            />
+            <Counter
+              label="Counter"
+              value={state.counter}
+              isValueValid={isCounterValid}
+              minValue={1}
+              onValueChange={(counter) =>
+                setState((state) => ({ ...state, counter }))
               }
-              data={Object.values(profiles)}
-              dataKey="site"
-              passwordProfileSelected={(profile) => {
-                this.setState({ ...profile, showAutocomplete: false });
+            />
+          </View>
+          {state.password ? (
+            <GeneratedPassword
+              password={state.password}
+              clear={() => dispatch(cleanPasswordProfile())}
+              isAuthenticated={auth.isAuthenticated}
+              isANewProfile={state.id === null}
+              save={() => {
+                const passwordProfile = _getPasswordProfile(state);
+                dispatch(savePasswordProfile(passwordProfile)).then(
+                  (response) =>
+                    setState((state) => ({ ...state, ...response.data }))
+                );
               }}
-              passwordProfileDeleted={(profile) => {
-                Alert.alert(
-                  "Delete password profile",
-                  `Are you sure you want to delete password profile for ${profile.site}?`,
-                  [
-                    {
-                      text: "Oups no!",
-                      onPress: console.log,
-                      style: "cancel",
-                    },
-                    {
-                      text: "Sure",
-                      onPress: () => {
-                        deletePasswordProfile(profile);
-                        this._clear();
-                      },
-                    },
-                  ],
-                  { cancelable: false }
+              update={() => {
+                const passwordProfile = _getPasswordProfile(state);
+                dispatch(updatePasswordProfile(passwordProfile)).then(
+                  (response) =>
+                    setState((state) => ({ ...state, ...response.data }))
                 );
               }}
             />
-            <TextInput
-              mode="outlined"
-              label="Login"
-              value={login}
-              onChangeText={(login) => this.setState({ login })}
-            />
-            <MasterPassword
-              masterPassword={masterPassword}
-              onChangeText={(masterPassword) =>
-                this.setState({ masterPassword })
-              }
-            />
-            <Options
-              options={{ lowercase, uppercase, digits, symbols }}
-              areOptionsValid={areOptionsValid}
-              onOptionsChange={(options) => {
-                this.setState({ ...options });
+          ) : (
+            <GeneratePasswordButton
+              isDisabled={() => {
+                const passwordProfile = _getPasswordProfile(state);
+                return state.masterPassword && isProfileValid(passwordProfile);
               }}
-              style={{
-                marginTop: 10,
+              onPress={async () => {
+                const passwordProfile = _getPasswordProfile(state);
+                const password = await generatePassword(
+                  state.masterPassword,
+                  passwordProfile
+                );
+                setState((state) => ({ ...state, password }));
               }}
             />
-            <View
-              style={{
-                marginTop: 10,
-                marginBottom: 30,
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <Counter
-                label="Length"
-                value={length}
-                isValueValid={isLengthValid}
-                minValue={5}
-                maxValue={35}
-                onValueChange={(value) => {
-                  this.setState({
-                    length: value,
-                  });
-                }}
-              />
-              <Counter
-                label="Counter"
-                value={counter}
-                isValueValid={isCounterValid}
-                minValue={1}
-                onValueChange={(value) => {
-                  this.setState({
-                    counter: value,
-                  });
-                }}
-              />
-            </View>
-            {password ? (
-              <GeneratedPassword
-                password={password}
-                clear={this._clear}
-                isAuthenticated={auth.isAuthenticated}
-                save={() => {
-                  const profile = this._getPasswordProfile();
-                  savePasswordProfile(profile).then((response) =>
-                    this.setState({ ...response.data })
-                  );
-                }}
-              />
-            ) : (
-              <GeneratePasswordButton
-                isDisabled={this._canGeneratePassword}
-                onPress={() => this._generatePassword()}
-              />
-            )}
-          </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    );
-  }
+          )}
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  );
 }
-
-function mapStateToProps(state) {
-  return {
-    settings: state.settings,
-    auth: state.auth,
-    profiles: state.profiles,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    savePasswordProfile: (profile) => dispatch(savePasswordProfile(profile)),
-    deletePasswordProfile: (profile) =>
-      dispatch(deletePasswordProfile(profile)),
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PasswordGeneratorScreen);

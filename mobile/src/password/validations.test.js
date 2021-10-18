@@ -1,3 +1,4 @@
+import defaultPasswordProfile from "../settings/defaultPasswordProfile";
 import {
   isProfileValid,
   isLengthValid,
@@ -97,6 +98,7 @@ describe("validation", () => {
           symbols: true,
         })
       ).toBe(false);
+      expect(isProfileValid(defaultPasswordProfile)).toBe(false);
     });
     it("with only site", () => {
       expect(

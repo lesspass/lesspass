@@ -51,4 +51,22 @@ describe("profiles reducer", () => {
       p2: { id: "p2", numbers: false, digits: false },
     });
   });
+  it("ADD_PASSWORD_PROFILE", () => {
+    expect(
+      reducer(
+        {
+          p1: { id: "p1" },
+          p2: { id: "p2" },
+        },
+        {
+          type: "ADD_PASSWORD_PROFILE",
+          profile: { id: "p3" },
+        }
+      )
+    ).toEqual({
+      p1: { id: "p1" },
+      p2: { id: "p2" },
+      p3: { id: "p3" },
+    });
+  });
 });

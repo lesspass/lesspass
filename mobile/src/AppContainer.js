@@ -12,6 +12,7 @@ import SignOutScreen from "./auth/SignOutScreen";
 import routes from "./routes";
 import { getPasswordProfiles } from "./password/profilesActions";
 import { refreshTokens, signOut } from "./auth/authActions";
+import ProfilesScreen from "./profiles/ProfilesScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,10 +28,6 @@ function App() {
             if (error.response.status === 401) {
               dispatch(signOut());
             }
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("error", error.message);
           }
         });
     }
@@ -48,6 +45,8 @@ function App() {
             let iconName;
             if (route.name === routes.PASSWORD_GENERATOR) {
               iconName = "user-secret";
+            } else if (route.name === routes.PASSWORD_PROFILES) {
+              iconName = "key";
             } else if (route.name === routes.SETTINGS) {
               iconName = "cogs";
             } else if (route.name === routes.HELP) {
@@ -69,6 +68,13 @@ function App() {
           name={routes.PASSWORD_GENERATOR}
           component={PasswordGeneratorScreen}
         />
+        {isAuthenticated ? (
+          <Tab.Screen
+            name={routes.PASSWORD_PROFILES}
+            component={ProfilesScreen}
+            options={{ title: "Passwords", headerShown: false }}
+          />
+        ) : null}
         <Tab.Screen name={routes.SETTINGS} component={SettingsScreen} />
         <Tab.Screen name={routes.HELP} component={HelpScreen} />
         {isAuthenticated ? (

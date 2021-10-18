@@ -9,11 +9,13 @@ import settingsReducer from "./settings/settingsReducer";
 import authReducer from "./auth/authReducer";
 import errorsReducer from "./errors/errorsReducer";
 import profilesReducer from "./password/profilesReducer";
+import profileReducer from "./profiles/profileReducer";
 
 const rootReducer = combineReducers({
   settings: settingsReducer,
   auth: authReducer,
   errors: errorsReducer,
+  profile: profileReducer,
   profiles: profilesReducer,
 });
 

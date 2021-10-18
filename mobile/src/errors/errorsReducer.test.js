@@ -37,4 +37,23 @@ describe("error reducer", () => {
       )
     ).toEqual({});
   });
+  it("LOG_IN delete all errors", () => {
+    expect(
+      reducer(
+        {
+          e1: {
+            id: "e1",
+            message: "an error message for e1",
+          },
+          e2: {
+            id: "e2",
+            message: "an error message for e2",
+          },
+        },
+        {
+          type: "LOG_IN",
+        }
+      )
+    ).toEqual({});
+  });
 });

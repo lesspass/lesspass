@@ -1,110 +1,178 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableNativeFeedback } from "react-native";
 import Clipboard from "@react-native-community/clipboard";
 import Theme from "../ui/Theme";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export default class GeneratedPassword extends Component {
-  state = {
-    copied: false,
-    saved: false,
-    seePassword: false,
-  };
+export default function GeneratedPassword({
+  isAuthenticated,
+  password,
+  save,
+  update,
+  clear,
+  isANewProfile,
+}) {
+  const [copied, setCopied] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [seePassword, setSeePassword] = useState(false);
 
-  _copyPassword = () => {
-    const { password } = this.props;
-    Clipboard.setString(password);
-    this.setState({ copied: true });
-    setTimeout(() => {
-      this.setState({ copied: false });
+  useEffect(() => {
+    const copiedTimer = setTimeout(() => {
+      if (copied === true) {
+        setCopied(false);
+      }
     }, 3000);
-  };
+    return () => {
+      clearTimeout(copiedTimer);
+    };
+  }, [copied]);
 
-  _save = () => {
-    this.props.save();
-    this.setState({ saved: true });
-    setTimeout(() => {
-      this.setState({ saved: false });
+  useEffect(() => {
+    const savedTimer = setTimeout(() => {
+      if (saved === true) {
+        setSaved(false);
+      }
     }, 3000);
-  };
+    return () => {
+      clearTimeout(savedTimer);
+    };
+  }, [saved]);
 
-  _clear = () => {
-    const { clear } = this.props;
-    Clipboard.setString("");
-    clear();
-  };
-
-  render() {
-    const { copied, saved, seePassword } = this.state;
-    const { isAuthenticated, password, save } = this.props;
-    if (!password) return null;
-    return (
-      <React.Fragment>
-        <TouchableNativeFeedback onPress={this._copyPassword}>
-          <View
+  if (!password) return null;
+  return (
+    <>
+      <TouchableNativeFeedback
+        onPress={() => {
+          Clipboard.setString(password);
+          setCopied(true);
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: Theme.colors.primary,
+            borderRadius: Theme.roundness,
+            marginTop: 5,
+            padding: 14,
+          }}
+        >
+          <Text
             style={{
-              backgroundColor: Theme.colors.primary,
-              borderRadius: Theme.roundness,
-              marginTop: 5,
-              padding: 14,
+              color: Theme.colors.white,
+              textAlign: "center",
+              fontSize: 16,
+              fontFamily: "Hack",
             }}
           >
+            {saved && "SAVED"}
+            {copied && "COPIED"}
+            {saved || copied
+              ? null
+              : seePassword
+              ? password
+              : "*".repeat(password.length)}
+          </Text>
+        </View>
+      </TouchableNativeFeedback>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <TouchableNativeFeedback
+          onPress={() => {
+            Clipboard.setString(password);
+            setCopied(true);
+          }}
+        >
+          <View
+            style={{
+              borderRadius: Theme.roundness,
+              marginTop: 5,
+              padding: 7,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Icon
+              size={18}
+              name="clipboard"
+              style={{ marginRight: 10, color: Theme.colors.primary }}
+            />
             <Text
               style={{
-                color: Theme.colors.white,
+                color: Theme.colors.primary,
                 textAlign: "center",
                 fontSize: 16,
-                fontFamily: "Hack",
               }}
             >
-              {saved && "SAVED"}
-              {copied && "COPIED"}
-              {saved || copied
-                ? null
-                : seePassword
-                ? password
-                : "*".repeat(password.length)}
+              copy
             </Text>
           </View>
         </TouchableNativeFeedback>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
+        <TouchableNativeFeedback
+          onPress={() => setSeePassword((seePassword) => !seePassword)}
         >
-          <TouchableNativeFeedback onPress={() => this._copyPassword()}>
-            <View
+          <View
+            style={{
+              borderRadius: Theme.roundness,
+              marginTop: 5,
+              padding: 14,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Icon
+              size={18}
+              name="eye"
+              style={{ marginRight: 10, color: Theme.colors.primary }}
+            />
+            <Text
               style={{
-                borderRadius: Theme.roundness,
-                marginTop: 5,
-                padding: 14,
-                flexDirection: "row",
-                alignItems: "center",
+                color: Theme.colors.primary,
+                textAlign: "center",
+                fontSize: 16,
               }}
             >
-              <Icon
-                size={18}
-                name="clipboard"
-                style={{ marginRight: 10, color: Theme.colors.primary }}
-              />
-              <Text
-                style={{
-                  color: Theme.colors.primary,
-                  textAlign: "center",
-                  fontSize: 16,
-                }}
-              >
-                copy
-              </Text>
-            </View>
-          </TouchableNativeFeedback>
+              {seePassword ? "hide" : "show"}
+            </Text>
+          </View>
+        </TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={clear}>
+          <View
+            style={{
+              borderRadius: Theme.roundness,
+              marginTop: 5,
+              padding: 14,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Icon
+              size={18}
+              name="refresh"
+              style={{ marginRight: 10, color: Theme.colors.primary }}
+            />
+            <Text
+              style={{
+                color: Theme.colors.primary,
+                textAlign: "center",
+                fontSize: 16,
+              }}
+            >
+              clear
+            </Text>
+          </View>
+        </TouchableNativeFeedback>
+        {isAuthenticated && (
           <TouchableNativeFeedback
-            onPress={() =>
-              this.setState((prevState) => ({
-                seePassword: !prevState.seePassword,
-              }))
-            }
+            onPress={() => {
+              if (isANewProfile) {
+                save();
+              } else {
+                update();
+              }
+            }}
           >
             <View
               style={{
@@ -117,7 +185,7 @@ export default class GeneratedPassword extends Component {
             >
               <Icon
                 size={18}
-                name="eye"
+                name="save"
                 style={{ marginRight: 10, color: Theme.colors.primary }}
               />
               <Text
@@ -127,66 +195,12 @@ export default class GeneratedPassword extends Component {
                   fontSize: 16,
                 }}
               >
-                {seePassword ? "hide" : "show"}
+                {isANewProfile ? "save" : "update"}
               </Text>
             </View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback onPress={() => this._clear()}>
-            <View
-              style={{
-                borderRadius: Theme.roundness,
-                marginTop: 5,
-                padding: 14,
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <Icon
-                size={18}
-                name="refresh"
-                style={{ marginRight: 10, color: Theme.colors.primary }}
-              />
-              <Text
-                style={{
-                  color: Theme.colors.primary,
-                  textAlign: "center",
-                  fontSize: 16,
-                }}
-              >
-                clear
-              </Text>
-            </View>
-          </TouchableNativeFeedback>
-          {isAuthenticated && (
-            <TouchableNativeFeedback onPress={() => this._save()}>
-              <View
-                style={{
-                  borderRadius: Theme.roundness,
-                  marginTop: 5,
-                  padding: 14,
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Icon
-                  size={18}
-                  name="save"
-                  style={{ marginRight: 10, color: Theme.colors.primary }}
-                />
-                <Text
-                  style={{
-                    color: Theme.colors.primary,
-                    textAlign: "center",
-                    fontSize: 16,
-                  }}
-                >
-                  save
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-          )}
-        </View>
-      </React.Fragment>
-    );
-  }
+        )}
+      </View>
+    </>
+  );
 }

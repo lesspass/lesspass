@@ -1,6 +1,13 @@
 import axios from "axios";
 import { addError } from "../errors/errorsActions";
 
+function addPasswordProfile(profile) {
+  return {
+    type: "ADD_PASSWORD_PROFILE",
+    profile,
+  };
+}
+
 function setPasswordProfiles(profiles) {
   return {
     type: "SET_PASSWORD_PROFILES",
@@ -37,13 +44,34 @@ export function savePasswordProfile(profile) {
         headers: { Authorization: `Bearer ${auth.accessToken}` },
       })
       .then((response) => {
-        dispatch(setPasswordProfiles([response.data]));
+        dispatch(addPasswordProfile({ ...response.data }));
         return response;
       })
       .catch(() =>
         dispatch(
           addError(
             "We cannot save your password profile. Retry in a few minutes or contact us."
+          )
+        )
+      );
+  };
+}
+
+export function updatePasswordProfile(profile) {
+  return (dispatch, getState) => {
+    const { settings, auth } = getState();
+    return axios
+      .put(`${settings.baseURL}/passwords/${profile.id}/`, profile, {
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
+      })
+      .then((response) => {
+        dispatch(addPasswordProfile({ ...response.data }));
+        return response;
+      })
+      .catch(() =>
+        dispatch(
+          addError(
+            "We cannot update your password profile. Retry in a few minutes or contact us."
           )
         )
       );

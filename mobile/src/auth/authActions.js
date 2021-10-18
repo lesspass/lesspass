@@ -1,5 +1,6 @@
 import axios from "axios";
 import { generatePassword } from "../password/passwordGenerator";
+import defaultPasswordProfile from "../settings/defaultPasswordProfile";
 
 export function setJWT(tokens) {
   return {
@@ -23,14 +24,9 @@ function getJWT(credentials) {
 function getEncryptedCredentials(credentials) {
   return () => {
     return generatePassword(credentials.password, {
+      ...defaultPasswordProfile,
       site: "lesspass.com",
       login: credentials.email,
-      lowercase: true,
-      uppercase: true,
-      digits: true,
-      symbols: true,
-      length: 16,
-      counter: 1,
     }).then((encryptedPassword) => ({
       email: credentials.email,
       password: encryptedPassword,

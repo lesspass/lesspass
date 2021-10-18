@@ -1,14 +1,16 @@
+import defaultPasswordProfile from "./defaultPasswordProfile";
+
 const initialState = {
   keepMasterPasswordLocally: false,
   baseURL: "https://api.lesspass.com",
   encryptMasterPassword: true,
   defaultPasswordProfileLogin: "",
-  defaultGeneratedPasswordLength: 16,
-  defaultLowercase: true,
-  defaultUppercase: true,
-  defaultDigits: true,
-  defaultSymbols: true,
-  defaultCounter: 1,
+  defaultGeneratedPasswordLength: defaultPasswordProfile.length,
+  defaultLowercase: defaultPasswordProfile.lowercase,
+  defaultUppercase: defaultPasswordProfile.uppercase,
+  defaultDigits: defaultPasswordProfile.digits,
+  defaultSymbols: defaultPasswordProfile.symbols,
+  defaultCounter: defaultPasswordProfile.counter,
 };
 
 export default function (state = initialState, action) {
