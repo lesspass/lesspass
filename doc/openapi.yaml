@@ -1,0 +1,485 @@
+openapi: 3.0.0
+info:
+  title: LessPass Server API
+  version: 0.1.0
+servers:
+  - url: https://api.lesspass.com/
+paths:
+  /auth/users/:
+    summary: Create new user
+    post:
+      tags:
+        - Auth
+      summary: Create new user
+      description: Create a new user
+      operationId: authusers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_signup_login'
+        description: New user email and password
+        required: true
+      responses:
+        '201':
+          description: User creation suscessfully
+          content:
+            application/json:
+              example:
+                key: null
+                email: user@example.com
+                id: 14348
+        '400':
+          description: User creation error
+          content:
+            application/json:
+              examples:
+                email problem:
+                  value:
+                    email: [ "Enter a valid email address." ]
+                password problem:
+                  value:
+                    password:
+                      - This password is too short. It must contain at least 8 characters.
+                      - This password is too common.
+                      - This password is entirely numeric.
+  /auth/users/reset_password/:
+    summary: Recover lost password
+    post:
+      tags:
+        - Auth
+      summary: Recover lost password
+      description: Recover lost password of existing user
+      operationId: authusersresetpassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_reset_password'
+        description: New user email and password
+        required: true
+      responses:
+        '204':
+          description: Recover suscessfully
+  /auth/users/set_password/:
+    summary: Change user password
+    post:
+      tags:
+        - Auth
+      summary: Change user password
+      description: Change password of existing user
+      operationId: authuserssetpassword
+      security:
+        - JWTAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_set_password'
+        description: New user email and password
+        required: true
+      responses:
+        '204':
+          description: Password changed suscessfully
+        '401':
+          $ref: '#/components/responses/unauthorized_error'
+  /auth/jwt/create/:
+    summary: Perform user login
+    post:
+      tags:
+        - Auth
+      summary: Authenticate an existing user
+      description: Authenticate an existing user
+      operationId: authjwtcreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_signup_login'
+        description: New user email and password
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/auth_jwt_create'
+  /auth/jwt/refresh/:
+    summary: Perform token refresh
+    post:
+      tags:
+        - Auth
+      summary: Refresh user token
+      description: Refresh user token
+      operationId: authjwtrefresh
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/jwt_token_refresh'
+        description: Refresh token
+        required: true
+      responses:
+        '201':
+          $ref: '#/components/responses/auth_jwt_refresh'
+        '400':
+          description: Refresh token is in blank
+          content:
+            application/json:
+              example:
+                refresh: [ "This field may not be blank." ]
+        '401':
+          description: Refresh token has wrong type, is not valid or expired
+          content:
+            application/json:
+              examples:
+                token is invalid or expired:
+                  value:
+                    detail: Token is invalid or expired
+                    code: token_not_valid
+                token has wrong type:
+                  value:
+                    detail: Token has wrong type
+                    code: token_not_valid
+  /passwords/:
+    summary: Work with stored passwords
+    get:
+      tags:
+        - Passwords
+      summary: Get passwords list
+      description: Get passwords list
+      operationId: passwordsget
+      security:
+        - JWTAuth: []
+      responses:
+        '200':
+          $ref: '#/components/responses/passwords'
+        '401':
+          $ref: '#/components/responses/unauthorized_error'
+    post:
+      tags:
+        - Passwords
+      summary: Create new password
+      description: Create new password
+      operationId: passwordspost
+      security:
+        - JWTAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/password'
+        description: Create new password
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/password'
+        '401':
+          $ref: '#/components/responses/unauthorized_error'
+  /passwords/{password_id}/:
+    summary: Modify or delete stored password
+    put:
+      tags:
+        - Passwords
+      summary: Modify existing password
+      description: Modify existing password
+      operationId: passwordsidput
+      security:
+        - JWTAuth: []
+      parameters:
+        - $ref: '#/components/parameters/password_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/password'
+        description: Modify existing password
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/password'
+        '400':
+          description: Parse error
+          content:
+            application/json:
+              examples:
+                invalid values in fields:
+                  value:
+                    field: [ "A valid value is required." ]
+                invalid json:
+                  value:
+                    detail: "JSON parse error - Expecting value: line 1 column 1 (char 0)"
+        '401':
+          $ref: '#/components/responses/unauthorized_error'
+        '404':
+          description: Password ID not found
+          content:
+            application/json:
+              example:
+                detail: Not found.
+    delete:
+      tags:
+        - Passwords
+      summary: Modify existing password
+      description: Modify existing password
+      operationId: passwordsiddelete
+      security:
+        - JWTAuth: []
+      parameters:
+        - $ref: '#/components/parameters/password_id'
+      responses:
+        '204':
+          description: Deletion done
+        '404':
+          description: Password ID not found
+          content:
+            application/json:
+              example:
+                detail: Not found.
+components:
+  parameters:
+    password_id:
+      in: path
+      name: password_id
+      required: true
+      description: The ID of password
+      schema:
+        type: string
+  responses:
+    auth_jwt_create:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/jwt_response'
+    auth_jwt_refresh:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/jwt_response'
+    password:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/password_response'
+    passwords:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/passwords_response'
+    unauthorized_error:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_response'
+          example:
+            detail: Given token not valid for any token type
+            code: token_not_valid
+            messages:
+              - token_class: AccessToken
+                token_type: access
+                message: Token is invalid or expired
+  securitySchemes:
+    JWTAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    user_signup_login:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          description: User email
+          type: string
+          format: email
+        password:
+          description: User password
+          type: string
+          minLength: 8
+          format: password
+    user_reset_password:
+      required:
+        - email
+      type: object
+      properties:
+        email:
+          description: User email
+          type: string
+          format: email
+    user_set_password:
+      required:
+        - current_password
+        - new_password
+        - re_new_password
+      type: object
+      properties:
+        current_password:
+          description: User current password
+          type: string
+          minLength: 8
+          format: password
+        new_password:
+          description: User new password
+          type: string
+          minLength: 8
+          format: password
+        re_new_password:
+          description: Repeat user new password
+          type: string
+          minLength: 8
+          format: password
+    jwt_token_refresh:
+      required:
+        - refresh
+      type: object
+      properties:
+        refresh:
+          description: Refresh token
+          type: string
+    jwt_response:
+      type: object
+      properties:
+        access:
+          description: Access token
+          type: string
+        refresh:
+          description: Refresh token
+          type: string
+    password:
+      type: object
+      required:
+        - login
+        - site
+        - uppercase
+        - lowercase
+        - numbers
+        - symbols
+        - length
+        - counter
+        - version
+      properties:
+        login:
+          description: User login
+          type: string
+          example: user@example.com
+        site:
+          description: User login
+          type: string
+          example: example.com
+        uppercase:
+          description: Generated password has uppercase characters
+          type: boolean
+          default: true
+        lowercase:
+          description: Generated password has lowercase characters
+          type: boolean
+          default: true
+        numbers:
+          description: Generated password has numbers
+          type: boolean
+          default: true
+        symbols:
+          description: Generated password has symbol characters
+          type: boolean
+          default: true
+        length:
+          description: Password length
+          type: integer
+          default: 16
+        counter:
+          description: Password counter
+          type: integer
+          default: 1
+        version:
+          description: Password version algorithm
+          type: integer
+          default: 2
+    password_response:
+      type: object
+      properties:
+        id:
+          description: Password unique id
+          type: string
+          format: uuid
+        login:
+          description: User login
+          type: string
+          example: user@example.com
+        site:
+          description: User login
+          type: string
+          example: example.com
+        uppercase:
+          description: Generated password has uppercase characters
+          type: boolean
+          default: true
+        lowercase:
+          description: Generated password has lowercase characters
+          type: boolean
+          default: true
+        numbers:
+          description: Generated password has numbers
+          type: boolean
+          default: true
+        symbols:
+          description: Generated password has symbol characters
+          type: boolean
+          default: true
+        length:
+          description: Password length
+          type: integer
+          default: 16
+        counter:
+          description: Password counter
+          type: integer
+          default: 1
+        version:
+          description: Password version algorithm
+          type: integer
+          default: 2
+        created:
+          description: Creation date
+          type: string
+          format: date-time
+        modified:
+          description: Creation date
+          type: string
+          format: date-time
+    passwords_response:
+      type: object
+      properties:
+        count:
+          description: Password items count
+          type: integer
+          example: 1
+        previous:
+          description: Previous page
+          type: integer
+          default: null
+        next:
+          description: Next page
+          type: integer
+          default: null
+        results:
+          description: Password items
+          type: array
+          items:
+            $ref: '#/components/schemas/password_response'
+    error_response:
+      type: object
+      properties:
+        detail:
+          description: Error detail
+          type: string
+        code:
+          description: Error code
+          type: string
+        messages:
+          description: Error messages
+          type: array
+          items:
+            type: object
