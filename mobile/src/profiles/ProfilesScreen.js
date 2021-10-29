@@ -11,6 +11,7 @@ import {
   Paragraph,
   Button,
   Searchbar,
+  useTheme,
 } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -29,6 +30,7 @@ export default function ProfilesScreen() {
   const profiles = useSelector((state) => Object.values(state.profiles));
   const [profileToDelete, setProfileToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const theme = useTheme();
   const [query, setQuery] = useState("");
   const results =
     query === ""
@@ -86,6 +88,8 @@ export default function ProfilesScreen() {
               description={
                 "You don't have any password profiles. Save a password profile when you generate it."
               }
+              titleStyle={{ color: theme.colors.primary }}
+              descriptionStyle={{ color: theme.colors.primary }}
             />
           ) : (
             <View>
@@ -105,6 +109,8 @@ export default function ProfilesScreen() {
                   description={
                     "There is no password profile that matches this search."
                   }
+                  titleStyle={{ color: theme.colors.primary }}
+                  descriptionStyle={{ color: theme.colors.primary }}
                 />
               ) : (
                 sortByNewestFirst(results).map((profile) => (
@@ -117,6 +123,8 @@ export default function ProfilesScreen() {
                         setQuery("");
                         navigation.navigate(routes.PASSWORD_GENERATOR);
                       }}
+                      titleStyle={{ color: theme.colors.primary }}
+                      descriptionStyle={{ color: theme.colors.primary }}
                       right={(props) => (
                         <IconButton
                           {...props}
@@ -125,6 +133,7 @@ export default function ProfilesScreen() {
                             setProfileToDelete(profile);
                             event.stopPropagation();
                           }}
+                          color={theme.colors.primary}
                         />
                       )}
                     />

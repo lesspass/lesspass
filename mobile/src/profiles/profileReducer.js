@@ -7,9 +7,9 @@ export default function reduce(state = initialState, action) {
         ...action.profile,
       };
     case "CLEAN_PASSWORD_PROFILE":
-      return initialState
+      return initialState;
     case "LOG_OUT":
-      return initialState
+      return initialState;
     default:
       return state;
   }

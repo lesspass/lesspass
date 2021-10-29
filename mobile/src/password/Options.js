@@ -1,121 +1,100 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import Theme from "../ui/Theme";
-import { Checkbox } from "react-native-paper";
+import { Checkbox, useTheme } from "react-native-paper";
+import { areOptionsValid } from "./validations";
 
-export default class Options extends Component {
-  state = {
-    isValid: true,
-  };
+export default function Options({ options, onOptionsChange, style }) {
+  const [isValid, setIsvalid] = useState(true);
+  const theme = useTheme();
+  const color = isValid ? theme.colors.placeholder : theme.colors.red;
 
-  checkOptionsAreValid = (options) => {
-    const { areOptionsValid } = this.props;
+  useEffect(() => {
     if (areOptionsValid(options)) {
-      this.setState({ isValid: true });
+      setIsvalid(true);
     } else {
-      this.setState({ isValid: false });
+      setIsvalid(false);
     }
-  };
+  }, [options]);
 
-  render() {
-    const { options, onOptionsChange, style } = this.props;
-    const { isValid } = this.state;
-    const isValidBackgroundColor = isValid
-      ? Theme.colors.primary
-      : Theme.colors.red;
-    const isValidColor = isValid ? Theme.colors.black : Theme.colors.red;
-    return (
+  return (
+    <View
+      style={{
+        ...style,
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}
+    >
       <View
         style={{
-          ...style,
           flexDirection: "row",
-          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
+        <Checkbox.Android
+          status={options.lowercase ? "checked" : "unchecked"}
+          onPress={() => {
+            onOptionsChange({
+              ...options,
+              lowercase: !options.lowercase,
+            });
           }}
-        >
-          <Checkbox.Android
-            status={options.lowercase ? "checked" : "unchecked"}
-            uncheckedColor={isValidBackgroundColor}
-            onPress={() => {
-              const newOptions = {
-                ...options,
-                lowercase: !options.lowercase,
-              };
-              this.checkOptionsAreValid(newOptions);
-              onOptionsChange(newOptions);
-            }}
-          />
-          <Text style={{ fontSize: 16, color: isValidColor }}>a-z</Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Checkbox.Android
-            status={options.uppercase ? "checked" : "unchecked"}
-            uncheckedColor={isValidBackgroundColor}
-            onPress={() => {
-              const newOptions = {
-                ...options,
-                uppercase: !options.uppercase,
-              };
-              this.checkOptionsAreValid(newOptions);
-              onOptionsChange(newOptions);
-            }}
-          />
-          <Text style={{ fontSize: 16, color: isValidColor }}>A-Z</Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Checkbox.Android
-            status={options.digits ? "checked" : "unchecked"}
-            uncheckedColor={isValidBackgroundColor}
-            onPress={() => {
-              const newOptions = {
-                ...options,
-                digits: !options.digits,
-              };
-              this.checkOptionsAreValid(newOptions);
-              onOptionsChange(newOptions);
-            }}
-          />
-          <Text style={{ fontSize: 16, color: isValidColor }}>0-9</Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            alignItems: "center",
-          }}
-        >
-          <Checkbox.Android
-            status={options.symbols ? "checked" : "unchecked"}
-            uncheckedColor={isValidBackgroundColor}
-            onPress={() => {
-              const newOptions = {
-                ...options,
-                symbols: !options.symbols,
-              };
-              this.checkOptionsAreValid(newOptions);
-              onOptionsChange(newOptions);
-            }}
-          />
-          <Text style={{ fontSize: 16, color: isValidColor }}>!@%</Text>
-        </View>
+        />
+        <Text style={{ fontSize: 16, color: color }}>a-z</Text>
       </View>
-    );
-  }
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Checkbox.Android
+          status={options.uppercase ? "checked" : "unchecked"}
+          onPress={() => {
+            onOptionsChange({
+              ...options,
+              uppercase: !options.uppercase,
+            });
+          }}
+        />
+        <Text style={{ fontSize: 16, color: color }}>A-Z</Text>
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Checkbox.Android
+          status={options.digits ? "checked" : "unchecked"}
+          onPress={() => {
+            onOptionsChange({
+              ...options,
+              digits: !options.digits,
+            });
+          }}
+        />
+        <Text style={{ fontSize: 16, color: color }}>0-9</Text>
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          alignItems: "center",
+        }}
+      >
+        <Checkbox.Android
+          status={options.symbols ? "checked" : "unchecked"}
+          onPress={() => {
+            onOptionsChange({
+              ...options,
+              symbols: !options.symbols,
+            });
+          }}
+        />
+        <Text style={{ fontSize: 16, color: color }}>!@%</Text>
+      </View>
+    </View>
+  );
 }

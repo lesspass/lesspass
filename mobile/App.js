@@ -4,26 +4,20 @@ import { Provider } from "react-redux";
 import { Provider as PaperProvider } from "react-native-paper";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import { persistor, store } from "./src/store";
-import Theme from "./src/ui/Theme";
-import Header from "./src/header/Header";
-import Errors from "./src/errors/Errors";
+import { getTheme } from "./src/ui/Theme";
 import AppContainer from "./src/AppContainer";
-import { SafeAreaView } from "react-native";
+import { useColorScheme } from "react-native";
 
-const App = () => {
+export default function App() {
+  const colorScheme = useColorScheme();
+  const theme = getTheme(colorScheme);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#333333' }}>
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <PaperProvider theme={Theme}>
-            <Header />
-            <Errors />
-            <AppContainer />
-          </PaperProvider>
-        </PersistGate>
-      </Provider>
-    </SafeAreaView>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <PaperProvider theme={theme}>
+          <AppContainer />
+        </PaperProvider>
+      </PersistGate>
+    </Provider>
   );
-};
-
-export default App;
+}

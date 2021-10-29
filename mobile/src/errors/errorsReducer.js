@@ -13,6 +13,7 @@ export default function (state = initialState, action) {
       delete state[action.error.id];
       return { ...state };
     case "LOG_IN":
+    case "CLEAN_ERRORS":
       return { ...initialState };
     default:
       return state;

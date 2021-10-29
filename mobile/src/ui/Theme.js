@@ -1,24 +1,62 @@
 import { DefaultTheme } from "react-native-paper";
+import {
+  DefaultTheme as DefaultThemeReactNavigation,
+  DarkTheme as DarkThemeReactNavigation,
+} from "@react-navigation/native";
 
-const Theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    //accent: "#0275d8",
-    accent: "#333333",
-    //primary: "#0275d8",
-    primary: "#333333",
-    //lightBlue: "#a8d6fe",
-    blue: "#0275d8",
-    lightBlue: "#aaa",
-    red: "#f32c1e",
-    lightRed: "#fcc3bf",
-    white: "#F5F2F6",
-    brown: "#A28A7D",
-    orange: "#CF9E38",
-    purple: "#312430",
-    link: "#2b72bb",
-  },
-};
+export function getReactNavigationTheme(colorScheme) {
+  const isDarkTheme = colorScheme === "dark";
+  if (isDarkTheme) {
+    return {
+      ...DarkThemeReactNavigation,
+      dark: isDarkTheme,
+      colors: {
+        ...DarkThemeReactNavigation.colors,
+        card: "#2E2E2E",
+        primary: "#F3F3F3",
+        text: "#F3F3F3",
+        border: "#2E2E2E",
+        background: "#4D4D4D",
+      },
+    };
+  }
+  return {
+    ...DefaultThemeReactNavigation,
+    dark: isDarkTheme,
+    colors: {
+      ...DefaultThemeReactNavigation.colors,
+      card: "#FFFFFF",
+      text: "#4D4D4D",
+      primary: "#2E2E2E",
+    },
+  };
+}
 
-export default Theme;
+export function getTheme(colorScheme) {
+  const isDarkTheme = colorScheme === "dark";
+  if (isDarkTheme) {
+    return {
+      ...DefaultTheme,
+      dark: isDarkTheme,
+      colors: {
+        ...DefaultTheme.colors,
+        primary: "#F3F3F3",
+        accent: "#DEDEDE",
+        text: "#F3F3F3",
+        placeholder: "#DEDEDE",
+        background: "#4D4D4D",
+        red: "#f32c1e",
+      },
+    };
+  }
+  return {
+    ...DefaultTheme,
+    dark: isDarkTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: "#2E2E2E",
+      accent: "#2E2E2E",
+      red: "#f32c1e",
+    },
+  };
+}

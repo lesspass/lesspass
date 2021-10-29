@@ -15,3 +15,9 @@ export function deleteError(error) {
     error,
   };
 }
+
+export function cleanErrors() {
+  return {
+    type: "CLEAN_ERRORS",
+  };
+}

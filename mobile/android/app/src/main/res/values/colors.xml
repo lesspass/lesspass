@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#333333</color>
+    <color name="statusBarColor">#FFFFFF</color>
+    <color name="colorPrimary">#2E2E2E</color>
+    <color name="backgroundColor">#F3F3F3</color>
+    <color name="navigationBarColor">#FFFFFF</color>
 </resources>

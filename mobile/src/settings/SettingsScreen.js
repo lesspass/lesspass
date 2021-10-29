@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ScrollView } from "react-native";
-import { Divider, List } from "react-native-paper";
+import { ScrollView, View } from "react-native";
+import { Divider, List, Title } from "react-native-paper";
 import TouchID from "react-native-touch-id";
 import { setGenericPassword } from "react-native-keychain";
 import { setSettings } from "./settingsActions";
@@ -46,6 +46,9 @@ export class SettingsScreen extends Component {
     } = settings;
     return (
       <ScrollView style={Styles.container}>
+        <View style={Styles.innerContainer}>
+          <Title>Settings</Title>
+        </View>
         <List.Section title="LESSPASS DATABASE">
           <TextInputModal
             label="Default URL"
@@ -129,7 +132,7 @@ export class SettingsScreen extends Component {
           <Divider />
         </List.Section>
         {fingerprintIsSupported && (
-          <React.Fragment>
+          <>
             <List.Section title="INSECURE OPTIONS">
               <KeepMasterPasswordOption
                 label="Master Password"
@@ -157,7 +160,7 @@ export class SettingsScreen extends Component {
               />
             </List.Section>
             <Divider />
-          </React.Fragment>
+          </>
         )}
         <List.Section title="APPLICATION">
           <List.Item title={`LessPass version: ${version}`} />

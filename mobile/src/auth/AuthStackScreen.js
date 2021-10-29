@@ -6,11 +6,11 @@ import routes from "../routes";
 
 const AuthStack = createStackNavigator();
 
-const AuthStackScreen = () => (
-  <AuthStack.Navigator>
-    <AuthStack.Screen name={routes.SIGN_IN} component={SignInScreen} />
-    <AuthStack.Screen name={routes.SIGN_UP} component={SignUpScreen} />
-  </AuthStack.Navigator>
-);
-
-export default AuthStackScreen;
+export default function AuthStackScreen() {
+  return (
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name={routes.SIGN_IN} component={SignInScreen} />
+      <AuthStack.Screen name={routes.SIGN_UP} component={SignUpScreen} />
+    </AuthStack.Navigator>
+  );
+}

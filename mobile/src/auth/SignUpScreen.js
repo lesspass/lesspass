@@ -38,7 +38,7 @@ export class SignUpScreen extends Component {
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={Styles.innerContainer}>
-            <Title>Create an account</Title>
+            <Title style={Styles.title}>Create an account</Title>
             <TextInput
               mode="outlined"
               label="Email"

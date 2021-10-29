@@ -10,7 +10,7 @@ const SignOutScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
     <ScrollView style={Styles.innerContainer}>
-      <Title style={{ marginBottom: 10 }}>Sign Out</Title>
+      <Title style={{ marginBottom: 10 }}>My Account</Title>
       <Button
         compact
         icon="account-circle"
