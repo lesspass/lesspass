@@ -7,8 +7,7 @@ export default StyleSheet.create({
   innerContainer: {
     paddingHorizontal: 15,
     paddingTop: 15,
-    marginBottom: 20,
-    flex: 1,
+    paddingBottom: 20,
   },
   title: {
     marginBottom: 10,

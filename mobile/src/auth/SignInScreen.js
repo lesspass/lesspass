@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { isEmpty } from "lodash";
 import {
   KeyboardAvoidingView,
-  View,
+  ScrollView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
@@ -36,7 +36,7 @@ export class SignInScreen extends Component {
         style={Styles.container}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={Styles.innerContainer}>
+          <ScrollView contentContainerStyle={Styles.innerContainer}>
             <Title>Connect to Lesspass Database</Title>
             <TextInput
               mode="outlined"
@@ -90,7 +90,7 @@ export class SignInScreen extends Component {
             >
               Sign Up
             </Button>
-          </View>
+          </ScrollView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     );

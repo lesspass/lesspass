@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   KeyboardAvoidingView,
-  View,
+  ScrollView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
@@ -37,7 +37,7 @@ export class SignUpScreen extends Component {
         style={Styles.container}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={Styles.innerContainer}>
+          <ScrollView contentContainerStyle={Styles.innerContainer}>
             <Title style={Styles.title}>Create an account</Title>
             <TextInput
               mode="outlined"
@@ -87,7 +87,7 @@ export class SignUpScreen extends Component {
             >
               Sign In
             </Button>
-          </View>
+          </ScrollView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     );

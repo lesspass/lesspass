@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  ScrollView,
   View,
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
@@ -92,7 +93,7 @@ export default function PasswordGeneratorScreen() {
       style={Styles.container}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={Styles.innerContainer}>
+        <ScrollView contentContainerStyle={Styles.innerContainer}>
           <TextInput
             mode="outlined"
             label="Site"
@@ -260,7 +261,7 @@ export default function PasswordGeneratorScreen() {
               </Text>
             </View>
           )}
-        </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
       <Snackbar
         visible={copied}

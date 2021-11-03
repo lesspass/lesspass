@@ -1,11 +1,11 @@
 import React from "react";
-import { ScrollView, Image, Linking } from "react-native";
+import { ScrollView, Image, Linking, View } from "react-native";
 import { Title, Subheading, Paragraph, Button } from "react-native-paper";
 import Styles from "../ui/Styles";
 
 export default function HelpScreen() {
   return (
-    <ScrollView style={Styles.innerContainer}>
+    <ScrollView contentContainerStyle={Styles.innerContainer}>
       <Title style={Styles.title}>Help</Title>
       <Subheading>How does it work?</Subheading>
       <Paragraph style={{ marginBottom: 20 }}>
@@ -26,13 +26,16 @@ export default function HelpScreen() {
         series of displayed emoticons).
       </Paragraph>
       <Subheading>Options</Subheading>
-      <Image
-        source={require("./options.png")}
-        style={{
-          width: 360,
-          height: 102,
-        }}
-      />
+      <View>
+        <Image
+          source={require("./options.png")}
+          style={{
+            width: null,
+            resizeMode: "contain",
+            height: 100,
+          }}
+        />
+      </View>
       <Paragraph style={{ marginBottom: 20 }}>
         Sometimes sites have specific password rules. For instance, some banks
         only accept passwords made of digits. LessPass lets you set parameters
@@ -77,7 +80,6 @@ export default function HelpScreen() {
         }}
         style={{
           marginTop: 10,
-          marginBottom: 60,
         }}
       >
         send us an email

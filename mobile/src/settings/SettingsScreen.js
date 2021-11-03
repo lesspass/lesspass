@@ -45,8 +45,8 @@ export class SettingsScreen extends Component {
       defaultCounter,
     } = settings;
     return (
-      <ScrollView style={Styles.container}>
-        <View style={Styles.innerContainer}>
+      <ScrollView>
+        <View style={{ padding: 15 }}>
           <Title>Settings</Title>
         </View>
         <List.Section title="LESSPASS DATABASE">
