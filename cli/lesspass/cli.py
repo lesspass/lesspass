@@ -2,7 +2,6 @@ import argparse
 import os
 
 from lesspass import version
-from lesspass import name
 from lesspass import description
 
 EXAMPLES = """
@@ -25,6 +24,12 @@ copyright:
   Copyright © 2018 Guillaume Vincent <contact@lesspass.com>.  License GPLv3: GNU GPL version 3 <https://gnu.org/licenses/gpl.html>.
   This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law
 """
+
+
+def _get_config_path():
+    DEFAULT_XDG_CONFIG_HOME = os.path.join(os.path.expanduser("~"), ".config")
+    data_home_path = os.environ.get("XDG_CONFIG_HOME", DEFAULT_XDG_CONFIG_HOME)
+    return os.path.join(data_home_path, "lesspass")
 
 
 def range_type(value_string):
@@ -83,13 +88,43 @@ def parse_args(args):
         help="copy the password to clipboard",
     )
     parser.add_argument(
-        "--exclude", default=None, help="exclude char from generated password",
+        "--exclude",
+        default=None,
+        help="exclude char from generated password",
     )
     parser.add_argument(
         "--no-fingerprint",
         dest="no_fingerprint",
         action="store_true",
         help="hide visual fingerprint of the master password when you type",
+    )
+    config_home_path = _get_config_path()
+    backup_file = os.path.join(config_home_path, "profiles.json")
+    parser.add_argument(
+        "--save",
+        dest="save_path",
+        nargs="?",
+        const=backup_file,
+        default=None,
+        help=f"[beta] Save your password profiles. /!\ File not encrypted. Use carefully. (default: {backup_file})",
+    )
+    parser.add_argument(
+        "--load",
+        dest="load_path",
+        default=None,
+        help="[beta] Load your password profiles file",
+    )
+    parser.add_argument(
+        "--config-home-path",
+        dest="config_home_path",
+        default=config_home_path,
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "--url",
+        dest="url",
+        default="https://api.lesspass.com/",
+        help="[beta] LessPass Database URL used by --save and --load command",
     )
     lowercase_group = parser.add_mutually_exclusive_group()
     lowercase_group.add_argument(

@@ -11,6 +11,7 @@ from lesspass.profile import create_profile
 from lesspass.password import generate_password
 from lesspass.clipboard import copy, get_system_copy_command
 from lesspass.fingerprint import getpass_with_fingerprint
+from lesspass.connected import save_password_profiles, load_password_profiles
 
 signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
 
@@ -23,6 +24,12 @@ def main(args=sys.argv[1:]):
             + "xsel, xclip, or wl-clipboard on Linux, and clip on Windows"
         )
         sys.exit(3)
+
+    if args.save_path:
+        return save_password_profiles(args.config_home_path, args.url, args.save_path)
+
+    if args.load_path:
+        return load_password_profiles(args.config_home_path, args.url, args.load_path)
 
     if args.prompt:
         if not args.site:

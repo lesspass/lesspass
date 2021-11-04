@@ -16,7 +16,7 @@ setuptools.setup(
     description="LessPass stateless password generator",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=[],
+    install_requires=["requests"],
     entry_points="""
         [console_scripts]
         lesspass=lesspass.core:main
