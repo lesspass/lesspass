@@ -36,18 +36,18 @@ export default function Counter({
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          height: 26,
+          borderWidth: 1,
+          borderColor: colorAccent,
+          borderRadius: theme.roundness,
+          backgroundColor: colorAccent,
         }}
       >
         <TouchableOpacity
           style={{
-            height: 25,
             justifyContent: "center",
             alignItems: "center",
-            borderBottomLeftRadius: theme.roundness,
-            borderTopLeftRadius: theme.roundness,
-            borderWidth: 1,
-            borderColor: colorAccent,
-            backgroundColor: colorAccent,
+            alignSelf: "stretch",
             paddingVertical: 6,
             paddingHorizontal: 16,
           }}
@@ -63,13 +63,9 @@ export default function Counter({
         </TouchableOpacity>
         <View
           style={{
-            height: 25,
             justifyContent: "center",
             alignItems: "center",
-            paddingHorizontal: 16,
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
-            borderColor: colorAccent,
+            backgroundColor: theme.colors.background,
           }}
         >
           <TextInput
@@ -78,8 +74,10 @@ export default function Counter({
             keyboardType="numeric"
             style={{
               paddingVertical: 0,
+              paddingHorizontal: 16,
               color,
               textAlign: "center",
+              flex: 1,
             }}
             onChangeText={(text) => {
               if (text === "") {
@@ -101,14 +99,10 @@ export default function Counter({
         </View>
         <TouchableOpacity
           style={{
-            height: 25,
             justifyContent: "center",
             alignItems: "center",
-            borderBottomRightRadius: theme.roundness,
-            borderTopRightRadius: theme.roundness,
-            borderWidth: 1,
-            borderColor: colorAccent,
-            backgroundColor: colorAccent,
+            alignSelf: "stretch",
+            paddingVertical: 6,
             paddingHorizontal: 16,
           }}
           onPress={() => setValue(value + 1)}
