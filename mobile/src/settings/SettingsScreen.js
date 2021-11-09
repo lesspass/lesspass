@@ -9,7 +9,6 @@ import TextInputModal from "./TextInputModal";
 import Switch from "../ui/Switch";
 import KeepMasterPasswordOption from "./KeepMasterPasswordOption";
 import { version } from "../version.json";
-import Styles from "../ui/Styles";
 
 export class SettingsScreen extends Component {
   constructor(props) {
@@ -52,7 +51,7 @@ export class SettingsScreen extends Component {
         <List.Section title="LESSPASS DATABASE">
           <TextInputModal
             label="Default URL"
-            value={baseURL}
+            initialValue={baseURL}
             onOk={(value) => setSettings({ baseURL: value })}
             modalTitle="LessPass Database default URL"
           />
@@ -71,7 +70,7 @@ export class SettingsScreen extends Component {
           <TextInputModal
             isRequired={false}
             label="Login"
-            value={defaultPasswordProfileLogin}
+            initialValue={defaultPasswordProfileLogin}
             onOk={(value) =>
               setSettings({ defaultPasswordProfileLogin: value })
             }
@@ -80,7 +79,7 @@ export class SettingsScreen extends Component {
           <Divider />
           <TextInputModal
             label="Password length"
-            value={defaultGeneratedPasswordLength}
+            initialValue={defaultGeneratedPasswordLength}
             variant="numeric"
             onOk={(value) => {
               setSettings({
@@ -92,7 +91,7 @@ export class SettingsScreen extends Component {
           <Divider />
           <TextInputModal
             label="Counter"
-            value={defaultCounter}
+            initialValue={defaultCounter}
             variant="numeric"
             onOk={(value) => {
               setSettings({
