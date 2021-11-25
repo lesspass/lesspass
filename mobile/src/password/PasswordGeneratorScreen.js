@@ -38,6 +38,7 @@ function _getInitialState(settings) {
     symbols: settings.defaultSymbols,
     length: settings.defaultGeneratedPasswordLength,
     counter: settings.defaultCounter,
+    copyPasswordAfterGeneration: settings.copyPasswordAfterGeneration,
     password: null,
   };
 }
@@ -161,8 +162,10 @@ export default function PasswordGeneratorScreen() {
                   state.masterPassword,
                   passwordProfile
                 );
-                Clipboard.setString(password);
-                setCopied(true);
+                if (state.copyPasswordAfterGeneration) {
+                  Clipboard.setString(password);
+                  setCopied(true);
+                }
                 setState((state) => ({ ...state, password }));
               } else {
                 dispatch(
@@ -173,13 +176,13 @@ export default function PasswordGeneratorScreen() {
               }
             }}
           >
-            GENERATE & COPY
+            {state.copyPasswordAfterGeneration ? "GENERATE & COPY" : "GENERATE"}
           </Button>
           <View
             style={{
               marginTop: 20,
               flexDirection: "row",
-              justifyContent: "space-between",
+              flexWrap: "wrap",
             }}
           >
             <Button
@@ -193,10 +196,24 @@ export default function PasswordGeneratorScreen() {
                 setState(_getInitialState(settings));
                 dispatch(cleanPasswordProfile());
               }}
+              style={{ marginRight: 10, marginBottom: 10 }}
               icon="refresh"
             >
               clear
             </Button>
+            {state.password && state.copyPasswordAfterGeneration === false && (
+              <Button
+                mode="outlined"
+                onPress={() => {
+                  Clipboard.setString(state.password);
+                  setCopied(true);
+                }}
+                icon="clipboard"
+                style={{ marginRight: 10, marginBottom: 10 }}
+              >
+                Copy
+              </Button>
+            )}
             {state.password && (
               <Button
                 mode="outlined"
@@ -204,7 +221,7 @@ export default function PasswordGeneratorScreen() {
                   setSeePassword((seePassword) => !seePassword);
                 }}
                 icon="eye"
-                style={{ marginLeft: 5 }}
+                style={{ marginRight: 10, marginBottom: 10 }}
               >
                 {seePassword ? "hide" : "show"}
               </Button>
@@ -223,7 +240,7 @@ export default function PasswordGeneratorScreen() {
                     );
                   }}
                   icon="content-save"
-                  style={{ marginLeft: 5 }}
+                  style={{ marginRight: 10, marginBottom: 10 }}
                 >
                   Save
                 </Button>
@@ -240,7 +257,7 @@ export default function PasswordGeneratorScreen() {
                     );
                   }}
                   icon="content-save"
-                  style={{ marginLeft: 5 }}
+                  style={{ marginRight: 10, marginBottom: 10 }}
                 >
                   Update
                 </Button>

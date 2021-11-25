@@ -355,7 +355,7 @@
 				);
 				INFOPLIST_FILE = LessPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 9.5.3;
+				MARKETING_VERSION = 9.6.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -384,7 +384,7 @@
 				DEVELOPMENT_TEAM = 5Y4MF2AT83;
 				INFOPLIST_FILE = LessPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 9.5.3;
+				MARKETING_VERSION = 9.6.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

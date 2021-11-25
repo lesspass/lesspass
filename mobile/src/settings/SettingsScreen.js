@@ -42,6 +42,7 @@ export class SettingsScreen extends Component {
       defaultDigits,
       defaultSymbols,
       defaultCounter,
+      copyPasswordAfterGeneration,
     } = settings;
     return (
       <ScrollView>
@@ -162,9 +163,20 @@ export class SettingsScreen extends Component {
           </>
         )}
         <List.Section title="APPLICATION">
+          <Switch
+            label="Copy password automatically"
+            description={
+              copyPasswordAfterGeneration ?  "Your password will be copied automatically after it is generated." : "Your password will not be copied automatically after it is generated."
+            }
+            value={copyPasswordAfterGeneration}
+            onChange={(value) =>
+              setSettings({ copyPasswordAfterGeneration: value })
+            }
+          />
+          <Divider />
           <List.Item title={`LessPass version: ${version}`} />
+          <Divider />
         </List.Section>
-        <Divider />
       </ScrollView>
     );
   }

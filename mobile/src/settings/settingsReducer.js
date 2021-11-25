@@ -11,6 +11,7 @@ const initialState = {
   defaultDigits: defaultPasswordProfile.digits,
   defaultSymbols: defaultPasswordProfile.symbols,
   defaultCounter: defaultPasswordProfile.counter,
+  copyPasswordAfterGeneration: true,
 };
 
 export default function (state = initialState, action) {

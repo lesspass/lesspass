@@ -13,6 +13,7 @@ describe("settings reducer", () => {
       defaultDigits: true,
       defaultSymbols: true,
       defaultCounter: 1,
+      copyPasswordAfterGeneration: true,
     });
   });
   it("SET_SETTINGS", () => {
