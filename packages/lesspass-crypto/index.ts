@@ -1,5 +1,5 @@
-function stringToArrayBuffer(string) {
-  const base64String = unescape(encodeURIComponent(string));
+export function stringToArrayBuffer(s: string) {
+  const base64String = unescape(encodeURIComponent(s));
   const charList = base64String.split("");
   const arrayBuffer = [];
   for (let i = 0; i < charList.length; i += 1) {
@@ -8,7 +8,7 @@ function stringToArrayBuffer(string) {
   return new Uint8Array(arrayBuffer);
 }
 
-function arrayBufferToHex(arrayBuffer) {
+export function arrayBufferToHex(arrayBuffer: Iterable<number>) {
   const byteArray = new Uint8Array(arrayBuffer);
   let str = "";
   for (let i = 0; i < byteArray.byteLength; i += 1) {
@@ -17,20 +17,18 @@ function arrayBufferToHex(arrayBuffer) {
   return str;
 }
 
-function getAlgorithm(algorithm) {
-  const algorithms = {
+export function getAlgorithm(algorithm: string) {
+  const algorithms: { [k: string]: string } = {
     sha1: "SHA-1",
     "sha-1": "SHA-1",
     sha256: "SHA-256",
     "sha-256": "SHA-256",
     sha512: "SHA-512",
-    "sha-512": "SHA-512",
+    "sha-512": "SHA-512"
   };
-  return algorithms[algorithm.toLowerCase()];
+  const lowercaseAlgorithm = algorithm.toLowerCase();
+  if (lowercaseAlgorithm in algorithms) {
+    return algorithms[lowercaseAlgorithm];
+  }
+  return "SHA-256";
 }
-
-module.exports = {
-  stringToArrayBuffer,
-  arrayBufferToHex,
-  getAlgorithm,
-};

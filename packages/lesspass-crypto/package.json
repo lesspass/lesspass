@@ -5,10 +5,22 @@
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "files": [
-    "index.js"
+    "dist"
   ],
-  "main": "index.js",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "dist",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "build": "rm -rf dist && tsc",
+    "prepare": "npm run build"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default-esm",
+    "globals": {
+      "ts-jest": {
+        "useESM": true
+      }
+    }
   }
 }

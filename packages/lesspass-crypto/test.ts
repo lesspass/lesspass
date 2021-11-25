@@ -1,8 +1,4 @@
-const {
-  stringToArrayBuffer,
-  arrayBufferToHex,
-  getAlgorithm,
-} = require("./index");
+import { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } from ".";
 
 test("stringToArrayBuffer", () => {
   expect(stringToArrayBuffer("ȧ")[0]).toBe(200);
