@@ -6,12 +6,6 @@ LessPass is a stateless password manager.
 
 Stop wasting your time synchronizing your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed. Try the demo at [www.lesspass.com](https://www.lesspass.com).
 
-## Affiliate link
-
-LessPass servers are hosted on Vultr. Create an account on Vultr and receive \$100 to test their platform.
-
-[![Vultr Banner](https://www.vultr.com/media/banners/banner_728x90.png)](https://www.vultr.com/?ref=6830452)
-
 ## How does it work?
 
 - :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/2016-10-19/how-does-it-work)
