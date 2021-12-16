@@ -15,6 +15,7 @@ services:
     links:
       - db
     environment:
+      - ALLOWED_HOSTS
       - DATABASE_ENGINE
       - DATABASE_HOST
       - DATABASE_NAME
