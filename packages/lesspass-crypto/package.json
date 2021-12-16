@@ -1,18 +1,21 @@
 {
   "name": "lesspass-crypto",
-  "version": "9.1.10",
+  "version": "9.2.0",
   "description": "LessPass cryptographic functions",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "files": [
     "dist"
   ],
-  "type": "module",
-  "exports": "./dist/index.js",
-  "types": "dist",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "build": "rm -rf dist && tsc",
+    "clean": "rm -rf dist",
+    "build": "yarn clean && yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "build:esm": "tsc --module ESNext --outDir dist/esm --declaration",
     "prepare": "npm run build"
   },
   "jest": {
