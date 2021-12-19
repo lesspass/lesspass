@@ -5,9 +5,14 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "license": "GPL-3.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/lesspass-pure"
+    ]
+  },
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "browserify": "^17.0.0",
