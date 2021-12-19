@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function check_env_variables_are_setted {
-    if [ -z "${EXTENSION_ID}" ] || [ -z "${CLIENT_ID}" ] || [ -z "${CLIENT_SECRET}" ] || [ -z "${REFRESH_TOKEN}" ] || [ -z "${WEB_EXT_API_KEY}" ] || [ -z "${WEB_EXT_API_SECRET}" ]; then
-        echo "Need to set EXTENSION_ID, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, WEB_EXT_API_KEY and WEB_EXT_API_SECRET env variables to release web extensions"
+    if [ -z "${EXTENSION_ID}" ] || [ -z "${CLIENT_ID}" ] || [ -z "${REFRESH_TOKEN}" ] || [ -z "${WEB_EXT_API_KEY}" ] || [ -z "${WEB_EXT_API_SECRET}" ]; then
+        echo "Need to set EXTENSION_ID, CLIENT_ID, REFRESH_TOKEN, WEB_EXT_API_KEY and WEB_EXT_API_SECRET env variables to release web extensions"
         exit 1
     fi
 }
