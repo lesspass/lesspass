@@ -32,11 +32,11 @@ function check_repository_is_clean {
     fi
 }
 
-function check_branch_is_master {
+function check_branch_is_main {
     BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2)
-    if [ $BRANCH_NAME != "master" ]
+    if [ $BRANCH_NAME != "main" ]
     then
-        print_error "Current branch is not master. Aborting."
+        print_error "Current branch is not main. Aborting."
         exit 1
     fi
 }
@@ -54,7 +54,7 @@ set +o errexit
 
 bump_type="${1:-}"
 check_bump_type_is_defined ${bump_type}
-check_branch_is_master
+check_branch_is_main
 check_current_directory_is_root
 check_repository_is_clean
 
