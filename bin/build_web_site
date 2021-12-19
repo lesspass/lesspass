@@ -96,10 +96,9 @@ function build {
 }
 
 
-function commit_and_push {
+function commit {
     git add .
     git commit --message="Auto build for lesspass-site"
-    git push
 }
 
 current_version=$( grep -Po '(?<="version": ")[^"]*' packages/lesspass-site/package.json )
@@ -111,4 +110,4 @@ echo "Latest lesspass-pure version is ${latest_lesspass_pure_version}"
 sed -i -E "s/\"lesspass-pure\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"lesspass-pure\": \"${latest_lesspass_pure_version}\"/g" packages/lesspass-site/package.json
 sed -i -E "s/\"version\": \"([0-9]+)\.([0-9]+)\.([0-9]+)\"/\"version\": \"${new_version}\"/g" packages/lesspass-site/package.json
 build
-commit_and_push
+commit
