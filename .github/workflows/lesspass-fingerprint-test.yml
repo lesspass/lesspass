@@ -1,0 +1,24 @@
+name: lesspass-fingerprint-test
+on:
+  push:
+    paths:
+      - "packages/lesspass-fingerprint/**"
+  pull_request:
+    paths:
+      - "packages/lesspass-fingerprint/**"
+jobs:
+  test:
+    name: Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version:
+          - "14"
+          - "16"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn workspace lesspass-fingerprint run test

@@ -1,0 +1,45 @@
+name: containers-test
+on:
+  push:
+    paths:
+      - "containers/**"
+      - "packages/lesspass-site/**"
+  pull_request:
+    paths:
+      - "containers/**"
+      - "packages/lesspass-site/**"
+jobs:
+  test-backend:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - run: |
+          cd containers/backend
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python manage.py test
+  test-site:
+    name: Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version:
+          - "14"
+          - "16"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn workspace lesspass-site run test
+  test-integration:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd containers
+          ./test

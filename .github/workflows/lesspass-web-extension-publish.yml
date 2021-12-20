@@ -1,0 +1,28 @@
+name: lesspass-web-extension-publish
+on:
+  workflow_run:
+    workflows: ["lesspass-web-extension-test"]
+    branches: [main]
+    types:
+      - completed
+jobs:
+  publish:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - run: yarn install
+      - run: yarn --version
+      - run: ls packages/lesspass-web-extension/node_modules
+      - run: ls packages/lesspass-web-extension/node_modules/lesspass-pure
+      - run: yarn workspace lesspass-web-extension run build
+      - run: yarn workspace lesspass-web-extension run release
+        continue-on-error: true
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}

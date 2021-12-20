@@ -1,0 +1,22 @@
+name: lesspass-fingerprint-publish
+on:
+  workflow_run:
+    workflows: ["lesspass-fingerprint-test"]
+    branches: [main]
+    types:
+      - completed
+jobs:
+  publish:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn install
+      - run: yarn workspace lesspass-fingerprint run build
+      - run: yarn workspace lesspass-fingerprint run publish
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

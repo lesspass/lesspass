@@ -12,8 +12,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "lesspass-entropy": "9.1.9",
-    "lesspass-fingerprint": "9.1.9",
-    "lesspass-render-password": "9.1.9"
+    "lesspass-entropy": "^9.1.9",
+    "lesspass-fingerprint": "^9.1.9",
+    "lesspass-render-password": "^9.1.9"
   }
 }

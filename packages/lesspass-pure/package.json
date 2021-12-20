@@ -1,6 +1,6 @@
 {
   "name": "lesspass-pure",
-  "version": "9.5.3",
+  "version": "9.5.4",
   "description": "LessPass web component",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
@@ -16,6 +16,9 @@
     "test:e2e": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint"
   },
+  "files": [
+    "dist"
+  ],
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest"
   },
@@ -67,11 +70,11 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.0",
+    "@vue/cli-service": "^4.5.0",
     "@vue/test-utils": "^1.0.3",
     "axios-mock-adapter": "^1.20.0",
     "babel-eslint": "^10.1.0",

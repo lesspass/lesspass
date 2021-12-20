@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "lesspass-pure": "9.5.2"
+    "lesspass-pure": "^9.5.2"
   },
   "devDependencies": {
     "favicons": "^6.2.1",

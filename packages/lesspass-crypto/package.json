@@ -16,7 +16,7 @@
     "build": "yarn clean && yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
     "build:esm": "tsc --module ESNext --outDir dist/esm --declaration",
-    "prepare": "npm run build"
+    "prepare": "yarn build"
   },
   "jest": {
     "preset": "ts-jest/presets/default-esm",

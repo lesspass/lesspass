@@ -1,0 +1,19 @@
+name: containers-publish
+on:
+  workflow_run:
+    workflows: ["containers-test"]
+    branches: [main]
+    types:
+      - completed
+jobs:
+  publish:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy containers
+        run: |
+          cd containers
+          ./deploy
+        env:
+          QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
+          QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
