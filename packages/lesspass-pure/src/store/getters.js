@@ -7,7 +7,8 @@ export const isGuest = state => !state.isAuthenticated;
 export const passwordURL = state => {
   const base64PasswordProfile = btoa(JSON.stringify(state.password));
   const encodedPasswordProfile = encodeURIComponent(base64PasswordProfile);
-  return `${state.settings.baseURL}/#/?passwordProfileEncoded=${encodedPasswordProfile}`;
+  const wwwBaseUrl = state.settings.baseURL.replace('api.', 'www.');
+  return `${wwwBaseUrl}/#/?passwordProfileEncoded=${encodedPasswordProfile}`;
 };
 
 export const shouldAutoFillSite = state => !state.settings.noAutoFillSite;
