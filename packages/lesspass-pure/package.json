@@ -10,7 +10,7 @@
     "i18n:build": "node src/i18n/build.js",
     "i18n:translate": "node src/i18n/translate.js",
     "prettier": "prettier --write 'src/**/*'",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "yarn test:unit && yarn test:e2e",
     "test:watch": "jest --watch",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless",

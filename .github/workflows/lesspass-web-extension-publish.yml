@@ -7,6 +7,7 @@ on:
       - completed
 jobs:
   publish:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -14,9 +15,8 @@ jobs:
         with:
           node-version: "14"
       - run: yarn install
-      - run: yarn --version
-      - run: ls packages/lesspass-web-extension/node_modules
-      - run: ls packages/lesspass-web-extension/node_modules/lesspass-pure
+      - run: yarn workspace lesspass-crypto run build
+      - run: yarn workspace lesspass-pure run build
       - run: yarn workspace lesspass-web-extension run build
       - run: yarn workspace lesspass-web-extension run release
         continue-on-error: true

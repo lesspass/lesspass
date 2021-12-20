@@ -2,7 +2,7 @@
 
 ## Verify the web extension
 
-The web extension is just a wrapper around lesspass-pure on npm.
+The web extension is just a wrapper around lesspass-pure node module.
 Source file correspond to the zip downloaded on http://github.com/lesspass/lesspass/archive/${sha256}.zip.
 {sha256} is the git sha256 use when build was done.
 

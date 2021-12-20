@@ -10,8 +10,7 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/lesspass-pure",
-      "**/lesspass-pure/**"
+      "**/lesspass-pure"
     ]
   },
   "devDependencies": {

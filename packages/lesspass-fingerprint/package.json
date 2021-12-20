@@ -12,7 +12,7 @@
     "./src/hmac.js": "./src/hmac.browser.js"
   },
   "scripts": {
-    "test": "npm run test:unit && npm run test:browser",
+    "test": "yarn test:unit && yarn test:browser",
     "test:unit": "mocha test --recursive",
     "test:browser": "karma start test/karma.conf.js"
   },

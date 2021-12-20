@@ -22,18 +22,12 @@ jobs:
           python -m pip install -r requirements.txt
           python manage.py test
   test-site:
-    name: Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node-version:
-          - "14"
-          - "16"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "14"
       - run: yarn install
       - run: yarn workspace lesspass-site run test
   test-integration:
