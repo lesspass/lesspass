@@ -7,7 +7,6 @@
   "scripts": {
     "start": "cd extension && web-ext run",
     "build": "rm -rf ./extension/dist && mkdir ./extension/dist && cp -r ./node_modules/lesspass-pure/dist/ ./extension",
-    "test": "echo 0",
     "release": "yarn release:amo && yarn release:cws",
     "release:amo": "cd extension && web-ext-submit",
     "release:cws": "cd extension && webstore upload --auto-publish"

@@ -1,13 +1,10 @@
 name: lesspass-web-extension-publish
 on:
-  workflow_run:
-    workflows: ["lesspass-web-extension-test"]
-    branches: [main]
-    types:
-      - completed
+  push:
+    paths:
+      - "packages/lesspass-web-extension/**"
 jobs:
   publish:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
