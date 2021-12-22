@@ -1,12 +1,15 @@
 name: containers-publish
 on:
   workflow_run:
-    workflows: ["containers-test"]
-    branches: [main]
+    workflows:
+      - "containers-test"
+    branches:
+      - main
     types:
       - completed
 jobs:
   publish:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2

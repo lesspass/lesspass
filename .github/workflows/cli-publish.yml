@@ -1,8 +1,10 @@
 name: cli-publish
 on:
   workflow_run:
-    workflows: ["cli-test"]
-    branches: [main]
+    workflows:
+      - "cli-test"
+    branches:
+      - main
     types:
       - completed
 jobs:

@@ -1,8 +1,10 @@
 name: lesspass-fingerprint-publish
 on:
   workflow_run:
-    workflows: ["lesspass-fingerprint-test"]
-    branches: [main]
+    workflows:
+      - "lesspass-fingerprint-test"
+    branches:
+      - main
     types:
       - completed
 jobs:

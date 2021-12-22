@@ -1,8 +1,10 @@
 name: lesspass-entropy-publish
 on:
   workflow_run:
-    workflows: ["lesspass-entropy-test"]
-    branches: [main]
+    workflows:
+      - "lesspass-entropy-test"
+    branches:
+      - main
     types:
       - completed
 jobs:

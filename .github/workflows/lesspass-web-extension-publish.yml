@@ -1,6 +1,8 @@
 name: lesspass-web-extension-publish
 on:
   push:
+    branches:
+      - main
     paths:
       - "packages/lesspass-web-extension/**"
 jobs:

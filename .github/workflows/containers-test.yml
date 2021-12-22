@@ -1,6 +1,8 @@
 name: containers-test
 on:
   push:
+    branches:
+      - main
     paths:
       - "containers/**"
       - "packages/lesspass-site/**"
@@ -29,7 +31,7 @@ jobs:
         with:
           node-version: "14"
       - run: yarn install
-      - run: yarn workspace lesspass-site run test
+      - run: yarn workspace lesspass-site test
   test-integration:
     runs-on: ubuntu-18.04
     steps:

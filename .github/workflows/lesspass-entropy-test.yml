@@ -1,6 +1,8 @@
 name: lesspass-entropy-test
 on:
   push:
+    branches:
+      - main
     paths:
       - "packages/lesspass-entropy/**"
   pull_request:
@@ -15,5 +17,5 @@ jobs:
         with:
           node-version: "14"
       - run: yarn install
-      - run: yarn workspace lesspass-crypto run build
-      - run: yarn workspace lesspass-entropy run test
+      - run: yarn workspace lesspass-crypto build
+      - run: yarn workspace lesspass-entropy test

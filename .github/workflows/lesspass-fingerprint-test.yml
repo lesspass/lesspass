@@ -1,6 +1,8 @@
 name: lesspass-fingerprint-test
 on:
   push:
+    branches:
+      - main
     paths:
       - "packages/lesspass-fingerprint/**"
   pull_request:
@@ -16,5 +18,5 @@ jobs:
           node-version: "14"
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
-      - run: yarn workspace lesspass-crypto run build
-      - run: yarn workspace lesspass-fingerprint run test
+      - run: yarn workspace lesspass-crypto build
+      - run: yarn workspace lesspass-fingerprint test

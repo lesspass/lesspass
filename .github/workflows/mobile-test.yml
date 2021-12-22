@@ -1,6 +1,8 @@
 name: mobile-test
 on:
   push:
+    branches:
+      - main
     paths:
       - "mobile/**"
   pull_request:

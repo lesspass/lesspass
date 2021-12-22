@@ -1,8 +1,10 @@
 name: lesspass-crypto-publish
 on:
   workflow_run:
-    workflows: ["lesspass-crypto-test"]
-    branches: [main]
+    workflows:
+      - "lesspass-crypto-test"
+    branches:
+      - main
     types:
       - completed
 jobs:

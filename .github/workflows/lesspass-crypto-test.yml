@@ -1,6 +1,8 @@
 name: lesspass-crypto-test
 on:
   push:
+    branches:
+      - main
     paths:
       - "packages/lesspass-crypto/**"
   pull_request:
@@ -15,4 +17,4 @@ jobs:
         with:
           node-version: "14"
       - run: yarn install
-      - run: yarn workspace lesspass-crypto run test
+      - run: yarn workspace lesspass-crypto test

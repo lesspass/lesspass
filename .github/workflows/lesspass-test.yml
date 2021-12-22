@@ -1,6 +1,8 @@
 name: lesspass-test
 on:
   push:
+    branches:
+      - main
     paths:
       - "packages/lesspass/**"
   pull_request:
@@ -15,4 +17,4 @@ jobs:
         with:
           node-version: "14"
       - run: yarn install
-      - run: yarn workspace lesspass run test
+      - run: yarn workspace lesspass test

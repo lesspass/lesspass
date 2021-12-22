@@ -1,8 +1,10 @@
 name: lesspass-pure-publish
 on:
   workflow_run:
-    workflows: ["lesspass-pure-test"]
-    branches: [main]
+    workflows:
+      - "lesspass-pure-test"
+    branches:
+      - main
     types:
       - completed
 jobs:

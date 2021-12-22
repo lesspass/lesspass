@@ -1,6 +1,8 @@
 name: cli-test
 on:
   push:
+    branches:
+      - main
     paths:
       - "cli/**"
   pull_request:
@@ -20,5 +22,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - run: cd cli
-      - run: ./test
+      - run: |
+          cd cli
+          ./test
