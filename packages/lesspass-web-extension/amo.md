@@ -12,8 +12,8 @@ To rebuild the web extension, you need node, yarn and md5sum to check the md5 su
 
 Tested with:
 
- * node version 14.16.0
- * yarn version 1.22.5
+ * node version 16.10.0
+ * yarn version 1.22.11
  * md5sum (GNU coreutils) version 8.32
 
 ## unzip source {sha256}.zip
@@ -23,9 +23,8 @@ Tested with:
 
 ## Reproduce lesspass.min.js and dist folder with sources
 
-    cd packages/lesspass-pure
     yarn install
-    yarn run build
-    cd ../../
+    yarn workspace lesspass-crypto build
+    yarn workspace lesspass-pure build
     find packages/lesspass-web-extension/extension/dist/ -type f -exec md5sum {} \;
     find packages/lesspass-pure/dist -type f -exec md5sum {} \;

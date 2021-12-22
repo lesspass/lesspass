@@ -12,10 +12,10 @@ jobs:
         with:
           node-version: "14"
       - run: yarn install
-      - run: yarn workspace lesspass-crypto run build
-      - run: yarn workspace lesspass-pure run build
-      - run: yarn workspace lesspass-web-extension run build
-      - run: yarn workspace lesspass-web-extension run release
+      - run: yarn workspace lesspass-crypto build
+      - run: yarn workspace lesspass-pure build
+      - run: yarn workspace lesspass-web-extension build
+      - run: yarn workspace lesspass-web-extension release
         continue-on-error: true
         env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}

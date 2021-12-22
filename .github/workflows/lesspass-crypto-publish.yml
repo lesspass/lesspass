@@ -16,10 +16,8 @@ jobs:
           node-version: "14"
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
-      - run: yarn workspace lesspass-crypto run build
-      - run: |
-          cd packages/lesspass-crypto
-          yarn publish --non-interactive
+      - run: yarn workspace lesspass-crypto build
+      - run: yarn workspace lesspass-crypto publish --non-interactive
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
