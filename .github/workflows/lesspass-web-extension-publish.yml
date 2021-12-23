@@ -14,9 +14,6 @@ jobs:
         with:
           node-version: "14"
       - run: yarn install
-      - run: yarn workspace lesspass-crypto build
-      - run: yarn workspace lesspass-pure build
-      - run: yarn workspace lesspass-web-extension build
       - run: yarn workspace lesspass-web-extension release
         continue-on-error: true
         env:

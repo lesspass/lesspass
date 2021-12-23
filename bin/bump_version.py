@@ -23,6 +23,21 @@ def print_packages_version(packages):
             print(f"|{printable_package_name}|{version.rjust(9, ' ')}|")
 
 
+def get_package_version(package):
+    with open(os.path.join(root_path, "packages", package, "package.json")) as f:
+        package_json = json.load(f)
+        return package_json["version"]
+
+
+def set_version(file_path, version):
+    with open(file_path) as f:
+        package_json = json.load(f)
+    package_json["version"] = version
+
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(package_json, f, ensure_ascii=False, indent=2)
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         usage()
@@ -56,17 +71,28 @@ if __name__ == "__main__":
     if has_error:
         usage()
 
-    print_packages_version(packages)
-
     package_short_name = packages[package]
     subprocess.run(
-        ["yarn", "config", "set", "version-tag-prefix", f"{package_short_name}-v"]
+        [
+            "yarn",
+            "workspace",
+            f"{package}",
+            "version",
+            f"--{bump}",
+            "--no-git-tag-version",
+            "--no-commit-hooks",
+        ]
     )
-    subprocess.run(
-        ["yarn", "config", "set", "version-git-message", f"{package_short_name}-v%s"]
-    )
-    subprocess.run(["yarn", "workspace", f"{package}", "version", f"--{bump}"])
-    subprocess.run(["yarn", "config", "set", "version-tag-prefix", "v"])
-    subprocess.run(["yarn", "config", "set", "version-git-message", "v%s"])
-
-    print_packages_version(packages)
+    if package == "lesspass-web-extension":
+        version = get_package_version(package)
+        set_version(
+            os.path.join(root_path, "packages", package, "extension", "manifest.json"),
+            version,
+        )
+        subprocess.run(["yarn", "workspace", "lesspass-crypto", "build"])
+        subprocess.run(["yarn", "workspace", "lesspass-pure", "build"])
+        subprocess.run(["yarn", "workspace", "lesspass-web-extension", "build"])
+        subprocess.run(["git", "add", "."])
+        tag = f"{package_short_name}-v{version}"
+        subprocess.run(["git", "commit", "-a", "-m", tag])
+        subprocess.run(["git", "tag", tag])
