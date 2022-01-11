@@ -1,5 +1,3 @@
-[![Actions Status](https://github.com/lesspass/lesspass/workflows/test/badge.svg)](https://github.com/lesspass/lesspass/actions)
-
 # LessPass
 
 LessPass is a stateless password manager.
