@@ -11,6 +11,7 @@ export default function Errors() {
     <Portal>
       {Object.values(errors).map((error) => (
         <Snackbar
+          key={error.id}
           visible={true}
           style={{ backgroundColor: theme.colors.red }}
           onDismiss={() => dispatch(deleteError(error))}

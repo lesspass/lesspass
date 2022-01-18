@@ -24,6 +24,30 @@ class UserTestCase(APITestCase):
         self.assertEqual(request.status_code, 200)
         self.assertEqual("def", models.LessPassUser.objects.first().key)
 
+    def test_delete_auth_user_me(self):
+        nb_of_users = models.LessPassUser.objects.all().count()
+        user = factories.UserFactory(
+            email="test@example.org",
+            password="test@example.org",
+        )
+        self.assertEqual(nb_of_users + 1, models.LessPassUser.objects.all().count())
+        client = APIClient()
+        client.force_authenticate(user=user)
+        credentials = {
+            "email": "test@example.org",
+            "password": "test@example.org",
+        }
+        request = client.post("/api/auth/jwt/create/", credentials)
+        self.assertEqual(request.status_code, 200)
+        request = client.delete(
+            "/api/auth/users/me/", {"current_password": "test@example.org"}
+        )
+        self.assertEqual(request.status_code, 204)
+
+        request = client.post("/api/auth/jwt/create/", credentials)
+        self.assertEqual(request.status_code, 401)
+        self.assertEqual(nb_of_users, models.LessPassUser.objects.all().count())
+
 
 class RegisterTestCase(APITestCase):
     def test_register(self):

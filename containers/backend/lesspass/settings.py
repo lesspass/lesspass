@@ -192,6 +192,7 @@ if "test" in sys.argv[1:] or "jenkins" in sys.argv[1:]:
 DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "#/password/reset/confirm/{uid}/{token}",
     "ACTIVATION_URL": "#/activate/{uid}/{token}",
+    "TOKEN_MODEL": None
 }
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

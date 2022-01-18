@@ -46,11 +46,13 @@ export default class MasterPassword extends Component {
       masterPassword,
       hideFingerprint,
       label = "Master Password",
+      style = {},
     } = this.props;
     const { fingerprint } = this.state;
     return (
       <View>
         <TextInput
+          style={style}
           label={label}
           value={masterPassword}
           secureTextEntry

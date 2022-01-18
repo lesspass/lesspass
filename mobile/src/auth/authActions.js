@@ -82,3 +82,36 @@ export function refreshTokens() {
       .then((response) => dispatch(setJWT(response.data)));
   };
 }
+
+export function getCurrentUser() {
+  return (dispatch, getState) => {
+    const { settings, auth } = getState();
+    return axios.get(`${settings.baseURL}/auth/users/me/`, {
+      headers: { Authorization: `Bearer ${auth.accessToken}` },
+    });
+  };
+}
+
+function deleteCurrentUser(credentials) {
+  return (dispatch, getState) => {
+    const { settings, auth } = getState();
+    return axios.delete(`${settings.baseURL}/auth/users/me/`, {
+      data: { current_password: credentials.password },
+      headers: { Authorization: `Bearer ${auth.accessToken}` },
+    });
+  };
+}
+
+export function deleteMyAccount(credentials) {
+  return (dispatch, getState) => {
+    const { settings } = getState();
+    const { encryptMasterPassword } = settings;
+    if (encryptMasterPassword) {
+      return dispatch(getEncryptedCredentials(credentials)).then(
+        (encryptedCredentials) =>
+          dispatch(deleteCurrentUser(encryptedCredentials))
+      );
+    }
+    return dispatch(deleteCurrentUser(credentials));
+  };
+}
