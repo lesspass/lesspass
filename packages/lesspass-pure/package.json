@@ -1,6 +1,6 @@
 {
   "name": "lesspass-pure",
-  "version": "9.5.5",
+  "version": "9.5.6",
   "description": "LessPass web component",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
