@@ -7,3 +7,4 @@
 
     python3 bin/bump_version.py lesspass-web-extension --patch
     git push --tags origin main
+    yarn workspace lesspass-web-extension release

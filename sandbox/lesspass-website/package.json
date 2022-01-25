@@ -14,7 +14,7 @@
     "gatsby-plugin-sharp": "^4.4.0",
     "gatsby-source-filesystem": "^4.4.0",
     "gatsby-transformer-sharp": "^4.4.0",
-    "lesspass-pure": "^9.5.2",
+    "lesspass-pure": "^9.5.6",
     "prettier": "2.5.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

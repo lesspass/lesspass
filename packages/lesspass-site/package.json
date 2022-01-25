@@ -1,6 +1,6 @@
 {
   "name": "lesspass-site",
-  "version": "9.3.1",
+  "version": "9.3.2",
   "description": "LessPass web site",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "lesspass-pure": "^9.5.2"
+    "lesspass-pure": "^9.5.6"
   },
   "devDependencies": {
     "favicons": "^6.2.1",
