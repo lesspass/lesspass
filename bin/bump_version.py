@@ -83,8 +83,8 @@ if __name__ == "__main__":
             "--no-commit-hooks",
         ]
     )
+    version = get_package_version(package)
     if package == "lesspass-web-extension":
-        version = get_package_version(package)
         set_version(
             os.path.join(root_path, "packages", package, "extension", "manifest.json"),
             version,
@@ -93,6 +93,6 @@ if __name__ == "__main__":
         subprocess.run(["yarn", "workspace", "lesspass-pure", "build"])
         subprocess.run(["yarn", "workspace", "lesspass-web-extension", "build"])
         subprocess.run(["git", "add", "."])
-        tag = f"{package_short_name}-v{version}"
-        subprocess.run(["git", "commit", "-a", "-m", tag])
-        subprocess.run(["git", "tag", tag])
+    tag = f"{package_short_name}-v{version}"
+    subprocess.run(["git", "commit", "-a", "-m", tag])
+    subprocess.run(["git", "tag", tag])
