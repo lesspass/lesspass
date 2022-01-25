@@ -90,18 +90,18 @@ export default {
       pagination: {
         pageCount: 1,
         perPage: 5,
-        currentPage: 1
-      }
+        currentPage: 1,
+      },
     };
   },
   components: {
     PasswordProfile,
-    Paginate
+    Paginate,
   },
   computed: {
     ...mapState(["passwords"]),
     filteredPasswords() {
-      const passwords = this.passwords.filter(password => {
+      const passwords = this.passwords.filter((password) => {
         var loginMatch = password.login.match(
           new RegExp(this.searchQuery, "i")
         );
@@ -113,17 +113,17 @@ export default {
           this.pagination.perPage,
         this.pagination.currentPage * this.pagination.perPage
       );
-    }
+    },
   },
   watch: {
     filteredPasswords: {
       deep: true,
-      handler: function(newVal) {
+      handler: function () {
         this.pagination.pageCount = Math.ceil(
-          newVal.length / this.pagination.perPage
+          this.passwords.length / this.pagination.perPage
         );
-      }
-    }
+      },
+    },
   },
   beforeMount() {
     this.$store.dispatch("getPasswords");
@@ -131,7 +131,7 @@ export default {
   methods: {
     setCurrentPage(page) {
       this.pagination.currentPage = page;
-    }
-  }
+    },
+  },
 };
 </script>
