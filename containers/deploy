@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function check_env_variables_are_setted {
-    if [ -z "${QUAY_USERNAME}" ] || [ -z "${QUAY_PASSWORD}" ]; then
-        echo "Need to set QUAY_USERNAME and QUAY_PASSWORD env variables to release containers"
+    if [ -z "${QUAY_USERNAME}" ] || [ -z "${QUAY_PASSWORD}" ] || [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_PASSWORD}" ]; then
+        echo "Need to set QUAY_USERNAME, QUAY_PASSWORD, DOCKER_PASSWORD and DOCKER_PASSWORD env variables to release containers"
         exit 1
     fi
 }
@@ -18,15 +18,13 @@ set -o nounset
 function build_and_push_container {
     container=$1
     docker build --tag lesspass/${container} ./${container}
+    docker push lesspass/${container}
     docker tag lesspass/${container} quay.io/lesspass/${container}
     docker push quay.io/lesspass/${container}
 }
 
-function build_and_push_containers {
-    docker login --username="${QUAY_USERNAME}" --password="${QUAY_PASSWORD}" quay.io
-    build_and_push_container webserver
-    build_and_push_container backend
-    build_and_push_container frontend
-}
-
-build_and_push_containers
+docker login --username="${DOCKER_USERNAME}" --password="${DOCKER_PASSWORD}"
+docker login --username="${QUAY_USERNAME}" --password="${QUAY_PASSWORD}" quay.io
+build_and_push_container webserver
+build_and_push_container backend
+build_and_push_container frontend
