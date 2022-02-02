@@ -30,11 +30,12 @@
     "lesspass"
   ],
   "scripts": {
+    "no-analytics": "gatsby telemetry --disable",
     "build:static": "cp -r node_modules/lesspass-pure/dist/* static/",
-    "build": "gatsby build",
+    "build": "yarn no-analytics && gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby telemetry --disable && npm run develop",
+    "start": "yarn no-analytics && yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"

@@ -1,5 +1,5 @@
-import React from "react";
-import { PageProps } from "gatsby";
+import React, { useEffect } from "react";
+import { withPrefix } from "gatsby";
 import Helmet from "react-helmet";
 import GooglePlayBadge from "../images/google-play-badge.png";
 import ApplePlayBadge from "../images/download-on-the-App-Store.png";
@@ -9,14 +9,23 @@ import AMOBadge from "../images/get-amo-badge.png";
 import CLIBadge from "../images/cli-badge.png";
 import HowItWorks from "../images/HowItWorks.png";
 
-export default function IndexPage(props: PageProps) {
+export default function IndexPage() {
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = withPrefix("lesspass.min.js");
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <>
       <div className="relative bg-gray-800 overflow-hidden">
         <Helmet>
-          <script src="lesspass.min.js" type="text/javascript" />
           <link href="lesspass.min.css" rel="stylesheet" />
         </Helmet>
         <div className="relative pt-6 pb-16 sm:pb-24">
@@ -40,7 +49,10 @@ export default function IndexPage(props: PageProps) {
                 </div>
                 <div className="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
                   <div className="bg-white sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
-                    <div className="lesspass--unbordered lesspass--full-width">
+                    <div
+                      style={{ minHeight: "449px" }}
+                      className="lesspass--unbordered lesspass--full-width"
+                    >
                       <div id="lesspass"></div>
                     </div>
                   </div>
@@ -263,13 +275,19 @@ export default function IndexPage(props: PageProps) {
       <footer className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
           <div className="mt-8 flex justify-center space-x-6">
-            <a href="https://twitter.com/guillaume20100" className="text-gray-400 hover:text-gray-500">
+            <a
+              href="https://twitter.com/guillaume20100"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <span className="sr-only">Twitter</span>
               <svg fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6">
                 <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
               </svg>
             </a>
-            <a href="https://github.com/lesspass/lesspass/" className="text-gray-400 hover:text-gray-500">
+            <a
+              href="https://github.com/lesspass/lesspass/"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <span className="sr-only">Github</span>
               <svg fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6">
                 <path
