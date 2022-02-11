@@ -18,7 +18,7 @@
     "browserify": "^17.0.0",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
-    "karma": "^6.3.4",
+    "karma": "^6.3.14",
     "karma-browserify": "^8.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-mocha": "^2.0.1",
