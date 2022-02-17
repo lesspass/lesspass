@@ -4,8 +4,8 @@ LABEL name="LessPass Backend"
 RUN mkdir /opt/backend
 WORKDIR /opt/backend
 COPY requirements.txt /opt/backend
-RUN python -m pip install --upgrade pip
-RUN python -m pip install -r requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade pip
+RUN python -m pip install --no-cache-dir -r requirements.txt
 COPY . /opt/backend
 RUN python --version
 EXPOSE 8000
