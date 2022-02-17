@@ -26,7 +26,7 @@
       -c, --copy            copy the password to clipboard
       --exclude EXCLUDE     exclude char from generated password
       --no-fingerprint      hide visual fingerprint of the master password when you type
-      --save [SAVE_PATH]    [beta] Save your password profiles. /!\ File not encrypted. Use carefully. (default: /Users/guillaume/.config/lesspass/profiles.json)
+      --save [SAVE_PATH]    [beta] Save your password profiles. /!\ File not encrypted. Use carefully. (default: ~/.config/lesspass/profiles.json)
       --load LOAD_PATH      [beta] Load your password profiles file
       --url URL             [beta] LessPass Database URL used by --save and --load command
       -l, --lowercase       add lowercase in password
