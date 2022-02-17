@@ -4,23 +4,18 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
 class LesspassUserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    def create_user(self, email, password=None, key=""):
         if not email:
             raise ValueError("Users must have an email address")
 
-        user = self.model(
-            email=self.normalize_email(email),
-        )
+        user = self.model(email=self.normalize_email(email), key=key)
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password):
-        user = self.create_user(
-            email,
-            password=password,
-        )
+    def create_superuser(self, email, password, key=""):
+        user = self.create_user(email, password=password, key=key)
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -30,7 +25,7 @@ class LessPassUser(AbstractBaseUser):
     email = models.EmailField(verbose_name="email address", max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    key = models.TextField(null=True)
+    key = models.TextField(blank=True, default="")
 
     objects = LesspassUserManager()
 
@@ -77,8 +72,8 @@ class Password(DateMixin):
     user = models.ForeignKey(
         LessPassUser, on_delete=models.CASCADE, related_name="passwords"
     )
-    login = models.CharField(max_length=255, null=True, blank=True)
-    site = models.CharField(max_length=255, null=True, blank=True)
+    login = models.CharField(max_length=255, blank=True, default="")
+    site = models.CharField(max_length=255, blank=True, default="")
 
     lowercase = models.BooleanField(default=True)
     uppercase = models.BooleanField(default=True)

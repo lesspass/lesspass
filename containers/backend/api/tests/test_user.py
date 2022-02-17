@@ -13,10 +13,10 @@ class UserTestCase(APITestCase):
     def test_auth_user_me(self):
         request = self.client.get("/api/auth/users/me/")
         self.assertEqual(request.status_code, 200)
-        self.assertIsNone(request.data["key"])
+        self.assertEqual(request.data["key"], "")
 
     def test_update_auth_user_me(self):
-        self.assertIsNone(models.LessPassUser.objects.first().key)
+        self.assertEqual(models.LessPassUser.objects.first().key, "")
         request = self.client.put("/api/auth/users/me/", {"key": "abc"})
         self.assertEqual(request.status_code, 200)
         self.assertEqual("abc", models.LessPassUser.objects.first().key)
