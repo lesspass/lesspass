@@ -14,7 +14,7 @@ import Styles from "../ui/Styles";
 import Counter from "./Counter";
 import Options from "./Options";
 import MasterPassword from "./MasterPassword";
-import Clipboard from "@react-native-community/clipboard";
+import { NativeModules } from "react-native";
 import { savePasswordProfile, updatePasswordProfile } from "./profilesActions";
 import { cleanPasswordProfile } from "../profiles/profileActions";
 import {
@@ -163,7 +163,7 @@ export default function PasswordGeneratorScreen() {
                   passwordProfile
                 );
                 if (state.copyPasswordAfterGeneration) {
-                  Clipboard.setString(password);
+                  NativeModules.LessPassClipboard.copy(password);
                   setCopied(true);
                 }
                 setState((state) => ({ ...state, password }));
@@ -205,7 +205,7 @@ export default function PasswordGeneratorScreen() {
               <Button
                 mode="outlined"
                 onPress={() => {
-                  Clipboard.setString(state.password);
+                  NativeModules.LessPassClipboard.copy(state.password);
                   setCopied(true);
                 }}
                 icon="clipboard"

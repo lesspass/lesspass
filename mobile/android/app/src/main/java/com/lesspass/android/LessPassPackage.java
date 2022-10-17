@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LessPassReactPackage implements ReactPackage {
+public class LessPassPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Collections.emptyList();
@@ -19,6 +19,7 @@ public class LessPassReactPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new LessPassModule(reactContext));
+        modules.add(new LessPassClipboardModule(reactContext));
         return modules;
     }
 }
