@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "lodash";
 import {
   KeyboardAvoidingView,
@@ -15,49 +15,46 @@ import Styles from "../ui/Styles";
 import { addError } from "../errors/errorsActions";
 import { signIn } from "./authActions";
 import routes from "../routes";
+import { useNavigation } from "@react-navigation/native";
 
-export class SignInScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      isLoading: false,
-    };
-  }
+export default function SignInScreen() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const settings = useSelector((state) => state.settings);
+  const { encryptMasterPassword } = settings;
 
-  render() {
-    const { email, password, isLoading } = this.state;
-    const { navigation, settings, addError, signIn } = this.props;
-    const { encryptMasterPassword } = settings;
-    return (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={Styles.container}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <ScrollView contentContainerStyle={Styles.innerContainer}>
-            <Title>Connect to Lesspass Database</Title>
-            <TextInput
-              mode="outlined"
-              label="Email"
-              value={email}
-              onChangeText={(text) => this.setState({ email: text.trim() })}
-            />
-            <MasterPassword
-              label={encryptMasterPassword ? "Master Password" : "Password"}
-              masterPassword={password}
-              hideFingerprint={!encryptMasterPassword}
-              onChangeText={(password) => this.setState({ password })}
-            />
-            <Button
-              compact
-              icon={"account-circle"}
-              mode="contained"
-              style={Styles.loginSignInButton}
-              disabled={isEmpty(email) || isEmpty(password) || isLoading}
-              onPress={() => {
-                this.setState({ isLoading: true });
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={Styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView contentContainerStyle={Styles.innerContainer}>
+          <Title>Connect to Lesspass Database</Title>
+          <TextInput
+            mode="outlined"
+            label="Email"
+            value={email}
+            onChangeText={(text) => setEmail(text.trim())}
+          />
+          <MasterPassword
+            label={encryptMasterPassword ? "Master Password" : "Password"}
+            masterPassword={password}
+            hideFingerprint={!encryptMasterPassword}
+            onChangeText={(password) => setPassword(password)}
+          />
+          <Button
+            compact
+            icon={"account-circle"}
+            mode="contained"
+            style={Styles.loginSignInButton}
+            disabled={isEmpty(email) || isEmpty(password) || isLoading}
+            onPress={() => {
+              setIsLoading(true);
+              dispatch(
                 signIn(
                   {
                     email,
@@ -65,50 +62,34 @@ export class SignInScreen extends Component {
                   },
                   encryptMasterPassword
                 )
-                  .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
-                  .catch(() => {
-                    this.setState({ isLoading: false });
-                    let errorMessage =
-                      "Unable to log in with provided credentials.";
-                    if (encryptMasterPassword) {
-                      errorMessage +=
-                        " Your master password is encrypted. Uncheck this option in your settings if you don't use it.";
-                    }
-                    addError(errorMessage);
-                  });
-              }}
-            >
-              Sign In
-            </Button>
-            <Text>Don't have an account?</Text>
-            <Button
-              compact
-              icon="account-circle"
-              mode="outlined"
-              style={Styles.loginSignUpButton}
-              onPress={() => navigation.navigate(routes.SIGN_UP)}
-            >
-              Sign Up
-            </Button>
-          </ScrollView>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    );
-  }
+              )
+                .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
+                .catch(() => {
+                  setIsLoading(false);
+                  let errorMessage =
+                    "Unable to log in with provided credentials.";
+                  if (encryptMasterPassword) {
+                    errorMessage +=
+                      " Your master password is encrypted. Uncheck this option in your settings if you don't use it.";
+                  }
+                  dispatch(addError(errorMessage));
+                });
+            }}
+          >
+            Sign In
+          </Button>
+          <Text>Don't have an account?</Text>
+          <Button
+            compact
+            icon="account-circle"
+            mode="outlined"
+            style={Styles.loginSignUpButton}
+            onPress={() => navigation.navigate(routes.SIGN_UP)}
+          >
+            Sign Up
+          </Button>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  );
 }
-
-function mapStateToProps(state) {
-  return {
-    settings: state.settings,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    addError: (message) => dispatch(addError(message)),
-    signIn: (credentials, encryptMasterPassword) =>
-      dispatch(signIn(credentials, encryptMasterPassword)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen);
