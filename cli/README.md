@@ -2,7 +2,7 @@
 
 ## Install
 
-    python3 -m pip install --user lesspass
+    python3 -m pip install --user lesspass # 3.6, 3.8+
 
 ## Usage
 
