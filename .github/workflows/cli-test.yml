@@ -17,6 +17,7 @@ jobs:
         python-version:
           - "3.6"
           - "3.8"
+          - "3.10"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
