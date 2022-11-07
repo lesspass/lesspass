@@ -177,4 +177,7 @@ def parse_args(args):
         help="remove symbols from password",
         action="store_true",
     )
-    return parser.parse_args(args)
+    parsed_args = parser.parse_args(args)
+    if not parsed_args.url.endswith("/"):
+        parsed_args.url = f"{parsed_args.url}/"
+    return parsed_args

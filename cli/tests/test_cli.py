@@ -149,3 +149,8 @@ class TestParseArgs(unittest.TestCase):
         self.assertEqual(
             parse_args(["--url", "https://example.org/"]).url, "https://example.org/"
         )
+
+    def test_nrt_parse_url_add_trailing_slash(self):
+        self.assertEqual(
+            parse_args(["--url", "https://example.org"]).url, "https://example.org/"
+        )
