@@ -17,7 +17,6 @@
     "test:watch": "jest --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "postversion": "react-native-version --never-amend",
-    "postinstall": "pod install --project-directory=./ios",
     "prettier": "prettier --write src"
   },
   "dependencies": {
@@ -32,7 +31,7 @@
     "lesspass-render-password": "^9.1.9",
     "lodash": "^4.17.21",
     "react": "18.2.0",
-    "react-native": "0.70.3",
+    "react-native": "0.70.6",
     "react-native-gesture-handler": "^2.7.1",
     "react-native-keychain": "^8.1.1",
     "react-native-paper": "^4.12.5",
