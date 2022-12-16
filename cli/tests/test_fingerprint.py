@@ -1,7 +1,10 @@
+import unittest
+
 from lesspass.fingerprint import get_mnemonic
 
 
-def test_get_fingerprint():
-    assert get_mnemonic(b"password") == "⚗️🗄️🍺"
-    assert get_mnemonic(b"Password12345") == "🚑🛏️💷"
-    assert get_mnemonic(b"Ma$$W0rld!@#$%^&*()<gamma>") == "📈💷💷"
+class TestFingerprint(unittest.TestCase):
+    def test_get_fingerprint(self):
+        self.assertEqual(get_mnemonic("passwor"), "🏨 🍴 🏁")
+        self.assertEqual(get_mnemonic("Password12345"), "🚑 🛏️ 💷")
+        self.assertEqual(get_mnemonic("Ma$$W0rld!@#$%^&*()<gamma>"), "📈 💷 💷")

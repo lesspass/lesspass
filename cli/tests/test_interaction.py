@@ -1,7 +1,6 @@
 import unittest
 import pexpect
 import signal
-import time
 
 
 class TestInteraction(unittest.TestCase):

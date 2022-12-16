@@ -156,7 +156,7 @@ class TestPassword(unittest.TestCase):
 
     def test_get_set_of_characters_with_several_rules_and_exclude(self):
         self.assertEqual(
-            password._get_set_of_characters(["lowercase", "digits"], 'iy4!'),
+            password._get_set_of_characters(["lowercase", "digits"], "iy4!"),
             "abcdefghjklmnopqrstuvwxz012356789",
         )
 
