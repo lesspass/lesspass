@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { Text, Button, Title } from "react-native-paper";
+import { Text, Button, Title, useTheme } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 import TextInput from "../ui/TextInput";
 import Styles from "../ui/Styles";
@@ -23,9 +23,10 @@ export default function SignInScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const settings = useSelector((state) => state.settings);
-  const { encryptMasterPassword } = settings;
-
+  const theme = useTheme();
+  const encryptMasterPassword = useSelector(
+    (state) => state.settings.encryptMasterPassword
+  );
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -33,7 +34,7 @@ export default function SignInScreen() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={Styles.innerContainer}>
-          <Title>Connect to Lesspass Database</Title>
+          <Title style={Styles.title}>Connect to Lesspass Database</Title>
           <TextInput
             mode="outlined"
             label="Email"
@@ -47,10 +48,12 @@ export default function SignInScreen() {
             onChangeText={(password) => setPassword(password)}
           />
           <Button
-            compact
             icon={"account-circle"}
             mode="contained"
-            style={Styles.loginSignInButton}
+            style={{
+              marginTop: 10,
+              marginBottom: 30,
+            }}
             disabled={isEmpty(email) || isEmpty(password) || isLoading}
             onPress={() => {
               setIsLoading(true);
@@ -78,15 +81,11 @@ export default function SignInScreen() {
           >
             Sign In
           </Button>
-          <Text>Don't have an account?</Text>
           <Button
-            compact
-            icon="account-circle"
-            mode="outlined"
-            style={Styles.loginSignUpButton}
+            mode="text"
             onPress={() => navigation.navigate(routes.SIGN_UP)}
           >
-            Sign Up
+            Don't have an account? Sign Up
           </Button>
         </ScrollView>
       </TouchableWithoutFeedback>

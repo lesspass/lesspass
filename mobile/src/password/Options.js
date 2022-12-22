@@ -6,7 +6,7 @@ import { areOptionsValid } from "./validations";
 export default function Options({ options, onOptionsChange, style }) {
   const [isValid, setIsvalid] = useState(true);
   const theme = useTheme();
-  const color = isValid ? theme.colors.placeholder : theme.colors.red;
+  const color = isValid ? theme.colors.secondary : theme.colors.error;
 
   useEffect(() => {
     if (areOptionsValid(options)) {

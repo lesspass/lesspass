@@ -1,21 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import { View } from "react-native";
-import { TextInput } from "react-native-paper";
-import styles from "./Styles";
+import { TextInput, useTheme } from "react-native-paper";
 
-export default class Input extends Component {
-  render() {
-    const { showError = false, errorText, ...props } = this.props;
-    return (
-      <View>
-        <TextInput
-          autoCapitalize="none"
-          autoCorrect={false}
-          style={styles.input}
-          mode="outlined"
-          {...props}
-        />
-      </View>
-    );
-  }
+export default function Input({ showError = false, errorText, ...props }) {
+  const theme = useTheme();
+  return (
+    <TextInput
+      autoCapitalize="none"
+      autoCorrect={false}
+      outlineStyle={{
+        borderRadius: 5 * theme.roundness,
+      }}
+      style={{marginBottom:5}}
+      mode="outlined"
+      {...props}
+    />
+  );
 }

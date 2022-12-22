@@ -79,7 +79,8 @@ export function refreshTokens() {
       .post(`${settings.baseURL}/auth/jwt/refresh/`, {
         refresh: auth.refreshToken,
       })
-      .then((response) => dispatch(setJWT(response.data)));
+      .then((response) => dispatch(setJWT(response.data)))
+      .catch(console.log);
   };
 }
 

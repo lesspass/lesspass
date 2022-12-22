@@ -12,18 +12,20 @@ import routes from "./routes";
 import { getPasswordProfiles } from "./password/profilesActions";
 import { refreshTokens, signOut } from "./auth/authActions";
 import ProfilesScreen from "./profiles/ProfilesScreen";
-import { SafeAreaView, useColorScheme } from "react-native";
+import { SafeAreaView } from "react-native";
 import Errors from "./errors/Errors";
 import Header from "./header/Header";
 import Styles from "./ui/Styles";
+import { useTheme } from "react-native-paper";
 import { getReactNavigationTheme } from "./ui/Theme";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const colorScheme = useColorScheme();
   const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const theme = useTheme();
+
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(refreshTokens())
@@ -37,12 +39,12 @@ export default function App() {
         });
     }
   }, [isAuthenticated, dispatch]);
-  const reactNavigationTheme = getReactNavigationTheme(colorScheme);
+  const reactNavigationTheme = getReactNavigationTheme(theme);
   return (
     <SafeAreaView
       style={{
         ...Styles.container,
-        backgroundColor: reactNavigationTheme.colors.card,
+        backgroundColor: theme.colors.background,
       }}
     >
       <Header />

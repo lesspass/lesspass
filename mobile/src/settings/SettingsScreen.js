@@ -175,7 +175,6 @@ export class SettingsScreen extends Component {
           />
           <Divider />
           <List.Item title={`LessPass version: ${version}`} />
-          <Divider />
         </List.Section>
       </ScrollView>
     );

@@ -11,8 +11,14 @@ export default function DeleteMyAccountModal({ onDeleteConfirmed }) {
   return (
     <View>
       <Portal>
-        <Dialog onDismiss={() => setShowModal(false)} visible={showModal}>
-          <Dialog.Title style={{ color: theme.colors.red }}>
+        <Dialog
+          onDismiss={() => {
+            setMasterPassword("");
+            setShowModal(false);
+          }}
+          visible={showModal}
+        >
+          <Dialog.Title style={{ color: theme.colors.error }}>
             Delete my account
           </Dialog.Title>
           <Dialog.ScrollArea style={{ maxHeight: 170, paddingHorizontal: 0 }}>
@@ -22,38 +28,50 @@ export default function DeleteMyAccountModal({ onDeleteConfirmed }) {
                 masterPassword={masterPassword}
                 onChangeText={setMasterPassword}
               />
-              <Text style={{ color: theme.colors.red }}>
+              <Text style={{ color: theme.colors.error }}>
                 Enter your master password to delete your account. Warning! this
                 action is irreversible.
               </Text>
             </View>
           </Dialog.ScrollArea>
           <Dialog.Actions>
-            <Button primary onPress={() => setShowModal(false)}>
+            <Button
+              primary
+              onPress={() => {
+                setMasterPassword("");
+                setShowModal(false);
+              }}
+            >
               Cancel
             </Button>
             <Button
-            disabled={!masterPassword}
-              primary
+              disabled={!masterPassword}
+              mode="contained"
+              style={{
+                borderColor: theme.colors.error,
+              }}
+              buttonColor={theme.colors.error}
               onPress={() => {
                 setShowModal(false);
                 onDeleteConfirmed(masterPassword);
               }}
             >
-              <Text style={{ color: theme.colors.red }}>Delete my account</Text>
+              Delete my account
             </Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>
       <Button
-        compact
-        mode="outlined"
-        style={{ marginTop: 10, color: theme.colors.red }}
+        mode="contained"
+        style={{
+          borderColor: theme.colors.error,
+        }}
+        buttonColor={theme.colors.error}
         onPress={() => {
           setShowModal(true);
         }}
       >
-        <Text style={{ color: theme.colors.red }}>Delete my account</Text>
+        Delete my account
       </Button>
     </View>
   );

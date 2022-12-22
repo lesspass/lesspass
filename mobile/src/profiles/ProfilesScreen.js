@@ -109,8 +109,6 @@ export default function ProfilesScreen() {
                   description={
                     "There is no password profile that matches this search."
                   }
-                  titleStyle={{ color: theme.colors.primary }}
-                  descriptionStyle={{ color: theme.colors.primary }}
                 />
               ) : (
                 sortByNewestFirst(results).map((profile) => (
@@ -123,8 +121,6 @@ export default function ProfilesScreen() {
                         setQuery("");
                         navigation.navigate(routes.PASSWORD_GENERATOR);
                       }}
-                      titleStyle={{ color: theme.colors.primary }}
-                      descriptionStyle={{ color: theme.colors.primary }}
                       right={(props) => (
                         <IconButton
                           {...props}

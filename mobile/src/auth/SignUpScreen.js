@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -7,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { Text, Button, Title } from "react-native-paper";
+import { Button, Title, useTheme } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 import TextInput from "../ui/TextInput";
 import Styles from "../ui/Styles";
@@ -15,97 +14,82 @@ import { addError } from "../errors/errorsActions";
 import { signUp } from "./authActions";
 import { isEmpty } from "lodash";
 import routes from "../routes";
+import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
 
-export class SignUpScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      isLoading: false,
-    };
-  }
+export default function SignUpScreen() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const theme = useTheme();
+  const encryptMasterPassword = useSelector(
+    (state) => state.settings.encryptMasterPassword
+  );
 
-  render() {
-    const { email, password, isLoading } = this.state;
-    const { navigation, settings, addError, signUp } = this.props;
-    const { encryptMasterPassword } = settings;
-
-    return (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={Styles.container}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <ScrollView contentContainerStyle={Styles.innerContainer}>
-            <Title style={Styles.title}>Create an account</Title>
-            <TextInput
-              mode="outlined"
-              label="Email"
-              value={email}
-              onChangeText={(text) => this.setState({ email: text.trim() })}
-            />
-            <MasterPassword
-              label={encryptMasterPassword ? "Master Password" : "Password"}
-              masterPassword={password}
-              hideFingerprint={!encryptMasterPassword}
-              onChangeText={(password) => this.setState({ password })}
-            />
-            <Button
-              compact
-              icon="account-circle"
-              mode="contained"
-              style={Styles.loginSignInButton}
-              disabled={isEmpty(email) || isEmpty(password) || isLoading}
-              onPress={() => {
-                this.setState({ isLoading: true });
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={Styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView contentContainerStyle={Styles.innerContainer}>
+          <Title style={Styles.title}>Create an account</Title>
+          <TextInput
+            mode="outlined"
+            label="Email"
+            value={email}
+            onChangeText={setEmail}
+          />
+          <MasterPassword
+            label={encryptMasterPassword ? "Master Password" : "Password"}
+            masterPassword={password}
+            hideFingerprint={!encryptMasterPassword}
+            onChangeText={setPassword}
+          />
+          <Button
+            icon="account-circle"
+            mode="contained"
+            style={{
+              marginTop: 10,
+              marginBottom: 30,
+            }}
+            disabled={isEmpty(email) || isEmpty(password) || isLoading}
+            onPress={() => {
+              setIsLoading(true);
+              dispatch(
                 signUp(
                   {
-                    email,
+                    email: email.trim(),
                     password,
                   },
                   encryptMasterPassword
                 )
-                  .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
-                  .catch(() => {
-                    this.setState({ isLoading: false });
+              )
+                .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
+                .catch(() => {
+                  dispatch(
                     addError(
                       "Unable to sign up. Try in a few minutes or contact an administrator."
-                    );
-                  });
-              }}
-            >
-              Sign Up
-            </Button>
-            <Text>Already have an account?</Text>
-            <Button
-              compact
-              icon="account-circle"
-              mode="outlined"
-              style={Styles.loginSignUpButton}
-              onPress={() => navigation.navigate(routes.SIGN_IN)}
-            >
-              Sign In
-            </Button>
-          </ScrollView>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    );
-  }
+                    )
+                  );
+                })
+                .finally(() => {
+                  setIsLoading(false);
+                });
+            }}
+          >
+            Sign Up
+          </Button>
+          <Button
+            mode="text"
+            onPress={() => navigation.navigate(routes.SIGN_IN)}
+          >
+            Already have an account? Sign In
+          </Button>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  );
 }
-
-function mapStateToProps(state) {
-  return {
-    settings: state.settings,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    addError: (message) => dispatch(addError(message)),
-    signUp: (credentials, encryptMasterPassword) =>
-      dispatch(signUp(credentials, encryptMasterPassword)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpScreen);

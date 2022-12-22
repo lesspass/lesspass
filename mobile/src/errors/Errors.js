@@ -13,7 +13,7 @@ export default function Errors() {
         <Snackbar
           key={error.id}
           visible={true}
-          style={{ backgroundColor: theme.colors.red }}
+          style={{ backgroundColor: theme.colors.error }}
           onDismiss={() => dispatch(deleteError(error))}
           action={{
             label: "x",

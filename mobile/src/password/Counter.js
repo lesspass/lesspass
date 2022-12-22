@@ -19,8 +19,8 @@ export default function Counter({
       setIsValid(false);
     }
   }, [value]);
-  const color = isValid ? theme.colors.placeholder : theme.colors.red;
-  const colorAccent = isValid ? theme.colors.accent : theme.colors.red;
+  const color = isValid ? theme.colors.primary : theme.colors.error;
+  const borderColor = isValid ? theme.colors.outline : theme.colors.error;
   return (
     <View {...props}>
       <Text
@@ -37,10 +37,6 @@ export default function Counter({
           justifyContent: "center",
           alignItems: "center",
           height: 26,
-          borderWidth: 1,
-          borderColor: colorAccent,
-          borderRadius: theme.roundness,
-          backgroundColor: colorAccent,
         }}
       >
         <TouchableOpacity
@@ -50,6 +46,11 @@ export default function Counter({
             alignSelf: "stretch",
             paddingVertical: 6,
             paddingHorizontal: 16,
+            backgroundColor: isValid
+              ? theme.colors.primary
+              : theme.colors.error,
+            borderTopLeftRadius: 5 * theme.roundness,
+            borderBottomLeftRadius: 5 * theme.roundness,
           }}
           onPress={() => setValue(value - 1)}
         >
@@ -57,7 +58,7 @@ export default function Counter({
             size={12}
             name="minus"
             style={{
-              color: theme.colors.background,
+              color: isValid ? theme.colors.onPrimary : theme.colors.onError,
             }}
           />
         </TouchableOpacity>
@@ -65,7 +66,11 @@ export default function Counter({
           style={{
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: theme.colors.background,
+            borderWidth: 0,
+            borderTopWidth: 1,
+            borderTopColor: borderColor,
+            borderBottomWidth: 1,
+            borderBottomColor: borderColor,
           }}
         >
           <TextInput
@@ -104,6 +109,11 @@ export default function Counter({
             alignSelf: "stretch",
             paddingVertical: 6,
             paddingHorizontal: 16,
+            backgroundColor: isValid
+              ? theme.colors.primary
+              : theme.colors.error,
+            borderTopRightRadius: 5 * theme.roundness,
+            borderBottomRightRadius: 5 * theme.roundness,
           }}
           onPress={() => setValue(value + 1)}
         >
@@ -111,7 +121,7 @@ export default function Counter({
             size={12}
             name="plus"
             style={{
-              color: theme.colors.background,
+              color: isValid ? theme.colors.onPrimary : theme.colors.onError,
             }}
           />
         </TouchableOpacity>

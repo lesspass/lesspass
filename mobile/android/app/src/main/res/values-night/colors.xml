@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="statusBarColor">#2E2E2E</color>
-    <color name="colorPrimary">#F3F3F3</color>
-    <color name="backgroundColor">#4D4D4D</color>
-    <color name="navigationBarColor">#2E2E2E</color>
+    <color name="statusBarColor">#1b1b1f</color>
+    <color name="colorPrimary">#bfc2ff</color>
+    <color name="backgroundColor">#46464f</color>
+    <color name="navigationBarColor">#1b1b1f</color>
 </resources>

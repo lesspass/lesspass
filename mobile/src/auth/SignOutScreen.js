@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text } from "react-native";
+import { ScrollView } from "react-native";
 import { useDispatch } from "react-redux";
 import { deleteMyAccount, getCurrentUser, signOut } from "./authActions";
 import Styles from "../ui/Styles";
@@ -24,10 +24,11 @@ const SignOutScreen = ({ navigation }) => {
       <Title style={{ marginBottom: 10 }}>My Account</Title>
       <Paragraph>Email: {email}</Paragraph>
       <Button
-        compact
         icon="account-circle"
-        mode="outlined"
-        style={Styles.loginSignUpButton}
+        mode="contained"
+        style={{
+          marginTop: 10
+        }}
         onPress={() => {
           dispatch(signOut());
           navigation.navigate(routes.PASSWORD_GENERATOR);
@@ -36,7 +37,7 @@ const SignOutScreen = ({ navigation }) => {
         Sign out
       </Button>
       <Title
-        style={{ marginTop: 50, marginBottom: 10, color: theme.colors.red }}
+        style={{ marginTop: 60, marginBottom: 10, color: theme.colors.error }}
       >
         Danger zone
       </Title>

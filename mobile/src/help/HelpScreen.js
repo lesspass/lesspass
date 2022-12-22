@@ -1,9 +1,10 @@
 import React from "react";
 import { ScrollView, Image, Linking, View } from "react-native";
-import { Title, Subheading, Paragraph, Button } from "react-native-paper";
+import { Title, Subheading, Paragraph, Button, useTheme } from "react-native-paper";
 import Styles from "../ui/Styles";
 
 export default function HelpScreen() {
+  const theme = useTheme()
   return (
     <ScrollView contentContainerStyle={Styles.innerContainer}>
       <Title style={Styles.title}>Help</Title>
@@ -82,7 +83,7 @@ export default function HelpScreen() {
           marginTop: 10,
         }}
       >
-        send us an email
+        Send us an email
       </Button>
     </ScrollView>
   );

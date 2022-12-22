@@ -96,13 +96,11 @@ export default function PasswordGeneratorScreen() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={Styles.innerContainer}>
           <TextInput
-            mode="outlined"
             label="Site"
             value={state.site}
             onChangeText={(site) => setState((state) => ({ ...state, site }))}
           />
           <TextInput
-            mode="outlined"
             label="Login"
             value={state.login}
             onChangeText={(login) => setState((state) => ({ ...state, login }))}
@@ -199,7 +197,7 @@ export default function PasswordGeneratorScreen() {
               style={{ marginRight: 10, marginBottom: 10 }}
               icon="refresh"
             >
-              clear
+              CLEAR
             </Button>
             {state.password && state.copyPasswordAfterGeneration === false && (
               <Button
@@ -223,7 +221,7 @@ export default function PasswordGeneratorScreen() {
                 icon="eye"
                 style={{ marginRight: 10, marginBottom: 10 }}
               >
-                {seePassword ? "hide" : "show"}
+                {seePassword ? "HIDE" : "SHOW"}
               </Button>
             )}
             {state.password && auth.isAuthenticated ? (
@@ -242,7 +240,7 @@ export default function PasswordGeneratorScreen() {
                   icon="content-save"
                   style={{ marginRight: 10, marginBottom: 10 }}
                 >
-                  Save
+                  SAVE
                 </Button>
               ) : (
                 <Button
@@ -259,7 +257,7 @@ export default function PasswordGeneratorScreen() {
                   icon="content-save"
                   style={{ marginRight: 10, marginBottom: 10 }}
                 >
-                  Update
+                  UPDATE
                 </Button>
               )
             ) : null}

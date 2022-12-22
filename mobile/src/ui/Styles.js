@@ -17,11 +17,9 @@ export default StyleSheet.create({
   },
   fingerprint: {
     position: "absolute",
-    right: 3,
-    top: 0,
+    right: 0,
+    top: 6,
     bottom: 0,
-    justifyContent: "center",
-    alignItems: "center",
     zIndex: 4,
   },
   switch: {
@@ -30,12 +28,5 @@ export default StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 8,
     paddingHorizontal: 10,
-  },
-  loginSignInButton: {
-    marginTop: 10,
-    marginBottom: 30,
-  },
-  loginSignUpButton: {
-    marginTop: 10,
   },
 });

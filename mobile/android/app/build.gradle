@@ -147,8 +147,8 @@ android {
         applicationId "com.lesspass.android"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9007002
-        versionName "9.7.2"
+        versionCode 9007003
+        versionName "9.7.3"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
@@ -257,9 +257,8 @@ android {
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
-                        defaultConfig.versionCode * 1000 + versionCodes.get(abi)
+                        defaultConfig.versionCode * 100 + versionCodes.get(abi)
             }
-
         }
     }
 }
