@@ -23,7 +23,7 @@ import {
   isCounterValid,
   areOptionsValid,
 } from "./validations";
-import { Button, Snackbar, Text } from "react-native-paper";
+import { Button, Snackbar, Text, useTheme } from "react-native-paper";
 import { addError, cleanErrors } from "../errors/errorsActions";
 
 function _getInitialState(settings) {
@@ -67,7 +67,7 @@ export default function PasswordGeneratorScreen() {
   const [saved, setSaved] = useState(false);
   const [updated, setUpdated] = useState(false);
   const [state, setState] = useState(() => _getInitialState(settings));
-
+  const theme = useTheme();
   useEffect(() => {
     const newState = _getInitialState(settings);
     if (profile === null) {
@@ -128,7 +128,7 @@ export default function PasswordGeneratorScreen() {
           />
           <View
             style={{
-              marginTop: 10,
+              marginTop: 5,
               marginBottom: 30,
               flexDirection: "row",
               justifyContent: "space-between",
@@ -178,89 +178,120 @@ export default function PasswordGeneratorScreen() {
           </Button>
           <View
             style={{
-              marginTop: 20,
               flexDirection: "row",
-              flexWrap: "wrap",
+              justifyContent: "space-between",
+              paddingTop: 10,
             }}
           >
-            <Button
-              mode="outlined"
-              onPress={() => {
-                setSaved(false);
-                setUpdated(false);
-                setCopied(false);
-                setSeePassword(false);
-                dispatch(cleanErrors());
-                setState(_getInitialState(settings));
-                dispatch(cleanPasswordProfile());
-              }}
-              style={{ marginRight: 10, marginBottom: 10 }}
-              icon="refresh"
-            >
-              CLEAR
-            </Button>
+            <View style={{ flex: 1 }}>
+              <Button
+                mode="outlined"
+                onPress={() => {
+                  setSaved(false);
+                  setUpdated(false);
+                  setCopied(false);
+                  setSeePassword(false);
+                  dispatch(cleanErrors());
+                  setState(_getInitialState(settings));
+                  dispatch(cleanPasswordProfile());
+                }}
+                style={{
+                  marginBottom: 10,
+                  marginRight: 5,
+                  backgroundColor: theme.colors.background,
+                }}
+                labelStyle={{ fontSize: 12 }}
+                icon="refresh"
+              >
+                clear
+              </Button>
+            </View>
             {state.password && state.copyPasswordAfterGeneration === false && (
-              <Button
-                mode="outlined"
-                onPress={() => {
-                  NativeModules.LessPassClipboard.copy(state.password);
-                  setCopied(true);
-                }}
-                icon="clipboard"
-                style={{ marginRight: 10, marginBottom: 10 }}
-              >
-                Copy
-              </Button>
-            )}
-            {state.password && (
-              <Button
-                mode="outlined"
-                onPress={() => {
-                  setSeePassword((seePassword) => !seePassword);
-                }}
-                icon="eye"
-                style={{ marginRight: 10, marginBottom: 10 }}
-              >
-                {seePassword ? "HIDE" : "SHOW"}
-              </Button>
-            )}
-            {state.password && auth.isAuthenticated ? (
-              state.id === null ? (
+              <View style={{ flex: 1 }}>
                 <Button
                   mode="outlined"
                   onPress={() => {
-                    const passwordProfile = _getPasswordProfile(state);
-                    dispatch(savePasswordProfile(passwordProfile)).then(
-                      (response) => {
-                        setState((state) => ({ ...state, ...response.data }));
-                        setSaved(true);
-                      }
-                    );
+                    NativeModules.LessPassClipboard.copy(state.password);
+                    setCopied(true);
                   }}
-                  icon="content-save"
-                  style={{ marginRight: 10, marginBottom: 10 }}
+                  style={{
+                    marginBottom: 10,
+                    marginRight: 5,
+                    backgroundColor: theme.colors.background,
+                  }}
+                  labelStyle={{ fontSize: 12 }}
+                  icon="clipboard"
                 >
-                  SAVE
+                  copy
                 </Button>
-              ) : (
+              </View>
+            )}
+            <View style={{ flex: 1 }}>
+              {state.password && (
                 <Button
                   mode="outlined"
                   onPress={() => {
-                    const passwordProfile = _getPasswordProfile(state);
-                    dispatch(updatePasswordProfile(passwordProfile)).then(
-                      (response) => {
-                        setState((state) => ({ ...state, ...response.data }));
-                        setUpdated(true);
-                      }
-                    );
+                    setSeePassword((seePassword) => !seePassword);
                   }}
-                  icon="content-save"
-                  style={{ marginRight: 10, marginBottom: 10 }}
+                  style={{
+                    marginBottom: 10,
+                    marginRight: 5,
+                    backgroundColor: theme.colors.background,
+                  }}
+                  labelStyle={{ fontSize: 12 }}
+                  icon="eye"
                 >
-                  UPDATE
+                  {seePassword ? "hide" : "show"}
                 </Button>
-              )
-            ) : null}
+              )}
+            </View>
+            <View style={{ flex: 1 }}>
+              {state.password && auth.isAuthenticated ? (
+                state.id === null ? (
+                  <Button
+                    mode="outlined"
+                    onPress={() => {
+                      const passwordProfile = _getPasswordProfile(state);
+                      dispatch(savePasswordProfile(passwordProfile)).then(
+                        (response) => {
+                          setState((state) => ({ ...state, ...response.data }));
+                          setSaved(true);
+                        }
+                      );
+                    }}
+                    style={{
+                      marginBottom: 10,
+                      backgroundColor: theme.colors.background,
+                    }}
+                    labelStyle={{ fontSize: 12 }}
+                    icon="content-save"
+                  >
+                    save
+                  </Button>
+                ) : (
+                  <Button
+                    mode="outlined"
+                    onPress={() => {
+                      const passwordProfile = _getPasswordProfile(state);
+                      dispatch(updatePasswordProfile(passwordProfile)).then(
+                        (response) => {
+                          setState((state) => ({ ...state, ...response.data }));
+                          setUpdated(true);
+                        }
+                      );
+                    }}
+                    style={{
+                      marginBottom: 10,
+                      backgroundColor: theme.colors.background,
+                    }}
+                    labelStyle={{ fontSize: 12 }}
+                    icon="content-save"
+                  >
+                    update
+                  </Button>
+                )
+              ) : null}
+            </View>
           </View>
           {state.password && seePassword && (
             <View>

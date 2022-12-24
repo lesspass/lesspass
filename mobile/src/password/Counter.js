@@ -20,12 +20,12 @@ export default function Counter({
     }
   }, [value]);
   const color = isValid ? theme.colors.primary : theme.colors.error;
-  const borderColor = isValid ? theme.colors.outline : theme.colors.error;
+  const borderColor = isValid ? theme.colors.primary : theme.colors.error;
   return (
     <View {...props}>
       <Text
         style={{
-          marginBottom: 6,
+          marginBottom: 5,
           color,
         }}
       >
@@ -36,7 +36,13 @@ export default function Counter({
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-          height: 26,
+          height:26,
+          borderWidth:1,
+          borderColor,
+          borderRadius:5 * theme.roundness,
+          backgroundColor: isValid
+          ? theme.colors.primary
+          : theme.colors.error,
         }}
       >
         <TouchableOpacity
@@ -46,11 +52,6 @@ export default function Counter({
             alignSelf: "stretch",
             paddingVertical: 6,
             paddingHorizontal: 16,
-            backgroundColor: isValid
-              ? theme.colors.primary
-              : theme.colors.error,
-            borderTopLeftRadius: 5 * theme.roundness,
-            borderBottomLeftRadius: 5 * theme.roundness,
           }}
           onPress={() => setValue(value - 1)}
         >
@@ -67,10 +68,7 @@ export default function Counter({
             justifyContent: "center",
             alignItems: "center",
             borderWidth: 0,
-            borderTopWidth: 1,
-            borderTopColor: borderColor,
-            borderBottomWidth: 1,
-            borderBottomColor: borderColor,
+            backgroundColor: theme.colors.background
           }}
         >
           <TextInput
@@ -109,11 +107,6 @@ export default function Counter({
             alignSelf: "stretch",
             paddingVertical: 6,
             paddingHorizontal: 16,
-            backgroundColor: isValid
-              ? theme.colors.primary
-              : theme.colors.error,
-            borderTopRightRadius: 5 * theme.roundness,
-            borderBottomRightRadius: 5 * theme.roundness,
           }}
           onPress={() => setValue(value + 1)}
         >

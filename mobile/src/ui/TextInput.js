@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { TextInput, useTheme } from "react-native-paper";
 
 export default function Input({ showError = false, errorText, ...props }) {
@@ -11,7 +10,7 @@ export default function Input({ showError = false, errorText, ...props }) {
       outlineStyle={{
         borderRadius: 5 * theme.roundness,
       }}
-      style={{marginBottom:5}}
+      style={{ marginBottom: 5 }}
       mode="outlined"
       {...props}
     />

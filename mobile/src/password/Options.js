@@ -7,7 +7,6 @@ export default function Options({ options, onOptionsChange, style }) {
   const [isValid, setIsvalid] = useState(true);
   const theme = useTheme();
   const color = isValid ? theme.colors.secondary : theme.colors.error;
-
   useEffect(() => {
     if (areOptionsValid(options)) {
       setIsvalid(true);
@@ -27,10 +26,12 @@ export default function Options({ options, onOptionsChange, style }) {
       <View
         style={{
           flexDirection: "row",
+          justifyContent: "flex-start",
           alignItems: "center",
+          marginLeft: -5,
         }}
       >
-        <Checkbox.Android
+        <Checkbox
           status={options.lowercase ? "checked" : "unchecked"}
           onPress={() => {
             onOptionsChange({
@@ -46,9 +47,10 @@ export default function Options({ options, onOptionsChange, style }) {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          marginRight: 5,
         }}
       >
-        <Checkbox.Android
+        <Checkbox
           status={options.uppercase ? "checked" : "unchecked"}
           onPress={() => {
             onOptionsChange({
@@ -64,9 +66,10 @@ export default function Options({ options, onOptionsChange, style }) {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          marginRight: 5,
         }}
       >
-        <Checkbox.Android
+        <Checkbox
           status={options.digits ? "checked" : "unchecked"}
           onPress={() => {
             onOptionsChange({
@@ -84,7 +87,7 @@ export default function Options({ options, onOptionsChange, style }) {
           alignItems: "center",
         }}
       >
-        <Checkbox.Android
+        <Checkbox
           status={options.symbols ? "checked" : "unchecked"}
           onPress={() => {
             onOptionsChange({
