@@ -92,6 +92,8 @@ def _get_one_char_per_rule(entropy, rules, exclude=""):
 
 def _get_configured_rules(password_profile):
     rules = ["lowercase", "uppercase", "digits", "symbols"]
+    if "numbers" in password_profile:
+        password_profile["digits"] = password_profile["numbers"]
     return [
         rule for rule in rules if rule in password_profile and password_profile[rule]
     ]

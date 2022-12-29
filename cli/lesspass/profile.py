@@ -15,4 +15,4 @@ def create_profile(args):
         profile["uppercase"] = args.u
         profile["digits"] = args.d
         profile["symbols"] = args.s
-    return profile, args.master_password
+    return profile

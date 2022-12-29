@@ -154,3 +154,12 @@ class TestParseArgs(unittest.TestCase):
         self.assertEqual(
             parse_args(["--url", "https://example.org"]).url, "https://example.org/"
         )
+
+    def test_export(self):
+        self.assertEqual(
+            parse_args(["--export", "/tmp/export.csv"]).export_file_path,
+            "/tmp/export.csv",
+        )
+
+    def test_logout(self):
+        self.assertTrue(parse_args(["--logout"]).logout)

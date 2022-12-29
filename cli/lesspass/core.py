@@ -11,7 +11,12 @@ from lesspass.profile import create_profile
 from lesspass.password import generate_password
 from lesspass.clipboard import copy, get_system_copy_command
 from lesspass.fingerprint import getpass_with_fingerprint
-from lesspass.connected import save_password_profiles, load_password_profiles
+from lesspass.connected import (
+    save_password_profiles,
+    load_password_profiles,
+    logout,
+    export_passwords,
+)
 
 signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
 
@@ -31,6 +36,12 @@ def main(args=sys.argv[1:]):
     if args.load_path:
         return load_password_profiles(args.config_home_path, args.url, args.load_path)
 
+    if args.export_file_path:
+        return export_passwords(args.config_home_path, args.url, args.export_file_path)
+
+    if args.logout:
+        return logout(args.config_home_path)
+
     if args.prompt:
         if not args.site:
             args.site = getpass.getpass("Site: ")
@@ -41,18 +52,19 @@ def main(args=sys.argv[1:]):
         print("error: argument SITE is required but was not provided.")
         sys.exit(4)
 
-    if not args.master_password:
+    master_password = args.master_password
+    if not master_password:
         prompt = "Master Password: "
         if args.no_fingerprint:
-            args.master_password = getpass.getpass(prompt)
+            master_password = getpass.getpass(prompt)
         else:
-            args.master_password = getpass_with_fingerprint(prompt)
+            master_password = getpass_with_fingerprint(prompt)
 
-    if not args.master_password:
+    if not master_password:
         print("error: argument MASTER_PASSWORD is required but was not provided")
         sys.exit(5)
 
-    profile, master_password = create_profile(args)
+    profile = create_profile(args)
     try:
         generated_password = generate_password(profile, master_password)
     except exceptions.ExcludeAllCharsAvailable:

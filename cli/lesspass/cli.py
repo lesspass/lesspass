@@ -101,6 +101,12 @@ def parse_args(args):
     config_home_path = _get_config_path()
     backup_file = os.path.join(config_home_path, "profiles.json")
     parser.add_argument(
+        "--logout",
+        dest="logout",
+        action="store_true",
+        help=f"Remove {os.path.join(config_home_path, 'config.json')} file",
+    )
+    parser.add_argument(
         "--save",
         dest="save_path",
         nargs="?",
@@ -113,6 +119,12 @@ def parse_args(args):
         dest="load_path",
         default=None,
         help="[beta] Load your password profiles file",
+    )
+    parser.add_argument(
+        "--export",
+        dest="export_file_path",
+        default=None,
+        help="Export all your passwords from LessPass database with your master password. /!\ Please note that your passwords will be saved in clear text.",
     )
     parser.add_argument(
         "--config-home-path",

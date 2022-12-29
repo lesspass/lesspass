@@ -129,6 +129,18 @@ class TestPassword(unittest.TestCase):
             password._get_configured_rules(password_profile), ["uppercase", "symbols"]
         )
 
+    def test_get_configured_rules_use_numbers_as_digits(self):
+        password_profile = {
+            "lowercase": False,
+            "uppercase": False,
+            "numbers": True,
+            "symbols": False,
+        }
+
+        self.assertListEqual(
+            password._get_configured_rules(password_profile), ["digits"]
+        )
+
     def test_get_set_of_characters_without_rule(self):
         self.assertEqual(
             password._get_set_of_characters(),

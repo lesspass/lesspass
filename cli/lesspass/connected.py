@@ -1,3 +1,4 @@
+import contextlib
 import getpass
 import json
 import os
@@ -8,7 +9,7 @@ import requests
 from lesspass.password import generate_password
 
 
-def _login(config_home_path, url):
+def _login(config_home_path, url, master_password):
     os.makedirs(config_home_path, exist_ok=True)
     config_path = os.path.join(config_home_path, "config.json")
     tokens = None
@@ -29,7 +30,6 @@ def _login(config_home_path, url):
 
     print("LessPass login")
     email = input("Email: ")
-    master_password = getpass.getpass("Master Password: ")
     if not email or not master_password:
         print("Email and Master Password are mandatory")
         sys.exit(1)
@@ -58,8 +58,20 @@ def _login(config_home_path, url):
     return tokens["access"]
 
 
+def logout(config_home_path):
+    config_path = os.path.join(config_home_path, "config.json")
+    try:
+        with contextlib.suppress(FileNotFoundError):
+            os.remove(config_path)
+        print("Logout successful")
+    except Exception as e:
+        print(f"Can't remove {config_path}. Error was:")
+        print(e)
+
+
 def save_password_profiles(config_home_path, url, backup_path):
-    token = _login(config_home_path, url)
+    master_password = getpass.getpass("Master Password: ")
+    token = _login(config_home_path, url, master_password)
     r = requests.get(f"{url}passwords/", headers={"Authorization": "JWT %s" % token})
     with open(backup_path, "w", encoding="utf-8") as f:
         json.dump(r.json(), f, ensure_ascii=False, indent=4)
@@ -68,7 +80,8 @@ def save_password_profiles(config_home_path, url, backup_path):
 
 
 def load_password_profiles(config_home_path, url, backup_path):
-    token = _login(config_home_path, url)
+    master_password = getpass.getpass("Master Password: ")
+    token = _login(config_home_path, url, master_password)
     with open(backup_path, encoding="utf-8") as f:
         data = json.load(f)
 
@@ -100,3 +113,21 @@ def load_password_profiles(config_home_path, url, backup_path):
     )
     with open(backup_path, "w", encoding="utf-8") as f:
         json.dump(get_password_profiles.json(), f, ensure_ascii=False, indent=4)
+
+
+def export_passwords(config_home_path, url, export_file_path):
+    master_password = getpass.getpass("Master Password: ")
+    token = _login(config_home_path, url, master_password)
+    r = requests.get(f"{url}passwords/", headers={"Authorization": "JWT %s" % token})
+    r.raise_for_status()
+    with open(export_file_path, "w", encoding="utf-8") as f:
+        f.write("name,url,username,password\n")
+        for password_profile in r.json()["results"]:
+            password = generate_password(password_profile, master_password)
+            print(f"{password_profile['site']} exported")
+            f.write(
+                f"{password_profile['site']},https://{password_profile['site']},{password_profile['login']},{password}\n"
+            )
+    print(
+        f"Passwords exported in {export_file_path}. /!\ Be careful all your passwords are in clear text. "
+    )
