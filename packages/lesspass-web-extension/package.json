@@ -12,7 +12,7 @@
     "release:cws": "cd extension && webstore upload --auto-publish"
   },
   "dependencies": {
-    "lesspass-pure": "^9.5.2"
+    "lesspass-pure": "^10.0.0"
   },
   "devDependencies": {
     "chrome-webstore-upload-cli": "^1.2.1",

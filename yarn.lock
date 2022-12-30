@@ -10434,30 +10434,6 @@ left-pad@^1.3.0:
   resolved "https://registry.yarnpkg.com/left-pad/-/left-pad-1.3.0.tgz#5b8a3a7765dfe001261dde915589e782f8c94d1e"
   integrity sha512-XI5MPzVNApjAyhQzphX8BkmKsKUxD4LdyK24iZeQGinBN9yTQT3bFlCBy/aVx2HrNcqQGsdot8ghrjyrvMCoEA==
 
-lesspass-pure@^9.5.2, lesspass-pure@^9.5.6:
-  version "9.5.6"
-  resolved "https://registry.yarnpkg.com/lesspass-pure/-/lesspass-pure-9.5.6.tgz#e092ec551597c3775b39bba05d8d70158c12d411"
-  integrity sha512-419u5JDap2jf0445IoCg6W1ZCcwOqbzcLJO0XrbDqvKwoxvjQsdHjEL5VtdlZAYS45g9E4Q81mcSL77XBkoQWQ==
-  dependencies:
-    "@oslab/atob" "^0.1.0"
-    "@oslab/btoa" "^0.1.0"
-    awesomplete "^1.1.5"
-    axios "^0.21.1"
-    balloon-css "^1.0.3"
-    bootstrap "^4.6.0"
-    core-js "^3.9.1"
-    font-awesome "^4.7.0"
-    jwt-decode "^3.1.2"
-    lesspass "9.2.0"
-    lodash "^4.17.21"
-    vue "^2.6.12"
-    vue-polyglot "^2.0.1"
-    vue-router "^3.5.1"
-    vuejs-paginate "^2.1.0"
-    vuex "^3.6.2"
-    vuex-persistedstate "^3.2.0"
-    vuex-router-sync "^5.0.0"
-
 leven@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
