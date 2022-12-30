@@ -4,6 +4,10 @@ LessPass is a stateless password manager.
 
 Stop wasting your time synchronizing your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed. Try the demo at [www.lesspass.com](https://www.lesspass.com).
 
+## :rotating_light: information
+
+LessPass Database server will be turned off on March 1th, 2023. [Read here why](https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database)
+
 ## How does it work?
 
 - :gb: [LessPass - How Does It Work?](https://blog.lesspass.com/2016-10-19/how-does-it-work)
