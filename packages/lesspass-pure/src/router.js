@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import ExportYourPasswords from "./views/ExportYourPasswords.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import MyAccount from "./views/MyAccount.vue";
@@ -20,6 +21,7 @@ const routes = [
   { path: "/myaccount", name: "myaccount", component: MyAccount },
   { path: "/whatsnew", name: "whatsnew", component: WhatsNewPage },
   { path: "/settings", name: "settings", component: SettingsPage },
+  { path: "/export", name: "export", component: ExportYourPasswords },
   { path: "/passwords/", name: "passwords", component: Passwords },
   { path: "/password/reset", name: "passwordReset", component: PasswordReset },
   {

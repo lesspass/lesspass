@@ -7,30 +7,37 @@
     <p>
       {{
         $t(
-          "New20210331",
-          "I took over the development on LessPass, to fix bugs and improve the interface. I simplified the login page to correct the problem with the login url for the self-hosted version. The master password is encrypted by default before being sent to the server side. It is always possible to uncheck this option but only for connections."
+          "New20221231",
+          "LessPass Database server will be turned off on March 1th, 2023. The static version of LessPass, the web extension and the mobile versions remain in place."
         )
       }}
+      <router-link class="" :to="{ name: 'export' }" v-if="isAuthenticated">
+        Export your passwords
+      </router-link>
     </p>
-    <p>Guillaume</p>
-    <a href="https://github.com/lesspass/lesspass/blob/master/CONTRIBUTING.md">
-      {{
-        $t(
-          "WantToHelp",
-          "Do you want to help me? Please feel free to contribute to LessPass"
-        )
-      }}
+    <a
+      href="https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database"
+    >
+      {{ $t("ReadMoreAboutDecommissioning", "See announcement") }}
     </a>
+    <p v-if="isGuest">
+      If you want to export your password, please
+      <router-link class="" :to="{ name: 'login' }"> sign in </router-link>
+    </p>
   </div>
 </template>
 <script>
 import { version } from "../../package.json";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
     return {
-      version
+      version,
     };
-  }
+  },
+  computed: {
+    ...mapGetters(["isAuthenticated", "isGuest"]),
+  },
 };
 </script>

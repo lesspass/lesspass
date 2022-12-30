@@ -39,15 +39,14 @@
         {{ $t("Sign In") }}
       </button>
     </div>
-    <div class="form-group mb-0">
-      <button
-        id="login__no-account-btn"
-        type="button"
-        class="btn btn-outline-dark btn-block"
-        v-on:click="$router.push({ name: 'register' })"
-      >
-        {{ $t("NewToLessPass", "New to LessPass? Join now") }}
-      </button>
+    <div class="form-group text-danger">
+      LessPass Database server will be turned off on March 1th, 2023.
+      <a
+        href="https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database"
+        target="_blank"
+        rel="noopener noreferrer"
+        >See announcement</a
+      >. Sign in to export your passwords.
     </div>
   </form>
 </template>
@@ -62,12 +61,12 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
     };
   },
   computed: mapState(["settings"]),
   components: {
-    MasterPassword
+    MasterPassword,
   },
   methods: {
     formIsValid() {
@@ -81,16 +80,16 @@ export default {
     },
     signIn() {
       if (this.formIsValid()) {
-        encryptPassword(this.email, this.password).then(encryptedPassword => {
+        encryptPassword(this.email, this.password).then((encryptedPassword) => {
           const password = this.settings.encryptMasterPassword
             ? encryptedPassword
             : this.password;
           User.login({ email: this.email, password })
-            .then(response => {
+            .then((response) => {
               this.$store.dispatch("login", response.data);
               this.$router.push({ name: "home" });
             })
-            .catch(err => {
+            .catch((err) => {
               if (err.response && err.response.status === 401) {
                 message.error(
                   this.$t(
@@ -104,7 +103,7 @@ export default {
             });
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>

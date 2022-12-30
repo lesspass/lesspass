@@ -44,6 +44,14 @@
           </span>
           <router-link
             class="menu-link pl-3"
+            :to="{ name: 'export' }"
+            v-if="isAuthenticated"
+            :title="$t('Export your passwords')"
+          >
+            <i class="fa  fa-lg fa-download text-success"></i>
+          </router-link>
+          <router-link
+            class="menu-link pl-3"
             :to="{ name: 'passwords' }"
             v-if="isAuthenticated"
             :title="$t('Saved passwords')"
