@@ -7,6 +7,8 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  View,
+  Linking,
 } from "react-native";
 import { Text, Button, Title, useTheme } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
@@ -81,12 +83,26 @@ export default function SignInScreen() {
           >
             Sign In
           </Button>
-          <Button
-            mode="text"
-            onPress={() => navigation.navigate(routes.SIGN_UP)}
-          >
-            Don't have an account? Sign Up
-          </Button>
+          <View>
+            <Text style={{ color: theme.colors.error }}>
+              LessPass Database server will be turned off on March 1th, 2023.
+              You can export your passwords using the web extension, the CLI or
+              the web site.
+            </Text>
+            <Button
+              mode="text"
+              onPress={() => {
+                Linking.openURL(
+                  "https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database"
+                );
+              }}
+              style={{
+                marginTop: 10,
+              }}
+            >
+              See announcement
+            </Button>
+          </View>
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
