@@ -1,4 +1,5 @@
 import contextlib
+import csv
 import getpass
 import json
 import os
@@ -120,14 +121,20 @@ def export_passwords(config_home_path, url, export_file_path):
     token = _login(config_home_path, url, master_password)
     r = requests.get(f"{url}passwords/", headers={"Authorization": "JWT %s" % token})
     r.raise_for_status()
-    with open(export_file_path, "w", encoding="utf-8") as f:
-        f.write("name,url,username,password\n")
+    with open(export_file_path, "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["name", "url", "username", "password"])
         for password_profile in r.json()["results"]:
             password = generate_password(password_profile, master_password)
             print(f"{password_profile['site']} exported")
-            f.write(
-                f"{password_profile['site']},https://{password_profile['site']},{password_profile['login']},{password}\n"
+            writer.writerow(
+                [
+                    password_profile["site"],
+                    f"https://{password_profile['site']}",
+                    password_profile["login"],
+                    password,
+                ]
             )
     print(
-        f"Passwords exported in {export_file_path}. /!\ Be careful all your passwords are in clear text. "
+        f"Passwords exported in {export_file_path}.\n /!\ Be careful all your passwords are in clear text. "
     )
