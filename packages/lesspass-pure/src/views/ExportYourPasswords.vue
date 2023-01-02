@@ -29,6 +29,7 @@
 </template>
 <script>
 import LessPass from "lesspass";
+import { stringify } from "csv-stringify/lib/sync";
 import MasterPassword from "../components/MasterPassword.vue";
 import message from "../services/message";
 import { mapState } from "vuex";
@@ -59,18 +60,22 @@ export default {
     },
     exportPasswords: async function () {
       if (this.formIsValid()) {
-        let content = "name,url,username,password\n";
+        let lines = [["name", "url", "username", "password"]];
         for (let i = 0; i < this.passwords.length; i++) {
           const passwordProfile = this.passwords[i];
           passwordProfile["digits"] = passwordProfile["numbers"];
-          console.log(JSON.stringify(passwordProfile, null, 2));
-          console.log(this.masterPassword);
           const generatedPassword = await LessPass.generatePassword(
             passwordProfile,
             this.masterPassword
           );
-          content += `${passwordProfile.site},https://${passwordProfile.site},${passwordProfile.login},${generatedPassword}\n`;
+          lines.push([
+            passwordProfile.site,
+            `https://${passwordProfile.site}`,
+            passwordProfile.login,
+            generatedPassword,
+          ]);
         }
+        const content = stringify(lines);
         var blob = new Blob([content], { type: "text/csv;charset=utf-8" });
         saveAs(blob, "LessPass passwords.csv");
         message.success("Your passwords has been exported successfully.");
