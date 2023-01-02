@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
+  Linking,
 } from "react-native";
 import { generatePassword } from "./passwordGenerator";
 import TextInput from "../ui/TextInput";
@@ -25,6 +26,7 @@ import {
 } from "./validations";
 import { Button, Snackbar, Text, useTheme } from "react-native-paper";
 import { addError, cleanErrors } from "../errors/errorsActions";
+import { readMessage } from "../messages/messagesActions";
 
 function _getInitialState(settings) {
   return {
@@ -61,6 +63,7 @@ export default function PasswordGeneratorScreen() {
   const profile = useSelector((state) => state.profile);
   const settings = useSelector((state) => state.settings);
   const auth = useSelector((state) => state.auth);
+  const messages = useSelector((state) => state.messages);
   const dispatch = useDispatch();
   const [copied, setCopied] = useState(false);
   const [seePassword, setSeePassword] = useState(false);
@@ -68,6 +71,7 @@ export default function PasswordGeneratorScreen() {
   const [updated, setUpdated] = useState(false);
   const [state, setState] = useState(() => _getInitialState(settings));
   const theme = useTheme();
+
   useEffect(() => {
     const newState = _getInitialState(settings);
     if (profile === null) {
@@ -307,6 +311,46 @@ export default function PasswordGeneratorScreen() {
               </Text>
             </View>
           )}
+          {auth.isAuthenticated &&
+            !messages["LessPassServerWillBeTurnedOffOnMarch"] && (
+              <>
+                <Text style={{ color: theme.colors.error, marginTop: 20 }}>
+                  LessPass Database server will be turned off on March 1th,
+                  2023. You can export your passwords using the web extension,
+                  the CLI or the web site.
+                  <Text
+                    style={{ color: theme.colors.primary }}
+                    onPress={() => {
+                      Linking.openURL(
+                        "https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database"
+                      );
+                    }}
+                  >
+                    {" "}
+                    See announcement
+                  </Text>
+                </Text>
+                <Button
+                  mode="text"
+                  onPress={() =>
+                    dispatch(
+                      readMessage("LessPassServerWillBeTurnedOffOnMarch")
+                    )
+                  }
+                >
+                  <Text
+                    style={{
+                      color: theme.colors.error,
+                      fontWeight: "bold",
+                      marginTop: 5,
+                    }}
+                    onPress={() => {}}
+                  >
+                    Hide
+                  </Text>
+                </Button>
+              </>
+            )}
         </ScrollView>
       </TouchableWithoutFeedback>
       <Snackbar

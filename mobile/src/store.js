@@ -10,6 +10,7 @@ import authReducer from "./auth/authReducer";
 import errorsReducer from "./errors/errorsReducer";
 import profilesReducer from "./password/profilesReducer";
 import profileReducer from "./profiles/profileReducer";
+import messagesReducer from "./messages/messagesReducer";
 
 const rootReducer = combineReducers({
   settings: settingsReducer,
@@ -17,13 +18,14 @@ const rootReducer = combineReducers({
   errors: errorsReducer,
   profile: profileReducer,
   profiles: profilesReducer,
+  messages: messagesReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
   stateReconciler,
-  whitelist: ["settings", "auth"],
+  whitelist: ["settings", "auth", "messages"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

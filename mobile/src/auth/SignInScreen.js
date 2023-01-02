@@ -18,6 +18,7 @@ import { addError } from "../errors/errorsActions";
 import { signIn } from "./authActions";
 import routes from "../routes";
 import { useNavigation } from "@react-navigation/native";
+import { readMessage } from "../messages/messagesActions";
 
 export default function SignInScreen() {
   const [email, setEmail] = useState("");
@@ -58,6 +59,7 @@ export default function SignInScreen() {
             }}
             disabled={isEmpty(email) || isEmpty(password) || isLoading}
             onPress={() => {
+              dispatch(readMessage("LessPassServerWillBeTurnedOffOnMarch"));
               setIsLoading(true);
               dispatch(
                 signIn(
