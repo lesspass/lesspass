@@ -2,7 +2,7 @@
   "description": "Legacy manifest v2 web extension for LessPass password manager",
   "manifest_version": 2,
   "name": "LessPass",
-  "version": "9.6.8",
+  "version": "9.6.9",
   "homepage_url": "https://github.com/lesspass/lesspass",
   "icons": {
     "64": "icons/logo-64.png"
