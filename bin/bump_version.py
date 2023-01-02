@@ -8,8 +8,8 @@ root_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 def usage():
     script_name = os.path.basename(__file__)
-    print(f"Example: python {script_name} lesspass-web-extension patch")
-    print(f"Example: python {script_name} lesspass-site patch")
+    print(f"Example: python {script_name} lesspass-web-extension --patch")
+    print(f"Example: python {script_name} lesspass-site --patch")
     sys.exit(1)
 
 
@@ -85,13 +85,35 @@ if __name__ == "__main__":
     )
     version = get_package_version(package)
     if package == "lesspass-web-extension":
+        subprocess.run(
+            [
+                "yarn",
+                "workspace",
+                "lesspass-web-extension-legacy",
+                "version",
+                f"--{bump}",
+                "--no-git-tag-version",
+                "--no-commit-hooks",
+            ]
+        )
         set_version(
             os.path.join(root_path, "packages", package, "extension", "manifest.json"),
+            version,
+        )
+        set_version(
+            os.path.join(
+                root_path,
+                "packages",
+                "lesspass-web-extension-legacy",
+                "extension",
+                "manifest.json",
+            ),
             version,
         )
         subprocess.run(["yarn", "workspace", "lesspass-crypto", "build"])
         subprocess.run(["yarn", "workspace", "lesspass-pure", "build"])
         subprocess.run(["yarn", "workspace", "lesspass-web-extension", "build"])
+        subprocess.run(["yarn", "workspace", "lesspass-web-extension-legacy", "build"])
         subprocess.run(["git", "add", "."])
     tag = f"{package_short_name}-v{version}"
     subprocess.run(["git", "commit", "-a", "-m", tag])
