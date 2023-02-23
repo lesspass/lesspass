@@ -356,7 +356,7 @@ components:
         - site
         - uppercase
         - lowercase
-        - numbers
+        - digits
         - symbols
         - length
         - counter
@@ -378,8 +378,8 @@ components:
           description: Generated password has lowercase characters
           type: boolean
           default: true
-        numbers:
-          description: Generated password has numbers
+        digits:
+          description: Generated password has digits
           type: boolean
           default: true
         symbols:

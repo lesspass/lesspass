@@ -54,7 +54,7 @@
                 type="checkbox"
                 tabindex="1"
                 class="form-check-input"
-                v-model="options.numbers"
+                v-model="options.digits"
               />
               <label class="form-check-label" for="numbers__btn">
                 0-9

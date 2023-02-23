@@ -3,7 +3,7 @@ export default {
   site: "",
   uppercase: true,
   lowercase: true,
-  numbers: true,
+  digits: true,
   symbols: true,
   length: 16,
   counter: 1,

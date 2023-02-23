@@ -31,16 +31,16 @@ describe("profiles reducer", () => {
         }
       )
     ).toEqual({
-      p1: { id: "p1", numbers: true, digits: true },
-      p2: { id: "p2", numbers: false, digits: false },
+      p1: { id: "p1", digits: true },
+      p2: { id: "p2", digits: false },
     });
   });
   it("REMOVE_PASSWORD_PROFILE", () => {
     expect(
       reducer(
         {
-          p1: { id: "p1", numbers: true, digits: true },
-          p2: { id: "p2", numbers: false, digits: false },
+          p1: { id: "p1", digits: true },
+          p2: { id: "p2", digits: false },
         },
         {
           type: "REMOVE_PASSWORD_PROFILE",
@@ -48,7 +48,7 @@ describe("profiles reducer", () => {
         }
       )
     ).toEqual({
-      p2: { id: "p2", numbers: false, digits: false },
+      p2: { id: "p2", digits: false },
     });
   });
   it("ADD_PASSWORD_PROFILE", () => {

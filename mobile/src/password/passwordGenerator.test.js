@@ -51,7 +51,6 @@ describe("generatePassword should not care about the extra number field used for
       lowercase: true,
       uppercase: true,
       digits: true,
-      number: true,
       symbols: true,
     };
     return generatePassword("password", passwordProfile).then(

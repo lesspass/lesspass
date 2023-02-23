@@ -144,7 +144,7 @@ test("getPasswordFromUrlQuery", () => {
     site: "example.org",
     uppercase: true,
     lowercase: true,
-    numbers: true,
+    digits: true,
     symbols: false,
     length: 16,
     counter: 1,
@@ -156,14 +156,14 @@ test("getPasswordFromUrlQuery", () => {
 test("getPasswordFromUrlQuery with base 64 encoded password profile", () => {
   const query = {
     passwordProfileEncoded:
-      "eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9",
+      "eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwiZGlnaXRzIjp0cnVlLCJzeW1ib2xzIjpmYWxzZSwibGVuZ3RoIjoxNiwiY291bnRlciI6MSwidmVyc2lvbiI6Mn0",
   };
   const expectedPassword = {
     login: "test@example.org",
     site: "example.org",
     uppercase: true,
     lowercase: true,
-    numbers: true,
+    digits: true,
     symbols: false,
     length: 16,
     counter: 1,
@@ -182,7 +182,7 @@ test("getPasswordFromUrlQuery booleanish", () => {
   const expectedPassword = {
     uppercase: true,
     lowercase: true,
-    numbers: true,
+    digits: true,
     symbols: false,
   };
   expect(urlParser.getPasswordFromUrlQuery(query)).toEqual(expectedPassword);

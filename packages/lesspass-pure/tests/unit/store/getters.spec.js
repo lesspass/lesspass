@@ -7,7 +7,7 @@ test("passwordURL", () => {
       site: "example.org",
       uppercase: true,
       lowercase: true,
-      numbers: true,
+      digits: true,
       symbols: false,
       length: 16,
       counter: 1,
@@ -19,7 +19,7 @@ test("passwordURL", () => {
   };
 
   expect(getters.passwordURL(state)).toBe(
-    "https://www.lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwibnVtYmVycyI6dHJ1ZSwic3ltYm9scyI6ZmFsc2UsImxlbmd0aCI6MTYsImNvdW50ZXIiOjEsInZlcnNpb24iOjJ9"
+    "https://www.lesspass.com/#/?passwordProfileEncoded=eyJsb2dpbiI6InRlc3RAZXhhbXBsZS5vcmciLCJzaXRlIjoiZXhhbXBsZS5vcmciLCJ1cHBlcmNhc2UiOnRydWUsImxvd2VyY2FzZSI6dHJ1ZSwiZGlnaXRzIjp0cnVlLCJzeW1ib2xzIjpmYWxzZSwibGVuZ3RoIjoxNiwiY291bnRlciI6MSwidmVyc2lvbiI6Mn0%3D"
   );
 });
 

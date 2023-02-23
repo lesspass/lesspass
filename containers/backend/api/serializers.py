@@ -13,7 +13,7 @@ class PasswordSerializer(serializers.ModelSerializer):
             "lowercase",
             "uppercase",
             "symbols",
-            "numbers",
+            "digits",
             "counter",
             "length",
             "version",
@@ -25,6 +25,16 @@ class PasswordSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = self.context["request"].user
         return models.Password.objects.create(user=user, **validated_data)
+
+    def to_internal_value(self, data):
+        if "number" in data and "digits" not in data:
+            data["digits"] = data["number"]
+        if "numbers" in data and "digits" not in data:
+            data["digits"] = data["numbers"]
+        if "symbol" in data and "symbols" not in data:
+            data["symbols"] = data["symbol"]
+        data = super().to_internal_value(data)
+        return data
 
 
 class EncryptedPasswordProfileSerializer(serializers.ModelSerializer):

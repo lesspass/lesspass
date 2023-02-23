@@ -31,7 +31,7 @@ Options:
   --no-symbols         remove symbols from password
   -c, --clipboard      copy generated password to clipboard rather than displaying it.
                        Need pbcopy (OSX), xsel or xclip (Linux) or clip (Windows).
-  -v, --version        lesspass version number
+  -v, --version        lesspass version
 
 Examples:
 

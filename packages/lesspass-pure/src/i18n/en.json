@@ -1,6 +1,6 @@
 {
   "AlreadyOnLessPass": "Already on LessPass? Sign In",
-  "AtLeastOneOptionShouldBeSelected": "You must select at least one option among lowercase, uppercase, numbers or symbols.",
+  "AtLeastOneOptionShouldBeSelected": "You must select at least one option among lowercase, uppercase, digits or symbols.",
   "Change my password": "Change my password",
   "ChangePasswordError": "We cannot change your password with the information provided.",
   "ChangePasswordSuccessful": "Your password was changed successfully.",

@@ -63,7 +63,6 @@ export default {
         let lines = [["name", "url", "username", "password"]];
         for (let i = 0; i < this.passwords.length; i++) {
           const passwordProfile = this.passwords[i];
-          passwordProfile["digits"] = passwordProfile["numbers"];
           const generatedPassword = await LessPass.generatePassword(
             passwordProfile,
             this.masterPassword

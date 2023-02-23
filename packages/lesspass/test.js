@@ -39,7 +39,7 @@ test("createFingerprint", () => {
   });
 });
 
-test("generatePassword simpler API", () => {
+test("generatePassword api v2", () => {
   const passwordProfile = {
     site: "example.org",
     login: "contact@example.org",

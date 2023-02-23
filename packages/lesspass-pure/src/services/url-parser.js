@@ -22,10 +22,7 @@ export function removeSiteSubdomain(url) {
     const tld = mostUsedTlds[i];
     const tldWithDot = `.${tld}`;
     if (hostname.endsWith(tldWithDot)) {
-      const domain = hostname
-        .replace(tldWithDot, "")
-        .split(".")
-        .pop();
+      const domain = hostname.replace(tldWithDot, "").split(".").pop();
       if (domain) {
         return domain + tldWithDot;
       }
@@ -44,7 +41,7 @@ export function getSuggestions(url) {
   const urlElements = cleanedUrl
     .toLowerCase()
     .split(".")
-    .filter(element => element.length >= 2);
+    .filter((element) => element.length >= 2);
   if (urlElements.length < 2) return [];
   const baseName = urlElements[urlElements.length - 2];
   const tld = urlElements[urlElements.length - 1];
@@ -62,13 +59,13 @@ export function getSuggestions(url) {
 }
 
 export function getSite() {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (
       typeof chrome !== "undefined" &&
       typeof chrome.tabs !== "undefined" &&
       typeof chrome.tabs.query !== "undefined"
     ) {
-      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         resolve(tabs[0].url);
       });
     } else {
@@ -79,19 +76,24 @@ export function getSite() {
 
 function passwordProfileFromRawQuery(query) {
   const password = {};
-  ["uppercase", "lowercase", "numbers", "symbols"].forEach(booleanishQuery => {
+  if ("numbers" in query) {
+    password["digits"] =
+      query["numbers"].toLowerCase() === "true" ||
+      query["numbers"].toLowerCase() === "1";
+  }
+  ["uppercase", "lowercase", "digits", "symbols"].forEach((booleanishQuery) => {
     if (booleanishQuery in query) {
       password[booleanishQuery] =
         query[booleanishQuery].toLowerCase() === "true" ||
         query[booleanishQuery].toLowerCase() === "1";
     }
   });
-  ["site", "login"].forEach(stringQuery => {
+  ["site", "login"].forEach((stringQuery) => {
     if (stringQuery in query) {
       password[stringQuery] = query[stringQuery];
     }
   });
-  ["length", "counter", "version"].forEach(intQuery => {
+  ["length", "counter", "version"].forEach((intQuery) => {
     if (intQuery in query) {
       password[intQuery] = parseInt(query[intQuery], 10);
     }

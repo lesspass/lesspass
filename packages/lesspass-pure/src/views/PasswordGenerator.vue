@@ -128,19 +128,19 @@ export default {
     RemoveAutoComplete,
     InputSite,
     MasterPassword,
-    Options
+    Options,
   },
   computed: {
     ...mapState(["password", "passwords"]),
     ...mapGetters([
       "passwordURL",
       "shouldAutoFillSite",
-      "shouldRemoveSubdomain"
-    ])
+      "shouldRemoveSubdomain",
+    ]),
   },
   beforeMount() {
     if (this.shouldAutoFillSite) {
-      getSite().then(site => {
+      getSite().then((site) => {
         const cleanedSite = this.shouldRemoveSubdomain
           ? removeSiteSubdomain(site)
           : cleanUrl(site);
@@ -148,7 +148,7 @@ export default {
       });
     }
     this.$store.dispatch("getPasswordFromUrlQuery", {
-      query: this.$route.query
+      query: this.$route.query,
     });
   },
   mounted() {
@@ -160,20 +160,20 @@ export default {
     return {
       masterPassword: "",
       passwordGenerated: "",
-      cleanTimeout: null
+      cleanTimeout: null,
     };
   },
   watch: {
     password: {
-      handler: function() {
+      handler: function () {
         this.cleanErrors();
       },
-      deep: true
+      deep: true,
     },
-    masterPassword: function(newMasterPassword) {
+    masterPassword: function (newMasterPassword) {
       this.masterPassword = newMasterPassword;
       this.cleanErrors();
-    }
+    },
   },
   methods: {
     togglePasswordType(element) {
@@ -211,13 +211,13 @@ export default {
       }
       const lowercase = this.password.lowercase;
       const uppercase = this.password.uppercase;
-      const numbers = this.password.numbers;
+      const digits = this.password.digits;
       const symbols = this.password.symbols;
-      if (!lowercase && !uppercase && !numbers && !symbols) {
+      if (!lowercase && !uppercase && !digits && !symbols) {
         message.error(
           this.$t(
             "AtLeastOneOptionShouldBeSelected",
-            "You must select at least one option among lowercase, uppercase, numbers or symbols."
+            "You must select at least one option among lowercase, uppercase, digits or symbols."
           )
         );
         return;
@@ -233,24 +233,23 @@ export default {
       }
       this.cleanErrors();
       const passwordProfile = {
+        site,
+        login,
         lowercase,
         uppercase,
-        numbers,
+        digits,
         symbols,
         length: this.password.length,
         counter: this.password.counter,
-        version: this.password.version
+        version: this.password.version,
       };
-      return LessPass.generatePassword(
-        site,
-        login,
-        masterPassword,
-        passwordProfile
-      ).then(passwordGenerated => {
-        this.passwordGenerated = passwordGenerated;
-        this.copyPassword();
-        this.cleanFormIn30Seconds();
-      });
+      return LessPass.generatePassword(passwordProfile, masterPassword).then(
+        (passwordGenerated) => {
+          this.passwordGenerated = passwordGenerated;
+          this.copyPassword();
+          this.cleanFormIn30Seconds();
+        }
+      );
     },
     focusBestInputField() {
       try {
@@ -311,7 +310,7 @@ export default {
         .then(() => {
           this.focusBestInputField();
         });
-    }
-  }
+    },
+  },
 };
 </script>
