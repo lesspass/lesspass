@@ -51,7 +51,6 @@ function _getPasswordProfile(state) {
     login: state.login,
     lowercase: state.lowercase,
     uppercase: state.uppercase,
-    number: state.digits,
     digits: state.digits,
     symbols: state.symbols,
     length: state.length,
