@@ -11,7 +11,7 @@
     "i18n:translate": "node src/i18n/translate.js",
     "prettier": "prettier --write 'src/**/*'",
     "test": "yarn test:unit && yarn test:e2e",
-    "test:watch": "jest --watch",
+    "test:watch": "vue-cli-service test:unit --watch",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint"

@@ -22,6 +22,17 @@ function removePasswordProfile(profile) {
   };
 }
 
+function replaceNumbersWithDigitsInProfile(profile) {
+  if ("numbers" in profile) {
+    const { numbers, ...profileWithoutNumbers } = profile;
+    return {
+      ...profileWithoutNumbers,
+      digits: numbers,
+    };
+  }
+  return profile;
+}
+
 export function getPasswordProfiles() {
   return (dispatch, getState) => {
     const { settings, auth } = getState();
@@ -30,9 +41,19 @@ export function getPasswordProfiles() {
         headers: { Authorization: `Bearer ${auth.accessToken}` },
       })
       .then((response) => {
-        dispatch(setPasswordProfiles(response.data.results));
+        const profiles = response.data.results.map(
+          replaceNumbersWithDigitsInProfile
+        );
+        dispatch(setPasswordProfiles(profiles));
         return response;
       });
+  };
+}
+
+export function addNumbersFieldInProfile(profile) {
+  return {
+    ...profile,
+    numbers: profile.digits,
   };
 }
 
@@ -40,11 +61,19 @@ export function savePasswordProfile(profile) {
   return (dispatch, getState) => {
     const { settings, auth } = getState();
     return axios
-      .post(`${settings.baseURL}/passwords/`, profile, {
-        headers: { Authorization: `Bearer ${auth.accessToken}` },
-      })
+      .post(
+        `${settings.baseURL}/passwords/`,
+        addNumbersFieldInProfile(profile),
+        {
+          headers: { Authorization: `Bearer ${auth.accessToken}` },
+        }
+      )
       .then((response) => {
-        dispatch(addPasswordProfile({ ...response.data }));
+        dispatch(
+          addPasswordProfile(
+            replaceNumbersWithDigitsInProfile({ ...response.data })
+          )
+        );
         return response;
       })
       .catch(() =>
@@ -61,11 +90,19 @@ export function updatePasswordProfile(profile) {
   return (dispatch, getState) => {
     const { settings, auth } = getState();
     return axios
-      .put(`${settings.baseURL}/passwords/${profile.id}/`, profile, {
-        headers: { Authorization: `Bearer ${auth.accessToken}` },
-      })
+      .put(
+        `${settings.baseURL}/passwords/${profile.id}/`,
+        addNumbersFieldInProfile(profile),
+        {
+          headers: { Authorization: `Bearer ${auth.accessToken}` },
+        }
+      )
       .then((response) => {
-        dispatch(addPasswordProfile({ ...response.data }));
+        dispatch(
+          addPasswordProfile(
+            replaceNumbersWithDigitsInProfile({ ...response.data })
+          )
+        );
         return response;
       })
       .catch(() =>

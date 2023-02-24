@@ -18,23 +18,6 @@ describe("profiles reducer", () => {
       p2: { id: "p2" },
     });
   });
-  it("SET_PASSWORD_PROFILES numbers become digits", () => {
-    expect(
-      reducer(
-        {},
-        {
-          type: "SET_PASSWORD_PROFILES",
-          profiles: [
-            { id: "p1", numbers: true },
-            { id: "p2", numbers: false },
-          ],
-        }
-      )
-    ).toEqual({
-      p1: { id: "p1", digits: true },
-      p2: { id: "p2", digits: false },
-    });
-  });
   it("REMOVE_PASSWORD_PROFILE", () => {
     expect(
       reducer(
