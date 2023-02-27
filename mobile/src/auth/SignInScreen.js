@@ -7,10 +7,8 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  View,
-  Linking,
 } from "react-native";
-import { Text, Button, Title, useTheme } from "react-native-paper";
+import { Button, Title } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 import TextInput from "../ui/TextInput";
 import Styles from "../ui/Styles";
@@ -18,7 +16,7 @@ import { addError } from "../errors/errorsActions";
 import { signIn } from "./authActions";
 import routes from "../routes";
 import { useNavigation } from "@react-navigation/native";
-import { readMessage } from "../messages/messagesActions";
+import { setSettings } from "../settings/settingsActions";
 
 export default function SignInScreen() {
   const [email, setEmail] = useState("");
@@ -26,10 +24,10 @@ export default function SignInScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const theme = useTheme();
   const encryptMasterPassword = useSelector(
     (state) => state.settings.encryptMasterPassword
   );
+  const baseURL = useSelector((state) => state.settings.baseURL);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -37,7 +35,13 @@ export default function SignInScreen() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={Styles.innerContainer}>
-          <Title style={Styles.title}>Connect to Lesspass Database</Title>
+          <Title style={Styles.title}>Connect to your Lesspass Database</Title>
+          <TextInput
+            mode="outlined"
+            label="LessPass Database Url"
+            value={baseURL}
+            onChangeText={(text) => dispatch(setSettings(text))}
+          />
           <TextInput
             mode="outlined"
             label="Email"
@@ -59,7 +63,6 @@ export default function SignInScreen() {
             }}
             disabled={isEmpty(email) || isEmpty(password) || isLoading}
             onPress={() => {
-              dispatch(readMessage("LessPassServerWillBeTurnedOffOnMarch"));
               setIsLoading(true);
               dispatch(
                 signIn(
@@ -85,26 +88,12 @@ export default function SignInScreen() {
           >
             Sign In
           </Button>
-          <View>
-            <Text style={{ color: theme.colors.error }}>
-              LessPass Database server will be turned off on March 1th, 2023.
-              You can export your passwords using the web extension, the CLI or
-              the web site.
-            </Text>
-            <Button
-              mode="text"
-              onPress={() => {
-                Linking.openURL(
-                  "https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database"
-                );
-              }}
-              style={{
-                marginTop: 10,
-              }}
-            >
-              See announcement
-            </Button>
-          </View>
+          <Button
+            mode="text"
+            onPress={() => navigation.navigate(routes.SIGN_UP)}
+          >
+            Create an account
+          </Button>
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

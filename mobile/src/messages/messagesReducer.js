@@ -1,7 +1,6 @@
 import * as types from "./messagesActionsTypes";
 
 const initialState = {
-  LessPassServerWillBeTurnedOffOnMarch: false,
 };
 
 export default function (state = initialState, action) {

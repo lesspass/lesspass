@@ -147,8 +147,8 @@ android {
         applicationId "com.lesspass.android"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9007006
-        versionName "9.7.6"
+        versionCode 9007007
+        versionName "9.7.7"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {

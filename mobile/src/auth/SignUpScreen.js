@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { Button, Title, useTheme } from "react-native-paper";
+import { Button, Title } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 import TextInput from "../ui/TextInput";
 import Styles from "../ui/Styles";
@@ -23,10 +23,10 @@ export default function SignUpScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const theme = useTheme();
   const encryptMasterPassword = useSelector(
     (state) => state.settings.encryptMasterPassword
   );
+  const baseURL = useSelector((state) => state.settings.baseURL);
 
   return (
     <KeyboardAvoidingView
@@ -36,6 +36,12 @@ export default function SignUpScreen() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={Styles.innerContainer}>
           <Title style={Styles.title}>Create an account</Title>
+          <TextInput
+            mode="outlined"
+            label="LessPass Database Url"
+            value={baseURL}
+            onChangeText={(text) => dispatch(setSettings(text))}
+          />
           <TextInput
             mode="outlined"
             label="Email"
