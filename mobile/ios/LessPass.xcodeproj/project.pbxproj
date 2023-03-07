@@ -525,6 +525,7 @@
 				DEVELOPMENT_TEAM = 5Y4MF2AT83;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LessPass/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -553,6 +554,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5Y4MF2AT83;
 				INFOPLIST_FILE = LessPass/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
