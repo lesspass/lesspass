@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true,
+    "paths": {
+      "lesspass-entropy": ["../lesspass-entropy/src/index.ts"],
+      "lesspass-fingerprint": ["../lesspass-fingerprint/src/index.ts"],
+      "lesspass-render-password": ["../lesspass-render-password/src/index.ts"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"],
+  "references": [
+    { "path": "../lesspass-entropy" },
+    { "path": "../lesspass-fingerprint" },
+    { "path": "../lesspass-render-password" },
+  ]
+}

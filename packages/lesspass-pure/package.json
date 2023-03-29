@@ -14,7 +14,8 @@
     "test:watch": "vue-cli-service test:unit --watch",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "clean": "rm -rf node_modules dist"
   },
   "files": [
     "dist"
@@ -53,15 +54,15 @@
     "@oslab/atob": "^0.1.0",
     "@oslab/btoa": "^0.1.0",
     "awesomplete": "^1.1.5",
-    "axios": "^0.21.1",
-    "balloon-css": "^1.0.3",
-    "bootstrap": "^4.6.0",
-    "core-js": "^3.9.1",
-    "csv-stringify": "^6.2.3",
+    "axios": "^0.21.4",
+    "balloon-css": "^1.2.0",
+    "bootstrap": "^4.6.2",
+    "core-js": "^3.29.1",
+    "csv-stringify": "^6.3.0",
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^3.1.2",
-    "lesspass": "9.2.0",
+    "lesspass": "workspace:*",
     "lodash": "^4.17.21",
     "vue": "^2.6.12",
     "vue-polyglot": "^2.0.1",
@@ -72,18 +73,18 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.5.0",
-    "@vue/cli-plugin-eslint": "^4.5.0",
-    "@vue/cli-plugin-unit-jest": "^4.5.0",
-    "@vue/cli-service": "^4.5.0",
-    "@vue/test-utils": "^1.0.3",
-    "axios-mock-adapter": "^1.20.0",
+    "@vue/cli-plugin-babel": "^4.5.19",
+    "@vue/cli-plugin-e2e-cypress": "^4.5.19",
+    "@vue/cli-plugin-eslint": "^4.5.19",
+    "@vue/cli-plugin-unit-jest": "^4.5.19",
+    "@vue/cli-service": "^4.5.19",
+    "@vue/test-utils": "^1.3.4",
+    "axios-mock-adapter": "^1.21.3",
     "babel-eslint": "^10.1.0",
     "cypress-plugin-tab": "^1.0.5",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.7.14"
   },
   "browserslist": [
     "> 1%",

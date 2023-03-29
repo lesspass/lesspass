@@ -8,11 +8,12 @@
   "scripts": {
     "build": "rm -rf build && gulp && cp index.html build/index.html",
     "start": "NODE_ENV=production node server.js",
-    "test": "echo 0"
+    "test": "echo 0",
+    "clean": "rm -rf node_modules build"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "lesspass-pure": "^10.0.1"
+    "express": "^4.18.2",
+    "lesspass-pure": "workspace:*"
   },
   "devDependencies": {
     "favicons": "^6.2.1",

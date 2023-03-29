@@ -15,16 +15,16 @@
     "gatsby-plugin-sharp": "^4.15.0",
     "gatsby-source-filesystem": "^4.15.0",
     "gatsby-transformer-sharp": "^4.15.0",
-    "lesspass-pure": "^9.5.6",
-    "prettier": "2.6.2",
+    "lesspass-pure": "workspace:*",
+    "prettier": "2.8.7",
     "prop-types": "^15.8.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.3.1"
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.5"
+    "@types/react-helmet": "^6.1.6"
   },
   "keywords": [
     "lesspass"

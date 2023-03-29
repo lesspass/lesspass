@@ -3,8 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
-    "composite": true,
-    "lib": ["ES6", "ES2017.String"]
+    "composite": true
   },
   "include": ["src"],
   "exclude": ["src/**/*.test.ts"]

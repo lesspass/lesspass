@@ -9,13 +9,14 @@
     "build": "rm -rf ./extension/dist && mkdir ./extension/dist && cp -r ./node_modules/lesspass-pure/dist/ ./extension/dist",
     "release": "yarn release:amo && yarn release:cws",
     "release:amo": "cd extension && web-ext-submit",
-    "release:cws": "cd extension && webstore upload --auto-publish"
+    "release:cws": "cd extension && webstore upload --auto-publish",
+    "clean": "rm -rf node_modules"
   },
   "dependencies": {
-    "lesspass-pure": "^10.0.1"
+    "lesspass-pure": "workspace:*"
   },
   "devDependencies": {
-    "chrome-webstore-upload-cli": "^1.2.1",
+    "chrome-webstore-upload-cli": "^1.2.2",
     "web-ext": "^6.6.0",
     "web-ext-submit": "^6.6.0"
   }

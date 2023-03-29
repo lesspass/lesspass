@@ -4,10 +4,10 @@ on:
     branches:
       - main
     paths:
-      - "mobile/**"
+      - "packages/lesspass-mobile/**"
   pull_request:
     paths:
-      - "mobile/**"
+      - "packages/lesspass-mobile/**"
 jobs:
   test-mobile:
     runs-on: ubuntu-18.04
@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: "14"
       - run: |
-          cd mobile
+          cd packages/lesspass-mobile
           yarn install
           yarn test
