@@ -1,19 +1,32 @@
 def create_profile(args):
-    profile = {
-        "lowercase": False if "nl" in dir(args) and args.nl else True,
-        "uppercase": False if "nu" in dir(args) and args.nu else True,
-        "digits": False if "nd" in dir(args) and args.nd else True,
-        "symbols": False if "ns" in dir(args) and args.ns else True,
-        "length": args.length if "length" in dir(args) and args.length else 8,
-        "counter": args.counter if "counter" in dir(args) and args.counter else 0,
-        "site": args.site if "site" in dir(args) and args.site  else "login",
-        "login": args.login if "login" in dir(args) and args.login else "",
-        "exclude": args.exclude if "exclude" in dir(args) and args.exclude  else "",
+    default_profile = {
+        "lowercase": False,
+        "uppercase": False,
+        "digits": False,
+        "symbols": False,
+        "length": 12,
+        "counter": 0,
+        "site": "login",
+        "login": "",
+        "exclude": "",
     }
-    
-    profile["lowercase"] = args.l if "l" in dir(args) and args.l  else True
-    profile["uppercase"] = args.u  if "u" in dir(args) and args.u  else True
-    profile["digits"] = args.d  if "d" in dir(args) and args.d  else True
-    profile["symbols"] = args.s  if "s" in dir(args) and args.s  else True
-    return profile
 
+    args.update(default_profile)
+    
+    profile = {
+        "lowercase": False if args.nl else True,
+        "uppercase": False if args.nu else True,
+        "digits": False if args.nd else True,
+        "symbols": False if args.ns else True,
+        "length": args.length,
+        "counter": args.counter,
+        "site": args.site,
+        "login": args.login or "",
+        "exclude": args.exclude or "",
+    }
+    if args.l or args.u or args.d or args.s:
+        profile["lowercase"] = args.l
+        profile["uppercase"] = args.u
+        profile["digits"] = args.d
+        profile["symbols"] = args.s
+    return profile
