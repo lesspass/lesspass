@@ -12,7 +12,7 @@ on:
       - "packages/lesspass-site/**"
 jobs:
   test-backend:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -24,7 +24,7 @@ jobs:
           python -m pip install -r requirements.txt
           python manage.py test
   test-site:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -33,7 +33,7 @@ jobs:
       - run: yarn install
       - run: yarn workspace lesspass-site test
   test-integration:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - run: |
