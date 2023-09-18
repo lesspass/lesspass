@@ -1,4 +1,4 @@
-FROM node:12-alpine AS builder
+FROM node:14-alpine AS builder
 LABEL maintainer="LessPass <contact@lesspass.com>"
 LABEL name="LessPass Frontend"
 WORKDIR /opt/frontend
