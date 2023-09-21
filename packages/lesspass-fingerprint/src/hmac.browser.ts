@@ -4,7 +4,7 @@ import {
   getAlgorithm,
 } from "lesspass-crypto";
 
-export default function hmac(algorithm: string, key: string, data?: string) {
+export function hmac(algorithm: string, key: string, data?: string) {
   return window.crypto.subtle
     .importKey(
       "raw",

@@ -1,15 +1,17 @@
-import pbkdf2 from "./pbkdf2";
+import { pbkdf2 } from "./pbkdf2";
 
-export interface SiteLoginCounter {
+interface SiteLoginCounter {
   site: string;
   login: string;
   counter: number;
 }
+
 interface Crypto {
   iterations?: number;
   keylen?: number;
   digest?: string;
 }
+
 export function calcEntropy(
   siteLoginAndCounter: SiteLoginCounter & { [k: string]: unknown },
   masterPassword: string,

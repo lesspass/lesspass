@@ -1,15 +1,15 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "module": "ES6",
+    "moduleResolution": "node",
     "outDir": "dist",
-    "rootDir": "src",
-    "composite": true,
-    "lib": ["ES6", "ES2017.String", "DOM"],
     "paths": {
-      "lesspass-crypto": ["../lesspass-crypto/src/index.ts"]
-    }
+      "lesspass-crypto": ["../lesspass-crypto"]
+    },
+    "strict": true,
+    "target": "ES6"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"],
+  "exclude": ["src/**/*.test.ts*"],
   "references": [{ "path": "../lesspass-crypto" }]
 }

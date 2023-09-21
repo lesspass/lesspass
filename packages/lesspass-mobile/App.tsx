@@ -2,7 +2,7 @@ import "react-native-gesture-handler";
 import React from "react";
 import { Provider } from "react-redux";
 import { Provider as PaperProvider } from "react-native-paper";
-import { PersistGate } from "redux-persist/lib/integration/react";
+import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./src/store";
 import { getTheme } from "./src/ui/Theme";
 import AppContainer from "./src/AppContainer";
@@ -13,7 +13,7 @@ export default function App() {
   const theme = getTheme(colorScheme);
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      <PersistGate persistor={persistor} loading={null}>
         <PaperProvider theme={theme}>
           <AppContainer />
         </PaperProvider>

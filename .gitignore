@@ -6,5 +6,10 @@ node_modules
 package-lock.json
 default.nix
 .envrc
-.yarn
 .pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

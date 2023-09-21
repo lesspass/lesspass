@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { generatePassword, createFingerprint } from ".";
 
 test("generatePassword", () => {

@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } from ".";
 
 test("stringToArrayBuffer", () => {

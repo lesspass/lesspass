@@ -72,7 +72,7 @@ export function getIcon(hash: string) {
   return icons[index];
 }
 
-export default function generateFingerprint(hmacSHA256: string) {
+export function createFingerprint(hmacSHA256: string) {
   const fingerprint = [];
   const hash1 = hmacSHA256.substring(0, 6);
   fingerprint.push({

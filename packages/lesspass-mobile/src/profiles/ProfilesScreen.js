@@ -27,7 +27,7 @@ import { sortByNewestFirst } from "./sort";
 export default function ProfilesScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const profiles = useSelector((state) => Object.values(state.profiles));
+  const profiles = Object.values(useSelector((state) => state.profiles));
   const [profileToDelete, setProfileToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const theme = useTheme();

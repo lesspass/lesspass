@@ -1,7 +1,8 @@
+import { expect, describe, test } from "vitest";
 import { calcEntropy, isSupported } from ".";
 
 describe("entropy", () => {
-  it("calc entropy without crypto use default options and crypto", () => {
+  test("calc entropy without crypto use default options and crypto", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
@@ -14,7 +15,7 @@ describe("entropy", () => {
       ).toBe(entropy);
     });
   });
-  it("calc entropy pbkdf2 with default params (100000 iterations, 32 bytes length, sha256 digest)", () => {
+  test("calc entropy pbkdf2 with default params (100000 iterations, 32 bytes length, sha256 digest)", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
@@ -32,7 +33,7 @@ describe("entropy", () => {
       ).toBe(entropy);
     });
   });
-  it("calc entropy pbkdf2 with unicode char", () => {
+  test("calc entropy pbkdf2 with unicode char", () => {
     const profile = {
       site: "example.org",
       login: "❤",
@@ -50,7 +51,7 @@ describe("entropy", () => {
       ).toBe(entropy);
     });
   });
-  it("calc entropy with different options (8192 iterations, 16 bytes length, sha512 digest)", () => {
+  test("calc entropy with different options (8192 iterations, 16 bytes length, sha512 digest)", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
@@ -67,7 +68,7 @@ describe("entropy", () => {
       expect("fff211c16a4e776b3574c6a5c91fd252").toBe(entropy);
     });
   });
-  it("calc entropy are different if counter are different", () => {
+  test("calc entropy are different if counter are different", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
@@ -89,7 +90,7 @@ describe("entropy", () => {
 });
 
 describe("isSupported", () => {
-  it("isSupported", () =>
+  test("isSupported", () =>
     isSupported().then((supported) => {
       expect(supported).toBe(true);
     }));

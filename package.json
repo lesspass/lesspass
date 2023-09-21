@@ -1,6 +1,5 @@
 {
-  "name": "lesspass-root",
-  "description": "Stateless Password Manager",
+  "name": "lesspass-monorepo",
   "repository": "git@github.com:lesspass/lesspass.git",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "license": "GPL-3.0",
@@ -11,9 +10,9 @@
     ]
   },
   "scripts": {
-    "build": "yarn workspaces foreach -v --topological-dev run build",
-    "clean": "yarn workspaces foreach -v run clean && rm -rf node_modules && rm -rf .yarn",
-    "test": "yarn workspaces foreach -v run test"
+    "build": "yarn workspaces foreach --verbose --all --topological-dev run build",
+    "clean": "yarn workspaces foreach --verbose --all run clean && rm -rf node_modules",
+    "test": "yarn workspaces foreach --verbose --all run test"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@4.3.1"
 }

@@ -1,0 +1,10 @@
+{
+  "Header": {
+    "settingsLink": "Settings",
+    "signInLink": "Sign in",
+    "myAccount": "My account"
+  },
+  "SettingsPage": {
+    "selectLanguage": "select default language"
+  }
+}

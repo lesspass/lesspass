@@ -8,7 +8,7 @@ it("replaceNumbersWithDigitsInProfile numbers become digits", () => {
     replaceNumbersWithDigitsInProfile({ id: "p2", numbers: false })
   ).toEqual({ id: "p2", digits: false });
   expect(
-    replaceNumbersWithDigitsInProfile([{ id: "p1", numbers: true }])
+    replaceNumbersWithDigitsInProfile({ id: "p1", numbers: true })
   ).toEqual({ id: "p1", digits: true });
 });
 

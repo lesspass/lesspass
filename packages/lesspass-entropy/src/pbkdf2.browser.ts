@@ -4,7 +4,7 @@ import {
   getAlgorithm,
 } from "lesspass-crypto";
 
-export default function pbkdf2(
+export function pbkdf2(
   password: string,
   salt: string,
   iterations: number,

@@ -1,0 +1,32 @@
+{
+  "name": "lesspass-api",
+  "version": "0.1.0",
+  "description": "LessPass API functions",
+  "license": "GPL-3.0",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -f tsconfig.tsbuildinfo && rm -rf dist",
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "lesspass": "workspace:^"
+  },
+  "devDependencies": {
+    "msw": "^2.3.2",
+    "tsup": "^8.2.2",
+    "typescript": "^5.5.3",
+    "vitest": "^2.0.4"
+  }
+}

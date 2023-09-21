@@ -1,11 +1,13 @@
 {
-  "compilerOptions": {
-    "target": "ES6",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+  "files": [],
+  "references": [
+    { "path": "./packages/lesspass" },
+    { "path": "./packages/lesspass-api" },
+    { "path": "./packages/lesspass-crypto" },
+    { "path": "./packages/lesspass-entropy" },
+    { "path": "./packages/lesspass-fingerprint" },
+    { "path": "./packages/lesspass-mobile" },
+    { "path": "./packages/lesspass-render-password" }
+    // { "path": "./packages/lesspass-web-component" }
+  ]
 }

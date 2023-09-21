@@ -1,8 +1,7 @@
-import bigInt from "big-integer";
 import chars from "./chars";
 import { consumeEntropy } from "./entropy";
 
-export interface Options {
+export interface PasswordOptions {
   uppercase: boolean;
   lowercase: boolean;
   digits: boolean;
@@ -10,12 +9,12 @@ export interface Options {
   length: number;
 }
 
-export function renderPassword(entropy:string, options: Options) {
+export function renderPassword(entropy: string, options: PasswordOptions) {
   const rules = chars.getRules(options);
   const setOfCharacters = chars.getSetOfCharacters(rules);
   const generatedPassword = consumeEntropy(
     "",
-    bigInt(entropy, 16),
+    BigInt(`0x${entropy}`),
     setOfCharacters,
     options.length - rules.length
   );

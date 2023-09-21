@@ -1,18 +1,21 @@
-import { BigInteger } from "big-integer";
-
+export function divMod(dividend: bigint, divisor: bigint) {
+  return {
+    quotient: divisor > 0 ? dividend / divisor : BigInt(0),
+    remainder: dividend % divisor,
+  };
+}
 export function consumeEntropy(
-  generatedPassword:string,
-  quotient:BigInteger,
-  setOfCharacters:string,
+  generatedPassword: string,
+  quotient: bigint,
+  setOfCharacters: string,
   maxLength: number
-):{value:string, entropy: BigInteger} {
+): { value: string; entropy: bigint } {
   let passwordBuilt = generatedPassword;
   if (passwordBuilt.length >= maxLength) {
     return { value: passwordBuilt, entropy: quotient };
   }
-  const longDivision = quotient.divmod(setOfCharacters.length);
-  const remainder = longDivision.remainder as unknown as number
-  passwordBuilt += setOfCharacters[remainder];
+  const longDivision = divMod(quotient, BigInt(setOfCharacters.length));
+  passwordBuilt += setOfCharacters[Number(longDivision.remainder)];
   return consumeEntropy(
     passwordBuilt,
     longDivision.quotient,
@@ -22,5 +25,5 @@ export function consumeEntropy(
 }
 
 export default {
-  consumeEntropy
+  consumeEntropy,
 };

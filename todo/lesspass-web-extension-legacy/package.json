@@ -1,0 +1,23 @@
+{
+  "name": "lesspass-web-extension-legacy",
+  "description": "LessPass web extension",
+  "version": "9.6.9",
+  "license": "GPL-3.0",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "scripts": {
+    "start": "cd extension && web-ext run",
+    "build": "rm -rf ./extension/dist && mkdir ./extension/dist && cp -r ./node_modules/lesspass-pure/dist/ ./extension/dist",
+    "release": "yarn release:amo && yarn release:cws",
+    "release:amo": "cd extension && web-ext-submit",
+    "release:cws": "cd extension && webstore upload --auto-publish",
+    "clean": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "lesspass-pure": "workspace:*"
+  },
+  "devDependencies": {
+    "chrome-webstore-upload-cli": "^2.2.2",
+    "web-ext": "^7.8.0",
+    "web-ext-submit": "^7.8.0"
+  }
+}

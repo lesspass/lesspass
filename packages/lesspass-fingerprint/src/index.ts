@@ -1,5 +1,5 @@
-import createFingerprint from "./fingerprint";
-import createHmac from "./hmac";
+import { createFingerprint } from "./fingerprint";
+import { hmac as createHmac } from "./hmac";
 
 export { createFingerprint, createHmac };
 

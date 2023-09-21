@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { renderPassword } from ".";
 
 test("render password use remainder of long division between entropy and set of chars length as an index", () => {

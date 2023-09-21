@@ -1,4 +1,4 @@
-import bigInt from "big-integer";
+import { expect, test } from "vitest";
 import chars from "./chars";
 
 test("getSetOfCharacters", () => {
@@ -52,7 +52,7 @@ test("getSetOfCharacters only symbols", () => {
 });
 
 test("getOneCharPerRule", () => {
-  const oneCharPerSetOfCharacters = chars.getOneCharPerRule(bigInt(26 * 26), [
+  const oneCharPerSetOfCharacters = chars.getOneCharPerRule(BigInt(26 * 26), [
     "lowercase",
     "uppercase",
   ]);
@@ -82,7 +82,7 @@ test("getRules", () => {
 test("insertStringPseudoRandomly", () => {
   const password = chars.insertStringPseudoRandomly(
     "123456",
-    bigInt(7 * 6 + 2),
+    BigInt(7 * 6 + 2),
     "uT"
   );
   expect("T12u3456").toBe(password);

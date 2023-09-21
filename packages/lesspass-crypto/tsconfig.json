@@ -1,11 +1,11 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
     "composite": true,
-    "lib": ["ES6", "ES2017.String"]
+    "module": "ES6",
+    "outDir": "dist",
+    "strict": true,
+    "target": "ES6"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": ["src/**/*.test.ts*"]
 }

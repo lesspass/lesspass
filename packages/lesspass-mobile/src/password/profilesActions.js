@@ -22,7 +22,7 @@ function removePasswordProfile(profile) {
   };
 }
 
-function replaceNumbersWithDigitsInProfile(profile) {
+export function replaceNumbersWithDigitsInProfile(profile) {
   if ("numbers" in profile) {
     const { numbers, ...profileWithoutNumbers } = profile;
     return {

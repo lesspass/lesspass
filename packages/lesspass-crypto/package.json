@@ -4,28 +4,24 @@
   "description": "LessPass cryptographic functions",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
-  "exports": {
-    "development": "./src/index.ts",
-    "types": "./dist/index.d.ts",
-    "default": "./dist/index.js"
-  },
   "engines": {
-    "node": ">=14"
+    "node": ">=20"
   },
   "scripts": {
-    "test": "jest",
-    "build": "yarn clean && tsc",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo"
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.2",
-    "@types/jest": "^29.5.0",
-    "jest": "^29.5.0",
-    "ts-jest": "^29.0.5",
-    "typescript": "^4.9.5"
+    "tsup": "^8.2.2",
+    "typescript": "^5.5.3",
+    "vitest": "^2.0.4"
   }
 }
