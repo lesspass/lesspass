@@ -1,4 +1,4 @@
-FROM httpd:2.4
+FROM httpd:2.4-bullseye
 LABEL maintainer="LessPass <contact@lesspass.com>"
 LABEL name="LessPass Web Server"
 
