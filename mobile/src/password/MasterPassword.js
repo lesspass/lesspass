@@ -57,6 +57,8 @@ export default class MasterPassword extends Component {
           value={masterPassword}
           secureTextEntry
           onChangeText={this.onChangeMasterPassword}
+          onSubmitEditing={this.props.onSubmitEditing}
+          outerRef={this.props.outerRef}
         />
         {masterPassword && fingerprint ? (
           <Fingerprint fingerprint={fingerprint} />

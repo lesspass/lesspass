@@ -12,6 +12,7 @@ export default function Input({ showError = false, errorText, ...props }) {
       }}
       style={{ marginBottom: 5 }}
       mode="outlined"
+      ref={props.outerRef}
       {...props}
     />
   );

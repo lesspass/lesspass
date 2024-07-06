@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   ScrollView,
   View,
@@ -61,6 +61,8 @@ export default function PasswordGeneratorScreen() {
   const settings = useSelector((state) => state.settings);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const ref_login = useRef();
+  const ref_masterPassword = useRef();
   const [copied, setCopied] = useState(false);
   const [seePassword, setSeePassword] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -88,6 +90,28 @@ export default function PasswordGeneratorScreen() {
     };
   }, [state.password]);
 
+  async function generate() {
+    const passwordProfile = _getPasswordProfile(state);
+    if (isProfileValid(passwordProfile)) {
+      dispatch(cleanErrors());
+      const password = await generatePassword(
+        state.masterPassword,
+        passwordProfile
+      );
+      if (state.copyPasswordAfterGeneration) {
+        NativeModules.LessPassClipboard.copy(password);
+        setCopied(true);
+      }
+      setState((state) => ({ ...state, password }));
+    } else {
+      dispatch(
+        addError(
+          "Password profile is invalid, cannot generate password. Site is required."
+        )
+      );
+    }
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -98,15 +122,25 @@ export default function PasswordGeneratorScreen() {
           <TextInput
             label="Site"
             value={state.site}
+            autoFocus={true}
+            returnKeyType="next"
+            blurOnSubmit={false}
+            onSubmitEditing={() => ref_login.current.focus()}
             onChangeText={(site) => setState((state) => ({ ...state, site }))}
           />
           <TextInput
             label="Login"
             value={state.login}
+            outerRef={ref_login}
+            returnKeyType="next"
+            blurOnSubmit={false}
+            onSubmitEditing={() => ref_masterPassword.current.focus()}
             onChangeText={(login) => setState((state) => ({ ...state, login }))}
           />
           <MasterPassword
             masterPassword={state.masterPassword}
+            outerRef={ref_masterPassword}
+            onSubmitEditing={generate}
             onChangeText={(masterPassword) =>
               setState((state) => ({ ...state, masterPassword }))
             }
@@ -149,31 +183,7 @@ export default function PasswordGeneratorScreen() {
               isValueValid={isCounterValid}
             />
           </View>
-          <Button
-            mode="contained"
-            icon="cogs"
-            onPress={async () => {
-              const passwordProfile = _getPasswordProfile(state);
-              if (isProfileValid(passwordProfile)) {
-                dispatch(cleanErrors());
-                const password = await generatePassword(
-                  state.masterPassword,
-                  passwordProfile
-                );
-                if (state.copyPasswordAfterGeneration) {
-                  NativeModules.LessPassClipboard.copy(password);
-                  setCopied(true);
-                }
-                setState((state) => ({ ...state, password }));
-              } else {
-                dispatch(
-                  addError(
-                    "Password profile is invalid, cannot generate password. Site is required."
-                  )
-                );
-              }
-            }}
-          >
+          <Button mode="contained" icon="cogs" onPress={generate}>
             {state.copyPasswordAfterGeneration ? "GENERATE & COPY" : "GENERATE"}
           </Button>
           <View
