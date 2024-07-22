@@ -90,8 +90,8 @@ android {
         applicationId "com.lesspass.android"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 900700800
-        versionName "9.7.8"
+        versionCode 900700900
+        versionName "9.7.9"
     }
     splits {
         abi {
