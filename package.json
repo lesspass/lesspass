@@ -14,7 +14,7 @@
     ]
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.0.0"  // Use the latest version available
+    "@react-native-async-storage/async-storage": "^1.0.0"  
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
