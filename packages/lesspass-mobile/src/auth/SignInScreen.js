@@ -1,38 +1,39 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from "lodash";
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {isEmpty} from 'lodash';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-} from "react-native";
-import { Button, Title } from "react-native-paper";
-import MasterPassword from "../password/MasterPassword";
-import TextInput from "../ui/TextInput";
-import Styles from "../ui/Styles";
-import { addError } from "../errors/errorsActions";
-import { signIn } from "./authActions";
-import routes from "../routes";
-import { useNavigation } from "@react-navigation/native";
-import { setSettings } from "../settings/settingsActions";
+  Linking,
+  Text,
+} from 'react-native';
+import {Button, Paragraph, Title} from 'react-native-paper';
+import MasterPassword from '../password/MasterPassword';
+import TextInput from '../ui/TextInput';
+import Styles from '../ui/Styles';
+import {addError} from '../errors/errorsActions';
+import {signIn} from './authActions';
+import routes from '../routes';
+import {useNavigation} from '@react-navigation/native';
+import {setSettings} from '../settings/settingsActions';
 
 export default function SignInScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const encryptMasterPassword = useSelector(
-    (state) => state.settings.encryptMasterPassword
+    state => state.settings.encryptMasterPassword,
   );
-  const baseURL = useSelector((state) => state.settings.baseURL);
+  const baseURL = useSelector(state => state.settings.baseURL);
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={Styles.container}
-    >
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={Styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={Styles.innerContainer}>
           <Title style={Styles.title}>Connect to your Lesspass Database</Title>
@@ -40,22 +41,22 @@ export default function SignInScreen() {
             mode="outlined"
             label="LessPass Database Url"
             value={baseURL}
-            onChangeText={(text) => dispatch(setSettings(text))}
+            onChangeText={text => dispatch(setSettings(text))}
           />
           <TextInput
             mode="outlined"
             label="Email"
             value={email}
-            onChangeText={(text) => setEmail(text.trim())}
+            onChangeText={text => setEmail(text.trim())}
           />
           <MasterPassword
-            label={encryptMasterPassword ? "Master Password" : "Password"}
+            label={encryptMasterPassword ? 'Master Password' : 'Password'}
             masterPassword={password}
             hideFingerprint={!encryptMasterPassword}
-            onChangeText={(password) => setPassword(password)}
+            onChangeText={password => setPassword(password)}
           />
           <Button
-            icon={"account-circle"}
+            icon={'account-circle'}
             mode="contained"
             style={{
               marginTop: 10,
@@ -70,30 +71,35 @@ export default function SignInScreen() {
                     email,
                     password,
                   },
-                  encryptMasterPassword
-                )
+                  encryptMasterPassword,
+                ),
               )
                 .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
                 .catch(() => {
                   setIsLoading(false);
                   let errorMessage =
-                    "Unable to log in with provided credentials.";
+                    'Unable to log in with provided credentials.';
                   if (encryptMasterPassword) {
                     errorMessage +=
                       " Your master password is encrypted. Uncheck this option in your settings if you don't use it.";
                   }
                   dispatch(addError(errorMessage));
                 });
-            }}
-          >
+            }}>
             Sign In
           </Button>
-          <Button
-            mode="text"
-            onPress={() => navigation.navigate(routes.SIGN_UP)}
-          >
-            Create an account
-          </Button>
+          <Paragraph>
+            LessPass Database is decommissioned. You must use your own server.{' '}
+            <Text
+              style={{color: 'blue'}}
+              onPress={() =>
+                Linking.openURL(
+                  'https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database',
+                )
+              }>
+              See blog post
+            </Text>
+          </Paragraph>
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

@@ -30,9 +30,9 @@
     "lesspass-crypto": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
-    "tsup": "^8.2.2",
-    "typescript": "^5.5.3",
-    "vitest": "^2.0.4"
+    "@types/node": "^20.17.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
   }
 }
