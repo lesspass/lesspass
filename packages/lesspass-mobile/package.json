@@ -34,6 +34,7 @@
     "react-native-touch-id": "^4.4.1",
     "react-native-vector-icons": "^10.2.0",
     "react-redux": "^9.1.2",
+    "redux": "^5.0.1",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {

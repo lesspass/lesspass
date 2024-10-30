@@ -1,0 +1,36 @@
+{
+  "description": "chrome and firefox web extension for lesspass password manager",
+  "manifest_version": 3,
+  "name": "LessPass",
+  "version": "10.0.0",
+  "homepage_url": "https://github.com/lesspass/lesspass",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      }
+    }
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "action": {
+    "browser_style": false,
+    "default_icon": "icons/icon128.png",
+    "default_title": "LessPass (Ctrl+Shift+L)",
+    "default_popup": "index.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "contact@lesspass.com",
+      "strict_min_version": "109.0"
+    }
+  }
+}

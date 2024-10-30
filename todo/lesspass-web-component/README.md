@@ -1,1 +1,0 @@
-# lesspass-web-component
