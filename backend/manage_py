@@ -1,0 +1,2 @@
+#!/bin/bash
+DATABASE_URL=postgresql://lesspass:password@localhost:9382/lesspass?sslmode=disable DEBUG="True" SECRET_KEY="abc" ./venv/bin/python manage.py "$@"

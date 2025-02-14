@@ -1,3 +1,0 @@
-ssl/*
-!ssl/domains.ext
-!ssl/README.md

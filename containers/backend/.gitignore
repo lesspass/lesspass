@@ -1,4 +1,0 @@
-www
-*.sqlite3
-# Ignore virtual env
-venv

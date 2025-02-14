@@ -13,3 +13,5 @@ default.nix
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+dump.pgsql
+restore.sh

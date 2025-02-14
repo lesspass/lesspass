@@ -1,0 +1,11 @@
+Django
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+djoser
+envparse
+gunicorn
+psycopg2-binary
+# tests
+factory-boy
+black
