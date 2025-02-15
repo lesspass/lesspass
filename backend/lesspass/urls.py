@@ -6,6 +6,7 @@ admin.site.site_title = "LessPass"
 admin.site.index_title = "Admin LessPass"
 
 urlpatterns = [
+    path("", include("api.urls")),
     path("api/", include("api.urls")),
     path("admin/", admin.site.urls),
 ]
