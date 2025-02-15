@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {isEmpty} from 'lodash';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -21,6 +20,8 @@ import {useNavigation} from '@react-navigation/native';
 import {setSettings} from '../settings/settingsActions';
 
 export default function SignInScreen() {
+  const defaultBaseURL = useSelector(state => state.settings.baseURL);
+  const [baseURL, setBaseURL] = useState(defaultBaseURL);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +30,6 @@ export default function SignInScreen() {
   const encryptMasterPassword = useSelector(
     state => state.settings.encryptMasterPassword,
   );
-  const baseURL = useSelector(state => state.settings.baseURL);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -41,13 +41,13 @@ export default function SignInScreen() {
             mode="outlined"
             label="LessPass Database Url"
             value={baseURL}
-            onChangeText={text => dispatch(setSettings(text))}
+            onChangeText={setBaseURL}
           />
           <TextInput
             mode="outlined"
             label="Email"
             value={email}
-            onChangeText={text => setEmail(text.trim())}
+            onChangeText={setEmail}
           />
           <MasterPassword
             label={encryptMasterPassword ? 'Master Password' : 'Password'}
@@ -62,13 +62,16 @@ export default function SignInScreen() {
               marginTop: 10,
               marginBottom: 30,
             }}
-            disabled={isEmpty(email) || isEmpty(password) || isLoading}
+            disabled={
+              baseURL === '' || email === '' || password === '' || isLoading
+            }
             onPress={() => {
               setIsLoading(true);
+              dispatch(setSettings({baseURL}));
               dispatch(
                 signIn(
                   {
-                    email,
+                    email: email.trim(),
                     password,
                   },
                   encryptMasterPassword,
