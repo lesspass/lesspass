@@ -15,7 +15,7 @@
     "gatsby-plugin-sharp": "^5.12.3",
     "gatsby-source-filesystem": "^5.12.1",
     "gatsby-transformer-sharp": "^5.12.3",
-    "lesspass-pure": "workspace:*",
+    "lesspass-pure": "^10.0.1",
     "prettier": "^3.2.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -30,12 +30,11 @@
     "lesspass"
   ],
   "scripts": {
-    "no-analytics": "gatsby telemetry --disable",
     "build:static": "cp -r node_modules/lesspass-pure/dist/* static/",
-    "build": "yarn no-analytics && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "yarn no-analytics && yarn develop",
+    "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
