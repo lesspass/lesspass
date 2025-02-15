@@ -1,38 +1,37 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-} from "react-native";
-import { Button, Title } from "react-native-paper";
-import MasterPassword from "../password/MasterPassword";
-import TextInput from "../ui/TextInput";
-import Styles from "../ui/Styles";
-import { addError } from "../errors/errorsActions";
-import { signUp } from "./authActions";
-import { isEmpty } from "lodash";
-import routes from "../routes";
-import { useNavigation } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
+} from 'react-native';
+import {Button, Title} from 'react-native-paper';
+import MasterPassword from '../password/MasterPassword';
+import TextInput from '../ui/TextInput';
+import Styles from '../ui/Styles';
+import {addError} from '../errors/errorsActions';
+import {signUp} from './authActions';
+import routes from '../routes';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 
 export default function SignUpScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const defaultBaseURL = useSelector(state => state.settings.baseURL);
+  const [baseURL, setBaseURL] = useState(defaultBaseURL);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const encryptMasterPassword = useSelector(
-    (state) => state.settings.encryptMasterPassword
+    state => state.settings.encryptMasterPassword,
   );
-  const baseURL = useSelector((state) => state.settings.baseURL);
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={Styles.container}
-    >
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={Styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={Styles.innerContainer}>
           <Title style={Styles.title}>Create an account</Title>
@@ -40,7 +39,7 @@ export default function SignUpScreen() {
             mode="outlined"
             label="LessPass Database Url"
             value={baseURL}
-            onChangeText={(text) => dispatch(setSettings(text))}
+            onChangeText={setBaseURL}
           />
           <TextInput
             mode="outlined"
@@ -49,7 +48,7 @@ export default function SignUpScreen() {
             onChangeText={setEmail}
           />
           <MasterPassword
-            label={encryptMasterPassword ? "Master Password" : "Password"}
+            label={encryptMasterPassword ? 'Master Password' : 'Password'}
             masterPassword={password}
             hideFingerprint={!encryptMasterPassword}
             onChangeText={setPassword}
@@ -61,37 +60,38 @@ export default function SignUpScreen() {
               marginTop: 10,
               marginBottom: 30,
             }}
-            disabled={isEmpty(email) || isEmpty(password) || isLoading}
+            disabled={
+              baseURL === '' || email === '' || password === '' || isLoading
+            }
             onPress={() => {
               setIsLoading(true);
+              dispatch(setSettings({baseURL}));
               dispatch(
                 signUp(
                   {
                     email: email.trim(),
                     password,
                   },
-                  encryptMasterPassword
-                )
+                  encryptMasterPassword,
+                ),
               )
                 .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
                 .catch(() => {
                   dispatch(
                     addError(
-                      "Unable to sign up. Try in a few minutes or contact an administrator."
-                    )
+                      'Unable to sign up. Try in a few minutes or contact an administrator.',
+                    ),
                   );
                 })
                 .finally(() => {
                   setIsLoading(false);
                 });
-            }}
-          >
+            }}>
             Sign Up
           </Button>
           <Button
             mode="text"
-            onPress={() => navigation.navigate(routes.SIGN_IN)}
-          >
+            onPress={() => navigation.navigate(routes.SIGN_IN)}>
             Already have an account? Sign In
           </Button>
         </ScrollView>
