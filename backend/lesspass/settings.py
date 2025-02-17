@@ -163,11 +163,10 @@ LOGGING = {
 
 AUTH_USER_MODEL = "api.LessPassUser"
 
-
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE": 20,
+    "PAGE_SIZE": 1000,
     "DEFAULT_FILTER_BACKENDS": (
         "rest_framework.filters.OrderingFilter",
         "rest_framework.filters.SearchFilter",
@@ -180,7 +179,6 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
     "DEFAULT_PARSER_CLASSES": ("rest_framework.parsers.JSONParser",),
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
-    "COERCE_DECIMAL_TO_STRING": False,
 }
 
 if not DEBUG:
