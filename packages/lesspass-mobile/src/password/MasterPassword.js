@@ -29,7 +29,7 @@ export default class MasterPassword extends Component {
           this.setState({
             fingerprint: createFingerprint(hmacSha256),
           });
-        }
+        },
       );
     }
   };
@@ -61,7 +61,10 @@ export default class MasterPassword extends Component {
           outerRef={this.props.outerRef}
         />
         {masterPassword && fingerprint ? (
-          <Fingerprint fingerprint={fingerprint} />
+          <Fingerprint
+            style={{ position: "absolute", right: 10, top: 24, bottom: 0 }}
+            fingerprint={fingerprint}
+          />
         ) : hideFingerprint ? null : (
           <TouchId onChangeText={this.onChangeMasterPassword} />
         )}

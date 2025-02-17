@@ -42,7 +42,7 @@ export function getPasswordProfiles() {
       })
       .then((response) => {
         const profiles = response.data.results.map(
-          replaceNumbersWithDigitsInProfile
+          replaceNumbersWithDigitsInProfile,
         );
         dispatch(setPasswordProfiles(profiles));
         return response;
@@ -66,22 +66,22 @@ export function savePasswordProfile(profile) {
         addNumbersFieldInProfile(profile),
         {
           headers: { Authorization: `Bearer ${auth.accessToken}` },
-        }
+        },
       )
       .then((response) => {
         dispatch(
           addPasswordProfile(
-            replaceNumbersWithDigitsInProfile({ ...response.data })
-          )
+            replaceNumbersWithDigitsInProfile({ ...response.data }),
+          ),
         );
         return response;
       })
       .catch(() =>
         dispatch(
           addError(
-            "We cannot save your password profile. Retry in a few minutes or contact us."
-          )
-        )
+            "We cannot save your password profile. Retry in a few minutes or contact us.",
+          ),
+        ),
       );
   };
 }
@@ -95,22 +95,22 @@ export function updatePasswordProfile(profile) {
         addNumbersFieldInProfile(profile),
         {
           headers: { Authorization: `Bearer ${auth.accessToken}` },
-        }
+        },
       )
       .then((response) => {
         dispatch(
           addPasswordProfile(
-            replaceNumbersWithDigitsInProfile({ ...response.data })
-          )
+            replaceNumbersWithDigitsInProfile({ ...response.data }),
+          ),
         );
         return response;
       })
       .catch(() =>
         dispatch(
           addError(
-            "We cannot update your password profile. Retry in a few minutes or contact us."
-          )
-        )
+            "We cannot update your password profile. Retry in a few minutes or contact us.",
+          ),
+        ),
       );
   };
 }
@@ -126,9 +126,9 @@ export function deletePasswordProfile(profile) {
       .catch(() =>
         dispatch(
           addError(
-            "We cannot delete your password profile. Retry in a few minutes or contact us."
-          )
-        )
+            "We cannot delete your password profile. Retry in a few minutes or contact us.",
+          ),
+        ),
       );
   };
 }

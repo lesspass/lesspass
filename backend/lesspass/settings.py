@@ -38,9 +38,7 @@ ALLOWED_HOSTS = (
     )
 )
 
-ADMINS = (
-    ("Guillaume Vincent", "guillaume@oslab.fr"),
-)
+ADMINS = (("Guillaume Vincent", "guillaume@oslab.fr"),)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -232,9 +230,8 @@ else:
     EMAIL_BACKEND = os.getenv(
         "EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
     )
-DEFAULT_FROM_EMAIL = os.getenv(
-    "DEFAULT_FROM_EMAIL", "LessPass <contact@lesspass.com>"
-)
+
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "LessPass <contact@lesspass.com>")
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")

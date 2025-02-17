@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
 import React, { useCallback, useEffect, useState } from "react";
-import { RefreshControl, ScrollView, View } from "react-native";
+import { RefreshControl, View } from "react-native";
 import {
   Divider,
   List,
@@ -19,10 +19,10 @@ import {
   getPasswordProfiles,
 } from "../password/profilesActions";
 import routes from "../routes";
-import Styles from "../ui/Styles";
 import fuzzysort from "fuzzysort";
 import { cleanPasswordProfile, setPasswordProfile } from "./profileActions";
 import { sortByNewestFirst } from "./sort";
+import Screen from "../ui/Screen";
 
 export default function ProfilesScreen() {
   const navigation = useNavigation();
@@ -48,8 +48,7 @@ export default function ProfilesScreen() {
 
   return (
     <Provider>
-      <ScrollView
-        style={Styles.container}
+      <Screen
         refreshControl={
           <RefreshControl
             refreshing={isLoading}
@@ -140,7 +139,7 @@ export default function ProfilesScreen() {
             </View>
           )}
         </List.Section>
-      </ScrollView>
+      </Screen>
     </Provider>
   );
 }

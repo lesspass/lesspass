@@ -6,7 +6,7 @@ import { areOptionsValid } from "./validations";
 export default function Options({ options, onOptionsChange, style }) {
   const [isValid, setIsvalid] = useState(true);
   const theme = useTheme();
-  const color = isValid ? theme.colors.secondary : theme.colors.error;
+  const color = isValid ? theme.colors.onSurface : theme.colors.error;
   useEffect(() => {
     if (areOptionsValid(options)) {
       setIsvalid(true);
@@ -28,7 +28,7 @@ export default function Options({ options, onOptionsChange, style }) {
           flexDirection: "row",
           justifyContent: "flex-start",
           alignItems: "center",
-          marginLeft: -5,
+          marginLeft: -8,
         }}
       >
         <Checkbox

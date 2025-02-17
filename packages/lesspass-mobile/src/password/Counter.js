@@ -19,13 +19,12 @@ export default function Counter({
       setIsValid(false);
     }
   }, [value]);
-  const color = isValid ? theme.colors.primary : theme.colors.error;
+  const color = isValid ? theme.colors.onSurface : theme.colors.error;
   const borderColor = isValid ? theme.colors.primary : theme.colors.error;
   return (
-    <View {...props}>
+    <View style={{ gap: 2 }} {...props}>
       <Text
         style={{
-          marginBottom: 5,
           color,
         }}
       >
@@ -36,13 +35,10 @@ export default function Counter({
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-          height:26,
-          borderWidth:1,
+          height: 26,
+          borderWidth: 1,
           borderColor,
-          borderRadius:5 * theme.roundness,
-          backgroundColor: isValid
-          ? theme.colors.primary
-          : theme.colors.error,
+          backgroundColor: isValid ? theme.colors.primary : theme.colors.error,
         }}
       >
         <TouchableOpacity
@@ -68,7 +64,7 @@ export default function Counter({
             justifyContent: "center",
             alignItems: "center",
             borderWidth: 0,
-            backgroundColor: theme.colors.background
+            backgroundColor: theme.colors.background,
           }}
         >
           <TextInput

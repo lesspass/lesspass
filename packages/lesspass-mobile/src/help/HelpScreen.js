@@ -1,40 +1,58 @@
 import React from "react";
-import { ScrollView, Image, Linking, View } from "react-native";
-import { Title, Subheading, Paragraph, Button, useTheme } from "react-native-paper";
-import Styles from "../ui/Styles";
+import { Linking, View } from "react-native";
+import { Subheading, Paragraph, Button, useTheme } from "react-native-paper";
+import Screen from "../ui/Screen";
+import Options from "../password/Options";
+import Fingerprint from "../password/Fingerprint";
 
 export default function HelpScreen() {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
-    <ScrollView contentContainerStyle={Styles.innerContainer}>
-      <Title style={Styles.title}>Help</Title>
+    <Screen title="Help">
       <Subheading>How does it work?</Subheading>
       <Paragraph style={{ marginBottom: 20 }}>
         LessPass is a password manager that doesn't store any data. It computes
         a unique password using a site, login and a master password. You don't
         need to sync a password vault across every device because LessPass works
         offline! It will always generate the same password as long as those
-        three parameters don't change.
+        parameters don't change.
       </Paragraph>
-      <Subheading>Master password emoticons</Subheading>
-      <Image source={require("./fingerprint.png")} />
+      <Subheading>Master password icons</Subheading>
+      <Fingerprint
+        fingerprint={[
+          {
+            color: theme.colors.primary,
+            icon: "fa-ship",
+          },
+          {
+            color: theme.colors.error,
+            icon: "fa-archive",
+          },
+          {
+            color: theme.colors.tertiary,
+            icon: "fa-euro",
+          },
+        ]}
+      />
       <Paragraph style={{ marginBottom: 20 }}>
         Your master password is the only thing you should keep in your head. The
-        emoticons on the right let you verify that you typed in the right master
-        password. You will have to wait a second or so before the final
-        emoticons appear (the delay is for security; if the emoticons were shown
-        instantly, a shoulder-peeker could derive your password based on the
-        series of displayed emoticons).
+        icons on the right let you verify that you typed in the right master
+        password. You will have to wait a second or so before the final icons
+        appear (the delay is for security; if the icons were shown instantly, a
+        shoulder-peeker could derive your password based on the series of
+        displayed icons).
       </Paragraph>
-      <Subheading>Options</Subheading>
+      <Subheading>Password generator options</Subheading>
       <View>
-        <Image
-          source={require("./options.png")}
-          style={{
-            width: null,
-            resizeMode: "contain",
-            height: 100,
+        <Options
+          options={{
+            lowercase: true,
+            uppercase: true,
+            digits: true,
+            symbols: true,
           }}
+          areOptionsValid={true}
+          onOptionsChange={() => undefined}
         />
       </View>
       <Paragraph style={{ marginBottom: 20 }}>
@@ -85,6 +103,6 @@ export default function HelpScreen() {
       >
         Send us an email
       </Button>
-    </ScrollView>
+    </Screen>
   );
 }

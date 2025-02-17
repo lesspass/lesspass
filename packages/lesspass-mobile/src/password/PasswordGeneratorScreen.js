@@ -1,16 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import {
-  ScrollView,
-  View,
-  TouchableWithoutFeedback,
-  KeyboardAvoidingView,
-  Platform,
-  Keyboard,
-} from "react-native";
+import { View, KeyboardAvoidingView, Platform, Keyboard } from "react-native";
 import { generatePassword } from "./passwordGenerator";
 import TextInput from "../ui/TextInput";
 import { useDispatch, useSelector } from "react-redux";
-import Styles from "../ui/Styles";
 import Counter from "./Counter";
 import Options from "./Options";
 import MasterPassword from "./MasterPassword";
@@ -23,8 +15,10 @@ import {
   isCounterValid,
   areOptionsValid,
 } from "./validations";
-import { Button, Snackbar, Text, useTheme } from "react-native-paper";
+import { Button, Snackbar, Text, Title, useTheme } from "react-native-paper";
 import { addError, cleanErrors } from "../errors/errorsActions";
+import SecondaryButton from "../ui/buttons/SecondaryButton";
+import Styles from "../ui/Styles";
 
 function _getInitialState(settings) {
   return {
@@ -96,18 +90,19 @@ export default function PasswordGeneratorScreen() {
       dispatch(cleanErrors());
       const password = await generatePassword(
         state.masterPassword,
-        passwordProfile
+        passwordProfile,
       );
       if (state.copyPasswordAfterGeneration) {
         NativeModules.LessPassClipboard.copy(password);
         setCopied(true);
       }
       setState((state) => ({ ...state, password }));
+      Keyboard.dismiss();
     } else {
       dispatch(
         addError(
-          "Password profile is invalid, cannot generate password. Site is required."
-        )
+          "Password profile is invalid, cannot generate password. Site is required.",
+        ),
       );
     }
   }
@@ -115,10 +110,21 @@ export default function PasswordGeneratorScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={Styles.container}
+      style={{
+        ...Styles.container,
+        backgroundColor: theme.colors.background,
+      }}
     >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView contentContainerStyle={Styles.innerContainer}>
+      <View
+        style={{
+          gap: 10,
+        }}
+      >
+        <View
+          style={{
+            gap: 5,
+          }}
+        >
           <TextInput
             label="Site"
             value={state.site}
@@ -145,44 +151,40 @@ export default function PasswordGeneratorScreen() {
               setState((state) => ({ ...state, masterPassword }))
             }
           />
-          <Options
-            options={{
-              lowercase: state.lowercase,
-              uppercase: state.uppercase,
-              digits: state.digits,
-              symbols: state.symbols,
-            }}
-            areOptionsValid={areOptionsValid}
-            onOptionsChange={(options) => {
-              setState((state) => ({ ...state, ...options }));
-            }}
-            style={{
-              marginTop: 10,
-            }}
+        </View>
+        <Options
+          options={{
+            lowercase: state.lowercase,
+            uppercase: state.uppercase,
+            digits: state.digits,
+            symbols: state.symbols,
+          }}
+          areOptionsValid={areOptionsValid}
+          onOptionsChange={(options) => {
+            setState((state) => ({ ...state, ...options }));
+          }}
+        />
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 10,
+            justifyContent: "space-between",
+          }}
+        >
+          <Counter
+            label="Length"
+            value={state.length}
+            setValue={(length) => setState((state) => ({ ...state, length }))}
+            isValueValid={isLengthValid}
           />
-          <View
-            style={{
-              marginTop: 5,
-              marginBottom: 30,
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <Counter
-              label="Length"
-              value={state.length}
-              setValue={(length) => setState((state) => ({ ...state, length }))}
-              isValueValid={isLengthValid}
-            />
-            <Counter
-              label="Counter"
-              value={state.counter}
-              setValue={(counter) =>
-                setState((state) => ({ ...state, counter }))
-              }
-              isValueValid={isCounterValid}
-            />
-          </View>
+          <Counter
+            label="Counter"
+            value={state.counter}
+            setValue={(counter) => setState((state) => ({ ...state, counter }))}
+            isValueValid={isCounterValid}
+          />
+        </View>
+        <View style={{ gap: 10 }}>
           <Button mode="contained" icon="cogs" onPress={generate}>
             {state.copyPasswordAfterGeneration ? "GENERATE & COPY" : "GENERATE"}
           </Button>
@@ -190,118 +192,83 @@ export default function PasswordGeneratorScreen() {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              paddingTop: 10,
+              gap: 5,
             }}
           >
-            <View style={{ flex: 1 }}>
-              <Button
-                mode="outlined"
-                onPress={() => {
-                  setSaved(false);
-                  setUpdated(false);
-                  setCopied(false);
-                  setSeePassword(false);
-                  dispatch(cleanErrors());
-                  setState(_getInitialState(settings));
-                  dispatch(cleanPasswordProfile());
-                }}
-                style={{
-                  marginBottom: 10,
-                  marginRight: 5,
-                  backgroundColor: theme.colors.background,
-                }}
-                labelStyle={{ fontSize: 12 }}
-                icon="refresh"
-              >
-                clear
-              </Button>
-            </View>
+            <SecondaryButton
+              icon="refresh"
+              onPress={() => {
+                setSaved(false);
+                setUpdated(false);
+                setCopied(false);
+                setSeePassword(false);
+                dispatch(cleanErrors());
+                setState(_getInitialState(settings));
+                dispatch(cleanPasswordProfile());
+              }}
+            >
+              CLEAR
+            </SecondaryButton>
             {state.password && state.copyPasswordAfterGeneration === false && (
-              <View style={{ flex: 1 }}>
-                <Button
-                  mode="outlined"
-                  onPress={() => {
-                    NativeModules.LessPassClipboard.copy(state.password);
-                    setCopied(true);
-                  }}
-                  style={{
-                    marginBottom: 10,
-                    marginRight: 5,
-                    backgroundColor: theme.colors.background,
-                  }}
-                  labelStyle={{ fontSize: 12 }}
-                  icon="clipboard"
-                >
-                  copy
-                </Button>
-              </View>
+              <SecondaryButton
+                onPress={() => {
+                  NativeModules.LessPassClipboard.copy(state.password);
+                  setCopied(true);
+                }}
+                icon="clipboard"
+              >
+                COPY
+              </SecondaryButton>
             )}
-            <View style={{ flex: 1 }}>
-              {state.password && (
-                <Button
-                  mode="outlined"
+            {state.password && (
+              <SecondaryButton
+                onPress={() => {
+                  setSeePassword((seePassword) => !seePassword);
+                }}
+                icon="eye"
+              >
+                {seePassword ? "HIDE" : "SHOW"}
+              </SecondaryButton>
+            )}
+            {state.password && auth.isAuthenticated ? (
+              state.id === null ? (
+                <SecondaryButton
                   onPress={() => {
-                    setSeePassword((seePassword) => !seePassword);
+                    const passwordProfile = _getPasswordProfile(state);
+                    dispatch(savePasswordProfile(passwordProfile)).then(
+                      (response) => {
+                        setState((state) => ({
+                          ...state,
+                          ...response.data,
+                        }));
+                        setSaved(true);
+                      },
+                    );
                   }}
-                  style={{
-                    marginBottom: 10,
-                    marginRight: 5,
-                    backgroundColor: theme.colors.background,
-                  }}
-                  labelStyle={{ fontSize: 12 }}
-                  icon="eye"
+                  icon="content-save"
                 >
-                  {seePassword ? "hide" : "show"}
-                </Button>
-              )}
-            </View>
-            <View style={{ flex: 1 }}>
-              {state.password && auth.isAuthenticated ? (
-                state.id === null ? (
-                  <Button
-                    mode="outlined"
-                    onPress={() => {
-                      const passwordProfile = _getPasswordProfile(state);
-                      dispatch(savePasswordProfile(passwordProfile)).then(
-                        (response) => {
-                          setState((state) => ({ ...state, ...response.data }));
-                          setSaved(true);
-                        }
-                      );
-                    }}
-                    style={{
-                      marginBottom: 10,
-                      backgroundColor: theme.colors.background,
-                    }}
-                    labelStyle={{ fontSize: 12 }}
-                    icon="content-save"
-                  >
-                    save
-                  </Button>
-                ) : (
-                  <Button
-                    mode="outlined"
-                    onPress={() => {
-                      const passwordProfile = _getPasswordProfile(state);
-                      dispatch(updatePasswordProfile(passwordProfile)).then(
-                        (response) => {
-                          setState((state) => ({ ...state, ...response.data }));
-                          setUpdated(true);
-                        }
-                      );
-                    }}
-                    style={{
-                      marginBottom: 10,
-                      backgroundColor: theme.colors.background,
-                    }}
-                    labelStyle={{ fontSize: 12 }}
-                    icon="content-save"
-                  >
-                    update
-                  </Button>
-                )
-              ) : null}
-            </View>
+                  SAVE
+                </SecondaryButton>
+              ) : (
+                <SecondaryButton
+                  onPress={() => {
+                    const passwordProfile = _getPasswordProfile(state);
+                    dispatch(updatePasswordProfile(passwordProfile)).then(
+                      (response) => {
+                        setState((state) => ({
+                          ...state,
+                          ...response.data,
+                        }));
+                        setUpdated(true);
+                      },
+                    );
+                  }}
+                  icon="content-save"
+                >
+                  UPDATE
+                </SecondaryButton>
+              )
+            ) : null}
           </View>
           {state.password && seePassword && (
             <View>
@@ -317,8 +284,8 @@ export default function PasswordGeneratorScreen() {
               </Text>
             </View>
           )}
-        </ScrollView>
-      </TouchableWithoutFeedback>
+        </View>
+      </View>
       <Snackbar
         visible={copied}
         onDismiss={() => setCopied(false)}

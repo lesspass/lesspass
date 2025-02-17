@@ -17,10 +17,11 @@ export default function reduce(state = initialState, action) {
         },
       };
     case "REMOVE_PASSWORD_PROFILE":
-      delete state[action.profile.id];
-      return {
+      const newState = {
         ...state,
       };
+      delete newState[action.profile.id];
+      return newState;
     case "LOG_OUT":
       return {
         ...initialState,

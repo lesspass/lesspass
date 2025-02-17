@@ -2,15 +2,14 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  innerContainer: {
-    paddingHorizontal: 15,
-    paddingTop: 15,
-    paddingBottom: 20,
+    flexGrow: 1,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   title: {
-    marginBottom: 10,
+    marginBottom: 20,
   },
   input: {
     marginBottom: 5,
