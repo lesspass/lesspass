@@ -14,7 +14,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "clean": "rm -rf node_modules && rm -f tsconfig.tsbuildinfo && rm -rf dist",
+    "clean": "rm -rf node_modules && rm -rf dist",
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest watch"

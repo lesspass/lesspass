@@ -36,7 +36,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "yarn develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "clean": "gatsby clean && rm -rf node_modules && rm -rf dist",
     "test": "exit 0"
   },
   "engines": {
