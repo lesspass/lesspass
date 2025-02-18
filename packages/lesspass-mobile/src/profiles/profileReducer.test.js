@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest'
 import reducer from "./profileReducer";
 
 describe("profile reducer", () => {

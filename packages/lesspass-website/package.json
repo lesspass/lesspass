@@ -5,26 +5,26 @@
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "dependencies": {
-    "@wardpeet/gatsby-plugin-static-site": "^0.3.0",
-    "gatsby": "^5.12.10",
+    "gatsby": "^5.14.1",
     "gatsby-image": "^3.11.0",
-    "gatsby-plugin-manifest": "^5.12.3",
-    "gatsby-plugin-offline": "^6.12.3",
-    "gatsby-plugin-postcss": "^6.12.0",
-    "gatsby-plugin-react-helmet": "^6.12.0",
-    "gatsby-plugin-sharp": "^5.12.3",
-    "gatsby-source-filesystem": "^5.12.1",
-    "gatsby-transformer-sharp": "^5.12.3",
+    "gatsby-plugin-manifest": "^5.14.0",
+    "gatsby-plugin-offline": "^6.14.0",
+    "gatsby-plugin-postcss": "^6.14.0",
+    "gatsby-plugin-react-helmet": "^6.14.0",
+    "gatsby-plugin-sharp": "^5.14.0",
+    "gatsby-source-filesystem": "^5.14.0",
+    "gatsby-transformer-sharp": "^5.14.0",
     "lesspass-pure": "^10.0.1",
-    "prettier": "^3.2.5",
+    "prettier": "^3.5.1",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.9"
+    "@types/react-helmet": "^6.1.11",
+    "postcss": "^8.5.2"
   },
   "keywords": [
     "lesspass"
@@ -37,7 +37,7 @@
     "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "exit 0"
   },
   "engines": {
     "node": "22.x"

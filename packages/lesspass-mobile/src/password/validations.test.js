@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest'
 import defaultPasswordProfile from "../settings/defaultPasswordProfile";
 import {
   isProfileValid,

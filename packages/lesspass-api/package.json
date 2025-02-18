@@ -20,13 +20,13 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
     "lesspass": "workspace:*"
   },
   "devDependencies": {
     "msw": "^2.7.0",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3",
-    "vitest": "^2.1.9"
+    "vitest": "^3.0.5"
   }
 }

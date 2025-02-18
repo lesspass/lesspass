@@ -1,6 +1,7 @@
+import { expect, it } from 'vitest'
 import { sortByNewestFirst } from "./sort";
 
-test("sortByNewestFirst", () => {
+it("sortByNewestFirst", () => {
   expect(
     sortByNewestFirst([
       {

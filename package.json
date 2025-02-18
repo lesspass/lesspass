@@ -10,7 +10,7 @@
     ]
   },
   "scripts": {
-    "build": "yarn workspaces foreach --verbose --all --topological-dev run build",
+    "build": "yarn workspaces foreach --verbose --all --topological run build",
     "clean": "yarn workspaces foreach --verbose --all run clean && rm -rf node_modules",
     "test": "yarn workspaces foreach --verbose --all run test"
   },

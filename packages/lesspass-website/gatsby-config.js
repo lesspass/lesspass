@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `LessPass`,
-    description: `stateless password manager`,
+    description: `Stateless password manager`,
     author: `Guillaume Vincent`,
   },
   plugins: [
@@ -28,6 +28,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-postcss`,
-    `@wardpeet/gatsby-plugin-static-site`
   ],
-}
+};

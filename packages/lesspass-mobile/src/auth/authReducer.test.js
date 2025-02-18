@@ -1,3 +1,4 @@
+import { expect, describe,it } from "vitest";
 import reducer from "./authReducer";
 
 describe("auth reducer", () => {
@@ -26,8 +27,8 @@ describe("auth reducer", () => {
             token:
               "eeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImp0aSI6ImVlZjY4ZWVlLTI2MDMtNDI4OC1hMzE4LTUzNmU5YjFkYmJkYSIsImlhdCI6MTYyMTU5NzYyOSwiZXhwIjoxNjIxNjAxMjI5fQ.OCxHzcr2xS5iM_-ZcQ7Uv2botM3oX-Wu_QUXhyi3H7Q",
           },
-        }
-      )
+        },
+      ),
     ).toEqual({
       isAuthenticated: true,
       accessToken:
@@ -48,8 +49,8 @@ describe("auth reducer", () => {
         },
         {
           type: "LOG_OUT",
-        }
-      )
+        },
+      ),
     ).toEqual({
       isAuthenticated: false,
       accessToken: null,
