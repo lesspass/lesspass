@@ -14,5 +14,8 @@
     "clean": "yarn workspaces foreach --verbose --all run clean && rm -rf node_modules",
     "test": "yarn workspaces foreach --verbose --all run test"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.6.0",
+  "engines": {
+    "node": "22.x"
+  }
 }
