@@ -1,21 +1,11 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "ES6",
-    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "rootDir": "src",
     "outDir": "dist",
-    "paths": {
-      "lesspass-entropy": ["../lesspass-entropy"],
-      "lesspass-fingerprint": ["../lesspass-fingerprint"],
-      "lesspass-render-password": ["../lesspass-render-password"],
-    },
-    "strict": true,
-    "target": "ES6"
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts*"],
-  "references": [
-    { "path": "../lesspass-entropy" },
-    { "path": "../lesspass-fingerprint" },
-    { "path": "../lesspass-render-password" }
-  ]
+  "exclude": ["src/**/*.test.ts"]
 }

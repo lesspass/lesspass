@@ -53,7 +53,7 @@ export function isSupported(): Promise<boolean> {
           "e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da"
       )
     )
-    .catch((e) => Promise.resolve(false));
+    .catch(() => Promise.resolve(false));
 }
 
 export default {

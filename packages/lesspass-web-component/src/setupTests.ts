@@ -2,7 +2,7 @@ import "@testing-library/jest-dom/vitest";
 import { beforeAll, afterEach, afterAll } from "vitest";
 import { setupServer } from "msw/node";
 import { render as renderTestingLibrary } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import userEvent, { UserEvent } from "@testing-library/user-event";
 
 export const server = setupServer();
 
@@ -13,7 +13,9 @@ afterEach(() => {
 });
 afterAll(() => server.close());
 
-export function render(element: React.ReactElement) {
+export function render(
+  element: React.ReactElement,
+): ReturnType<typeof renderTestingLibrary> & { user: UserEvent } {
   return {
     user: userEvent.setup(),
     ...renderTestingLibrary(element),

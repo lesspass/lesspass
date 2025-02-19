@@ -5,7 +5,6 @@
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "type": "module",
-  "types": "./dist/index.d.ts",
   "exports": {
     "node": "./dist/index.js",
     "browser": "./dist/index.browser.js",
@@ -17,12 +16,9 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">=20"
-  },
   "scripts": {
-    "clean": "rm -rf node_modules && rm -rf dist",
-    "build": "tsup",
+    "clean": "rm -rf dist",
+    "build": "yarn clean && tsup",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
@@ -33,5 +29,29 @@
     "tsup": "^8.3.6",
     "typescript": "^5.7.3",
     "vitest": "^3.0.5"
-  }
+  },
+  "tsup": [
+    {
+      "entry": {
+        "index.browser": "./src/index.ts"
+      },
+      "format": [
+        "esm"
+      ],
+      "platform": "browser",
+      "dts": true,
+      "clean": true
+    },
+    {
+      "entry": [
+        "./src/index.ts"
+      ],
+      "format": [
+        "esm"
+      ],
+      "platform": "node",
+      "dts": true,
+      "clean": true
+    }
+  ]
 }

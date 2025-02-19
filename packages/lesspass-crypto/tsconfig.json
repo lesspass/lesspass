@@ -1,11 +1,11 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
-    "module": "ES6",
+    "baseUrl": ".",
+    "rootDir": "src",
     "outDir": "dist",
-    "strict": true,
-    "target": "ES6"
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts*"]
+  "exclude": ["src/**/*.test.ts"]
 }

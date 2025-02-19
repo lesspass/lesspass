@@ -6,7 +6,9 @@ import { setupStore } from "./store";
 import { LANGUAGE_LOCAL_STORAGE_KEY } from "./constant";
 import { render } from "./setupTests";
 
-export function renderWithRouter(store = {}) {
+export function renderWithRouter(store = {}): ReturnType<typeof render> & {
+  router: ReturnType<typeof createMemoryRouter>;
+} {
   const router = createMemoryRouter(routes, {
     initialEntries: ["/"],
   });
