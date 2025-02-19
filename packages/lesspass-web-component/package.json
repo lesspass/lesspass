@@ -17,18 +17,23 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
+    "@hookform/resolvers": "^4.1.0",
     "@reduxjs/toolkit": "^2.5.1",
     "i18next": "^24.2.2",
+    "lesspass": "workspace:*",
     "lesspass-api": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
     "react-i18next": "^15.4.0",
-    "react-router-dom": "^7.1.5"
+    "react-router-dom": "^7.1.5",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
     "@tailwindcss/vite": "^4.0.6",
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",

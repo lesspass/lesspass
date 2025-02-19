@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom/vitest";
 import { beforeAll, afterEach, afterAll } from "vitest";
 import { setupServer } from "msw/node";
 import { render as renderTestingLibrary } from "@testing-library/react";
