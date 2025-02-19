@@ -12,10 +12,14 @@
   "scripts": {
     "build": "yarn workspaces foreach --verbose --all --topological run build",
     "clean": "yarn workspaces foreach --verbose --all run clean && rm -rf node_modules",
+    "prettier": "yarn workspaces foreach --verbose --all run prettier",
     "test": "yarn workspaces foreach --verbose --all run test"
   },
   "packageManager": "yarn@4.6.0",
   "engines": {
     "node": "22.x"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.1"
   }
 }

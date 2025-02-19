@@ -1,1 +1,1 @@
-export { AppInMemory as LessPass } from './App'
+export { AppInMemory as LessPass } from "./App";

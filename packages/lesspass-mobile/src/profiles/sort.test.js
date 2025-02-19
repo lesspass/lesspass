@@ -1,4 +1,4 @@
-import { expect, it } from 'vitest'
+import { expect, it } from "vitest";
 import { sortByNewestFirst } from "./sort";
 
 it("sortByNewestFirst", () => {
@@ -12,7 +12,7 @@ it("sortByNewestFirst", () => {
         id: "2",
         created: "2021-10-17T09:00:00.000000Z",
       },
-    ])
+    ]),
   ).toEqual([
     {
       id: "2",

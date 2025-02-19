@@ -11,7 +11,7 @@ describe("entropy", () => {
     const masterPassword = "password";
     return calcEntropy(profile, masterPassword).then((entropy) => {
       expect(
-        "dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e"
+        "dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e",
       ).toBe(entropy);
     });
   });
@@ -29,7 +29,7 @@ describe("entropy", () => {
     };
     return calcEntropy(profile, masterPassword, crypto).then((entropy) => {
       expect(
-        "dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e"
+        "dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e",
       ).toBe(entropy);
     });
   });
@@ -47,7 +47,7 @@ describe("entropy", () => {
     };
     return calcEntropy(profile, masterPassword, crypto).then((entropy) => {
       expect(
-        "4e66cab40690c01af55efd595f5963cc953d7e10273c01827881ebf8990c627f"
+        "4e66cab40690c01af55efd595f5963cc953d7e10273c01827881ebf8990c627f",
       ).toBe(entropy);
     });
   });

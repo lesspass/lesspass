@@ -1,6 +1,3 @@
-
 export default function NotAuthenticatedLoadingPage() {
-  return <div>
-    loading
-  </div>
+  return <div>loading</div>;
 }

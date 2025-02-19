@@ -4982,7 +4982,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:^22.13.4":
+"@types/node@npm:*, @types/node@npm:>=10.0.0":
   version: 22.13.4
   resolution: "@types/node@npm:22.13.4"
   dependencies:
@@ -13418,16 +13418,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lesspass-crypto@workspace:*, lesspass-crypto@workspace:packages/lesspass-crypto":
-  version: 0.0.0-use.local
-  resolution: "lesspass-crypto@workspace:packages/lesspass-crypto"
-  dependencies:
-    tsup: "npm:^8.3.6"
-    typescript: "npm:^5.7.3"
-    vitest: "npm:^3.0.5"
-  languageName: unknown
-  linkType: soft
-
 "lesspass-entropy@npm:9.1.9":
   version: 9.1.9
   resolution: "lesspass-entropy@npm:9.1.9"
@@ -13437,17 +13427,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lesspass-entropy@workspace:*, lesspass-entropy@workspace:packages/lesspass-entropy":
-  version: 0.0.0-use.local
-  resolution: "lesspass-entropy@workspace:packages/lesspass-entropy"
-  dependencies:
-    lesspass-crypto: "workspace:*"
-    tsup: "npm:^8.3.6"
-    typescript: "npm:^5.7.3"
-    vitest: "npm:^3.0.5"
-  languageName: unknown
-  linkType: soft
-
 "lesspass-fingerprint@npm:9.1.9":
   version: 9.1.9
   resolution: "lesspass-fingerprint@npm:9.1.9"
@@ -13456,18 +13435,6 @@ __metadata:
   checksum: 10c0/40b8e8f1695dd0f8b02f5a48e9a70d1be121655b81204a848b85c985c7b383aa1891713cd5305e8082b843c000f3487f36947358c8a7b0384bbd33614b809d45
   languageName: node
   linkType: hard
-
-"lesspass-fingerprint@workspace:*, lesspass-fingerprint@workspace:packages/lesspass-fingerprint":
-  version: 0.0.0-use.local
-  resolution: "lesspass-fingerprint@workspace:packages/lesspass-fingerprint"
-  dependencies:
-    "@types/node": "npm:^22.13.4"
-    lesspass-crypto: "workspace:*"
-    tsup: "npm:^8.3.6"
-    typescript: "npm:^5.7.3"
-    vitest: "npm:^3.0.5"
-  languageName: unknown
-  linkType: soft
 
 "lesspass-mobile@workspace:packages/lesspass-mobile":
   version: 0.0.0-use.local
@@ -13497,11 +13464,9 @@ __metadata:
     eslint: "npm:^8.57.1"
     fuzzysort: "npm:^3.1.0"
     jsdom: "npm:^26.0.0"
+    lesspass: "workspace:*"
     lesspass-api: "workspace:*"
-    lesspass-fingerprint: "workspace:*"
-    lesspass-render-password: "workspace:*"
     lodash: "npm:^4.17.21"
-    prettier: "npm:3.5.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-native: "npm:0.77.1"
@@ -13523,6 +13488,8 @@ __metadata:
 "lesspass-monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "lesspass-monorepo@workspace:."
+  dependencies:
+    prettier: "npm:^3.5.1"
   languageName: unknown
   linkType: soft
 
@@ -13562,16 +13529,6 @@ __metadata:
   checksum: 10c0/3ea344f7ddcafbe43253fac605c59dcbe0900cf4542b73ed6a5ce46883ad4fe0562506b5a214221d86f710fb067aa713ad6f896175c8774135e83cb7d6e1b769
   languageName: node
   linkType: hard
-
-"lesspass-render-password@workspace:*, lesspass-render-password@workspace:packages/lesspass-render-password":
-  version: 0.0.0-use.local
-  resolution: "lesspass-render-password@workspace:packages/lesspass-render-password"
-  dependencies:
-    tsup: "npm:^8.3.6"
-    typescript: "npm:^5.7.3"
-    vitest: "npm:^3.0.5"
-  languageName: unknown
-  linkType: soft
 
 "lesspass-web-component@workspace:*, lesspass-web-component@workspace:packages/lesspass-web-component":
   version: 0.0.0-use.local
@@ -13653,7 +13610,6 @@ __metadata:
     gatsby-transformer-sharp: "npm:^5.14.0"
     lesspass-pure: "npm:^10.0.1"
     postcss: "npm:^8.5.2"
-    prettier: "npm:^3.5.1"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -13677,9 +13633,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lesspass@workspace:packages/lesspass"
   dependencies:
-    lesspass-entropy: "workspace:*"
-    lesspass-fingerprint: "workspace:*"
-    lesspass-render-password: "workspace:*"
     tsup: "npm:^8.3.6"
     typescript: "npm:^5.7.3"
     vitest: "npm:^3.0.5"
@@ -16619,21 +16572,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.5.1, prettier@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "prettier@npm:3.5.1"
-  bin:
-    prettier: bin/prettier.cjs
-  checksum: 10c0/9f6f810eae455d6e4213845151a484a2338f2e0d6a8b84ee8e13a83af8a2421ef6c1e31e61e4b135671fb57b9541f6624648880cc2061ac803e243ac898c0123
-  languageName: node
-  linkType: hard
-
 "prettier@npm:^1.18.2 || ^2.0.0":
   version: 2.8.8
   resolution: "prettier@npm:2.8.8"
   bin:
     prettier: bin-prettier.js
   checksum: 10c0/463ea8f9a0946cd5b828d8cf27bd8b567345cf02f56562d5ecde198b91f47a76b7ac9eae0facd247ace70e927143af6135e8cf411986b8cb8478784a4d6d724a
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.5.1":
+  version: 3.5.1
+  resolution: "prettier@npm:3.5.1"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/9f6f810eae455d6e4213845151a484a2338f2e0d6a8b84ee8e13a83af8a2421ef6c1e31e61e4b135671fb57b9541f6624648880cc2061ac803e243ac898c0123
   languageName: node
   linkType: hard
 

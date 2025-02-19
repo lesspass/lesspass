@@ -53,7 +53,7 @@ export default class KeepMasterPasswordOption extends Component {
                 primary
                 onPress={() =>
                   this.setState({ showModal: false }, () =>
-                    onOk(masterPassword)
+                    onOk(masterPassword),
                   )
                 }
               >

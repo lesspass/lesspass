@@ -7,8 +7,5 @@
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"],
-  "references": [
-    { "path": "../lesspass" }
-  ]
+  "exclude": ["src/**/*.test.ts"]
 }

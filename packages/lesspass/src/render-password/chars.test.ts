@@ -4,14 +4,14 @@ import chars from "./chars";
 test("getSetOfCharacters", () => {
   const setOfCharacters = chars.getSetOfCharacters();
   expect(
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~",
   ).toBe(setOfCharacters);
   expect(26 * 2 + 10 + 32).toBe(setOfCharacters.length);
   expect(
     chars.characterSubsets.lowercase +
       chars.characterSubsets.uppercase +
       chars.characterSubsets.digits +
-      chars.characterSubsets.symbols
+      chars.characterSubsets.symbols,
   ).toBe(setOfCharacters);
 });
 
@@ -22,7 +22,7 @@ test("getSetOfCharacters concat rules in order", () => {
     "digits",
   ]);
   expect("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789").toBe(
-    setOfCharacters
+    setOfCharacters,
   );
   expect(26 * 2 + 10).toBe(setOfCharacters.length);
 });
@@ -64,10 +64,10 @@ test("getOneCharPerRule", () => {
 test("getRules", () => {
   expect(["uppercase"]).toEqual(chars.getRules({ uppercase: true }));
   expect(["lowercase", "uppercase"]).toEqual(
-    chars.getRules({ uppercase: true, lowercase: true })
+    chars.getRules({ uppercase: true, lowercase: true }),
   );
   expect(["lowercase"]).toEqual(
-    chars.getRules({ lowercase: true, symbols: false })
+    chars.getRules({ lowercase: true, symbols: false }),
   );
   expect(["lowercase", "uppercase", "digits", "symbols"]).toEqual(
     chars.getRules({
@@ -75,7 +75,7 @@ test("getRules", () => {
       uppercase: true,
       symbols: true,
       digits: true,
-    })
+    }),
   );
 });
 
@@ -83,7 +83,7 @@ test("insertStringPseudoRandomly", () => {
   const password = chars.insertStringPseudoRandomly(
     "123456",
     BigInt(7 * 6 + 2),
-    "uT"
+    "uT",
   );
   expect("T12u3456").toBe(password);
 });

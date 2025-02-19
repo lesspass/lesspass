@@ -1,6 +1,6 @@
-import { calcEntropy } from "lesspass-entropy";
-import LessPassFingerprint from "lesspass-fingerprint";
-import { PasswordOptions, renderPassword } from "lesspass-render-password";
+import { calcEntropy } from "./entropy";
+import LessPassFingerprint from "./fingerprint";
+import { PasswordOptions, renderPassword } from "./render-password";
 
 export interface PasswordProfile extends PasswordOptions {
   site: string;
@@ -8,7 +8,10 @@ export interface PasswordProfile extends PasswordOptions {
   counter: number;
 }
 
-export function generatePassword(profile: PasswordProfile, masterPassword: string) {
+export function generatePassword(
+  profile: PasswordProfile,
+  masterPassword: string,
+) {
   const site = profile.site;
   const login = profile.login;
   const length = profile.length;
@@ -24,7 +27,7 @@ export function generatePassword(profile: PasswordProfile, masterPassword: strin
       login,
       counter,
     },
-    masterPassword
+    masterPassword,
   ).then((entropy) => {
     const options = {
       length,
@@ -46,21 +49,18 @@ export function createFingerprint(key: string) {
 }
 
 export const defaultPasswordOptions: PasswordOptions = {
-    uppercase: true,
-    lowercase: true,
-    digits: true,
-    symbols: true,
-    length: 16,
-}
+  uppercase: true,
+  lowercase: true,
+  digits: true,
+  symbols: true,
+  length: 16,
+};
 
 export const defaultPasswordProfile: PasswordProfile = {
   ...defaultPasswordOptions,
   site: "",
   login: "",
-  counter: 1
-}
-
-export default {
-  generatePassword,
-  createFingerprint,
+  counter: 1,
 };
+
+export { renderPassword } from "./render-password";

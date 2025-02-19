@@ -24,7 +24,7 @@ export function getAlgorithm(algorithm: string) {
     sha256: "SHA-256",
     "sha-256": "SHA-256",
     sha512: "SHA-512",
-    "sha-512": "SHA-512"
+    "sha-512": "SHA-512",
   };
   const lowercaseAlgorithm = algorithm.toLowerCase();
   if (lowercaseAlgorithm in algorithms) {

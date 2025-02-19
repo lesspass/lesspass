@@ -1,15 +1,11 @@
-import {
-  stringToArrayBuffer,
-  arrayBufferToHex,
-  getAlgorithm,
-} from "lesspass-crypto";
+import { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } from "../crypto";
 
 export function pbkdf2(
   password: string,
   salt: string,
   iterations: number,
   keylen: number,
-  digest: string
+  digest: string,
 ) {
   return window.crypto.subtle
     .importKey("raw", stringToArrayBuffer(password), "PBKDF2", false, [
@@ -30,12 +26,12 @@ export function pbkdf2(
           length: keylen * 8,
         },
         true,
-        ["encrypt", "decrypt"]
+        ["encrypt", "decrypt"],
       );
     })
     .then((derivedKey) =>
       window.crypto.subtle
         .exportKey("raw", derivedKey)
-        .then((keyArray) => arrayBufferToHex(keyArray))
+        .then((keyArray) => arrayBufferToHex(keyArray)),
     );
 }

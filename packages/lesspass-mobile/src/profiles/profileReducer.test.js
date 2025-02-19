@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from "vitest";
 import reducer from "./profileReducer";
 
 describe("profile reducer", () => {
@@ -12,8 +12,8 @@ describe("profile reducer", () => {
         {
           type: "SET_PASSWORD_PROFILE",
           profile: { id: "p1" },
-        }
-      )
+        },
+      ),
     ).toEqual({ id: "p1" });
   });
   it("CLEAN_PASSWORD_PROFILE", () => {
@@ -22,8 +22,8 @@ describe("profile reducer", () => {
         { id: "p1" },
         {
           type: "CLEAN_PASSWORD_PROFILE",
-        }
-      )
+        },
+      ),
     ).toEqual(null);
   });
   it("LOG_OUT", () => {
@@ -32,8 +32,8 @@ describe("profile reducer", () => {
         { id: "p1" },
         {
           type: "LOG_OUT",
-        }
-      )
+        },
+      ),
     ).toEqual(null);
   });
 });

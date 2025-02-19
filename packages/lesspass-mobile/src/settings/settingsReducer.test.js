@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from "vitest";
 import reducer from "./settingsReducer";
 
 describe("settings reducer", () => {
@@ -28,8 +28,8 @@ describe("settings reducer", () => {
           settings: {
             keepMasterPasswordLocally: true,
           },
-        }
-      )
+        },
+      ),
     ).toEqual({
       keepMasterPasswordLocally: true,
     });
@@ -46,8 +46,8 @@ describe("settings reducer", () => {
           settings: {
             setting1: true,
           },
-        }
-      )
+        },
+      ),
     ).toEqual({
       setting1: true,
       setting2: false,

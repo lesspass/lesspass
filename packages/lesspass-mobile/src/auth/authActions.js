@@ -38,7 +38,7 @@ export function signIn(credentials, encryptMasterPassword) {
   return (dispatch) => {
     if (encryptMasterPassword) {
       return dispatch(getEncryptedCredentials(credentials)).then(
-        (encryptedCredentials) => dispatch(getJWT(encryptedCredentials))
+        (encryptedCredentials) => dispatch(getJWT(encryptedCredentials)),
       );
     }
     return dispatch(getJWT(credentials));
@@ -58,7 +58,7 @@ export function signUp(credentials, encryptMasterPassword) {
   return (dispatch) => {
     if (encryptMasterPassword) {
       return dispatch(getEncryptedCredentials(credentials)).then(
-        (encryptedCredentials) => dispatch(register(encryptedCredentials))
+        (encryptedCredentials) => dispatch(register(encryptedCredentials)),
       );
     }
     return dispatch(register(credentials));
@@ -110,7 +110,7 @@ export function deleteMyAccount(credentials) {
     if (encryptMasterPassword) {
       return dispatch(getEncryptedCredentials(credentials)).then(
         (encryptedCredentials) =>
-          dispatch(deleteCurrentUser(encryptedCredentials))
+          dispatch(deleteCurrentUser(encryptedCredentials)),
       );
     }
     return dispatch(deleteCurrentUser(credentials));

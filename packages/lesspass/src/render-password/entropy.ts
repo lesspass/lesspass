@@ -8,7 +8,7 @@ export function consumeEntropy(
   generatedPassword: string,
   quotient: bigint,
   setOfCharacters: string,
-  maxLength: number
+  maxLength: number,
 ): { value: string; entropy: bigint } {
   let passwordBuilt = generatedPassword;
   if (passwordBuilt.length >= maxLength) {
@@ -20,7 +20,7 @@ export function consumeEntropy(
     passwordBuilt,
     longDivision.quotient,
     setOfCharacters,
-    maxLength
+    maxLength,
   );
 }
 

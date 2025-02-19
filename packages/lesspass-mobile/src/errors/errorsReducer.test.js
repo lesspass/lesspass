@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from "vitest";
 import reducer from "./errorsReducer";
 
 describe("error reducer", () => {
@@ -14,7 +14,7 @@ describe("error reducer", () => {
           id: Date.now().toString(),
           message: "an error message",
         },
-      }
+      },
     );
     const errorIds = Object.keys(state);
     expect(errorIds.length).toBe(1);
@@ -34,8 +34,8 @@ describe("error reducer", () => {
           error: {
             id: "e1",
           },
-        }
-      )
+        },
+      ),
     ).toEqual({});
   });
   it("CLEAN_ERRORS delete all errors", () => {
@@ -53,8 +53,8 @@ describe("error reducer", () => {
         },
         {
           type: "CLEAN_ERRORS",
-        }
-      )
+        },
+      ),
     ).toEqual({});
   });
   it("LOG_IN delete all errors", () => {
@@ -72,8 +72,8 @@ describe("error reducer", () => {
         },
         {
           type: "LOG_IN",
-        }
-      )
+        },
+      ),
     ).toEqual({});
   });
 });

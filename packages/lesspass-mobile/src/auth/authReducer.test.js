@@ -1,4 +1,4 @@
-import { expect, describe,it } from "vitest";
+import { expect, describe, it } from "vitest";
 import reducer from "./authReducer";
 
 describe("auth reducer", () => {

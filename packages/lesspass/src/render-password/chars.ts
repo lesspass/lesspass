@@ -33,7 +33,7 @@ export function getOneCharPerRule(entropy: bigint, rules: Rule[]) {
       "",
       consumedEntropy,
       characterSubsets[rule],
-      1
+      1,
     );
     oneCharPerRules += password.value;
     consumedEntropy = password.entropy;
@@ -49,7 +49,7 @@ export function getRules(options: { [k in Rule]?: boolean }) {
 export function insertStringPseudoRandomly(
   initialString: string,
   entropy: bigint,
-  stringToInsert: string
+  stringToInsert: string,
 ) {
   let consumedEntropy = entropy;
   let string = initialString;

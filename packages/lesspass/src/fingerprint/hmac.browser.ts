@@ -1,8 +1,4 @@
-import {
-  stringToArrayBuffer,
-  arrayBufferToHex,
-  getAlgorithm,
-} from "lesspass-crypto";
+import { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } from "../crypto";
 
 export function hmac(algorithm: string, key: string, data?: string) {
   return window.crypto.subtle
@@ -14,11 +10,11 @@ export function hmac(algorithm: string, key: string, data?: string) {
         hash: { name: getAlgorithm(algorithm) },
       },
       true,
-      ["sign", "verify"]
+      ["sign", "verify"],
     )
     .then((key) =>
       window.crypto.subtle
         .sign({ name: "HMAC" }, key, stringToArrayBuffer(data || ""))
-        .then((signature) => arrayBufferToHex(signature))
+        .then((signature) => arrayBufferToHex(signature)),
     );
 }

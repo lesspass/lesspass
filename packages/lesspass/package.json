@@ -6,19 +6,19 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "type": "module",
   "exports": "./dist/index.js",
+  "browser": {
+    "./src/entropy/pbkdf2.ts": "./src/entropy/pbkdf2.browser.ts",
+    "./src/fingerprint/hmac.ts": "./src/fingerprint/hmac.browser.ts"
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "clean": "rm -rf dist",
     "build": "yarn clean && tsup",
+    "clean": "rm -rf dist",
+    "prettier": "prettier --write src",
     "test": "vitest run",
     "test:watch": "vitest watch"
-  },
-  "dependencies": {
-    "lesspass-entropy": "workspace:*",
-    "lesspass-fingerprint": "workspace:*",
-    "lesspass-render-password": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.3.6",

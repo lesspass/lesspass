@@ -8,10 +8,11 @@
     "dist"
   ],
   "scripts": {
+    "build": "rm -rf dist && tsc -b && vite build",
     "clean": "rm -rf node_modules && rm -rf dist",
     "dev": "vite",
-    "build": "rm -rf dist && tsc -b && vite build",
     "lint": "eslint .",
+    "prettier": "prettier --write src",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest watch"

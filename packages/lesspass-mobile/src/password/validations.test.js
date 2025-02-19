@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from "vitest";
 import defaultPasswordProfile from "../settings/defaultPasswordProfile";
 import {
   isProfileValid,
@@ -71,7 +71,7 @@ describe("validation", () => {
           uppercase: false,
           digits: false,
           symbols: false,
-        })
+        }),
       ).toBe(true);
     });
     it("no option", () => {
@@ -81,7 +81,7 @@ describe("validation", () => {
           uppercase: false,
           digits: false,
           symbols: false,
-        })
+        }),
       ).toBe(false);
     });
   });
@@ -97,7 +97,7 @@ describe("validation", () => {
           uppercase: true,
           digits: true,
           symbols: true,
-        })
+        }),
       ).toBe(false);
       expect(isProfileValid(defaultPasswordProfile)).toBe(false);
     });
@@ -112,7 +112,7 @@ describe("validation", () => {
           uppercase: true,
           digits: true,
           symbols: true,
-        })
+        }),
       ).toBe(true);
     });
     it("no options", () => {
@@ -126,7 +126,7 @@ describe("validation", () => {
           uppercase: false,
           digits: false,
           symbols: false,
-        })
+        }),
       ).toBe(false);
     });
     it("length not good", () => {
@@ -140,7 +140,7 @@ describe("validation", () => {
           uppercase: true,
           digits: true,
           symbols: true,
-        })
+        }),
       ).toBe(false);
     });
   });

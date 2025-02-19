@@ -6,7 +6,7 @@ import {
   AccessToken,
   RefreshToken,
   AuthSuccessResponsePayload,
-  setBaseUrl
+  setBaseUrl,
 } from "lesspass-api";
 
 export type AuthState = {
@@ -69,7 +69,7 @@ export function refreshTokens(baseUrl: string, refreshToken: RefreshToken) {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(authIsLoading());
-      setBaseUrl(baseUrl)
+      setBaseUrl(baseUrl);
       const tokens = await apiRefreshTokens(refreshToken);
       dispatch(
         authSuccessful({
@@ -89,7 +89,7 @@ export function signIn(baseUrl: string, email: string, password: string) {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(authIsLoading());
-      setBaseUrl(baseUrl)
+      setBaseUrl(baseUrl);
       const tokens = await apiSignIn(email, password);
       dispatch(
         authSuccessful({

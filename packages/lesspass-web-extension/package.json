@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "build": "tsc -b && vite build",
     "clean": "rm -rf node_modules && rm -rf dist",
     "dev": "vite",
-    "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "prettier": "prettier --write src",
     "preview": "vite preview"
   },
   "dependencies": {

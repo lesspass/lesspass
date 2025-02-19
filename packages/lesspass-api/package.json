@@ -10,8 +10,9 @@
     "dist"
   ],
   "scripts": {
-    "clean": "rm -rf dist",
     "build": "yarn clean && tsup",
+    "clean": "rm -rf dist",
+    "prettier": "prettier --write src",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },

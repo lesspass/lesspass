@@ -8,11 +8,11 @@ export default function Logo() {
   const theme = useTheme();
   return (
     <Image
-    style={{
-      width: 186,
-      height: 42,
-    }}
-    source={theme.dark ?  LogoWhite: LogoBlue}
-  />
+      style={{
+        width: 186,
+        height: 42,
+      }}
+      source={theme.dark ? LogoWhite : LogoBlue}
+    />
   );
 }

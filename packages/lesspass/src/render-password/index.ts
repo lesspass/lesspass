@@ -16,19 +16,15 @@ export function renderPassword(entropy: string, options: PasswordOptions) {
     "",
     BigInt(`0x${entropy}`),
     setOfCharacters,
-    options.length - rules.length
+    options.length - rules.length,
   );
   const charactersToAdd = chars.getOneCharPerRule(
     generatedPassword.entropy,
-    rules
+    rules,
   );
   return chars.insertStringPseudoRandomly(
     generatedPassword.value,
     charactersToAdd.entropy,
-    charactersToAdd.value
+    charactersToAdd.value,
   );
 }
-
-export default {
-  renderPassword,
-};

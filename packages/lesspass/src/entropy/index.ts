@@ -15,7 +15,7 @@ interface Crypto {
 export function calcEntropy(
   siteLoginAndCounter: SiteLoginCounter & { [k: string]: unknown },
   masterPassword: string,
-  crypto: Crypto = {}
+  crypto: Crypto = {},
 ) {
   const { site, login, counter } = siteLoginAndCounter;
   const salt = site + login + counter.toString(16);
@@ -45,13 +45,13 @@ export function isSupported(): Promise<boolean> {
       iterations: 1,
       keylen: 32,
       digest: "sha256",
-    }
+    },
   )
     .then((entropy) =>
       Promise.resolve(
         entropy ===
-          "e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da"
-      )
+          "e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da",
+      ),
     )
     .catch(() => Promise.resolve(false));
 }

@@ -5,7 +5,7 @@ export function pbkdf2(
   salt: string,
   iterations: number,
   keylen: number,
-  digest: string
+  digest: string,
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     cryptoPbkdf2(password, salt, iterations, keylen, digest, (error, key) => {

@@ -3,7 +3,7 @@ import { View, NativeModules } from "react-native";
 import TextInput from "../ui/TextInput";
 import TouchId from "./TouchId";
 import Fingerprint from "./Fingerprint";
-import { createFingerprint } from "lesspass-fingerprint";
+import { createFingerprint } from "lesspass";
 import { debounce } from "lodash";
 
 export default class MasterPassword extends Component {

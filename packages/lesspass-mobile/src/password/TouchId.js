@@ -9,7 +9,7 @@ import { getGenericPassword } from "react-native-keychain";
 export default function TouchId({ onChangeText }) {
   const theme = useTheme();
   const keepMasterPasswordLocally = useSelector(
-    (state) => state.settings.keepMasterPasswordLocally
+    (state) => state.settings.keepMasterPasswordLocally,
   );
   if (!keepMasterPasswordLocally) return null;
   return (
@@ -21,14 +21,14 @@ export default function TouchId({ onChangeText }) {
             imageColor: theme.colors.primary,
             imageErrorColor: theme.colors.error,
             cancelTextColor: theme.colors.onPrimary,
-            cancelButtonColor: theme.colors.primary
+            cancelButtonColor: theme.colors.primary,
           })
             .then(() =>
               getGenericPassword().then((credentials) => {
                 if (credentials) {
                   onChangeText(credentials.password);
                 }
-              })
+              }),
             )
             .catch(console.log);
         }}
