@@ -1,5 +1,8 @@
 import { calcEntropy } from "./entropy";
-import LessPassFingerprint from "./fingerprint";
+import {
+  createHmac,
+  createFingerprint as _createFingerprint,
+} from "./fingerprint";
 import { PasswordOptions, renderPassword } from "./render-password";
 
 export interface PasswordProfile extends PasswordOptions {
@@ -42,8 +45,8 @@ export function generatePassword(
 }
 
 export function createFingerprint(key: string) {
-  return LessPassFingerprint.createHmac("sha256", key).then((hmac) => {
-    const fingerprint = LessPassFingerprint.createFingerprint(hmac);
+  return createHmac("sha256", key).then((hmac) => {
+    const fingerprint = _createFingerprint(hmac);
     return Promise.resolve(fingerprint);
   });
 }
@@ -64,3 +67,10 @@ export const defaultPasswordProfile: PasswordProfile = {
 };
 
 export { renderPassword } from "./render-password";
+
+export type {
+  Fingerprint,
+  Finger,
+  FingerprintIcon,
+  FingerprintColor,
+} from "./fingerprint";
