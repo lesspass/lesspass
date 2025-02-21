@@ -7,11 +7,6 @@ import {
 } from "./fingerprint";
 import { hmac as createHmac } from "./hmac";
 
-export {
-  createFingerprint,
-  createHmac,
-  Fingerprint,
-  Finger,
-  FingerprintIcon,
-  FingerprintColor,
-};
+export { createFingerprint, createHmac };
+
+export type { Fingerprint, Finger, FingerprintIcon, FingerprintColor };

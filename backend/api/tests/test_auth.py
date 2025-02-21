@@ -11,7 +11,7 @@ class OldRegisterTestCase(APITestCase):
             "email": "contact@example.org",
             "password": "correct horse battery staple",
         }
-        request = self.client.post("/api/auth/register/", data)
+        request = self.client.post("/auth/register/", data)
         self.assertEqual(request.status_code, 201)
         self.assertEqual(1, models.LessPassUser.objects.all().count())
 
@@ -21,7 +21,7 @@ class OldRegisterTestCase(APITestCase):
             "email": "contact@example.org",
             "password": "password",
         }
-        request = self.client.post("/api/auth/register/", data)
+        request = self.client.post("/auth/register/", data)
         self.assertEqual(request.status_code, 400)
         self.assertEqual(0, models.LessPassUser.objects.all().count())
 
@@ -35,7 +35,7 @@ class OldLoginTestCase(APITestCase):
             "email": "contact@example.org",
             "password": "correct horse battery staple",
         }
-        request = self.client.post("/api/tokens/auth/", data)
+        request = self.client.post("/tokens/auth/", data)
         self.assertEqual(request.status_code, 200)
         self.assertIsNotNone(request.data["token"])
 
@@ -47,7 +47,7 @@ class OldLoginTestCase(APITestCase):
             "email": "contact@example.org",
             "password": "not the good password",
         }
-        request = self.client.post("/api/tokens/auth/", data)
+        request = self.client.post("/tokens/auth/", data)
         self.assertEqual(request.status_code, 401)
 
     def test_nrt_get_passwords(self):
@@ -59,11 +59,11 @@ class OldLoginTestCase(APITestCase):
             "email": "contact@example.org",
             "password": "correct horse battery staple",
         }
-        request = self.client.post("/api/tokens/auth/", data)
+        request = self.client.post("/tokens/auth/", data)
         headers = {
             "HTTP_AUTHORIZATION": "JWT {token}".format(token=request.data["token"])
         }
-        request = self.client.get("/api/passwords/", **headers)
+        request = self.client.get("/passwords/", **headers)
         self.assertEqual(request.status_code, 200)
         self.assertEqual(request.data["results"][0]["login"], password.login)
 
@@ -76,11 +76,11 @@ class OldLoginTestCase(APITestCase):
             "email": "contact@example.org",
             "password": "correct horse battery staple",
         }
-        request = self.client.post("/api/auth/jwt/create/", data)
+        request = self.client.post("/auth/jwt/create/", data)
         headers = {
             "HTTP_AUTHORIZATION": "Bearer {token}".format(token=request.data["access"])
         }
-        request = self.client.get("/api/passwords/", **headers)
+        request = self.client.get("/passwords/", **headers)
         self.assertEqual(request.status_code, 200)
         self.assertEqual(request.data["results"][0]["login"], password.login)
 
@@ -131,7 +131,7 @@ class LogInTestCase(APITestCase):
             "email": "test@example.org",
             "password": "test@example.org",
         }
-        request = self.client.post("/api/auth/jwt/create/", data)
+        request = self.client.post("/auth/jwt/create/", data)
         self.assertEqual(request.status_code, 200)
         payload = request.json()
         self.assertTrue("access" in payload)
@@ -142,11 +142,11 @@ class LogInTestCase(APITestCase):
             "email": "test@example.org",
             "password": "test@example.org",
         }
-        request = self.client.post("/api/auth/jwt/create/", data)
+        request = self.client.post("/auth/jwt/create/", data)
         self.assertEqual(request.status_code, 200)
         payload = request.json()
         refresh_token = payload["refresh"]
-        request = self.client.post("/api/auth/jwt/refresh/", {"refresh": refresh_token})
+        request = self.client.post("/auth/jwt/refresh/", {"refresh": refresh_token})
         self.assertEqual(request.status_code, 200)
         payload = request.json()
         self.assertTrue("access" in payload)

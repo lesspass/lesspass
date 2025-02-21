@@ -27,10 +27,10 @@ export function signIn(
 }
 
 export function refreshTokens(
-  refreshToken: RefreshToken,
+  refresh: RefreshToken,
 ): Promise<AuthSuccessResponsePayload> {
   return axios
-    .post("/auth/jwt/refresh/", { refreshToken })
+    .post("/auth/jwt/refresh/", { refresh })
     .then((response) => response.data);
 }
 

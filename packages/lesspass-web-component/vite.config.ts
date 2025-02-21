@@ -13,9 +13,8 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/lib.ts'),
+      entry: resolve(__dirname, 'src/LessPassWebComponent.tsx'),
       formats: ["es"],
-      
     },
     rollupOptions: {
       external: ["react", "react-dom"],
@@ -30,6 +29,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: ["./src/setupTests.ts"],
+    setupFiles: ["./src/tests/setupTests.ts"],
   },
 });

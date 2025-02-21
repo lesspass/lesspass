@@ -1,41 +1,38 @@
-import {
-  combineReducers,
-  configureStore,
-  createListenerMiddleware,
-} from "@reduxjs/toolkit";
-import authReducer, { authSuccessful } from "./auth/authSlice";
-import {
-  REFRESH_TOKEN_LOCAL_STORAGE_KEY,
-  BASE_URL_LOCAL_STORAGE_KEY,
-} from "./constant";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import { authReducer } from "./auth/authSlice";
+import { api } from "./api";
+import alertsReducer from "./alerts/alertsSlice";
+import authMiddleware from "./auth/authMiddleware";
+import settingsReducer from "./settings/settingsSlice";
+import settingsMiddleware from "./settings/settingsMiddleware";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
+  alerts: alertsReducer,
+  [api.reducerPath]: api.reducer,
   auth: authReducer,
-});
-
-const listenerMiddleware = createListenerMiddleware();
-
-listenerMiddleware.startListening({
-  actionCreator: authSuccessful,
-  effect: async (action, listenerApi) => {
-    localStorage.setItem(
-      REFRESH_TOKEN_LOCAL_STORAGE_KEY,
-      action.payload.refresh,
-    );
-    localStorage.setItem(BASE_URL_LOCAL_STORAGE_KEY, action.payload.baseUrl);
-    listenerApi.cancelActiveListeners();
-  },
+  settings: settingsReducer,
 });
 
 export function setupStore(preloadedState?: Partial<RootState>) {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(listenerMiddleware.middleware),
     preloadedState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware()
+        .concat(api.middleware)
+        .prepend(authMiddleware.middleware)
+        .prepend(settingsMiddleware.middleware),
   });
 }
 
-export type RootState = ReturnType<typeof rootReducer>;
+const store = setupStore();
+
 export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore["dispatch"];
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useSelector.withTypes<RootState>();
+
+export default store;

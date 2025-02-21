@@ -49,7 +49,7 @@ test("refreshTokens", async () => {
       "https://api.lesspass.com/auth/jwt/refresh/",
       async ({ request }) => {
         const payload = await request.json();
-        expect(payload).toEqual({ refreshToken });
+        expect(payload).toEqual({ refresh: refreshToken });
         return HttpResponse.json(expectedTokens);
       },
     ),

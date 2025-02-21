@@ -1,55 +1,50 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-  createMemoryRouter,
-} from "react-router-dom";
-import { routes } from "./router";
-import { I18nextProvider } from "react-i18next";
-import { initI18n, defaultLanguage } from "./i18n";
-import { LANGUAGE_LOCAL_STORAGE_KEY } from "./constant";
-import { Provider } from "react-redux";
-import { setupStore } from "./store";
-import { RefreshTokens } from "./auth/RefreshTokens";
 import "./App.css";
+import { Routes, Route } from "react-router";
+import AuthPage from "./auth/AuthPage";
+import PasswordGenerationPage from "./passwordGeneration/PasswordGenerationPage";
+import SignInPage from "./auth/SignInPage";
+import ForgotPasswordPage from "./auth/ForgotPasswordPage";
+import PasswordResetPage from "./auth/PasswordResetPage";
+import AuthenticatedLayout from "./auth/AuthenticatedLayout";
+import PasswordProfilesPage from "./passwordProfiles/PasswordProfilesPage";
+import MyProfilePage from "./auth/MyProfilePage";
+import Page404 from "./Page404";
+import SettingsPage from "./settings/SettingsPage";
+import Page from "./Page";
+import PasswordProfilePage from "./passwordProfiles/PasswordProfilePage";
+import NewPasswordProfilePage from "./passwordProfiles/NewPasswordProfilePage";
 
-function InnerApp({
-  store,
-  router,
-}: {
-  store: ReturnType<typeof setupStore>;
-  router:
-    | ReturnType<typeof createBrowserRouter>
-    | ReturnType<typeof createMemoryRouter>;
-}) {
-  const language =
-    (localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) as string) ||
-    defaultLanguage;
-
+export function App() {
   return (
     <div className="app">
-      <I18nextProvider i18n={initI18n(language)}>
-        <Provider store={store}>
-          <RefreshTokens>
-            <RouterProvider router={router} />
-          </RefreshTokens>
-        </Provider>
-      </I18nextProvider>
+      <Routes>
+        <Route path="/" element={<Page />}>
+          <Route index element={<PasswordGenerationPage />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="auth">
+            <Route index element={<AuthPage />} />
+            <Route path="signIn" element={<SignInPage />} />
+            <Route path="forgotPassword" element={<ForgotPasswordPage />} />
+            <Route
+              path="resetPassword/:uid/:token"
+              element={<PasswordResetPage />}
+            />
+          </Route>
+          <Route element={<AuthenticatedLayout />}>
+            <Route path="passwordProfiles" element={<PasswordProfilesPage />} />
+            <Route
+              path="newPasswordProfile"
+              element={<NewPasswordProfilePage />}
+            />
+            <Route
+              path="passwordProfiles/:id"
+              element={<PasswordProfilePage />}
+            />
+            <Route path="myprofile" element={<MyProfilePage />} />
+          </Route>
+          <Route path="*" element={<Page404 />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
-
-function App({
-  store = setupStore(),
-  router = createBrowserRouter(routes),
-}: {
-  store?: ReturnType<typeof setupStore>;
-  router?: ReturnType<typeof createBrowserRouter>;
-}) {
-  return <InnerApp store={store} router={router} />;
-}
-
-export function AppInMemory() {
-  return <InnerApp store={setupStore()} router={createMemoryRouter(routes)} />;
-}
-
-export default App;

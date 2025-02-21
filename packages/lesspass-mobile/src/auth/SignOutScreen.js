@@ -46,7 +46,7 @@ const SignOutScreen = ({ navigation }) => {
           </Button>
           <Paragraph>
             Your account is kept on https://api.lesspass.com server to thank you
-            for being the first users of LessPass.
+            for being in the first users of LessPass.
           </Paragraph>
         </View>
         <View>

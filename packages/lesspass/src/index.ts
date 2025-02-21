@@ -15,14 +15,16 @@ export function generatePassword(
   profile: PasswordProfile,
   masterPassword: string,
 ) {
-  const site = profile.site;
-  const login = profile.login;
-  const length = profile.length;
-  const counter = profile.counter;
-  const lowercase = profile.lowercase;
-  const uppercase = profile.uppercase;
-  const digits = profile.digits;
-  const symbols = profile.symbols;
+  const {
+    site,
+    login,
+    length,
+    counter,
+    lowercase,
+    uppercase,
+    digits,
+    symbols,
+  } = profile;
 
   return calcEntropy(
     {

@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp -r ../lesspass-web-component/dist/locales ./dist/",
     "clean": "rm -rf node_modules && rm -rf dist",
     "dev": "vite",
     "lint": "eslint .",
     "prettier": "prettier --write src",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "dependencies": {
     "lesspass-web-component": "workspace:*",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
+    "@types/chrome": "^0.0.306",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
@@ -27,6 +30,6 @@
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.1.0",
-    "vite-plugin-static-copy": "^2.2.0"
+    "vitest": "^3.0.7"
   }
 }

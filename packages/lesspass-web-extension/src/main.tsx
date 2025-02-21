@@ -1,10 +1,23 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { LessPass } from "lesspass-web-component";
+import LessPassWebComponent from "lesspass-web-component";
 import "lesspass-web-component/dist/lesspass-web-component.css";
+import { getSite } from "./url";
+
+function LessPassWebComponentWithSite() {
+  const [site, setSite] = useState<string | null>(null);
+
+  useEffect(() => {
+    getSite().then(setSite);
+  }, []);
+
+  if (site === null) return null;
+
+  return <LessPassWebComponent settings={{ site }} />;
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <LessPass />
+    <LessPassWebComponentWithSite />
   </StrictMode>,
 );
