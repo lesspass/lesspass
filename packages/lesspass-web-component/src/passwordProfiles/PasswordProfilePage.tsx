@@ -44,7 +44,7 @@ export default function PasswordProfilePage() {
 
   return (
     <div>
-      <div className="mb-2 flex justify-between items-center">
+      <div className="mb-2 flex items-center justify-between">
         <Title>
           {data.site}:{data.login}
         </Title>

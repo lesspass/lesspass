@@ -6,7 +6,7 @@ export default function PasswordProfilePage() {
   const { t } = useTranslation();
   return (
     <div>
-      <div className="mb-2 flex justify-between items-center">
+      <div className="mb-2 flex items-center justify-between">
         <Title>{t("NewPasswordProfilePage.NewPassword")}</Title>
       </div>
       <NewPasswordProfile />

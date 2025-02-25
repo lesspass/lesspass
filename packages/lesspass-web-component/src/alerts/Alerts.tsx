@@ -84,7 +84,7 @@ export default function Alerts() {
   if (alertsArray.length === 0) return null;
   return (
     <div
-      className="fixed p-2 bg-transparent top-0 right-0"
+      className="fixed top-0 right-0 bg-transparent p-2"
       style={{
         width: "80%",
         maxWidth: "1024px",

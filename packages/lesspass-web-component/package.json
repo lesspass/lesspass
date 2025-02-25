@@ -32,7 +32,6 @@
     "i18next-browser-languagedetector": "^8.0.4",
     "i18next-xhr-backend": "^3.2.2",
     "lesspass": "workspace:*",
-    "lesspass-api": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2",
@@ -40,6 +39,8 @@
     "react-redux": "^9.2.0",
     "react-router": "^7.2.0",
     "redux": "^5.0.1",
+    "tailwindcss": "^4.0.9",
+    "vite-plugin-lib-inject-css": "^2.2.1",
     "yup": "^1.6.1"
   },
   "devDependencies": {
@@ -60,7 +61,7 @@
     "i18next-parser": "^9.3.0",
     "jsdom": "^26.0.0",
     "prettier": "^3.5.1",
-    "tailwindcss": "^4.0.6",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.1.0",

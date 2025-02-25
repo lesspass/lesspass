@@ -1,0 +1,93 @@
+{
+  "ForgotPasswordPage": {
+    "ResetYourPassword": "Réinitialiser votre mot de passe",
+    "ConfirmLinkSendTitle": "Lien de confirmation envoyé avec succès",
+    "ConfirmLinkSendMessage": "Un lien pour changer votre mot de passe a été envoyé à {{email}}",
+    "UnableToChangeYourPassword": "Impossible de changer votre mot de passe",
+    "UnknownEmail": "E-mail inconnu",
+    "UserDoesNotExists": "Cet utilisateur n'existe pas. Vous ne pouvez pas utiliser LessPass."
+  },
+  "Common": {
+    "Send": "Send",
+    "Cancel": "Annuler",
+    "Change": "Changer",
+    "Hide": "Cacher",
+    "Show": "Voir",
+    "Copied": "Copié",
+    "Copy": "Copier"
+  },
+  "MyProfilePage": {
+    "Welcome": "Bienvenue {{email}}",
+    "ThankYouMessage": "Votre compte est conservé sur le serveur https://api.lesspass.com pour vous remercier d'être parmi les premiers utilisateurs de LessPass.",
+    "SignOut": "Se déconnecter"
+  },
+  "PasswordResetConfirmForm": {
+    "NewPassword": "Nouveau mot de passe"
+  },
+  "PasswordResetPage": {
+    "ChangePassword": "Changer votre mot de passe",
+    "PasswordChangedSuccessfullyTitle": "Votre mot de passe a été modifié avec succès.",
+    "PasswordChangedSuccessfullyMessage": "Vous pouvez maintenant vous connecter.",
+    "CantChangePasswordTitle": "Impossible de modifier votre mot de passe.",
+    "CantChangePasswordMessage": "Veuillez réessayer dans quelques minutes."
+  },
+  "SignInForm": {
+    "LessPassServer": "Serveur LessPass",
+    "Email": "E-mail",
+    "UsernamePlaceholder": "contact@example.org",
+    "MasterPassword": "Mot de passe maître"
+  },
+  "SignInPage": {
+    "SignInToLessPass": "Se connecter à LessPass",
+    "UnableToSignInTitle": "Impossible de se connecter",
+    "UnableToSignInMessage": "Les informations fournies ne sont pas valides ou l'utilisateur n'existe pas.",
+    "ForgotPassword": "mot de passe oublié ?",
+    "SignIn": "Se connecter",
+    "LessPassServerDecommissioned": "Le serveur LessPass est désactivé. Vous devez utiliser votre propre serveur."
+  },
+  "Header": {
+    "passwords": "Mot de passes",
+    "settings": "Paramètres",
+    "signIn": "Connexion",
+    "myProfile": "Mon profil",
+    "SignOut": "Se déconnecter"
+  },
+  "PasswordProfile": {
+    "Site": "Site",
+    "MasterPassword": "Mot de passe maître",
+    "GenerateAndCopy": "Générer & copier",
+    "Clear": "Réinitialiser",
+    "Login": "Nom d'utilisateur",
+    "Options": "Options",
+    "Length": "Longueur",
+    "Counter": "Compteur",
+    "C": "C"
+  },
+  "NewPasswordProfilePage": {
+    "NewPassword": "Nouveau mot de passe"
+  },
+  "PasswordProfilePage": {
+    "NoPasswordWithId": "Il n'y a pas de profil de mot de passe avec l'ID: {{id}}",
+    "GoListPasswordProfiles": "Revenir à la liste des profils de mot de passe.",
+    "DeletePassword": "Supprimer le mot de passe",
+    "AreYouSure": "Êtes-vous sûr de vouloir supprimer le mot de passe pour {{site}}/{{login}} ?",
+    "YesIAmSure": "Oui Je suis sûr",
+    "NoIAmNotSure": "Non",
+    "Delete": "Supprimer"
+  },
+  "PasswordProfilesPage": {
+    "NoSavedPasswordProfiles": "Vous n'avez aucun profil de mot de passe enregistré.",
+    "SaveAPassword": "Enregistrer un mot de passe",
+    "SearchPasswords": "Rechercher...",
+    "NewPassword": "Nouveau mot de passe"
+  },
+  "Settings": {
+    "DefaultPasswordProfile": "Mot de passe par défaut",
+    "FocusField": "Champ sélectionné",
+    "SignIn": "Connexion",
+    "EncryptMyMasterPassword": "Chiffrer mon mot de passe à la connexion",
+    "Save": "Sauvegarder",
+    "Reset": "Réinitialiser",
+    "Title": "Paramètres"
+  }
+}

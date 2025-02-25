@@ -18,8 +18,8 @@ import { Button } from "./button";
 
 const Avatar = ({ children }: { children: ReactNode }) => {
   return (
-    <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-500">
-      <span className="text-sm font-medium leading-none text-white">
+    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-500">
+      <span className="text-sm leading-none font-medium text-white">
         {children}
       </span>
     </span>
@@ -42,7 +42,7 @@ export default function Header() {
                 <img alt="LessPass" src={Logo} className="h-8 w-auto" />
               </Link>
             </div>
-            <div className="hidden xs:ml-6 xs:block">
+            <div className="xs:ml-6 xs:block hidden">
               <div className="flex space-x-1">
                 <NavLink
                   to="/passwordProfiles"
@@ -63,7 +63,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="hidden xs:ml-6 xs:block">
+          <div className="xs:ml-6 xs:block hidden">
             <div className="flex items-center">
               {currentUser === null ? (
                 <Button to="/auth/signIn">{t("Header.signIn")}</Button>
@@ -80,7 +80,7 @@ export default function Header() {
                   </div>
                   <MenuItems
                     transition
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                   >
                     <MenuItem>
                       <Link
@@ -105,7 +105,7 @@ export default function Header() {
                           dispatch(logout());
                           navigate("/");
                         }}
-                        className="w-full text-left block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                        className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                       >
                         {t("Header.SignOut")}
                       </button>
@@ -115,7 +115,7 @@ export default function Header() {
               )}
             </div>
           </div>
-          <div className="-mr-2 flex xs:hidden">
+          <div className="xs:hidden -mr-2 flex">
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>

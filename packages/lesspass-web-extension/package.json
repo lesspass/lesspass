@@ -1,10 +1,15 @@
 {
   "name": "lesspass-web-extension",
-  "version": "0.1.0",
+  "version": "11.0.0",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "tsc -b && vite build && cp -r ../lesspass-web-component/dist/locales ./dist/",
-    "clean": "rm -rf node_modules && rm -rf dist",
+    "release": "yarn clean && yarn build && yarn amo && yarn cws",
+    "release:amo": "yarn clean && yarn build && yarn amo",
+    "release:cws": "yarn clean && yarn build && yarn cws",
+    "amo": "cd dist && web-ext sign --channel=listed",
+    "cws": "cd dist && chrome-webstore-upload",
     "dev": "vite",
     "lint": "eslint .",
     "prettier": "prettier --write src",
@@ -23,6 +28,7 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
+    "chrome-webstore-upload-cli": "^3.3.1",
     "eslint": "^8.57.1",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -30,6 +36,7 @@
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.1.0",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.7",
+    "web-ext": "^8.4.0"
   }
 }

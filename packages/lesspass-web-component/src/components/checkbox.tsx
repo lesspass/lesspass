@@ -7,7 +7,7 @@ export function CheckboxGroup({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={`flex items-center pl-1 py-1.5 gap-2 ${className}`}
+      className={`flex items-center gap-2 py-1.5 pl-1 ${className}`}
       {...props}
     >
       {children}

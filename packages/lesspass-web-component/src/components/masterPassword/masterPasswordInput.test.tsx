@@ -2,6 +2,7 @@ import { expect, vi } from "vitest";
 import { render } from "../../tests/renders";
 import { MasterPasswordInput } from "./masterPasswordInput";
 import { useForm } from "react-hook-form";
+import { waitFor } from "@testing-library/dom";
 
 describe("Master password", () => {
   const ManagedMasterPasswordInput = () => {
@@ -32,18 +33,22 @@ describe("Master password", () => {
     await user.type(masterPasswordInput, "password");
     expect(masterPasswordInput).toHaveValue("password");
 
-    expect(
-      queryByTitle("icon-fa-flask") === null ||
-        queryByTitle("icon-fa-archive") === null ||
-        queryByTitle("icon-fa-beer") === null,
-    ).toBe(true);
+    await waitFor(() => {
+      expect(
+        queryByTitle("icon-fa-flask") === null ||
+          queryByTitle("icon-fa-archive") === null ||
+          queryByTitle("icon-fa-beer") === null,
+      ).toBe(true);
+    });
+
     // vi.advanceTimersByTime(500);
     // bug in RTL async and useFakeTimers https://github.com/testing-library/user-event/issues/1115
     await findByTitle("icon-fa-flask");
-
-    expect(queryByTitle("icon-fa-flask")).toBeInTheDocument();
-    expect(queryByTitle("icon-fa-archive")).toBeInTheDocument();
-    expect(queryByTitle("icon-fa-beer")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(queryByTitle("icon-fa-flask")).toBeInTheDocument();
+      expect(queryByTitle("icon-fa-archive")).toBeInTheDocument();
+      expect(queryByTitle("icon-fa-beer")).toBeInTheDocument();
+    });
     // vi.useRealTimers();
   });
 });

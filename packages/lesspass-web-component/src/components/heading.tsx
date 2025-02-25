@@ -5,7 +5,7 @@ export function Title({
 }: React.ComponentProps<"h1">) {
   return (
     <h1
-      className={`text-2xl font-bold xs:truncate xs:tracking-tight ${className}`}
+      className={`xs:truncate xs:tracking-tight text-2xl font-bold ${className}`}
       {...props}
     >
       {children}
@@ -20,7 +20,7 @@ export function SubTitle({
 }: React.ComponentProps<"h2">) {
   return (
     <h2
-      className={`text-lg xs:truncate xs:tracking-tight ${className}`}
+      className={`xs:truncate xs:tracking-tight text-lg ${className}`}
       {...props}
     >
       {children}

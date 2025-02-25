@@ -94,7 +94,7 @@ const PasswordResetPage = () => {
             });
         }}
       />
-      <div className="flex items-center mt-6 mb-4 gap-4">
+      <div className="mt-6 mb-4 flex items-center gap-4">
         <Button type="submit" form="password_reset_form" color="blue">
           {t("Common.Change")}
         </Button>

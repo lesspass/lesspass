@@ -1,7 +1,7 @@
 {
   // https://www.typescriptlang.org/tsconfig
   "compilerOptions": {
-    "composite": false, // Can't set composite to true in monorepo 
+    "composite": false, // Can't set composite to true in monorepo
     "declaration": true, // Generate .d.ts files for every TypeScript file
     "declarationMap": true, // Generates a source map for .d.ts files
     "strict": true,
@@ -12,11 +12,7 @@
     "paths": {
       "lesspass": ["./packages/lesspass/src"],
       "lesspass-api": ["./packages/lesspass-api/src"],
-      "lesspass-crypto": ["./packages/lesspass-crypto/src"],
-      "lesspass-entropy": ["./packages/lesspass-entropy/src"],
-      "lesspass-fingerprint": ["./packages/lesspass-fingerprint/src"],
       "lesspass-mobile": ["./packages/lesspass-mobile/src"],
-      "lesspass-render-password": ["./packages/lesspass-render-password/src"],
       "lesspass-web-component": ["./packages/lesspass-web-component/src"],
       "lesspass-web-extension": ["./packages/lesspass-web-extension/src"],
       "lesspass-website": ["./packages/lesspass-website/src"]

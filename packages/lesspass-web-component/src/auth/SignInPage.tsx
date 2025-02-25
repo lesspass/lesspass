@@ -56,7 +56,7 @@ function SignInPage() {
               });
           }}
         />
-        <div className="text-sm/6 text-right">
+        <div className="text-right text-sm/6">
           <Link to="/auth/forgotPassword">
             {t("SignInPage.ForgotPassword")}
           </Link>

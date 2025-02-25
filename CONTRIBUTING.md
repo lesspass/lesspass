@@ -38,12 +38,14 @@ If you are working on the CLI, you will need:
 
 Here are some folders that worth noticing:
 
-* `package` contains the code for the web version and the browser extension. Development is done with `javascript` and `Vue`.
-  * `lesspass-pure` contains the core of `lesspass`. Running `yarn start` in this folder will run a `lesspass` instance locally.
-  * `lesspass-web-extension` contains the code specific for the web extension.
-  * `lesspass-render-password` contains the algorithm to generate passwords.
+* `packages` contains the code for the `typescript` and `React` packages.
+  * `lesspass` core package doing the password generation.
+  * `lesspass-api` contains the code for consuming LessPass API. Used by lesspass-mobile.
+  * `lesspass-mobile` contains the `android` and `ios` version. `react native`. Uses lesspass-api.
+  * `lesspass-web-component` the web component used by all React applications (web-extension, web-site).
+  * `lesspass-web-extension` contains the code specific for the web extension. Uses lesspass-web-component.
+  * `lesspass-website` contains the code specific for the web site. Uses lesspass-web-component.
 * `cli` contains the command line version. Development is done with `python`.
-* `mobile` contains the `android` and `ios` version. Development is done with `javascript` and `react native`.
 
 ### Commands
 

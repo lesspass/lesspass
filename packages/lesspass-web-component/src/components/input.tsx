@@ -37,10 +37,10 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
             }
           }}
           id="decrement-button"
-          className="shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+          className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-gray-100 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
         >
           <svg
-            className="w-2.5 h-2.5 text-gray-900 dark:text-white"
+            className="h-2.5 w-2.5 text-gray-900 dark:text-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -60,7 +60,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
           inputMode="numeric"
           type="text"
           id="counter-input"
-          className="shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
+          className="max-w-[2.5rem] shrink-0 border-0 bg-transparent text-center text-sm font-normal text-gray-900 focus:ring-0 focus:outline-none dark:text-white"
           {...props}
         />
         <button
@@ -76,10 +76,10 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
               ref.current.value = String(currentValue + 1);
             }
           }}
-          className="shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+          className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-gray-100 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
         >
           <svg
-            className="w-2.5 h-2.5 text-gray-900 dark:text-white"
+            className="h-2.5 w-2.5 text-gray-900 dark:text-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

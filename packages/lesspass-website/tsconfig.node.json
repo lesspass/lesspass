@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "lib": ["ES2023"],
     "skipLibCheck": true,
 
@@ -18,9 +19,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "baseUrl": ".",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    "baseUrl": "."
   },
-  "include": ["vite.config.ts"],
-  "exclude": ["src/**/*.test.ts"]
+  "include": ["vite.config.ts"]
 }

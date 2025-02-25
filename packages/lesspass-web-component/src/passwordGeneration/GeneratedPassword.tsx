@@ -30,26 +30,26 @@ export default function GeneratedPassword({
 
   return (
     <div className="mt-2">
-      <div className="flex items-center justify-between w-full text-base text-gray-900 ring-1 ring-inset ring-gray-300 bg-gray-100 text-gray-500 rounded-md shadow-xs">
+      <div className="flex w-full items-center justify-between rounded-md bg-gray-100 text-base text-gray-500 text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset">
         <Button
           type="button"
           onClick={() => setShowPassword((sP) => !sP)}
           outline
-          className="shadow-none rounded-none rounded-l-md ring-0 xs:min-w-24"
+          className="xs:min-w-24 rounded-none rounded-l-md shadow-none ring-0"
         >
           {showPassword ? (
             <>
-              <EyeSlashIcon className="inline w-5 h-5 xs:mr-2" />
-              <span className="hidden xs:inline">{t("Common.Hide")}</span>
+              <EyeSlashIcon className="xs:mr-2 inline h-5 w-5" />
+              <span className="xs:inline hidden">{t("Common.Hide")}</span>
             </>
           ) : (
             <>
-              <EyeIcon className="inline w-5 h-5 xs:mr-2" />
-              <span className="hidden xs:inline">{t("Common.Show")}</span>
+              <EyeIcon className="xs:mr-2 inline h-5 w-5" />
+              <span className="xs:inline hidden">{t("Common.Show")}</span>
             </>
           )}
         </Button>
-        <span className="text-sm font-mono">
+        <span className="font-mono text-sm">
           {showPassword ? generatedPassword : "**********"}
         </span>
         <Button
@@ -59,11 +59,11 @@ export default function GeneratedPassword({
             });
           }}
           outline
-          className="shadow-none rounded-none rounded-r-md ring-0 xs:min-w-24"
+          className="xs:min-w-24 rounded-none rounded-r-md shadow-none ring-0"
         >
-          <ClipboardDocumentIcon className="inline w-5 h-5 xs:mr-2" />
+          <ClipboardDocumentIcon className="xs:mr-2 inline h-5 w-5" />
 
-          <span className="hidden xs:inline">
+          <span className="xs:inline hidden">
             {passwordCopiedInClipboard ? t("Common.Copied") : t("Common.Copy")}
           </span>
         </Button>

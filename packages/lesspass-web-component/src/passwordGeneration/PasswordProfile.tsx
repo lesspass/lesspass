@@ -113,7 +113,7 @@ export default function PasswordProfile({
           );
         }}
       />
-      <div className="flex items-center gap-2 mt-4">
+      <div className="mt-4 flex items-center gap-2">
         <Button
           type="submit"
           form="password-profile-form"
@@ -157,7 +157,7 @@ export function NewPasswordProfile() {
             );
         }}
       />
-      <div className="flex items-center gap-2 mt-4">
+      <div className="mt-4 flex items-center gap-2">
         <Button
           type="submit"
           form="password-profile-form"

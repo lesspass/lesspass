@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import Alerts from "./alerts/Alerts";
-import Header from "./components/header";
+import Header from "./components/Header";
 import { useGetCurrentUserQuery } from "./auth/authApi";
 import { LoadingPage } from "./LoadingPage";
 

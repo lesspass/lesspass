@@ -80,31 +80,31 @@ export default function PasswordProfilesPage() {
               <div className="flex flex-col items-end gap-1">
                 <div className="flex gap-1">
                   {passwordProfile.lowercase && (
-                    <span className="rounded-sm px-2 border border-gray-400 bg-gray-100 text-xs text-gray-900">
+                    <span className="rounded-sm border border-gray-400 bg-gray-100 px-2 text-xs text-gray-900">
                       a-z
                     </span>
                   )}
                   {passwordProfile.uppercase && (
-                    <span className="rounded-sm px-2 border border-gray-400 bg-gray-100 text-xs text-gray-900">
+                    <span className="rounded-sm border border-gray-400 bg-gray-100 px-2 text-xs text-gray-900">
                       A-Z
                     </span>
                   )}
                   {passwordProfile.digits && (
-                    <span className="rounded-sm px-2 border border-gray-400 bg-gray-100 text-xs text-gray-900">
+                    <span className="rounded-sm border border-gray-400 bg-gray-100 px-2 text-xs text-gray-900">
                       0-9
                     </span>
                   )}
                   {passwordProfile.symbols && (
-                    <span className="rounded-sm px-2 border border-gray-400 bg-gray-100 text-xs text-gray-900">
+                    <span className="rounded-sm border border-gray-400 bg-gray-100 px-2 text-xs text-gray-900">
                       %!@
                     </span>
                   )}
                 </div>
                 <div className="flex gap-1">
-                  <span className="rounded-sm px-2 border border-gray-400 bg-gray-100 text-xs text-gray-900">
+                  <span className="rounded-sm border border-gray-400 bg-gray-100 px-2 text-xs text-gray-900">
                     {t("PasswordProfile.Length")}: {passwordProfile.length}
                   </span>
-                  <span className="rounded-sm px-2 border border-gray-400 bg-gray-100 text-xs text-gray-900">
+                  <span className="rounded-sm border border-gray-400 bg-gray-100 px-2 text-xs text-gray-900">
                     {t("PasswordProfile.C")}: {passwordProfile.counter}
                   </span>
                 </div>

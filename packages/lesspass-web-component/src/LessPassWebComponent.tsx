@@ -8,9 +8,9 @@ import { getSettings } from "./services/settings";
 import { SettingsState } from "./settings/settingsSlice";
 
 export default function LessPassWebComponent({
-  settings,
+  settings = {},
 }: {
-  settings: Partial<SettingsState>;
+  settings?: Partial<SettingsState>;
 }) {
   return (
     <MemoryRouter>

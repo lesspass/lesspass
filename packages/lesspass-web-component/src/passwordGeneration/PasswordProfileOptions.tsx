@@ -9,7 +9,7 @@ export default function PasswordProfileOptions() {
   const { register } = useFormContext();
 
   return (
-    <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-4">
+    <div className="xs:grid-cols-2 grid grid-cols-1 gap-2 sm:gap-4">
       <div>
         <Label>{t("PasswordProfile.Options")}</Label>
         <CheckboxGroup>
