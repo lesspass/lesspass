@@ -11,7 +11,6 @@ i18n
   .init({
     fallbackLng: "en",
     supportedLngs: i18nParser.locales,
-    debug: true,
     interpolation: {
       escapeValue: false,
     },
