@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 30rem;
+}
+
+@layer base {
+  a {
+    color: var(--color-blue-500);
+  }
+  button {
+    cursor: pointer;
+  }
+}

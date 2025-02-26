@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg3039"
    version="1.1"
    width="650.05682"
    height="146.87653"
    sodipodi:docname="logo.svg"
-   inkscape:export-filename="/home/guillaume/workspace/lesspass/resources/logo.png"
+   inkscape:export-filename="logo-blue.png"
    inkscape:export-xdpi="300"
    inkscape:export-ydpi="300"
-   inkscape:version="0.92.4 (unknown)">
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -25,17 +25,20 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-width="1512"
+     inkscape:window-height="838"
      id="namedview38"
      showgrid="false"
      inkscape:zoom="0.57225766"
      inkscape:cx="328.52334"
-     inkscape:cy="73.438262"
+     inkscape:cy="74.267245"
      inkscape:window-x="0"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg3039" />
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3039"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata3045">
     <rdf:RDF>
@@ -44,7 +47,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -143,59 +145,58 @@
     <style
        id="style914">.cls-1{fill:#e00;}.cls-2{fill:#fff;}</style>
   </defs>
-  <flowRoot
-     transform="translate(-94.981634,-13.540746)"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:56px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb"
-     id="flowRoot838"
-     xml:space="preserve"><flowRegion
-       id="flowRegion840"><rect
-         y="-186.70966"
-         x="-85.212357"
-         height="255.63708"
-         width="544.71191"
-         id="rect842" /></flowRegion><flowPara
-       id="flowPara844" /></flowRoot>  <g
+  <g
      transform="matrix(0.79150493,0,0,0.79150493,9.6081758,-0.20975267)"
      id="text836"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:56px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#ffffff"
-     aria-label="LessPass">
-    <path
-       id="path846"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 218.0677,139.04808 h 72.13333 v -20.26667 h -49.2 V 45.714751 H 218.0677 Z" />
-    <path
-       id="path848"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 363.95936,129.71475 -14.26667,-12.66667 c -3.33333,3.46667 -8.26666,5.33333 -14.13333,5.33333 -8.13333,0 -14.53333,-4.53333 -17.33333,-11.2 h 50.26666 v -5.33333 c 0,-22.266664 -14.93333,-38.53333 -35.59999,-38.53333 -20.66667,0 -36.8,15.999999 -36.8,36.53333 0,20.53333 16.8,36.53333 38.4,36.53333 11.73333,0 20.53333,-3.2 29.46666,-10.66666 z M 332.4927,84.914749 c 6.93333,0 12.53333,4.4 14.79999,11.2 h -29.46666 c 2.13333,-7.066667 7.46667,-11.2 14.66667,-11.2 z" />
-    <path
-       id="path850"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 374.03437,131.18141 c 8.26666,6 20,9.2 33.33333,9.2 18.26666,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86667,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93333,0 13.73333,1.999999 21.33333,6.399999 l 10.26667,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46667,-8.533333 -18.93333,0 -30.39999,8.666667 -30.39999,22.933333 0,11.600004 7.6,18.933334 21.59999,21.066664 l 14,2.13333 c 4.93334,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53333,5.6 -11.6,5.6 -7.2,0 -13.99999,-2.26667 -22.93333,-7.6 z" />
-    <path
-       id="path852"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 442.00312,131.18141 c 8.26666,6 20,9.2 33.33333,9.2 18.26666,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86667,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93333,0 13.73333,1.999999 21.33333,6.399999 l 10.26667,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46667,-8.533333 -18.93333,0 -30.39999,8.666667 -30.39999,22.933333 0,11.600004 7.6,18.933334 21.59999,21.066664 l 14,2.13333 c 4.93334,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53333,5.6 -11.6,5.6 -7.2,0 -13.99999,-2.26667 -22.93333,-7.6 z" />
-    <path
-       id="path854"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 516.5052,139.04808 h 22.93333 v -33.46666 h 26.26667 c 18.13333,0 31.73333,-12.666671 31.73333,-29.600004 0,-17.466666 -13.33333,-30.266665 -31.73333,-30.266665 h -49.2 z m 46.53333,-73.73333 c 6.66667,0 11.2,4.4 11.2,10.8 0,6.266666 -4.53333,10.533332 -11.2,10.533332 h -23.6 V 65.31475 Z" />
-    <path
-       id="path856"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 628.07602,140.24808 c 7.6,0 13.73333,-1.6 19.46667,-5.46667 v 4.26667 h 21.33333 V 93.848082 c 0,-16.933333 -11.33333,-26.666665 -30.93333,-26.666665 -10.8,0 -21.46667,2.533333 -32.93333,7.733333 l 7.73333,15.866666 c 9.2,-3.866667 15.73333,-5.6 21.33333,-5.6 8.93333,0 13.46667,3.466666 13.46667,10.533333 v 3.466666 c -5.2,-1.333333 -10.53334,-2 -16,-2 -18.4,0 -29.06667,7.733335 -29.06667,21.199995 0,12.93334 10.53334,21.86667 25.6,21.86667 z m -5.06667,-22.26667 c 0,-4.4 4.26667,-6.93333 11.73334,-6.93333 4.4,0 8.66666,0.53333 12.8,1.6 v 9.06667 c -3.73334,2.26666 -8.26667,3.33333 -13.46667,3.33333 -6.93333,0 -11.06667,-2.66667 -11.06667,-7.06667 z" />
-    <path
-       id="path858"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 676.11768,131.18141 c 8.26667,6 20,9.2 33.33333,9.2 18.26667,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86666,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93334,0 13.73334,1.999999 21.33334,6.399999 l 10.26666,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46666,-8.533333 -18.93334,0 -30.4,8.666667 -30.4,22.933333 0,11.600004 7.6,18.933334 21.6,21.066664 l 14,2.13333 c 4.93333,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53334,5.6 -11.6,5.6 -7.2,0 -14,-2.26667 -22.93333,-7.6 z" />
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:56px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+     aria-label="LessPass"
+     inkscape:label="LessPass">
     <path
        id="path860"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#ffffff"
-       d="m 744.08643,131.18141 c 8.26667,6 20,9.2 33.33333,9.2 18.26667,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86666,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93334,0 13.73334,1.999999 21.33334,6.399999 l 10.26666,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46666,-8.533333 -18.93334,0 -30.4,8.666667 -30.4,22.933333 0,11.600004 7.6,18.933334 21.6,21.066664 l 14,2.13333 c 4.93333,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53334,5.6 -11.6,5.6 -7.2,0 -14,-2.26667 -22.93333,-7.6 z" />
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+       d="m 744.08643,131.18141 c 8.26667,6 20,9.2 33.33333,9.2 18.26667,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86666,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93334,0 13.73334,1.999999 21.33334,6.399999 l 10.26666,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46666,-8.533333 -18.93334,0 -30.4,8.666667 -30.4,22.933333 0,11.600004 7.6,18.933334 21.6,21.066664 l 14,2.13333 c 4.93333,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53334,5.6 -11.6,5.6 -7.2,0 -14,-2.26667 -22.93333,-7.6 z"
+       inkscape:label="s" />
+    <path
+       id="path858"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+       d="m 676.11768,131.18141 c 8.26667,6 20,9.2 33.33333,9.2 18.26667,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86666,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93334,0 13.73334,1.999999 21.33334,6.399999 l 10.26666,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46666,-8.533333 -18.93334,0 -30.4,8.666667 -30.4,22.933333 0,11.600004 7.6,18.933334 21.6,21.066664 l 14,2.13333 c 4.93333,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53334,5.6 -11.6,5.6 -7.2,0 -14,-2.26667 -22.93333,-7.6 z"
+       inkscape:label="s" />
+    <path
+       id="path856"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+       d="m 628.07602,140.24808 c 7.6,0 13.73333,-1.6 19.46667,-5.46667 v 4.26667 h 21.33333 V 93.848082 c 0,-16.933333 -11.33333,-26.666665 -30.93333,-26.666665 -10.8,0 -21.46667,2.533333 -32.93333,7.733333 l 7.73333,15.866666 c 9.2,-3.866667 15.73333,-5.6 21.33333,-5.6 8.93333,0 13.46667,3.466666 13.46667,10.533333 v 3.466666 c -5.2,-1.333333 -10.53334,-2 -16,-2 -18.4,0 -29.06667,7.733335 -29.06667,21.199995 0,12.93334 10.53334,21.86667 25.6,21.86667 z m -5.06667,-22.26667 c 0,-4.4 4.26667,-6.93333 11.73334,-6.93333 4.4,0 8.66666,0.53333 12.8,1.6 v 9.06667 c -3.73334,2.26666 -8.26667,3.33333 -13.46667,3.33333 -6.93333,0 -11.06667,-2.66667 -11.06667,-7.06667 z"
+       inkscape:label="a" />
+    <path
+       id="path854"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';fill:#3398eb;fill-opacity:1"
+       d="m 516.5052,139.04808 h 22.93333 v -33.46666 h 26.26667 c 18.13333,0 31.73333,-12.666671 31.73333,-29.600004 0,-17.466666 -13.33333,-30.266665 -31.73333,-30.266665 h -49.2 z m 46.53333,-73.73333 c 6.66667,0 11.2,4.4 11.2,10.8 0,6.266666 -4.53333,10.533332 -11.2,10.533332 h -23.6 V 65.31475 Z"
+       inkscape:label="P" />
+    <path
+       id="path852"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+       d="m 442.00312,131.18141 c 8.26666,6 20,9.2 33.33333,9.2 18.26666,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86667,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93333,0 13.73333,1.999999 21.33333,6.399999 l 10.26667,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46667,-8.533333 -18.93333,0 -30.39999,8.666667 -30.39999,22.933333 0,11.600004 7.6,18.933334 21.59999,21.066664 l 14,2.13333 c 4.93334,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53333,5.6 -11.6,5.6 -7.2,0 -13.99999,-2.26667 -22.93333,-7.6 z"
+       inkscape:label="s" />
+    <path
+       id="path850"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+       d="m 374.03437,131.18141 c 8.26666,6 20,9.2 33.33333,9.2 18.26666,0 31.73333,-10.13333 31.73333,-23.86666 0,-11.06667 -7.86667,-18.533335 -21.73333,-20.533335 l -14,-2.133333 c -6,-0.933333 -8.26667,-2.4 -8.26667,-5.333333 0,-3.066667 3.6,-5.066666 9.2,-5.066666 6.93333,0 13.73333,1.999999 21.33333,6.399999 l 10.26667,-13.866666 c -8.8,-5.6 -19.2,-8.533333 -29.46667,-8.533333 -18.93333,0 -30.39999,8.666667 -30.39999,22.933333 0,11.600004 7.6,18.933334 21.59999,21.066664 l 14,2.13333 c 4.93334,0.8 7.2,2.4 7.2,5.06667 0,3.46667 -4.53333,5.6 -11.6,5.6 -7.2,0 -13.99999,-2.26667 -22.93333,-7.6 z"
+       inkscape:label="s" />
+    <path
+       id="path848"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+       d="m 363.95936,129.71475 -14.26667,-12.66667 c -3.33333,3.46667 -8.26666,5.33333 -14.13333,5.33333 -8.13333,0 -14.53333,-4.53333 -17.33333,-11.2 h 50.26666 v -5.33333 c 0,-22.266664 -14.93333,-38.53333 -35.59999,-38.53333 -20.66667,0 -36.8,15.999999 -36.8,36.53333 0,20.53333 16.8,36.53333 38.4,36.53333 11.73333,0 20.53333,-3.2 29.46666,-10.66666 z M 332.4927,84.914749 c 6.93333,0 12.53333,4.4 14.79999,11.2 h -29.46666 c 2.13333,-7.066667 7.46667,-11.2 14.66667,-11.2 z"
+       inkscape:label="e" />
+    <path
+       id="path846"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:133.33332825px;line-height:1.25;font-family:'Red Hat Display';-inkscape-font-specification:'Red Hat Display Heavy';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#3398eb;fill-opacity:1"
+       d="m 218.0677,139.04808 h 72.13333 v -20.26667 h -49.2 V 45.714751 H 218.0677 Z"
+       inkscape:label="L" />
   </g>
   <path
-     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.97902948"
+     style="opacity:1;fill:#3398eb;fill-opacity:1;stroke:none;stroke-width:0.97902948"
      d="m 72.320926,0.02697733 c -5.63066,0.269899 -11.19305,2.56535097 -15.5115,6.88380097 L 6.9095257,56.810677 c -9.212701,9.212696 -9.212701,24.043726 0,33.256416 L 56.809426,139.967 c 9.2127,9.2127 24.04371,9.2127 33.25642,0 L 139.96576,90.067093 c 9.2127,-9.21269 9.2127,-24.04372 0,-33.256416 L 90.065846,6.9107783 c -4.89425,-4.894247 -11.3635,-7.18968897 -17.74492,-6.88380097 z m 0,29.37088367 c 0.37373,-0.01919 0.75373,0 1.13201,0 12.10473,0 21.99757,9.923423 21.99757,22.028153 0,10.063934 -6.85989,18.578455 -16.1234,21.171524 v 20.192485 h 6.08835 c 0.12336,0 0.21416,0.0909 0.21416,0.21416 v 10.035047 c 0,0.12326 -0.0909,0.21417 -0.21416,0.21417 h -6.08835 v 3.79373 h 6.08835 c 0.11844,-0.0343 0.21416,0.0909 0.21416,0.21417 v 10.00446 c 0,0.12325 -0.0909,0.24475 -0.21416,0.24475 h -6.08835 -7.64867 -4.13028 V 72.597538 c -9.26351,-2.593069 -16.12339,-11.1076 -16.12339,-21.171524 0,-11.726452 9.31069,-21.434646 20.89616,-22.028153 z m 1.13201,8.627697 c -7.43695,0 -13.36988,5.963484 -13.36988,13.400456 0,7.437022 5.93293,13.339277 13.36988,13.339277 7.43697,0 13.33928,-5.902255 13.33928,-13.339277 0,-7.436972 -5.90231,-13.400456 -13.33928,-13.400456 z"
      id="rect3044"
      inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300" />
+     inkscape:export-ydpi="300"
+     inkscape:label="icon" />
 </svg>

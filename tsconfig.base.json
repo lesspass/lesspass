@@ -1,0 +1,21 @@
+{
+  // https://www.typescriptlang.org/tsconfig
+  "compilerOptions": {
+    "composite": false, // Can't set composite to true in monorepo
+    "declaration": true, // Generate .d.ts files for every TypeScript file
+    "declarationMap": true, // Generates a source map for .d.ts files
+    "strict": true,
+    "module": "esnext", // You very likely want esnext for code that will be bundled.
+    "moduleResolution": "bundler",
+    "target": "ES6", // Modern browsers support all ES6 features, so ES6 is a good choice.
+    "jsx": "react-jsx", // React 17 introduces a new entry point to be used by compilers like TypeScript
+    "paths": {
+      "lesspass": ["./packages/lesspass/src"],
+      "lesspass-api": ["./packages/lesspass-api/src"],
+      "lesspass-mobile": ["./packages/lesspass-mobile/src"],
+      "lesspass-web-component": ["./packages/lesspass-web-component/src"],
+      "lesspass-web-extension": ["./packages/lesspass-web-extension/src"],
+      "lesspass-web-site": ["./packages/lesspass-web-site/src"]
+    }
+  }
+}

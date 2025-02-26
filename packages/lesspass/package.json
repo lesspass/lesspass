@@ -1,19 +1,42 @@
 {
   "name": "lesspass",
-  "version": "9.2.0",
+  "version": "10.0.0",
   "description": "LessPass core module",
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
-  "files": [
-    "index.js"
-  ],
-  "main": "index.js",
-  "scripts": {
-    "test": "jest"
+  "type": "module",
+  "exports": "./dist/index.js",
+  "browser": {
+    "./src/entropy/pbkdf2.ts": "./src/entropy/pbkdf2.browser.ts",
+    "./src/fingerprint/hmac.ts": "./src/fingerprint/hmac.browser.ts"
   },
-  "dependencies": {
-    "lesspass-entropy": "^9.1.9",
-    "lesspass-fingerprint": "^9.1.9",
-    "lesspass-render-password": "^9.1.9"
-  }
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && tsup",
+    "clean": "rm -rf dist",
+    "prettier": "prettier --write src",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.1",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  },
+  "tsup": [
+    {
+      "entry": [
+        "./src/index.ts"
+      ],
+      "format": [
+        "esm"
+      ],
+      "platform": "browser",
+      "dts": true,
+      "clean": true
+    }
+  ]
 }

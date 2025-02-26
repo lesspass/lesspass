@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    { "path": "./packages/lesspass" },
+    { "path": "./packages/lesspass-api" },
+    { "path": "./packages/lesspass-mobile" },
+    { "path": "./packages/lesspass-web-component" },
+    { "path": "./packages/lesspass-web-extension" },
+    { "path": "./packages/lesspass-web-site" }
+  ]
+}

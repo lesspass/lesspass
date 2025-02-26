@@ -2,11 +2,11 @@
 
 LessPass is a stateless password manager.
 
-Stop wasting your time synchronizing your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed. Try the demo at [www.lesspass.com](https://www.lesspass.com).
+Stop wasting your time synchronizing your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed. Try the demo at [https://www.lesspass.com](https://www.lesspass.com).
 
-## :rotating_light: information
+## :rotating_light: Information
 
-LessPass Database server will be turned off on March 1th, 2023. [Read here why](https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database)
+LessPass Database server will be turned off on ~~March 1th, 2023~~ March 1th, 2025. [Read here why](https://blog.lesspass.com/2022-12-29/decommissioning-lesspass-database)
 
 ## How does it work?
 
@@ -45,20 +45,15 @@ This project is licensed under the terms of the GNU GPLv3.
 
 ## Contributors
 
-This project exists thanks to all of the people who contribute.
-
-[You can help too! There are many ways to help make LessPass better.](CONTRIBUTING.md)
+This project exists thanks to all of the people who contribute to the project. [You can help too! There are many ways to help make LessPass better.](CONTRIBUTING.md)
 
 [![Contributors list](https://opencollective.com/lesspass/contributors.svg?width=890)](https://github.com/lesspass/lesspass/graphs/contributors)
 
 ## Backers
 
-Thank you to all our backers!
-
-[Become a backer on Open Collective](https://opencollective.com/lesspass#backer).
+Thanks to everyone who contributed financially to the project! If you want to financially support LessPass, [become a backer on Open Collective](https://opencollective.com/lesspass#backer).
 
 <a href="https://opencollective.com/lesspass#backers" target="_blank">![Backers list](https://opencollective.com/lesspass/backers.svg?width=890)</a>
-
 
 ## Sponsors
 

@@ -1,0 +1,37 @@
+{
+  "name": "lesspass-web-site",
+  "description": "LessPass web site",
+  "version": "0.1.0",
+  "license": "GPL-3.0",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "type": "module",
+  "scripts": {
+    "dev": "yarn i18n && vite",
+    "build": "yarn i18n && tsc -b && vite build",
+    "i18n": "cp -r ../lesspass-web-component/public/locales ./public/",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lesspass-web-component": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.0.9"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "prettier": "^3.5.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "typescript": "~5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
+  }
+}

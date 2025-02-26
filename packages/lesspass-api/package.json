@@ -1,0 +1,44 @@
+{
+  "name": "lesspass-api",
+  "version": "0.1.0",
+  "description": "LessPass API functions",
+  "license": "GPL-3.0",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && tsup",
+    "clean": "rm -rf dist",
+    "prettier": "prettier --write src",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.1",
+    "async-mutex": "^0.5.0",
+    "axios": "^1.7.9",
+    "lesspass": "workspace:*"
+  },
+  "devDependencies": {
+    "msw": "^2.7.0",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  },
+  "tsup": [
+    {
+      "entry": [
+        "./src/index.ts"
+      ],
+      "format": [
+        "esm"
+      ],
+      "platform": "browser",
+      "dts": true,
+      "clean": true
+    }
+  ]
+}

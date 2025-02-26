@@ -1,0 +1,93 @@
+{
+  "ForgotPasswordPage": {
+    "ResetYourPassword": "重設您的密碼",
+    "ConfirmLinkSendTitle": "確認連結發送成功",
+    "ConfirmLinkSendMessage": "修改密碼的連結已發送至 {{email}}",
+    "UnableToChangeYourPassword": "無法更改您的密碼",
+    "UnknownEmail": "未知的電子郵件",
+    "UserDoesNotExists": "該使用者不存在。您無法使用 LessPass。"
+  },
+  "Common": {
+    "Send": "發送",
+    "Cancel": "取消",
+    "Change": "更改",
+    "Hide": "隱藏",
+    "Show": "顯示",
+    "Copied": "已複製",
+    "Copy": "複製"
+  },
+  "MyProfilePage": {
+    "Welcome": "歡迎, {{email}}",
+    "ThankYouMessage": "您的帳戶存儲於 https://api.lesspass.com 伺服器，感謝您成為 LessPass 的早期使用者。",
+    "SignOut": "登出"
+  },
+  "PasswordResetConfirmForm": {
+    "NewPassword": "新密碼"
+  },
+  "PasswordResetPage": {
+    "ChangePassword": "更改您的密碼",
+    "PasswordChangedSuccessfullyTitle": "您的密碼已成功更改。",
+    "PasswordChangedSuccessfullyMessage": "您現在可以登入。",
+    "CantChangePasswordTitle": "無法更改您的密碼。",
+    "CantChangePasswordMessage": "請稍後再試。"
+  },
+  "SignInForm": {
+    "LessPassServer": "LessPass 伺服器",
+    "Email": "電子郵件",
+    "UsernamePlaceholder": "contact@example.org",
+    "MasterPassword": "主密碼"
+  },
+  "SignInPage": {
+    "SignInToLessPass": "登入 LessPass",
+    "UnableToSignInTitle": "無法登入",
+    "UnableToSignInMessage": "提供的資訊無效或使用者不存在。",
+    "ForgotPassword": "忘記密碼？",
+    "SignIn": "登入",
+    "LessPassServerDecommissioned": "LessPass 資料庫已停用。您必須使用自己的伺服器。"
+  },
+  "Header": {
+    "passwords": "密碼",
+    "settings": "設定",
+    "signIn": "登入",
+    "myProfile": "我的個人資料",
+    "SignOut": "登出"
+  },
+  "PasswordProfile": {
+    "Site": "網站",
+    "MasterPassword": "主密碼",
+    "GenerateAndCopy": "生成並複製",
+    "Clear": "清除",
+    "Login": "登入名稱",
+    "Options": "選項",
+    "Length": "長度",
+    "Counter": "計數器",
+    "C": "C"
+  },
+  "NewPasswordProfilePage": {
+    "NewPassword": "新密碼"
+  },
+  "PasswordProfilePage": {
+    "NoPasswordWithId": "沒有 ID 為 {{id}} 的密碼設定檔",
+    "GoListPasswordProfiles": "返回密碼設定檔列表。",
+    "DeletePassword": "刪除密碼",
+    "AreYouSure": "您確定要刪除 {{site}}/{{login}} 設定檔嗎？",
+    "YesIAmSure": "是的，我確定",
+    "NoIAmNotSure": "否",
+    "Delete": "刪除"
+  },
+  "PasswordProfilesPage": {
+    "NoSavedPasswordProfiles": "您沒有儲存的密碼設定檔。",
+    "SaveAPassword": "儲存密碼",
+    "SearchPasswords": "搜尋密碼...",
+    "NewPassword": "新密碼"
+  },
+  "Settings": {
+    "DefaultPasswordProfile": "預設密碼",
+    "FocusField": "焦點欄位",
+    "SignIn": "登入",
+    "EncryptMyMasterPassword": "登入時加密我的主密碼",
+    "Save": "儲存",
+    "Reset": "重設",
+    "Title": "設定"
+  }
+}

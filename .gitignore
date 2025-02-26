@@ -6,7 +6,12 @@ node_modules
 package-lock.json
 default.nix
 .envrc
-sandbox/lesspass-passwordrules
-sandbox/lesspass-pure
-sandbox/lesspass-tld/top-1m.csv
-sandbox/infra
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+dump.pgsql
+restore.sh
