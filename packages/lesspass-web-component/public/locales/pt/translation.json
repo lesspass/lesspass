@@ -1,0 +1,93 @@
+{
+  "ForgotPasswordPage": {
+    "ResetYourPassword": "Redefinir a sua palavra-passe",
+    "ConfirmLinkSendTitle": "Link de confirmação enviado com sucesso",
+    "ConfirmLinkSendMessage": "Foi enviado um link para alterar a sua palavra-passe para {{email}}",
+    "UnableToChangeYourPassword": "Não foi possível alterar a sua palavra-passe",
+    "UnknownEmail": "E-mail desconhecido",
+    "UserDoesNotExists": "Este utilizador não existe. Não pode utilizar o LessPass."
+  },
+  "Common": {
+    "Send": "Enviar",
+    "Cancel": "Cancelar",
+    "Change": "Alterar",
+    "Hide": "Ocultar",
+    "Show": "Mostrar",
+    "Copied": "Copiado",
+    "Copy": "Copiar"
+  },
+  "MyProfilePage": {
+    "Welcome": "Bem-vindo, {{email}}",
+    "ThankYouMessage": "A sua conta é armazenada no servidor https://api.lesspass.com como forma de agradecimento por ser um dos primeiros utilizadores do LessPass.",
+    "SignOut": "Terminar sessão"
+  },
+  "PasswordResetConfirmForm": {
+    "NewPassword": "Nova palavra-passe"
+  },
+  "PasswordResetPage": {
+    "ChangePassword": "Altere a sua palavra-passe",
+    "PasswordChangedSuccessfullyTitle": "A sua palavra-passe foi alterada com sucesso.",
+    "PasswordChangedSuccessfullyMessage": "Agora pode iniciar sessão.",
+    "CantChangePasswordTitle": "Não foi possível alterar a palavra-passe.",
+    "CantChangePasswordMessage": "Por favor, tente novamente dentro de alguns minutos."
+  },
+  "SignInForm": {
+    "LessPassServer": "Servidor LessPass",
+    "Email": "E-mail",
+    "UsernamePlaceholder": "contacto@exemplo.org",
+    "MasterPassword": "Palavra-passe mestre"
+  },
+  "SignInPage": {
+    "SignInToLessPass": "Iniciar sessão no LessPass",
+    "UnableToSignInTitle": "Não foi possível iniciar sessão",
+    "UnableToSignInMessage": "As informações fornecidas são inválidas ou o utilizador não existe.",
+    "ForgotPassword": "Esqueceu-se da palavra-passe?",
+    "SignIn": "Iniciar sessão",
+    "LessPassServerDecommissioned": "A base de dados do LessPass foi desativada. Tem de utilizar o seu próprio servidor."
+  },
+  "Header": {
+    "passwords": "Palavras-passe",
+    "settings": "Definições",
+    "signIn": "Iniciar sessão",
+    "myProfile": "O meu perfil",
+    "SignOut": "Terminar sessão"
+  },
+  "PasswordProfile": {
+    "Site": "Site",
+    "MasterPassword": "Palavra-passe mestre",
+    "GenerateAndCopy": "Gerar e copiar",
+    "Clear": "Limpar",
+    "Login": "Nome de utilizador",
+    "Options": "Opções",
+    "Length": "Comprimento",
+    "Counter": "Contador",
+    "C": "C"
+  },
+  "NewPasswordProfilePage": {
+    "NewPassword": "Nova palavra-passe"
+  },
+  "PasswordProfilePage": {
+    "NoPasswordWithId": "Não existe um perfil de palavra-passe com o ID: {{id}}",
+    "GoListPasswordProfiles": "Voltar à lista de perfis de palavras-passe.",
+    "DeletePassword": "Eliminar palavra-passe",
+    "AreYouSure": "Tem a certeza de que deseja eliminar o perfil {{site}}/{{login}}?",
+    "YesIAmSure": "Sim, tenho a certeza",
+    "NoIAmNotSure": "Não",
+    "Delete": "Eliminar"
+  },
+  "PasswordProfilesPage": {
+    "NoSavedPasswordProfiles": "Não tem perfis de palavras-passe guardados.",
+    "SaveAPassword": "Guardar uma palavra-passe",
+    "SearchPasswords": "Procurar palavras-passe...",
+    "NewPassword": "Nova palavra-passe"
+  },
+  "Settings": {
+    "DefaultPasswordProfile": "Palavra-passe padrão",
+    "FocusField": "Campo de foco",
+    "SignIn": "Iniciar sessão",
+    "EncryptMyMasterPassword": "Encriptar a minha palavra-passe mestre ao iniciar sessão",
+    "Save": "Guardar",
+    "Reset": "Repor",
+    "Title": "Definições"
+  }
+}

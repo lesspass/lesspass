@@ -1,6 +1,9 @@
 {
   "name": "lesspass-web-extension",
-  "version": "11.0.0",
+  "version": "11.0.1",
+  "description": "LessPass Web Extension",
+  "license": "GPL-3.0-only",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "type": "module",
   "scripts": {
     "clean": "rm -rf dist",

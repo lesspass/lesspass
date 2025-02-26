@@ -1,0 +1,93 @@
+{
+  "ForgotPasswordPage": {
+    "ResetYourPassword": "重置您的密码",
+    "ConfirmLinkSendTitle": "确认链接发送成功",
+    "ConfirmLinkSendMessage": "修改密码的链接已发送到 {{email}}",
+    "UnableToChangeYourPassword": "无法更改您的密码",
+    "UnknownEmail": "未知的邮箱",
+    "UserDoesNotExists": "该用户不存在。您无法使用 LessPass。"
+  },
+  "Common": {
+    "Send": "发送",
+    "Cancel": "取消",
+    "Change": "更改",
+    "Hide": "隐藏",
+    "Show": "显示",
+    "Copied": "已复制",
+    "Copy": "复制"
+  },
+  "MyProfilePage": {
+    "Welcome": "欢迎, {{email}}",
+    "ThankYouMessage": "您的账户存储在 https://api.lesspass.com 服务器上，感谢您成为 LessPass 的早期用户。",
+    "SignOut": "退出登录"
+  },
+  "PasswordResetConfirmForm": {
+    "NewPassword": "新密码"
+  },
+  "PasswordResetPage": {
+    "ChangePassword": "更改您的密码",
+    "PasswordChangedSuccessfullyTitle": "您的密码已成功更改。",
+    "PasswordChangedSuccessfullyMessage": "您现在可以登录。",
+    "CantChangePasswordTitle": "无法更改您的密码。",
+    "CantChangePasswordMessage": "请稍后再试。"
+  },
+  "SignInForm": {
+    "LessPassServer": "LessPass 服务器",
+    "Email": "邮箱",
+    "UsernamePlaceholder": "contact@example.org",
+    "MasterPassword": "主密码"
+  },
+  "SignInPage": {
+    "SignInToLessPass": "登录 LessPass",
+    "UnableToSignInTitle": "无法登录",
+    "UnableToSignInMessage": "提供的信息无效或用户不存在。",
+    "ForgotPassword": "忘记密码？",
+    "SignIn": "登录",
+    "LessPassServerDecommissioned": "LessPass 数据库已停用。您必须使用自己的服务器。"
+  },
+  "Header": {
+    "passwords": "密码",
+    "settings": "设置",
+    "signIn": "登录",
+    "myProfile": "我的个人资料",
+    "SignOut": "退出登录"
+  },
+  "PasswordProfile": {
+    "Site": "网站",
+    "MasterPassword": "主密码",
+    "GenerateAndCopy": "生成并复制",
+    "Clear": "清除",
+    "Login": "登录名",
+    "Options": "选项",
+    "Length": "长度",
+    "Counter": "计数器",
+    "C": "C"
+  },
+  "NewPasswordProfilePage": {
+    "NewPassword": "新密码"
+  },
+  "PasswordProfilePage": {
+    "NoPasswordWithId": "没有 ID 为 {{id}} 的密码配置文件",
+    "GoListPasswordProfiles": "返回密码配置文件列表。",
+    "DeletePassword": "删除密码",
+    "AreYouSure": "您确定要删除 {{site}}/{{login}} 配置文件吗？",
+    "YesIAmSure": "是的，我确定",
+    "NoIAmNotSure": "否",
+    "Delete": "删除"
+  },
+  "PasswordProfilesPage": {
+    "NoSavedPasswordProfiles": "您没有保存的密码配置文件。",
+    "SaveAPassword": "保存密码",
+    "SearchPasswords": "搜索密码...",
+    "NewPassword": "新密码"
+  },
+  "Settings": {
+    "DefaultPasswordProfile": "默认密码",
+    "FocusField": "焦点字段",
+    "SignIn": "登录",
+    "EncryptMyMasterPassword": "在登录时加密我的主密码",
+    "Save": "保存",
+    "Reset": "重置",
+    "Title": "设置"
+  }
+}

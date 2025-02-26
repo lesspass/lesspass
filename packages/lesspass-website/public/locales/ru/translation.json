@@ -1,0 +1,93 @@
+{
+  "ForgotPasswordPage": {
+    "ResetYourPassword": "Сбросить пароль",
+    "ConfirmLinkSendTitle": "Ссылка для подтверждения успешно отправлена",
+    "ConfirmLinkSendMessage": "Ссылка для смены пароля отправлена на {{email}}",
+    "UnableToChangeYourPassword": "Не удалось изменить пароль",
+    "UnknownEmail": "Неизвестный email",
+    "UserDoesNotExists": "Такого пользователя не существует. Вы не можете использовать LessPass."
+  },
+  "Common": {
+    "Send": "Отправить",
+    "Cancel": "Отмена",
+    "Change": "Изменить",
+    "Hide": "Скрыть",
+    "Show": "Показать",
+    "Copied": "Скопировано",
+    "Copy": "Копировать"
+  },
+  "MyProfilePage": {
+    "Welcome": "Добро пожаловать, {{email}}",
+    "ThankYouMessage": "Ваш аккаунт хранится на сервере https://api.lesspass.com в знак благодарности за то, что вы стали одним из первых пользователей LessPass.",
+    "SignOut": "Выйти"
+  },
+  "PasswordResetConfirmForm": {
+    "NewPassword": "Новый пароль"
+  },
+  "PasswordResetPage": {
+    "ChangePassword": "Измените пароль",
+    "PasswordChangedSuccessfullyTitle": "Ваш пароль успешно изменен.",
+    "PasswordChangedSuccessfullyMessage": "Теперь вы можете войти в систему.",
+    "CantChangePasswordTitle": "Не удалось изменить пароль.",
+    "CantChangePasswordMessage": "Пожалуйста, попробуйте снова через несколько минут."
+  },
+  "SignInForm": {
+    "LessPassServer": "Сервер LessPass",
+    "Email": "Email",
+    "UsernamePlaceholder": "contact@example.org",
+    "MasterPassword": "Мастер-пароль"
+  },
+  "SignInPage": {
+    "SignInToLessPass": "Войти в LessPass",
+    "UnableToSignInTitle": "Не удалось войти",
+    "UnableToSignInMessage": "Предоставленные данные недействительны или пользователь не существует.",
+    "ForgotPassword": "Забыли пароль?",
+    "SignIn": "Войти",
+    "LessPassServerDecommissioned": "База данных LessPass отключена. Вам необходимо использовать собственный сервер."
+  },
+  "Header": {
+    "passwords": "Пароли",
+    "settings": "Настройки",
+    "signIn": "Войти",
+    "myProfile": "Мой профиль",
+    "SignOut": "Выйти"
+  },
+  "PasswordProfile": {
+    "Site": "Сайт",
+    "MasterPassword": "Мастер-пароль",
+    "GenerateAndCopy": "Сгенерировать и скопировать",
+    "Clear": "Очистить",
+    "Login": "Логин",
+    "Options": "Опции",
+    "Length": "Длина",
+    "Counter": "Счетчик",
+    "C": "C"
+  },
+  "NewPasswordProfilePage": {
+    "NewPassword": "Новый пароль"
+  },
+  "PasswordProfilePage": {
+    "NoPasswordWithId": "Профиль пароля с ID: {{id}} не найден",
+    "GoListPasswordProfiles": "Вернуться к списку профилей паролей.",
+    "DeletePassword": "Удалить пароль",
+    "AreYouSure": "Вы уверены, что хотите удалить профиль {{site}}/{{login}}?",
+    "YesIAmSure": "Да, я уверен",
+    "NoIAmNotSure": "Нет",
+    "Delete": "Удалить"
+  },
+  "PasswordProfilesPage": {
+    "NoSavedPasswordProfiles": "У вас нет сохраненных профилей паролей.",
+    "SaveAPassword": "Сохранить пароль",
+    "SearchPasswords": "Поиск паролей...",
+    "NewPassword": "Новый пароль"
+  },
+  "Settings": {
+    "DefaultPasswordProfile": "Пароль по умолчанию",
+    "FocusField": "Поле фокуса",
+    "SignIn": "Войти",
+    "EncryptMyMasterPassword": "Шифровать мой мастер-пароль при входе",
+    "Save": "Сохранить",
+    "Reset": "Сбросить",
+    "Title": "Настройки"
+  }
+}
