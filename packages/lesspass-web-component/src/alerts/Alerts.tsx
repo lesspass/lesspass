@@ -5,7 +5,7 @@ export interface IAlert {
   id: string;
   title: string;
   message: string;
-  type: "success" | "warning" | "danger";
+  type: "success" | "info" | "danger";
 }
 
 export const Alert = ({
@@ -17,25 +17,21 @@ export const Alert = ({
 }) => {
   const bgs: Record<IAlert["type"], string> = {
     success: "bg-green-200",
-    warning: "bg-orange-200",
+    info: "bg-blue-500",
     danger: "bg-red-200",
   };
   const bg = bgs[alert.type];
   const colors: Record<IAlert["type"], string> = {
-    success: "text-green-500",
-    warning: "text-orange-500",
+    success: "text-green-800",
+    info: "text-white",
     danger: "text-red-500",
   };
   const color = colors[alert.type];
   return (
-    <div className={`rounded-md ${bg} p-4`}>
+    <div className={`rounded-md ${bg} ${color} p-2`}>
       <div className="flex">
         <div className="flex-shrink-0">
-          <svg
-            className={`h-5 w-5 ${color}`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
+          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
               d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -84,10 +80,8 @@ export default function Alerts() {
   if (alertsArray.length === 0) return null;
   return (
     <div
-      className="fixed top-0 right-0 bg-transparent p-2"
+      className="translate fixed top-16 left-1/2 -translate-x-1/2 bg-transparent p-2 opacity-90"
       style={{
-        width: "80%",
-        maxWidth: "1024px",
         zIndex: 100,
       }}
       role="alert"

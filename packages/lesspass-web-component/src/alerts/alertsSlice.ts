@@ -34,10 +34,11 @@ export const { showAlert, hideAlert, hideAllAlerts } = alertsSlice.actions;
 
 export const selectAlerts = (state: RootState) => state.alerts;
 
-function showAndHideAfter10s(
+function showAndHideAfterXSeconds(
   title = "",
   message = "",
-  type: "success" | "danger" | "warning" = "success",
+  type: "success" | "danger" | "info" = "success",
+  duration = 10000,
 ) {
   return (dispatch: AppDispatch) => {
     const alert: IAlert = {
@@ -47,16 +48,32 @@ function showAndHideAfter10s(
       type,
     };
     dispatch(showAlert(alert));
-    setTimeout(() => dispatch(hideAlert(alert)), 10000);
+    setTimeout(() => dispatch(hideAlert(alert)), duration);
   };
 }
 
-export function showSuccess(title: string, message: string = "") {
-  return showAndHideAfter10s(title, message, "success");
+export function showInfo(
+  title: string,
+  message: string = "",
+  duration: number = 10000,
+) {
+  return showAndHideAfterXSeconds(title, message, "info", duration);
 }
 
-export function showError(title: string, message: string = "") {
-  return showAndHideAfter10s(title, message, "danger");
+export function showSuccess(
+  title: string,
+  message: string = "",
+  duration: number = 10000,
+) {
+  return showAndHideAfterXSeconds(title, message, "success", duration);
+}
+
+export function showError(
+  title: string,
+  message: string = "",
+  duration: number = 10000,
+) {
+  return showAndHideAfterXSeconds(title, message, "danger", duration);
 }
 
 export default alertsSlice.reducer;

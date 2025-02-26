@@ -1,0 +1,96 @@
+{
+  "ForgotPasswordPage": {
+    "ResetYourPassword": "Reimposta la tua password",
+    "ConfirmLinkSendTitle": "Link di conferma inviato con successo",
+    "ConfirmLinkSendMessage": "Un link per modificare la tua password è stato inviato a {{email}}",
+    "UnableToChangeYourPassword": "Impossibile modificare la tua password",
+    "UnknownEmail": "Email sconosciuta",
+    "UserDoesNotExists": "Questo utente non esiste. Non puoi usare LessPass."
+  },
+  "Common": {
+    "Send": "Invia",
+    "Cancel": "Annulla",
+    "Change": "Modifica",
+    "Hide": "Nascondi",
+    "Show": "Mostra",
+    "Copied": "Copiato",
+    "Copy": "Copia",
+    "Save": "Salva"
+  },
+  "MyProfilePage": {
+    "Welcome": "Benvenuto {{email}}",
+    "ThankYouMessage": "Il tuo account è conservato sul server https://api.lesspass.com per ringraziarti di essere tra i primi utenti di LessPass.",
+    "SignOut": "Esci"
+  },
+  "PasswordResetConfirmForm": {
+    "NewPassword": "Nuova password"
+  },
+  "PasswordResetPage": {
+    "ChangePassword": "Modifica la tua password",
+    "PasswordChangedSuccessfullyTitle": "La tua password è stata modificata con successo.",
+    "PasswordChangedSuccessfullyMessage": "Ora puoi accedere.",
+    "CantChangePasswordTitle": "Impossibile modificare la tua password.",
+    "CantChangePasswordMessage": "Riprova tra qualche minuto."
+  },
+  "SignInForm": {
+    "LessPassServer": "Server LessPass",
+    "Email": "Email",
+    "UsernamePlaceholder": "contact@example.org",
+    "MasterPassword": "Password principale"
+  },
+  "SignInPage": {
+    "SignInToLessPass": "Accedi a LessPass",
+    "UnableToSignInTitle": "Impossibile accedere",
+    "UnableToSignInMessage": "Le informazioni fornite non sono valide o l'utente non esiste.",
+    "ForgotPassword": "Password dimenticata?",
+    "SignIn": "Accedi",
+    "LessPassServerDecommissioned": "Il database di LessPass è stato dismesso. Devi usare il tuo server."
+  },
+  "Header": {
+    "passwords": "Password",
+    "settings": "Impostazioni",
+    "signIn": "Accedi",
+    "myProfile": "Il mio profilo",
+    "SignOut": "Esci"
+  },
+  "PasswordProfile": {
+    "Site": "Sito",
+    "MasterPassword": "Password principale",
+    "GenerateAndCopy": "Genera e copia",
+    "PasswordProfileCopiedInClipboard": "L'URL del profilo della password è stato copiato negli appunti",
+    "Share": "Condividi",
+    "Clear": "Cancella",
+    "Login": "Login",
+    "Options": "Opzioni",
+    "Length": "Lunghezza",
+    "Counter": "Contatore",
+    "C": "C"
+  },
+  "NewPasswordProfilePage": {
+    "NewPassword": "Nuova password"
+  },
+  "PasswordProfilePage": {
+    "NoPasswordWithId": "Non esiste un profilo password con ID: {{id}}",
+    "GoListPasswordProfiles": "Torna alla lista dei profili password.",
+    "DeletePassword": "Elimina password",
+    "AreYouSure": "Sei sicuro di voler eliminare il profilo {{site}}/{{login}}?",
+    "YesIAmSure": "Sì, sono sicuro",
+    "NoIAmNotSure": "No",
+    "Delete": "Elimina"
+  },
+  "PasswordProfilesPage": {
+    "NoSavedPasswordProfiles": "Non hai profili password salvati.",
+    "SaveAPassword": "Salva una password",
+    "SearchPasswords": "Cerca password...",
+    "NewPassword": "Nuova password"
+  },
+  "Settings": {
+    "DefaultPasswordProfile": "Password predefinita",
+    "FocusField": "Campo attivo",
+    "SignIn": "Accedi",
+    "EncryptMyMasterPassword": "Cripta la mia password principale all'accesso",
+    "Save": "Salva",
+    "Reset": "Reimposta",
+    "Title": "Impostazioni"
+  }
+}

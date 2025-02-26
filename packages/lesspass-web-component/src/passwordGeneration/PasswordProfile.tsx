@@ -12,11 +12,14 @@ import { MasterPasswordInput } from "../components/masterPassword/masterPassword
 import { Field, Label } from "../components/fieldset";
 import { Button } from "../components/button";
 import GeneratedPassword from "./GeneratedPassword";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useCreatePasswordProfileMutation } from "../passwordProfiles/passwordProfilesApi";
 import PasswordProfileLogin from "./PasswordProfileLogin";
 import PasswordProfileOptions from "./PasswordProfileOptions";
 import { useTranslation } from "react-i18next";
+import { generateURL } from "./url";
+import { useAppDispatch } from "../store";
+import { showInfo } from "../alerts/alertsSlice";
 
 export const PasswordProfileFormSchema = Yup.object()
   .shape({
@@ -91,6 +94,9 @@ export default function PasswordProfile({
   passwordProfile: PasswordProfile;
   focus: keyof PasswordProfileForm;
 }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const [generatedPassword, setGeneratedPassword] = useState<string | null>(
     null,
@@ -125,7 +131,25 @@ export default function PasswordProfile({
         <Button
           type="button"
           onClick={() => {
-            window.location.reload();
+            const url = `https://www.lesspass.com/?${generateURL(methods.getValues())}`;
+            navigator.clipboard.writeText(url);
+            dispatch(
+              showInfo(
+                t("PasswordProfile.PasswordProfileCopiedInClipboard"),
+                undefined,
+                3000,
+              ),
+            );
+          }}
+          outline
+        >
+          {t("PasswordProfile.Share")}
+        </Button>
+        <Button
+          type="button"
+          onClick={() => {
+            navigate(location.pathname, { replace: true });
+            navigate(0);
           }}
           outline
         >
@@ -138,12 +162,14 @@ export default function PasswordProfile({
 }
 
 export function NewPasswordProfile() {
+  const { t } = useTranslation();
   const [createPasswordProfile] = useCreatePasswordProfileMutation();
   const navigate = useNavigate();
   const methods = useForm<PasswordProfileForm>({
     resolver: yupResolver(PasswordProfileFormSchema),
     defaultValues: { ...defaultPasswordProfile },
   });
+  const { isDirty, isValid } = methods.formState;
 
   return (
     <FormProvider {...methods}>
@@ -161,9 +187,9 @@ export function NewPasswordProfile() {
         <Button
           type="submit"
           form="password-profile-form"
-          disabled={!methods.formState.isDirty || !methods.formState.isValid}
+          disabled={!isDirty || !isValid}
         >
-          Save
+          {t("Common.Save")}
         </Button>
         <Button
           type="button"
@@ -172,7 +198,7 @@ export function NewPasswordProfile() {
           }}
           outline
         >
-          Cancel
+          {t("Common.Cancel")}
         </Button>
       </div>
     </FormProvider>

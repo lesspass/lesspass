@@ -14,7 +14,8 @@
     "Hide": "隱藏",
     "Show": "顯示",
     "Copied": "已複製",
-    "Copy": "複製"
+    "Copy": "複製",
+    "Save": "儲存"
   },
   "MyProfilePage": {
     "Welcome": "歡迎, {{email}}",
@@ -56,6 +57,8 @@
     "Site": "網站",
     "MasterPassword": "主密碼",
     "GenerateAndCopy": "生成並複製",
+    "PasswordProfileCopiedInClipboard": "密碼設定檔的 URL 已複製到剪貼簿。",
+    "Share": "分享",
     "Clear": "清除",
     "Login": "登入名稱",
     "Options": "選項",

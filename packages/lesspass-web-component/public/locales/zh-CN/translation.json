@@ -14,7 +14,8 @@
     "Hide": "隐藏",
     "Show": "显示",
     "Copied": "已复制",
-    "Copy": "复制"
+    "Copy": "复制",
+    "Save": "保存"
   },
   "MyProfilePage": {
     "Welcome": "欢迎, {{email}}",
@@ -56,6 +57,8 @@
     "Site": "网站",
     "MasterPassword": "主密码",
     "GenerateAndCopy": "生成并复制",
+    "PasswordProfileCopiedInClipboard": "密码配置文件的 URL 已复制到剪贴板。",
+    "Share": "分享",
     "Clear": "清除",
     "Login": "登录名",
     "Options": "选项",

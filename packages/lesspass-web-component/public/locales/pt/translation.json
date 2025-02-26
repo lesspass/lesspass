@@ -14,7 +14,8 @@
     "Hide": "Ocultar",
     "Show": "Mostrar",
     "Copied": "Copiado",
-    "Copy": "Copiar"
+    "Copy": "Copiar",
+    "Save": "Salvar"
   },
   "MyProfilePage": {
     "Welcome": "Bem-vindo, {{email}}",
@@ -56,6 +57,8 @@
     "Site": "Site",
     "MasterPassword": "Palavra-passe mestre",
     "GenerateAndCopy": "Gerar e copiar",
+    "PasswordProfileCopiedInClipboard": "A URL do perfil da senha foi copiada para a área de transferência.",
+    "Share": "Compartilhar",
     "Clear": "Limpar",
     "Login": "Nome de utilizador",
     "Options": "Opções",

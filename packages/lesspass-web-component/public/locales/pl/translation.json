@@ -14,7 +14,8 @@
     "Hide": "Ukryj",
     "Show": "Pokaż",
     "Copied": "Skopiowano",
-    "Copy": "Kopiuj"
+    "Copy": "Kopiuj",
+    "Save": "Zapisz"
   },
   "MyProfilePage": {
     "Welcome": "Witaj, {{email}}",
@@ -56,6 +57,8 @@
     "Site": "Strona",
     "MasterPassword": "Hasło główne",
     "GenerateAndCopy": "Generuj i kopiuj",
+    "PasswordProfileCopiedInClipboard": "URL profilu hasła został skopiowany do schowka.",
+    "Share": "Udostępnij",
     "Clear": "Wyczyść",
     "Login": "Login",
     "Options": "Opcje",

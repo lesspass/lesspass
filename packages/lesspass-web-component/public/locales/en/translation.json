@@ -14,7 +14,8 @@
     "Hide": "Hide",
     "Show": "Show",
     "Copied": "Copied",
-    "Copy": "Copy"
+    "Copy": "Copy",
+    "Save": "Save"
   },
   "MyProfilePage": {
     "Welcome": "Welcome {{email}}",
@@ -56,6 +57,8 @@
     "Site": "Site",
     "MasterPassword": "Master password",
     "GenerateAndCopy": "Generate & copy",
+    "PasswordProfileCopiedInClipboard": "Password profile URL has been copied to your clipboard",
+    "Share": "Share",
     "Clear": "Clear",
     "Login": "Login",
     "Options": "Options",

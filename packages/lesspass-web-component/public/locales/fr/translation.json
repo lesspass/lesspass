@@ -14,7 +14,8 @@
     "Hide": "Cacher",
     "Show": "Voir",
     "Copied": "Copié",
-    "Copy": "Copier"
+    "Copy": "Copier",
+    "Save": "Enregistrer"
   },
   "MyProfilePage": {
     "Welcome": "Bienvenue {{email}}",
@@ -56,6 +57,8 @@
     "Site": "Site",
     "MasterPassword": "Mot de passe maître",
     "GenerateAndCopy": "Générer & copier",
+    "PasswordProfileCopiedInClipboard": "L'URL du mot de passe a été copié dans le presse papier",
+    "Share": "Partager",
     "Clear": "Réinitialiser",
     "Login": "Nom d'utilisateur",
     "Options": "Options",

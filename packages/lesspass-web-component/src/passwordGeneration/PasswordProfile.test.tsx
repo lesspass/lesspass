@@ -1,10 +1,10 @@
 import { test, expect } from "vitest";
-import { render } from "../tests/renders";
+import { renderWithProviders } from "../tests/renders";
 import PasswordProfile from "./PasswordProfile";
 import { defaultPasswordProfile } from "lesspass";
 
 test("PasswordProfileForm site is focused", async () => {
-  const { getByLabelText } = render(
+  const { getByLabelText } = renderWithProviders(
     <PasswordProfile
       focus="site"
       passwordProfile={{ ...defaultPasswordProfile }}
@@ -16,7 +16,7 @@ test("PasswordProfileForm site is focused", async () => {
 });
 
 test("PasswordProfileForm masterPassword is focused", async () => {
-  const { getByLabelText } = render(
+  const { getByLabelText } = renderWithProviders(
     <PasswordProfile
       focus="masterPassword"
       passwordProfile={{ ...defaultPasswordProfile }}
@@ -28,12 +28,13 @@ test("PasswordProfileForm masterPassword is focused", async () => {
 });
 
 test("Should generate a password", async () => {
-  const { user, getByRole, findByRole, getByLabelText, queryByText } = render(
-    <PasswordProfile
-      focus="masterPassword"
-      passwordProfile={{ ...defaultPasswordProfile }}
-    />,
-  );
+  const { user, getByRole, findByRole, getByLabelText, queryByText } =
+    renderWithProviders(
+      <PasswordProfile
+        focus="masterPassword"
+        passwordProfile={{ ...defaultPasswordProfile }}
+      />,
+    );
   const site = getByLabelText("Site");
   await user.type(site, "example.org");
 
@@ -53,12 +54,13 @@ test("Should generate a password", async () => {
 });
 
 test("Should generate a password with different options", async () => {
-  const { user, findByRole, getByRole, getByLabelText, queryByText } = render(
-    <PasswordProfile
-      focus="masterPassword"
-      passwordProfile={{ ...defaultPasswordProfile }}
-    />,
-  );
+  const { user, findByRole, getByRole, getByLabelText, queryByText } =
+    renderWithProviders(
+      <PasswordProfile
+        focus="masterPassword"
+        passwordProfile={{ ...defaultPasswordProfile }}
+      />,
+    );
 
   const site = getByLabelText("Site");
   await user.type(site, "example.org");

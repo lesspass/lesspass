@@ -14,7 +14,8 @@
     "Hide": "Amagar",
     "Show": "Mostrar",
     "Copied": "Copiat",
-    "Copy": "Copiar"
+    "Copy": "Copiar",
+    "Save": "Desar"
   },
   "MyProfilePage": {
     "Welcome": "Benvingut/da, {{email}}",
@@ -56,6 +57,8 @@
     "Site": "Lloc web",
     "MasterPassword": "Contrasenya mestra",
     "GenerateAndCopy": "Generar i copiar",
+    "PasswordProfileCopiedInClipboard": "L'URL del perfil de la contrasenya s'ha copiat al porta-retalls.",
+    "Share": "Compartir",
     "Clear": "Esborrar",
     "Login": "Usuari",
     "Options": "Opcions",

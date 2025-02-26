@@ -14,7 +14,8 @@
     "Hide": "Скрыть",
     "Show": "Показать",
     "Copied": "Скопировано",
-    "Copy": "Копировать"
+    "Copy": "Копировать",
+    "Save": "Сохранить"
   },
   "MyProfilePage": {
     "Welcome": "Добро пожаловать, {{email}}",
@@ -56,6 +57,8 @@
     "Site": "Сайт",
     "MasterPassword": "Мастер-пароль",
     "GenerateAndCopy": "Сгенерировать и скопировать",
+    "PasswordProfileCopiedInClipboard": "URL профиля пароля скопирован в буфер обмена.",
+    "Share": "Поделиться",
     "Clear": "Очистить",
     "Login": "Логин",
     "Options": "Опции",
