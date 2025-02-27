@@ -6,7 +6,7 @@ from api.tests import factories
 
 class LogoutEncryptedPasswordProfileTestCase(APITestCase):
     def test_get_password_profiles_401(self):
-        response = self.client.get("/api/encrypted_password_profiles/")
+        response = self.client.get("/encrypted_password_profiles/")
         self.assertEqual(401, response.status_code)
 
 
@@ -17,14 +17,14 @@ class LoginEncryptedPasswordProfileTestCase(APITestCase):
         self.client.force_authenticate(user=self.user)
 
     def test_get_empty_password_profiless(self):
-        request = self.client.get("/api/encrypted_password_profiles/")
+        request = self.client.get("/encrypted_password_profiles/")
         self.assertEqual(0, len(request.data["results"]))
 
     def test_retrieve_its_own_password_profiles(self):
         factories.EncryptedPasswordProfileFactory(
             user=self.user, password_profile="encrypted_content"
         )
-        request = self.client.get("/api/encrypted_password_profiles/")
+        request = self.client.get("/encrypted_password_profiles/")
         self.assertEqual(1, len(request.data["results"]))
         self.assertEqual(
             "encrypted_content",
@@ -36,7 +36,7 @@ class LoginEncryptedPasswordProfileTestCase(APITestCase):
             user=factories.UserFactory()
         )
         request = self.client.get(
-            "/api/encrypted_password_profiles/%s/" % not_my_password_profile.id
+            "/encrypted_password_profiles/%s/" % not_my_password_profile.id
         )
         self.assertEqual(404, request.status_code)
 
@@ -44,7 +44,7 @@ class LoginEncryptedPasswordProfileTestCase(APITestCase):
         password_profile = factories.EncryptedPasswordProfileFactory(user=self.user)
         self.assertEqual(1, models.EncryptedPasswordProfile.objects.all().count())
         request = self.client.delete(
-            "/api/encrypted_password_profiles/%s/" % password_profile.id
+            "/encrypted_password_profiles/%s/" % password_profile.id
         )
         self.assertEqual(204, request.status_code)
         self.assertEqual(0, models.EncryptedPasswordProfile.objects.all().count())
@@ -55,7 +55,7 @@ class LoginEncryptedPasswordProfileTestCase(APITestCase):
         )
         self.assertEqual(1, models.EncryptedPasswordProfile.objects.all().count())
         request = self.client.delete(
-            "/api/encrypted_password_profiles/%s/" % not_my_password_profile.id
+            "/encrypted_password_profiles/%s/" % not_my_password_profile.id
         )
         self.assertEqual(404, request.status_code)
         self.assertEqual(1, models.EncryptedPasswordProfile.objects.all().count())
@@ -63,7 +63,7 @@ class LoginEncryptedPasswordProfileTestCase(APITestCase):
     def test_create_password(self):
         self.assertEqual(0, models.EncryptedPasswordProfile.objects.count())
         self.client.post(
-            "/api/encrypted_password_profiles/",
+            "/encrypted_password_profiles/",
             {"password_profile": "test_create_password"},
         )
         self.assertEqual(1, models.EncryptedPasswordProfile.objects.count())
@@ -76,7 +76,7 @@ class LoginEncryptedPasswordProfileTestCase(APITestCase):
             "test_update_password_profile", password_profile.password_profile
         )
         request = self.client.put(
-            "/api/encrypted_password_profiles/%s/" % password_profile.id,
+            "/encrypted_password_profiles/%s/" % password_profile.id,
             {"password_profile": "test_update_password_profile"},
         )
         self.assertEqual(200, request.status_code)
@@ -96,7 +96,7 @@ class LoginEncryptedPasswordProfileTestCase(APITestCase):
             "test_cant_update_other_password", not_my_password_profile.password_profile
         )
         request = self.client.put(
-            "/api/encrypted_password_profiles/%s/" % not_my_password_profile.id,
+            "/encrypted_password_profiles/%s/" % not_my_password_profile.id,
             {"password_profile": "not_my_password_profile"},
         )
         self.assertEqual(404, request.status_code)

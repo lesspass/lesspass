@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import * as Yup from "yup";
-import { useAppDispatch } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { showSuccess, showError } from "../alerts/alertsSlice";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
@@ -11,15 +11,19 @@ import { Title } from "../components/heading";
 import { Button } from "../components/button";
 import { useConfirmResetPasswordMutation } from "./authApi";
 import { useTranslation } from "react-i18next";
+import { MasterPasswordInput } from "../components/masterPassword/masterPasswordInput";
+import { defaultPasswordProfile, generatePassword } from "lesspass";
 
 export const PasswordResetConfirmSchema = Yup.object({
-  password: Yup.string()
+  email: Yup.string().email("Email is invalid").required("Email is required"),
+  masterPassword: Yup.string()
     .min(8, "Your new password is too short")
     .required("Your new password is required"),
 });
 
 interface FormValues {
-  password: string;
+  email: string;
+  masterPassword: string;
 }
 
 const PasswordResetConfirmForm = ({
@@ -37,30 +41,40 @@ const PasswordResetConfirmForm = ({
     register,
     formState: { errors },
   } = useForm<FormValues>({
-    defaultValues: { password: "" },
+    defaultValues: { email: "", masterPassword: "" },
     resolver: yupResolver(PasswordResetConfirmSchema),
   });
   return (
     <form id={id} className={className} onSubmit={handleSubmit(onSubmit)}>
       <Field>
+        <Label htmlFor="username">{t("SignInForm.Email")}</Label>
+        <Input
+          id="username"
+          placeholder={t("SignInForm.UsernamePlaceholder")}
+          {...register("email")}
+        />
+        <ErrorMessage message={errors.email?.message} />
+      </Field>
+      <Field>
         <Label htmlFor="password_confirm-password">
           {t("PasswordResetConfirmForm.NewPassword")}
         </Label>
-        <Input
-          {...register("password")}
+        <MasterPasswordInput
           id="password_confirm-password"
-          data-testid="password_confirm-password"
-          placeholder={t("PasswordResetConfirmForm.NewPassword")}
-          name="password"
-          type="password"
+          autoComplete="new-password"
+          placeholder={t("PasswordProfile.MasterPassword")}
+          {...register("masterPassword")}
         />
-        <ErrorMessage message={errors.password?.message} />
+        <ErrorMessage message={errors.masterPassword?.message} />
       </Field>
     </form>
   );
 };
 
 const PasswordResetPage = () => {
+  const { encryptMasterPasswordAtLogin } = useAppSelector(
+    (state) => state.settings,
+  );
   const { t } = useTranslation();
   const { uid = "", token = "" } = useParams();
   const navigate = useNavigate();
@@ -71,8 +85,14 @@ const PasswordResetPage = () => {
       <Title className="mb-4">{t("PasswordResetPage.ChangePassword")}</Title>
       <PasswordResetConfirmForm
         id="password_reset_form"
-        onSubmit={(values) => {
-          const { password } = values;
+        onSubmit={async ({ email, masterPassword }) => {
+          const generatedPassword = await generatePassword(
+            { ...defaultPasswordProfile, site: "lesspass.com", login: email },
+            masterPassword,
+          );
+          const password = encryptMasterPasswordAtLogin
+            ? generatedPassword
+            : masterPassword;
           confirmResetPassword({ uid, token, password })
             .unwrap()
             .then(() => {

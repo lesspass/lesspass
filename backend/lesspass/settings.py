@@ -205,10 +205,11 @@ if "test" in sys.argv[1:] or "jenkins" in sys.argv[1:]:
 SITE_NAME = "LessPass"
 DOMAIN = env("FRONTEND_HOST", default="www.lesspass.com")
 DJOSER = {
-    # "PASSWORD_RESET_CONFIRM_URL": "auth/resetPassword/{uid}/{token}/",
-    # "ACTIVATION_URL": "auth/activate/{uid}/{token}/",
-    "PASSWORD_RESET_CONFIRM_URL": "#/password/reset/confirm/{uid}/{token}",
-    "ACTIVATION_URL": "#/activate/{uid}/{token}",
+    "SERIALIZERS": {
+        "user_create": "api.serializers.NoMoreUserSerializer",
+    },
+    "PASSWORD_RESET_CONFIRM_URL": "auth/resetPassword/{uid}/{token}/",
+    "ACTIVATION_URL": "auth/activate/{uid}/{token}/",
     "TOKEN_MODEL": None,
 }
 SIMPLE_JWT = {

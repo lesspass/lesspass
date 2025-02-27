@@ -6,7 +6,7 @@ from api.tests import factories
 
 class LogoutPasswordsTestCase(APITestCase):
     def test_get_passwords_401(self):
-        response = self.client.get("/api/passwords/")
+        response = self.client.get("/passwords/")
         self.assertEqual(401, response.status_code)
 
 
@@ -17,31 +17,31 @@ class LoginPasswordsTestCase(APITestCase):
         self.client.force_authenticate(user=self.user)
 
     def test_get_empty_passwords(self):
-        request = self.client.get("/api/passwords/")
+        request = self.client.get("/passwords/")
         self.assertEqual(0, len(request.data["results"]))
 
     def test_retrieve_its_own_passwords(self):
         password = factories.PasswordFactory(user=self.user)
-        request = self.client.get("/api/passwords/")
+        request = self.client.get("/passwords/")
         self.assertEqual(1, len(request.data["results"]))
         self.assertEqual(password.site, request.data["results"][0]["site"])
 
     def test_cant_retrieve_other_passwords(self):
         not_my_password = factories.PasswordFactory(user=factories.UserFactory())
-        request = self.client.get("/api/passwords/%s/" % not_my_password.id)
+        request = self.client.get("/passwords/%s/" % not_my_password.id)
         self.assertEqual(404, request.status_code)
 
     def test_delete_its_own_passwords(self):
         password = factories.PasswordFactory(user=self.user)
         self.assertEqual(1, models.Password.objects.all().count())
-        request = self.client.delete("/api/passwords/%s/" % password.id)
+        request = self.client.delete("/passwords/%s/" % password.id)
         self.assertEqual(204, request.status_code)
         self.assertEqual(0, models.Password.objects.all().count())
 
     def test_cant_delete_other_password(self):
         not_my_password = factories.PasswordFactory(user=factories.UserFactory())
         self.assertEqual(1, models.Password.objects.all().count())
-        request = self.client.delete("/api/passwords/%s/" % not_my_password.id)
+        request = self.client.delete("/passwords/%s/" % not_my_password.id)
         self.assertEqual(404, request.status_code)
         self.assertEqual(1, models.Password.objects.all().count())
 
@@ -57,7 +57,7 @@ class LoginPasswordsTestCase(APITestCase):
             "length": 12,
         }
         self.assertEqual(0, models.Password.objects.count())
-        self.client.post("/api/passwords/", password)
+        self.client.post("/passwords/", password)
         self.assertEqual(1, models.Password.objects.count())
         profile = models.Password.objects.first()
         self.assertEqual(profile.site, "lesspass.com")
@@ -82,7 +82,7 @@ class LoginPasswordsTestCase(APITestCase):
             "length": 16,
             "version": 2,
         }
-        self.client.post("/api/passwords/", password)
+        self.client.post("/passwords/", password)
         profile = models.Password.objects.first()
         self.assertFalse(profile.digits)
         self.assertFalse(profile.symbols)
@@ -99,7 +99,7 @@ class LoginPasswordsTestCase(APITestCase):
             "length": 16,
             "version": 2,
         }
-        self.client.post("/api/passwords/", password)
+        self.client.post("/passwords/", password)
         profile = models.Password.objects.first()
         self.assertEqual(profile.site, "lesspass.com")
         self.assertEqual(profile.login, "testv2@lesspass.com")
@@ -125,7 +125,7 @@ class LoginPasswordsTestCase(APITestCase):
             "length": 20,
             "version": 2,
         }
-        request = self.client.put("/api/passwords/%s/" % password.id, new_password)
+        request = self.client.put("/passwords/%s/" % password.id, new_password)
         self.assertEqual(200, request.status_code, request.content.decode("utf-8"))
         password_updated = models.Password.objects.get(id=password.id)
         self.assertEqual(password_updated.site, "facebook.com")
@@ -144,16 +144,14 @@ class LoginPasswordsTestCase(APITestCase):
         new_password = {
             "site": "facebook",
         }
-        request = self.client.put(
-            "/api/passwords/%s/" % not_my_password.id, new_password
-        )
+        request = self.client.put("/passwords/%s/" % not_my_password.id, new_password)
         self.assertEqual(404, request.status_code)
         self.assertEqual(1, models.Password.objects.all().count())
 
     def test_search_password_by_site(self):
         factories.PasswordFactory(user=self.user, site="other.org")
         password_profile = factories.PasswordFactory(user=self.user, site="example.org")
-        request = self.client.get("/api/passwords/?search=example.org")
+        request = self.client.get("/passwords/?search=example.org")
         self.assertEqual(1, len(request.data["results"]))
         self.assertEqual(password_profile.site, request.data["results"][0]["site"])
 
@@ -162,12 +160,12 @@ class LoginPasswordsTestCase(APITestCase):
         password_profile = factories.PasswordFactory(
             user=self.user, site="www.example.org"
         )
-        request = self.client.get("/api/passwords/?search=example.org")
+        request = self.client.get("/passwords/?search=example.org")
         self.assertEqual(1, len(request.data["results"]))
         self.assertEqual(password_profile.site, request.data["results"][0]["site"])
 
     def test_search_password_no_match(self):
         factories.PasswordFactory(user=self.user, site="other.org")
         factories.PasswordFactory(user=self.user, site="example.org")
-        request = self.client.get("/api/passwords/?search=lesspass")
+        request = self.client.get("/passwords/?search=lesspass")
         self.assertEqual(0, len(request.data["results"]))

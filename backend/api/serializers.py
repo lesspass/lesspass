@@ -1,6 +1,8 @@
 from api import models
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from djoser.serializers import UserCreateSerializer
+from rest_framework.exceptions import PermissionDenied
 
 
 class PasswordSerializer(serializers.ModelSerializer):
@@ -60,3 +62,8 @@ class BackwardCompatibleTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
         data.update({"token": data["access"]})
         return data
+
+
+class NoMoreUserSerializer(UserCreateSerializer):
+    def validate(self, attrs):
+        raise PermissionDenied("LessPass registration are no longer possible")
