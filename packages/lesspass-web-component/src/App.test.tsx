@@ -8,10 +8,10 @@ test("Should show LessPass image on the index page", async () => {
   expect(getByRole("img", { name: /LessPass/i })).toBeInTheDocument();
 });
 
-test("At startup the login field must be selected", async () => {
+test("At startup the site field must be selected", async () => {
   const { findByRole, getByLabelText } = renderWithProviders(<App />);
   await findByRole("link", { name: /Sign in/i });
-  expect(getByLabelText("Login")).toHaveFocus();
+  expect(getByLabelText("Site")).toHaveFocus();
 });
 
 test("Should allow to navigate to unauthenticated pages", async () => {
@@ -19,7 +19,7 @@ test("Should allow to navigate to unauthenticated pages", async () => {
     <App />,
   );
   await findByRole("link", { name: /Sign in/i });
-  expect(getByLabelText("Login")).toHaveFocus();
+  expect(getByLabelText("Site")).toHaveFocus();
   await user.click(getByRole("link", { name: /Passwords/i }));
   expect(
     getByRole("heading", { name: /Sign in to LessPass/i }),
@@ -40,5 +40,5 @@ test("Should allow to navigate to unauthenticated pages", async () => {
     getByRole("heading", { name: /Sign in to LessPass/i }),
   ).toBeInTheDocument();
   await user.click(getByRole("img", { name: /LessPass/i }));
-  expect(getByLabelText("Login")).toHaveFocus();
+  expect(getByLabelText("Site")).toHaveFocus();
 });

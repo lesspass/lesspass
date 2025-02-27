@@ -12,7 +12,7 @@ import { MasterPasswordInput } from "../components/masterPassword/masterPassword
 import { Field, Label } from "../components/fieldset";
 import { Button } from "../components/button";
 import GeneratedPassword from "./GeneratedPassword";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useCreatePasswordProfileMutation } from "../passwordProfiles/passwordProfilesApi";
 import PasswordProfileLogin from "./PasswordProfileLogin";
 import PasswordProfileOptions from "./PasswordProfileOptions";
@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import { generateURL } from "./url";
 import { useAppDispatch } from "../store";
 import { showInfo } from "../alerts/alertsSlice";
+import { resetSettings } from "../settings/settingsSlice";
 
 export const PasswordProfileFormSchema = Yup.object()
   .shape({
@@ -91,13 +92,13 @@ export default function PasswordProfile({
   passwordProfile,
   focus,
   children,
+  onClear,
 }: {
   passwordProfile: PasswordProfile;
   focus: keyof PasswordProfileForm;
   children?: ReactNode;
+  onClear?: () => void;
 }) {
-  const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const [generatedPassword, setGeneratedPassword] = useState<string | null>(
@@ -150,8 +151,10 @@ export default function PasswordProfile({
         <Button
           type="button"
           onClick={() => {
-            navigate(location.pathname, { replace: true });
-            navigate(0);
+            methods.reset();
+            setGeneratedPassword(null);
+            dispatch(resetSettings());
+            onClear && onClear();
           }}
           outline
         >

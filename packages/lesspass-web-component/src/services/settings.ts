@@ -13,7 +13,7 @@ export function saveSettings(settings: SettingsState) {
 export const defaultSettings: SettingsState = {
   ...defaultPasswordProfile,
   encryptMasterPasswordAtLogin: true,
-  focus: "login",
+  focus: "site",
   isWebExtensionContext: false,
 };
 

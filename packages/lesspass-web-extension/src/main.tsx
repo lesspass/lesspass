@@ -14,7 +14,13 @@ function LessPassWebComponentWithSite() {
   if (site === null) return null;
 
   return (
-    <LessPassWebComponent settings={{ site, isWebExtensionContext: true }} />
+    <LessPassWebComponent
+      settings={{
+        site,
+        focus: site === "" ? "site" : "login",
+        isWebExtensionContext: true,
+      }}
+    />
   );
 }
 

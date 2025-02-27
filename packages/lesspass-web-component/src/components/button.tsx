@@ -26,7 +26,11 @@ export function Button({
     : outline
       ? "ring-gray-300"
       : "ring-blue-500";
-  const hover = outline ? "hover:bg-gray-100" : "hover:bg-blue-400";
+  const hover = outline
+    ? danger
+      ? "hover:ring-2"
+      : "hover:bg-gray-200"
+    : "hover:bg-blue-400";
   const focusBase = "focus:outline-2 focus:-outline-offset-2";
   const focus = outline ? "focus:outline-blue-500" : "focus:outline-blue-400";
 

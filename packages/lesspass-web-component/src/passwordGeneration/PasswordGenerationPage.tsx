@@ -4,9 +4,23 @@ import { Navigate, useLocation } from "react-router";
 import { getPasswordProfileFromLocation } from "./url";
 import { useSearchPasswordProfileQuery } from "../passwordProfiles/passwordProfilesApi";
 import { LoadingPage } from "../LoadingPage";
+import { skipToken } from "@reduxjs/toolkit/query";
 
-function PasswordProfileWithSettings() {
+function LoadPasswordProfileWithSite() {
   const settings = useAppSelector((state) => state.settings);
+  const { site } = settings;
+  const { data, isLoading } = useSearchPasswordProfileQuery(
+    site === "" ? skipToken : site,
+  );
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
+  if (data && site) {
+    return <Navigate to={`/passwordProfiles/${data.id}`} />;
+  }
+
   return (
     <div>
       <PasswordProfile
@@ -17,26 +31,13 @@ function PasswordProfileWithSettings() {
   );
 }
 
-function LoadPasswordProfileWithSite({ site }: { site: string }) {
-  const { data, isLoading } = useSearchPasswordProfileQuery(site);
-
-  if (isLoading) {
-    return <LoadingPage />;
-  }
-  if (data) {
-    return <Navigate to={`/passwordProfiles/${data.id}`} />;
-  }
-
-  return <PasswordProfileWithSettings />;
-}
-
 export default function PasswordGenerationPage() {
   const settings = useAppSelector((state) => state.settings);
   const { currentUser } = useAppSelector((state) => state.auth);
-  const { site, isWebExtensionContext } = settings;
+  const { isWebExtensionContext } = settings;
   const passwordProfileFromUrl = getPasswordProfileFromLocation(useLocation());
   if (isWebExtensionContext && currentUser) {
-    return <LoadPasswordProfileWithSite site={site} />;
+    return <LoadPasswordProfileWithSite />;
   }
   if (passwordProfileFromUrl) {
     return (
@@ -48,5 +49,12 @@ export default function PasswordGenerationPage() {
       </div>
     );
   }
-  return <PasswordProfileWithSettings />;
+  return (
+    <div>
+      <PasswordProfile
+        passwordProfile={{ ...settings }}
+        focus={settings.focus}
+      />
+    </div>
+  );
 }
