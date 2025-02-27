@@ -15,7 +15,8 @@
     "Show": "Mostra",
     "Copied": "Copiato",
     "Copy": "Copia",
-    "Save": "Salva"
+    "Save": "Salva",
+    "Reset": "Reimposta"
   },
   "MyProfilePage": {
     "Welcome": "Benvenuto {{email}}",
@@ -89,8 +90,6 @@
     "FocusField": "Campo attivo",
     "SignIn": "Accedi",
     "EncryptMyMasterPassword": "Cripta la mia password principale all'accesso",
-    "Save": "Salva",
-    "Reset": "Reimposta",
     "Title": "Impostazioni"
   }
 }

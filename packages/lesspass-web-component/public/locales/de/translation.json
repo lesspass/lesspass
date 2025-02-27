@@ -15,7 +15,8 @@
     "Show": "Anzeigen",
     "Copied": "Kopiert",
     "Copy": "Kopieren",
-    "Save": "Speichern"
+    "Save": "Speichern",
+    "Reset": "Zurücksetzen"
   },
   "MyProfilePage": {
     "Welcome": "Willkommen, {{email}}",
@@ -89,8 +90,6 @@
     "FocusField": "Fokusfeld",
     "SignIn": "Anmelden",
     "EncryptMyMasterPassword": "Mein Master-Passwort beim Anmelden verschlüsseln",
-    "Save": "Speichern",
-    "Reset": "Zurücksetzen",
     "Title": "Einstellungen"
   }
 }

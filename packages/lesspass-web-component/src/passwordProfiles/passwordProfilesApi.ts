@@ -43,6 +43,17 @@ export const passwordProfilesApi = api
         }),
         invalidatesTags: [{ type: "PasswordProfile", id: "LIST" }],
       }),
+      searchPasswordProfile: builder.query<
+        APIPasswordProfile | undefined,
+        string
+      >({
+        query: (site) => `/passwords/?search=${site}`,
+        transformResponse: (response: ListResponse<APIPasswordProfile>) =>
+          response.results.length > 0 ? response.results[0] : undefined,
+        providesTags: (_result, _error, id) => [
+          { type: "PasswordProfile", id },
+        ],
+      }),
       getPasswordProfile: builder.query<APIPasswordProfile, string>({
         query: (id) => `/passwords/${id}/`,
         providesTags: (_result, _error, id) => [
@@ -74,8 +85,10 @@ export const passwordProfilesApi = api
   });
 
 export const {
+  useSearchPasswordProfileQuery,
   useGetPasswordProfileQuery,
   useGetPasswordProfilesQuery,
   useCreatePasswordProfileMutation,
+  useEditPasswordProfileMutation,
   useDeletePasswordProfileMutation,
 } = passwordProfilesApi;

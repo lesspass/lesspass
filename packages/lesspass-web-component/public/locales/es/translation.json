@@ -15,7 +15,8 @@
     "Show": "Mostrar",
     "Copied": "Copiado",
     "Copy": "Copiar",
-    "Save": "Guardar"
+    "Save": "Guardar",
+    "Reset": "Restablecer"
   },
   "MyProfilePage": {
     "Welcome": "Bienvenido {{email}}",
@@ -89,8 +90,6 @@
     "FocusField": "Campo de enfoque",
     "SignIn": "Iniciar sesión",
     "EncryptMyMasterPassword": "Cifrar mi contraseña maestra al iniciar sesión",
-    "Save": "Guardar",
-    "Reset": "Restablecer",
     "Title": "Configuración"
   }
 }

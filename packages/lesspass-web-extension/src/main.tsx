@@ -13,7 +13,9 @@ function LessPassWebComponentWithSite() {
 
   if (site === null) return null;
 
-  return <LessPassWebComponent settings={{ site }} />;
+  return (
+    <LessPassWebComponent settings={{ site, isWebExtensionContext: true }} />
+  );
 }
 
 createRoot(document.getElementById("root")!).render(

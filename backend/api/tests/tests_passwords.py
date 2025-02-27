@@ -149,3 +149,25 @@ class LoginPasswordsTestCase(APITestCase):
         )
         self.assertEqual(404, request.status_code)
         self.assertEqual(1, models.Password.objects.all().count())
+
+    def test_search_password_by_site(self):
+        factories.PasswordFactory(user=self.user, site="other.org")
+        password_profile = factories.PasswordFactory(user=self.user, site="example.org")
+        request = self.client.get("/api/passwords/?search=example.org")
+        self.assertEqual(1, len(request.data["results"]))
+        self.assertEqual(password_profile.site, request.data["results"][0]["site"])
+
+    def test_search_password_by_site_partial(self):
+        factories.PasswordFactory(user=self.user, site="other.org")
+        password_profile = factories.PasswordFactory(
+            user=self.user, site="www.example.org"
+        )
+        request = self.client.get("/api/passwords/?search=example.org")
+        self.assertEqual(1, len(request.data["results"]))
+        self.assertEqual(password_profile.site, request.data["results"][0]["site"])
+
+    def test_search_password_no_match(self):
+        factories.PasswordFactory(user=self.user, site="other.org")
+        factories.PasswordFactory(user=self.user, site="example.org")
+        request = self.client.get("/api/passwords/?search=lesspass")
+        self.assertEqual(0, len(request.data["results"]))

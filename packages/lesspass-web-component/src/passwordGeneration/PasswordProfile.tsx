@@ -3,7 +3,7 @@ import {
   generatePassword,
   type PasswordProfile,
 } from "lesspass";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -90,9 +90,11 @@ export function PasswordProfileForm({
 export default function PasswordProfile({
   passwordProfile,
   focus,
+  children,
 }: {
   passwordProfile: PasswordProfile;
   focus: keyof PasswordProfileForm;
+  children?: ReactNode;
 }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -155,6 +157,7 @@ export default function PasswordProfile({
         >
           {t("PasswordProfile.Clear")}
         </Button>
+        {children && children}
       </div>
       <GeneratedPassword generatedPassword={generatedPassword} />
     </FormProvider>

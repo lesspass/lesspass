@@ -15,7 +15,8 @@
     "Show": "显示",
     "Copied": "已复制",
     "Copy": "复制",
-    "Save": "保存"
+    "Save": "保存",
+    "Reset": "重置"
   },
   "MyProfilePage": {
     "Welcome": "欢迎, {{email}}",
@@ -89,8 +90,6 @@
     "FocusField": "焦点字段",
     "SignIn": "登录",
     "EncryptMyMasterPassword": "在登录时加密我的主密码",
-    "Save": "保存",
-    "Reset": "重置",
     "Title": "设置"
   }
 }

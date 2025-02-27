@@ -11,6 +11,7 @@ test("Can send site to the App (Used by the web extension)", async () => {
         ...getSettings(),
         site: "https://lesspass.com",
         focus: "masterPassword",
+        isWebExtensionContext: true,
       },
     }),
   });

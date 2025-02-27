@@ -28,6 +28,9 @@ export const SettingsFormSchema = Yup.object()
       defaultSettings.encryptMasterPasswordAtLogin,
     ),
     focus: Yup.string<SettingsState["focus"]>().default(defaultSettings.focus),
+    isWebExtensionContext: Yup.boolean().default(
+      defaultSettings.isWebExtensionContext,
+    ),
   })
   .test(
     "atLeastOneOptionIsChecked",
@@ -92,7 +95,7 @@ export default function SettingsForm({
           form="default-password-profile-form"
           disabled={!isDirty || !isValid}
         >
-          {t("Settings.Save")}
+          {t("Common.Save")}
         </Button>
         <Button
           type="button"
@@ -101,7 +104,7 @@ export default function SettingsForm({
           }}
           outline
         >
-          {t("Settings.Reset")}
+          {t("Common.Reset")}
         </Button>
       </div>
     </FormProvider>

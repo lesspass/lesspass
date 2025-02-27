@@ -15,7 +15,8 @@
     "Show": "Voir",
     "Copied": "Copié",
     "Copy": "Copier",
-    "Save": "Enregistrer"
+    "Save": "Enregistrer",
+    "Reset": "Réinitialiser"
   },
   "MyProfilePage": {
     "Welcome": "Bienvenue {{email}}",
@@ -89,8 +90,6 @@
     "FocusField": "Champ sélectionné",
     "SignIn": "Connexion",
     "EncryptMyMasterPassword": "Chiffrer mon mot de passe à la connexion",
-    "Save": "Sauvegarder",
-    "Reset": "Réinitialiser",
     "Title": "Paramètres"
   }
 }

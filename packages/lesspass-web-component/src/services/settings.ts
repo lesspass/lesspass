@@ -14,6 +14,7 @@ export const defaultSettings: SettingsState = {
   ...defaultPasswordProfile,
   encryptMasterPasswordAtLogin: true,
   focus: "login",
+  isWebExtensionContext: false,
 };
 
 export function getSettings(): SettingsState {

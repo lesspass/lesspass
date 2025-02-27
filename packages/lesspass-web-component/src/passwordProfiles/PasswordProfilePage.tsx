@@ -1,6 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router";
 import {
+  APIPasswordProfile,
   useDeletePasswordProfileMutation,
+  useEditPasswordProfileMutation,
   useGetPasswordProfileQuery,
 } from "./passwordProfilesApi";
 import { skipToken } from "@reduxjs/toolkit/query";
@@ -8,9 +10,27 @@ import { LoadingPage } from "../LoadingPage";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import PasswordProfile from "../passwordGeneration/PasswordProfile";
 import { Button } from "../components/button";
-import { Title } from "../components/heading";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import { useTranslation } from "react-i18next";
+import { useFormContext } from "react-hook-form";
+
+function SaveButton() {
+  const [updatePasswordProfile] = useEditPasswordProfileMutation();
+  const { t } = useTranslation();
+  const { getValues } = useFormContext<APIPasswordProfile>();
+  return (
+    <Button
+      type="button"
+      onClick={() => {
+        const values = getValues();
+        updatePasswordProfile(values);
+      }}
+      outline
+    >
+      {t("Common.Save")}
+    </Button>
+  );
+}
 
 export default function PasswordProfilePage() {
   const { t } = useTranslation();
@@ -44,10 +64,7 @@ export default function PasswordProfilePage() {
 
   return (
     <div>
-      <div className="mb-2 flex items-center justify-between">
-        <Title>
-          {data.site}:{data.login}
-        </Title>
+      <div className="-mb-6 flex items-center justify-end">
         <ConfirmDeleteModal
           title={t("PasswordProfilePage.DeletePassword")}
           message={t("PasswordProfilePage.AreYouSure", {
@@ -67,10 +84,9 @@ export default function PasswordProfilePage() {
           )}
         />
       </div>
-      <PasswordProfile
-        passwordProfile={data}
-        focus="masterPassword"
-      ></PasswordProfile>
+      <PasswordProfile passwordProfile={data} focus="masterPassword">
+        <SaveButton />
+      </PasswordProfile>
     </div>
   );
 }

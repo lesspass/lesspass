@@ -15,7 +15,8 @@
     "Show": "Mostrar",
     "Copied": "Copiat",
     "Copy": "Copiar",
-    "Save": "Desar"
+    "Save": "Desar",
+    "Reset": "Restablir"
   },
   "MyProfilePage": {
     "Welcome": "Benvingut/da, {{email}}",
@@ -89,8 +90,6 @@
     "FocusField": "Camp de focus",
     "SignIn": "Iniciar sessió",
     "EncryptMyMasterPassword": "Encripta la meva contrasenya mestra en iniciar sessió",
-    "Save": "Desar",
-    "Reset": "Restablir",
     "Title": "Configuració"
   }
 }

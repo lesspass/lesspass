@@ -13,9 +13,8 @@ class PasswordViewSet(viewsets.ModelViewSet):
     )
     search_fields = (
         "site",
-        "email",
     )
-    ordering_fields = ("site", "email", "created")
+    ordering_fields = ("site", "created")
 
     def get_queryset(self):
         return models.Password.objects.filter(user=self.request.user)

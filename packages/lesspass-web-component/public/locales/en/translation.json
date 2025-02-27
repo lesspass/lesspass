@@ -15,7 +15,8 @@
     "Show": "Show",
     "Copied": "Copied",
     "Copy": "Copy",
-    "Save": "Save"
+    "Save": "Save",
+    "Reset": "Reset"
   },
   "MyProfilePage": {
     "Welcome": "Welcome {{email}}",
@@ -89,8 +90,6 @@
     "FocusField": "Focus field",
     "SignIn": "Sign in",
     "EncryptMyMasterPassword": "Encrypt my master password at login",
-    "Save": "Save",
-    "Reset": "Reset",
     "Title": "Settings"
   }
 }

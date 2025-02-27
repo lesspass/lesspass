@@ -80,7 +80,7 @@ export default function Alerts() {
   if (alertsArray.length === 0) return null;
   return (
     <div
-      className="translate fixed top-16 left-1/2 -translate-x-1/2 bg-transparent p-2 opacity-90"
+      className="translate fixed top-16 left-1/2 -translate-x-1/2 bg-transparent p-2"
       style={{
         zIndex: 100,
       }}
