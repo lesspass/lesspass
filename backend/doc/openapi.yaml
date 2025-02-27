@@ -1,62 +1,23 @@
 openapi: 3.0.0
 info:
   title: LessPass Server API
-  version: 0.1.0
+  version: 1.0.0
 servers:
   - url: https://api.lesspass.com/
 paths:
-  /auth/users/:
-    summary: Create new user
-    post:
-      tags:
-        - Auth
-      summary: Create new user
-      description: Create a new user
-      operationId: authusers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/user_signup_login'
-        description: New user email and password
-        required: true
-      responses:
-        '201':
-          description: User creation suscessfully
-          content:
-            application/json:
-              example:
-                key: null
-                email: user@example.com
-                id: 14348
-        '400':
-          description: User creation error
-          content:
-            application/json:
-              examples:
-                email problem:
-                  value:
-                    email: [ "Enter a valid email address." ]
-                password problem:
-                  value:
-                    password:
-                      - This password is too short. It must contain at least 8 characters.
-                      - This password is too common.
-                      - This password is entirely numeric.
   /auth/users/reset_password/:
     summary: Recover lost password
     post:
       tags:
         - Auth
-      summary: Recover lost password
-      description: Recover lost password of existing user
-      operationId: authusersresetpassword
+      summary: Ask for a new password
+      operationId: auth_users_reset_password
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/user_reset_password'
-        description: New user email and password
+        description: email to received the confirm password reset link
         required: true
       responses:
         '204':
@@ -83,6 +44,24 @@ paths:
           description: Password changed suscessfully
         '401':
           $ref: '#/components/responses/unauthorized_error'
+  /auth/users/reset_password_confirm/:
+    summary: Confirm password reset
+    post:
+      tags:
+        - Auth
+      summary: Confirm password change
+      description: Confirm your new password with the uid and token send to the user
+      operationId: auth_users_reset_password_confirm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_confirm_reset_password'
+        description: uid, token, new_password and re_new_password
+        required: true
+      responses:
+        '204':
+          description: Recover suscessfully
   /auth/jwt/create/:
     summary: Perform user login
     post:
@@ -310,6 +289,30 @@ components:
           description: User email
           type: string
           format: email
+    user_confirm_reset_password:
+      required:
+        - uid
+        - token
+        - new_password
+        - re_new_password
+      type: object
+      properties:
+        uid:
+          description: uid present in the link
+          type: string
+        token:
+          description: token  present in the link
+          type: string
+        new_password:
+          description: User new password
+          type: string
+          minLength: 8
+          format: password
+        re_new_password:
+          description: Repeat user new password
+          type: string
+          minLength: 8
+          format: password
     user_set_password:
       required:
         - current_password
@@ -421,8 +424,8 @@ components:
           description: Generated password has lowercase characters
           type: boolean
           default: true
-        numbers:
-          description: Generated password has numbers
+        digits:
+          description: Generated password has digits
           type: boolean
           default: true
         symbols:
