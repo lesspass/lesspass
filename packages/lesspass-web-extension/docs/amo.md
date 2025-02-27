@@ -8,7 +8,7 @@ Source file correspond to the zip downloaded on http://github.com/lesspass/lessp
 
 ## requirements
 
-To rebuild the web extension, you need node, yarn and md5sum to check the md5 sum of the files
+To rebuild the web extension, you need node, yarn and sha256sum to compare the files with the files in the extension.
 
 Tested with:
 
@@ -18,10 +18,10 @@ Tested with:
 
 ## unzip source {sha256}.zip
 
-    unzip {sha256}.zip -d /tmp
+    unzip lesspass-{sha256}.zip -d /tmp
     cd /tmp/lesspass-{sha256}
 
-## Reproduce lesspass.min.js and dist folder with sources
+## Reproduce web extension dist folder with sources
 
     yarn install
     yarn build

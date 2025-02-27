@@ -29,7 +29,7 @@ You can use the password generator functionnality on the web site directly. Even
 
 - [ ] :art: Add dark mode #752
 - [ ] :speech_balloon: Translation on the website #456
-- [ ] Guide to self host a LessPass server on Digital Ocean
+- [ ] :memo: Guide to self host a LessPass server on Digital Ocean
 
 ## :rotating_light: LessPass Server Access Update
 
