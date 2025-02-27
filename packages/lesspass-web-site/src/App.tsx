@@ -7,7 +7,7 @@ import AMOBadge from "./images/get-amo-badge.png";
 import CLIBadge from "./images/cli-badge.png";
 import HowItWorks from "./images/HowItWorks.png";
 import GuillaumeVincent from "./images/guillaumevincent.png";
-import LessPassWebComponent from "lesspass-web-component";
+import { LessPassWebComponent } from "lesspass-web-component";
 
 export function Hero() {
   return (

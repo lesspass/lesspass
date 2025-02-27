@@ -1,6 +1,6 @@
 import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import LessPassWebComponent from "lesspass-web-component";
+import { LessPassWebComponentInMemory } from "lesspass-web-component";
 import "lesspass-web-component/dist/lesspass-web-component.css";
 import { getSite } from "./url";
 
@@ -14,7 +14,7 @@ function LessPassWebComponentWithSite() {
   if (site === null) return null;
 
   return (
-    <LessPassWebComponent
+    <LessPassWebComponentInMemory
       settings={{
         site,
         focus: site === "" ? "site" : "login",
