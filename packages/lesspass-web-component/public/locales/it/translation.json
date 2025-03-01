@@ -23,8 +23,27 @@
     "ThankYouMessage": "Il tuo account è conservato sul server https://api.lesspass.com per ringraziarti di essere tra i primi utenti di LessPass.",
     "SignOut": "Esci"
   },
+  "SignInForm": {
+    "Email": "Email",
+    "UsernamePlaceholder": "contact@example.org",
+    "LessPassServer": "Server LessPass",
+    "MasterPassword": "Password principale"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "Nuova password"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "Password principale",
+    "Site": "Sito",
+    "GenerateAndCopy": "Genera e copia",
+    "PasswordProfileCopiedInClipboard": "L'URL del profilo della password è stato copiato negli appunti",
+    "Share": "Condividi",
+    "Clear": "Cancella",
+    "Login": "Login",
+    "Options": "Opzioni",
+    "Length": "Lunghezza",
+    "Counter": "Contatore",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "Modifica la tua password",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "Ora puoi accedere.",
     "CantChangePasswordTitle": "Impossibile modificare la tua password.",
     "CantChangePasswordMessage": "Riprova tra qualche minuto."
-  },
-  "SignInForm": {
-    "LessPassServer": "Server LessPass",
-    "Email": "Email",
-    "UsernamePlaceholder": "contact@example.org",
-    "MasterPassword": "Password principale"
   },
   "SignInPage": {
     "SignInToLessPass": "Accedi a LessPass",
@@ -53,19 +66,6 @@
     "signIn": "Accedi",
     "myProfile": "Il mio profilo",
     "SignOut": "Esci"
-  },
-  "PasswordProfile": {
-    "Site": "Sito",
-    "MasterPassword": "Password principale",
-    "GenerateAndCopy": "Genera e copia",
-    "PasswordProfileCopiedInClipboard": "L'URL del profilo della password è stato copiato negli appunti",
-    "Share": "Condividi",
-    "Clear": "Cancella",
-    "Login": "Login",
-    "Options": "Opzioni",
-    "Length": "Lunghezza",
-    "Counter": "Contatore",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "Nuova password"
@@ -90,6 +90,7 @@
     "FocusField": "Campo attivo",
     "SignIn": "Accedi",
     "EncryptMyMasterPassword": "Cripta la mia password principale all'accesso",
+    "removeSubDomain": "Rimuovi il sottodominio dal sito",
     "Title": "Impostazioni"
   }
 }

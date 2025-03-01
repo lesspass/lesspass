@@ -31,6 +31,7 @@ export const SettingsFormSchema = Yup.object()
     isWebExtensionContext: Yup.boolean().default(
       defaultSettings.isWebExtensionContext,
     ),
+    removeSubDomain: Yup.boolean().default(defaultSettings.removeSubDomain),
   })
   .test(
     "atLeastOneOptionIsChecked",
@@ -84,8 +85,18 @@ export default function SettingsForm({
             id="encryptMasterPasswordAtLogin"
             {...methods.register("encryptMasterPasswordAtLogin")}
           />
-          <Label htmlFor="symbols">
+          <Label htmlFor="encryptMasterPasswordAtLogin">
             {t("Settings.EncryptMyMasterPassword")}
+          </Label>
+        </CheckboxItem>
+        <SubTitle>{t("PasswordProfile.Site")}</SubTitle>
+        <CheckboxItem className="pl-1">
+          <Checkbox
+            id="removeSubDomain"
+            {...methods.register("removeSubDomain")}
+          />
+          <Label htmlFor="removeSubDomain">
+            {t("Settings.removeSubDomain")}
           </Label>
         </CheckboxItem>
       </form>

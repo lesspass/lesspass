@@ -23,8 +23,27 @@
     "ThankYouMessage": "您的账户存储在 https://api.lesspass.com 服务器上，感谢您成为 LessPass 的早期用户。",
     "SignOut": "退出登录"
   },
+  "SignInForm": {
+    "Email": "邮箱",
+    "UsernamePlaceholder": "contact@example.org",
+    "LessPassServer": "LessPass 服务器",
+    "MasterPassword": "主密码"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "新密码"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "主密码",
+    "Site": "网站",
+    "GenerateAndCopy": "生成并复制",
+    "PasswordProfileCopiedInClipboard": "密码配置文件的 URL 已复制到剪贴板。",
+    "Share": "分享",
+    "Clear": "清除",
+    "Login": "登录名",
+    "Options": "选项",
+    "Length": "长度",
+    "Counter": "计数器",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "更改您的密码",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "您现在可以登录。",
     "CantChangePasswordTitle": "无法更改您的密码。",
     "CantChangePasswordMessage": "请稍后再试。"
-  },
-  "SignInForm": {
-    "LessPassServer": "LessPass 服务器",
-    "Email": "邮箱",
-    "UsernamePlaceholder": "contact@example.org",
-    "MasterPassword": "主密码"
   },
   "SignInPage": {
     "SignInToLessPass": "登录 LessPass",
@@ -53,19 +66,6 @@
     "signIn": "登录",
     "myProfile": "我的个人资料",
     "SignOut": "退出登录"
-  },
-  "PasswordProfile": {
-    "Site": "网站",
-    "MasterPassword": "主密码",
-    "GenerateAndCopy": "生成并复制",
-    "PasswordProfileCopiedInClipboard": "密码配置文件的 URL 已复制到剪贴板。",
-    "Share": "分享",
-    "Clear": "清除",
-    "Login": "登录名",
-    "Options": "选项",
-    "Length": "长度",
-    "Counter": "计数器",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "新密码"
@@ -90,6 +90,7 @@
     "FocusField": "焦点字段",
     "SignIn": "登录",
     "EncryptMyMasterPassword": "在登录时加密我的主密码",
+    "removeSubDomain": "从网站中移除子域名",
     "Title": "设置"
   }
 }

@@ -23,8 +23,27 @@
     "ThankYouMessage": "El teu compte es guarda al servidor https://api.lesspass.com. Gràcies per ser un dels primers usuaris de LessPass.",
     "SignOut": "Tancar sessió"
   },
+  "SignInForm": {
+    "Email": "Correu electrònic",
+    "UsernamePlaceholder": "contact@example.org",
+    "LessPassServer": "Servidor de LessPass",
+    "MasterPassword": "Contrasenya mestra"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "Nova contrasenya"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "Contrasenya mestra",
+    "Site": "Lloc web",
+    "GenerateAndCopy": "Generar i copiar",
+    "PasswordProfileCopiedInClipboard": "L'URL del perfil de la contrasenya s'ha copiat al porta-retalls.",
+    "Share": "Compartir",
+    "Clear": "Esborrar",
+    "Login": "Usuari",
+    "Options": "Opcions",
+    "Length": "Longitud",
+    "Counter": "Comptador",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "Canvia la teva contrasenya",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "Ara ja pots iniciar sessió.",
     "CantChangePasswordTitle": "No s'ha pogut canviar la teva contrasenya.",
     "CantChangePasswordMessage": "Si us plau, torna-ho a intentar en uns minuts."
-  },
-  "SignInForm": {
-    "LessPassServer": "Servidor de LessPass",
-    "Email": "Correu electrònic",
-    "UsernamePlaceholder": "contact@example.org",
-    "MasterPassword": "Contrasenya mestra"
   },
   "SignInPage": {
     "SignInToLessPass": "Inicia sessió a LessPass",
@@ -53,19 +66,6 @@
     "signIn": "Iniciar sessió",
     "myProfile": "El meu perfil",
     "SignOut": "Tancar sessió"
-  },
-  "PasswordProfile": {
-    "Site": "Lloc web",
-    "MasterPassword": "Contrasenya mestra",
-    "GenerateAndCopy": "Generar i copiar",
-    "PasswordProfileCopiedInClipboard": "L'URL del perfil de la contrasenya s'ha copiat al porta-retalls.",
-    "Share": "Compartir",
-    "Clear": "Esborrar",
-    "Login": "Usuari",
-    "Options": "Opcions",
-    "Length": "Longitud",
-    "Counter": "Comptador",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "Nova contrasenya"
@@ -90,6 +90,7 @@
     "FocusField": "Camp de focus",
     "SignIn": "Iniciar sessió",
     "EncryptMyMasterPassword": "Encripta la meva contrasenya mestra en iniciar sessió",
+    "removeSubDomain": "Elimina el subdomini del lloc",
     "Title": "Configuració"
   }
 }

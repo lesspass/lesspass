@@ -18,9 +18,10 @@ import PasswordProfileLogin from "./PasswordProfileLogin";
 import PasswordProfileOptions from "./PasswordProfileOptions";
 import { useTranslation } from "react-i18next";
 import { generateURL } from "./url";
-import { useAppDispatch } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { showInfo } from "../alerts/alertsSlice";
 import { resetSettings } from "../settings/settingsSlice";
+import { removeSiteSubdomain } from "./site";
 
 export const PasswordProfileFormSchema = Yup.object()
   .shape({
@@ -100,15 +101,20 @@ export default function PasswordProfile({
   onClear?: () => void;
 }) {
   const dispatch = useAppDispatch();
+  const settings = useAppSelector((state) => state.settings);
   const { t } = useTranslation();
   const [generatedPassword, setGeneratedPassword] = useState<string | null>(
     null,
   );
   const methods = useForm<PasswordProfileForm>({
     resolver: yupResolver(PasswordProfileFormSchema),
-    defaultValues: passwordProfile,
+    defaultValues: {
+      ...passwordProfile,
+      site: settings.removeSubDomain
+        ? removeSiteSubdomain(passwordProfile.site)
+        : passwordProfile.site,
+    },
   });
-
   return (
     <FormProvider {...methods}>
       <PasswordProfileForm

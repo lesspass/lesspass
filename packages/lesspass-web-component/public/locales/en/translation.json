@@ -23,8 +23,27 @@
     "ThankYouMessage": "Your account is kept on https://api.lesspass.com server to thank you for being in the first users of LessPass.",
     "SignOut": "Sign out"
   },
+  "SignInForm": {
+    "Email": "Email",
+    "UsernamePlaceholder": "contact@example.org",
+    "LessPassServer": "LessPass server",
+    "MasterPassword": "Master password"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "New password"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "Master password",
+    "Site": "Site",
+    "GenerateAndCopy": "Generate & copy",
+    "PasswordProfileCopiedInClipboard": "Password profile URL has been copied to your clipboard",
+    "Share": "Share",
+    "Clear": "Clear",
+    "Login": "Login",
+    "Options": "Options",
+    "Length": "Length",
+    "Counter": "Counter",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "Change your password",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "You can now log in.",
     "CantChangePasswordTitle": "Unable to change your password.",
     "CantChangePasswordMessage": "Please try again in a few minutes."
-  },
-  "SignInForm": {
-    "LessPassServer": "LessPass server",
-    "Email": "Email",
-    "UsernamePlaceholder": "contact@example.org",
-    "MasterPassword": "Master password"
   },
   "SignInPage": {
     "SignInToLessPass": "Sign in To LessPass",
@@ -53,19 +66,6 @@
     "signIn": "Sign in",
     "myProfile": "My profile",
     "SignOut": "Sign out"
-  },
-  "PasswordProfile": {
-    "Site": "Site",
-    "MasterPassword": "Master password",
-    "GenerateAndCopy": "Generate & copy",
-    "PasswordProfileCopiedInClipboard": "Password profile URL has been copied to your clipboard",
-    "Share": "Share",
-    "Clear": "Clear",
-    "Login": "Login",
-    "Options": "Options",
-    "Length": "Length",
-    "Counter": "Counter",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "New Password"
@@ -90,6 +90,7 @@
     "FocusField": "Focus field",
     "SignIn": "Sign in",
     "EncryptMyMasterPassword": "Encrypt my master password at login",
+    "removeSubDomain": "Remove sub domain from site",
     "Title": "Settings"
   }
 }

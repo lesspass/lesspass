@@ -23,8 +23,27 @@
     "ThankYouMessage": "Ihr Konto wird auf dem Server https://api.lesspass.com gespeichert. Vielen Dank, dass Sie zu den ersten Nutzern von LessPass gehören.",
     "SignOut": "Abmelden"
   },
+  "SignInForm": {
+    "Email": "E-Mail",
+    "UsernamePlaceholder": "contact@example.org",
+    "LessPassServer": "LessPass-Server",
+    "MasterPassword": "Master-Passwort"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "Neues Passwort"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "Master-Passwort",
+    "Site": "Website",
+    "GenerateAndCopy": "Generieren & kopieren",
+    "PasswordProfileCopiedInClipboard": "Die URL des Passwortprofils wurde in die Zwischenablage kopiert.",
+    "Share": "Teilen",
+    "Clear": "Löschen",
+    "Login": "Benutzername",
+    "Options": "Optionen",
+    "Length": "Länge",
+    "Counter": "Zähler",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "Ändern Sie Ihr Passwort",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "Sie können sich jetzt anmelden.",
     "CantChangePasswordTitle": "Ihr Passwort konnte nicht geändert werden.",
     "CantChangePasswordMessage": "Bitte versuchen Sie es in ein paar Minuten erneut."
-  },
-  "SignInForm": {
-    "LessPassServer": "LessPass-Server",
-    "Email": "E-Mail",
-    "UsernamePlaceholder": "contact@example.org",
-    "MasterPassword": "Master-Passwort"
   },
   "SignInPage": {
     "SignInToLessPass": "Melden Sie sich bei LessPass an",
@@ -53,19 +66,6 @@
     "signIn": "Anmelden",
     "myProfile": "Mein Profil",
     "SignOut": "Abmelden"
-  },
-  "PasswordProfile": {
-    "Site": "Website",
-    "MasterPassword": "Master-Passwort",
-    "GenerateAndCopy": "Generieren & kopieren",
-    "PasswordProfileCopiedInClipboard": "Die URL des Passwortprofils wurde in die Zwischenablage kopiert.",
-    "Share": "Teilen",
-    "Clear": "Löschen",
-    "Login": "Benutzername",
-    "Options": "Optionen",
-    "Length": "Länge",
-    "Counter": "Zähler",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "Neues Passwort"
@@ -90,6 +90,7 @@
     "FocusField": "Fokusfeld",
     "SignIn": "Anmelden",
     "EncryptMyMasterPassword": "Mein Master-Passwort beim Anmelden verschlüsseln",
+    "removeSubDomain": "Entferne die Subdomain von der Website",
     "Title": "Einstellungen"
   }
 }

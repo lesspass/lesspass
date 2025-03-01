@@ -23,8 +23,27 @@
     "ThankYouMessage": "Votre compte est conservé sur le serveur https://api.lesspass.com pour vous remercier d'être parmi les premiers utilisateurs de LessPass.",
     "SignOut": "Se déconnecter"
   },
+  "SignInForm": {
+    "Email": "E-mail",
+    "UsernamePlaceholder": "contact@example.org",
+    "LessPassServer": "Serveur LessPass",
+    "MasterPassword": "Mot de passe maître"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "Nouveau mot de passe"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "Mot de passe maître",
+    "Site": "Site",
+    "GenerateAndCopy": "Générer & copier",
+    "PasswordProfileCopiedInClipboard": "L'URL du mot de passe a été copié dans le presse papier",
+    "Share": "Partager",
+    "Clear": "Réinitialiser",
+    "Login": "Nom d'utilisateur",
+    "Options": "Options",
+    "Length": "Longueur",
+    "Counter": "Compteur",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "Changer votre mot de passe",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "Vous pouvez maintenant vous connecter.",
     "CantChangePasswordTitle": "Impossible de modifier votre mot de passe.",
     "CantChangePasswordMessage": "Veuillez réessayer dans quelques minutes."
-  },
-  "SignInForm": {
-    "LessPassServer": "Serveur LessPass",
-    "Email": "E-mail",
-    "UsernamePlaceholder": "contact@example.org",
-    "MasterPassword": "Mot de passe maître"
   },
   "SignInPage": {
     "SignInToLessPass": "Se connecter à LessPass",
@@ -53,19 +66,6 @@
     "signIn": "Connexion",
     "myProfile": "Mon profil",
     "SignOut": "Se déconnecter"
-  },
-  "PasswordProfile": {
-    "Site": "Site",
-    "MasterPassword": "Mot de passe maître",
-    "GenerateAndCopy": "Générer & copier",
-    "PasswordProfileCopiedInClipboard": "L'URL du mot de passe a été copié dans le presse papier",
-    "Share": "Partager",
-    "Clear": "Réinitialiser",
-    "Login": "Nom d'utilisateur",
-    "Options": "Options",
-    "Length": "Longueur",
-    "Counter": "Compteur",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "Nouveau mot de passe"
@@ -90,6 +90,7 @@
     "FocusField": "Champ sélectionné",
     "SignIn": "Connexion",
     "EncryptMyMasterPassword": "Chiffrer mon mot de passe à la connexion",
+    "removeSubDomain": "Supprimer le sous domaine du site",
     "Title": "Paramètres"
   }
 }

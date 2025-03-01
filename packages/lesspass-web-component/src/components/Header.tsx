@@ -66,7 +66,9 @@ export default function Header() {
           <div className="xs:ml-6 xs:block hidden">
             <div className="flex items-center">
               {currentUser === null ? (
-                <Button to="/auth/signIn">{t("Header.signIn")}</Button>
+                <Button type="button" to="/auth/signIn">
+                  {t("Header.signIn")}
+                </Button>
               ) : (
                 <Menu as="div" className="relative ml-3">
                   <div>

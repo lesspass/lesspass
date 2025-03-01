@@ -23,8 +23,27 @@
     "ThankYouMessage": "Ваш аккаунт хранится на сервере https://api.lesspass.com в знак благодарности за то, что вы стали одним из первых пользователей LessPass.",
     "SignOut": "Выйти"
   },
+  "SignInForm": {
+    "Email": "Email",
+    "UsernamePlaceholder": "contact@example.org",
+    "LessPassServer": "Сервер LessPass",
+    "MasterPassword": "Мастер-пароль"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "Новый пароль"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "Мастер-пароль",
+    "Site": "Сайт",
+    "GenerateAndCopy": "Сгенерировать и скопировать",
+    "PasswordProfileCopiedInClipboard": "URL профиля пароля скопирован в буфер обмена.",
+    "Share": "Поделиться",
+    "Clear": "Очистить",
+    "Login": "Логин",
+    "Options": "Опции",
+    "Length": "Длина",
+    "Counter": "Счетчик",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "Измените пароль",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "Теперь вы можете войти в систему.",
     "CantChangePasswordTitle": "Не удалось изменить пароль.",
     "CantChangePasswordMessage": "Пожалуйста, попробуйте снова через несколько минут."
-  },
-  "SignInForm": {
-    "LessPassServer": "Сервер LessPass",
-    "Email": "Email",
-    "UsernamePlaceholder": "contact@example.org",
-    "MasterPassword": "Мастер-пароль"
   },
   "SignInPage": {
     "SignInToLessPass": "Войти в LessPass",
@@ -53,19 +66,6 @@
     "signIn": "Войти",
     "myProfile": "Мой профиль",
     "SignOut": "Выйти"
-  },
-  "PasswordProfile": {
-    "Site": "Сайт",
-    "MasterPassword": "Мастер-пароль",
-    "GenerateAndCopy": "Сгенерировать и скопировать",
-    "PasswordProfileCopiedInClipboard": "URL профиля пароля скопирован в буфер обмена.",
-    "Share": "Поделиться",
-    "Clear": "Очистить",
-    "Login": "Логин",
-    "Options": "Опции",
-    "Length": "Длина",
-    "Counter": "Счетчик",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "Новый пароль"
@@ -90,6 +90,7 @@
     "FocusField": "Поле фокуса",
     "SignIn": "Войти",
     "EncryptMyMasterPassword": "Шифровать мой мастер-пароль при входе",
+    "removeSubDomain": "Удалить поддомен с сайта",
     "Title": "Настройки"
   }
 }

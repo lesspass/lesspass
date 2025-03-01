@@ -6,6 +6,8 @@ import i18n from "./i18n";
 import { App } from "./App";
 import { getSettings } from "./services/settings";
 import { SettingsState } from "./settings/settingsSlice";
+import { Suspense } from "react";
+import { LoadingPage } from "./LoadingPage";
 
 export function LessPassWebComponent({
   settings = {},
@@ -13,15 +15,17 @@ export function LessPassWebComponent({
   settings?: Partial<SettingsState>;
 }) {
   return (
-    <BrowserRouter>
-      <Provider
-        store={setupStore({ settings: { ...getSettings(), ...settings } })}
-      >
-        <I18nextProvider i18n={i18n}>
-          <App />
-        </I18nextProvider>
-      </Provider>
-    </BrowserRouter>
+    <Suspense fallback={<LoadingPage />}>
+      <BrowserRouter>
+        <Provider
+          store={setupStore({ settings: { ...getSettings(), ...settings } })}
+        >
+          <I18nextProvider i18n={i18n}>
+            <App />
+          </I18nextProvider>
+        </Provider>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
@@ -31,14 +35,16 @@ export function LessPassWebComponentInMemory({
   settings?: Partial<SettingsState>;
 }) {
   return (
-    <MemoryRouter>
-      <Provider
-        store={setupStore({ settings: { ...getSettings(), ...settings } })}
-      >
-        <I18nextProvider i18n={i18n}>
-          <App />
-        </I18nextProvider>
-      </Provider>
-    </MemoryRouter>
+    <Suspense fallback={<LoadingPage />}>
+      <MemoryRouter>
+        <Provider
+          store={setupStore({ settings: { ...getSettings(), ...settings } })}
+        >
+          <I18nextProvider i18n={i18n}>
+            <App />
+          </I18nextProvider>
+        </Provider>
+      </MemoryRouter>
+    </Suspense>
   );
 }

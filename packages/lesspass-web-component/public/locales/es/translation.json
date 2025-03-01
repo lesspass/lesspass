@@ -23,8 +23,27 @@
     "ThankYouMessage": "Tu cuenta se almacena en el servidor https://api.lesspass.com para agradecerte por ser uno de los primeros usuarios de LessPass.",
     "SignOut": "Cerrar sesión"
   },
+  "SignInForm": {
+    "Email": "Correo electrónico",
+    "UsernamePlaceholder": "contacto@ejemplo.org",
+    "LessPassServer": "Servidor de LessPass",
+    "MasterPassword": "Contraseña maestra"
+  },
   "PasswordResetConfirmForm": {
     "NewPassword": "Nueva contraseña"
+  },
+  "PasswordProfile": {
+    "MasterPassword": "Contraseña maestra",
+    "Site": "Sitio",
+    "GenerateAndCopy": "Generar y copiar",
+    "PasswordProfileCopiedInClipboard": "La URL del perfil de la contraseña se ha copiado en tu portapapeles.",
+    "Share": "Compartir",
+    "Clear": "Borrar",
+    "Login": "Usuario",
+    "Options": "Opciones",
+    "Length": "Longitud",
+    "Counter": "Contador",
+    "C": "C"
   },
   "PasswordResetPage": {
     "ChangePassword": "Cambia tu contraseña",
@@ -32,12 +51,6 @@
     "PasswordChangedSuccessfullyMessage": "Ahora puedes iniciar sesión.",
     "CantChangePasswordTitle": "No se puede cambiar tu contraseña.",
     "CantChangePasswordMessage": "Por favor, inténtalo de nuevo en unos minutos."
-  },
-  "SignInForm": {
-    "LessPassServer": "Servidor de LessPass",
-    "Email": "Correo electrónico",
-    "UsernamePlaceholder": "contacto@ejemplo.org",
-    "MasterPassword": "Contraseña maestra"
   },
   "SignInPage": {
     "SignInToLessPass": "Inicia sesión en LessPass",
@@ -53,19 +66,6 @@
     "signIn": "Iniciar sesión",
     "myProfile": "Mi perfil",
     "SignOut": "Cerrar sesión"
-  },
-  "PasswordProfile": {
-    "Site": "Sitio",
-    "MasterPassword": "Contraseña maestra",
-    "GenerateAndCopy": "Generar y copiar",
-    "PasswordProfileCopiedInClipboard": "La URL del perfil de la contraseña se ha copiado en tu portapapeles.",
-    "Share": "Compartir",
-    "Clear": "Borrar",
-    "Login": "Usuario",
-    "Options": "Opciones",
-    "Length": "Longitud",
-    "Counter": "Contador",
-    "C": "C"
   },
   "NewPasswordProfilePage": {
     "NewPassword": "Nueva contraseña"
@@ -90,6 +90,7 @@
     "FocusField": "Campo de enfoque",
     "SignIn": "Iniciar sesión",
     "EncryptMyMasterPassword": "Cifrar mi contraseña maestra al iniciar sesión",
+    "removeSubDomain": "Eliminar el subdominio del sitio",
     "Title": "Configuración"
   }
 }
