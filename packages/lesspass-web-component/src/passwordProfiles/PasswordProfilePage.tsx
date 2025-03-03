@@ -1,8 +1,8 @@
+import { PasswordProfileFromApiWithMasterPassword } from "../types";
 import { Link, useNavigate, useParams } from "react-router";
 import {
-  APIPasswordProfile,
   useDeletePasswordProfileMutation,
-  useEditPasswordProfileMutation,
+  useUpdatePasswordProfileMutation,
   useGetPasswordProfileQuery,
 } from "./passwordProfilesApi";
 import { skipToken } from "@reduxjs/toolkit/query";
@@ -15,15 +15,17 @@ import { useTranslation } from "react-i18next";
 import { useFormContext } from "react-hook-form";
 
 function SaveButton() {
-  const [updatePasswordProfile] = useEditPasswordProfileMutation();
+  const [updatePasswordProfile] = useUpdatePasswordProfileMutation();
   const { t } = useTranslation();
-  const { getValues } = useFormContext<APIPasswordProfile>();
+  const { getValues } =
+    useFormContext<PasswordProfileFromApiWithMasterPassword>();
   return (
     <Button
       type="button"
       onClick={() => {
         const values = getValues();
-        updatePasswordProfile(values);
+        const { masterPassword, ...passwordProfileUpdated } = values;
+        updatePasswordProfile(passwordProfileUpdated);
       }}
       outline
     >

@@ -1,4 +1,8 @@
 import {
+  PasswordProfileFromApiWithMasterPassword,
+  PasswordProfileWithMasterPassword,
+} from "../types";
+import {
   defaultPasswordProfile,
   generatePassword,
   type PasswordProfile,
@@ -42,7 +46,8 @@ export const PasswordProfileFormSchema = Yup.object()
       value.lowercase || value.uppercase || value.digits || value.symbols,
   );
 
-export type PasswordProfileForm = PasswordProfile & { masterPassword: string };
+export type PasswordProfileForm = PasswordProfileWithMasterPassword |
+  PasswordProfileFromApiWithMasterPassword;
 
 export function PasswordProfileForm({
   id = "password-profile-form",

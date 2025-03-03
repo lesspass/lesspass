@@ -1,8 +1,6 @@
+import { PasswordProfileFromApi } from "../types";
 import { Link } from "react-router";
-import {
-  APIPasswordProfile,
-  useGetPasswordProfilesQuery,
-} from "./passwordProfilesApi";
+import { useGetPasswordProfilesQuery } from "./passwordProfilesApi";
 import { PlusIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { LoadingPage } from "../LoadingPage";
@@ -10,7 +8,7 @@ import { Button } from "../components/button";
 import { useTranslation } from "react-i18next";
 
 const filterPasswordProfiles = (
-  passwords: APIPasswordProfile[],
+  passwords: PasswordProfileFromApi[],
   searchText: string,
 ) => {
   return passwords.filter(
