@@ -16,7 +16,7 @@ export type SettingsState = Pick<
   encryptMasterPasswordAtLogin: boolean;
   focus: keyof PasswordProfile | "masterPassword";
   isWebExtensionContext: boolean;
-  removeSubDomain: boolean
+  removeSubDomain: boolean;
 };
 
 const initialState: SettingsState = getSettings();

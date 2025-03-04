@@ -86,11 +86,10 @@
     "NewPassword": "Nova palavra-passe"
   },
   "Settings": {
-    "DefaultPasswordProfile": "Palavra-passe padrão",
+    "removeSubDomain": "Remover o subdomínio do site",
     "FocusField": "Campo de foco",
     "SignIn": "Iniciar sessão",
     "EncryptMyMasterPassword": "Encriptar a minha palavra-passe mestre ao iniciar sessão",
-    "removeSubDomain": "Remover o subdomínio do site",
     "Title": "Definições"
   }
 }

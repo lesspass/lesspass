@@ -30,12 +30,12 @@ export default function GeneratedPassword({
 
   return (
     <div className="mt-2">
-      <div className="flex w-full items-center justify-between rounded-md bg-gray-100 text-base text-gray-500 text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset">
+      <div className="flex w-full items-center justify-between rounded-md bg-zinc-100 text-base text-gray-500 text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset dark:bg-zinc-300 dark:text-zinc-950">
         <Button
           type="button"
           onClick={() => setShowPassword((sP) => !sP)}
           outline
-          className="xs:min-w-24 rounded-none rounded-l-md shadow-none ring-0"
+          className="xs:min-w-24 rounded-none rounded-l-md shadow-none ring-0 dark:bg-white dark:text-zinc-950"
         >
           {showPassword ? (
             <>
@@ -59,7 +59,7 @@ export default function GeneratedPassword({
             });
           }}
           outline
-          className="xs:min-w-24 rounded-none rounded-r-md shadow-none ring-0"
+          className="xs:min-w-24 rounded-none rounded-r-md shadow-none ring-0 dark:bg-white dark:text-zinc-950"
         >
           <ClipboardDocumentIcon className="xs:mr-2 inline h-5 w-5" />
 

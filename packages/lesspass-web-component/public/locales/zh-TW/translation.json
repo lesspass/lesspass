@@ -86,11 +86,10 @@
     "NewPassword": "新密碼"
   },
   "Settings": {
-    "DefaultPasswordProfile": "預設密碼",
+    "removeSubDomain": "從網站中移除子網域",
     "FocusField": "焦點欄位",
     "SignIn": "登入",
     "EncryptMyMasterPassword": "登入時加密我的主密碼",
-    "removeSubDomain": "從網站中移除子網域",
     "Title": "設定"
   }
 }

@@ -86,11 +86,10 @@
     "NewPassword": "Новый пароль"
   },
   "Settings": {
-    "DefaultPasswordProfile": "Пароль по умолчанию",
+    "removeSubDomain": "Удалить поддомен с сайта",
     "FocusField": "Поле фокуса",
     "SignIn": "Войти",
     "EncryptMyMasterPassword": "Шифровать мой мастер-пароль при входе",
-    "removeSubDomain": "Удалить поддомен с сайта",
     "Title": "Настройки"
   }
 }

@@ -15,6 +15,16 @@ Object.assign(global.navigator, {
   },
 });
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    };
+  };
+
 export const server = setupServer();
 
 beforeAll(() => server.listen());

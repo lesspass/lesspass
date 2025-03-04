@@ -6,6 +6,7 @@ import { useState } from "react";
 import { LoadingPage } from "../LoadingPage";
 import { Button } from "../components/button";
 import { useTranslation } from "react-i18next";
+import { Input } from "../components/input";
 
 const filterPasswordProfiles = (
   passwords: PasswordProfileFromApi[],
@@ -45,20 +46,21 @@ export default function PasswordProfilesPage() {
 
   const filteredPasswordProfiles = filterPasswordProfiles(data, searchText);
   return (
-    <div className="divide-y divide-gray-100">
+    <div className="divide-y divide-gray-100 dark:divide-white/5">
       <div className="flex justify-between gap-2 py-4">
-        <input
+        <Input
           type="text"
           placeholder={t("PasswordProfilesPage.SearchPasswords")}
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
+          autoFocus
         />
         <Button to="/newPasswordProfile">
           <PlusIcon className="size-5" />
           {t("PasswordProfilesPage.NewPassword")}
         </Button>
       </div>
-      <ul role="list" className="divide-y divide-gray-100">
+      <ul role="list" className="divide-y divide-gray-100 dark:divide-white/5">
         {filteredPasswordProfiles.map((passwordProfile) => (
           <li
             key={passwordProfile.id}

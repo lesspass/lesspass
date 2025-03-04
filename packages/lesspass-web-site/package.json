@@ -10,6 +10,7 @@
     "build": "yarn i18n && tsc -b && vite build",
     "i18n": "cp -r ../lesspass-web-component/public/locales ./public/",
     "lint": "eslint .",
+    "prettier": "prettier --write src",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -86,11 +86,10 @@
     "NewPassword": "Neues Passwort"
   },
   "Settings": {
-    "DefaultPasswordProfile": "Standard-Passwort",
+    "removeSubDomain": "Entferne die Subdomain von der Website",
     "FocusField": "Fokusfeld",
     "SignIn": "Anmelden",
     "EncryptMyMasterPassword": "Mein Master-Passwort beim Anmelden verschlüsseln",
-    "removeSubDomain": "Entferne die Subdomain von der Website",
     "Title": "Einstellungen"
   }
 }

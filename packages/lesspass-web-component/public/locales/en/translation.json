@@ -86,11 +86,10 @@
     "NewPassword": "New password"
   },
   "Settings": {
-    "DefaultPasswordProfile": "Default password",
+    "removeSubDomain": "Remove sub domain from site",
     "FocusField": "Focus field",
     "SignIn": "Sign in",
     "EncryptMyMasterPassword": "Encrypt my master password at login",
-    "removeSubDomain": "Remove sub domain from site",
     "Title": "Settings"
   }
 }

@@ -9,7 +9,6 @@ import { SettingsState, setSettings, resetSettings } from "./settingsSlice";
 import { defaultSettings } from "../services/settings";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import { SubTitle } from "../components/heading";
 import { Checkbox, CheckboxItem } from "../components/checkbox";
 import { Label } from "../components/fieldset";
 import { Select } from "../components/select";
@@ -67,38 +66,43 @@ export default function SettingsForm({
         className="flex flex-col gap-4 overflow-x-scroll"
       >
         <div>
-          <SubTitle>{t("Settings.DefaultPasswordProfile")}</SubTitle>
+          <div className="mb-2">
+            <Label>{t("PasswordProfile.Site")}</Label>
+            <CheckboxItem className="pl-1">
+              <Checkbox
+                id="removeSubDomain"
+                {...methods.register("removeSubDomain")}
+              />
+              <Label htmlFor="removeSubDomain">
+                {t("Settings.removeSubDomain")}
+              </Label>
+            </CheckboxItem>
+          </div>
           <PasswordProfileLogin />
+          <PasswordProfileOptions />
         </div>
-        <PasswordProfileOptions />
-        <Label>{t("Settings.FocusField")}</Label>
-        <Select {...methods.register("focus")}>
-          <option value="site">{t("PasswordProfile.Site")}</option>
-          <option value="login">{t("PasswordProfile.Login")}</option>
-          <option value="masterPassword">
-            {t("PasswordProfile.MasterPassword")}
-          </option>
-        </Select>
-        <SubTitle>{t("Settings.SignIn")}</SubTitle>
-        <CheckboxItem className="pl-1">
-          <Checkbox
-            id="encryptMasterPasswordAtLogin"
-            {...methods.register("encryptMasterPasswordAtLogin")}
-          />
-          <Label htmlFor="encryptMasterPasswordAtLogin">
-            {t("Settings.EncryptMyMasterPassword")}
-          </Label>
-        </CheckboxItem>
-        <SubTitle>{t("PasswordProfile.Site")}</SubTitle>
-        <CheckboxItem className="pl-1">
-          <Checkbox
-            id="removeSubDomain"
-            {...methods.register("removeSubDomain")}
-          />
-          <Label htmlFor="removeSubDomain">
-            {t("Settings.removeSubDomain")}
-          </Label>
-        </CheckboxItem>
+        <div>
+          <Label>{t("Settings.FocusField")}</Label>
+          <Select {...methods.register("focus")}>
+            <option value="site">{t("PasswordProfile.Site")}</option>
+            <option value="login">{t("PasswordProfile.Login")}</option>
+            <option value="masterPassword">
+              {t("PasswordProfile.MasterPassword")}
+            </option>
+          </Select>
+        </div>
+        <div>
+          <Label>{t("Settings.SignIn")}</Label>
+          <CheckboxItem className="pl-1">
+            <Checkbox
+              id="encryptMasterPasswordAtLogin"
+              {...methods.register("encryptMasterPasswordAtLogin")}
+            />
+            <Label htmlFor="encryptMasterPasswordAtLogin">
+              {t("Settings.EncryptMyMasterPassword")}
+            </Label>
+          </CheckboxItem>
+        </div>
       </form>
       <div className="mt-4 flex items-center gap-2">
         <Button

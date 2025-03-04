@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Link, NavLink, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logo-white.png";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -15,6 +15,7 @@ import {
 } from "@headlessui/react";
 import { logout } from "../auth/authSlice";
 import { Button } from "./button";
+import DarkLightToggleButton from "./DarkLightToggleButton";
 
 const Avatar = ({ children }: { children: ReactNode }) => {
   return (
@@ -26,6 +27,17 @@ const Avatar = ({ children }: { children: ReactNode }) => {
   );
 };
 
+const NavLink = ({ to, children }: { to: string; children: ReactNode }) => {
+  return (
+    <Link
+      to={to}
+      className="xs:p-1 rounded-md text-sm/6 font-medium text-zinc-300 hover:text-white focus:ring focus:ring-zinc-500 focus:outline-hidden"
+    >
+      {children}
+    </Link>
+  );
+};
+
 export default function Header() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -33,46 +45,36 @@ export default function Header() {
   const { currentUser } = useAppSelector((state) => state.auth);
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800 dark:bg-zinc-900">
       <div className="mx-auto max-w-lg px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <div className="shrink-0">
-              <Link to="/">
-                <img alt="LessPass" src={Logo} className="h-8 w-auto" />
-              </Link>
-            </div>
+            <Link
+              to="/"
+              className="inline-block rounded-md p-1 focus:ring focus:ring-zinc-500 focus:outline-hidden"
+            >
+              <img alt="LessPass" src={Logo} className="h-8 w-auto" />
+            </Link>
             <div className="xs:ml-6 xs:block hidden">
               <div className="flex space-x-1">
-                <NavLink
-                  to="/passwordProfiles"
-                  className={({ isActive }) =>
-                    `rounded-md px-1 py-2 text-sm text-nowrap ${isActive ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white"}`
-                  }
-                >
+                <NavLink to="/passwordProfiles">
                   {t("Header.passwords")}
                 </NavLink>
-                <NavLink
-                  to="/settings"
-                  className={({ isActive }) =>
-                    `rounded-md px-1 py-2 text-sm text-nowrap ${isActive ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white"}`
-                  }
-                >
-                  {t("Header.settings")}
-                </NavLink>
+                <NavLink to="/settings">{t("Header.settings")}</NavLink>
               </div>
             </div>
           </div>
           <div className="xs:ml-6 xs:block hidden">
             <div className="flex items-center">
+              <DarkLightToggleButton />
               {currentUser === null ? (
-                <Button type="button" to="/auth/signIn">
+                <Button type="button" to="/auth/signIn" className="ml-2">
                   {t("Header.signIn")}
                 </Button>
               ) : (
-                <Menu as="div" className="relative ml-3">
+                <Menu as="div" className="relative ml-2">
                   <div>
-                    <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                    <MenuButton className="relative flex rounded-full bg-zinc-800 text-sm focus:ring-1 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-hidden">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <Avatar>
@@ -82,12 +84,12 @@ export default function Header() {
                   </div>
                   <MenuItems
                     transition
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-zinc-50 py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                   >
                     <MenuItem>
                       <Link
                         to="/myprofile"
-                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                        className="block px-4 py-2 text-sm text-zinc-700 focus:bg-zinc-100 focus:outline-hidden"
                       >
                         {t("Header.myProfile")}
                       </Link>
@@ -95,7 +97,7 @@ export default function Header() {
                     <MenuItem>
                       <Link
                         to="/settings"
-                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                        className="block px-4 py-2 text-sm text-zinc-700 focus:bg-zinc-100 focus:outline-hidden"
                       >
                         {t("Header.settings")}
                       </Link>
@@ -107,7 +109,7 @@ export default function Header() {
                           dispatch(logout());
                           navigate("/");
                         }}
-                        className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                        className="block w-full px-4 py-2 text-left text-sm text-zinc-700 focus:bg-zinc-100 focus:outline-hidden"
                       >
                         {t("Header.SignOut")}
                       </button>
@@ -117,8 +119,9 @@ export default function Header() {
               )}
             </div>
           </div>
-          <div className="xs:hidden -mr-2 flex">
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
+          <div className="xs:hidden -mr-2 flex items-center gap-2">
+            <DarkLightToggleButton />
+            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-full p-2 text-zinc-50 focus:ring focus:ring-zinc-500 focus:outline-hidden">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <Bars3Icon
@@ -135,54 +138,34 @@ export default function Header() {
       </div>
 
       <DisclosurePanel className="xs:hidden">
-        <div className="space-y-1 px-2 pt-2 pb-3">
-          <NavLink
-            to="/passwordProfiles"
-            className={({ isActive }) =>
-              `block rounded-md px-3 py-2 text-base font-medium text-nowrap ${isActive ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white"}`
-            }
-          >
-            {t("Header.passwords")}
-          </NavLink>
-
-          <NavLink
-            to="/settings"
-            className={({ isActive }) =>
-              `block rounded-md px-3 py-2 text-base font-medium text-nowrap ${isActive ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white"}`
-            }
-          >
-            {t("Header.settings")}
-          </NavLink>
+        <div className="flex flex-col space-y-5 p-5">
+          <NavLink to="/passwordProfiles">{t("Header.passwords")}</NavLink>
+          <NavLink to="/settings">{t("Header.settings")}</NavLink>
         </div>
-
-        <div className="border-t border-gray-700 pt-4 pb-3">
+        <div className="border-t border-zinc-700 p-5">
           {currentUser === null ? (
-            <div className="px-2">
-              <DisclosureButton
-                as={Link}
-                to="/auth/signIn"
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-              >
+            <div className="flex">
+              <DisclosureButton as={Button} to="/auth/signIn">
                 {t("Header.signIn")}
               </DisclosureButton>
             </div>
           ) : (
             <div>
-              <div className="flex items-center px-5">
+              <div className="flex items-center">
                 <div className="shrink-0">
                   <Avatar>{currentUser.email.charAt(0).toUpperCase()}</Avatar>
                 </div>
                 <div className="ml-3">
-                  <div className="text-sm font-medium text-gray-400">
+                  <div className="text-sm font-medium text-zinc-300 hover:text-white">
                     {currentUser.email}
                   </div>
                 </div>
               </div>
-              <div className="mt-3 space-y-1 px-2">
+              <div className="mt-5 space-y-5">
                 <DisclosureButton
                   as={Link}
                   to="/myprofile"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                  className="block text-sm/6 font-medium text-zinc-300 hover:text-white"
                 >
                   {t("Header.myProfile")}
                 </DisclosureButton>
@@ -192,7 +175,7 @@ export default function Header() {
                     dispatch(logout());
                     navigate("/");
                   }}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                  className="block text-sm/6 font-medium text-zinc-300 hover:text-white"
                 >
                   {t("Header.SignOut")}
                 </DisclosureButton>

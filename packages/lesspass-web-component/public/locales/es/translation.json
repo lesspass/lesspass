@@ -86,11 +86,10 @@
     "NewPassword": "Nueva contraseña"
   },
   "Settings": {
-    "DefaultPasswordProfile": "Contraseña predeterminada",
+    "removeSubDomain": "Eliminar el subdominio del sitio",
     "FocusField": "Campo de enfoque",
     "SignIn": "Iniciar sesión",
     "EncryptMyMasterPassword": "Cifrar mi contraseña maestra al iniciar sesión",
-    "removeSubDomain": "Eliminar el subdominio del sitio",
     "Title": "Configuración"
   }
 }

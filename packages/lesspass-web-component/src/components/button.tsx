@@ -14,22 +14,22 @@ export function Button({
   danger?: boolean;
   to?: string;
 } & React.ComponentProps<"button">) {
-  const bg = outline ? "bg-white" : danger ? "bg-red-400" : "bg-blue-500";
+  const bg = outline ? "bg-transparent" : danger ? "bg-red-400" : "bg-blue-500";
   const text = danger
     ? "text-red-500"
     : outline
-      ? "text-gray-900"
-      : "text-white";
+      ? "text-zinc-950 dark:text-zinc-50 hover:dark:text-zinc-950"
+      : "text-zinc-50";
   const ringBase = "rounded-md shadow-xs ring-1 ring-inset";
   const ringColor = danger
     ? "ring-red-500"
     : outline
-      ? "ring-gray-300"
+      ? "ring-zinc-300"
       : "ring-blue-500";
   const hover = outline
     ? danger
       ? "hover:ring-2"
-      : "hover:bg-gray-200"
+      : "hover:bg-zinc-200"
     : "hover:bg-blue-400";
   const focusBase = "focus:outline-2 focus:-outline-offset-2";
   const focus = outline ? "focus:outline-blue-500" : "focus:outline-blue-400";

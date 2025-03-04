@@ -46,8 +46,9 @@ export const PasswordProfileFormSchema = Yup.object()
       value.lowercase || value.uppercase || value.digits || value.symbols,
   );
 
-export type PasswordProfileForm = PasswordProfileWithMasterPassword |
-  PasswordProfileFromApiWithMasterPassword;
+export type PasswordProfileForm =
+  | PasswordProfileWithMasterPassword
+  | PasswordProfileFromApiWithMasterPassword;
 
 export function PasswordProfileForm({
   id = "password-profile-form",

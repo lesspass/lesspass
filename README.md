@@ -27,7 +27,6 @@ You can use the password generator functionnality on the web site directly. Even
 
 ## Todo
 
-- [ ] :art: Add dark mode #752
 - [ ] :speech_balloon: Translation on the website #456
 - [ ] :memo: Guide to self host a LessPass server on Digital Ocean
 

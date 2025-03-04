@@ -1,4 +1,4 @@
-import {test, expect} from "vitest"
+import { test, expect } from "vitest";
 import { cleanUrl } from "./url";
 
 test("cleanUrl", () => {

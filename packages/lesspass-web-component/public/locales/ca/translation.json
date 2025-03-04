@@ -86,11 +86,10 @@
     "NewPassword": "Nova contrasenya"
   },
   "Settings": {
-    "DefaultPasswordProfile": "Contrasenya per defecte",
+    "removeSubDomain": "Elimina el subdomini del lloc",
     "FocusField": "Camp de focus",
     "SignIn": "Iniciar sessió",
     "EncryptMyMasterPassword": "Encripta la meva contrasenya mestra en iniciar sessió",
-    "removeSubDomain": "Elimina el subdomini del lloc",
     "Title": "Configuració"
   }
 }

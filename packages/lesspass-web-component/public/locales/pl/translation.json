@@ -86,11 +86,10 @@
     "NewPassword": "Nowe hasło"
   },
   "Settings": {
-    "DefaultPasswordProfile": "Domyślne hasło",
+    "removeSubDomain": "Usuń subdomenę z witryny",
     "FocusField": "Pole ostrości",
     "SignIn": "Zaloguj się",
     "EncryptMyMasterPassword": "Szyfruj moje hasło główne przy logowaniu",
-    "removeSubDomain": "Usuń subdomenę z witryny",
     "Title": "Ustawienia"
   }
 }
