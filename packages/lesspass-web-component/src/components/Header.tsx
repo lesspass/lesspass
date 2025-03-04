@@ -16,6 +16,7 @@ import {
 import { logout } from "../auth/authSlice";
 import { Button } from "./button";
 import DarkLightToggleButton from "./DarkLightToggleButton";
+import { resetSettings } from "../settings/settingsSlice";
 
 const Avatar = ({ children }: { children: ReactNode }) => {
   return (
@@ -49,12 +50,16 @@ export default function Header() {
       <div className="mx-auto max-w-lg px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link
-              to="/"
+            <button
+              type="button"
               className="inline-block rounded-md p-1 focus:ring focus:ring-zinc-500 focus:outline-hidden"
+              onClick={() => {
+                dispatch(resetSettings());
+                navigate("/");
+              }}
             >
               <img alt="LessPass" src={Logo} className="h-8 w-auto" />
-            </Link>
+            </button>
             <div className="xs:ml-6 xs:block hidden">
               <div className="flex space-x-1">
                 <NavLink to="/passwordProfiles">
