@@ -1,4 +1,5 @@
 from rest_framework.test import APITestCase, APIClient
+from unittest import mock
 
 from api import models
 from api.tests import factories
@@ -113,10 +114,11 @@ class LoginPasswordsTestCase(APITestCase):
 
     def test_update_password(self):
         password = factories.PasswordFactory(user=self.user)
-        self.assertNotEqual("facebook.com", password.site)
+        self.assertNotEqual("example.org", password.site)
+        self.assertNotEqual("contact@example.org", password.login)
         new_password = {
-            "site": "facebook.com",
-            "login": "test@lesspass.com",
+            "site": "example.org",
+            "login": "contact@example.org",
             "lowercase": True,
             "uppercase": True,
             "digits": False,
@@ -125,11 +127,28 @@ class LoginPasswordsTestCase(APITestCase):
             "length": 20,
             "version": 2,
         }
-        request = self.client.put("/passwords/%s/" % password.id, new_password)
+        request = self.client.put(f"/passwords/{password.id}/", new_password)
         self.assertEqual(200, request.status_code, request.content.decode("utf-8"))
+        self.assertEqual(
+            request.data,
+            {
+                "id": str(password.id),
+                "login": "contact@example.org",
+                "site": "example.org",
+                "lowercase": True,
+                "uppercase": True,
+                "symbols": False,
+                "digits": False,
+                "counter": 2,
+                "length": 20,
+                "version": 2,
+                "created": mock.ANY,
+                "modified": mock.ANY,
+            },
+        )
         password_updated = models.Password.objects.get(id=password.id)
-        self.assertEqual(password_updated.site, "facebook.com")
-        self.assertEqual(password_updated.login, "test@lesspass.com")
+        self.assertEqual(password_updated.site, "example.org")
+        self.assertEqual(password_updated.login, "contact@example.org")
         self.assertTrue(password_updated.lowercase)
         self.assertTrue(password_updated.uppercase)
         self.assertFalse(password_updated.digits)

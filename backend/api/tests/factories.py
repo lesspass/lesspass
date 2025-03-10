@@ -22,7 +22,7 @@ class PasswordFactory(DjangoModelFactory):
         model = models.Password
 
     user = factory.SubFactory(UserFactory)
-    login = "admin@oslab.fr"
+    login = "contact@lesspass.com"
     site = "lesspass.com"
 
 
