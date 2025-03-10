@@ -125,6 +125,12 @@ paths:
       summary: Get passwords list
       description: Get passwords list
       operationId: passwordsget
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Query parameter to search for a password profile by site. If password profile site contains search, the password profiles matching are returned.
       security:
         - JWTAuth: []
       responses:
