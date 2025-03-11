@@ -63,13 +63,13 @@ export function Hero() {
           </div>
           <div className="mt-16 flex flex-col items-center sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
             <div
-              className="mx-auto max-w-full overflow-y-scroll rounded-md border border-gray-800"
-              style={{ width: "485px", minHeight: "500px" }}
+              className="mx-auto max-w-full overflow-y-scroll rounded-md border border-gray-800 bg-white dark:bg-zinc-950"
+              style={{ width: "481px", minHeight: "500px" }}
             >
               <LessPassWebComponent />
             </div>
             <p className="text-sm text-gray-500">
-              For your security, prefer to use the browser extension
+              For your security, it's better to use the browser extension
             </p>
           </div>
         </div>
