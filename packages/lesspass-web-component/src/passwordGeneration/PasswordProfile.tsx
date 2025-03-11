@@ -22,10 +22,16 @@ import PasswordProfileLogin from "./PasswordProfileLogin";
 import PasswordProfileOptions from "./PasswordProfileOptions";
 import { useTranslation } from "react-i18next";
 import { generateURL } from "./url";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch } from "../store";
 import { showInfo } from "../alerts/alertsSlice";
-import { resetSettings } from "../settings/settingsSlice";
-import { removeSiteSubdomain } from "./site";
+import { FocusField } from "../settings/settingsSlice";
+
+function getBestFocusField(formValues: PasswordProfileForm) {
+  const { site, login } = formValues;
+  if (site === "") return "site";
+  if (login === "") return "login";
+  return "masterPassword";
+}
 
 export const PasswordProfileFormSchema = Yup.object()
   .shape({
@@ -57,14 +63,16 @@ export function PasswordProfileForm({
 }: {
   id?: string;
   onSubmit: (values: PasswordProfile, masterPassword: string) => void;
-  focus?: keyof PasswordProfileForm;
+  focus?: FocusField;
 }) {
   const { t } = useTranslation();
-  const { register, handleSubmit, setFocus } =
+  const { register, handleSubmit, setFocus, getValues } =
     useFormContext<PasswordProfileForm>();
 
   useEffect(() => {
-    setFocus(focus, { shouldSelect: true });
+    const formValues = getValues();
+    const f = focus === "auto" ? getBestFocusField(formValues) : focus;
+    setFocus(f, { shouldSelect: true });
   }, [setFocus]);
 
   return (
@@ -102,25 +110,24 @@ export default function PasswordProfile({
   onClear,
 }: {
   passwordProfile: PasswordProfile;
-  focus: keyof PasswordProfileForm;
+  focus: FocusField;
   children?: ReactNode;
   onClear?: () => void;
 }) {
   const dispatch = useAppDispatch();
-  const settings = useAppSelector((state) => state.settings);
   const { t } = useTranslation();
   const [generatedPassword, setGeneratedPassword] = useState<string | null>(
     null,
   );
   const methods = useForm<PasswordProfileForm>({
     resolver: yupResolver(PasswordProfileFormSchema),
-    defaultValues: {
-      ...passwordProfile,
-      site: settings.removeSubDomain
-        ? removeSiteSubdomain(passwordProfile.site)
-        : passwordProfile.site,
-    },
+    defaultValues: passwordProfile,
   });
+
+  useEffect(() => {
+    methods.reset(passwordProfile);
+  }, [passwordProfile]);
+
   return (
     <FormProvider {...methods}>
       <PasswordProfileForm
@@ -163,9 +170,7 @@ export default function PasswordProfile({
         <Button
           type="button"
           onClick={() => {
-            methods.reset();
             setGeneratedPassword(null);
-            dispatch(resetSettings());
             onClear && onClear();
           }}
           outline

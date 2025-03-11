@@ -1,6 +1,7 @@
 import { defaultPasswordProfile } from "lesspass";
 import { SettingsState } from "../settings/settingsSlice";
 import { LESSPASS_SETTINGS } from "./constant";
+import { cleanSite } from "./site";
 
 export function saveSettings(settings: SettingsState) {
   try {
@@ -13,22 +14,26 @@ export function saveSettings(settings: SettingsState) {
 export const defaultSettings: SettingsState = {
   ...defaultPasswordProfile,
   encryptMasterPasswordAtLogin: true,
-  focus: "site",
+  focus: "auto",
   isWebExtensionContext: false,
   removeSubDomain: false,
+  removeTopLevelDomain: false,
 };
 
-export function getSettings(): SettingsState {
+export function getSettings(
+  userSettings: Partial<SettingsState> = {},
+): SettingsState {
   try {
     const settings = window.localStorage.getItem(LESSPASS_SETTINGS);
     if (settings) {
       const savedSettings = JSON.parse(settings);
-      return {
+      return cleanSite({
         ...defaultSettings,
         ...savedSettings,
-      };
+        ...userSettings,
+      });
     }
-    return { ...defaultSettings };
+    return { ...defaultSettings, ...userSettings };
   } catch (error) {
     return { ...defaultSettings };
   }

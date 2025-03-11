@@ -80,7 +80,13 @@ export default function PasswordProfilePage() {
             navigate("/passwordProfiles");
           }}
           button={(openModal) => (
-            <Button type="submit" outline danger onClick={openModal}>
+            <Button
+              type="button"
+              className="z-10"
+              outline
+              danger
+              onClick={openModal}
+            >
               {t("PasswordProfilePage.Delete")}
             </Button>
           )}

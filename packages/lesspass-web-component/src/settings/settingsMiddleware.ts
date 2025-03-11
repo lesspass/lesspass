@@ -7,9 +7,10 @@ const settingsMiddleware = createListenerMiddleware();
 
 settingsMiddleware.startListening({
   actionCreator: setSettings,
-  effect: (action) => {
+  effect: (action, listenerApi) => {
+    const state = listenerApi.getState() as RootState;
     const { payload } = action;
-    saveSettings(payload);
+    saveSettings({ ...state.settings, ...payload });
   },
 });
 

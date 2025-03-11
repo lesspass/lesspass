@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Inicia sesión en LessPass",
+    "LessPassServerDecommissioned": "La base de datos de LessPass está fuera de servicio. Debes usar tu propio servidor.",
     "UnableToSignInTitle": "No se puede iniciar sesión",
     "UnableToSignInMessage": "La información proporcionada es inválida o el usuario no existe.",
-    "ForgotPassword": "¿Olvidaste tu contraseña?",
     "SignIn": "Iniciar sesión",
-    "LessPassServerDecommissioned": "La base de datos de LessPass está fuera de servicio. Debes usar tu propio servidor."
+    "ForgotPassword": "¿Olvidaste tu contraseña?"
   },
   "Header": {
     "passwords": "Contraseñas",
@@ -86,8 +86,10 @@
     "NewPassword": "Nueva contraseña"
   },
   "Settings": {
-    "removeSubDomain": "Eliminar el subdominio del sitio",
+    "removeSubDomain": "Eliminar el subdominio",
+    "removeTopLevelDomain": "Eliminar el dominio de nivel superior",
     "FocusField": "Campo de enfoque",
+    "FocusAuto": "Automático",
     "SignIn": "Iniciar sesión",
     "EncryptMyMasterPassword": "Cifrar mi contraseña maestra al iniciar sesión",
     "Title": "Configuración"

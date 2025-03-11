@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Zaloguj się do LessPass",
+    "LessPassServerDecommissioned": "Baza danych LessPass została wyłączona. Musisz używać własnego serwera.",
     "UnableToSignInTitle": "Nie można się zalogować",
     "UnableToSignInMessage": "Podane dane są nieprawidłowe lub użytkownik nie istnieje.",
-    "ForgotPassword": "Zapomniałeś hasła?",
     "SignIn": "Zaloguj się",
-    "LessPassServerDecommissioned": "Baza danych LessPass została wyłączona. Musisz używać własnego serwera."
+    "ForgotPassword": "Zapomniałeś hasła?"
   },
   "Header": {
     "passwords": "Hasła",
@@ -86,8 +86,10 @@
     "NewPassword": "Nowe hasło"
   },
   "Settings": {
-    "removeSubDomain": "Usuń subdomenę z witryny",
+    "removeSubDomain": "Usuń subdomenę",
+    "removeTopLevelDomain": "Usuń domenę najwyższego poziomu",
     "FocusField": "Pole ostrości",
+    "FocusAuto": "Automatyczny",
     "SignIn": "Zaloguj się",
     "EncryptMyMasterPassword": "Szyfruj moje hasło główne przy logowaniu",
     "Title": "Ustawienia"

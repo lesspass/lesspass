@@ -16,7 +16,7 @@ import {
 import { logout } from "../auth/authSlice";
 import { Button } from "./button";
 import DarkLightToggleButton from "./DarkLightToggleButton";
-import { resetSettings } from "../settings/settingsSlice";
+import { setSettings } from "../settings/settingsSlice";
 
 const Avatar = ({ children }: { children: ReactNode }) => {
   return (
@@ -54,7 +54,7 @@ export default function Header() {
               type="button"
               className="inline-block rounded-md p-1 focus:ring focus:ring-zinc-500 focus:outline-hidden"
               onClick={() => {
-                dispatch(resetSettings());
+                dispatch(setSettings({ site: "" }));
                 navigate("/");
               }}
             >
@@ -77,7 +77,7 @@ export default function Header() {
                   {t("Header.signIn")}
                 </Button>
               ) : (
-                <Menu as="div" className="relative ml-2">
+                <Menu as="div" className="relative z-20 ml-2">
                   <div>
                     <MenuButton className="relative flex rounded-full bg-zinc-800 text-sm focus:ring-1 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-hidden">
                       <span className="absolute -inset-1.5" />

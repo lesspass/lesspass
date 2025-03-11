@@ -18,7 +18,7 @@ export function LessPassWebComponent({
     <Suspense fallback={<LoadingPage />}>
       <BrowserRouter>
         <Provider
-          store={setupStore({ settings: { ...getSettings(), ...settings } })}
+          store={setupStore({ settings: { ...getSettings(settings) } })}
         >
           <I18nextProvider i18n={i18n}>
             <App />
@@ -38,7 +38,7 @@ export function LessPassWebComponentInMemory({
     <Suspense fallback={<LoadingPage />}>
       <MemoryRouter>
         <Provider
-          store={setupStore({ settings: { ...getSettings(), ...settings } })}
+          store={setupStore({ settings: { ...getSettings(settings) } })}
         >
           <I18nextProvider i18n={i18n}>
             <App />

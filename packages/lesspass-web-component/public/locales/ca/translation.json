@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Inicia sessió a LessPass",
+    "LessPassServerDecommissioned": "La base de dades de LessPass s'ha desactivat. Has d'utilitzar el teu propi servidor.",
     "UnableToSignInTitle": "No s'ha pogut iniciar sessió",
     "UnableToSignInMessage": "Les dades proporcionades són incorrectes o l'usuari no existeix.",
-    "ForgotPassword": "Has oblidat la contrasenya?",
     "SignIn": "Iniciar sessió",
-    "LessPassServerDecommissioned": "La base de dades de LessPass s'ha desactivat. Has d'utilitzar el teu propi servidor."
+    "ForgotPassword": "Has oblidat la contrasenya?"
   },
   "Header": {
     "passwords": "Contrasenyes",
@@ -86,8 +86,10 @@
     "NewPassword": "Nova contrasenya"
   },
   "Settings": {
-    "removeSubDomain": "Elimina el subdomini del lloc",
+    "removeSubDomain": "Elimina el subdomini",
+    "removeTopLevelDomain": "Elimina el domini de nivell superior",
     "FocusField": "Camp de focus",
+    "FocusAuto": "Automàtic",
     "SignIn": "Iniciar sessió",
     "EncryptMyMasterPassword": "Encripta la meva contrasenya mestra en iniciar sessió",
     "Title": "Configuració"

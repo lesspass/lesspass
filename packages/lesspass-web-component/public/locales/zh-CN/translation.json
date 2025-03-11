@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "登录 LessPass",
+    "LessPassServerDecommissioned": "LessPass 数据库已停用。您必须使用自己的服务器。",
     "UnableToSignInTitle": "无法登录",
     "UnableToSignInMessage": "提供的信息无效或用户不存在。",
-    "ForgotPassword": "忘记密码？",
     "SignIn": "登录",
-    "LessPassServerDecommissioned": "LessPass 数据库已停用。您必须使用自己的服务器。"
+    "ForgotPassword": "忘记密码？"
   },
   "Header": {
     "passwords": "密码",
@@ -86,8 +86,10 @@
     "NewPassword": "新密码"
   },
   "Settings": {
-    "removeSubDomain": "从网站中移除子域名",
+    "removeSubDomain": "移除子域名",
+    "removeTopLevelDomain": "移除顶级域名",
     "FocusField": "焦点字段",
+    "FocusAuto": "自动",
     "SignIn": "登录",
     "EncryptMyMasterPassword": "在登录时加密我的主密码",
     "Title": "设置"

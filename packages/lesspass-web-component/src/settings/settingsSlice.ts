@@ -2,6 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PasswordProfile } from "lesspass";
 import { defaultSettings, getSettings } from "../services/settings";
 
+export const FocusFields = ["site", "login", "masterPassword", "auto"] as const;
+export type FocusField = (typeof FocusFields)[number];
+
 export type SettingsState = Pick<
   PasswordProfile,
   | "site"
@@ -14,9 +17,10 @@ export type SettingsState = Pick<
   | "counter"
 > & {
   encryptMasterPasswordAtLogin: boolean;
-  focus: keyof PasswordProfile | "masterPassword";
+  focus: FocusField;
   isWebExtensionContext: boolean;
   removeSubDomain: boolean;
+  removeTopLevelDomain: boolean;
 };
 
 const initialState: SettingsState = getSettings();
@@ -25,8 +29,8 @@ const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    setSettings: (_, action: PayloadAction<SettingsState>) => {
-      return { ...action.payload };
+    setSettings: (state, action: PayloadAction<Partial<SettingsState>>) => {
+      return { ...state, ...action.payload };
     },
     resetSettings: () => {
       return { ...defaultSettings };

@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Sign in To LessPass",
+    "LessPassServerDecommissioned": "LessPass Database is decommissioned. You must use your own server.",
     "UnableToSignInTitle": "Unable to sign in",
     "UnableToSignInMessage": "The information provided is invalid or the user does not exist.",
-    "ForgotPassword": "forgot password?",
     "SignIn": "Sign in",
-    "LessPassServerDecommissioned": "LessPass Database is decommissioned. You must use your own server."
+    "ForgotPassword": "forgot password?"
   },
   "Header": {
     "passwords": "Passwords",
@@ -86,8 +86,10 @@
     "NewPassword": "New password"
   },
   "Settings": {
-    "removeSubDomain": "Remove sub domain from site",
+    "removeSubDomain": "Remove sub domain",
+    "removeTopLevelDomain": "Remove top level domain",
     "FocusField": "Focus field",
+    "FocusAuto": "Automatic",
     "SignIn": "Sign in",
     "EncryptMyMasterPassword": "Encrypt my master password at login",
     "Title": "Settings"

@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Se connecter à LessPass",
+    "LessPassServerDecommissioned": "Le serveur LessPass est désactivé. Vous devez utiliser votre propre serveur.",
     "UnableToSignInTitle": "Impossible de se connecter",
     "UnableToSignInMessage": "Les informations fournies ne sont pas valides ou l'utilisateur n'existe pas.",
-    "ForgotPassword": "mot de passe oublié ?",
     "SignIn": "Se connecter",
-    "LessPassServerDecommissioned": "Le serveur LessPass est désactivé. Vous devez utiliser votre propre serveur."
+    "ForgotPassword": "mot de passe oublié ?"
   },
   "Header": {
     "passwords": "Mot de passes",
@@ -86,8 +86,10 @@
     "NewPassword": "Nouveau mot de passe"
   },
   "Settings": {
-    "removeSubDomain": "Supprimer le sous domaine du site",
+    "removeSubDomain": "Supprimer le sous-domaine",
+    "removeTopLevelDomain": "Supprimer le domaine de premier niveau",
     "FocusField": "Champ sélectionné",
+    "FocusAuto": "Automatique",
     "SignIn": "Connexion",
     "EncryptMyMasterPassword": "Chiffrer mon mot de passe à la connexion",
     "Title": "Paramètres"

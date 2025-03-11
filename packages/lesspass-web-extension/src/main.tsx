@@ -17,7 +17,6 @@ function LessPassWebComponentWithSite() {
     <LessPassWebComponentInMemory
       settings={{
         site,
-        focus: site === "" ? "site" : "login",
         isWebExtensionContext: true,
       }}
     />

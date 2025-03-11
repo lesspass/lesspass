@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Войти в LessPass",
+    "LessPassServerDecommissioned": "База данных LessPass отключена. Вам необходимо использовать собственный сервер.",
     "UnableToSignInTitle": "Не удалось войти",
     "UnableToSignInMessage": "Предоставленные данные недействительны или пользователь не существует.",
-    "ForgotPassword": "Забыли пароль?",
     "SignIn": "Войти",
-    "LessPassServerDecommissioned": "База данных LessPass отключена. Вам необходимо использовать собственный сервер."
+    "ForgotPassword": "Забыли пароль?"
   },
   "Header": {
     "passwords": "Пароли",
@@ -86,8 +86,10 @@
     "NewPassword": "Новый пароль"
   },
   "Settings": {
-    "removeSubDomain": "Удалить поддомен с сайта",
+    "removeSubDomain": "Удалить поддомен",
+    "removeTopLevelDomain": "Удалить домен верхнего уровня",
     "FocusField": "Поле фокуса",
+    "FocusAuto": "Автоматически",
     "SignIn": "Войти",
     "EncryptMyMasterPassword": "Шифровать мой мастер-пароль при входе",
     "Title": "Настройки"

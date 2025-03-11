@@ -6,8 +6,9 @@ export interface Credentials {
 }
 
 export interface CurrentUser {
-  id: string;
+  id: number;
   email: string;
+  key: string;
 }
 
 export interface NewPasswordForm {

@@ -1,3 +1,5 @@
+import { SettingsState } from "../settings/settingsSlice";
+
 const mostUsedTlds = [
   "com",
   "ru",
@@ -1401,25 +1403,38 @@ const mostUsedTlds = [
   "edu.ht",
 ];
 
-export function removeSiteSubdomain(url: string): string {
+export function cleanSite<
+  T extends Pick<
+    SettingsState,
+    "site" | "removeSubDomain" | "removeTopLevelDomain"
+  >,
+>(settings: T): T {
+  const { site, removeSubDomain, removeTopLevelDomain } = settings;
+  if (removeSubDomain === false && removeTopLevelDomain == false)
+    return settings;
   try {
-    const isIpv4 = /^\d+\.\d+\.\d+\.\d+(?::\d+)?$/.test(url);
+    const isIpv4 = /^\d+\.\d+\.\d+\.\d+(?::\d+)?$/.test(site);
     if (isIpv4) {
-      return url;
+      return { ...settings, site };
     }
-
     for (let i = 0; i < mostUsedTlds.length; i++) {
       const tld = mostUsedTlds[i];
       const tldWithDot = `.${tld}`;
-      if (url.endsWith(tldWithDot)) {
-        const domain = url.replace(tldWithDot, "").split(".").pop();
-        if (domain) {
-          return domain + tldWithDot;
-        }
+      if (site.endsWith(tldWithDot)) {
+        const parts = site.replace(tldWithDot, "").split(".");
+        const domain = parts.pop() || "";
+        const newParts = removeSubDomain
+          ? removeTopLevelDomain
+            ? [domain]
+            : [domain, tld]
+          : removeTopLevelDomain
+            ? [...parts, domain]
+            : [...parts, domain, tld];
+        return { ...settings, site: newParts.join(".") };
       }
     }
-    return url;
+    return { ...settings, site };
   } catch {
-    return "";
+    return { ...settings, site };
   }
 }

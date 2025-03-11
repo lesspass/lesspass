@@ -24,45 +24,39 @@ function SignInPage() {
   return (
     <div className="grid grid-cols-1 gap-4">
       <Title>{t("SignInPage.SignInToLessPass")}</Title>
-      <div>
-        <LoginForm
-          id="sign-in-form"
-          onSubmit={async ({ baseUrl, email, masterPassword }) => {
-            const { from } = location.state || {
-              from: { pathname: "/" },
-            };
-            setBaseUrl(baseUrl);
-            const generatedPassword = await generatePassword(
-              { ...defaultPasswordProfile, site: "lesspass.com", login: email },
-              masterPassword,
-            );
-            const password = encryptMasterPasswordAtLogin
-              ? generatedPassword
-              : masterPassword;
-            login({ email, password })
-              .unwrap()
-              .then(() => {
-                getCurrentUser()
-                  .unwrap()
-                  .then(() => navigate(from));
-              })
-              .catch(() => {
-                dispatch(
-                  showError(
-                    t("SignInPage.UnableToSignInTitle"),
-                    t("SignInPage.UnableToSignInMessage"),
-                  ),
-                );
-              });
-          }}
-        />
-        <div className="text-right text-sm/6">
-          <Link to="/auth/forgotPassword">
-            {t("SignInPage.ForgotPassword")}
-          </Link>
-        </div>
-      </div>
-      <div>
+      <HelpMessage message={t("SignInPage.LessPassServerDecommissioned")} />
+      <LoginForm
+        id="sign-in-form"
+        onSubmit={async ({ baseUrl, email, masterPassword }) => {
+          const { from } = location.state || {
+            from: { pathname: "/" },
+          };
+          setBaseUrl(baseUrl);
+          const generatedPassword = await generatePassword(
+            { ...defaultPasswordProfile, site: "lesspass.com", login: email },
+            masterPassword,
+          );
+          const password = encryptMasterPasswordAtLogin
+            ? generatedPassword
+            : masterPassword;
+          login({ email, password })
+            .unwrap()
+            .then(() => {
+              getCurrentUser()
+                .unwrap()
+                .then(() => navigate(from));
+            })
+            .catch(() => {
+              dispatch(
+                showError(
+                  t("SignInPage.UnableToSignInTitle"),
+                  t("SignInPage.UnableToSignInMessage"),
+                ),
+              );
+            });
+        }}
+      />
+      <div className="flex flex-col space-y-2">
         <Button
           type="submit"
           form="sign-in-form"
@@ -70,9 +64,11 @@ function SignInPage() {
         >
           {t("SignInPage.SignIn")}
         </Button>
-      </div>
-      <div>
-        <HelpMessage message={t("SignInPage.LessPassServerDecommissioned")} />
+        <div className="text-right text-sm/6">
+          <Link to="/auth/forgotPassword">
+            {t("SignInPage.ForgotPassword")}
+          </Link>
+        </div>
       </div>
     </div>
   );

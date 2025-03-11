@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Iniciar sessão no LessPass",
+    "LessPassServerDecommissioned": "A base de dados do LessPass foi desativada. Tem de utilizar o seu próprio servidor.",
     "UnableToSignInTitle": "Não foi possível iniciar sessão",
     "UnableToSignInMessage": "As informações fornecidas são inválidas ou o utilizador não existe.",
-    "ForgotPassword": "Esqueceu-se da palavra-passe?",
     "SignIn": "Iniciar sessão",
-    "LessPassServerDecommissioned": "A base de dados do LessPass foi desativada. Tem de utilizar o seu próprio servidor."
+    "ForgotPassword": "Esqueceu-se da palavra-passe?"
   },
   "Header": {
     "passwords": "Palavras-passe",
@@ -86,8 +86,10 @@
     "NewPassword": "Nova palavra-passe"
   },
   "Settings": {
-    "removeSubDomain": "Remover o subdomínio do site",
+    "removeSubDomain": "Remover o subdomínio",
+    "removeTopLevelDomain": "Remover o domínio de nível superior",
     "FocusField": "Campo de foco",
+    "FocusAuto": "Automático",
     "SignIn": "Iniciar sessão",
     "EncryptMyMasterPassword": "Encriptar a minha palavra-passe mestre ao iniciar sessão",
     "Title": "Definições"

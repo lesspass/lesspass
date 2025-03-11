@@ -5,7 +5,12 @@ import { Button } from "../components/button";
 import PasswordProfileLogin from "../passwordGeneration/PasswordProfileLogin";
 import PasswordProfileOptions from "../passwordGeneration/PasswordProfileOptions";
 import { useAppDispatch } from "../store";
-import { SettingsState, setSettings, resetSettings } from "./settingsSlice";
+import {
+  SettingsState,
+  setSettings,
+  resetSettings,
+  FocusField,
+} from "./settingsSlice";
 import { defaultSettings } from "../services/settings";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
@@ -26,11 +31,14 @@ export const SettingsFormSchema = Yup.object()
     encryptMasterPasswordAtLogin: Yup.boolean().default(
       defaultSettings.encryptMasterPasswordAtLogin,
     ),
-    focus: Yup.string<SettingsState["focus"]>().default(defaultSettings.focus),
+    focus: Yup.string<FocusField>().default(defaultSettings.focus),
     isWebExtensionContext: Yup.boolean().default(
       defaultSettings.isWebExtensionContext,
     ),
     removeSubDomain: Yup.boolean().default(defaultSettings.removeSubDomain),
+    removeTopLevelDomain: Yup.boolean().default(
+      defaultSettings.removeTopLevelDomain,
+    ),
   })
   .test(
     "atLeastOneOptionIsChecked",
@@ -77,6 +85,15 @@ export default function SettingsForm({
                 {t("Settings.removeSubDomain")}
               </Label>
             </CheckboxItem>
+            <CheckboxItem className="pl-1">
+              <Checkbox
+                id="removeTopLevelDomain"
+                {...methods.register("removeTopLevelDomain")}
+              />
+              <Label htmlFor="removeTopLevelDomain">
+                {t("Settings.removeTopLevelDomain")}
+              </Label>
+            </CheckboxItem>
           </div>
           <PasswordProfileLogin />
           <PasswordProfileOptions />
@@ -84,6 +101,7 @@ export default function SettingsForm({
         <div>
           <Label>{t("Settings.FocusField")}</Label>
           <Select {...methods.register("focus")}>
+            <option value="auto">{t("Settings.FocusAuto")}</option>
             <option value="site">{t("PasswordProfile.Site")}</option>
             <option value="login">{t("PasswordProfile.Login")}</option>
             <option value="masterPassword">

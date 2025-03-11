@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Melden Sie sich bei LessPass an",
+    "LessPassServerDecommissioned": "Die LessPass-Datenbank wurde außer Betrieb genommen. Sie müssen Ihren eigenen Server verwenden.",
     "UnableToSignInTitle": "Anmeldung nicht möglich",
     "UnableToSignInMessage": "Die angegebenen Informationen sind ungültig oder der Benutzer existiert nicht.",
-    "ForgotPassword": "Passwort vergessen?",
     "SignIn": "Anmelden",
-    "LessPassServerDecommissioned": "Die LessPass-Datenbank wurde außer Betrieb genommen. Sie müssen Ihren eigenen Server verwenden."
+    "ForgotPassword": "Passwort vergessen?"
   },
   "Header": {
     "passwords": "Passwörter",
@@ -86,8 +86,10 @@
     "NewPassword": "Neues Passwort"
   },
   "Settings": {
-    "removeSubDomain": "Entferne die Subdomain von der Website",
+    "removeSubDomain": "Entferne die Subdomain",
+    "removeTopLevelDomain": "Entferne die Top-Level-Domain",
     "FocusField": "Fokusfeld",
+    "FocusAuto": "Automatisch",
     "SignIn": "Anmelden",
     "EncryptMyMasterPassword": "Mein Master-Passwort beim Anmelden verschlüsseln",
     "Title": "Einstellungen"

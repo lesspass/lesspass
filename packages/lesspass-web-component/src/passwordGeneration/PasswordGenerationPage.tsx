@@ -1,44 +1,44 @@
 import PasswordProfile from "./PasswordProfile";
-import { useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { Navigate, useLocation } from "react-router";
 import { getPasswordProfileFromLocation } from "./url";
 import { useSearchPasswordProfileQuery } from "../passwordProfiles/passwordProfilesApi";
 import { LoadingPage } from "../LoadingPage";
 import { skipToken } from "@reduxjs/toolkit/query";
+import { setSettings, SettingsState } from "../settings/settingsSlice";
 
-function LoadPasswordProfileWithSite() {
-  const settings = useAppSelector((state) => state.settings);
+function PasswordGenerationPageWebExtension({
+  settings,
+}: {
+  settings: SettingsState;
+}) {
+  const dispatch = useAppDispatch();
+  const { currentUser } = useAppSelector((state) => state.auth);
   const { site } = settings;
   const { data, isLoading } = useSearchPasswordProfileQuery(
-    site === "" ? skipToken : site,
+    site === "" || currentUser === null ? skipToken : site,
   );
-
   if (isLoading) {
     return <LoadingPage />;
   }
-
-  if (data && site) {
+  if (data) {
     return <Navigate to={`/passwordProfiles/${data.id}`} />;
   }
-
   return (
     <div>
       <PasswordProfile
-        passwordProfile={{ ...settings }}
+        passwordProfile={settings}
         focus={settings.focus}
+        onClear={() => {
+          dispatch(setSettings({ site: "" }));
+        }}
       />
     </div>
   );
 }
 
-export default function PasswordGenerationPage() {
-  const settings = useAppSelector((state) => state.settings);
-  const { currentUser } = useAppSelector((state) => state.auth);
-  const { isWebExtensionContext } = settings;
+function PasswordGenerationPageSite({ settings }: { settings: SettingsState }) {
   const passwordProfileFromUrl = getPasswordProfileFromLocation(useLocation());
-  if (isWebExtensionContext && currentUser) {
-    return <LoadPasswordProfileWithSite />;
-  }
   if (passwordProfileFromUrl) {
     return (
       <div>
@@ -51,10 +51,16 @@ export default function PasswordGenerationPage() {
   }
   return (
     <div>
-      <PasswordProfile
-        passwordProfile={{ ...settings }}
-        focus={settings.focus}
-      />
+      <PasswordProfile passwordProfile={settings} focus={settings.focus} />
     </div>
   );
+}
+
+export default function PasswordGenerationPage() {
+  const settings = useAppSelector((state) => state.settings);
+  const { isWebExtensionContext } = settings;
+  if (isWebExtensionContext) {
+    return <PasswordGenerationPageWebExtension settings={settings} />;
+  }
+  return <PasswordGenerationPageSite settings={settings} />;
 }

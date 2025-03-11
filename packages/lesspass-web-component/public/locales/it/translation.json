@@ -54,11 +54,11 @@
   },
   "SignInPage": {
     "SignInToLessPass": "Accedi a LessPass",
+    "LessPassServerDecommissioned": "Il database di LessPass è stato dismesso. Devi usare il tuo server.",
     "UnableToSignInTitle": "Impossibile accedere",
     "UnableToSignInMessage": "Le informazioni fornite non sono valide o l'utente non esiste.",
-    "ForgotPassword": "Password dimenticata?",
     "SignIn": "Accedi",
-    "LessPassServerDecommissioned": "Il database di LessPass è stato dismesso. Devi usare il tuo server."
+    "ForgotPassword": "Password dimenticata?"
   },
   "Header": {
     "passwords": "Password",
@@ -86,8 +86,10 @@
     "NewPassword": "Nuova password"
   },
   "Settings": {
-    "removeSubDomain": "Rimuovi il sottodominio dal sito",
+    "removeSubDomain": "Rimuovi il sottodominio",
+    "removeTopLevelDomain": "Rimuovi il dominio di primo livello",
     "FocusField": "Campo attivo",
+    "FocusAuto": "Automatico",
     "SignIn": "Accedi",
     "EncryptMyMasterPassword": "Cripta la mia password principale all'accesso",
     "Title": "Impostazioni"
