@@ -42,11 +42,19 @@ export default function PasswordProfileOptions() {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Label htmlFor="length">{t("PasswordProfile.Length")}</Label>
-          <Input id="length" type="number" {...register("length")} />
+          <Input
+            id="length"
+            type="number"
+            {...register("length", { valueAsNumber: true })}
+          />
         </div>
         <div>
           <Label htmlFor="counter">{t("PasswordProfile.Counter")}</Label>
-          <Input id="counter" type="number" {...register("counter")} />
+          <Input
+            id="counter"
+            type="number"
+            {...register("counter", { valueAsNumber: true })}
+          />
         </div>
       </div>
     </div>
