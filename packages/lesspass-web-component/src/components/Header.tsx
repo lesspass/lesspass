@@ -60,8 +60,8 @@ export default function Header() {
             >
               <img alt="LessPass" src={Logo} className="h-8 w-auto" />
             </button>
-            <div className="xs:ml-6 xs:block hidden">
-              <div className="flex space-x-1">
+            <div className="xs:ml-3 xs:block hidden">
+              <div className="flex items-center space-x-1">
                 <NavLink to="/passwordProfiles">
                   {t("Header.passwords")}
                 </NavLink>
@@ -69,7 +69,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="xs:ml-6 xs:block hidden">
+          <div className="xs:ml-3 xs:block hidden">
             <div className="flex items-center">
               <DarkLightToggleButton />
               {currentUser === null ? (
