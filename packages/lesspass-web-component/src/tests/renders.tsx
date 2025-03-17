@@ -25,7 +25,7 @@ export function renderWithProviders(
 ): any {
   server.use(
     http.get(
-      "https://api.lesspass.com/auth/users/me",
+      "https://api.lesspass.com/auth/users/me/",
       () => new HttpResponse(null, { status: 401 }),
     ),
   );

@@ -27,7 +27,7 @@ test("When the user sign in tokens and base url are saved on local storage", asy
     ),
   );
   server.use(
-    http.get("https://api.example.org/auth/users/me", () =>
+    http.get("https://api.example.org/auth/users/me/", () =>
       HttpResponse.json({ key: "", id: 1, email: "test@lesspass.com" }),
     ),
   );

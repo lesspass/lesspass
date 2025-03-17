@@ -73,7 +73,7 @@ export const authApi = api
         }),
       }),
       getCurrentUser: builder.query<CurrentUser, void>({
-        query: () => "/auth/users/me",
+        query: () => "/auth/users/me/",
         providesTags: () => [{ type: "Auth", id: "me" }],
       }),
     }),

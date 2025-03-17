@@ -9,7 +9,7 @@ describe("LessPassWebComponentInMemory unauthenticated", () => {
   function renderWebExtensionUnAuthenticated() {
     server.use(
       http.get(
-        "https://api.lesspass.com/auth/users/me",
+        "https://api.lesspass.com/auth/users/me/",
         () => new HttpResponse(null, { status: 401 }),
       ),
     );
@@ -79,7 +79,7 @@ describe("LessPassWebComponentInMemory unauthenticated", () => {
 describe("LessPassWebComponentInMemory authenticated", () => {
   function renderWebExtensionAuthenticated() {
     server.use(
-      http.get("https://api.lesspass.com/auth/users/me", () =>
+      http.get("https://api.lesspass.com/auth/users/me/", () =>
         HttpResponse.json({ key: "", id: 1, email: "test@lesspass.com" }),
       ),
     );
