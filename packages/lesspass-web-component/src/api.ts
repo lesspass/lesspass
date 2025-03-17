@@ -15,6 +15,7 @@ const mutex = new Mutex();
 const rawBaseQuery = (baseUrl: string) =>
   fetchBaseQuery({
     baseUrl,
+    timeout: 5000,
     prepareHeaders: (headers) => {
       const tokens = getTokens();
       if (tokens && !headers.has("authorization")) {
