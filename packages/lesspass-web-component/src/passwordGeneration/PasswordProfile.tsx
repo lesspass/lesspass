@@ -82,7 +82,7 @@ export function PasswordProfileForm({
         const { masterPassword, ...passwordProfile } = values;
         onSubmit(passwordProfile, masterPassword);
       })}
-      className="overflow-x-scroll"
+      className="overflow-x-auto"
     >
       <Field>
         <Label htmlFor="site">{t("PasswordProfile.Site")}</Label>
