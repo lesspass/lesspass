@@ -52,7 +52,7 @@ import {
   faGamepad,
   faGraduationCap,
 } from "@fortawesome/free-solid-svg-icons";
-import { FingerprintIcon } from "lesspass";
+import { FingerprintIcon } from "lesspass/fingerprint";
 
 library.add([
   faHashtag,

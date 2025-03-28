@@ -1,4 +1,20 @@
-import { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } from "../crypto";
+import { stringToArrayBuffer, arrayBufferToHex } from "./string";
+
+export function getAlgorithm(algorithm: string) {
+  const algorithms: { [k: string]: string } = {
+    sha1: "SHA-1",
+    "sha-1": "SHA-1",
+    sha256: "SHA-256",
+    "sha-256": "SHA-256",
+    sha512: "SHA-512",
+    "sha-512": "SHA-512",
+  };
+  const lowercaseAlgorithm = algorithm.toLowerCase();
+  if (lowercaseAlgorithm in algorithms) {
+    return algorithms[lowercaseAlgorithm];
+  }
+  return "SHA-256";
+}
 
 export function pbkdf2(
   password: string,

@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useState } from "react";
-import { createFingerprint, Fingerprint } from "lesspass";
+import { buildFingerprint } from "lesspass";
+import type { Fingerprint } from "lesspass/fingerprint";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getIcon } from "./icons";
 import { inputStyle } from "../input";
@@ -20,12 +21,10 @@ export const MasterPasswordInput = forwardRef<
   useEffect(() => {
     if (value) {
       const fakeValue = Math.random().toString(36).substring(7);
-      createFingerprint(fakeValue).then((fakedFingerprint: Fingerprint) => {
-        setFingerprint(fakedFingerprint);
-      });
+      buildFingerprint(fakeValue).then(setFingerprint);
       const handler = setTimeout(() => {
         if (value) {
-          createFingerprint(value as string).then(setFingerprint);
+          buildFingerprint(value as string).then(setFingerprint);
         }
       }, 500);
       return () => clearTimeout(handler);

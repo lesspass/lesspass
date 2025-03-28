@@ -1,4 +1,5 @@
-import { stringToArrayBuffer, arrayBufferToHex, getAlgorithm } from "../crypto";
+import { getAlgorithm } from "./algo";
+import { stringToArrayBuffer, arrayBufferToHex } from "./string";
 
 export function hmac(algorithm: string, key: string, data?: string) {
   return window.crypto.subtle

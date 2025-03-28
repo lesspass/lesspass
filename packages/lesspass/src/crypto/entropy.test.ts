@@ -1,5 +1,5 @@
 import { expect, describe, test } from "vitest";
-import { calcEntropy, isSupported } from ".";
+import { calcEntropy, isSupported } from "./entropy";
 
 describe("entropy", () => {
   test("calc entropy without crypto use default options and crypto", () => {
