@@ -19,7 +19,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
     "async-mutex": "^0.5.0",
-    "axios": "^1.7.9",
+    "axios": "^1.8.2",
     "lesspass": "workspace:*"
   },
   "devDependencies": {
