@@ -11,8 +11,8 @@
     "./fingerprint": "./dist/fingerprint.js"
   },
   "browser": {
-    "./src/crypto/pbkdf2.ts": "./src/crypto/pbkdf2.browser.ts",
-    "./src/crypto/hmac.ts": "./src/crypto/hmac.browser.ts"
+    "./src/crypto/hmac.ts": "./src/crypto/hmac.browser.ts",
+    "./src/crypto/pbkdf2.ts": "./src/crypto/pbkdf2.browser.ts"
   },
   "files": [
     "dist"
@@ -25,10 +25,10 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "prettier": "^3.5.1",
-    "tsup": "^8.3.6",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.5"
+    "prettier": "^3.5.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
   },
   "tsup": [
     {
