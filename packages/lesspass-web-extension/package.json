@@ -22,20 +22,20 @@
   },
   "dependencies": {
     "lesspass-web-component": "workspace:*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
-    "@types/chrome": "^0.0.306",
-    "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.5",
+    "@types/chrome": "^0.0.313",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "chrome-webstore-upload-cli": "^3.3.2",
-    "eslint": "^8.57.1",
+    "eslint": "^9.23.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^15.15.0",
+    "globals": "^16.0.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.28.0",
     "vite": "^6.2.3",
