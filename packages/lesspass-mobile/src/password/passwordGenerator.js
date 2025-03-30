@@ -1,5 +1,5 @@
 import { NativeModules } from "react-native";
-import { renderPassword } from "lesspass";
+import { renderPassword } from "lesspass/render-password";
 
 export function generatePassword(masterPassword, passwordProfile) {
   const {
