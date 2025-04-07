@@ -42,7 +42,7 @@ export const MasterPasswordInput = forwardRef<
         autoCorrect="off"
         autoCapitalize="none"
         ref={ref}
-        className={`col-start-1 row-start-1 ${inputStyle}`}
+        className={`col-start-1 row-start-1 ${inputStyle} pr-19`}
         name={name}
         onChange={(e) => {
           setValue(e.target.value);
@@ -53,7 +53,7 @@ export const MasterPasswordInput = forwardRef<
       {fingerprint && (
         <button
           type="button"
-          className="col-start-1 row-start-1 mr-3 flex h-6 w-15 cursor-pointer items-center gap-1 self-center justify-self-end text-gray-400"
+          className="col-start-1 row-start-1 mr-2 flex h-6 w-15 cursor-pointer items-center gap-1 self-center justify-self-end text-gray-400"
           onClick={() => {
             setType((oldType) =>
               oldType === "password" ? "text" : "password",
