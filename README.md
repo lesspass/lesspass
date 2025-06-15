@@ -19,7 +19,7 @@ If you want to use LessPass in your terminal, you can use `pip` to install LessP
 
 ### Mobile application
 
-Install the mobile application for [iOS](https://www.lesspass.com/assets/download-on-the-App-Store-uFLV0IiB.png) or [Android](https://play.google.com/store/apps/details?id=com.lesspass.android) or [FDroid](https://f-droid.org/en/packages/com.lesspass.android/).
+Install the mobile application for [iOS](https://apps.apple.com/app/id1531215924) or [Android](https://play.google.com/store/apps/details?id=com.lesspass.android) or [FDroid](https://f-droid.org/en/packages/com.lesspass.android/).
 
 ### Web site
 
