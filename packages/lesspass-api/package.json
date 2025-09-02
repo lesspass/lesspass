@@ -17,16 +17,16 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.6.1",
+    "@reduxjs/toolkit": "^2.8.2",
     "async-mutex": "^0.5.0",
-    "axios": "^1.8.4",
+    "axios": "^1.11.0",
     "lesspass": "workspace:*"
   },
   "devDependencies": {
-    "msw": "^2.7.3",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.2",
-    "vitest": "^3.0.9"
+    "msw": "^2.11.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
   "tsup": [
     {
