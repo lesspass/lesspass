@@ -5,7 +5,7 @@ export function Title({
 }: React.ComponentProps<"h1">) {
   return (
     <h1
-      className={`xs:truncate xs:tracking-tight text-lg/7 text-zinc-950 sm:text-base/7 dark:text-white ${className}`}
+      className={`xs:truncate xs:tracking-tight text-lg/7 text-gray-950 sm:text-base/7 dark:text-white ${className}`}
       {...props}
     >
       {children}

@@ -24,7 +24,7 @@ function SignInPage() {
   return (
     <div className="grid grid-cols-1 gap-4">
       <Title>{t("SignInPage.SignInToLessPass")}</Title>
-      <HelpMessage message={t("SignInPage.LessPassServerDecommissioned")} />
+      <HelpMessage message={t("SignInPage.LessPassServerDecommissioned")} className="text-xs" />
       <LoginForm
         id="sign-in-form"
         onSubmit={async ({ baseUrl, email, masterPassword }) => {

@@ -63,7 +63,7 @@ export function Hero() {
           </div>
           <div className="mt-16 flex flex-col items-center sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
             <div
-              className="mx-auto max-w-full overflow-y-scroll rounded-md border border-gray-800 bg-white dark:bg-zinc-950"
+              className="mx-auto max-w-full overflow-y-scroll rounded-md border border-gray-800 bg-white dark:bg-gray-900 dark:text-white"
               style={{ width: "481px", minHeight: "500px" }}
             >
               <LessPassWebComponent />

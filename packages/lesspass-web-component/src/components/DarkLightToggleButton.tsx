@@ -29,7 +29,7 @@ export default function DarkLightToggleButton() {
   return (
     <button
       type="button"
-      className="rounded-full p-1 focus:ring focus:ring-zinc-500 focus:outline-hidden"
+      className="p-1"
       onClick={() => {
         const newTheme = theme === "light" ? "dark" : "light";
         setTheme(newTheme);
@@ -37,7 +37,7 @@ export default function DarkLightToggleButton() {
       }}
     >
       <svg
-        className="fill-zinc-500 hover:fill-zinc-400 dark:hidden"
+        className="fill-gray-500 hover:fill-gray-100 dark:hidden"
         width="16"
         height="16"
         xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export default function DarkLightToggleButton() {
         <path d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />
       </svg>
       <svg
-        className="hidden fill-zinc-500 hover:fill-zinc-400 dark:block"
+        className="hidden fill-gray-500 hover:fill-gray-100 dark:block"
         width="16"
         height="16"
         xmlns="http://www.w3.org/2000/svg"

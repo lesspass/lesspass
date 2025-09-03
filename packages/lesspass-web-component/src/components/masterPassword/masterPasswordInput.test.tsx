@@ -2,7 +2,6 @@ import { expect, vi } from "vitest";
 import { render } from "../../tests/renders";
 import { MasterPasswordInput } from "./masterPasswordInput";
 import { useForm } from "react-hook-form";
-import { waitFor } from "@testing-library/dom";
 
 describe("Master password", () => {
   const ManagedMasterPasswordInput = () => {
@@ -23,8 +22,7 @@ describe("Master password", () => {
   };
 
   test("should display real input value after 500ms", async () => {
-    // vi.useFakeTimers();
-    const { user, queryByTestId, queryByTitle, findByTitle } = render(
+    const { user, queryByTestId, findByTestId } = render(
       <ManagedMasterPasswordInput />,
     );
     const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
@@ -33,22 +31,29 @@ describe("Master password", () => {
     await user.type(masterPasswordInput, "password");
     expect(masterPasswordInput).toHaveValue("password");
 
-    await waitFor(() => {
-      expect(
-        queryByTitle("icon-fa-flask") === null ||
-          queryByTitle("icon-fa-archive") === null ||
-          queryByTitle("icon-fa-beer") === null,
-      ).toBe(true);
-    });
+    const expectedFingerprintIcons = [
+      "icon-fa-flask",
+      "icon-fa-archive",
+      "icon-fa-beer",
+    ];
 
-    // vi.advanceTimersByTime(500);
-    // bug in RTL async and useFakeTimers https://github.com/testing-library/user-event/issues/1115
-    await findByTitle("icon-fa-flask");
-    await waitFor(() => {
-      expect(queryByTitle("icon-fa-flask")).toBeInTheDocument();
-      expect(queryByTitle("icon-fa-archive")).toBeInTheDocument();
-      expect(queryByTitle("icon-fa-beer")).toBeInTheDocument();
-    });
-    // vi.useRealTimers();
+    // check not all expected icons are present when user type
+    expect(
+      expectedFingerprintIcons.filter(
+        (iconName) => queryByTestId(iconName) !== null,
+      ).length,
+    ).toBeLessThan(3);
+
+    // wait for the expected icons to be present after 500ms
+    await findByTestId(expectedFingerprintIcons[0]);
+    await findByTestId(expectedFingerprintIcons[1]);
+    await findByTestId(expectedFingerprintIcons[2]);
+
+    // now check icons are the expected icons
+    expect(
+      expectedFingerprintIcons.filter(
+        (iconName) => queryByTestId(iconName) !== null,
+      ).length,
+    ).toBe(3);
   });
 });

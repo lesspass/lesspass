@@ -44,7 +44,7 @@ export function HelpMessage({
 }: { message?: string } & React.ComponentProps<"div">) {
   return (
     <div
-      className={`-mt-2 text-sm/6 text-zinc-500 dark:text-zinc-400 ${className}`}
+      className={`-mt-2 text-sm/6 text-gray-500 dark:text-gray-400 ${className}`}
       {...props}
     >
       {message}

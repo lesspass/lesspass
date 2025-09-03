@@ -9,6 +9,42 @@ interface MasterPasswordInputProps extends React.ComponentProps<"input"> {
   id: string;
 }
 
+function Fingerprint({ fingerprint }: { fingerprint: Fingerprint }) {
+  const icon0 = fingerprint[0].icon;
+  const icon1 = fingerprint[1].icon;
+  const icon2 = fingerprint[2].icon;
+  const color0 = fingerprint[0].color;
+  const color1 = fingerprint[1].color;
+  const color2 = fingerprint[2].color;
+  return (
+    <div
+      id="fingerprint"
+      className="flex items-center gap-1 dark:bg-gray-700 p-1.5 rounded-sm"
+      data-testid="fingerprint"
+    >
+      <FontAwesomeIcon
+        data-testid={`icon-${icon0}`}
+        title={`icon-${icon0}`}
+        icon={getIcon(icon0)}
+        style={{ color: color0 }}
+
+      />
+      <FontAwesomeIcon
+        data-testid={`icon-${icon1}`}
+        title={`icon-${icon1}`}
+        icon={getIcon(icon1)}
+        style={{ color: color1 }}
+      />
+      <FontAwesomeIcon
+        data-testid={`icon-${icon2}`}
+        title={`icon-${icon2}`}
+        icon={getIcon(icon2)}
+        style={{ color: color2 }}
+      />
+    </div>
+  );
+}
+
 export const MasterPasswordInput = forwardRef<
   HTMLInputElement,
   MasterPasswordInputProps
@@ -53,7 +89,7 @@ export const MasterPasswordInput = forwardRef<
       {fingerprint && (
         <button
           type="button"
-          className="col-start-1 row-start-1 mr-2 flex h-6 w-15 cursor-pointer items-center gap-1 self-center justify-self-end text-gray-400"
+          className="col-start-1 row-start-1 p-1 flex h-6 cursor-pointer items-center gap-1 self-center justify-self-end text-gray-400 rounded-md"
           onClick={() => {
             setType((oldType) =>
               oldType === "password" ? "text" : "password",
@@ -61,27 +97,7 @@ export const MasterPasswordInput = forwardRef<
           }}
           tabIndex={-1}
         >
-          <div
-            id="fingerprint"
-            className="flex items-center gap-1"
-            data-testid="fingerprint"
-          >
-            <FontAwesomeIcon
-              title={`icon-${fingerprint[0].icon}`}
-              icon={getIcon(fingerprint[0].icon)}
-              style={{ color: fingerprint[0].color }}
-            />
-            <FontAwesomeIcon
-              title={`icon-${fingerprint[1].icon}`}
-              icon={getIcon(fingerprint[1].icon)}
-              style={{ color: fingerprint[1].color }}
-            />
-            <FontAwesomeIcon
-              title={`icon-${fingerprint[2].icon}`}
-              icon={getIcon(fingerprint[2].icon)}
-              style={{ color: fingerprint[2].color }}
-            />
-          </div>
+          <Fingerprint fingerprint={fingerprint} />
         </button>
       )}
     </div>
