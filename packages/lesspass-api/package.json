@@ -17,7 +17,7 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.8.2",
+    "@reduxjs/toolkit": "^2.9.0",
     "async-mutex": "^0.5.0",
     "axios": "^1.11.0",
     "lesspass": "workspace:*"
