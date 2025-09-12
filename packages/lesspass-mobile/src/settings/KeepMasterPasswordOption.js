@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import { Button, Portal, Dialog, List, Text, Switch } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
+import { useTranslation } from "react-i18next";
 
 export default class KeepMasterPasswordOption extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ export default class KeepMasterPasswordOption extends Component {
     const { showModal, masterPassword } = this.state;
     const { label, description, onOk, modalTitle, modalDescription, value } =
       this.props;
+    const { t } = useTranslation();
     return (
       <View>
         <Portal>
@@ -37,6 +39,7 @@ export default class KeepMasterPasswordOption extends Component {
             <Dialog.ScrollArea style={{ maxHeight: 170, paddingHorizontal: 0 }}>
               <View style={{ padding: 10 }}>
                 <MasterPassword
+                  label={t("PasswordProfile.MasterPassword")}
                   masterPassword={masterPassword}
                   onChangeText={(value) =>
                     this.setState({ masterPassword: value })

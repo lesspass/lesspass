@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteMyAccount, getCurrentUser, signOut } from "./authActions";
-import { Title, Button, useTheme, Paragraph } from "react-native-paper";
+import { Button, useTheme, Text } from "react-native-paper";
 import routes from "../routes";
 import DeleteMyAccountModal from "./DeleteMyAccountModal";
 import { addError } from "../errors/errorsActions";
 import Screen from "../ui/Screen";
 import { View } from "react-native";
+import { useTranslation } from "react-i18next";
 
 const SignOutScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const theme = useTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getCurrentUser()).then((response) => {
@@ -20,7 +22,7 @@ const SignOutScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <Screen title="My Account">
+    <Screen title={t("Navigation.MyAccount")}>
       <View
         style={{
           flex: 1,
@@ -33,7 +35,9 @@ const SignOutScreen = ({ navigation }) => {
             gap: 10,
           }}
         >
-          <Paragraph>Email: {email}</Paragraph>
+          <Text variant="bodyMedium">
+            {t("SignInForm.Email")}: {email}
+          </Text>
           <Button
             icon="account-circle"
             mode="contained"
@@ -42,15 +46,19 @@ const SignOutScreen = ({ navigation }) => {
               navigation.navigate(routes.PASSWORD_GENERATOR);
             }}
           >
-            Sign out
+            {t("Header.SignOut")}
           </Button>
-          <Paragraph>
-            Your account is kept on https://api.lesspass.com server to thank you
-            for being in the first users of LessPass.
-          </Paragraph>
+          <Text variant="bodyMedium">
+            {t(
+              "MyProfilePage.ThankYouMessage",
+              "Your account is kept on https://api.lesspass.com server to thank you for being in the first users of LessPass.",
+            )}
+          </Text>
         </View>
         <View>
-          <Title style={{ color: theme.colors.error }}>Danger zone</Title>
+          <Text variant="titleLarge" style={{ color: theme.colors.error }}>
+            {t("SignOutScreen.DangerZone", "Danger zone")}
+          </Text>
           <DeleteMyAccountModal
             onDeleteConfirmed={(password) => {
               dispatch(deleteMyAccount({ email, password }))
@@ -61,7 +69,10 @@ const SignOutScreen = ({ navigation }) => {
                 .catch(() => {
                   dispatch(
                     addError(
-                      "Unable to delete your account. Please make sure your master password is correct.",
+                      t(
+                        "SignOutScreen.DeleteAccountError",
+                        "Unable to delete your account. Please make sure your master password is correct.",
+                      ),
                     ),
                   );
                 });

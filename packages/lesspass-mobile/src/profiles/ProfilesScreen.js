@@ -8,7 +8,7 @@ import {
   Portal,
   Dialog,
   Provider,
-  Paragraph,
+  Text,
   Button,
   Searchbar,
   useTheme,
@@ -23,8 +23,10 @@ import fuzzysort from "fuzzysort";
 import { cleanPasswordProfile, setPasswordProfile } from "./profileActions";
 import { sortByNewestFirst } from "./sort";
 import Screen from "../ui/Screen";
+import { useTranslation } from "react-i18next";
 
 export default function ProfilesScreen() {
+  const { t } = useTranslation();
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const profiles = Object.values(useSelector((state) => state.profiles));
@@ -62,9 +64,9 @@ export default function ProfilesScreen() {
             onDismiss={() => setProfileToDelete(null)}
           >
             <Dialog.Content>
-              <Paragraph>
+              <Text variant="bodyMedium">
                 {`Are you sure you want to delete the password profile for site ${profileToDelete?.site} and login ${profileToDelete?.login} ?`}
-              </Paragraph>
+              </Text>
             </Dialog.Content>
             <Dialog.Actions>
               <Button onPress={() => setProfileToDelete(null)}>Cancel</Button>
@@ -94,9 +96,10 @@ export default function ProfilesScreen() {
             <View>
               <View style={{ paddingHorizontal: 10 }}>
                 <Searchbar
-                  placeholder={`Search in your ${profiles.length} profile${
-                    profiles.length === 1 ? "" : "s"
-                  }`}
+                  placeholder={t(
+                    "ProfilesScreen.SearchPlaceholder",
+                    "Search in your password profiles",
+                  )}
                   onChangeText={setQuery}
                   value={query}
                   autoCapitalize="none"

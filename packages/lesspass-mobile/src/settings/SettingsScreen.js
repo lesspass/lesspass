@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ScrollView, View } from "react-native";
-import { Divider, List, Title, useTheme } from "react-native-paper";
+import { View } from "react-native";
+import { Divider, List, useTheme } from "react-native-paper";
 import TouchID from "react-native-touch-id";
 import { setGenericPassword } from "react-native-keychain";
 import { setSettings } from "./settingsActions";
@@ -10,11 +10,13 @@ import Switch from "../ui/Switch";
 import KeepMasterPasswordOption from "./KeepMasterPasswordOption";
 import { version } from "../version.json";
 import Screen from "../ui/Screen";
+import { useTranslation } from "react-i18next";
 
 export default function SettingsScreen() {
   const dispatch = useDispatch();
   const settings = useSelector((state) => state.settings);
   const [fingerprintIsSupported, setFingerprintIsSupported] = useState(false);
+  const { t } = useTranslation();
   useEffect(() => {
     TouchID.isSupported({
       passcodeFallback: false,
@@ -42,21 +44,27 @@ export default function SettingsScreen() {
   } = settings;
 
   return (
-    <Screen title="Settings">
+    <Screen title={t("Settings.Title")}>
       <View style={{ marginLeft: -15, marginRight: -15 }}>
-        <List.Section title="LESSPASS DATABASE">
+        <List.Section
+          title={t("Settings.LessPassDatabase", "LESSPASS DATABASE")}
+        >
           <TextInputModal
-            label="Default URL"
+            label={t("Settings.DefaultURL", "Default URL")}
             initialValue={baseURL}
             onOk={(value) => dispatch(setSettings({ baseURL: value }))}
-            modalTitle="LessPass Database default URL"
+            modalTitle={t(
+              "Settings.LessPassDatabaseDefaultURL",
+              "LessPass Database default URL",
+            )}
           />
           <Divider />
           <Switch
-            label="Use my master password"
-            description={
-              "Use your master password in the sign in form but send encrypted password."
-            }
+            label={t("Settings.EncryptMyMasterPassword")}
+            description={t(
+              "Settings.UseMasterPasswordDescription",
+              "Use your master password in the sign in form but send encrypted password.",
+            )}
             value={encryptMasterPassword}
             onChange={(value) =>
               dispatch(setSettings({ encryptMasterPassword: value }))
@@ -64,19 +72,24 @@ export default function SettingsScreen() {
           />
           <Divider />
         </List.Section>
-        <List.Section title="DEFAULT PASSWORD PROFILE">
+        <List.Section
+          title={t(
+            "Settings.DefaultPasswordProfile",
+            "DEFAULT PASSWORD PROFILE",
+          )}
+        >
           <TextInputModal
             isRequired={false}
-            label="Login"
+            label={t("PasswordProfile.Login")}
             initialValue={defaultPasswordProfileLogin}
             onOk={(value) =>
               dispatch(setSettings({ defaultPasswordProfileLogin: value }))
             }
-            modalTitle="Default login"
+            modalTitle={t("Settings.DefaultLogin", "Default login")}
           />
           <Divider />
           <TextInputModal
-            label="Password length"
+            label={t("PasswordProfile.Length")}
             initialValue={defaultGeneratedPasswordLength}
             variant="numeric"
             onOk={(value) => {
@@ -86,11 +99,14 @@ export default function SettingsScreen() {
                 }),
               );
             }}
-            modalTitle="Default password length"
+            modalTitle={t(
+              "Settings.DefaultPasswordLength",
+              "Default password length",
+            )}
           />
           <Divider />
           <TextInputModal
-            label="Counter"
+            label={t("PasswordProfile.Counter")}
             initialValue={defaultCounter}
             variant="numeric"
             onOk={(value) => {
@@ -100,12 +116,16 @@ export default function SettingsScreen() {
                 }),
               );
             }}
-            modalTitle="Default counter"
+            modalTitle={t("Settings.DefaultCounter", "Default counter")}
           />
           <Divider />
           <Switch
-            label="Lowercase (a-z)"
-            description={defaultLowercase ? "activated" : "deactivated"}
+            label={t("Settings.Lowercase", "Lowercase (a-z)")}
+            description={
+              defaultLowercase
+                ? t("Settings.Activated", "activated")
+                : t("Settings.Deactivated", "deactivated")
+            }
             value={defaultLowercase}
             onChange={(value) =>
               dispatch(setSettings({ defaultLowercase: value }))
@@ -113,8 +133,12 @@ export default function SettingsScreen() {
           />
           <Divider />
           <Switch
-            label="Uppercase (A-Z)"
-            description={defaultUppercase ? "activated" : "deactivated"}
+            label={t("Settings.Uppercase", "Uppercase (A-Z)")}
+            description={
+              defaultUppercase
+                ? t("Settings.Activated", "activated")
+                : t("Settings.Deactivated", "deactivated")
+            }
             value={defaultUppercase}
             onChange={(value) =>
               dispatch(setSettings({ defaultUppercase: value }))
@@ -122,8 +146,12 @@ export default function SettingsScreen() {
           />
           <Divider />
           <Switch
-            label="Numbers (0-9)"
-            description={defaultDigits ? "activated" : "deactivated"}
+            label={t("Settings.Numbers", "Numbers (0-9)")}
+            description={
+              defaultDigits
+                ? t("Settings.Activated", "activated")
+                : t("Settings.Deactivated", "deactivated")
+            }
             value={defaultDigits}
             onChange={(value) =>
               dispatch(setSettings({ defaultDigits: value }))
@@ -131,8 +159,12 @@ export default function SettingsScreen() {
           />
           <Divider />
           <Switch
-            label="Symbols (%!@)"
-            description={defaultSymbols ? "activated" : "deactivated"}
+            label={t("Settings.Symbols", "Symbols (%!@)")}
+            description={
+              defaultSymbols
+                ? t("Settings.Activated", "activated")
+                : t("Settings.Deactivated", "deactivated")
+            }
             value={defaultSymbols}
             onChange={(value) =>
               dispatch(setSettings({ defaultSymbols: value }))
@@ -142,13 +174,21 @@ export default function SettingsScreen() {
         </List.Section>
         {fingerprintIsSupported && (
           <>
-            <List.Section title="INSECURE OPTIONS">
+            <List.Section
+              title={t("Settings.InsecureOptions", "INSECURE OPTIONS")}
+            >
               <KeepMasterPasswordOption
-                label="Master Password"
+                label={t("SignInForm.MasterPassword")}
                 description={
                   keepMasterPasswordLocally
-                    ? "Your master password is encrypted locally"
-                    : "Keep master password locally"
+                    ? t(
+                        "Settings.MasterPasswordEncryptedLocally",
+                        "Your master password is encrypted locally",
+                      )
+                    : t(
+                        "Settings.KeepMasterPasswordLocally",
+                        "Keep master password locally",
+                      )
                 }
                 value={keepMasterPasswordLocally}
                 onOk={(masterPassword) => {
@@ -166,20 +206,35 @@ export default function SettingsScreen() {
                 onClear={() =>
                   dispatch(setSettings({ keepMasterPasswordLocally: false }))
                 }
-                modalTitle="Enter your master password"
-                modalDescription="Your master password will be encrypted locally on your device and accessible only with your fingerprint."
+                modalTitle={t(
+                  "Settings.EnterMasterPassword",
+                  "Enter your master password",
+                )}
+                modalDescription={t(
+                  "Settings.MasterPasswordEncryptionDescription",
+                  "Your master password will be encrypted locally on your device and accessible only with your fingerprint.",
+                )}
               />
             </List.Section>
             <Divider />
           </>
         )}
-        <List.Section title="APPLICATION">
+        <List.Section title={t("Settings.Application", "APPLICATION")}>
           <Switch
-            label="Copy password automatically"
+            label={t(
+              "Settings.CopyPasswordAutomatically",
+              "Copy password automatically",
+            )}
             description={
               copyPasswordAfterGeneration
-                ? "Your password will be copied automatically after it is generated."
-                : "Your password will not be copied automatically after it is generated."
+                ? t(
+                    "Settings.PasswordWillBeCopied",
+                    "Your password will be copied automatically after it is generated.",
+                  )
+                : t(
+                    "Settings.PasswordWillNotBeCopied",
+                    "Your password will not be copied automatically after it is generated.",
+                  )
             }
             value={copyPasswordAfterGeneration}
             onChange={(value) =>
@@ -187,7 +242,12 @@ export default function SettingsScreen() {
             }
           />
           <Divider />
-          <List.Item title={`LessPass version: ${version}`} />
+          <List.Item
+            title={t(
+              "Settings.LessPassVersion",
+              `LessPass version: ${version}`,
+            )}
+          />
         </List.Section>
       </View>
     </Screen>

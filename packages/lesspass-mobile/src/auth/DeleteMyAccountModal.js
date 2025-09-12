@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { Button, Portal, Dialog, Text, useTheme } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
+import { useTranslation } from "react-i18next";
 
 export default function DeleteMyAccountModal({ onDeleteConfirmed }) {
   const [showModal, setShowModal] = useState(false);
   const [masterPassword, setMasterPassword] = useState("");
   const theme = useTheme();
-
+  const { t } = useTranslation();
   return (
     <View>
       <Portal>
@@ -19,18 +20,21 @@ export default function DeleteMyAccountModal({ onDeleteConfirmed }) {
           visible={showModal}
         >
           <Dialog.Title style={{ color: theme.colors.error }}>
-            Delete my account
+            {t("DeleteMyAccountModal.DeleteMyAccount", "Delete my account")}
           </Dialog.Title>
           <Dialog.ScrollArea style={{ maxHeight: 170, paddingHorizontal: 0 }}>
             <View style={{ padding: 10 }}>
               <MasterPassword
+                label={t("PasswordProfile.MasterPassword")}
                 style={{ marginBottom: 15 }}
                 masterPassword={masterPassword}
                 onChangeText={setMasterPassword}
               />
               <Text style={{ color: theme.colors.error }}>
-                Enter your master password to delete your account. Warning! this
-                action is irreversible.
+                {t(
+                  "DeleteMyAccountModal.WarningMessage",
+                  "Enter your master password to delete your account. Warning! this action is irreversible.",
+                )}
               </Text>
             </View>
           </Dialog.ScrollArea>
@@ -42,7 +46,7 @@ export default function DeleteMyAccountModal({ onDeleteConfirmed }) {
                 setShowModal(false);
               }}
             >
-              Cancel
+              {t("Common.Cancel", "Cancel")}
             </Button>
             <Button
               disabled={!masterPassword}
@@ -56,7 +60,7 @@ export default function DeleteMyAccountModal({ onDeleteConfirmed }) {
                 onDeleteConfirmed(masterPassword);
               }}
             >
-              Delete my account
+              {t("DeleteMyAccountModal.DeleteMyAccount", "Delete my account")}
             </Button>
           </Dialog.Actions>
         </Dialog>
@@ -71,7 +75,7 @@ export default function DeleteMyAccountModal({ onDeleteConfirmed }) {
           setShowModal(true);
         }}
       >
-        Delete my account
+        {t("DeleteMyAccountModal.DeleteMyAccount", "Delete my account")}
       </Button>
     </View>
   );

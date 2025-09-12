@@ -1,0 +1,42 @@
+{
+  "name": "lesspass-i18n",
+  "version": "0.1.0",
+  "description": "Internationalization package for LessPass applications",
+  "license": "AGPL-3.0-only",
+  "author": "Guillaume Vincent <guillaume@oslab.fr>",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn i18n && tsup",
+    "clean": "rm -rf dist",
+    "i18n": "i18next '../lesspass-web-component/src/**/*.{ts,tsx}' '../lesspass-mobile/src/**/*.{js,jsx,ts,tsx}' --output src/locales/\\$LOCALE/\\$NAMESPACE.json --config ./i18next-parser.config.ts",
+    "test": "eslint .",
+    "prettier": "prettier --write src",
+    "update-translations": "yarn i18n && yarn build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "eslint": "^9.34.0",
+    "i18next-parser": "^9.3.0",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  },
+  "tsup": [
+    {
+      "entry": [
+        "./src/index.ts"
+      ],
+      "format": [
+        "esm"
+      ],
+      "platform": "browser",
+      "dts": true,
+      "clean": true
+    }
+  ]
+}

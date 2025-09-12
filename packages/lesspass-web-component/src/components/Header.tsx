@@ -28,15 +28,13 @@ const Avatar = ({ children }: { children: ReactNode }) => {
   );
 };
 
-
 const LessPassNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   [
-    "text-sm border px-2 py-1.5 rounded-md whitespace-nowrap text-gray-300 hover:bg-gray-700 hover:border-gray-300 hover:text-white",
+    "text-xs border px-2 py-1.5 rounded-md whitespace-nowrap text-gray-300 hover:bg-gray-700 hover:border-gray-300 hover:text-white",
     isActive
       ? "text-gray-100 bg-gray-700 border-gray-600"
-      : "border-transparent bg-transparent"
+      : "border-transparent bg-transparent",
   ].join(" ");
-
 
 const LessPassNavLink = ({
   to,
@@ -46,10 +44,7 @@ const LessPassNavLink = ({
   children: ReactNode;
 }) => {
   return (
-    <NavLink
-      to={to}
-      className={LessPassNavLinkClass}
-    >
+    <NavLink to={to} className={LessPassNavLinkClass}>
       {children}
     </NavLink>
   );
@@ -74,7 +69,7 @@ export default function Header() {
                 navigate("/");
               }}
             >
-              <img alt="LessPass" src={Logo} className="h-8 w-auto" />
+              <img alt="LessPass" src={Logo} className="h-[25px] w-[110px]" />
             </button>
             <div className="xs:ml-3 xs:block hidden">
               <div className="flex items-center space-x-1">

@@ -7,8 +7,8 @@
   "type": "module",
   "scripts": {
     "dev": "yarn i18n && vite",
-    "build": "yarn i18n && tsc -b && vite build",
-    "i18n": "cp -r ../lesspass-web-component/public/locales ./public/",
+    "build": "yarn i18n && vite build",
+    "i18n": "rm -rf mkdir ./public/locales && mkdir -p ./public/locales && cp -r ../lesspass-i18n/src/locales/* ./public/locales/ && echo 'translations copied'",
     "lint": "eslint .",
     "prettier": "prettier --write src",
     "preview": "vite preview"

@@ -12,6 +12,7 @@
     "paths": {
       "lesspass": ["./packages/lesspass/src"],
       "lesspass-api": ["./packages/lesspass-api/src"],
+      "lesspass-i18n": ["./packages/lesspass-i18n/src"],
       "lesspass-mobile": ["./packages/lesspass-mobile/src"],
       "lesspass-web-component": ["./packages/lesspass-web-component/src"],
       "lesspass-web-extension": ["./packages/lesspass-web-extension/src"],

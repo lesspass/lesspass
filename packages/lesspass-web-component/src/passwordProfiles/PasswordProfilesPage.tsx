@@ -60,7 +60,11 @@ export default function PasswordProfilesPage() {
           {t("PasswordProfilesPage.NewPassword")}
         </Button>
       </div>
-      <ul role="list" className="divide-y divide-gray-100 dark:divide-white/5 overflow-y-auto" style={{maxHeight: 390}}>
+      <ul
+        role="list"
+        className="divide-y divide-gray-100 overflow-y-auto dark:divide-white/5"
+        style={{ maxHeight: 390 }}
+      >
         {filteredPasswordProfiles.map((passwordProfile) => (
           <li
             key={passwordProfile.id}

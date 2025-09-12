@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "rootDir": "src",
     "outDir": "dist",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
   },
   "include": ["src"],
   "exclude": ["src/**/*.test.ts"]

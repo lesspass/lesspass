@@ -6,10 +6,9 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Linking,
-  Text,
   View,
 } from "react-native";
-import { Button, Paragraph, Title, useTheme } from "react-native-paper";
+import { Button, Text, useTheme } from "react-native-paper";
 import MasterPassword from "../password/MasterPassword";
 import TextInput from "../ui/TextInput";
 import { addError } from "../errors/errorsActions";
@@ -17,8 +16,8 @@ import { signIn } from "./authActions";
 import routes from "../routes";
 import { useNavigation } from "@react-navigation/native";
 import { setSettings } from "../settings/settingsActions";
-import Screen from "../ui/Screen";
 import Styles from "../ui/Styles";
+import { useTranslation } from "react-i18next";
 
 export default function SignInScreen() {
   const defaultBaseURL = useSelector((state) => state.settings.baseURL);
@@ -32,6 +31,7 @@ export default function SignInScreen() {
     (state) => state.settings.encryptMasterPassword,
   );
   const theme = useTheme();
+  const { t } = useTranslation();
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -40,29 +40,30 @@ export default function SignInScreen() {
         backgroundColor: theme.colors.background,
       }}
     >
-      <Title
+      <Text
+        variant="titleLarge"
         style={{
           ...Styles.title,
         }}
       >
-        Connect to your Lesspass Database
-      </Title>
+        {t("SignInPage.SignInToLessPass")}
+      </Text>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
           <TextInput
             mode="outlined"
-            label="LessPass Database Url"
+            label={t("SignInForm.LessPassServer")}
             value={baseURL}
             onChangeText={setBaseURL}
           />
           <TextInput
             mode="outlined"
-            label="Email"
+            label={t("SignInForm.Email")}
             value={email}
             onChangeText={setEmail}
           />
           <MasterPassword
-            label={encryptMasterPassword ? "Master Password" : "Password"}
+            label={t("SignInForm.MasterPassword")}
             masterPassword={password}
             hideFingerprint={!encryptMasterPassword}
             onChangeText={(password) => setPassword(password)}
@@ -92,20 +93,23 @@ export default function SignInScreen() {
                 .then(() => navigation.navigate(routes.PASSWORD_GENERATOR))
                 .catch(() => {
                   setIsLoading(false);
-                  let errorMessage =
-                    "Unable to log in with provided credentials.";
+                  let errorMessage = t("SignInPage.UnableToSignInMessage");
                   if (encryptMasterPassword) {
                     errorMessage +=
-                      " Your master password is encrypted. Uncheck this option in your settings if you don't use it.";
+                      " " +
+                      t(
+                        "SignInPage.MasterPasswordEncryptedNote",
+                        "Your master password is encrypted. Uncheck this option in your settings if you don't use it.",
+                      );
                   }
                   dispatch(addError(errorMessage));
                 });
             }}
           >
-            Sign In
+            {t("SignInPage.SignIn")}
           </Button>
-          <Paragraph>
-            LessPass Database is decommissioned. You must use your own server.{" "}
+          <Text variant="bodyMedium">
+            {t("SignInPage.LessPassServerDecommissioned")}{" "}
             <Text
               style={{ color: theme.colors.primary }}
               onPress={() =>
@@ -114,9 +118,9 @@ export default function SignInScreen() {
                 )
               }
             >
-              See blog post
+              {t("SignInPage.SeeBlogPost", "See blog post")}
             </Text>
-          </Paragraph>
+          </Text>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

@@ -19,7 +19,7 @@ function Fingerprint({ fingerprint }: { fingerprint: Fingerprint }) {
   return (
     <div
       id="fingerprint"
-      className="flex items-center gap-1 dark:bg-gray-700 p-1.5 rounded-sm"
+      className="flex items-center gap-1 rounded-sm p-1.5 dark:bg-gray-700"
       data-testid="fingerprint"
     >
       <FontAwesomeIcon
@@ -27,7 +27,6 @@ function Fingerprint({ fingerprint }: { fingerprint: Fingerprint }) {
         title={`icon-${icon0}`}
         icon={getIcon(icon0)}
         style={{ color: color0 }}
-
       />
       <FontAwesomeIcon
         data-testid={`icon-${icon1}`}
@@ -89,7 +88,7 @@ export const MasterPasswordInput = forwardRef<
       {fingerprint && (
         <button
           type="button"
-          className="col-start-1 row-start-1 p-1 flex h-6 cursor-pointer items-center gap-1 self-center justify-self-end text-gray-400 rounded-md"
+          className="col-start-1 row-start-1 flex h-6 cursor-pointer items-center gap-1 self-center justify-self-end rounded-md p-1 text-gray-400"
           onClick={() => {
             setType((oldType) =>
               oldType === "password" ? "text" : "password",

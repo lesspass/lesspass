@@ -6,8 +6,9 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "type": "module",
   "scripts": {
+    "build": "yarn clean && yarn i18n && vite build",
     "clean": "rm -rf dist",
-    "build": "tsc -b && vite build && cp -r ../lesspass-web-component/dist/locales ./dist/",
+    "i18n": "rm -rf mkdir ./dist/locales && mkdir -p ./dist/locales && cp -r ../lesspass-i18n/src/locales/* ./dist/locales/ && echo 'translations copied'",
     "release": "yarn clean && yarn build && yarn amo && yarn cws",
     "release:amo": "yarn clean && yarn build && yarn amo",
     "release:cws": "yarn clean && yarn build && yarn cws",
@@ -21,6 +22,7 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
+    "lesspass-i18n": "workspace:*",
     "lesspass-web-component": "workspace:*",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

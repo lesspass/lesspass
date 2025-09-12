@@ -14,7 +14,11 @@ export function Button({
   danger?: boolean;
   to?: string;
 } & React.ComponentProps<"button">) {
-  const bg = outline ? "bg-transparent dark:bg-gray-800" : danger ? "bg-red-400" : "bg-blue-500";
+  const bg = outline
+    ? "bg-transparent dark:bg-gray-800"
+    : danger
+      ? "bg-red-400"
+      : "bg-blue-500";
   const text = danger
     ? "text-red-500"
     : outline

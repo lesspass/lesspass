@@ -4,6 +4,7 @@
   "references": [
     { "path": "./packages/lesspass" },
     { "path": "./packages/lesspass-api" },
+    { "path": "./packages/lesspass-i18n" },
     { "path": "./packages/lesspass-mobile" },
     { "path": "./packages/lesspass-web-component" },
     { "path": "./packages/lesspass-web-extension" },

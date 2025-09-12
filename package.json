@@ -11,11 +11,11 @@
   },
   "scripts": {
     "build": "yarn workspaces foreach --verbose --all --topological run build",
-    "clean": "yarn workspaces foreach --verbose --all run clean && rm -rf node_modules",
+    "clean": "yarn workspaces foreach --verbose --all run clean",
     "prettier": "yarn workspaces foreach --verbose --all run prettier",
     "test": "yarn workspaces foreach --verbose --all run test"
   },
-  "packageManager": "yarn@4.6.0",
+  "packageManager": "yarn@4.9.4",
   "engines": {
     "node": "22.x"
   },

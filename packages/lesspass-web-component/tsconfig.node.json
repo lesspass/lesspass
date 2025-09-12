@@ -19,7 +19,7 @@
     "noUncheckedSideEffectImports": true,
 
     "baseUrl": ".",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
   },
   "include": ["vite.config.ts"],
   "exclude": ["src/**/*.test.ts"]

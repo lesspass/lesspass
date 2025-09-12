@@ -19,6 +19,7 @@ import { Button, Snackbar, Text, Title, useTheme } from "react-native-paper";
 import { addError, cleanErrors } from "../errors/errorsActions";
 import SecondaryButton from "../ui/buttons/SecondaryButton";
 import Styles from "../ui/Styles";
+import { useTranslation } from "react-i18next";
 
 function _getInitialState(settings) {
   return {
@@ -63,6 +64,7 @@ export default function PasswordGeneratorScreen() {
   const [updated, setUpdated] = useState(false);
   const [state, setState] = useState(() => _getInitialState(settings));
   const theme = useTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const newState = _getInitialState(settings);
@@ -101,7 +103,10 @@ export default function PasswordGeneratorScreen() {
     } else {
       dispatch(
         addError(
-          "Password profile is invalid, cannot generate password. Site is required.",
+          t(
+            "PasswordProfile.SiteRequired",
+            "Password profile is invalid, cannot generate password. Site is required.",
+          ),
         ),
       );
     }
@@ -126,7 +131,7 @@ export default function PasswordGeneratorScreen() {
           }}
         >
           <TextInput
-            label="Site"
+            label={t("PasswordProfile.Site")}
             value={state.site}
             autoFocus={true}
             returnKeyType="next"
@@ -135,7 +140,7 @@ export default function PasswordGeneratorScreen() {
             onChangeText={(site) => setState((state) => ({ ...state, site }))}
           />
           <TextInput
-            label="Login"
+            label={t("PasswordProfile.Login")}
             value={state.login}
             outerRef={ref_login}
             returnKeyType="next"
@@ -144,6 +149,7 @@ export default function PasswordGeneratorScreen() {
             onChangeText={(login) => setState((state) => ({ ...state, login }))}
           />
           <MasterPassword
+            label={t("PasswordProfile.MasterPassword")}
             masterPassword={state.masterPassword}
             outerRef={ref_masterPassword}
             onSubmitEditing={generate}
@@ -172,13 +178,13 @@ export default function PasswordGeneratorScreen() {
           }}
         >
           <Counter
-            label="Length"
+            label={t("PasswordProfile.Length")}
             value={state.length}
             setValue={(length) => setState((state) => ({ ...state, length }))}
             isValueValid={isLengthValid}
           />
           <Counter
-            label="Counter"
+            label={t("PasswordProfile.Counter")}
             value={state.counter}
             setValue={(counter) => setState((state) => ({ ...state, counter }))}
             isValueValid={isCounterValid}
@@ -186,7 +192,9 @@ export default function PasswordGeneratorScreen() {
         </View>
         <View style={{ gap: 10 }}>
           <Button mode="contained" icon="cogs" onPress={generate}>
-            {state.copyPasswordAfterGeneration ? "GENERATE & COPY" : "GENERATE"}
+            {state.copyPasswordAfterGeneration
+              ? t("PasswordProfile.GenerateAndCopy")
+              : t("Common.Generate", "GENERATE")}
           </Button>
           <View
             style={{
@@ -207,7 +215,7 @@ export default function PasswordGeneratorScreen() {
                 dispatch(cleanPasswordProfile());
               }}
             >
-              CLEAR
+              {t("PasswordProfile.Clear")}
             </SecondaryButton>
             {state.password && state.copyPasswordAfterGeneration === false && (
               <SecondaryButton
@@ -217,7 +225,7 @@ export default function PasswordGeneratorScreen() {
                 }}
                 icon="clipboard"
               >
-                COPY
+                {t("Common.Copy")}
               </SecondaryButton>
             )}
             {state.password && (
@@ -227,7 +235,7 @@ export default function PasswordGeneratorScreen() {
                 }}
                 icon="eye"
               >
-                {seePassword ? "HIDE" : "SHOW"}
+                {seePassword ? t("Common.Hide") : t("Common.Show")}
               </SecondaryButton>
             )}
             {state.password && auth.isAuthenticated ? (
@@ -247,7 +255,7 @@ export default function PasswordGeneratorScreen() {
                   }}
                   icon="content-save"
                 >
-                  SAVE
+                  {t("Common.Save")}
                 </SecondaryButton>
               ) : (
                 <SecondaryButton
@@ -265,7 +273,7 @@ export default function PasswordGeneratorScreen() {
                   }}
                   icon="content-save"
                 >
-                  UPDATE
+                  {t("Common.Update", "UPDATE")}
                 </SecondaryButton>
               )
             ) : null}
@@ -290,31 +298,34 @@ export default function PasswordGeneratorScreen() {
         visible={copied}
         onDismiss={() => setCopied(false)}
         action={{
-          label: "Hide",
+          label: t("Common.Hide"),
           onPress: () => setCopied(false),
         }}
       >
-        Password copied
+        {t("Common.Copied")}
       </Snackbar>
       <Snackbar
         visible={saved}
         onDismiss={() => setSaved(false)}
         action={{
-          label: "Hide",
+          label: t("Common.Hide"),
           onPress: () => setSaved(false),
         }}
       >
-        Password profile saved
+        {t("PasswordProfile.PasswordProfileSaved", "Password profile saved")}
       </Snackbar>
       <Snackbar
         visible={updated}
         onDismiss={() => setUpdated(false)}
         action={{
-          label: "Hide",
+          label: t("Common.Hide"),
           onPress: () => setUpdated(false),
         }}
       >
-        Password profile updated
+        {t(
+          "PasswordProfile.PasswordProfileUpdated",
+          "Password profile updated",
+        )}
       </Snackbar>
     </KeyboardAvoidingView>
   );

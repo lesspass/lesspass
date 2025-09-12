@@ -17,10 +17,12 @@ import Errors from "./errors/Errors";
 import { useTheme } from "react-native-paper";
 import { getReactNavigationTheme } from "./ui/Theme";
 import Logo from "./ui/logo";
+import { useTranslation } from "react-i18next";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const { t } = useTranslation();
   const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -72,6 +74,7 @@ export default function App() {
             component={PasswordGeneratorScreen}
             options={{
               headerTitle: (props) => <Logo {...props} />,
+              title: t("Name", "LessPass"),
             }}
           />
           {isAuthenticated ? (
@@ -79,8 +82,8 @@ export default function App() {
               name={routes.PASSWORD_PROFILES}
               component={ProfilesScreen}
               options={{
-                title: "Passwords",
                 headerTitle: (props) => <Logo {...props} />,
+                title: t("Navigation.PasswordProfiles", "Passwords"),
               }}
             />
           ) : null}
@@ -89,6 +92,7 @@ export default function App() {
             component={SettingsScreen}
             options={{
               headerTitle: (props) => <Logo {...props} />,
+              title: t("Navigation.Settings", "Settings"),
             }}
           />
           <Tab.Screen
@@ -96,6 +100,7 @@ export default function App() {
             component={HelpScreen}
             options={{
               headerTitle: (props) => <Logo {...props} />,
+              title: t("Navigation.Help", "Help"),
             }}
           />
           {isAuthenticated ? (
@@ -104,6 +109,7 @@ export default function App() {
               component={SignOutScreen}
               options={{
                 headerTitle: (props) => <Logo {...props} />,
+                title: t("Navigation.MyAccount", "My account"),
               }}
             />
           ) : (
@@ -112,6 +118,7 @@ export default function App() {
               component={SignInScreen}
               options={{
                 headerTitle: (props) => <Logo {...props} />,
+                title: t("Navigation.SignIn", "Sign In"),
               }}
             />
           )}

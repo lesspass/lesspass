@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView } from "react-native";
-import { Title, useTheme } from "react-native-paper";
+import { Text, useTheme } from "react-native-paper";
 import Styles from "./Styles";
 
 export default function Screen({ children, title, ...props }) {
@@ -14,13 +14,14 @@ export default function Screen({ children, title, ...props }) {
       {...props}
     >
       {title !== undefined && (
-        <Title
+        <Text
+          variant="titleLarge"
           style={{
             ...Styles.title,
           }}
         >
           {title}
-        </Title>
+        </Text>
       )}
       {children}
     </ScrollView>

@@ -4,8 +4,9 @@
     "baseUrl": ".",
     "rootDir": "src",
     "outDir": "dist",
+    "resolveJsonModule": true,
     "tsBuildInfoFile": "dist/.tsbuildinfo"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": ["dist", "node_modules"]
 }

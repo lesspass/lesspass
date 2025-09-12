@@ -11,12 +11,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsc -b && vite build",
-    "clean": "rm -rf node_modules && rm -rf dist",
-    "dev": "vite",
-    "i18n": "i18next 'src/**/*.{ts,tsx}' --output public/locales/\\$LOCALE/\\$NAMESPACE.json --config ./src/i18next-parser.config.ts",
+    "build": "yarn clean && yarn i18n && vite build",
+    "clean": "rm -rf dist",
+    "dev": "yarn i18n && vite",
+    "i18n": "rm -rf ./public/locales && mkdir -p ./public/locales && cp -r ../lesspass-i18n/src/locales/* ./public/locales/ && echo 'translations copied'",
     "lint": "eslint .",
-    "prettier": "prettier --write src --write public/locales",
+    "prettier": "prettier --write src",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest watch"
@@ -35,6 +35,7 @@
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-http-backend": "^3.0.2",
     "lesspass": "workspace:*",
+    "lesspass-i18n": "workspace:*",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
@@ -61,7 +62,6 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
-    "i18next-parser": "^9.3.0",
     "jsdom": "^26.1.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
