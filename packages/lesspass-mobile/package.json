@@ -61,7 +61,7 @@
     "@types/lodash": "^4.17.20",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19",
-    "eslint": "^9.34.0",
+    "eslint": "^9.35.0",
     "jsdom": "^26.1.0",
     "prettier": "^3.6.2",
     "react-dom": "^19.1.1",
