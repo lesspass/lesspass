@@ -5,8 +5,7 @@
   "license": "AGPL-3.0-only",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
