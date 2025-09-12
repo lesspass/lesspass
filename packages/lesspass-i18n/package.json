@@ -13,17 +13,20 @@
     "build": "yarn clean && yarn i18n && tsup",
     "clean": "rm -rf dist",
     "i18n": "i18next '../lesspass-web-component/src/**/*.{ts,tsx}' '../lesspass-mobile/src/**/*.{js,jsx,ts,tsx}' --output src/locales/\\$LOCALE/\\$NAMESPACE.json --config ./i18next-parser.config.ts",
-    "test": "eslint .",
+    "test": "eslint . && echo 'eslint passed'",
     "prettier": "prettier --write src",
     "update-translations": "yarn i18n && yarn build"
   },
   "devDependencies": {
+    "@eslint/js": "^9.34.0",
     "@types/node": "^22.0.0",
     "eslint": "^9.34.0",
+    "globals": "^16.3.0",
     "i18next-parser": "^9.3.0",
     "prettier": "^3.6.2",
     "tsup": "^8.5.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.42.0"
   },
   "tsup": [
     {

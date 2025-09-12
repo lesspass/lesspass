@@ -10229,12 +10229,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lesspass-i18n@workspace:packages/lesspass-i18n"
   dependencies:
+    "@eslint/js": "npm:^9.34.0"
     "@types/node": "npm:^22.0.0"
     eslint: "npm:^9.34.0"
+    globals: "npm:^16.3.0"
     i18next-parser: "npm:^9.3.0"
     prettier: "npm:^3.6.2"
     tsup: "npm:^8.5.0"
     typescript: "npm:^5.9.2"
+    typescript-eslint: "npm:^8.42.0"
   languageName: unknown
   linkType: soft
 
