@@ -5484,14 +5484,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.11.0":
-  version: 1.11.0
-  resolution: "axios@npm:1.11.0"
+"axios@npm:^1.12.1":
+  version: 1.12.1
+  resolution: "axios@npm:1.12.1"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.4"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/5de273d33d43058610e4d252f0963cc4f10714da0bfe872e8ef2cbc23c2c999acc300fd357b6bce0fc84a2ca9bd45740fa6bb28199ce2c1266c8b1a393f2b36e
+  checksum: 10c0/eda4dff56c02d13b950fd9487b678ac197ce5f21dfc98df73632df29e45d8dd24602a34e8d9b6e016d84a41ef7fd7fc4a7618060a72cc536b91cda1eaa9cd907
   languageName: node
   linkType: hard
 
@@ -10216,7 +10216,7 @@ __metadata:
   dependencies:
     "@reduxjs/toolkit": "npm:^2.9.0"
     async-mutex: "npm:^0.5.0"
-    axios: "npm:^1.11.0"
+    axios: "npm:^1.12.1"
     lesspass: "workspace:*"
     msw: "npm:^2.11.1"
     tsup: "npm:^8.5.0"
@@ -10350,7 +10350,7 @@ __metadata:
     tailwindcss: "npm:^4.1.12"
     typescript: "npm:^5.9.2"
     typescript-eslint: "npm:^8.42.0"
-    vite: "npm:^7.1.4"
+    vite: "npm:^7.1.5"
     vite-plugin-dts: "npm:^4.5.4"
     vite-plugin-lib-inject-css: "npm:^2.2.2"
     vitest: "npm:^3.2.4"
@@ -10378,7 +10378,7 @@ __metadata:
     react-dom: "npm:^19.1.0"
     typescript: "npm:^5.9.2"
     typescript-eslint: "npm:^8.42.0"
-    vite: "npm:^7.1.4"
+    vite: "npm:^7.1.5"
     vitest: "npm:^3.2.4"
     web-ext: "npm:^8.9.0"
   languageName: unknown
@@ -10405,7 +10405,7 @@ __metadata:
     tailwindcss: "npm:^4.1.12"
     typescript: "npm:^5.9.2"
     typescript-eslint: "npm:^8.42.0"
-    vite: "npm:^7.1.4"
+    vite: "npm:^7.1.5"
   languageName: unknown
   linkType: soft
 
@@ -15122,7 +15122,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0, vite@npm:^7.1.4":
+"vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0":
   version: 7.1.4
   resolution: "vite@npm:7.1.4"
   dependencies:
