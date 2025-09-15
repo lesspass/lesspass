@@ -243,10 +243,10 @@ export default function SettingsScreen() {
           />
           <Divider />
           <List.Item
-            title={t(
+            title={`${t(
               "Settings.LessPassVersion",
-              `LessPass version: ${version}`,
-            )}
+              "LessPass version",
+            )}: ${version}`}
           />
         </List.Section>
       </View>
