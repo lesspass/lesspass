@@ -15,3 +15,4 @@ default.nix
 !.yarn/versions
 dump.pgsql
 restore.sh
+.idea
