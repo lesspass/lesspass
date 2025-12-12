@@ -1,4 +1,4 @@
-name: 🧩 Checkmarx ast-cli IMAGE BUILD
+name: 🧩 BACKEND IMAGE BUILD
 
 on:
   push:
