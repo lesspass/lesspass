@@ -126,9 +126,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "fr"
+LANGUAGE_CODE = os.getenv("LANGUAGE_CODE", "fr")
 
-TIME_ZONE = "UTC"
+TIME_ZONE = os.getenv("TIME_ZONE", "UTC")
 
 USE_I18N = True
 
