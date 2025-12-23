@@ -1,4 +1,5 @@
 import { test, expect } from "vitest";
+import { waitFor } from "@testing-library/react";
 import { renderWithProviders } from "../tests/renders";
 import PasswordProfile from "./PasswordProfile";
 import { defaultPasswordProfile } from "lesspass";
@@ -12,7 +13,7 @@ test("PasswordProfileForm site is focused", async () => {
   );
 
   const site = getByLabelText("Site");
-  expect(site).toHaveFocus();
+  await waitFor(() => expect(site).toHaveFocus());
 });
 
 test("PasswordProfileForm masterPassword is focused", async () => {
@@ -24,7 +25,7 @@ test("PasswordProfileForm masterPassword is focused", async () => {
   );
 
   const masterPassword = getByLabelText("Master password");
-  expect(masterPassword).toHaveFocus();
+  await waitFor(() => expect(masterPassword).toHaveFocus());
 });
 
 test("Should generate a password", async () => {
