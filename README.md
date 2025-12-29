@@ -44,7 +44,7 @@ There are also [alternative server implementations](https://github.com/lesspass/
 
 ## Questions
 
-If you have any questions, create an [issue](issue).
+If you have any questions, create an [issue](https://github.com/lesspass/lesspass/issues/new/).
 Protip: do a quick search first to see if someone else has asked the same question before!
 
 You can also reach me at contact@lesspass.com
