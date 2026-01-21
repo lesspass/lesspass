@@ -29,7 +29,7 @@
     "lesspass": "workspace:*",
     "lesspass-api": "workspace:*",
     "lesspass-i18n": "workspace:*",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "react": "19.2.3",
     "react-i18next": "^16.5.0",
     "react-native": "0.81.1",
