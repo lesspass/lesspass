@@ -9,12 +9,12 @@ We welcome any type of contribution, not only code. You can help by...
 - **QA**: filing bug reports; the more details you can give the better (e.g. screenshots with the console open)
 - **Marketing**: writing blog posts and howto's, making videos, updating the wiki, writing documentation, printing stickers, ...
 - **Community**: presenting the project at meetups, organizing a dedicated meetup for the local community, hosting a [hackathon](https://en.wikipedia.org/wiki/Hackathon) for LessPass, ...
-- **Code**: taking a look at the [open issues](issues). Even if you can't write code, commenting on them and showing that you care about a given issue matters. It helps us triage them.
+- **Code**: taking a look at the [open issues](https://github.com/lesspass/lesspass/issues). Even if you can't write code, commenting on them and showing that you care about a given issue matters. It helps us triage them.
 - **Money**: helping us financially. We welcome financial contributions in full transparency on our [Open Collective page](https://opencollective.com/lesspass).
 
 ## Your first contribution
 
-Working on your first Pull Request? You can learn how using this *free* series, [*How to Contribute to an Open Source Project on GitHub*](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+Working on your first Pull Request? You can learn how using this *free* series, [*How to Contribute to an Open Source Project on GitHub*](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github).
 
 ## Development
 
@@ -71,7 +71,7 @@ Anyone can file an expense. If the expense makes sense for the development of th
 
 ## Questions
 
-If you have any questions, create an [issue](issue). Protip: do a quick search first to see if someone else has asked the same question before!
+If you have any questions, create an [issue](https://github.com/lesspass/lesspass/issues/new/). Protip: do a quick search first to see if someone else has asked the same question before!
 
 You can also reach the core contributors at contact@lesspass.com
 
