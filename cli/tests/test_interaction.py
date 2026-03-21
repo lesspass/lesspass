@@ -1,8 +1,10 @@
 import unittest
 import pexpect
 import signal
+import sys
 
 
+@unittest.skipIf(sys.platform == "win32", "pexpect.spawn is not supported on Windows")
 class TestInteraction(unittest.TestCase):
     def test_keyboard_interrupt(self):
         p = pexpect.spawn("python3 lesspass/core.py --prompt")
