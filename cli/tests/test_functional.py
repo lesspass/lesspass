@@ -1,42 +1,56 @@
 import unittest
-import pexpect
+import subprocess
 import sys
-
-
 import argparse
+from pathlib import Path
 from lesspass.cli import range_type
 
+# Path to core.py, anchored to this file's location so tests run from any directory
+CORE_PY = Path(__file__).resolve().parent.parent / "lesspass" / "core.py"
+
+def run_lesspass(*args):
+    # Spawns core.py as a subprocess and returns its combined stdout+stderr
+    # as a string
+    result = subprocess.run(
+        [sys.executable, str(CORE_PY), *args],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        cwd=CORE_PY.parent,
+    )
+    return result.stdout + result.stderr
+
 class TestRangeType(unittest.TestCase):
-    def test_length_range_type(self):
+    def test_valid_values(self):
         self.assertEqual(range_type("5"), 5)
         self.assertEqual(range_type("35"), 35)
+
+    def test_below_minimum_raises(self):
         with self.assertRaises(argparse.ArgumentTypeError):
             range_type("2")
 
-@unittest.skipIf(sys.platform == "win32", "pexpect.spawn is not supported on Windows")
 class TestFunctional(unittest.TestCase):
-    def test_length_below_the_minimum(self):
-        p = pexpect.spawn(
-            "python3 lesspass/core.py  site login masterpassword --lowercase --digits --length 2"
-        )
-        output = p.read().decode()
 
-        self.assertTrue(
-            "error: argument -L/--length: 2 is out of range, choose in [5-35]" in output
+    def test_length_below_the_minimum(self):
+        output = run_lesspass(
+            "site", "login", "masterpassword",
+            "--lowercase", "--digits", "--length", "2",
+        )
+        self.assertIn(
+            "error: argument -L/--length: 2 is out of range, choose in [5-35]",
+            output,
         )
 
     def test_exclude_given_chars_from_output(self):
-        p = pexpect.spawn(
-            'python3 lesspass/core.py  site login masterpassword --exclude "!@$*+-8"'
+        output = run_lesspass(
+            "site", "login", "masterpassword", "--exclude", "!@$*+-8",
         )
-        output = p.read().decode()
         for c in "!@$*+-8":
-            self.assertTrue(c not in output)
+            self.assertNotIn(c, output)
 
     def test_exclude_all_chars_raise_error(self):
-        p = pexpect.spawn(
-            'python3 lesspass/core.py  site login masterpassword -d -L6 --exclude "0123456789"'
+        output = run_lesspass(
+            "site", "login", "masterpassword",
+            "-d", "-L6", "--exclude", "0123456789",
         )
-        output = p.read().decode()
-
-        self.assertTrue("error: you can't exclude all chars available" in output)
+        self.assertIn("error: you can't exclude all chars available", output)
