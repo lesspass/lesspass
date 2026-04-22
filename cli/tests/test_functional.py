@@ -25,7 +25,7 @@ class TestFunctional(unittest.TestCase):
             "error: argument -L/--length: 2 is out of range, choose in [5-35]" in output
         )
 
-    def test_exclude_chars_not_in_output(self):
+    def test_exclude_given_chars_from_output(self):
         p = pexpect.spawn(
             'python3 lesspass/core.py  site login masterpassword --exclude "!@$*+-8"'
         )
@@ -33,7 +33,7 @@ class TestFunctional(unittest.TestCase):
         for c in "!@$*+-8":
             self.assertTrue(c not in output)
 
-    def test_exclude_all_chars(self):
+    def test_exclude_all_chars_raise_error(self):
         p = pexpect.spawn(
             'python3 lesspass/core.py  site login masterpassword -d -L6 --exclude "0123456789"'
         )
