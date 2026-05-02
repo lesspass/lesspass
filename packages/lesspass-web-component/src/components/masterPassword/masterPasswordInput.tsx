@@ -76,6 +76,7 @@ export const MasterPasswordInput = forwardRef<
         type={type}
         autoCorrect="off"
         autoCapitalize="none"
+        minLength={10}
         ref={ref}
         className={`col-start-1 row-start-1 ${inputStyle} pr-19`}
         name={name}

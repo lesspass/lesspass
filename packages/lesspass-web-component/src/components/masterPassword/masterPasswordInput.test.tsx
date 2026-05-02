@@ -56,4 +56,11 @@ describe("Master password", () => {
       ).length,
     ).toBe(3);
   });
+
+  // 10 because of nist protocol
+  test("should have a minimun lenght of 10", () => {
+    const{ queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+    expect(masterPasswordInput).toHaveAttribute("minlength", "10");
+  })
 });
