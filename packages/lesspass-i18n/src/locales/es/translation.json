@@ -77,7 +77,8 @@
     "PasswordProfileUpdated": "Perfil de contraseña actualizado",
     "Share": "Compartir",
     "Site": "Sitio",
-    "SiteRequired": "El perfil de contraseña no es válido, no se puede generar la contraseña. Se requiere el sitio."
+    "SiteRequired": "El perfil de contraseña no es válido, no se puede generar la contraseña. Se requiere el sitio.",
+    "MasterPasswordTooShort": "La contraseña maestra debe tener al menos 10 caracteres."
   },
   "PasswordProfilePage": {
     "AreYouSure": "¿Estás seguro de que deseas eliminar el perfil de {{site}}/{{login}}?",

@@ -77,7 +77,8 @@
     "PasswordProfileUpdated": "Passwort-Profil aktualisiert",
     "Share": "Teilen",
     "Site": "Website",
-    "SiteRequired": "Passwort-Profil ist ungültig, Passwort kann nicht generiert werden. Website ist erforderlich."
+    "SiteRequired": "Passwort-Profil ist ungültig, Passwort kann nicht generiert werden. Website ist erforderlich.",
+    "MasterPasswordTooShort": "Das Master-Passwort muss mindestens 10 Zeichen lang sein."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Sind Sie sicher, dass Sie das Profil {{site}}/{{login}} löschen möchten?",

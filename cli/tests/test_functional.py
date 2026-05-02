@@ -38,3 +38,12 @@ class TestFunctional(unittest.TestCase):
         output = p.read().decode()
 
         self.assertTrue("error: you can't exclude all chars available" in output)
+    
+    def test_master_password_too_short(self):
+        p = pexpect.spawn(
+            "python3 lesspass/core.py site login foo"
+        )
+        output = p.read().decode()
+        self.assertTrue(
+            "error: master password must be at least 10 characters" in output
+        )

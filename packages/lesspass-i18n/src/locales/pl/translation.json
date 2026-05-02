@@ -77,7 +77,8 @@
     "PasswordProfileUpdated": "Profil hasła zaktualizowany",
     "Share": "Udostępnij",
     "Site": "Strona",
-    "SiteRequired": "Profil hasła jest niepoprawny, nie można wygenerować hasła. Strona jest wymagana."
+    "SiteRequired": "Profil hasła jest niepoprawny, nie można wygenerować hasła. Strona jest wymagana.",
+    "MasterPasswordTooShort": "Hasło główne musi mieć co najmniej 10 znaków."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Czy na pewno chcesz usunąć profil {{site}}/{{login}}?",

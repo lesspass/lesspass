@@ -77,7 +77,8 @@
     "PasswordProfileUpdated": "Password profile updated",
     "Share": "Share",
     "Site": "Site",
-    "SiteRequired": "Password profile is invalid, cannot generate password. Site is required."
+    "SiteRequired": "Password profile is invalid, cannot generate password. Site is required.",
+    "MasterPasseordTooShort": "Master password must be at least 10 characters."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Are you sure you want to delete {{site}}/{{login}} profile ?",

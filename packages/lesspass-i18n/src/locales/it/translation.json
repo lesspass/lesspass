@@ -77,7 +77,8 @@
     "PasswordProfileUpdated": "Profilo password aggiornato",
     "Share": "Condividi",
     "Site": "Sito",
-    "SiteRequired": "Il profilo password non è valido, impossibile generare la password. Il sito è richiesto."
+    "SiteRequired": "Il profilo password non è valido, impossibile generare la password. Il sito è richiesto.",
+    "MasterPasswordTooShort": "La password principale deve essere di almeno 10 caratteri."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Sei sicuro di voler eliminare il profilo {{site}}/{{login}}?",

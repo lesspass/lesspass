@@ -63,6 +63,10 @@ def main(args=sys.argv[1:]):
     if not master_password:
         print("error: argument MASTER_PASSWORD is required but was not provided")
         sys.exit(5)
+    
+    if len(master_password) < 10:
+        print("error: master password must be at least 10 characters.") # (NIST SP 800-132)
+        sys.exit(7)
 
     profile = create_profile(args)
     try:

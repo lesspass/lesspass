@@ -77,7 +77,8 @@
     "PasswordProfileUpdated": "密碼設定檔已更新",
     "Share": "分享",
     "Site": "網站",
-    "SiteRequired": "密碼設定檔無效，無法生成密碼。需要網站。"
+    "SiteRequired": "密碼設定檔無效，無法生成密碼。需要網站。",
+    "MasterPasswordTooShort": "主密碼必須至少包含10個字元。"
   },
   "PasswordProfilePage": {
     "AreYouSure": "您確定要刪除 {{site}}/{{login}} 設定檔嗎？",

@@ -77,7 +77,8 @@
     "PasswordProfileUpdated": "Profil de mot de passe mis à jour",
     "Share": "Partager",
     "Site": "Site",
-    "SiteRequired": "Le profil de mot de passe est invalide, impossible de générer le mot de passe. Le site est requis."
+    "SiteRequired": "Le profil de mot de passe est invalide, impossible de générer le mot de passe. Le site est requis.",
+    "MasterPasswordTooShort": "Le mot de passe maître doit comporter au moins 10 caractères."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Êtes-vous sûr de vouloir supprimer le mot de passe pour {{site}}/{{login}} ?",
