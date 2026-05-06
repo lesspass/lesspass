@@ -1,24 +1,8 @@
 import unittest
-import subprocess
-import sys
 import argparse
-from pathlib import Path
+from .cli_test_helpers import run_lesspass
 from lesspass.cli import range_type
 
-# Path to core.py, anchored to this file's location so tests run from any directory
-CORE_PY = Path(__file__).resolve().parent.parent / "lesspass" / "core.py"
-
-def run_lesspass(*args):
-    # Spawns core.py as a subprocess and returns its combined stdout+stderr
-    # as a string
-    result = subprocess.run(
-        [sys.executable, str(CORE_PY), *args],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
-        cwd=CORE_PY.parent,
-    )
-    return result.stdout + result.stderr
 
 class TestRangeType(unittest.TestCase):
     def test_valid_values(self):

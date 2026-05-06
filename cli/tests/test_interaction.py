@@ -2,28 +2,13 @@ import unittest
 import subprocess
 import signal
 import sys
-from pathlib import Path
+from .cli_test_helpers import run_lesspass
 
-# Path to core.py, anchored to this file's location so tests run from any directory
-CORE_PY = Path(__file__).resolve().parent.parent / "lesspass" / "core.py"
 
 class TestInteraction(unittest.TestCase):
     def test_keyboard_interrupt(self):
-        kwargs = {}
-        if sys.platform == "win32":
-            kwargs["creationflags"] = (
-                subprocess.CREATE_NEW_PROCESS_GROUP |
-                subprocess.CREATE_NO_WINDOW
-            )
-
-        p = subprocess.Popen(
-            [sys.executable, str(CORE_PY), "--prompt"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            stdin=subprocess.PIPE,
-            cwd=CORE_PY.parent,
-            **kwargs,
-        )
+        
+        p = run_lesspass("--prompt", interactive=True)
 
         if sys.platform == "win32":
             p.send_signal(signal.CTRL_C_EVENT)
