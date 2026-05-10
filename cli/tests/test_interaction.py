@@ -21,4 +21,4 @@ class TestInteraction(unittest.TestCase):
             p.kill()
             stdout, stderr = p.communicate()
 
-        self.assertEqual(stdout, b"")
+        self.assertEqual(stdout, "")
