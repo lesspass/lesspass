@@ -14,7 +14,6 @@ import {
   isLengthValid,
   isCounterValid,
   areOptionsValid,
-  isMasterPasswordValid,
 } from "./validations";
 import { Button, Snackbar, Text, Title, useTheme } from "react-native-paper";
 import { addError, cleanErrors } from "../errors/errorsActions";
@@ -90,16 +89,16 @@ export default function PasswordGeneratorScreen() {
   async function generate() {
     const passwordProfile = _getPasswordProfile(state);
     dispatch(cleanErrors());
-    if (!isMasterPasswordValid(state.masterPassword)) {
+    if (state.masterPassword && state.masterPassword.length < 10) {
       dispatch(
         addError(
           t(
             "PasswordProfile.MasterPasswordTooShort",
-            "Master password must be at least 10 characters.",
+            "Master password is short, consider using at least 10 characters.",
           ),
         ),
       );
-    } else if (isProfileValid({ ...passwordProfile, masterPassword: state.masterPassword })) {
+    } if (isProfileValid({ ...passwordProfile, masterPassword: state.masterPassword })) {
       // masterPassword is not included in _getPasswordProfile to avoid sending it to the server
       const password = await generatePassword(
         state.masterPassword,

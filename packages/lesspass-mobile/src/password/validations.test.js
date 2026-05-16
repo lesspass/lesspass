@@ -5,7 +5,6 @@ import {
   isLengthValid,
   isCounterValid,
   areOptionsValid,
-  isMasterPasswordValid,
 } from "./validations";
 
 describe("validation", () => {
@@ -106,7 +105,6 @@ describe("validation", () => {
       expect(
         isProfileValid({
           site: "lesspass",
-          masterPassword:"foobartest",
           login: "",
           length: 16,
           counter: 1,
@@ -144,26 +142,6 @@ describe("validation", () => {
           symbols: true,
         }),
       ).toBe(false);
-    });
-  });
-  describe("isMasterPasswordValid", () => {
-    it("is empty", () => {
-      expect(isMasterPasswordValid("")).toBe(false);
-    });
-    it("is null", () => {
-      expect(isMasterPasswordValid(null)).toBe(false);
-    });
-    it("is undefined", () => {
-      expect(isMasterPasswordValid()).toBe(false);
-    });
-    it("less than 10 characters", () => {
-      expect(isMasterPasswordValid("foo")).toBe(false);
-    });
-    it("equal to 10 characters", () => {
-      expect(isMasterPasswordValid("foobartest")).toBe(true);
-    });
-    it("more than 10 characters", () => {
-      expect(isMasterPasswordValid("foobartest123")).toBe(true);
     });
   });
 });

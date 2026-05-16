@@ -78,7 +78,7 @@
     "Share": "分享",
     "Site": "网站",
     "SiteRequired": "密码配置文件无效，无法生成密码。需要网站。",
-    "MasterPasswordTooShort": "Мастер-пароль должен содержать не менее 10 символов."
+    "MasterPasswordTooShort": "主密码太短，建议使用至少10个字符"
   },
   "PasswordProfilePage": {
     "AreYouSure": "您确定要删除 {{site}}/{{login}} 配置文件吗？",

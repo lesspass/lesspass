@@ -22,7 +22,6 @@ export function areOptionsValid({ lowercase, uppercase, digits, symbols }) {
 
 export function isProfileValid({
   site,
-  masterPassword,
   length,
   counter,
   lowercase,
@@ -31,17 +30,9 @@ export function isProfileValid({
   symbols,
 }) {
   return (
-    isMasterPasswordValid(masterPassword) &&
     isLengthValid(length) &&
     isCounterValid(counter) &&
     areOptionsValid({ lowercase, uppercase, digits, symbols }) &&
     site !== ""
   );
-}
-
-export function isMasterPasswordValid(masterPassword) {
-  const minLength = 10;
-  if (!masterPassword) return false;
-  if (masterPassword.length < minLength) return false;
-  return true
 }

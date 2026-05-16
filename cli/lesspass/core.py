@@ -65,8 +65,7 @@ def main(args=sys.argv[1:]):
         sys.exit(5)
     
     if len(master_password) < 10:
-        print("error: master password must be at least 10 characters.") # (NIST SP 800-132)
-        sys.exit(7)
+        print("warning: master password is short, consider using at least 10 characters.", file=sys.stderr) # (NIST SP 800-132)
 
     profile = create_profile(args)
     try:

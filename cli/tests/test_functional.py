@@ -45,5 +45,5 @@ class TestFunctional(unittest.TestCase):
         )
         output = p.read().decode()
         self.assertTrue(
-            "error: master password must be at least 10 characters" in output
+            "warning: master password is short, consider using at least 10 characters" in output
         )

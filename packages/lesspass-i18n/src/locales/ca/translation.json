@@ -78,7 +78,7 @@
     "Share": "Compartir",
     "Site": "Lloc web",
     "SiteRequired": "El perfil de contrasenya no és vàlid, no es pot generar la contrasenya. Es requereix el lloc web.",
-    "MasterPasswordTooShort": "La contrasenya mestra ha de tenir almenys 10 caràcters."
+    "MasterPasswordTooShort": "La contrasenya mestra és curta, considera utilitzar almenys 10 caràcters."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Segur que vols esborrar el perfil de {{site}}/{{login}}?",
