@@ -10951,6 +10951,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:^19.2.7"
     "@types/react-dom": "npm:^19.2.3"
+    "@types/zxcvbn": "npm:^4.4.5"
     "@vitejs/plugin-react": "npm:^5.1.2"
     clsx: "npm:^2.1.1"
     eslint: "npm:^8.57.0"
@@ -10980,6 +10981,7 @@ __metadata:
     vite-plugin-lib-inject-css: "npm:^2.2.2"
     vitest: "npm:^4.0.16"
     yup: "npm:^1.7.1"
+    zxcvbn: "npm:^4.4.2"
   languageName: unknown
   linkType: soft
 

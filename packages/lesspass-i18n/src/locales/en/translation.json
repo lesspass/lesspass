@@ -71,14 +71,14 @@
     "Length": "Length",
     "Login": "Login",
     "MasterPassword": "Master password",
+    "MasterPasswordTooShort": "Master password is short, consider using at least 10 characters.",
     "Options": "Options",
     "PasswordProfileCopiedInClipboard": "Password profile URL has been copied to your clipboard",
     "PasswordProfileSaved": "Password profile saved",
     "PasswordProfileUpdated": "Password profile updated",
     "Share": "Share",
     "Site": "Site",
-    "SiteRequired": "Password profile is invalid, cannot generate password. Site is required.",
-    "MasterPasswordTooShort": "Master password is short, consider using at least 10 characters."
+    "SiteRequired": "Password profile is invalid, cannot generate password. Site is required."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Are you sure you want to delete {{site}}/{{login}} profile ?",
@@ -104,6 +104,13 @@
     "ChangePassword": "Change your password",
     "PasswordChangedSuccessfullyMessage": "You can now log in.",
     "PasswordChangedSuccessfullyTitle": "Your password has been changed successfully."
+  },
+  "PasswordStrength": {
+    "Score0": "Unacceptable",
+    "Score1": "Come on, be serious",
+    "Score2": "My grandmother would do better",
+    "Score3": "Starting to get good",
+    "Score4": "The NSA will have trouble"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Search in your password profiles"

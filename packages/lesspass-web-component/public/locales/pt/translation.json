@@ -71,6 +71,7 @@
     "Length": "Comprimento",
     "Login": "Nome de utilizador",
     "MasterPassword": "Palavra-passe mestre",
+    "MasterPasswordTooShort": "A palavra-passe mestre é curta, considere usar pelo menos 10 caracteres.",
     "Options": "Opções",
     "PasswordProfileCopiedInClipboard": "A URL do perfil da senha foi copiada para a área de transferência.",
     "PasswordProfileSaved": "Perfil de palavra-passe guardado",
@@ -103,6 +104,13 @@
     "ChangePassword": "Altere a sua palavra-passe",
     "PasswordChangedSuccessfullyMessage": "Agora pode iniciar sessão.",
     "PasswordChangedSuccessfullyTitle": "A sua palavra-passe foi alterada com sucesso."
+  },
+  "PasswordStrength": {
+    "Score0": "Inaceitável",
+    "Score1": "Vamos, seja sério",
+    "Score2": "A minha avó faria melhor",
+    "Score3": "Está a começar a ficar bom",
+    "Score4": "O SIS vai ter dificuldades"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Pesquisar nos seus perfis de palavras-passe"
