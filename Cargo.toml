@@ -1,0 +1,20 @@
+[workspace]
+members = ["crates/*"]
+resolver = "2"
+
+[workspace.package]
+version = "12.0.0"
+edition = "2024"
+license = "GPL-3.0"
+authors = ["PassForge Contributors"]
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+pbkdf2 = { version = "0.12", features = ["simple"] }
+sha2 = "0.10"
+sha1 = "0.10"
+hmac = "0.12"
+hex = "0.4"
+rand = "0.9"
+thiserror = "2"

@@ -1,0 +1,20 @@
+[package]
+name = "lesspass-core"
+description = "PassForge stateless password generation core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+pbkdf2 = { workspace = true, features = ["simple"] }
+sha2.workspace = true
+sha1.workspace = true
+hmac.workspace = true
+hex.workspace = true
+rand.workspace = true
+serde.workspace = true
+num-bigint = "0.4"
+
+[dev-dependencies]
+rstest = "0.26"
+serde_json = "1"
