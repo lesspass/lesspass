@@ -1,0 +1,7 @@
+cargo:rerun-if-changed=permissions
+cargo:PERMISSION_FILES_PATH=/Users/benblum/Desktop/repo/lesspass_control/target/debug/build/tauri-plugin-biometric-469157e1f120a957/out/tauri-plugin-biometric-permission-files
+cargo:rerun-if-env-changed=REMOVE_UNUSED_COMMANDS
+cargo:GLOBAL_API_SCRIPT_PATH=/Users/benblum/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-plugin-biometric-2.3.2/api-iife.js
+cargo:rustc-check-cfg=cfg(mobile)
+cargo:rustc-check-cfg=cfg(desktop)
+cargo:rustc-cfg=desktop

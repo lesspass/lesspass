@@ -26,6 +26,7 @@ PassForge is a local-first, stateless password manager built on the LessPass alg
 - Not a Safari or Firefox extension (v1) — Chromium only.
 - Not a mobile app.
 
+
 ### Current status
 
 PassForge is in active development. The implementation plan and design spec live in `docs/superpowers/`. See [AGENTS.md](AGENTS.md) for agent instructions and `context/progress-tracker.md` for the current phase.
