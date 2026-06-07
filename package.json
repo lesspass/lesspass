@@ -6,7 +6,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "desktop"
     ]
   },
   "scripts": {

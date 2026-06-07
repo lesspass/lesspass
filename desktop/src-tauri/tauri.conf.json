@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "PassForge",
+  "version": "12.0.0",
+  "identifier": "com.passforge.desktop",
+  "build": {
+    "beforeDevCommand": "yarn dev",
+    "beforeBuildCommand": "yarn build",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "PassForge",
+        "width": 1180,
+        "height": 760,
+        "minWidth": 980,
+        "minHeight": 720
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "app",
+    "macOS": {
+      "minimumSystemVersion": "13.0"
+    }
+  }
+}

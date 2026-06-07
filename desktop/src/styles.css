@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  color: #e5edf8;
+  background: #0b1326;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 980px;
+  min-height: 720px;
+  background: #0b1326;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}

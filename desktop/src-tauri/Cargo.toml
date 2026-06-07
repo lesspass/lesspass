@@ -1,0 +1,22 @@
+[package]
+name = "passforge-desktop"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+lesspass-core = { path = "../../crates/lesspass-core" }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+hex.workspace = true
+tauri = { version = "2" }
+zeroize = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+rusqlite = { version = "0.32", features = ["bundled-sqlcipher", "chrono", "uuid"] }
+security-framework = "3"
+dirs = "6"
