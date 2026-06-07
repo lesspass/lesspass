@@ -4,6 +4,32 @@ LessPass is a stateless password manager.
 
 Stop wasting your time synchronizing your encrypted vault. Remember one master password to access your passwords, anywhere, anytime. No sync needed. Try the demo at [https://www.lesspass.com](https://www.lesspass.com).
 
+## PassForge
+
+PassForge is a local-first, stateless password manager built on the LessPass algorithm. It adds a macOS desktop app, encrypted local metadata storage, Keychain-gated unlock, and a Chromium autofill extension — all while keeping the core LessPass promise: passwords are regenerated from deterministic inputs, never stored.
+
+### What PassForge adds on top of LessPass
+
+- **macOS desktop app** — Tauri v2 shell, Rust backend, React 19 frontend with Material Design 3 dark theme.
+- **Encrypted local metadata** — SQLCipher-backed SQLite stores entries (site, login, counter, password options, salt fields) so you can organize and revisit sites without remembering every parameter.
+- **Keychain + Touch ID** — Master password and database encryption key live in the macOS Secure Enclave. The desktop holds the master password only in RAM and zeroizes it on lock, idle timeout, or quit.
+- **Entry organization** — Folders (hierarchical), groups (flat, many-to-many), and tags (freeform).
+- **Chromium MV3 extension** — Read-only autofill client. Searches entries by domain and requests password generation from the desktop through native messaging. The extension never stores entries, creates entries, or receives the master password.
+- **Algorithm modes** — Basic mode (v1) exposes iterations, hash algorithm, and key length. Expert mode (v2, future) will support pluggable custom pipelines.
+- **Security-first design** — No cloud sync, no accounts, no network services. Generated passwords are never written to disk or logs. Clipboard auto-clears after a configurable delay.
+
+### What PassForge is NOT
+
+- Not a cloud-sync password manager — no server, no accounts, no network traffic.
+- Not a password vault — passwords are never stored, only the parameters to regenerate them.
+- Not cross-platform desktop (v1) — macOS only. Windows support is planned for v2.
+- Not a Safari or Firefox extension (v1) — Chromium only.
+- Not a mobile app.
+
+### Current status
+
+PassForge is in active development. The implementation plan and design spec live in `docs/superpowers/`. See [AGENTS.md](AGENTS.md) for agent instructions and `context/progress-tracker.md` for the current phase.
+
 ## How to use LessPass
 
 ### Web extensions
