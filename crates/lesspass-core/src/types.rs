@@ -122,18 +122,32 @@ use std::fmt;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum CoreError {
-    InvalidPasswordLength { length: usize, required_rules: usize },
-    InvalidFingerprintHash { actual_len: usize },
+    InvalidPasswordLength {
+        length: usize,
+        required_rules: usize,
+    },
+    InvalidFingerprintHash {
+        actual_len: usize,
+    },
 }
 
 impl fmt::Display for CoreError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            CoreError::InvalidPasswordLength { length, required_rules } => {
-                write!(f, "password length {length} cannot fit {required_rules} required character rules")
+            CoreError::InvalidPasswordLength {
+                length,
+                required_rules,
+            } => {
+                write!(
+                    f,
+                    "password length {length} cannot fit {required_rules} required character rules"
+                )
             }
             CoreError::InvalidFingerprintHash { actual_len } => {
-                write!(f, "fingerprint hash must contain at least 18 hex characters, got {actual_len}")
+                write!(
+                    f,
+                    "fingerprint hash must contain at least 18 hex characters, got {actual_len}"
+                )
             }
         }
     }

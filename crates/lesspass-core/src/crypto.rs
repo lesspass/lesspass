@@ -16,11 +16,7 @@ pub fn get_algorithm(algorithm: &str) -> &str {
 }
 
 /// Compute PBKDF2-derived entropy from a master password and salt.
-pub fn derive_entropy(
-    master_password: &str,
-    salt: &str,
-    crypto: &CryptoConfig,
-) -> Vec<u8> {
+pub fn derive_entropy(master_password: &str, salt: &str, crypto: &CryptoConfig) -> Vec<u8> {
     let mut derived = vec![0u8; crypto.keylen];
 
     match get_algorithm(&crypto.digest) {
@@ -125,12 +121,10 @@ mod tests {
             login: "user@example.com".into(),
             counter: 1,
             options: PasswordOptions::default(),
-            salt_fields: vec![
-                crate::types::SaltField {
-                    key: "pepper".into(),
-                    value: "secret123".into(),
-                },
-            ],
+            salt_fields: vec![crate::types::SaltField {
+                key: "pepper".into(),
+                value: "secret123".into(),
+            }],
             crypto: None,
         };
         let crypto = CryptoConfig::default();
@@ -177,7 +171,10 @@ mod tests {
         let crypto = CryptoConfig::default();
         let e1 = calc_entropy(&profile1, "master", &crypto);
         let e2 = calc_entropy(&profile2, "master", &crypto);
-        assert_eq!(e1, e2, "salt fields should be sorted by key for determinism");
+        assert_eq!(
+            e1, e2,
+            "salt fields should be sorted by key for determinism"
+        );
     }
 
     #[test]

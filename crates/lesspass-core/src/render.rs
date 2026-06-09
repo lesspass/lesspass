@@ -129,7 +129,11 @@ pub fn render_password(entropy_hex: &str, options: &PasswordOptions) -> Result<S
     let (generated, remaining_entropy) =
         consume_entropy("", &entropy_big, &charset, options.length - rules.len());
     let (chars_to_add, final_entropy) = get_one_char_per_rule(&remaining_entropy, &rules);
-    Ok(insert_string_pseudo_randomly(&generated, &final_entropy, &chars_to_add))
+    Ok(insert_string_pseudo_randomly(
+        &generated,
+        &final_entropy,
+        &chars_to_add,
+    ))
 }
 
 #[cfg(test)]
@@ -194,9 +198,7 @@ mod tests {
         assert!(password.chars().any(|c| c.is_ascii_lowercase()));
         assert!(password.chars().any(|c| c.is_ascii_uppercase()));
         assert!(password.chars().any(|c| c.is_ascii_digit()));
-        assert!(password
-            .chars()
-            .any(|c| SYMBOLS.contains(c)));
+        assert!(password.chars().any(|c| SYMBOLS.contains(c)));
     }
 
     #[test]

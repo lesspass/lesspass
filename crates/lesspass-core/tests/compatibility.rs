@@ -1,6 +1,6 @@
 use lesspass_core::{
-    build_fingerprint_hash, calc_entropy, create_fingerprint, render_password, CryptoConfig,
-    PasswordOptions, PasswordProfile, SaltField,
+    CryptoConfig, PasswordOptions, PasswordProfile, SaltField, build_fingerprint_hash,
+    calc_entropy, create_fingerprint, render_password,
 };
 
 fn full_options(length: usize) -> PasswordOptions {

@@ -252,12 +252,12 @@ mod tests {
 
     #[test]
     fn test_create_fingerprint_is_deterministic() {
-        let fp1 = create_fingerprint(
-            "e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da",
-        ).unwrap();
-        let fp2 = create_fingerprint(
-            "e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da",
-        ).unwrap();
+        let fp1 =
+            create_fingerprint("e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da")
+                .unwrap();
+        let fp2 =
+            create_fingerprint("e99e20abab609cc4564ef137acb540de20d9b92dcc5cda58f78ba431444ef2da")
+                .unwrap();
         assert_eq!(fp1, fp2);
     }
 }
