@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Implementation phase. Task 1 (stabilize `lesspass-core`) and Task 2 (scaffold Tauri desktop app) are complete. Next: Task 3 — SQLCipher-backed storage model and CRUD.
+Implementation phase. Task 1 (stabilize `lesspass-core`), Task 2 (scaffold Tauri desktop app), and Task 3 (SQLCipher-backed storage model and CRUD) are complete. Next: Task 4 — session and Keychain boundary.
 
 ## Completed
 
@@ -15,6 +15,7 @@ Implementation phase. Task 1 (stabilize `lesspass-core`) and Task 2 (scaffold Ta
 | Graphify setup | Graphify 0.8.33 installed, Codex hook configured, git hooks installed, initial graph built. | `.codex/hooks.json`, `.git/hooks/post-commit`, `graphify-out/` |
 | Task 1 | Stabilize lesspass-core: CoreError, Result returns, fa-* serde, salt tiebreaking, compatibility tests. 15 tests passing. | `crates/lesspass-core/`, `Cargo.toml` |
 | Task 2 | Scaffold Tauri desktop app: Vite + React + Tailwind frontend, Tauri v2 Rust backend. cargo check and yarn build pass. | `desktop/`, `Cargo.toml`, `package.json`, `yarn.lock` |
+| Task 3 | Add SQLCipher-backed storage model and CRUD: folders, entries, tags, encrypted open, search, and no password column. 4 DB tests passing. | `desktop/src-tauri/src/db.rs`, `desktop/src-tauri/tests/db_tests.rs` |
 
 ## In Progress
 
@@ -24,7 +25,6 @@ None.
 
 | Task | Description |
 |------|-------------|
-| Task 3 | Add SQLCipher-backed storage model and CRUD. |
 | Task 4 | Add session and Keychain boundary. |
 | Task 5 | Add Tauri commands. |
 | Task 6 | Build desktop UI views. |
