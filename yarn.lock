@@ -11136,7 +11136,7 @@ __metadata:
     react-hook-form: "npm:^7.69.0"
     react-i18next: "npm:^16.5.0"
     react-redux: "npm:^9.2.0"
-    react-router: "npm:^7.11.0"
+    react-router: "npm:^7.15.1"
     redux: "npm:^5.0.1"
     tailwindcss: "npm:^4.1.18"
     typescript: "npm:^5.9.3"
@@ -13593,9 +13593,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:^7.11.0":
-  version: 7.15.0
-  resolution: "react-router@npm:7.15.0"
+"react-router@npm:^7.15.1":
+  version: 7.15.1
+  resolution: "react-router@npm:7.15.1"
   dependencies:
     cookie: "npm:^1.0.1"
     set-cookie-parser: "npm:^2.6.0"
@@ -13605,7 +13605,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 10c0/ce27ff25a0a53afec7f24385be89b779efd9f04d84c5b90c6a8f3fbbac28fc2f8c5f1bb26aff0588d41a225482365997082808f9e098c565435fad09426de114
+  checksum: 10c0/3daff5404c7de1429447e735f1ee7e070d4f11632f589cec70c5171f2357be9cada2162f780bc9061eb153646109ad6e80c2d10a6b27256593f28a66945f4c76
   languageName: node
   linkType: hard
 
