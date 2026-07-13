@@ -1,3 +1,4 @@
+import os
 import unittest
 from unittest.mock import patch
 
@@ -125,7 +126,8 @@ class TestParseArgs(unittest.TestCase):
         self.assertEqual(parse_args(["site"]).save_path, None)
         with patch.dict("os.environ", {"XDG_CONFIG_HOME": "/tmp"}):
             self.assertEqual(
-                parse_args(["--save"]).save_path, "/tmp/lesspass/profiles.json"
+                parse_args(["--save"]).save_path, 
+                os.path.join("/tmp", "lesspass", "profiles.json")
             )
 
     def test_parse_args_load_path(self):
@@ -135,13 +137,13 @@ class TestParseArgs(unittest.TestCase):
         self.assertEqual(parse_args(["site"]).load_path, None)
 
     def test_parse_args_config_home_path(self):
-        self.assertTrue(parse_args([]).config_home_path.endswith("/.config/lesspass"))
+        self.assertTrue(parse_args([]).config_home_path.endswith(os.path.join(".config", "lesspass")))
 
     def test_parse_args_XDG_CONFIG_HOME_env_variable(self):
         with patch.dict("os.environ", {"XDG_CONFIG_HOME": "/tmp"}):
-            self.assertEqual(parse_args([]).config_home_path, "/tmp/lesspass")
+            self.assertEqual(parse_args([]).config_home_path, os.path.join("/tmp", "lesspass"))
 
-    def test_parse_args_default_base_url(self):
+    def test_parse_args_default_base_url_is_lesspass(self):
         self.assertEqual(parse_args([]).url, "https://api.lesspass.com/")
 
     def test_parse_args_default_base_url(self):
