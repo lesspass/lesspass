@@ -28,13 +28,11 @@ test("customize iterations and key length", () =>
     expect("0a91208545e3aa4935d3a22984ca097a").toBe(key);
   }));
 test("utf8 parameter", () =>
-  pbkdf2("♥ LessPass ♥", "test@example.org", 8192, 32, "sha256").then(
-    (key) => {
-      expect(
-        "997fe81d3d0db236e039c75efdb487f17a902fdf94f9dacaa9884329c85d9651",
-      ).toBe(key);
-    },
-  ));
+  pbkdf2("♥ LessPass ♥", "test@example.org", 8192, 32, "sha256").then((key) => {
+    expect(
+      "997fe81d3d0db236e039c75efdb487f17a902fdf94f9dacaa9884329c85d9651",
+    ).toBe(key);
+  }));
 test("auto generated test 0", () =>
   pbkdf2("password", "contact@lesspass.com", 8192, 32, "sha256").then((key) => {
     expect(

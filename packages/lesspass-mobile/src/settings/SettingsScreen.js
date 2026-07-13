@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View } from "react-native";
 import { Divider, List, useTheme } from "react-native-paper";
-import TouchID from "react-native-touch-id";
+import ReactNativeBiometrics from "react-native-biometrics";
 import { setGenericPassword } from "react-native-keychain";
 import { setSettings } from "./settingsActions";
 import TextInputModal from "./TextInputModal";
@@ -18,16 +18,16 @@ export default function SettingsScreen() {
   const [fingerprintIsSupported, setFingerprintIsSupported] = useState(false);
   const { t } = useTranslation();
   useEffect(() => {
-    TouchID.isSupported({
-      passcodeFallback: false,
-    })
-      .then(() => {
-        setFingerprintIsSupported(true);
+    const rnBiometrics = new ReactNativeBiometrics();
+    rnBiometrics
+      .isSensorAvailable()
+      .then((result) => {
+        setFingerprintIsSupported(result.available);
       })
       .catch(() => {
         setFingerprintIsSupported(false);
       });
-  }, [TouchID]);
+  }, []);
   const theme = useTheme();
   const {
     keepMasterPasswordLocally,
@@ -192,15 +192,25 @@ export default function SettingsScreen() {
                 }
                 value={keepMasterPasswordLocally}
                 onOk={(masterPassword) => {
-                  TouchID.authenticate()
-                    .then(() =>
-                      setGenericPassword("masterPassword", masterPassword),
-                    )
-                    .then(() =>
-                      dispatch(
-                        setSettings({ keepMasterPasswordLocally: true }),
-                      ),
-                    )
+                  const biometricPrompt = t(
+                    "Settings.MasterPasswordEncryptionDescription",
+                    "Your master password will be encrypted locally on your device and accessible only with your fingerprint.",
+                  );
+                  const rnBiometrics = new ReactNativeBiometrics();
+                  rnBiometrics
+                    .simplePrompt({ promptMessage: biometricPrompt })
+                    .then((result) => {
+                      if (result.success) {
+                        return setGenericPassword(
+                          "masterPassword",
+                          masterPassword,
+                        ).then(() =>
+                          dispatch(
+                            setSettings({ keepMasterPasswordLocally: true }),
+                          ),
+                        );
+                      }
+                    })
                     .catch(console.log);
                 }}
                 onClear={() =>
