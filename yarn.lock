@@ -5186,6 +5186,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/zxcvbn@npm:^4.4.5":
+  version: 4.4.5
+  resolution: "@types/zxcvbn@npm:4.4.5"
+  checksum: 10c0/b0f2f8a310de61860d66ee24964e9746cadcc166f3b44df384147ebddab186555bef701dcba0a47d04bc80dfa47d5de15f2a08e0abd713fe3a77304342ae68a8
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/eslint-plugin@npm:8.59.2":
   version: 8.59.2
   resolution: "@typescript-eslint/eslint-plugin@npm:8.59.2"
@@ -11057,6 +11064,7 @@ __metadata:
     "@types/lodash": "npm:^4.17.21"
     "@types/react": "npm:^19.2.7"
     "@types/react-dom": "npm:^19.2.3"
+    "@types/zxcvbn": "npm:^4.4.5"
     eslint: "npm:^8.57.0"
     fuzzysort: "npm:^3.1.0"
     i18next: "npm:^25.7.3"
@@ -11085,6 +11093,7 @@ __metadata:
     vite: "npm:^7.3.0"
     vitest: "npm:^4.0.16"
     vitest-react-native: "npm:^0.1.5"
+    zxcvbn: "npm:^4.4.2"
   languageName: unknown
   linkType: soft
 
@@ -11117,6 +11126,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:^19.2.7"
     "@types/react-dom": "npm:^19.2.3"
+    "@types/zxcvbn": "npm:^4.4.5"
     "@vitejs/plugin-react": "npm:^5.1.2"
     clsx: "npm:^2.1.1"
     eslint: "npm:^8.57.0"
@@ -11146,6 +11156,7 @@ __metadata:
     vite-plugin-lib-inject-css: "npm:^2.2.2"
     vitest: "npm:^4.0.16"
     yup: "npm:^1.7.1"
+    zxcvbn: "npm:^4.4.2"
   languageName: unknown
   linkType: soft
 
@@ -16794,5 +16805,12 @@ __metadata:
   version: 4.4.3
   resolution: "zod@npm:4.4.3"
   checksum: 10c0/7ea31b558e88f9faf44f31dd185e2e1cbf51fed3081787fb96cc2534749b50c0acfc6da7f0922a7353ed092dd358c7d50c28ea96c94d04af64191bd33152eca3
+  languageName: node
+  linkType: hard
+
+"zxcvbn@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "zxcvbn@npm:4.4.2"
+  checksum: 10c0/862f101cc95247b30290bad67ade333e430a16763bb771ce4e4c5414396d987f9a64288225675c96bd6f8d3eba65da0dee119b2a4eaa2e249da3f540b036942e
   languageName: node
   linkType: hard

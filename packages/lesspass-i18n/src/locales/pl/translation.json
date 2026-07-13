@@ -71,6 +71,7 @@
     "Length": "Długość",
     "Login": "Login",
     "MasterPassword": "Hasło główne",
+    "MasterPasswordTooShort": "Hasło główne jest krótkie, rozważ użycie co najmniej 10 znaków.",
     "Options": "Opcje",
     "PasswordProfileCopiedInClipboard": "URL profilu hasła został skopiowany do schowka.",
     "PasswordProfileSaved": "Profil hasła zapisany",
@@ -103,6 +104,13 @@
     "ChangePassword": "Zmień swoje hasło",
     "PasswordChangedSuccessfullyMessage": "Możesz teraz się zalogować.",
     "PasswordChangedSuccessfullyTitle": "Twoje hasło zostało pomyślnie zmienione."
+  },
+  "PasswordStrength": {
+    "Score0": "Niedopuszczalne",
+    "Score1": "Proszę, potraktuj to poważnie",
+    "Score2": "Moja babcia zrobiłaby to lepiej",
+    "Score3": "Zaczyna być dobrze",
+    "Score4": "ABW będzie miało problem"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Szukaj w swoich profilach haseł"

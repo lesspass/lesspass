@@ -88,8 +88,18 @@ export default function PasswordGeneratorScreen() {
 
   async function generate() {
     const passwordProfile = _getPasswordProfile(state);
-    if (isProfileValid(passwordProfile)) {
-      dispatch(cleanErrors());
+    dispatch(cleanErrors());
+    if (state.masterPassword && state.masterPassword.length < 10) {
+      dispatch(
+        addError(
+          t(
+            "PasswordProfile.MasterPasswordTooShort",
+            "Master password is short, consider using at least 10 characters.",
+          ),
+        ),
+      );
+    } if (isProfileValid({ ...passwordProfile, masterPassword: state.masterPassword })) {
+      // masterPassword is not included in _getPasswordProfile to avoid sending it to the server
       const password = await generatePassword(
         state.masterPassword,
         passwordProfile,

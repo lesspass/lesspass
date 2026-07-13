@@ -71,6 +71,7 @@
     "Length": "Length",
     "Login": "Login",
     "MasterPassword": "Master password",
+    "MasterPasswordTooShort": "Master password is short, consider using at least 10 characters.",
     "Options": "Options",
     "PasswordProfileCopiedInClipboard": "Password profile URL has been copied to your clipboard",
     "PasswordProfileSaved": "Password profile saved",
@@ -103,6 +104,13 @@
     "ChangePassword": "Change your password",
     "PasswordChangedSuccessfullyMessage": "You can now log in.",
     "PasswordChangedSuccessfullyTitle": "Your password has been changed successfully."
+  },
+  "PasswordStrength": {
+    "Score0": "Unacceptable",
+    "Score1": "Come on, be serious",
+    "Score2": "My grandmother would do better",
+    "Score3": "Starting to get good",
+    "Score4": "The NSA will have trouble"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Search in your password profiles"
