@@ -1,4 +1,6 @@
 import { forwardRef, useEffect, useState } from "react";
+import zxcvbn from "zxcvbn"
+import { useTranslation } from "react-i18next";
 import { buildFingerprint } from "lesspass";
 import type { Fingerprint } from "lesspass/fingerprint";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -48,10 +50,19 @@ export const MasterPasswordInput = forwardRef<
   HTMLInputElement,
   MasterPasswordInputProps
 >(({ id, onChange, onBlur, name }, ref) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState<string | null>(null);
   const [type, setType] = useState<"password" | "text">("password");
 
   const [fingerprint, setFingerprint] = useState<Fingerprint | null>(null);
+  const score = value !== null && value.length > 0 ? zxcvbn(value).score : -1;
+  const strengthLabels = [
+    t("PasswordStrength.Score0"),
+    t("PasswordStrength.Score1"),
+    t("PasswordStrength.Score2"),
+    t("PasswordStrength.Score3"),
+    t("PasswordStrength.Score4"),
+  ];
 
   useEffect(() => {
     if (value) {
@@ -99,6 +110,17 @@ export const MasterPasswordInput = forwardRef<
         >
           <Fingerprint fingerprint={fingerprint} />
         </button>
+      )}
+       {score >= 0 && (
+        <output
+          htmlFor={id}
+          className={[
+            "mt-1 text-sm col-start-1 row-start-2",
+            ["text-gray-400", "text-red-500", "text-orange-400", "text-blue-400", "text-green-500"][score]
+          ].join(" ")}
+        >
+          {strengthLabels[score]} 
+        </output>
       )}
     </div>
   );

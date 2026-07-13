@@ -45,7 +45,8 @@
     "redux": "^5.0.1",
     "tailwindcss": "^4.1.18",
     "vite-plugin-lib-inject-css": "^2.2.2",
-    "yup": "^1.7.1"
+    "yup": "^1.7.1",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -57,6 +58,7 @@
     "@types/jest": "^30.0.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@types/zxcvbn": "^4.4.5",
     "@vitejs/plugin-react": "^5.1.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^7.0.1",

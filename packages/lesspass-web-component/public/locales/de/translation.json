@@ -71,6 +71,7 @@
     "Length": "Länge",
     "Login": "Benutzername",
     "MasterPassword": "Master-Passwort",
+    "MasterPasswordTooShort": "Das Master-Passwort ist zu kurz, erwägen Sie mindestens 10 Zeichen zu verwenden.",
     "Options": "Optionen",
     "PasswordProfileCopiedInClipboard": "Die URL des Passwortprofils wurde in die Zwischenablage kopiert.",
     "PasswordProfileSaved": "Passwort-Profil gespeichert",
@@ -103,6 +104,13 @@
     "ChangePassword": "Ändern Sie Ihr Passwort",
     "PasswordChangedSuccessfullyMessage": "Sie können sich jetzt anmelden.",
     "PasswordChangedSuccessfullyTitle": "Ihr Passwort wurde erfolgreich geändert."
+  },
+  "PasswordStrength": {
+    "Score0": "Inakzeptabel",
+    "Score1": "Bitte sei ernst",
+    "Score2": "Meine Oma würde es besser machen",
+    "Score3": "Das fängt gut an",
+    "Score4": "Der BND wird Probleme haben"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Suchen Sie in Ihren Passwort-Profilen"

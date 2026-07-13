@@ -71,14 +71,14 @@
     "Length": "Longitud",
     "Login": "Usuari",
     "MasterPassword": "Contrasenya mestra",
+    "MasterPasswordTooShort": "La contrasenya mestra és curta, considera utilitzar almenys 10 caràcters.",
     "Options": "Opcions",
     "PasswordProfileCopiedInClipboard": "L'URL del perfil de la contrasenya s'ha copiat al porta-retalls.",
     "PasswordProfileSaved": "Perfil de contrasenya desat",
     "PasswordProfileUpdated": "Perfil de contrasenya actualitzat",
     "Share": "Compartir",
     "Site": "Lloc web",
-    "SiteRequired": "El perfil de contrasenya no és vàlid, no es pot generar la contrasenya. Es requereix el lloc web.",
-    "MasterPasswordTooShort": "La contrasenya mestra és curta, considera utilitzar almenys 10 caràcters."
+    "SiteRequired": "El perfil de contrasenya no és vàlid, no es pot generar la contrasenya. Es requereix el lloc web."
   },
   "PasswordProfilePage": {
     "AreYouSure": "Segur que vols esborrar el perfil de {{site}}/{{login}}?",
@@ -104,6 +104,13 @@
     "ChangePassword": "Canvia la teva contrasenya",
     "PasswordChangedSuccessfullyMessage": "Ara ja pots iniciar sessió.",
     "PasswordChangedSuccessfullyTitle": "La teva contrasenya s'ha canviat correctament."
+  },
+  "PasswordStrength": {
+    "Score0": "Inacceptable",
+    "Score1": "Siguem seriosos si us plau",
+    "Score2": "La meva àvia ho faria millor",
+    "Score3": "Comença a estar bé",
+    "Score4": "La NSA ho tindrà difícil"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Cerca als teus perfils de contrasenya"

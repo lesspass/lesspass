@@ -71,14 +71,14 @@
     "Length": "長度",
     "Login": "登入名稱",
     "MasterPassword": "主密碼",
+    "MasterPasswordTooShort": "主密碼太短，建議使用至少10個字元",
     "Options": "選項",
     "PasswordProfileCopiedInClipboard": "密碼設定檔的 URL 已複製到剪貼簿。",
     "PasswordProfileSaved": "密碼設定檔已儲存",
     "PasswordProfileUpdated": "密碼設定檔已更新",
     "Share": "分享",
     "Site": "網站",
-    "SiteRequired": "密碼設定檔無效，無法生成密碼。需要網站。",
-    "MasterPasswordTooShort": "主密碼太短，建議使用至少10個字元"
+    "SiteRequired": "密碼設定檔無效，無法生成密碼。需要網站。"
   },
   "PasswordProfilePage": {
     "AreYouSure": "您確定要刪除 {{site}}/{{login}} 設定檔嗎？",
@@ -104,6 +104,13 @@
     "ChangePassword": "更改您的密碼",
     "PasswordChangedSuccessfullyMessage": "您現在可以登入。",
     "PasswordChangedSuccessfullyTitle": "您的密碼已成功更改。"
+  },
+  "PasswordStrength": {
+    "Score0": "不可接受",
+    "Score1": "認真一點好嗎",
+    "Score2": "我奶奶都能做得更好",
+    "Score3": "開始變好了",
+    "Score4": "國安局也會頭疼"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "在您的密碼設定檔中搜尋"
