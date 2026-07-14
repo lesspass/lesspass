@@ -30,6 +30,9 @@
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
     "@reduxjs/toolkit": "^2.11.2",
+    "@zxcvbn-ts/core": "^4.1.2",
+    "@zxcvbn-ts/language-common": "^4.1.2",
+    "@zxcvbn-ts/language-en": "^4.1.1",
     "clsx": "^2.1.1",
     "i18next": "^25.7.3",
     "i18next-browser-languagedetector": "^8.2.0",
@@ -45,8 +48,7 @@
     "redux": "^5.0.1",
     "tailwindcss": "^4.1.18",
     "vite-plugin-lib-inject-css": "^2.2.2",
-    "yup": "^1.7.1",
-    "zxcvbn": "^4.4.2"
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -58,7 +60,6 @@
     "@types/jest": "^30.0.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@types/zxcvbn": "^4.4.5",
     "@vitejs/plugin-react": "^5.1.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^7.0.1",

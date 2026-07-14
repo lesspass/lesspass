@@ -71,7 +71,6 @@
     "Length": "長度",
     "Login": "登入名稱",
     "MasterPassword": "主密碼",
-    "MasterPasswordTooShort": "主密碼太短，建議使用至少10個字元",
     "Options": "選項",
     "PasswordProfileCopiedInClipboard": "密碼設定檔的 URL 已複製到剪貼簿。",
     "PasswordProfileSaved": "密碼設定檔已儲存",
@@ -110,7 +109,8 @@
     "Score1": "認真一點好嗎",
     "Score2": "我奶奶都能做得更好",
     "Score3": "開始變好了",
-    "Score4": "國安局也會頭疼"
+    "Score4": "國安局也會頭疼",
+    "TooShort": "太短：建議至少使用 10 個字元"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "在您的密碼設定檔中搜尋"

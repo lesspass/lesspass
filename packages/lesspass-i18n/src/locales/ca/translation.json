@@ -71,7 +71,6 @@
     "Length": "Longitud",
     "Login": "Usuari",
     "MasterPassword": "Contrasenya mestra",
-    "MasterPasswordTooShort": "La contrasenya mestra és curta, considera utilitzar almenys 10 caràcters.",
     "Options": "Opcions",
     "PasswordProfileCopiedInClipboard": "L'URL del perfil de la contrasenya s'ha copiat al porta-retalls.",
     "PasswordProfileSaved": "Perfil de contrasenya desat",
@@ -110,7 +109,8 @@
     "Score1": "Siguem seriosos si us plau",
     "Score2": "La meva àvia ho faria millor",
     "Score3": "Comença a estar bé",
-    "Score4": "La NSA ho tindrà difícil"
+    "Score4": "La NSA ho tindrà difícil",
+    "TooShort": "Massa curta: us recomanem utilitzar almenys 10 caràcters"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Cerca als teus perfils de contrasenya"

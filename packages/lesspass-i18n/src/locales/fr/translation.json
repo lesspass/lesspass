@@ -71,7 +71,6 @@
     "Length": "Longueur",
     "Login": "Nom d'utilisateur",
     "MasterPassword": "Mot de passe maître",
-    "MasterPasswordTooShort": "Le mot de passe maître est court, envisagez d'utiliser au moins 10 caractères.",
     "Options": "Options",
     "PasswordProfileCopiedInClipboard": "L'URL du mot de passe a été copié dans le presse papier",
     "PasswordProfileSaved": "Profil de mot de passe enregistré",
@@ -110,7 +109,8 @@
     "Score1": "Soyons sérieux s'il vous plait",
     "Score2": "Ma grand-mère ferait mieux",
     "Score3": "Ça commence à être bien",
-    "Score4": "La NSA va avoir du mal"
+    "Score4": "La NSA va avoir du mal",
+    "TooShort": "Trop court : nous vous recommandons d'utiliser au moins 10 caractères"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Rechercher dans vos profils de mot de passe"

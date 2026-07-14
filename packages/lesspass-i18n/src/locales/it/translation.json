@@ -71,7 +71,6 @@
     "Length": "Lunghezza",
     "Login": "Login",
     "MasterPassword": "Password principale",
-    "MasterPasswordTooShort": "La password principale è corta, considera di usare almeno 10 caratteri.",
     "Options": "Opzioni",
     "PasswordProfileCopiedInClipboard": "L'URL del profilo della password è stato copiato negli appunti",
     "PasswordProfileSaved": "Profilo password salvato",
@@ -110,7 +109,8 @@
     "Score1": "Su, fai sul serio",
     "Score2": "Mia nonna farebbe di meglio",
     "Score3": "Comincia ad andare bene",
-    "Score4": "L'AISE avrà difficoltà"
+    "Score4": "L'AISE avrà difficoltà",
+    "TooShort": "Troppo corta: ti consigliamo di usare almeno 10 caratteri"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Cerca nei tuoi profili password"

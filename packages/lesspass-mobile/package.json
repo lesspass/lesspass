@@ -24,6 +24,9 @@
     "@react-navigation/native-stack": "^7.9.0",
     "@react-navigation/stack": "^7.4.2",
     "@reduxjs/toolkit": "^2.11.2",
+    "@zxcvbn-ts/core": "^4.1.2",
+    "@zxcvbn-ts/language-common": "^4.1.2",
+    "@zxcvbn-ts/language-en": "^4.1.1",
     "fuzzysort": "^3.1.0",
     "i18next": "^25.7.3",
     "lesspass": "workspace:*",
@@ -44,8 +47,7 @@
     "react-native-vector-icons": "^10.3.0",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
-    "redux-persist": "^6.0.0",
-    "zxcvbn": "^4.4.2"
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
@@ -64,7 +66,6 @@
     "@types/lodash": "^4.17.21",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@types/zxcvbn": "^4.4.5",
     "eslint": "^8.57.0",
     "jsdom": "^27.3.0",
     "prettier": "^3.7.4",

@@ -71,7 +71,6 @@
     "Length": "长度",
     "Login": "登录名",
     "MasterPassword": "主密码",
-    "MasterPasswordTooShort": "主密码太短，建议使用至少10个字符",
     "Options": "选项",
     "PasswordProfileCopiedInClipboard": "密码配置文件的 URL 已复制到剪贴板。",
     "PasswordProfileSaved": "密码配置文件已保存",
@@ -110,7 +109,8 @@
     "Score1": "认真点好吗",
     "Score2": "我奶奶都能做得更好",
     "Score3": "开始变好了",
-    "Score4": "国安部也会头疼"
+    "Score4": "国安部也会头疼",
+    "TooShort": "太短：建议至少使用 10 个字符"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "在您的密码配置文件中搜索"

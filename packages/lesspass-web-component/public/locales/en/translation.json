@@ -71,7 +71,6 @@
     "Length": "Length",
     "Login": "Login",
     "MasterPassword": "Master password",
-    "MasterPasswordTooShort": "Master password is short, consider using at least 10 characters.",
     "Options": "Options",
     "PasswordProfileCopiedInClipboard": "Password profile URL has been copied to your clipboard",
     "PasswordProfileSaved": "Password profile saved",
@@ -110,7 +109,8 @@
     "Score1": "Come on, be serious",
     "Score2": "My grandmother would do better",
     "Score3": "Starting to get good",
-    "Score4": "The NSA will have trouble"
+    "Score4": "The NSA will have trouble",
+    "TooShort": "Too short: we recommend you use at least 10 characters"
   },
   "ProfilesScreen": {
     "SearchPlaceholder": "Search in your password profiles"

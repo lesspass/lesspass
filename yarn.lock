@@ -5186,13 +5186,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/zxcvbn@npm:^4.4.5":
-  version: 4.4.5
-  resolution: "@types/zxcvbn@npm:4.4.5"
-  checksum: 10c0/b0f2f8a310de61860d66ee24964e9746cadcc166f3b44df384147ebddab186555bef701dcba0a47d04bc80dfa47d5de15f2a08e0abd713fe3a77304342ae68a8
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/eslint-plugin@npm:8.59.2":
   version: 8.59.2
   resolution: "@typescript-eslint/eslint-plugin@npm:8.59.2"
@@ -5660,6 +5653,40 @@ __metadata:
   version: 3.5.21
   resolution: "@vue/shared@npm:3.5.21"
   checksum: 10c0/fbaf2e973d232ccd6d9afd3440510e2436c5e918f6634eb3e0f95d148041f7b9347bcb349db6265f2ee92e5ffd0e6751bdc649698c52f9179b45d93f68473706
+  languageName: node
+  linkType: hard
+
+"@zxcvbn-ts/core@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@zxcvbn-ts/core@npm:4.1.2"
+  dependencies:
+    fastest-levenshtein: "npm:1.0.16"
+  checksum: 10c0/9ed04c1c7cabe077d305eb8341196b25da20bbe51fe97b5d9599e0a49c65be3e076a8fbe4e1894bb794c4422bf55bb1a11d3979448df85a2efa36347b2a8d5c9
+  languageName: node
+  linkType: hard
+
+"@zxcvbn-ts/dictionary-compression@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@zxcvbn-ts/dictionary-compression@npm:3.0.1"
+  checksum: 10c0/77654331119eaeb2fb31f71974448f39b950a8a58a36e95d50e4e9324cab5304d6392efc5b2adb50dcbb7e6cf280de93e087c087252ba9473327bce6dff777de
+  languageName: node
+  linkType: hard
+
+"@zxcvbn-ts/language-common@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@zxcvbn-ts/language-common@npm:4.1.2"
+  dependencies:
+    "@zxcvbn-ts/dictionary-compression": "npm:^3.0.1"
+  checksum: 10c0/136e5e1b4808d05acf716b8d74d6568e99857a7c4d7acc11c3822521f2c94ca93c57d275533da8e2592826ea4a2f3809a871b5c347b30e53204dce77089740ff
+  languageName: node
+  linkType: hard
+
+"@zxcvbn-ts/language-en@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "@zxcvbn-ts/language-en@npm:4.1.1"
+  dependencies:
+    "@zxcvbn-ts/dictionary-compression": "npm:^3.0.1"
+  checksum: 10c0/d6b561163752bd5c2d4eff7693b3de4ef049feee92e658828213dd56ddabcee19248e7dc7173770c5c0ce160b850234bfa9eb9b8bbfd65123729da678ef44df1
   languageName: node
   linkType: hard
 
@@ -8872,6 +8899,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fastest-levenshtein@npm:1.0.16":
+  version: 1.0.16
+  resolution: "fastest-levenshtein@npm:1.0.16"
+  checksum: 10c0/7e3d8ae812a7f4fdf8cad18e9cde436a39addf266a5986f653ea0d81e0de0900f50c0f27c6d5aff3f686bcb48acbd45be115ae2216f36a6a13a7dbbf5cad878b
+  languageName: node
+  linkType: hard
+
 "fastq@npm:^1.13.0, fastq@npm:^1.6.0":
   version: 1.20.1
   resolution: "fastq@npm:1.20.1"
@@ -11064,7 +11098,9 @@ __metadata:
     "@types/lodash": "npm:^4.17.21"
     "@types/react": "npm:^19.2.7"
     "@types/react-dom": "npm:^19.2.3"
-    "@types/zxcvbn": "npm:^4.4.5"
+    "@zxcvbn-ts/core": "npm:^4.1.2"
+    "@zxcvbn-ts/language-common": "npm:^4.1.2"
+    "@zxcvbn-ts/language-en": "npm:^4.1.1"
     eslint: "npm:^8.57.0"
     fuzzysort: "npm:^3.1.0"
     i18next: "npm:^25.7.3"
@@ -11093,7 +11129,6 @@ __metadata:
     vite: "npm:^7.3.0"
     vitest: "npm:^4.0.16"
     vitest-react-native: "npm:^0.1.5"
-    zxcvbn: "npm:^4.4.2"
   languageName: unknown
   linkType: soft
 
@@ -11126,8 +11161,10 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:^19.2.7"
     "@types/react-dom": "npm:^19.2.3"
-    "@types/zxcvbn": "npm:^4.4.5"
     "@vitejs/plugin-react": "npm:^5.1.2"
+    "@zxcvbn-ts/core": "npm:^4.1.2"
+    "@zxcvbn-ts/language-common": "npm:^4.1.2"
+    "@zxcvbn-ts/language-en": "npm:^4.1.1"
     clsx: "npm:^2.1.1"
     eslint: "npm:^8.57.0"
     eslint-plugin-react-hooks: "npm:^7.0.1"
@@ -11156,7 +11193,6 @@ __metadata:
     vite-plugin-lib-inject-css: "npm:^2.2.2"
     vitest: "npm:^4.0.16"
     yup: "npm:^1.7.1"
-    zxcvbn: "npm:^4.4.2"
   languageName: unknown
   linkType: soft
 
@@ -16805,12 +16841,5 @@ __metadata:
   version: 4.4.3
   resolution: "zod@npm:4.4.3"
   checksum: 10c0/7ea31b558e88f9faf44f31dd185e2e1cbf51fed3081787fb96cc2534749b50c0acfc6da7f0922a7353ed092dd358c7d50c28ea96c94d04af64191bd33152eca3
-  languageName: node
-  linkType: hard
-
-"zxcvbn@npm:^4.4.2":
-  version: 4.4.2
-  resolution: "zxcvbn@npm:4.4.2"
-  checksum: 10c0/862f101cc95247b30290bad67ade333e430a16763bb771ce4e4c5414396d987f9a64288225675c96bd6f8d3eba65da0dee119b2a4eaa2e249da3f540b036942e
   languageName: node
   linkType: hard

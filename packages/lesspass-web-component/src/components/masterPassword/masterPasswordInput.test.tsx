@@ -57,15 +57,29 @@ describe("Master password", () => {
     ).toBe(3);
   });
 
-  // 10 because of nist protocol
-  test("should have a minimun lenght of 10", () => {
-    const{ queryByTestId } = render(<ManagedMasterPasswordInput />);
+  // check that it does not introduce a breaking change
+  test("short master password does not block the form", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
     const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
-    expect(masterPasswordInput).toHaveAttribute("minlength", "10");
-  })
+
+    await user.type(masterPasswordInput, "short");
+    expect(masterPasswordInput).not.toHaveAttribute("minlength");
+    expect(masterPasswordInput.checkValidity()).toBe(true);
+  });
+
+  test("should not display a safe color while under the minimum length", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    // 9 chars, high zxcvbn entropy
+    await user.type(masterPasswordInput, "Tr0ub4d&3");
+    const output = document.querySelector("output");
+    expect(output?.className).toContain("text-amber-600");
+    expect(output?.className).not.toContain("text-green-500");
+  });
 
   test("should display password strength feedback when typing", async () => {
-    const { user, queryByTestId } = render (<ManagedMasterPasswordInput />);
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
     const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
 
     // no feedback before typing
@@ -80,7 +94,7 @@ describe("Master password", () => {
     const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
     const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
 
-     // score 0 → "Unacceptable"
+     // TooShort → "We recommend you use at least 10 characters"
     await user.type(masterPasswordInput, "a");
     const weakLabel = document.querySelector("output")?.textContent;
 
@@ -99,6 +113,52 @@ describe("Master password", () => {
 
     await user.type(masterPasswordInput, "a");
     const output = document.querySelector("output");
-    expect(output?.textContent).toBe("Unacceptable");
+    expect(output?.textContent?.trim()).toBe("Too short: we recommend you use at least 10 characters");
+  });
+
+  test("should stop showing the too-short warning at exactly 10 characters", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    // 9 chars → amber too-short warning
+    await user.type(masterPasswordInput, "Tr0ub4d&3");
+    expect(document.querySelector("output")?.className).toContain("text-amber-600");
+
+    // 10th char crosses the boundary → warning gone, real score shown instead
+    await user.type(masterPasswordInput, "J");
+    expect(document.querySelector("output")?.className).not.toContain("text-amber-600");
+  });
+
+  test("should show an unsafe score (not the too-short warning) for a weak but long password", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    // 12 chars but guessable → zxcvbn low score, never amber or safe colors
+    await user.type(masterPasswordInput, "aaaaaaaaaaaa");
+    const output = document.querySelector("output");
+    expect(output?.className).not.toContain("text-amber-600");
+    expect(output?.className).not.toContain("text-blue-400");
+    expect(output?.className).not.toContain("text-green-500");
+  });
+
+  test("should show a safe color for a strong password of sufficient length", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    // long random password → zxcvbn score 4 → green
+    await user.type(masterPasswordInput, "wXm#9vLq2$Rk7pZt");
+    expect(document.querySelector("output")?.className).toContain("text-green-500");
+  });
+
+  test("should hide strength feedback when the input is cleared", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    await user.type(masterPasswordInput, "password");
+    expect(document.querySelector("output")).not.toBeNull();
+
+    // clearing the field removes the feedback entirely
+    await user.clear(masterPasswordInput);
+    expect(document.querySelector("output")).toBeNull();
   });
 });
