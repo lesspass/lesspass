@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "Możesz teraz się zalogować.",
     "PasswordChangedSuccessfullyTitle": "Twoje hasło zostało pomyślnie zmienione."
   },
+  "PasswordStrength": {
+    "Score0": "Niedopuszczalne",
+    "Score1": "Proszę, potraktuj to poważnie",
+    "Score2": "Moja babcia zrobiłaby to lepiej",
+    "Score3": "Zaczyna być dobrze",
+    "Score4": "ABW będzie miało problem",
+    "TooShort": "Za krótkie: zalecamy użycie co najmniej 10 znaków"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "Szukaj w swoich profilach haseł"
   },

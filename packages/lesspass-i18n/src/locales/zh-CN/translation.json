@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "您现在可以登录。",
     "PasswordChangedSuccessfullyTitle": "您的密码已成功更改。"
   },
+  "PasswordStrength": {
+    "Score0": "不可接受",
+    "Score1": "认真点好吗",
+    "Score2": "我奶奶都能做得更好",
+    "Score3": "开始变好了",
+    "Score4": "国安部也会头疼",
+    "TooShort": "太短：建议至少使用 10 个字符"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "在您的密码配置文件中搜索"
   },

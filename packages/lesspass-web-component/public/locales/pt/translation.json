@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "Agora pode iniciar sessão.",
     "PasswordChangedSuccessfullyTitle": "A sua palavra-passe foi alterada com sucesso."
   },
+  "PasswordStrength": {
+    "Score0": "Inaceitável",
+    "Score1": "Vamos, seja sério",
+    "Score2": "A minha avó faria melhor",
+    "Score3": "Está a começar a ficar bom",
+    "Score4": "O SIS vai ter dificuldades",
+    "TooShort": "Muito curta: recomendamos usar pelo menos 10 caracteres"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "Pesquisar nos seus perfis de palavras-passe"
   },

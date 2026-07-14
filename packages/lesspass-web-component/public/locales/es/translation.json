@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "Ahora puedes iniciar sesión.",
     "PasswordChangedSuccessfullyTitle": "Tu contraseña ha sido cambiada con éxito."
   },
+  "PasswordStrength": {
+    "Score0": "Inaceptable",
+    "Score1": "Vamos, sé serio",
+    "Score2": "Mi abuela lo haría mejor",
+    "Score3": "Empieza a estar bien",
+    "Score4": "El CNI lo va a tener difícil",
+    "TooShort": "Demasiado corta: te recomendamos usar al menos 10 caracteres"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "Buscar en tus perfiles de contraseña"
   },

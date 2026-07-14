@@ -1,9 +1,22 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useMemo, useState } from "react";
+import { ZxcvbnFactory } from "@zxcvbn-ts/core";
+import * as zxcvbnCommonPackage from "@zxcvbn-ts/language-common";
+import * as zxcvbnEnPackage from "@zxcvbn-ts/language-en";
+import { useTranslation } from "react-i18next";
 import { buildFingerprint } from "lesspass";
 import type { Fingerprint } from "lesspass/fingerprint";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getIcon } from "./icons";
 import { inputStyle } from "../input";
+
+const zxcvbnFactory = new ZxcvbnFactory({
+  dictionary: {
+    ...zxcvbnCommonPackage.dictionary,
+    ...zxcvbnEnPackage.dictionary,
+  },
+  graphs: zxcvbnCommonPackage.adjacencyGraphs,
+  translations: zxcvbnEnPackage.translations,
+});
 
 interface MasterPasswordInputProps extends React.ComponentProps<"input"> {
   id: string;
@@ -48,10 +61,38 @@ export const MasterPasswordInput = forwardRef<
   HTMLInputElement,
   MasterPasswordInputProps
 >(({ id, onChange, onBlur, name }, ref) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState<string | null>(null);
   const [type, setType] = useState<"password" | "text">("password");
-
   const [fingerprint, setFingerprint] = useState<Fingerprint | null>(null);
+
+  const RECOMMENDED_MIN_LENGTH = 10;
+  const hasValue = value !== null && value.length > 0;
+  const isTooShort = hasValue && value.length < RECOMMENDED_MIN_LENGTH;
+
+  // useMemo: zxcvbn is expensive, so only re-check when the password itself changes, not the fingerprint
+  // Skip the check for too-short passwords: their score is never displayed.
+  const score = useMemo(
+  () => (hasValue && !isTooShort ? zxcvbnFactory.check(value).score : -1),
+  [value], 
+);
+
+  const strengthLabels = [
+    t("PasswordStrength.Score0"),
+    t("PasswordStrength.Score1"),
+    t("PasswordStrength.Score2"),
+    t("PasswordStrength.Score3"),
+    t("PasswordStrength.Score4"),
+  ];
+
+  // A short password must never display as "safe" (blue/green), even if zxcvbn rates its entropy highly.
+  const colorClass = isTooShort
+    ? "text-amber-600 dark:text-amber-400"
+    : ["text-gray-400", "text-red-500", "text-orange-400", "text-blue-400", "text-green-500"][score];
+
+  const label = isTooShort
+    ? t("PasswordStrength.TooShort")
+    : strengthLabels[score];
 
   useEffect(() => {
     if (value) {
@@ -98,6 +139,15 @@ export const MasterPasswordInput = forwardRef<
         >
           <Fingerprint fingerprint={fingerprint} />
         </button>
+      )}
+       {hasValue && (
+        <output
+          htmlFor={id}
+          data-testid={`${id}-strength`}
+          className={`mt-1 text-sm col-start-1 row-start-2 ${colorClass}`}
+        >
+          {label}
+        </output>
       )}
     </div>
   );

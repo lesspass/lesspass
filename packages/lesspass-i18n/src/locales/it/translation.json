@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "Ora puoi accedere.",
     "PasswordChangedSuccessfullyTitle": "La tua password è stata modificata con successo."
   },
+  "PasswordStrength": {
+    "Score0": "Inaccettabile",
+    "Score1": "Su, fai sul serio",
+    "Score2": "Mia nonna farebbe di meglio",
+    "Score3": "Comincia ad andare bene",
+    "Score4": "L'AISE avrà difficoltà",
+    "TooShort": "Troppo corta: ti consigliamo di usare almeno 10 caratteri"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "Cerca nei tuoi profili password"
   },

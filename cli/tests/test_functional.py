@@ -38,3 +38,10 @@ class TestFunctional(unittest.TestCase):
             "-d", "-L6", "--exclude", "0123456789",
         )
         self.assertIn("error: you can't exclude all chars available", output)
+
+    def test_master_password_too_short(self):
+        output = run_lesspass("site", "login", "foo")
+        self.assertIn(
+            "warning: master password is short, consider using at least 10 characters",
+            output,
+        )

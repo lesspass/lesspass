@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "Vous pouvez maintenant vous connecter.",
     "PasswordChangedSuccessfullyTitle": "Votre mot de passe a été modifié avec succès."
   },
+  "PasswordStrength": {
+    "Score0": "Inacceptable",
+    "Score1": "Soyons sérieux s'il vous plait",
+    "Score2": "Ma grand-mère ferait mieux",
+    "Score3": "Ça commence à être bien",
+    "Score4": "La NSA va avoir du mal",
+    "TooShort": "Trop court : nous vous recommandons d'utiliser au moins 10 caractères"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "Rechercher dans vos profils de mot de passe"
   },

@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "Sie können sich jetzt anmelden.",
     "PasswordChangedSuccessfullyTitle": "Ihr Passwort wurde erfolgreich geändert."
   },
+  "PasswordStrength": {
+    "Score0": "Inakzeptabel",
+    "Score1": "Bitte sei ernst",
+    "Score2": "Meine Oma würde es besser machen",
+    "Score3": "Das fängt gut an",
+    "Score4": "Der BND wird Probleme haben",
+    "TooShort": "Zu kurz: wir empfehlen, mindestens 10 Zeichen zu verwenden"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "Suchen Sie in Ihren Passwort-Profilen"
   },

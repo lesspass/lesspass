@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "您現在可以登入。",
     "PasswordChangedSuccessfullyTitle": "您的密碼已成功更改。"
   },
+  "PasswordStrength": {
+    "Score0": "不可接受",
+    "Score1": "認真一點好嗎",
+    "Score2": "我奶奶都能做得更好",
+    "Score3": "開始變好了",
+    "Score4": "國安局也會頭疼",
+    "TooShort": "太短：建議至少使用 10 個字元"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "在您的密碼設定檔中搜尋"
   },

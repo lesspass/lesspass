@@ -104,6 +104,14 @@
     "PasswordChangedSuccessfullyMessage": "Теперь вы можете войти в систему.",
     "PasswordChangedSuccessfullyTitle": "Ваш пароль успешно изменен."
   },
+  "PasswordStrength": {
+    "Score0": "Недопустимо",
+    "Score1": "Ну же, будь серьёзен",
+    "Score2": "Моя бабушка сделала бы лучше",
+    "Score3": "Начинает быть неплохо",
+    "Score4": "ФСБ будет сложно",
+    "TooShort": "Слишком короткий: рекомендуем использовать не менее 10 символов"
+  },
   "ProfilesScreen": {
     "SearchPlaceholder": "Поиск в ваших профилях паролей"
   },
