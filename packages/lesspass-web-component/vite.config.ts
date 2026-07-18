@@ -27,6 +27,7 @@ const vitestConfig = defineVitestConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: ["./src/tests/setupTests.ts"],
+    execArgv: ["--no-experimental-webstorage"],
   },
 });
 

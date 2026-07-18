@@ -18,7 +18,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "baseUrl": ".",
     "tsBuildInfoFile": "dist/.tsbuildinfo"
   },
   "include": ["vite.config.ts"],

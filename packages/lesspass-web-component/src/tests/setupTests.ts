@@ -9,7 +9,7 @@ const ResizeObserverMock = vi.fn(() => ({
 }));
 vi.stubGlobal("ResizeObserver", ResizeObserverMock);
 
-Object.assign(global.navigator, {
+Object.assign(globalThis.navigator, {
   clipboard: {
     writeText: async () => {},
   },

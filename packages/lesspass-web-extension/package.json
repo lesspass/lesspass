@@ -24,24 +24,24 @@
   "dependencies": {
     "lesspass-i18n": "workspace:*",
     "lesspass-web-component": "workspace:*",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@types/chrome": "^0.1.32",
-    "@types/react": "^19.2.7",
+    "@eslint/js": "^9.39.5",
+    "@types/chrome": "^0.2.2",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.2",
+    "@vitejs/plugin-react": "^5.2.0",
     "chrome-webstore-upload-cli": "^3.5.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.26",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^16.5.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.1",
-    "vite": "^7.3.0",
-    "vitest": "^4.0.16",
-    "web-ext": "^9.2.0"
+    "typescript-eslint": "^8.64.0",
+    "vite": "^7.3.6",
+    "vitest": "^4.1.10",
+    "web-ext": "^9.4.0"
   }
 }

@@ -18,15 +18,15 @@
     "update-translations": "yarn i18n && yarn build"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@types/node": "^25.0.3",
-    "eslint": "^8.57.0",
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^25.9.5",
+    "eslint": "^8.57.1",
     "globals": "^16.5.0",
-    "i18next-parser": "^9.3.0",
-    "prettier": "^3.7.4",
+    "i18next-parser": "^9.4.0",
+    "prettier": "^3.9.5",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.1"
+    "typescript-eslint": "^8.64.0"
   },
   "tsup": [
     {

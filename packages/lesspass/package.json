@@ -25,10 +25,10 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
+    "prettier": "^3.9.5",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.1.10"
   },
   "tsup": [
     {
