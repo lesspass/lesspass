@@ -44,7 +44,7 @@ export default function SignInForm({
           {t("SignInForm.LessPassServer")}
         </Label>
         <Input id="sign-in-form__baseUrl" {...register("baseUrl")} />
-        <ErrorMessage message={errors.email?.message} />
+        <ErrorMessage message={errors.baseUrl?.message} />
       </Field>
       <Field>
         <Label htmlFor="username">{t("SignInForm.Email")}</Label>
