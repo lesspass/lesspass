@@ -136,5 +136,5 @@ def export_passwords(config_home_path, url, export_file_path):
                 ]
             )
     print(
-        f"Passwords exported in {export_file_path}.\n /!\ Be careful all your passwords are in clear text. "
+        f"Passwords exported in {export_file_path}.\n /!\\ Be careful all your passwords are in clear text. "
     )
