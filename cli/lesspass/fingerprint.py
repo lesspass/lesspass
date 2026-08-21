@@ -137,6 +137,8 @@ def getpass_with_fingerprint(prompt):
             break
         elif c == "\x7f":  # backspace
             password = password[:-1]
+        elif c == "\x15":  # ctrl+u (line kill)
+            password = ""
         else:
             password += c
         if len(password) != 0:
@@ -146,7 +148,9 @@ def getpass_with_fingerprint(prompt):
             delayed_write.start()
             sys.stdout.write(f"\r{prompt}{get_fake_mnemonic()}")
         else:
-            sys.stdout.write(f"\r{prompt}{' '*(MAX_ICON_WIDTH*3)}")
+            # Clear the icons: 3 icons + 2 spaces between them
+            # Then reset cursor to first position (right after prompt)
+            sys.stdout.write(f"\r{prompt}{' '*(MAX_ICON_WIDTH*3 + 2)}\r{prompt}")
     return password
 
 
