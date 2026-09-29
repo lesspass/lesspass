@@ -1,4 +1,5 @@
-import { pbkdf2 as cryptoPbkdf2 } from "crypto";
+import { getAlgorithm } from "./algo";
+import { arrayBufferToHex, stringToArrayBuffer } from "./string";
 
 export function pbkdf2(
   password: string,
@@ -6,14 +7,32 @@ export function pbkdf2(
   iterations: number,
   keylen: number,
   digest: string,
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    cryptoPbkdf2(password, salt, iterations, keylen, digest, (error, key) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(key.toString("hex"));
-      }
-    });
-  });
+) {
+  return globalThis.crypto.subtle
+    .importKey("raw", stringToArrayBuffer(password), "PBKDF2", false, [
+      "deriveKey",
+    ])
+    .then((key) => {
+      const algo = {
+        name: "PBKDF2",
+        salt: stringToArrayBuffer(salt),
+        iterations,
+        hash: getAlgorithm(digest),
+      };
+      return globalThis.crypto.subtle.deriveKey(
+        algo,
+        key,
+        {
+          name: "AES-CTR",
+          length: keylen * 8,
+        },
+        true,
+        ["encrypt", "decrypt"],
+      );
+    })
+    .then((derivedKey) =>
+      globalThis.crypto.subtle
+        .exportKey("raw", derivedKey)
+        .then((keyArray) => arrayBufferToHex(keyArray)),
+    );
 }

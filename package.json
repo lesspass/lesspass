@@ -16,9 +16,6 @@
     "test": "yarn workspaces foreach --verbose --all run test"
   },
   "engines": {
-    "node": "22.x"
-  },
-  "devDependencies": {
-    "prettier": "^3.9.6"
+    "node": "26.x"
   }
 }

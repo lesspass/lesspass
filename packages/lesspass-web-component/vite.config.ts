@@ -3,21 +3,19 @@ import { defineConfig as defineVitestConfig } from "vitest/config";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import dts from "vite-plugin-dts";
+import { esmExternalRequirePlugin } from "rolldown/plugins";
+
+const external = ["react", "react-dom", "react/jsx-runtime"];
 
 const viteConfig = defineViteConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    dts({ rollupTypes: true, tsconfigPath: "./tsconfig.app.json" }),
-  ],
+  plugins: [react(), tailwindcss()],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/LessPassWebComponent.tsx"),
+      entry: resolve(import.meta.dirname, "src/LessPassWebComponent.tsx"),
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      plugins: [esmExternalRequirePlugin({ external })],
     },
   },
 });

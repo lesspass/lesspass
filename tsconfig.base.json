@@ -7,7 +7,7 @@
     "strict": true,
     "module": "esnext", // You very likely want esnext for code that will be bundled.
     "moduleResolution": "bundler",
-    "target": "ES6", // Modern browsers support all ES6 features, so ES6 is a good choice.
+    "target": "ES2020", // ES2020 lib provides Array.includes, String.padStart, BigInt and Web Crypto; supported by Node 26 and modern browsers.
     "jsx": "react-jsx", // React 17 introduces a new entry point to be used by compilers like TypeScript
     "paths": {
       "lesspass": ["./packages/lesspass/src"],

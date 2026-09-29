@@ -6,42 +6,32 @@
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
-    "./render-password": "./dist/render-password.js",
-    "./fingerprint": "./dist/fingerprint.js"
-  },
-  "browser": {
-    "./src/crypto/hmac.ts": "./src/crypto/hmac.browser.ts",
-    "./src/crypto/pbkdf2.ts": "./src/crypto/pbkdf2.browser.ts"
+    ".": {
+      "development": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./render-password": {
+      "development": "./src/render-password/index.ts",
+      "default": "./dist/render-password/index.js"
+    },
+    "./fingerprint": {
+      "development": "./src/fingerprint/index.ts",
+      "default": "./dist/fingerprint/index.js"
+    }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "yarn clean && tsup",
+    "build": "yarn clean && tsc",
     "clean": "rm -rf dist",
     "prettier": "prettier --write src",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "tsup": "^8.5.1",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.11"
-  },
-  "tsup": [
-    {
-      "entry": {
-        "index": "./src/index.ts",
-        "render-password": "./src/render-password/index.ts",
-        "fingerprint": "./src/fingerprint/index.ts"
-      },
-      "format": [
-        "esm"
-      ],
-      "platform": "browser",
-      "dts": true,
-      "clean": true
-    }
-  ]
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  }
 }

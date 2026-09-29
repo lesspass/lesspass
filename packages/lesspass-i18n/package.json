@@ -5,12 +5,17 @@
   "license": "AGPL-3.0-only",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "development": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "yarn clean && yarn i18n && tsup",
+    "build": "yarn clean && yarn i18n && tsc && cp -R src/locales dist/",
     "clean": "rm -rf dist",
     "i18n": "i18next '../lesspass-web-component/src/**/*.{ts,tsx}' '../lesspass-mobile/src/**/*.{js,jsx,ts,tsx}' --output src/locales/\\$LOCALE/\\$NAMESPACE.json --config ./i18next-parser.config.ts",
     "test": "eslint . && echo 'eslint passed'",
@@ -18,26 +23,12 @@
     "update-translations": "yarn i18n && yarn build"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.5",
-    "@types/node": "^25.9.5",
-    "eslint": "^8.57.1",
-    "globals": "^16.5.0",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.3",
+    "eslint": "^10.11.0",
+    "globals": "^17.12.0",
     "i18next-parser": "^9.4.0",
-    "tsup": "^8.5.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.69.0"
-  },
-  "tsup": [
-    {
-      "entry": [
-        "./src/index.ts"
-      ],
-      "format": [
-        "esm"
-      ],
-      "platform": "browser",
-      "dts": true,
-      "clean": true
-    }
-  ]
+    "typescript-eslint": "^8.70.1"
+  }
 }
