@@ -67,7 +67,7 @@
     "jsdom": "^30.1.1",
     "prettier": "^3.9.9",
     "typescript": "^6.0.3",
-    "vite": "^8.3.1",
+    "vite": "^8.3.3",
     "vitest": "^5.0.2",
     "vitest-react-native": "^0.1.5"
   },
