@@ -88,9 +88,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "lesspass.wsgi.application"
 
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-if DATABASE_URL:
-    r = urlparse(DATABASE_URL)
+database_url = os.getenv("DATABASE_URL")
+if database_url:
+    r = urlparse(database_url)
     sslmode = parse_qs(r.query).get("sslmode", ["require"])[0]
     DATABASES = {
         "default": {
@@ -187,6 +187,7 @@ REST_FRAMEWORK = {
         "login": "5/minute",
         "password_reset": "3/hour",
     },
+    "NUM_PROXIES": 2,
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
 }
 

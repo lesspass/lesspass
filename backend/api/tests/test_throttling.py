@@ -37,6 +37,29 @@ class AuthenticationThrottleTestCase(APITestCase):
     def test_djoser_jwt_create_endpoint_is_throttled(self):
         self.assert_login_throttled("/auth/jwt/create/")
 
+    def test_login_throttle_uses_client_ip_behind_proxy_chain(self):
+        credentials = {
+            "email": "throttle-test@example.org",
+            "password": "wrong-password",
+        }
+
+        for attempt, proxy_last_octet in enumerate(range(52, 58), start=1):
+            response = self.client.post(
+                "/auth/jwt/create/",
+                credentials,
+                format="json",
+                REMOTE_ADDR="192.0.2.19",
+                HTTP_X_FORWARDED_FOR=(
+                    "198.51.100.25, 203.0.113.%d" % proxy_last_octet
+                ),
+            )
+            expected_status = (
+                status.HTTP_429_TOO_MANY_REQUESTS
+                if attempt == 6
+                else status.HTTP_401_UNAUTHORIZED
+            )
+            self.assertEqual(response.status_code, expected_status)
+
     def test_password_reset_request_is_throttled(self):
         data = {"email": "unknown@example.org"}
 
