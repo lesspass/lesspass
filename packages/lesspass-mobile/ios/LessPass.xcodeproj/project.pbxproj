@@ -10,6 +10,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2924EFF06327AAFCE56E65CA /* libPods-LessPass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C016BB226A8ECC507304AD8C /* libPods-LessPass.a */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		761780EF2CA45674006654EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EE2CA45674006654EF /* SceneDelegate.swift */; };
 		DC7B76D30F83D23287440BBF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 41D9B376B1FE82DBD050AAF7 /* PrivacyInfo.xcprivacy */; };
 		F01630942B90D51C003D8E89 /* LessPassClipboardModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F01630932B90D51C003D8E89 /* LessPassClipboardModule.m */; };
 		F04538A52B90CAD700A806A5 /* LessPassModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F04538A42B90CAD700A806A5 /* LessPassModule.m */; };
@@ -24,6 +25,7 @@
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = LessPass/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		41D9B376B1FE82DBD050AAF7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = LessPass/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = LessPass/AppDelegate.swift; sourceTree = "<group>"; };
+		761780EE2CA45674006654EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = LessPass/SceneDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LessPass/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94325F89AA49E34CF539CBEF /* Pods-LessPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.debug.xcconfig"; path = "Target Support Files/Pods-LessPass/Pods-LessPass.debug.xcconfig"; sourceTree = "<group>"; };
 		C016BB226A8ECC507304AD8C /* libPods-LessPass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LessPass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
+				761780EE2CA45674006654EF /* SceneDelegate.swift */,
 				F01630932B90D51C003D8E89 /* LessPassClipboardModule.m */,
 				F01630922B90D508003D8E89 /* LessPassClipboardModule.h */,
 				F04538A32B90CABE00A806A5 /* LessPassModule.h */,
@@ -281,6 +284,7 @@
 			files = (
 				F01630942B90D51C003D8E89 /* LessPassClipboardModule.m in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+				761780EF2CA45674006654EF /* SceneDelegate.swift in Sources */,
 				F04538A52B90CAD700A806A5 /* LessPassModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
