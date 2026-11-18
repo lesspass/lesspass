@@ -2,7 +2,9 @@ from api import models, serializers
 from api.permissions import IsOwner
 
 from rest_framework import permissions, viewsets
+from rest_framework.throttling import ScopedRateThrottle
 from rest_framework_simplejwt.views import TokenObtainPairView
+from djoser import views as djoser_views
 
 
 class PasswordViewSet(viewsets.ModelViewSet):
@@ -33,5 +35,17 @@ class EncryptedPasswordProfileViewSet(viewsets.ModelViewSet):
 
 class BackwardCompatibleTokenObtainPairView(TokenObtainPairView):
     serializer_class = serializers.BackwardCompatibleTokenObtainPairSerializer
+    throttle_classes = (ScopedRateThrottle,)
+    throttle_scope = "login"
 
     token_obtain_pair = TokenObtainPairView.as_view()
+
+
+class DjoserTokenObtainPairView(TokenObtainPairView):
+    throttle_classes = (ScopedRateThrottle,)
+    throttle_scope = "login"
+
+
+class PasswordResetThrottleViewSet(djoser_views.UserViewSet):
+    throttle_classes = (ScopedRateThrottle,)
+    throttle_scope = "password_reset"

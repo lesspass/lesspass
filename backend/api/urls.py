@@ -15,6 +15,11 @@ router.register(r"auth/register", djoser_views.UserViewSet, basename="auth_regis
 urlpatterns = [
     path("", include(router.urls)),
     path("tokens/auth/", views.BackwardCompatibleTokenObtainPairView.as_view()),
+    path("auth/jwt/create/", views.DjoserTokenObtainPairView.as_view()),
+    path(
+        "auth/users/reset_password/",
+        views.PasswordResetThrottleViewSet.as_view({"post": "reset_password"}),
+    ),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
 ]

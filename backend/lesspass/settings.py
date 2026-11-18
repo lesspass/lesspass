@@ -176,6 +176,10 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
     "DEFAULT_PARSER_CLASSES": ("rest_framework.parsers.JSONParser",),
+    "DEFAULT_THROTTLE_RATES": {
+        "login": "5/minute",
+        "password_reset": "3/hour",
+    },
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
 }
 
