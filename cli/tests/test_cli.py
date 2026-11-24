@@ -164,3 +164,7 @@ class TestParseArgs(unittest.TestCase):
 
     def test_logout(self):
         self.assertTrue(parse_args(["--logout"]).logout)
+
+    def test_parse_only_fingerprint(self):
+        self.assertTrue(parse_args(["--only-fingerprint"]).only_fingerprint)
+        self.assertFalse(parse_args(["site"]).only_fingerprint)

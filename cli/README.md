@@ -26,6 +26,7 @@
       -c, --copy            copy the password to clipboard
       --exclude EXCLUDE     exclude char from generated password
       --no-fingerprint      hide visual fingerprint of the master password when you type
+      --only-fingerprint    print the fingerprint of the master password and exit, without generating a password
       --save [SAVE_PATH]    [beta] Save your password profiles. /!\ File not encrypted. Use carefully. (default: ~/.config/lesspass/profiles.json)
       --load LOAD_PATH      [beta] Load your password profiles file
       --url URL             [beta] LessPass Database URL used by --save and --load command
@@ -55,6 +56,14 @@
 ### master password in env variable
 
     LESSPASS_MASTER_PASSWORD="masterpassword" lesspass site login
+
+### check the master password once, then generate several passwords
+
+    read -rs -p "Master Password: " LESSPASS_MASTER_PASSWORD && echo
+    export LESSPASS_MASTER_PASSWORD
+    lesspass --only-fingerprint   # check the icons before going on
+    lesspass site1 login1
+    lesspass site2 login2
 
 ## License
 

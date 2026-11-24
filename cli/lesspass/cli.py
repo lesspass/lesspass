@@ -17,6 +17,9 @@ examples:
 
   # master password in env variable
   LESSPASS_MASTER_PASSWORD="masterpassword" lesspass site login
+
+  # only print the master password fingerprint
+  lesspass --only-fingerprint
 """
 
 COPYRIGHT = """
@@ -97,6 +100,12 @@ def parse_args(args):
         dest="no_fingerprint",
         action="store_true",
         help="hide visual fingerprint of the master password when you type",
+    )
+    parser.add_argument(
+        "--only-fingerprint",
+        dest="only_fingerprint",
+        action="store_true",
+        help="print the fingerprint of the master password and exit, without generating a password",
     )
     config_home_path = _get_config_path()
     backup_file = os.path.join(config_home_path, "profiles.json")
