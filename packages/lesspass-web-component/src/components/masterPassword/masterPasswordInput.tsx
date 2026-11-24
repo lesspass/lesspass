@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { buildFingerprint } from "lesspass";
 import type { Fingerprint } from "lesspass/fingerprint";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -44,14 +45,19 @@ function Fingerprint({ fingerprint }: { fingerprint: Fingerprint }) {
   );
 }
 
+const RECOMMENDED_MIN_LENGTH = 10;
+
 export const MasterPasswordInput = forwardRef<
   HTMLInputElement,
   MasterPasswordInputProps
 >(({ id, onChange, onBlur, name }, ref) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState<string | null>(null);
   const [type, setType] = useState<"password" | "text">("password");
 
   const [fingerprint, setFingerprint] = useState<Fingerprint | null>(null);
+
+  const isTooShort = !!value && value.length < RECOMMENDED_MIN_LENGTH;
 
   useEffect(() => {
     if (value) {
@@ -98,6 +104,15 @@ export const MasterPasswordInput = forwardRef<
         >
           <Fingerprint fingerprint={fingerprint} />
         </button>
+      )}
+      {isTooShort && (
+        <output
+          htmlFor={id}
+          data-testid={`${id}-warning`}
+          className="col-start-1 row-start-2 mt-1 text-sm text-amber-600 dark:text-amber-400"
+        >
+          {t("PasswordProfile.MasterPasswordTooShort")}
+        </output>
       )}
     </div>
   );

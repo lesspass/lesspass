@@ -71,6 +71,7 @@
     "Length": "Length",
     "Login": "Login",
     "MasterPassword": "Master password",
+    "MasterPasswordTooShort": "We recommend you use at least 10 characters",
     "Options": "Options",
     "PasswordProfileCopiedInClipboard": "Password profile URL has been copied to your clipboard",
     "PasswordProfileSaved": "Password profile saved",

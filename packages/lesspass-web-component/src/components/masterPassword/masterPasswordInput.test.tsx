@@ -1,5 +1,5 @@
 import { expect, vi } from "vitest";
-import { render } from "../../tests/renders";
+import { render, renderWithProviders } from "../../tests/renders";
 import { MasterPasswordInput } from "./masterPasswordInput";
 import { useForm } from "react-hook-form";
 
@@ -55,5 +55,41 @@ describe("Master password", () => {
         (iconName) => queryByTestId(iconName) !== null,
       ).length,
     ).toBe(3);
+  });
+
+  // check that it does not introduce a breaking change
+  test("short master password does not block the form", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    await user.type(masterPasswordInput, "short");
+    expect(masterPasswordInput).not.toHaveAttribute("minlength");
+    expect(masterPasswordInput.checkValidity()).toBe(true);
+  });
+
+  // check that warning is empty before the user types
+  test("should not display a warning before the user types", async () => {
+    const { queryByTestId } = render(<ManagedMasterPasswordInput />);
+    expect(queryByTestId("password-warning")).toBeNull();
+  });
+
+  // check that warning appears for all 9 characters
+  test("should warn while the master password is too short", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    await user.type(masterPasswordInput, "123456789");
+    const warning = queryByTestId("password-warning");
+    expect(warning).not.toBeNull();
+    expect(warning?.className).toContain("text-amber-600");
+  });
+
+  // check that warning disappears after 10th character
+  test("should stop warning once the master password is long enough", async () => {
+    const { user, queryByTestId } = render(<ManagedMasterPasswordInput />);
+    const masterPasswordInput = queryByTestId("password") as HTMLInputElement;
+
+    await user.type(masterPasswordInput, "1234567890");
+    expect(queryByTestId("password-warning")).toBeNull();
   });
 });
