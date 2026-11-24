@@ -121,7 +121,7 @@ def parse_args(args):
         nargs="?",
         const=backup_file,
         default=None,
-        help=f"[beta] Save your password profiles. /!\ File not encrypted. Use carefully. (default: {backup_file})",
+        help=f"[beta] Save your password profiles. /!\\ File not encrypted. Use carefully. (default: {backup_file})",
     )
     parser.add_argument(
         "--load",
@@ -133,7 +133,7 @@ def parse_args(args):
         "--export",
         dest="export_file_path",
         default=None,
-        help="Export all your passwords from LessPass database with your master password. /!\ Please note that your passwords will be saved in clear text.",
+        help="Export all your passwords from LessPass database with your master password. /!\\ Please note that your passwords will be saved in clear text.",
     )
     parser.add_argument(
         "--config-home-path",
