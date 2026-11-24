@@ -31,6 +31,7 @@ Options:
   --no-symbols         remove symbols from password
   -c, --clipboard      copy generated password to clipboard rather than displaying it.
                        Need pbcopy (OSX), xsel or xclip (Linux) or clip (Windows).
+  --only-fingerprint   print the master password fingerprint and exit
   -v, --version        lesspass version
 
 Examples:
@@ -43,6 +44,8 @@ Examples:
   lesspass site login masterpassword -d -L8
   # master password in env variable
   LESSPASS_MASTER_PASSWORD="masterpassword" lesspass site login
+  # only print the master password fingerprint
+  lesspass --only-fingerprint
 
 Copyright:
 

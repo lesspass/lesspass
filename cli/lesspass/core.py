@@ -10,7 +10,7 @@ from lesspass.cli import parse_args
 from lesspass.profile import create_profile
 from lesspass.password import generate_password
 from lesspass.clipboard import copy, get_system_copy_command
-from lesspass.fingerprint import getpass_with_fingerprint
+from lesspass.fingerprint import getpass_with_fingerprint, get_mnemonic
 from lesspass.connected import (
     save_password_profiles,
     load_password_profiles,
@@ -19,6 +19,23 @@ from lesspass.connected import (
 )
 
 signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
+
+
+def prompt_master_password(no_fingerprint):
+    prompt = "Master Password: "
+    if no_fingerprint:
+        return getpass.getpass(prompt)
+    return getpass_with_fingerprint(prompt)
+
+
+def read_master_password(args):
+    master_password = args.master_password or prompt_master_password(
+        args.no_fingerprint
+    )
+    if not master_password:
+        print("error: argument MASTER_PASSWORD is required but was not provided")
+        sys.exit(5)
+    return master_password
 
 
 def main(args=sys.argv[1:]):
@@ -42,6 +59,10 @@ def main(args=sys.argv[1:]):
     if args.logout:
         return logout(args.config_home_path)
 
+    if args.only_fingerprint:
+        print(get_mnemonic(read_master_password(args)))
+        return
+
     if args.prompt:
         if not args.site:
             args.site = getpass.getpass("Site: ")
@@ -52,18 +73,7 @@ def main(args=sys.argv[1:]):
         print("error: argument SITE is required but was not provided.")
         sys.exit(4)
 
-    master_password = args.master_password
-    if not master_password:
-        prompt = "Master Password: "
-        if args.no_fingerprint:
-            master_password = getpass.getpass(prompt)
-        else:
-            master_password = getpass_with_fingerprint(prompt)
-
-    if not master_password:
-        print("error: argument MASTER_PASSWORD is required but was not provided")
-        sys.exit(5)
-
+    master_password = read_master_password(args)
     profile = create_profile(args)
     try:
         generated_password = generate_password(profile, master_password)
